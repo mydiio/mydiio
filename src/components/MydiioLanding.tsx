@@ -1,474 +1,525 @@
 import { useEffect, useRef, useState } from "react";
 
-const SECTION_COLORS = [
-  "#2196F3",
-  "#F5A623",
-  "#FF8F00",
-  "#4CAF72",
-  "#F7E14A",
-  "#F5A623",
-  "#4CAF72",
-  "#1A1A0E",
-];
+const HERO_PHOTO = "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80";
+const WA_ADVERTISER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20advertising%20on%20mydiio";
+const WA_DRIVER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20becoming%20a%20mydiio%20driver";
 
-export default function MydiioLanding() {
-  const farRef = useRef<HTMLDivElement>(null);
-  const midRef = useRef<HTMLDivElement>(null);
-  const dashRef = useRef<HTMLDivElement>(null);
-  const railRef = useRef<HTMLDivElement>(null);
-  const [screenColor, setScreenColor] = useState(SECTION_COLORS[0]);
+const C = {
+  amber: "#F5A623",
+  amberDeep: "#E8920A",
+  yellow: "#F7E14A",
+  green: "#4CAF72",
+  greenDeep: "#2D8A4E",
+  ink: "#1A1A0E",
+  cream: "#FFF9ED",
+};
 
-  useEffect(() => {
-    let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const y = window.scrollY;
-        if (farRef.current) farRef.current.style.transform = `translate3d(${-y * 0.2}px,0,0)`;
-        if (midRef.current) midRef.current.style.transform = `translate3d(${-y * 0.5}px,0,0)`;
-        if (railRef.current) railRef.current.style.transform = `translate3d(${-y * 0.8}px,0,0)`;
-        if (dashRef.current) dashRef.current.style.transform = `translate3d(${-y * 1.4}px,0,0)`;
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
-  useEffect(() => {
-    const sections = document.querySelectorAll<HTMLElement>("[data-section-idx]");
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            const idx = Number(e.target.getAttribute("data-section-idx"));
-            setScreenColor(SECTION_COLORS[idx] ?? SECTION_COLORS[0]);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    sections.forEach((s) => obs.observe(s));
-    return () => obs.disconnect();
-  }, []);
-
+function Logo({ scrolled }: { scrolled: boolean }) {
+  const textColor = scrolled ? C.ink : "#fff";
+  const borderColor = scrolled ? C.ink : "#fff";
   return (
-    <div className="relative bg-[#5BB8F5]">
-      {/* Sticky hero scene */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden" style={{ background: "#5BB8F5" }}>
-        {/* Sky clouds */}
-        <div className="absolute inset-0" style={{ zIndex: 1 }}>
-          <div className="absolute top-[10%] left-0 w-[200%] cloud-drift">
-            <Cloud style={{ position: "absolute", left: "5%", top: 0 }} />
-            <Cloud style={{ position: "absolute", left: "40%", top: "30px" }} scale={0.7} />
-            <Cloud style={{ position: "absolute", left: "70%", top: "10px" }} scale={1.2} />
-          </div>
-        </div>
-
-        {/* Mountains */}
-        <div ref={farRef} className="absolute left-0 bottom-[22%] w-[500vw] h-[35vh] will-change-transform" style={{ zIndex: 2 }}>
-          <Mountains />
-        </div>
-
-        {/* Midground city */}
-        <div ref={midRef} className="absolute left-0 bottom-[22%] w-[500vw] h-[55vh] will-change-transform" style={{ zIndex: 3 }}>
-          <Midground />
-        </div>
-
-        {/* Tuk */}
-        <div className="absolute left-1/2 bottom-[16%] -translate-x-1/2" style={{ zIndex: 4, width: "min(520px, 80vw)" }}>
-          <TukSvg screenColor={screenColor} />
-        </div>
-
-        {/* Road */}
-        <div className="absolute left-0 bottom-0 w-full h-[22%]" style={{ background: "#3A3A3A", zIndex: 6 }}>
-          {/* Kerb */}
-          <div className="absolute top-0 left-0 w-full h-[14px] flex">
-            {Array.from({ length: 200 }).map((_, i) => (
-              <div key={i} className="h-full" style={{ width: 24, background: i % 2 === 0 ? "#E53935" : "#fff" }} />
-            ))}
-          </div>
-          {/* Dashes */}
-          <div ref={dashRef} className="absolute left-0 top-1/2 w-[600vw] h-[8px] flex gap-[64px] will-change-transform dash-loop" style={{ zIndex: 7 }}>
-            {Array.from({ length: 200 }).map((_, i) => (
-              <div key={i} className="h-full bg-white" style={{ width: 64, flexShrink: 0 }} />
-            ))}
-          </div>
-        </div>
-
-        {/* Foreground railing */}
-        <div ref={railRef} className="absolute left-0 bottom-[18%] w-[500vw] h-[60px] will-change-transform" style={{ zIndex: 8 }}>
-          <Railing />
-        </div>
-
-        {/* Nav placeholder */}
-        <nav className="absolute top-0 left-0 w-full px-6 py-4 flex items-center justify-between" style={{ zIndex: 50 }}>
-          <div className="font-display text-2xl text-[#1A1A0E] bg-[#F5A623] px-3 py-1 rounded-full border-[3px] border-[#1A1A0E]">
-            mydiio
-          </div>
-          <div className="text-[#1A1A0E] font-mono text-xs uppercase tracking-widest">Colombo · Sri Lanka</div>
-        </nav>
-
-        {/* Hero text */}
-        <div className="absolute bottom-[26%] left-0 w-full text-center px-4 pointer-events-none" style={{ zIndex: 9 }}>
-          <div className="eyebrow mb-3">Ads on the Move</div>
-          <h1 className="font-display text-4xl md:text-6xl text-[#1A1A0E] drop-shadow-sm">
-            Sri Lanka's tuk-tuks,<br />now on screen.
-          </h1>
-        </div>
-      </div>
-
-      {/* Placeholder scroll sections */}
-      {SECTION_COLORS.map((_, i) => (
-        <section key={i} data-section-idx={i} className="h-screen w-full" />
-      ))}
-
-      <style>{`
-        @keyframes tukIdle {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-4px); }
-        }
-        .tuk-svg { animation: tukIdle 0.85s ease-in-out infinite; }
-        @keyframes wheelSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .rear-wheel { transform-origin: 110px 248px; animation: wheelSpin 1.1s linear infinite; transform-box: fill-box; }
-        .front-wheel { transform-origin: 415px 252px; animation: wheelSpin 1.1s linear infinite; transform-box: fill-box; }
-        @keyframes cloudDrift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .cloud-drift { animation: cloudDrift 80s linear infinite; }
-        @keyframes dashLoop { from { margin-left: 0; } to { margin-left: -128px; } }
-        .dash-loop { animation: dashLoop 0.8s linear infinite; }
-        @media (max-width: 768px) {
-          h1 { font-size: 2rem; }
-        }
-      `}</style>
+    <div
+      className="font-display text-[22px] inline-flex items-center px-4 py-1 rounded-full bg-white"
+      style={{ border: `3px solid ${borderColor}`, color: textColor }}
+    >
+      <span style={{ color: textColor }}>my</span>
+      <span style={{ color: C.amber }}>di</span>
+      <span style={{ color: textColor }}>io</span>
     </div>
   );
 }
 
-function Cloud({ style, scale = 1 }: { style?: React.CSSProperties; scale?: number }) {
+function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const scrollToCta = () => {
+    document.getElementById("section-8")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <svg width={120 * scale} height={50 * scale} viewBox="0 0 120 50" style={style}>
-      <ellipse cx="30" cy="30" rx="25" ry="18" fill="#fff" />
-      <ellipse cx="60" cy="22" rx="28" ry="20" fill="#fff" />
-      <ellipse cx="90" cy="30" rx="22" ry="16" fill="#fff" />
-    </svg>
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between"
+      style={{
+        padding: "14px 28px",
+        background: scrolled ? "rgba(26,26,14,0.90)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        transition: "background 0.3s ease, backdrop-filter 0.3s ease",
+      }}
+    >
+      <Logo scrolled={scrolled} />
+      <div className="hidden md:flex items-center gap-3">
+        <button onClick={scrollToCta} className="btn-bold font-display text-[15px] px-5 py-2 rounded-[11px]" style={{ background: C.amber, color: C.ink }}>
+          Advertise →
+        </button>
+        <button onClick={scrollToCta} className="btn-bold font-display text-[15px] px-5 py-2 rounded-[11px]" style={{ background: C.green, color: "#fff" }}>
+          Drive & earn →
+        </button>
+      </div>
+      <div className="md:hidden">
+        <button onClick={scrollToCta} className="btn-bold font-display text-[14px] px-4 py-2 rounded-full" style={{ background: C.amber, color: C.ink }}>
+          Join →
+        </button>
+      </div>
+    </nav>
   );
 }
 
-function TukSvg({ screenColor }: { screenColor: string }) {
+function Hero() {
   return (
-    <svg viewBox="0 0 520 320" className="w-full h-auto tuk-svg" style={{ overflow: "visible" }}>
-      {/* Ground shadow */}
-      <ellipse cx="260" cy="285" rx="200" ry="12" fill="rgba(0,0,0,0.18)" />
-
-      {/* Roof */}
-      <rect x="60" y="40" width="310" height="55" rx="8" fill="#2D2D2D" />
-      <rect x="60" y="88" width="310" height="8" fill="#1A1A0E" opacity="0.4" />
-      <circle cx="200" cy="40" r="8" fill="#1A1A0E" />
-
-      {/* Rear body panel */}
-      <rect x="55" y="92" width="90" height="130" rx="4" fill="#F5A623" stroke="#1A1A0E" strokeWidth="2.5" />
-
-      {/* Front body panel */}
-      <path d="M 280,92 L 420,92 L 420,185 Q 400,200 360,205 L 280,200 Z" fill="#F5A623" stroke="#1A1A0E" strokeWidth="2.5" />
-
-      {/* Passenger compartment open area */}
-      <rect x="148" y="92" width="132" height="130" fill="rgba(180,220,255,0.15)" />
-
-      {/* Cage bars */}
-      <rect x="148" y="92" width="139" height="7" fill="#1A1A0E" rx="2" />
-      <rect x="148" y="92" width="7" height="130" fill="#1A1A0E" rx="2" />
-      <rect x="192" y="92" width="7" height="130" fill="#1A1A0E" rx="2" />
-      <rect x="236" y="92" width="7" height="130" fill="#1A1A0E" rx="2" />
-      <rect x="280" y="92" width="7" height="130" fill="#1A1A0E" rx="2" />
-
-      {/* Footboard */}
-      <rect x="148" y="218" width="132" height="14" rx="3" fill="#E8920A" stroke="#1A1A0E" strokeWidth="2" />
-
-      {/* Driver windshield */}
-      <path d="M 292,96 L 405,96 L 405,175 L 292,175 Z" fill="rgba(180,220,255,0.5)" stroke="#1A1A0E" strokeWidth="2.5" />
-      <path d="M 292,96 L 405,96 L 405,118 L 292,118 Z" fill="rgba(100,160,220,0.25)" />
-
-      {/* Front nose panel */}
-      <path d="M 405,96 L 440,105 L 445,185 L 405,185 Z" fill="#E8920A" stroke="#1A1A0E" strokeWidth="2" />
-
-      {/* Indicator */}
-      <rect x="420" y="148" width="20" height="10" rx="3" fill="#FF8F00" stroke="#1A1A0E" strokeWidth="1.5" />
-
-      {/* Headlight */}
-      <circle cx="438" cy="165" r="14" fill="#FFFDE7" stroke="#1A1A0E" strokeWidth="2.5" />
-      <circle cx="438" cy="165" r="8" fill="#fff" />
-
-      {/* Front fender */}
-      <path d="M 380,200 Q 430,195 460,210 Q 465,235 445,245 Q 410,248 390,240 Q 368,225 380,200 Z" fill="#F5A623" stroke="#1A1A0E" strokeWidth="2.5" />
-
-      {/* Passenger woman */}
-      <ellipse cx="185" cy="185" rx="22" ry="28" fill="#8B4513" />
-      <ellipse cx="185" cy="135" rx="18" ry="10" fill="#1A1A0E" />
-      <circle cx="185" cy="148" r="18" fill="#D4956A" stroke="#1A1A0E" strokeWidth="1.5" />
-      <ellipse cx="179" cy="148" rx="2" ry="2" fill="#1A1A0E" />
-      <ellipse cx="189" cy="148" rx="2" ry="2" fill="#1A1A0E" />
-      <ellipse cx="184" cy="153" rx="2" ry="1.5" fill="#C17A45" />
-      <path d="M 180,158 Q 184,163 188,158" stroke="#1A1A0E" strokeWidth="1.5" fill="none" />
-      <path d="M 198,138 Q 205,132 202,128 Q 198,124 193,130 Z" fill="#1A1A0E" />
-      <path d="M 170,175 Q 165,190 170,205" stroke="#D4956A" strokeWidth="8" fill="none" strokeLinecap="round" />
-      <path d="M 200,175 Q 205,190 200,205" stroke="#D4956A" strokeWidth="8" fill="none" strokeLinecap="round" />
-
-      {/* Phone screen */}
-      <rect
-        x="162" y="195" width="46" height="32" rx="4"
-        fill={screenColor}
-        stroke="#1A1A0E" strokeWidth="2"
-        style={{ transition: "fill 0.5s ease" }}
+    <section className="relative w-full" style={{ height: "100vh", minHeight: 600 }}>
+      <img src={HERO_PHOTO} alt="Inside a Colombo tuk-tuk looking out at the city" className="absolute inset-0 w-full h-full object-cover" />
+      {/* Overlay 1 */}
+      <div className="absolute inset-0 hero-overlay-1" />
+      {/* Overlay 2 */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(26,26,14,0) 0%, rgba(26,26,14,0) 30%, rgba(26,26,14,0.65) 70%, rgba(26,26,14,0.88) 100%)",
+        }}
       />
-      <text x="185" y="208" fontFamily="Fredoka One, sans-serif" fontSize="7" fill="white" textAnchor="middle">mydiio</text>
-      <text x="185" y="220" fontFamily="Fredoka One, sans-serif" fontSize="5" fill="white" textAnchor="middle">LIVE ●</text>
-
-      {/* Driver man */}
-      <ellipse cx="345" cy="185" rx="24" ry="28" fill="#CC3333" />
-      <ellipse cx="345" cy="136" rx="17" ry="9" fill="#1A1A0E" />
-      <circle cx="345" cy="148" r="17" fill="#C17A45" stroke="#1A1A0E" strokeWidth="1.5" />
-      <ellipse cx="353" cy="148" rx="2" ry="2" fill="#1A1A0E" />
-      <path d="M 360,178 Q 378,182 390,178" stroke="#C17A45" strokeWidth="7" fill="none" strokeLinecap="round" />
-      <rect x="322" y="205" width="46" height="35" rx="4" fill="#3B5998" />
-
-      {/* Rear wheel */}
-      <g className="rear-wheel">
-        <circle cx="110" cy="248" r="38" fill="#1A1A0E" stroke="#1A1A0E" strokeWidth="3" />
-        <circle cx="110" cy="248" r="30" fill="#2A2A2A" />
-        <circle cx="110" cy="248" r="22" fill="#888888" stroke="#666" strokeWidth="1.5" />
-        <circle cx="110" cy="248" r="14" fill="#C0C0C0" stroke="#888" strokeWidth="1.5" />
-        <line x1="110" y1="226" x2="110" y2="270" stroke="#888" strokeWidth="2" />
-        <line x1="88" y1="248" x2="132" y2="248" stroke="#888" strokeWidth="2" />
-        <line x1="94" y1="232" x2="126" y2="264" stroke="#888" strokeWidth="2" />
-        <line x1="94" y1="264" x2="126" y2="232" stroke="#888" strokeWidth="2" />
-        <circle cx="110" cy="248" r="6" fill="#666666" />
-      </g>
-
-      {/* Front wheel */}
-      <g className="front-wheel">
-        <circle cx="415" cy="252" r="34" fill="#1A1A0E" stroke="#1A1A0E" strokeWidth="3" />
-        <circle cx="415" cy="252" r="27" fill="#2A2A2A" />
-        <circle cx="415" cy="252" r="20" fill="#888888" stroke="#666" strokeWidth="1.5" />
-        <circle cx="415" cy="252" r="13" fill="#C0C0C0" stroke="#888" strokeWidth="1.5" />
-        <line x1="415" y1="232" x2="415" y2="272" stroke="#888" strokeWidth="2" />
-        <line x1="395" y1="252" x2="435" y2="252" stroke="#888" strokeWidth="2" />
-        <line x1="401" y1="238" x2="429" y2="266" stroke="#888" strokeWidth="2" />
-        <line x1="401" y1="266" x2="429" y2="238" stroke="#888" strokeWidth="2" />
-        <circle cx="415" cy="252" r="5" fill="#666666" />
-      </g>
-    </svg>
+      <div className="hero-content absolute" style={{ bottom: "12%", left: "6%", maxWidth: 600 }}>
+        <div
+          className="font-mono inline-block"
+          style={{ fontSize: 11, letterSpacing: "3px", textTransform: "uppercase", color: C.amber }}
+        >
+          Colombo · Sri Lanka
+        </div>
+        <h1
+          className="font-display text-white"
+          style={{
+            fontSize: "clamp(52px, 8vw, 96px)",
+            lineHeight: 0.95,
+            letterSpacing: "-1.5px",
+            marginTop: 14,
+          }}
+        >
+          Colombo's first tuk-tuk ad network.
+        </h1>
+        <p
+          className="hero-sub"
+          style={{
+            fontFamily: "Nunito, sans-serif",
+            fontWeight: 800,
+            fontSize: "clamp(17px, 2vw, 22px)",
+            color: "rgba(255,255,255,0.72)",
+            marginTop: 18,
+            maxWidth: 480,
+          }}
+        >
+          Screens inside every tuk. Your brand playing to captive passengers on every ride.
+        </p>
+        <a
+          href="#section-8"
+          className="hero-cta inline-block"
+          style={{
+            background: C.amber,
+            color: C.ink,
+            fontFamily: "Fredoka One, sans-serif",
+            fontSize: 19,
+            border: "3px solid white",
+            borderRadius: 13,
+            boxShadow: "5px 5px 0 rgba(255,255,255,0.25)",
+            padding: "15px 36px",
+            marginTop: 30,
+            transition: "transform 0.1s ease, box-shadow 0.1s ease",
+          }}
+        >
+          Join the waitlist →
+        </a>
+        <div
+          className="font-mono scroll-cue"
+          style={{
+            fontSize: 10,
+            color: "rgba(255,255,255,0.4)",
+            letterSpacing: "2px",
+            textTransform: "uppercase",
+            marginTop: 36,
+          }}
+        >
+          Scroll to discover ↓
+        </div>
+      </div>
+      <div className="absolute bottom-0 left-0 right-0" style={{ height: 8, background: C.amber }} />
+    </section>
   );
 }
 
-function Mountains() {
+function Eyebrow({ children, color }: { children: React.ReactNode; color: string }) {
   return (
-    <svg viewBox="0 0 4000 400" preserveAspectRatio="none" className="w-full h-full">
-      <defs>
-        <pattern id="mtn" x="0" y="0" width="1000" height="400" patternUnits="userSpaceOnUse">
-          <path d="M0,400 L0,250 Q150,80 300,200 Q450,300 600,150 Q750,40 900,220 L1000,180 L1000,400 Z" fill="#7A9BB0" />
-          <path d="M100,400 L100,300 Q250,200 400,260 Q550,310 700,240 Q850,180 1000,280 L1000,400 Z" fill="#8FAEC0" opacity="0.85" />
-        </pattern>
-      </defs>
-      <rect width="4000" height="400" fill="url(#mtn)" />
-    </svg>
+    <div
+      className="font-mono inline-block"
+      style={{ fontSize: 11, letterSpacing: "3px", textTransform: "uppercase", color, marginBottom: 14 }}
+    >
+      {children}
+    </div>
   );
 }
 
-function Midground() {
+function Section({
+  id,
+  bg,
+  children,
+}: {
+  id?: string;
+  bg: string;
+  children: React.ReactNode;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const items = el.querySelectorAll<HTMLElement>(".reveal");
+            items.forEach((item, i) => {
+              setTimeout(() => item.classList.add("in"), i * 100);
+            });
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   return (
-    <svg viewBox="0 0 4000 600" preserveAspectRatio="xMinYMax meet" className="w-full h-full">
-      <defs>
-        <pattern id="city" x="0" y="0" width="1600" height="600" patternUnits="userSpaceOnUse">
-          {/* Buildings */}
-          <Building x={20} y={180} w={120} h={420} fill="#2A3A4A" windows />
-          <Building x={160} y={260} w={140} h={340} fill="#E8745A" />
-          <Building x={320} y={220} w={110} h={380} fill="#2D8A8A" windows />
-          <Building x={450} y={300} w={130} h={300} fill="#6B4C8A" />
-          <Building x={600} y={250} w={120} h={350} fill="#F5C842" windows />
-          <Building x={740} y={200} w={150} h={400} fill="#FFFFFF" arches />
-          <Building x={920} y={280} w={120} h={320} fill="#2A3A4A" windows />
-          <Building x={1060} y={240} w={140} h={360} fill="#E8745A" />
-          <Building x={1220} y={220} w={130} h={380} fill="#2D8A8A" windows />
-          <Building x={1380} y={280} w={140} h={320} fill="#6B4C8A" />
-
-          {/* Shops */}
-          <Shop x={40} y={500} w={120} label="PHARMACY" roof="#1565C0" cross />
-          <Shop x={200} y={500} w={140} label="BAKERY" roof="#FF7043" stripes />
-          <Shop x={380} y={500} w={120} label="FASHION" roof="#E91E63" />
-          <FoodCart x={550} y={510} />
-          <Shop x={720} y={500} w={110} label="TEA" roof="#4CAF72" />
-          <Shop x={1100} y={500} w={120} label="PHARMACY" roof="#1565C0" cross />
-          <Shop x={1280} y={500} w={140} label="BAKERY" roof="#FF7043" stripes />
-
-          {/* Palms */}
-          <Palm x={150} y={500} />
-          <Palm x={520} y={490} h={120} />
-          <Palm x={880} y={500} />
-          <Palm x={1340} y={490} h={120} />
-
-          {/* Lamp posts */}
-          <LampPost x={350} />
-          <LampPost x={900} />
-          <LampPost x={1450} />
-
-          {/* Billboard */}
-          <g transform="translate(820,360)">
-            <rect x="-2" y="0" width="4" height="100" fill="#1A1A0E" />
-            <rect x="-70" y="-50" width="140" height="60" fill="#F5A623" stroke="#1A1A0E" strokeWidth="3" rx="4" />
-            <text x="0" y="-22" textAnchor="middle" fontFamily="Fredoka One, sans-serif" fontSize="18" fill="#1A1A0E">mydiio</text>
-            <text x="0" y="-4" textAnchor="middle" fontFamily="Nunito, sans-serif" fontSize="9" fontWeight="800" fill="#1A1A0E">Ads on the Move.</text>
-          </g>
-
-          {/* People */}
-          <Person x={420} y={560} color="#6B4C8A" />
-          <Person x={1000} y={560} color="#FFFFFF" />
-        </pattern>
-      </defs>
-      <rect width="4000" height="600" fill="url(#city)" />
-    </svg>
+    <section
+      id={id}
+      ref={ref}
+      className="w-full flex items-center justify-center"
+      style={{ minHeight: "100vh", background: bg, padding: "48px 24px" }}
+    >
+      <div style={{ maxWidth: 520, width: "100%" }}>{children}</div>
+    </section>
   );
 }
 
-function Building({
-  x, y, w, h, fill, windows, arches,
-}: { x: number; y: number; w: number; h: number; fill: string; windows?: boolean; arches?: boolean }) {
+function Stat({ value, label, dark = false }: { value: string; label: string; dark?: boolean }) {
   return (
-    <g>
-      <rect x={x} y={y} width={w} height={h} fill={fill} stroke="#1A1A0E" strokeWidth="2" />
-      {windows &&
-        Array.from({ length: 4 }).map((_, row) =>
-          Array.from({ length: 3 }).map((_, col) => (
-            <rect
-              key={`${row}-${col}`}
-              x={x + 14 + col * ((w - 28) / 3)}
-              y={y + 20 + row * ((h - 40) / 5)}
-              width={(w - 40) / 4}
-              height={14}
-              fill="#F7E14A"
-              stroke="#1A1A0E"
-              strokeWidth="1"
-            />
-          ))
-        )}
-      {arches &&
-        Array.from({ length: 3 }).map((_, i) => (
-          <path
-            key={i}
-            d={`M${x + 18 + i * ((w - 36) / 3)},${y + 60} a14,18 0 0 1 28,0 l0,30 l-28,0 z`}
-            fill="#A8D8EA"
-            stroke="#1A1A0E"
-            strokeWidth="1.5"
-          />
-        ))}
-    </g>
-  );
-}
-
-function Shop({
-  x, y, w, label, roof, cross, stripes,
-}: { x: number; y: number; w: number; label: string; roof: string; cross?: boolean; stripes?: boolean }) {
-  return (
-    <g>
-      <polygon points={`${x},${y} ${x + w},${y} ${x + w / 2},${y - 30}`} fill={roof} stroke="#1A1A0E" strokeWidth="2" />
-      {stripes && (
-        <g>
-          {[0, 1, 2, 3].map((i) => (
-            <rect key={i} x={x + (i * w) / 4} y={y - 30 + i * 7} width={w / 4} height={6} fill={i % 2 ? "#fff" : roof} />
-          ))}
-        </g>
-      )}
-      <rect x={x} y={y} width={w} height={70} fill="#fff" stroke="#1A1A0E" strokeWidth="2" />
-      {cross && (
-        <g transform={`translate(${x + w / 2 - 5},${y + 18})`}>
-          <rect x="0" y="-4" width="10" height="18" fill="#E53935" />
-          <rect x="-4" y="2" width="18" height="6" fill="#E53935" />
-        </g>
-      )}
-      <text x={x + w / 2} y={y + 55} textAnchor="middle" fontFamily="Fredoka One, sans-serif" fontSize="11" fill="#1A1A0E">
+    <div
+      className="reveal"
+      style={{
+        background: dark ? "rgba(255,255,255,0.1)" : "#fff",
+        border: `3px solid ${C.ink}`,
+        boxShadow: `3px 3px 0 ${C.ink}`,
+        borderRadius: 11,
+        padding: "10px 14px",
+        textAlign: "center",
+        flex: 1,
+        minWidth: 90,
+      }}
+    >
+      <div className="font-display" style={{ fontSize: 18, color: dark ? C.amber : C.ink }}>{value}</div>
+      <div className="font-mono" style={{ fontSize: 9, letterSpacing: "1.5px", textTransform: "uppercase", color: dark ? "rgba(255,255,255,0.6)" : "rgba(26,26,14,0.55)", marginTop: 4 }}>
         {label}
-      </text>
-    </g>
+      </div>
+    </div>
   );
 }
 
-function FoodCart({ x, y }: { x: number; y: number }) {
+function FeatureRow({ icon, title, desc, color }: { icon: string; title: string; desc: string; color: string }) {
   return (
-    <g>
-      <rect x={x} y={y - 30} width="100" height="50" fill="#F5A623" stroke="#1A1A0E" strokeWidth="2" rx="4" />
-      <rect x={x + 10} y={y - 55} width="80" height="22" fill="#fff" stroke="#1A1A0E" strokeWidth="2" />
-      <text x={x + 50} y={y - 40} textAnchor="middle" fontFamily="Fredoka One, sans-serif" fontSize="13" fill="#E53935">KOTTU!</text>
-      {/* Steam */}
-      {[0, 1, 2].map((i) => (
-        <circle key={i} cx={x + 30 + i * 20} cy={y - 70} r="6" fill="#fff" opacity="0.7">
-          <animate attributeName="cy" values={`${y - 70};${y - 95}`} dur="2.2s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.7;0" dur="2.2s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
-        </circle>
-      ))}
-    </g>
+    <div
+      className="reveal"
+      style={{
+        borderLeft: `4px solid ${color}`,
+        background: `color-mix(in oklab, ${color} 8%, transparent)`,
+        borderRadius: 11,
+        padding: "12px 14px",
+        marginBottom: 10,
+      }}
+    >
+      <div style={{ fontFamily: "Nunito", fontWeight: 800, fontSize: 15, color: C.ink }}>
+        {icon} {title}
+      </div>
+      <div style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 13, color: "rgba(26,26,14,0.7)", marginTop: 2 }}>
+        {desc}
+      </div>
+    </div>
   );
 }
 
-function Palm({ x, y, h = 140 }: { x: number; y: number; h?: number }) {
+function StepRow({ n, title, desc }: { n: number; title: string; desc: string }) {
   return (
-    <g>
-      <rect x={x - 4} y={y - h} width="8" height={h} fill="#5D4037" />
-      <ellipse cx={x - 18} cy={y - h} rx="22" ry="8" fill="#2D8A4E" />
-      <ellipse cx={x + 18} cy={y - h} rx="22" ry="8" fill="#2D8A4E" />
-      <ellipse cx={x} cy={y - h - 10} rx="20" ry="9" fill="#4CAF72" />
-      <circle cx={x - 4} cy={y - h + 6} r="3" fill="#F5A623" />
-      <circle cx={x + 4} cy={y - h + 6} r="3" fill="#F5A623" />
-    </g>
+    <div
+      className="reveal flex gap-3 items-start"
+      style={{
+        background: "rgba(255,255,255,0.18)",
+        border: "1px solid rgba(255,255,255,0.35)",
+        borderRadius: 11,
+        padding: "12px 14px",
+        marginBottom: 10,
+      }}
+    >
+      <div
+        className="font-display flex items-center justify-center shrink-0"
+        style={{ width: 26, height: 26, borderRadius: "50%", background: C.yellow, color: C.ink, fontSize: 14 }}
+      >
+        {n}
+      </div>
+      <div>
+        <div style={{ fontFamily: "Nunito", fontWeight: 800, fontSize: 15, color: "#fff" }}>{title}</div>
+        <div style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 13, color: "rgba(255,255,255,0.85)", marginTop: 2 }}>{desc}</div>
+      </div>
+    </div>
   );
 }
 
-function LampPost({ x }: { x: number }) {
+function PriceCard({ tier, price, sub, pioneer }: { tier: string; price: string; sub: string; pioneer?: boolean }) {
   return (
-    <g>
-      <rect x={x - 1.5} y={420} width="3" height="180" fill="#1A1A0E" />
-      <circle cx={x} cy={418} r="8" fill="#F7E14A" stroke="#1A1A0E" strokeWidth="1.5" />
-    </g>
+    <div
+      className="reveal"
+      style={{
+        background: pioneer ? C.ink : "#fff",
+        border: `3px solid ${pioneer ? C.amber : C.ink}`,
+        borderRadius: 13,
+        boxShadow: `3px 3px 0 ${C.ink}`,
+        padding: "16px 12px",
+        textAlign: "center",
+      }}
+    >
+      <div className="font-display" style={{ fontSize: 11, textTransform: "uppercase", color: pioneer ? C.amber : C.ink }}>
+        {pioneer ? "⭐ " : ""}{tier}
+      </div>
+      <div className="font-display" style={{ fontSize: 20, marginTop: 6, color: pioneer ? C.yellow : C.ink }}>{price}</div>
+      <div className="font-mono" style={{ fontSize: 9, textTransform: "uppercase", marginTop: 6, color: pioneer ? "rgba(255,255,255,0.5)" : "rgba(26,26,14,0.45)" }}>
+        {sub}
+      </div>
+    </div>
   );
 }
 
-function Person({ x, y, color }: { x: number; y: number; color: string }) {
+function WhatsAppIcon({ color }: { color: string }) {
   return (
-    <g>
-      <circle cx={x} cy={y - 30} r="6" fill="#D9A074" />
-      <rect x={x - 7} y={y - 24} width="14" height="20" fill={color} />
-      <rect x={x - 6} y={y - 4} width="5" height="10" fill="#1A1A0E" />
-      <rect x={x + 1} y={y - 4} width="5" height="10" fill="#1A1A0E" />
-    </g>
-  );
-}
-
-function Wheel() {
-  return (
-    <svg viewBox="0 0 40 40" className="w-full h-full">
-      <circle cx="20" cy="20" r="18" fill="#1A1A0E" />
-      <circle cx="20" cy="20" r="10" fill="#9E9E9E" />
-      <circle cx="20" cy="20" r="3" fill="#1A1A0E" />
-      {[0, 60, 120, 180, 240, 300].map((a) => (
-        <rect key={a} x="19" y="10" width="2" height="20" fill="#1A1A0E" transform={`rotate(${a} 20 20)`} />
-      ))}
+    <svg width="22" height="22" viewBox="0 0 24 24" fill={color} aria-hidden>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.04 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.889-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.49-8.413z" />
     </svg>
   );
 }
 
-function Railing() {
+export default function MydiioLanding() {
   return (
-    <svg viewBox="0 0 4000 60" preserveAspectRatio="none" className="w-full h-full">
-      <defs>
-        <pattern id="rail" x="0" y="0" width="80" height="60" patternUnits="userSpaceOnUse">
-          <rect x="0" y="10" width="80" height="4" fill="#9E9E9E" />
-          <rect x="0" y="40" width="80" height="4" fill="#9E9E9E" />
-          <rect x="10" y="0" width="4" height="60" fill="#757575" />
-          <rect x="66" y="0" width="4" height="60" fill="#757575" />
-        </pattern>
-      </defs>
-      <rect width="4000" height="60" fill="url(#rail)" />
-    </svg>
+    <div className="w-full">
+      <style>{`
+        .hero-overlay-1 { background: rgba(26,26,14,0.55); }
+        @keyframes scrollCue {
+          0%, 100% { transform: translateY(0px); opacity: 0.4; }
+          50% { transform: translateY(7px); opacity: 0.7; }
+        }
+        .scroll-cue { animation: scrollCue 1.9s ease-in-out infinite; }
+        .hero-cta:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 rgba(255,255,255,0.25) !important; }
+        .hero-cta:active { transform: translate(2px,2px); box-shadow: 3px 3px 0 rgba(255,255,255,0.25) !important; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.55s ease, transform 0.55s ease; }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+        .wa-btn { transition: transform 0.1s ease, box-shadow 0.1s ease; }
+        .wa-btn:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 ${C.ink} !important; }
+        .wa-btn:active { transform: translate(2px,2px); box-shadow: 3px 3px 0 ${C.ink} !important; }
+        @media (max-width: 767px) {
+          .hero-overlay-1 { background: rgba(26,26,14,0.65) !important; }
+          .hero-content { left: 0 !important; right: 0; bottom: 10% !important; padding: 0 24px; text-align: center; max-width: 100% !important; }
+          .hero-content h1 { font-size: clamp(40px, 10vw, 56px) !important; }
+          .hero-content .hero-cta, .hero-content .scroll-cue { display: inline-block; }
+        }
+        @media (max-width: 374px) {
+          .hero-sub { display: none; }
+        }
+      `}</style>
+
+      <Nav />
+      <Hero />
+
+      {/* Section 1 */}
+      <Section bg={C.ink}>
+        <div className="reveal"><Eyebrow color={C.amber}>The Ride</Eyebrow></div>
+        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.amber, lineHeight: 1.05 }}>
+          14 minutes. No skip button. No scroll. Just your brand.
+        </h2>
+        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(255,249,237,0.7)", marginTop: 18 }}>
+          Every tuk ride in Colombo lasts 14 minutes. The passenger has nothing to do but look at the screen in front of them. That screen is yours.
+        </p>
+        <div className="flex gap-3 flex-wrap mt-6">
+          <Stat value="14 min" label="Average ride" />
+          <Stat value="0" label="Skip buttons" />
+          <Stat value="100%" label="Captive attention" />
+        </div>
+      </Section>
+
+      {/* Section 2 */}
+      <Section bg={C.amber}>
+        <div className="reveal"><Eyebrow color="rgba(26,26,14,0.55)">What is mydiio?</Eyebrow></div>
+        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
+          Sri Lanka's first cloud-managed tuk-tuk ad network.
+        </h2>
+        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(26,26,14,0.72)", marginTop: 18 }}>
+          We install smart screens inside tuk-tuks across Colombo. Advertisers run GPS-verified campaigns. Drivers earn passive income every month. The city becomes a media network.
+        </p>
+        <div className="flex gap-3 flex-wrap mt-6">
+          <Stat value="1.1M" label="Tuks in Sri Lanka" />
+          <Stat value="Colombo" label="Launch city" />
+          <Stat value="2026" label="Live now" />
+        </div>
+      </Section>
+
+      {/* Section 3 */}
+      <Section bg="#FFFFFF">
+        <div className="reveal"><Eyebrow color={C.amber}>For advertisers</Eyebrow></div>
+        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
+          Your ad. Every tuk. Every route.
+        </h2>
+        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(26,26,14,0.72)", marginTop: 18, marginBottom: 24 }}>
+          Pharmacy, bakery, clothing, food — whatever your business, your ad plays to real Colombo passengers on every single ride.
+        </p>
+        <FeatureRow icon="📍" title="GPS-verified impressions" desc="See exactly where and when your ad played." color={C.amber} />
+        <FeatureRow icon="🎬" title="14 days completely free" desc="You only pay after you've seen it work." color={C.amber} />
+        <FeatureRow icon="✏️" title="Creative support included" desc="We help you make the ad at no extra cost." color={C.amber} />
+      </Section>
+
+      {/* Section 4 */}
+      <Section bg={C.green}>
+        <div className="reveal"><Eyebrow color={C.yellow}>How it works</Eyebrow></div>
+        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: "#fff", lineHeight: 1.05, marginBottom: 22 }}>
+          Three steps. One campaign.
+        </h2>
+        <StepRow n={1} title="Send your ad" desc="15–30 second video or image. Free creative help if needed." />
+        <StepRow n={2} title="We go live" desc="Across our Colombo fleet within 48 hours. GPS-scheduled." />
+        <StepRow n={3} title="You get reports" desc="Weekly verified data. Every vehicle and zone tracked." />
+        <a
+          href="#section-8"
+          className="reveal wa-btn inline-block mt-4 font-display"
+          style={{ background: C.yellow, color: C.ink, border: `3px solid ${C.ink}`, boxShadow: `5px 5px 0 ${C.ink}`, borderRadius: 13, padding: "14px 28px", fontSize: 18 }}
+        >
+          Start a campaign →
+        </a>
+      </Section>
+
+      {/* Section 5 */}
+      <Section bg={C.yellow}>
+        <div className="reveal"><Eyebrow color="rgba(26,26,14,0.55)">Pricing</Eyebrow></div>
+        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05, marginBottom: 22 }}>
+          Less than one Facebook boost. Way more reach.
+        </h2>
+        <div className="grid grid-cols-2 gap-[10px]">
+          <PriceCard pioneer tier="Pioneer" price="LKR 25–35k/mo" sub="Category exclusive · 10 spots" />
+          <PriceCard tier="Roamer" price="LKR 20,000/mo" sub="3-month minimum" />
+          <PriceCard tier="Voyager" price="LKR 32,000/mo" sub="6-month minimum" />
+          <PriceCard tier="Horizon" price="LKR 65,000+/mo" sub="Enterprise" />
+        </div>
+        <div className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 13, color: "rgba(26,26,14,0.6)", marginTop: 18, textAlign: "center" }}>
+          All plans include 14 days free. You only pay after it works.
+        </div>
+      </Section>
+
+      {/* Section 6 */}
+      <Section bg={C.amber}>
+        <div className="reveal"><Eyebrow color="rgba(26,26,14,0.55)">Pioneer programme</Eyebrow></div>
+        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
+          Only 10 founding spots. One per category. Yours forever.
+        </h2>
+        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(26,26,14,0.75)", marginTop: 18, marginBottom: 18 }}>
+          Be the only business in your category on mydiio. No competitor can advertise while you hold your Pioneer spot. Your rate is locked for life.
+        </p>
+        <div className="reveal flex flex-wrap gap-2 mb-5">
+          {["Pharmacy","Food & Beverage","Fashion","Automotive","Finance","Telecoms","Hospitality","Real Estate","Education","Beauty & Wellness"].map((c) => (
+            <span key={c} className="font-display" style={{ background: C.ink, color: C.amber, fontSize: 11, borderRadius: 20, padding: "6px 14px" }}>{c}</span>
+          ))}
+        </div>
+        <div className="flex gap-3 flex-wrap mb-5">
+          <Stat value="10" label="Spots" />
+          <Stat value="0" label="Competitors" />
+          <Stat value="∞" label="Rate locked" />
+        </div>
+        <a
+          href="#section-8"
+          className="reveal wa-btn inline-block font-display"
+          style={{ background: C.ink, color: C.amber, border: `3px solid ${C.amber}`, boxShadow: `5px 5px 0 ${C.amber}`, borderRadius: 13, padding: "14px 28px", fontSize: 18 }}
+        >
+          Claim a Pioneer spot →
+        </a>
+      </Section>
+
+      {/* Section 7 */}
+      <Section bg="#FFFFFF">
+        <div className="reveal"><Eyebrow color={C.amber}>For tuk drivers</Eyebrow></div>
+        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
+          Just drive. Earn more.
+        </h2>
+        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(26,26,14,0.72)", marginTop: 18 }}>
+          We install the screen. You drive exactly as you do today. Between LKR 6,000 and LKR 8,000 lands in your account on the 5th of every month. Zero extra work. Zero extra hours.
+        </p>
+        <div className="flex gap-3 flex-wrap my-6">
+          <Stat value="LKR 6,000" label="Base / month" />
+          <Stat value="+2,000" label="Route bonus" />
+          <Stat value="5th" label="Pay date" />
+        </div>
+        <FeatureRow icon="🔧" title="Free installation" desc="We handle everything, you just show up." color={C.green} />
+        <FeatureRow icon="📱" title="Simple driver app" desc="Earnings, uptime, and payment history." color={C.green} />
+        <FeatureRow icon="🤝" title="Founding Group benefits" desc="Loyalty bonus at month 3, rate locked for life." color={C.green} />
+        <a
+          href="#section-8"
+          className="reveal wa-btn inline-block mt-4 font-display"
+          style={{ background: C.green, color: "#fff", border: `3px solid ${C.ink}`, boxShadow: `5px 5px 0 ${C.ink}`, borderRadius: 13, padding: "14px 28px", fontSize: 18 }}
+        >
+          Become a partner driver →
+        </a>
+      </Section>
+
+      {/* Section 8 */}
+      <Section id="section-8" bg={C.ink}>
+        <div className="reveal"><Eyebrow color={C.amber}>Ready to ride?</Eyebrow></div>
+        <h2 className="reveal font-display" style={{ fontSize: "clamp(34px, 5vw, 52px)", color: C.amber, lineHeight: 1.05 }}>
+          Let's talk.
+        </h2>
+        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(255,249,237,0.7)", marginTop: 18, marginBottom: 32 }}>
+          Whether you want to advertise or earn as a driver — tap the button below. We'll WhatsApp you back within 24 hours.
+        </p>
+        <div className="flex flex-col gap-3">
+          <a
+            href={WA_ADVERTISER}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="reveal wa-btn flex items-center justify-center gap-3 font-display"
+            style={{ background: C.amber, color: C.ink, border: `3px solid ${C.ink}`, boxShadow: `5px 5px 0 ${C.ink}`, borderRadius: 14, padding: "18px 24px", fontSize: 19 }}
+          >
+            <WhatsAppIcon color={C.ink} />
+            I want to advertise on mydiio →
+          </a>
+          <a
+            href={WA_DRIVER}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="reveal wa-btn flex items-center justify-center gap-3 font-display"
+            style={{ background: C.green, color: "#fff", border: `3px solid ${C.ink}`, boxShadow: `5px 5px 0 ${C.ink}`, borderRadius: 14, padding: "18px 24px", fontSize: 19 }}
+          >
+            <WhatsAppIcon color="#fff" />
+            I want to drive and earn →
+          </a>
+        </div>
+        <div className="font-mono text-center" style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", marginTop: 16 }}>
+          We respond to every message within 24 hours · mydiio.com
+        </div>
+      </Section>
+
+      {/* Footer */}
+      <footer style={{ background: C.ink, padding: "48px 24px", textAlign: "center" }}>
+        <div className="font-display" style={{ fontSize: 24 }}>
+          <span style={{ color: "#fff" }}>my</span>
+          <span style={{ color: C.amber }}>di</span>
+          <span style={{ color: "#fff" }}>io</span>
+        </div>
+        <div className="font-mono" style={{ fontSize: 11, color: C.amber, letterSpacing: "2px", marginTop: 8 }}>ADS ON THE MOVE.</div>
+        <div className="font-mono" style={{ fontSize: 9, color: "rgba(255,255,255,0.3)", marginTop: 6 }}>mydiio.com · Colombo · 2026</div>
+        <a href="#" className="font-mono" style={{ fontSize: 9, color: "rgba(255,255,255,0.2)", textDecoration: "underline", marginTop: 4, display: "inline-block" }}>Privacy Policy</a>
+      </footer>
+    </div>
   );
 }
