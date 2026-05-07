@@ -660,7 +660,7 @@ export function EarningsCalculator() {
   const annual = monthly * 12;
 
   return (
-    <div className="reveal" style={{ marginTop: 24 }}>
+    <div className="reveal" style={{ marginTop: 24, minHeight: 260 }}>
       <div className="font-mono" style={{ fontSize: 11, color: "rgba(26,26,14,0.6)", marginBottom: 10 }}>
         How many hours do you drive per day?
       </div>
