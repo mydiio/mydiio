@@ -62,206 +62,38 @@ function AdScreen({ state }: { state: ScreenState }) {
   );
 }
 
-// ======= TUK SVG (side-on, facing LEFT) — rebuilt to spec =======
+// ======= TUK (illustrated reference image, faces left) =======
 function TukSVG({ children }: { children?: React.ReactNode }) {
-  // viewBox 0 0 420 260
-  // Layout (left → right):
-  //   Passenger compartment: x ~ 40..230  (open left side, screen on back wall)
-  //   Driver/engine section: x ~ 230..360 (windshield, nose, headlight)
-  //   Roof spans full width with rounded front drop and small black ball.
   return (
-    <div className="relative" style={{ width: "min(420px, 92vw)", aspectRatio: "420/260" }}>
-      <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }}>
-        {/* ground shadow */}
-        <ellipse cx="210" cy="238" rx="180" ry="9" fill="rgba(0,0,0,0.22)" />
-
-        <g stroke="#1A1A0E" strokeWidth="3.5" strokeLinejoin="round" strokeLinecap="round">
-
-          {/* ===== ROOF (dark charcoal, overhangs, rounded front drop) ===== */}
-          <path
-            d="M 30 70
-               L 290 70
-               Q 330 70 348 86
-               L 372 108
-               Q 380 116 372 122
-               L 350 122
-               Q 338 110 318 110
-               L 30 110
-               Z"
-            fill="#2A2820"
-          />
-          {/* roof underside shadow strip */}
-          <path d="M 30 110 L 318 110 Q 338 110 350 122 L 30 122 Z" fill="#1A1810" stroke="none" opacity="0.55" />
-          {/* roof top highlight */}
-          <path d="M 42 76 L 286 76 Q 322 76 338 90" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="2" />
-          {/* signature black ball on roof peak (front) */}
-          <circle cx="332" cy="66" r="6" fill="#1A1A0E" />
-          <rect x="330" y="68" width="4" height="6" fill="#1A1A0E" stroke="none" />
-
-          {/* ===== YELLOW BODY ===== */}
-          {/* main lower body slab spans both sections */}
-          <path
-            d="M 36 178
-               L 36 215
-               L 380 215
-               L 380 178
-               Q 380 162 370 150
-               L 350 130
-               Q 340 122 326 122
-               L 36 122
-               Z"
-            fill="#F5C200"
-          />
-
-          {/* ===== PASSENGER COMPARTMENT (left) ===== */}
-          {/* black arch frame (open left side) */}
-          <path
-            d="M 44 122
-               L 44 215
-               L 240 215
-               L 240 122
-               L 232 122
-               L 232 207
-               L 52 207
-               L 52 122
-               Z"
-            fill="#1A1A0E"
-            stroke="none"
-          />
-          {/* interior back wall (yellow, slightly shadowed) */}
-          <rect x="52" y="122" width="180" height="85" fill="#D9A800" stroke="none" />
-          {/* interior floor */}
-          <rect x="52" y="190" width="180" height="17" fill="#2A2820" stroke="none" />
-          {/* bench seat */}
-          <rect x="60" y="170" width="164" height="22" rx="4" fill="#5A3A1A" stroke="#1A1A0E" strokeWidth="2" />
-
-          {/* ===== MYDIIO SCREEN on back wall (upper portion) ===== */}
-          {/* mount arm */}
-          <rect x="92" y="118" width="4" height="10" fill="#1A1A0E" stroke="none" />
-          {/* bezel */}
-          <rect x="70" y="128" width="84" height="48" rx="3" fill="#1A1A0E" />
-          <foreignObject x="73" y="131" width="78" height="42">
-            <div style={{ width: "100%", height: "100%", borderRadius: 2, overflow: "hidden" }}>
-              {children}
-            </div>
-          </foreignObject>
-
-          {/* ===== PASSENGER (cartoon, expressive, leaning on door frame) ===== */}
-          {/* head */}
-          <circle cx="180" cy="148" r="13" fill="#C68642" stroke="#1A1A0E" strokeWidth="2.2" />
-          {/* hair */}
-          <path d="M 168 144 Q 180 130 192 144 L 191 150 Q 180 144 169 150 Z" fill="#2A1A0A" stroke="none" />
-          {/* eyes (facing left) */}
-          <circle cx="172" cy="149" r="1.4" fill="#1A1A0E" stroke="none" />
-          <circle cx="178" cy="149" r="1.4" fill="#1A1A0E" stroke="none" />
-          {/* nose */}
-          <path d="M 170 151 Q 169 153 171 154" fill="none" stroke="#1A1A0E" strokeWidth="1.2" />
-          {/* smile */}
-          <path d="M 169 156 Q 173 159 178 156" fill="none" stroke="#1A1A0E" strokeWidth="1.4" />
-          {/* neck */}
-          <rect x="176" y="159" width="8" height="6" fill="#C68642" stroke="#1A1A0E" strokeWidth="1.5" />
-          {/* jacket / torso */}
-          <path d="M 158 166 Q 180 162 202 166 L 210 195 L 150 195 Z" fill="#8B6914" stroke="#1A1A0E" strokeWidth="2" />
-          {/* shirt collar (light blue) */}
-          <path d="M 173 166 L 180 176 L 187 166 L 184 165 L 180 170 L 176 165 Z" fill="#87CEEB" stroke="#1A1A0E" strokeWidth="1.4" />
-          {/* left arm extended onto door frame */}
-          <path d="M 158 172 Q 142 178 134 192 L 142 198 Q 152 184 168 182 Z" fill="#8B6914" stroke="#1A1A0E" strokeWidth="2" />
-          {/* hand */}
-          <circle cx="136" cy="194" r="4" fill="#C68642" stroke="#1A1A0E" strokeWidth="1.5" />
-          {/* right arm forward on lap */}
-          <path d="M 198 172 Q 210 180 206 192 L 198 192 Q 200 184 192 178 Z" fill="#8B6914" stroke="#1A1A0E" strokeWidth="2" />
-
-          {/* ===== DRIVER SECTION (right) ===== */}
-          {/* windshield (trapezoid, wider at bottom, light green tint) */}
-          <path
-            d="M 250 122
-               L 332 122
-               Q 346 122 354 134
-               L 364 152
-               L 250 152
-               Z"
-            fill="rgba(144,238,144,0.55)"
-            stroke="#1A1A0E"
-            strokeWidth="3"
-          />
-          {/* windshield divider from compartment */}
-          <line x1="244" y1="122" x2="244" y2="178" stroke="#1A1A0E" strokeWidth="3" />
-
-          {/* driver visible through windshield */}
-          <circle cx="306" cy="142" r="9" fill="#8D5524" stroke="#1A1A0E" strokeWidth="2" />
-          <path d="M 297 139 Q 306 130 315 139" fill="#1A1A0E" stroke="none" />
-          <path d="M 295 152 Q 306 148 317 152 L 320 162 L 292 162 Z" fill="#1A1A0E" />
-
-          {/* black front nose / front panel (right of windshield) */}
-          <path
-            d="M 364 152
-               L 380 162
-               Q 388 170 388 182
-               L 388 200
-               L 350 200
-               L 350 152
-               Z"
-            fill="#1A1A0E"
-          />
-          {/* orange indicator */}
-          <rect x="358" y="166" width="14" height="6" rx="2" fill="#FF8F00" stroke="#1A1A0E" strokeWidth="1.5" />
-          {/* headlight */}
-          <circle cx="370" cy="186" r="9" fill="#9E9E9E" stroke="#1A1A0E" strokeWidth="2" />
-          <circle cx="370" cy="186" r="4.5" fill="#FFFDF2" stroke="none" />
-
-          {/* footboard / step under passenger compartment */}
-          <rect x="40" y="212" width="208" height="8" fill="#1A1A0E" stroke="none" />
-        </g>
-
-        {/* ===== WHEELS (large, blue hubs — spinning) ===== */}
-        {/* Rear wheel (under passenger compartment, partially behind body) */}
-        <g>
-          <circle cx="110" cy="218" r="28" fill="#1A1A0E" stroke="#1A1A0E" strokeWidth="2" />
-          <circle cx="110" cy="218" r="23" fill="#37474F" />
-          <g style={{ transformOrigin: "110px 218px" }} className="wheel-spin">
-            <circle cx="110" cy="218" r="15" fill="#2196F3" stroke="#1A1A0E" strokeWidth="2" />
-            <circle cx="110" cy="218" r="3" fill="#1A1A0E" />
-            {[0, 72, 144, 216, 288].map(a => (
-              <line key={a} x1="110" y1="218"
-                x2={110 + 14 * Math.cos(a * Math.PI/180)}
-                y2={218 + 14 * Math.sin(a * Math.PI/180)}
-                stroke="#1A1A0E" strokeWidth="2" />
-            ))}
-          </g>
-          {/* tread ticks */}
-          {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map(a => (
-            <line key={a}
-              x1={110 + 24 * Math.cos(a * Math.PI/180)}
-              y1={218 + 24 * Math.sin(a * Math.PI/180)}
-              x2={110 + 27 * Math.cos(a * Math.PI/180)}
-              y2={218 + 27 * Math.sin(a * Math.PI/180)}
-              stroke="#3A3A30" strokeWidth="2" />
-          ))}
-        </g>
-        {/* Front wheel (under driver section) */}
-        <g>
-          <circle cx="340" cy="220" r="30" fill="#1A1A0E" stroke="#1A1A0E" strokeWidth="2" />
-          <circle cx="340" cy="220" r="25" fill="#37474F" />
-          <g style={{ transformOrigin: "340px 220px" }} className="wheel-spin">
-            <circle cx="340" cy="220" r="16" fill="#2196F3" stroke="#1A1A0E" strokeWidth="2" />
-            <circle cx="340" cy="220" r="3.2" fill="#1A1A0E" />
-            {[0, 72, 144, 216, 288].map(a => (
-              <line key={a} x1="340" y1="220"
-                x2={340 + 15 * Math.cos(a * Math.PI/180)}
-                y2={220 + 15 * Math.sin(a * Math.PI/180)}
-                stroke="#1A1A0E" strokeWidth="2" />
-            ))}
-          </g>
-          {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map(a => (
-            <line key={a}
-              x1={340 + 26 * Math.cos(a * Math.PI/180)}
-              y1={220 + 26 * Math.sin(a * Math.PI/180)}
-              x2={340 + 29 * Math.cos(a * Math.PI/180)}
-              y2={220 + 29 * Math.sin(a * Math.PI/180)}
-              stroke="#3A3A30" strokeWidth="2" />
-          ))}
-        </g>
-      </svg>
+    <div
+      className="relative"
+      style={{ width: "min(460px, 94vw)", aspectRatio: "1 / 1" }}
+    >
+      <img
+        src={tukImg}
+        alt="Sri Lankan tuk-tuk with mydiio screen inside"
+        className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
+        draggable={false}
+      />
+      {/* mydiio screen overlay — positioned on the interior back wall of the passenger compartment */}
+      <div
+        className="absolute"
+        style={{
+          left: "14%",
+          top: "30%",
+          width: "20%",
+          height: "16%",
+          border: "2px solid #1A1A0E",
+          borderRadius: 4,
+          background: "#1A1A0E",
+          boxShadow: "0 2px 0 rgba(0,0,0,0.3)",
+          overflow: "hidden",
+          transform: "perspective(220px) rotateY(8deg)",
+          transformOrigin: "right center",
+        }}
+      >
+        <div style={{ width: "100%", height: "100%" }}>{children}</div>
+      </div>
     </div>
   );
 }
