@@ -477,8 +477,8 @@ function Frame2() {
       <div className="font-mono" style={{
         position: "absolute", top: 0, right: 0,
         background: C.ink, color: C.amber, padding: "4px 8px",
-        borderRadius: 6, fontSize: 10,
-      }}>{count} tuks live</div>
+        borderRadius: 6, fontSize: 10, fontVariantNumeric: "tabular-nums",
+      }}><span style={{ display: "inline-block", minWidth: "1.2ch", textAlign: "right" }}>{count}</span> tuks live</div>
       <svg width="100%" height="180" viewBox="0 0 220 160" style={{ display: "block" }}>
         <rect x="0" y="0" width="220" height="160" fill="rgba(0,0,0,0.2)" rx="8" />
         {/* roads */}
