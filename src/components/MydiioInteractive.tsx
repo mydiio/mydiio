@@ -165,14 +165,14 @@ export function PlatformDiagram() {
   }, [inView]);
 
   return (
-    <div ref={ref} className="reveal" style={{ marginTop: 24 }}>
+    <div ref={ref} className="reveal" style={{ marginTop: 24, minHeight: 320 }}>
       <div
         style={{
           background: C.ink,
           border: `2px solid ${C.ink}`,
           borderRadius: 16,
           padding: 20,
-          minHeight: 240,
+          minHeight: 280,
           position: "relative",
           overflow: "hidden",
         }}
