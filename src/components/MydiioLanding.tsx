@@ -79,7 +79,14 @@ function CountUp({ target, suffix = "", prefix = "", decimals = 0, format = fals
     return () => io.disconnect();
   }, [target, suffix, prefix, decimals, format]);
   const initial = `${prefix}${decimals > 0 ? (0).toFixed(decimals) : "0"}${suffix}`;
-  return <span ref={ref}>{initial}</span>;
+  const finalText = `${prefix}${decimals > 0 ? target.toFixed(decimals) : (format ? Math.floor(target).toLocaleString() : Math.floor(target).toString())}${suffix}`;
+  // reserve width of final value (+10%) so digit growth doesn't reflow neighbours
+  const reserveCh = `${(finalText.length * 1.1).toFixed(2)}ch`;
+  return (
+    <span style={{ display: "inline-block", minWidth: reserveCh, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
+      <span ref={ref}>{initial}</span>
+    </span>
+  );
 }
 
 function PulseZero() {
