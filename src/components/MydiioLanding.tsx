@@ -1,4 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import {
+  RideTimer,
+  PlatformDiagram,
+  WeeklyReportCard,
+  HowItWorksFrames,
+  PriceComparison,
+  EnhancedPioneerPills,
+  EarningsCalculator,
+  FlipCards,
+  InteractiveCSS,
+} from "./MydiioInteractive";
 
 const HERO_PHOTO = "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=1400&q=80";
 const WA_ADVERTISER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20advertising%20on%20mydiio";
