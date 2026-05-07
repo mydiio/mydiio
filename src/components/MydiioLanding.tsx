@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import tukImg from "@/assets/tuk.jpeg";
 
 // ======= CONFIG =======
 const WEBHOOK_URL = ""; // Paste your Zapier/Make.com webhook URL here
@@ -62,229 +61,177 @@ function AdScreen({ state }: { state: ScreenState }) {
   );
 }
 
-// ======= TUK (illustrated reference image, faces left) =======
+// ======= TUK SVG (faces RIGHT, mydiio amber/charcoal recolour) =======
 function TukSVG({ children }: { children?: React.ReactNode }) {
   return (
-    <div
-      className="relative"
-      style={{ width: "min(460px, 94vw)", aspectRatio: "1 / 1" }}
-    >
-      <img
-        src={tukImg}
-        alt="Sri Lankan tuk-tuk with mydiio screen inside"
-        className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
-        draggable={false}
-      />
-      {/* mydiio screen overlay — positioned on the interior back wall of the passenger compartment */}
-      <div
-        className="absolute"
-        style={{
-          left: "14%",
-          top: "30%",
-          width: "20%",
-          height: "16%",
-          border: "2px solid #1A1A0E",
-          borderRadius: 4,
-          background: "#1A1A0E",
-          boxShadow: "0 2px 0 rgba(0,0,0,0.3)",
-          overflow: "hidden",
-          transform: "perspective(220px) rotateY(8deg)",
-          transformOrigin: "right center",
-        }}
-      >
-        <div style={{ width: "100%", height: "100%" }}>{children}</div>
-      </div>
-    </div>
+    <svg viewBox="0 0 480 300" width="100%" height="100%" style={{ display: "block", overflow: "visible" }}>
+      <ellipse cx="240" cy="278" rx="180" ry="10" fill="rgba(0,0,0,0.18)" />
+
+      {/* ROOF */}
+      <rect x="60" y="60" width="340" height="22" rx="4" fill="#2A2820" />
+      <rect x="64" y="78" width="332" height="6" fill="#1A1A0E" opacity="0.6" />
+      <circle cx="232" cy="58" r="5" fill="#1A1A0E" />
+
+      {/* roof support bars */}
+      {[80, 150, 220, 290].map((x) => (
+        <rect key={x} x={x} y="82" width="6" height="120" fill="#E8920A" />
+      ))}
+
+      {/* passenger compartment body */}
+      <rect x="78" y="86" width="220" height="84" fill="#C77B0E" />
+      <rect x="70" y="170" width="240" height="60" rx="6" fill="#F5A623" />
+      <rect x="70" y="218" width="240" height="14" fill="#E8920A" />
+      <rect x="70" y="232" width="240" height="6" fill="#F7E14A" />
+      <rect x="78" y="170" width="220" height="14" fill="#5A3820" />
+      <rect x="78" y="184" width="220" height="6" fill="#3D2614" />
+
+      {/* mydiio screen on back wall */}
+      <foreignObject x="172" y="100" width="92" height="58">
+        <div style={{
+          width: "100%", height: "100%",
+          border: "2px solid #1A1A0E", borderRadius: 4, background: "#1A1A0E", overflow: "hidden",
+        }}>
+          {children}
+        </div>
+      </foreignObject>
+
+      {/* DRIVER SECTION (right) */}
+      <path d="M310,170 L310,100 Q310,86 324,86 L360,86 Q372,86 378,98 L412,160 L412,232 L310,232 Z" fill="#F5A623" />
+      <rect x="310" y="218" width="102" height="14" fill="#E8920A" />
+      <rect x="310" y="232" width="102" height="6" fill="#F7E14A" />
+
+      {/* windshield */}
+      <path d="M322,98 L368,98 L398,160 L322,160 Z" fill="rgba(144,238,144,0.55)" stroke="#1A1A0E" strokeWidth="2.5" strokeLinejoin="round" />
+
+      {/* DRIVER */}
+      <path d="M328,128 Q328,114 342,114 L362,114 Q372,114 372,124 L378,158 L330,158 Z" fill="#F5A623" stroke="#1A1A0E" strokeWidth="1.5" />
+      <path d="M362,134 L388,150 L388,158 L362,148 Z" fill="#E8920A" stroke="#1A1A0E" strokeWidth="1.2" />
+      <circle cx="354" cy="106" r="11" fill="#B07A52" stroke="#1A1A0E" strokeWidth="1.5" />
+      <path d="M344,103 Q344,94 356,94 Q366,94 366,104 L364,108 Q360,99 354,99 Q347,100 345,108 Z" fill="#1A1A0E" />
+      <path d="M364,107 L368,109 L364,111 Z" fill="#9A6840" />
+
+      {/* front lights */}
+      <circle cx="408" cy="200" r="7" fill="#D9D9D9" stroke="#1A1A0E" strokeWidth="1.5" />
+      <rect x="396" y="178" width="10" height="8" rx="2" fill="#FF8F00" stroke="#1A1A0E" strokeWidth="1.2" />
+      <path d="M412,190 L424,210 L412,232 Z" fill="#1A1A0E" />
+
+      {/* WHEELS */}
+      <g>
+        <circle cx="130" cy="240" r="32" fill="#1A1A0E" />
+        <circle cx="130" cy="240" r="26" fill="#2A2820" />
+        <g className="wheel-spin" style={{ transformOrigin: "130px 240px" }}>
+          <circle cx="130" cy="240" r="14" fill="#2196F3" stroke="#1A1A0E" strokeWidth="2" />
+          {[0, 60, 120].map((a) => (
+            <rect key={a} x="128" y="228" width="4" height="24" fill="#1A1A0E" transform={`rotate(${a} 130 240)`} />
+          ))}
+          <circle cx="130" cy="240" r="3" fill="#1A1A0E" />
+        </g>
+      </g>
+      <g>
+        <circle cx="378" cy="246" r="36" fill="#1A1A0E" />
+        <circle cx="378" cy="246" r="29" fill="#2A2820" />
+        <g className="wheel-spin" style={{ transformOrigin: "378px 246px" }}>
+          <circle cx="378" cy="246" r="16" fill="#2196F3" stroke="#1A1A0E" strokeWidth="2" />
+          {[0, 60, 120].map((a) => (
+            <rect key={a} x="376" y="232" width="4" height="28" fill="#1A1A0E" transform={`rotate(${a} 378 246)`} />
+          ))}
+          <circle cx="378" cy="246" r="3.5" fill="#1A1A0E" />
+        </g>
+      </g>
+    </svg>
   );
 }
 
-// ======= PARALLAX LAYERS =======
-function SkylineLayer() {
-  // Background — Colombo skyline silhouette
+// ======= SCENE BACKGROUND LAYERS =======
+function CloudsLayer() {
   return (
     <svg viewBox="0 0 1200 200" className="block h-full w-auto" preserveAspectRatio="xMinYMax meet">
-      <g>
-        {/* mountains */}
-        <path d="M0,140 L120,80 L220,120 L320,70 L440,130 L560,90 L680,140 L800,100 L920,135 L1040,85 L1200,130 L1200,200 L0,200 Z" fill="#6BA8C4" opacity="0.55" />
-        {/* buildings */}
-        {[
-          [40,90,60,'#3a4a6a'],[110,70,50,'#2a3a5a'],[170,100,80,'#5a4a6a'],[260,60,55,'#3a3a5a'],
-          [325,85,70,'#4a5a7a'],[405,75,40,'#2a3a5a'],[455,55,90,'#3a4a6a'],[555,90,60,'#5a4a6a'],
-          [625,70,50,'#3a3a5a'],[685,80,75,'#4a5a7a'],[770,60,45,'#2a3a5a'],[825,95,70,'#3a4a6a'],
-          [905,75,55,'#5a4a6a'],[970,65,80,'#3a3a5a'],[1060,85,60,'#4a5a7a'],[1130,70,55,'#2a3a5a'],
-        ].map(([x,y,h,c], i) => (
-          <g key={i}>
-            <rect x={x as number} y={y as number} width="50" height={h as number} fill={c as string} />
-            {/* lit windows */}
-            {Array.from({ length: 6 }).map((_, j) => (
-              <rect key={j} x={(x as number) + 6 + (j%2)*22} y={(y as number) + 8 + Math.floor(j/2)*14} width="10" height="6" fill={((i * 7 + j * 3) % 5) > 1 ? "#FFE066" : "#1A1A0E"} opacity="0.85" />
-            ))}
-          </g>
+      <g fill="#FFFFFF">
+        <ellipse cx="200" cy="80" rx="38" ry="16" />
+        <ellipse cx="232" cy="72" rx="28" ry="14" />
+        <ellipse cx="172" cy="74" rx="22" ry="12" />
+        <ellipse cx="780" cy="50" rx="44" ry="18" />
+        <ellipse cx="816" cy="42" rx="30" ry="14" />
+        <ellipse cx="748" cy="44" rx="24" ry="13" />
+      </g>
+    </svg>
+  );
+}
+
+function MountainsLayer() {
+  return (
+    <svg viewBox="0 0 1600 200" className="block h-full w-auto" preserveAspectRatio="xMinYMax meet">
+      <path d="M0,200 L0,140 Q120,70 240,110 Q360,150 480,90 Q600,30 720,100 Q840,160 960,100 Q1080,50 1200,120 Q1320,170 1440,110 Q1520,80 1600,130 L1600,200 Z" fill="#8BAAB8" />
+      <path d="M0,200 L0,170 Q160,130 320,160 Q480,190 640,150 Q800,120 960,160 Q1120,190 1280,150 Q1440,120 1600,160 L1600,200 Z" fill="#A8C2CC" opacity="0.85" />
+    </svg>
+  );
+}
+
+function BushesLayer() {
+  return (
+    <svg viewBox="0 0 1600 100" className="block h-full w-auto" preserveAspectRatio="xMinYMax meet">
+      <g fill="#4CAF72">
+        {[0, 90, 180, 280, 370, 470, 560, 660, 760, 860, 960, 1060, 1160, 1260, 1360, 1460, 1560].map((x, i) => (
+          <ellipse key={i} cx={x} cy={i % 2 === 0 ? 78 : 82} rx={i % 3 === 0 ? 64 : 50} ry={i % 2 === 0 ? 32 : 26} />
+        ))}
+      </g>
+      <g fill="#3D8B5A" opacity="0.65">
+        {[40, 140, 240, 340, 440, 540, 640, 740, 840, 940, 1040, 1140, 1240, 1340, 1440, 1540].map((x, i) => (
+          <ellipse key={i} cx={x} cy="86" rx="42" ry="22" />
         ))}
       </g>
     </svg>
   );
 }
 
-function MidgroundLayer() {
-  return (
-    <svg viewBox="0 0 1600 220" className="block h-full w-auto" preserveAspectRatio="xMinYMax meet">
-      <g stroke="#1A1A0E" strokeWidth="2.5" strokeLinejoin="round">
-        {/* palm 1 */}
-        <rect x="40" y="100" width="10" height="120" fill="#7A4B2A" />
-        <ellipse cx="45" cy="98" rx="34" ry="11" fill="#3D8B5A" />
-        <ellipse cx="28" cy="92" rx="28" ry="9" fill="#3D8B5A" transform="rotate(-25 28 92)" />
-        <ellipse cx="62" cy="92" rx="28" ry="9" fill="#3D8B5A" transform="rotate(25 62 92)" />
-        <circle cx="45" cy="105" r="4" fill="#F5A623" />
-
-        {/* PHARMACY shopfront — blue */}
-        <rect x="100" y="120" width="130" height="100" fill="#FFFFFF" />
-        <polygon points="92,120 238,120 228,90 102,90" fill="#2196F3" />
-        <rect x="158" y="95" width="14" height="20" fill="#fff" stroke="none" />
-        <rect x="151" y="102" width="28" height="6" fill="#fff" stroke="none" />
-        <text x="165" y="146" fontFamily="Fredoka One, sans-serif" fontSize="14" textAnchor="middle" fill="#1A1A0E" stroke="none">PHARMACY</text>
-        <rect x="115" y="160" width="40" height="55" fill="#A8D8EA" />
-        <rect x="170" y="160" width="50" height="55" fill="#A8D8EA" />
-
-        {/* lamp post */}
-        <rect x="260" y="80" width="5" height="140" fill="#1A1A0E" />
-        <circle cx="262.5" cy="78" r="9" fill="#FFE066" />
-
-        {/* BAKERY — orange awning */}
-        <rect x="290" y="130" width="140" height="90" fill="#FFF9ED" />
-        <path d="M280,130 L440,130 L430,100 L290,100 Z" fill="#FF8F00" />
-        <path d="M280,130 L295,100 L305,130 L315,100 L325,130 L335,100 L345,130 L355,100 L365,130 L375,100 L385,130 L395,100 L405,130 L415,100 L425,130 L435,100 L440,130" fill="#FFD699" />
-        <text x="360" y="160" fontFamily="Fredoka One, sans-serif" fontSize="13" textAnchor="middle" fill="#1A1A0E" stroke="none">BAKERY</text>
-        <rect x="305" y="170" width="50" height="50" fill="#A8D8EA" />
-        <rect x="370" y="170" width="50" height="50" fill="#A8D8EA" />
-
-        {/* mydiio billboard on posts */}
-        <rect x="465" y="50" width="150" height="70" fill="#F5A623" />
-        <text x="540" y="92" fontFamily="Fredoka One, sans-serif" fontSize="22" textAnchor="middle" fill="#1A1A0E" stroke="none">mydiio</text>
-        <rect x="478" y="120" width="6" height="100" fill="#1A1A0E" />
-        <rect x="596" y="120" width="6" height="100" fill="#1A1A0E" />
-
-        {/* palm 2 */}
-        <rect x="640" y="100" width="10" height="120" fill="#7A4B2A" />
-        <ellipse cx="645" cy="98" rx="34" ry="11" fill="#3D8B5A" />
-        <ellipse cx="628" cy="92" rx="28" ry="9" fill="#3D8B5A" transform="rotate(-25 628 92)" />
-        <ellipse cx="662" cy="92" rx="28" ry="9" fill="#3D8B5A" transform="rotate(25 662 92)" />
-
-        {/* KOVIL gopuram */}
-        <rect x="700" y="130" width="120" height="90" fill="#FFDAC1" />
-        <polygon points="690,130 830,130 820,95 700,95" fill="#E91E63" />
-        <polygon points="715,95 805,95 800,70 720,70" fill="#F5A623" />
-        <polygon points="735,70 785,70 775,50 745,50" fill="#E91E63" />
-        <polygon points="755,50 765,50 760,35" fill="#F7E14A" />
-        <rect x="750" y="170" width="20" height="50" fill="#1A1A0E" />
-
-        {/* FASHION shop pink */}
-        <rect x="860" y="120" width="130" height="100" fill="#FFFFFF" />
-        <rect x="855" y="105" width="140" height="18" fill="#E91E63" />
-        <text x="925" y="119" fontFamily="Fredoka One, sans-serif" fontSize="11" textAnchor="middle" fill="#fff" stroke="none">FASHION</text>
-        <rect x="875" y="160" width="30" height="55" fill="#F7E14A" />
-        <rect x="912" y="160" width="30" height="55" fill="#2196F3" />
-        <rect x="950" y="160" width="30" height="55" fill="#E91E63" />
-
-        {/* lamp 2 */}
-        <rect x="1010" y="80" width="5" height="140" fill="#1A1A0E" />
-        <circle cx="1012.5" cy="78" r="9" fill="#FFE066" />
-
-        {/* second mydiio billboard — dark */}
-        <rect x="1050" y="60" width="120" height="70" fill="#1A1A0E" />
-        <text x="1110" y="103" fontFamily="Fredoka One, sans-serif" fontSize="20" textAnchor="middle" fill="#F5A623" stroke="none">mydiio</text>
-        <rect x="1063" y="130" width="6" height="90" fill="#1A1A0E" />
-        <rect x="1151" y="130" width="6" height="90" fill="#1A1A0E" />
-
-        {/* palm 3 */}
-        <rect x="1200" y="100" width="10" height="120" fill="#7A4B2A" />
-        <ellipse cx="1205" cy="98" rx="34" ry="11" fill="#3D8B5A" />
-        <ellipse cx="1188" cy="92" rx="28" ry="9" fill="#3D8B5A" transform="rotate(-25 1188 92)" />
-        <ellipse cx="1222" cy="92" rx="28" ry="9" fill="#3D8B5A" transform="rotate(25 1222 92)" />
-
-        {/* small shopfront teal */}
-        <rect x="1250" y="125" width="130" height="95" fill="#FFFFFF" />
-        <rect x="1245" y="110" width="140" height="18" fill="#4CAF72" />
-        <text x="1315" y="124" fontFamily="Fredoka One, sans-serif" fontSize="11" textAnchor="middle" fill="#fff" stroke="none">KOTTU</text>
-        <rect x="1265" y="160" width="50" height="55" fill="#A8D8EA" />
-        <rect x="1325" y="160" width="50" height="55" fill="#A8D8EA" />
-
-        {/* lamp 3 */}
-        <rect x="1430" y="80" width="5" height="140" fill="#1A1A0E" />
-        <circle cx="1432.5" cy="78" r="9" fill="#FFE066" />
-
-        {/* palm 4 */}
-        <rect x="1490" y="100" width="10" height="120" fill="#7A4B2A" />
-        <ellipse cx="1495" cy="98" rx="34" ry="11" fill="#3D8B5A" />
-        <ellipse cx="1478" cy="92" rx="28" ry="9" fill="#3D8B5A" transform="rotate(-25 1478 92)" />
-        <ellipse cx="1512" cy="92" rx="28" ry="9" fill="#3D8B5A" transform="rotate(25 1512 92)" />
-      </g>
-    </svg>
-  );
-}
-
-function ForegroundLayer() {
-  // pavement edge + barrier rails
-  return (
-    <svg viewBox="0 0 800 80" className="block h-full w-auto" preserveAspectRatio="xMinYMax meet">
-      <g stroke="#1A1A0E" strokeWidth="2" strokeLinejoin="round">
-        {/* posts */}
-        {Array.from({ length: 16 }).map((_, i) => (
-          <rect key={i} x={i * 50 + 10} y="20" width="6" height="60" fill="#9aa0a6" />
-        ))}
-        {/* top rail */}
-        <rect x="0" y="20" width="800" height="6" fill="#c0c4ca" />
-        {/* mid rail */}
-        <rect x="0" y="42" width="800" height="4" fill="#c0c4ca" />
-      </g>
-    </svg>
-  );
-}
-
-// ======= TUK VIEWPORT =======
+// ======= TUK VIEWPORT — clean illustrated scene =======
 function TukViewport({ skyColor, currentScreen }: { skyColor: string; currentScreen: ScreenState }) {
   return (
-    <div className="fixed inset-0 z-0 overflow-hidden" style={{
-      background: `linear-gradient(to bottom, ${skyColor} 0%, ${skyColor} 55%, #c9c9c9 55%, #8A8A8A 100%)`,
-      transition: "background 0.6s ease",
-    }}>
-      {/* Layer 1 — skyline (slow) */}
-      <div className="absolute inset-x-0" style={{ bottom: "30%", height: "30%", opacity: 0.95 }}>
+    <div className="fixed inset-0 z-0 overflow-hidden" style={{ background: skyColor, transition: "background 0.6s ease" }}>
+      <div className="absolute inset-x-0" style={{ top: "6%", height: "18%" }}>
         <div className="street-track-slow flex h-full" style={{ width: "200%" }}>
-          <div className="h-full w-1/2"><SkylineLayer /></div>
-          <div className="h-full w-1/2"><SkylineLayer /></div>
+          <div className="h-full w-1/2"><CloudsLayer /></div>
+          <div className="h-full w-1/2"><CloudsLayer /></div>
         </div>
       </div>
 
-      {/* Layer 2 — midground shops, palms, kovil (medium) */}
-      <div className="absolute inset-x-0" style={{ bottom: "20%", height: "32%" }}>
+      <div className="absolute inset-x-0" style={{ bottom: "34%", height: "16%" }}>
         <div className="street-track-mid flex h-full" style={{ width: "200%" }}>
-          <div className="h-full w-1/2"><MidgroundLayer /></div>
-          <div className="h-full w-1/2"><MidgroundLayer /></div>
+          <div className="h-full w-1/2"><MountainsLayer /></div>
+          <div className="h-full w-1/2"><MountainsLayer /></div>
         </div>
       </div>
 
-      {/* Pavement strip */}
-      <div className="absolute inset-x-0" style={{ bottom: "20%", height: "3%", background: "#b8b8b8", borderTop: "3px solid #1A1A0E", borderBottom: "2px solid #5A5A5A" }} />
-
-      {/* Layer 3 — foreground barrier (fast) */}
-      <div className="absolute inset-x-0 z-20" style={{ bottom: "20%", height: "10%" }}>
+      <div className="absolute inset-x-0" style={{ bottom: "29%", height: "9%" }}>
         <div className="street-track-fast flex h-full" style={{ width: "200%" }}>
-          <div className="h-full w-1/2"><ForegroundLayer /></div>
-          <div className="h-full w-1/2"><ForegroundLayer /></div>
+          <div className="h-full w-1/2"><BushesLayer /></div>
+          <div className="h-full w-1/2"><BushesLayer /></div>
         </div>
       </div>
 
-      {/* Road dashes */}
-      <div className="absolute inset-x-0 z-10" style={{ bottom: "10%", height: "4px" }}>
+      {/* RED+WHITE KERB */}
+      <div className="absolute inset-x-0 z-10" style={{
+        bottom: "28%", height: "12px",
+        backgroundImage: "repeating-linear-gradient(90deg, #E53935 0 24px, #FFFFFF 24px 48px)",
+        borderTop: "1.5px solid #1A1A0E", borderBottom: "1.5px solid #1A1A0E",
+      }} />
+
+      {/* ROAD */}
+      <div className="absolute inset-x-0 z-0" style={{ bottom: 0, height: "28%", background: "#3A3A3A" }} />
+
+      {/* CENTRELINE */}
+      <div className="absolute inset-x-0 z-10" style={{ bottom: "13%", height: "5px" }}>
         <div className="street-track-fast h-full" style={{
           width: "200%",
-          backgroundImage: "repeating-linear-gradient(90deg, #FFFFFF 0 36px, transparent 36px 72px)",
+          backgroundImage: "repeating-linear-gradient(90deg, #FFFFFF 0 30px, transparent 30px 60px)",
         }} />
       </div>
 
-      {/* THE TUK — fixed in lower portion */}
-      <div className="absolute left-1/2 -translate-x-1/2 z-30 tuk-bob" style={{ bottom: "5%" }}>
+      {/* THE TUK */}
+      <div className="absolute z-30 tuk-bob" style={{
+        left: "50%", transform: "translateX(-50%)",
+        bottom: "10%", width: "min(560px, 88vw)", aspectRatio: "480 / 300",
+      }}>
         <TukSVG>
           <AdScreen state={currentScreen} />
         </TukSVG>
