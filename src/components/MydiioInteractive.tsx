@@ -662,7 +662,7 @@ export function EarningsCalculator() {
         value={hours}
         onChange={(e) => setHours(Number(e.target.value))}
         className="earn-slider"
-        style={{ width: "100%" }}
+        style={{ width: "100%", ["--p" as any]: `${((hours - 4) / 10) * 100}%` }}
       />
       <div style={{ fontFamily: "Fredoka One", fontSize: 18, color: C.ink, textAlign: "center", marginTop: 10 }}>
         {hours} hrs / day
