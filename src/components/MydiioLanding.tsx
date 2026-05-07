@@ -87,7 +87,7 @@ function TukSVG({ children }: { children?: React.ReactNode }) {
 
       {/* mydiio screen on back wall */}
       <foreignObject x="172" y="100" width="92" height="58">
-        <div xmlns="http://www.w3.org/1999/xhtml" style={{
+        <div style={{
           width: "100%", height: "100%",
           border: "2px solid #1A1A0E", borderRadius: 4, background: "#1A1A0E", overflow: "hidden",
         }}>
