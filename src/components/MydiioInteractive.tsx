@@ -75,7 +75,7 @@ export function RideTimer() {
   const pct = (elapsed / 14) * 100;
 
   return (
-    <div ref={ref} className="reveal" style={{ marginTop: 28 }}>
+    <div ref={ref} className="reveal" style={{ marginTop: 28, minHeight: 280 }}>
       <div
         className="font-display"
         style={{
@@ -85,9 +85,10 @@ export function RideTimer() {
           textAlign: "center",
           lineHeight: 1,
           letterSpacing: "-1px",
+          fontVariantNumeric: "tabular-nums",
         }}
       >
-        {display}
+        <span style={{ display: "inline-block", minWidth: "5ch", textAlign: "center" }}>{display}</span>
       </div>
       <div
         style={{
