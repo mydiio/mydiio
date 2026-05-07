@@ -333,16 +333,16 @@ function Section({ id, bg, children }: { id?: string; bg: string; children: Reac
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting && e.intersectionRatio > 0.5) {
+          if (e.isIntersecting && e.intersectionRatio >= 0.3) {
             const color = sectionColors[id];
             if (color) {
-              document.body.style.transition = "background-color 0.8s ease";
+              document.body.style.transition = "background-color 0.7s ease";
               document.body.style.backgroundColor = color;
             }
           }
         });
       },
-      { threshold: [0.5] },
+      { threshold: [0.3] },
     );
     io.observe(el);
     return () => io.disconnect();
