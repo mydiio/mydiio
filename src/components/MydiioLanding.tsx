@@ -860,8 +860,13 @@ export default function MydiioLanding() {
         </a>
       </Section>
 
-      {/* Section 5 */}
-      <Section id="section-5" bg={C.yellow}>
+      {/* Section 5 — Portals */}
+      <Section id="section-5" bg={C.ink}>
+        <PortalsShowcase />
+      </Section>
+
+      {/* Section 6 */}
+      <Section id="section-6" bg={C.yellow}>
         <div className="reveal"><Eyebrow color="rgba(26,26,14,0.55)">Pricing</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05, marginBottom: 28 }}>
           One month on mydiio costs less than one boosted Facebook post. The difference is that your customers cannot skip this one.
@@ -875,8 +880,8 @@ export default function MydiioLanding() {
         <PriceComparison />
       </Section>
 
-      {/* Section 6 */}
-      <Section id="section-6" bg={C.amber}>
+      {/* Section 7 */}
+      <Section id="section-7" bg={C.amber}>
         <div className="reveal"><Eyebrow color="rgba(26,26,14,0.55)">The Pioneer Programme</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
           There are 10 Pioneer spots. One per category. Two are already taken.
@@ -901,8 +906,8 @@ export default function MydiioLanding() {
         </a>
       </Section>
 
-      {/* Section 7 */}
-      <Section id="section-7" bg="#FFFFFF">
+      {/* Section 8 */}
+      <Section id="section-8" bg="#FFFFFF">
         <div className="reveal"><Eyebrow color={C.amber}>For tuk-tuk drivers in Colombo</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
           Your tuk earns LKR 6,000 to LKR 8,000 every month.
@@ -922,7 +927,7 @@ export default function MydiioLanding() {
         </a>
       </Section>
 
-      {/* Section 8 */}
+      {/* Section 9 */}
       <Section id="section-9" bg={C.ink}>
         <div className="reveal"><Eyebrow color={C.amber}>Get early access</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(34px, 5vw, 52px)", color: C.amber, lineHeight: 1.05 }}>
