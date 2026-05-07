@@ -633,15 +633,15 @@ export default function MydiioLanding() {
           position: absolute;
           border-radius: 50%;
           background: ${C.amber};
-          opacity: 0.3;
           animation: float var(--duration) ease-in-out infinite;
           animation-delay: var(--delay);
           pointer-events: none;
+          z-index: 1;
         }
         @keyframes float {
-          0%,100% { transform: translateY(0) translateX(0); opacity: 0.3; }
-          33% { transform: translateY(-24px) translateX(8px); opacity: 0.5; }
-          66% { transform: translateY(-12px) translateX(-6px); opacity: 0.25; }
+          0%,100% { transform: translateY(0) translateX(0); }
+          33% { transform: translateY(-24px) translateX(8px); }
+          66% { transform: translateY(-12px) translateX(-6px); }
         }
 
         /* Reveal */
@@ -655,14 +655,14 @@ export default function MydiioLanding() {
         /* WhatsApp pulse */
         @keyframes ctaPulseAmber {
           0%,100% { box-shadow: 5px 5px 0 ${C.ink}; }
-          50% { box-shadow: 5px 5px 0 ${C.ink}, 0 0 0 6px rgba(245,166,35,0.2); }
+          50% { box-shadow: 5px 5px 0 ${C.ink}, 0 0 0 8px rgba(245,166,35,0.15); }
         }
         @keyframes ctaPulseGreen {
           0%,100% { box-shadow: 5px 5px 0 ${C.ink}; }
-          50% { box-shadow: 5px 5px 0 ${C.ink}, 0 0 0 6px rgba(76,175,114,0.2); }
+          50% { box-shadow: 5px 5px 0 ${C.ink}, 0 0 0 8px rgba(76,175,114,0.15); }
         }
-        .whatsapp-btn-amber { animation: ctaPulseAmber 2.8s ease-in-out infinite; }
-        .whatsapp-btn-green { animation: ctaPulseGreen 2.8s ease-in-out infinite; animation-delay: 1.4s; }
+        .whatsapp-btn-amber { animation: ctaPulseAmber 3s ease-in-out infinite; }
+        .whatsapp-btn-green { animation: ctaPulseGreen 3s ease-in-out infinite; animation-delay: 1.5s; }
 
         .wa-btn { transition: transform 0.1s ease, box-shadow 0.1s ease; }
         .wa-btn:hover { transform: translate(-2px,-2px); }
