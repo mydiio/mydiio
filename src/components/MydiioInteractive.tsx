@@ -301,6 +301,7 @@ export function WeeklyReportCard({ compact = false }: { compact?: boolean }) {
         padding: compact ? 16 : 22,
         maxWidth: 420,
         margin: "0 auto",
+        minHeight: compact ? undefined : 360,
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
