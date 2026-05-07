@@ -1,4 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import {
+  RideTimer,
+  PlatformDiagram,
+  WeeklyReportCard,
+  HowItWorksFrames,
+  PriceComparison,
+  EnhancedPioneerPills,
+  EarningsCalculator,
+  FlipCards,
+  InteractiveCSS,
+} from "./MydiioInteractive";
 
 const HERO_PHOTO = "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=1400&q=80";
 const WA_ADVERTISER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20advertising%20on%20mydiio";
@@ -771,6 +782,7 @@ export default function MydiioLanding() {
         @media (max-width: 374px) {
           .hero-sub { display: none; }
         }
+        ${InteractiveCSS}
       `}</style>
 
       <ScrollProgress />
@@ -782,16 +794,9 @@ export default function MydiioLanding() {
       <Section id="section-1" bg={C.ink}>
         <div className="reveal"><Eyebrow color={C.amber}>Why tuk-tuk advertising works</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.amber, lineHeight: 1.05 }}>
-          Your customer is sitting in a tuk for 14 minutes with nothing to do but look at the screen.
+          Your customer is sitting in a tuk for 14 minutes with nothing to look at but the screen.
         </h2>
-        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(255,249,237,0.7)", marginTop: 18 }}>
-          The average Colombo tuk-tuk ride lasts between 10 and 20 minutes. The passenger is sitting in an open vehicle, moving through the city, with no phone signal half the time and nowhere to be in a hurry. We install a screen right in front of them. Your ad plays on that screen, on repeat, for the entire journey. There is no skip button. There is no other ad competing for their attention. There is no feed to scroll past. Just your brand — and a passenger who has nothing else to look at.
-        </p>
-        <div className="flex gap-3 flex-wrap mt-6">
-          <Stat label="Minutes avg. ride time"><CountUp target={14} /></Stat>
-          <Stat label="Skip buttons. Ever."><PulseZero /></Stat>
-          <Stat label="Attention, every ride"><CountUp target={100} suffix="%" /></Stat>
-        </div>
+        <RideTimer />
       </Section>
 
       {/* Section 2 */}
@@ -800,9 +805,7 @@ export default function MydiioLanding() {
         <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
           We built a media network inside Colombo's tuk-tuks.
         </h2>
-        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(26,26,14,0.72)", marginTop: 18 }}>
-          mydiio installs a 7-inch screen inside tuk-tuks across Colombo. The screen is powered by the vehicle, managed remotely from our system, and plays a rotating schedule of ads throughout the day. When you run a campaign with mydiio, you do not need to visit a single tuk. You send us your ad. We load it onto every screen in your chosen zone within 48 hours. Every play is GPS-logged and verified. Sri Lanka has over 1.1 million registered three-wheelers. We are starting in Colombo. We are starting now.
-        </p>
+        <PlatformDiagram />
         <div className="flex gap-3 flex-wrap mt-6">
           <Stat label="Registered tuks in Sri Lanka"><CountUp target={1.1} decimals={1} suffix="M" /></Stat>
           <Stat value="Colombo" label="Our launch city" />
@@ -813,30 +816,37 @@ export default function MydiioLanding() {
       {/* Section 3 */}
       <Section id="section-3" bg="#FFFFFF">
         <div className="reveal"><Eyebrow color={C.amber}>For Colombo businesses</Eyebrow></div>
-        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
+        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05, marginBottom: 22 }}>
           Your ad reaches the exact customers you are trying to find — already moving through your area.
         </h2>
-        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(26,26,14,0.72)", marginTop: 18, marginBottom: 24 }}>
-          A family from Nugegoda heading to the pharmacy on Galle Road. A worker from Pettah grabbing lunch near the office. A couple from Wellawatte running errands on Saturday morning. These are your customers — already in the areas your business serves. Now your ad is with them, on a screen in the back of their tuk, for the entire ride.
-        </p>
-        <FeatureRow icon="📍" title="GPS-verified impression reports" desc="Every week you receive a report showing every vehicle, every zone, and every time your ad played. Verified GPS data — not estimates." color={C.amber} />
-        <FeatureRow icon="🎬" title="First 14 days credited to your account" desc="Run your campaign, see it working with your own eyes, then pay for the remaining days." color={C.amber} />
-        <FeatureRow icon="✏️" title="We create your ad for free" desc="Send us your logo, your offer, and your phone number. We design and produce your 15–30 second ad at no extra charge — usually within 48 hours." color={C.amber} />
+        <WeeklyReportCard />
+        <div className="font-mono" style={{ fontSize: 11, color: "rgba(26,26,14,0.5)", textAlign: "center", marginTop: 14, marginBottom: 18 }}>
+          This arrives in your WhatsApp every Monday morning.
+        </div>
+        {[
+          "✓ GPS-verified weekly report",
+          "✓ First 14 days credited free",
+          "✓ Ad creative produced free",
+        ].map((t) => (
+          <div key={t} className="reveal font-mono" style={{
+            borderLeft: `3px solid ${C.amber}`,
+            background: "rgba(26,26,14,0.05)",
+            padding: "8px 12px", borderRadius: 6, fontSize: 11, color: C.ink, marginBottom: 6,
+          }}>{t}</div>
+        ))}
       </Section>
 
       {/* Section 4 */}
       <Section id="section-4" bg={C.green}>
         <div className="reveal"><Eyebrow color={C.yellow}>How it works</Eyebrow></div>
-        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: "#fff", lineHeight: 1.05, marginBottom: 22 }}>
+        <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: "#fff", lineHeight: 1.05, marginBottom: 12 }}>
           You send us an ad. We put it in front of Colombo.
         </h2>
-        <StepRow n={1} delay={0} title="Tell us what you want to say" desc="Contact us on WhatsApp with your business name, your offer, and where your customers are. If you have a video or image, send it. If not, we'll create it for you free within 48 hours." />
-        <StepRow n={2} delay={400} title="We go live across the Colombo fleet" desc="Once your ad is approved, we load it onto our tuk-tuk network remotely. Your campaign is live and playing inside tuks within 48 hours." />
-        <StepRow n={3} delay={800} title="You receive a verified weekly report" desc="Every Monday, a WhatsApp message with your report: how many plays, which vehicles, which zones, what times. GPS-verified. Every play logged." />
+        <HowItWorksFrames />
         <a
           href="#section-8"
           className="reveal wa-btn inline-block mt-4 font-display"
-          style={{ background: C.yellow, color: C.ink, border: `3px solid ${C.ink}`, boxShadow: `5px 5px 0 ${C.ink}`, borderRadius: 13, padding: "14px 28px", fontSize: 18 }}
+          style={{ background: C.yellow, color: C.ink, border: `3px solid ${C.ink}`, boxShadow: `5px 5px 0 ${C.ink}`, borderRadius: 13, padding: "14px 28px", fontSize: 18, marginTop: 18 }}
         >
           Start a campaign — first 14 days free →
         </a>
@@ -854,9 +864,7 @@ export default function MydiioLanding() {
           <PriceCard tier="Voyager" price="LKR 32,000/mo" sub="6-month min · Priority rotation · Better points rate" />
           <PriceCard tier="Horizon" price="LKR 65,000+/mo" sub="Enterprise · Custom zones · Dedicated fleet" />
         </div>
-        <div className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 13, color: "rgba(26,26,14,0.6)", marginTop: 18, textAlign: "center" }}>
-          All plans include 14 days credited free. Run your campaign, receive your GPS-verified reports, and see it working — before you pay a rupee beyond your minimum term. Every plan also earns loyalty points redeemable for free ad time.
-        </div>
+        <PriceComparison />
       </Section>
 
       {/* Section 6 */}
@@ -865,10 +873,12 @@ export default function MydiioLanding() {
         <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
           There are 10 Pioneer spots. One per category. Two are already taken.
         </h2>
-        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(26,26,14,0.75)", marginTop: 18, marginBottom: 18 }}>
-          A Pioneer spot means your business is the only one in your category advertising on mydiio — anywhere in Colombo. If you hold the Pharmacy spot, no other pharmacy can run a campaign on our network. Not in Fort. Not in Nugegoda. Not anywhere. Your rate is set at the founding price and locked there permanently. As the network grows and new advertisers pay higher rates — yours never changes. Two categories are already spoken for. To secure a Pioneer spot, a fully-refundable LKR 5,000 deposit is required, credited in full against your first invoice.
-        </p>
-        <PioneerPills />
+        <div className="reveal" style={{ marginTop: 18, marginBottom: 18 }}>
+          <div style={{ fontFamily: "Nunito", fontWeight: 800, fontSize: 16, color: C.ink }}>Your category. Exclusively yours.</div>
+          <div style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 14, color: "rgba(26,26,14,0.65)", marginTop: 4 }}>No competitor advertises while you hold it.</div>
+          <div style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 14, color: "rgba(26,26,14,0.65)", marginTop: 2 }}>Rate locked at founding price. Forever.</div>
+        </div>
+        <EnhancedPioneerPills />
         <div className="flex gap-3 flex-wrap mb-5">
           <Stat label="Spots. Total. Ever."><CountUp target={10} /></Stat>
           <Stat label="Competitors in your category"><PulseZero /></Stat>
@@ -879,7 +889,7 @@ export default function MydiioLanding() {
           className="reveal wa-btn inline-block font-display"
           style={{ background: C.ink, color: C.amber, border: `3px solid ${C.amber}`, boxShadow: `5px 5px 0 ${C.amber}`, borderRadius: 13, padding: "14px 28px", fontSize: 18 }}
         >
-          Secure a Pioneer spot — LKR 5,000 refundable deposit →
+          Secure a Pioneer spot — LKR 5,000 refundable →
         </a>
       </Section>
 
@@ -887,19 +897,14 @@ export default function MydiioLanding() {
       <Section id="section-7" bg="#FFFFFF">
         <div className="reveal"><Eyebrow color={C.amber}>For tuk-tuk drivers in Colombo</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
-          Your tuk earns LKR 6,000 to LKR 8,000 every month. You change nothing about how you drive.
+          Your tuk earns LKR 6,000 to LKR 8,000 every month.
         </h2>
-        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(26,26,14,0.72)", marginTop: 18 }}>
-          We come to your location and install a 7-inch screen inside your three-wheeler. It takes about an hour. It costs you nothing. It is powered by your vehicle — no separate battery, no extra fuel. After that, you drive exactly as you always have. On the 5th of every month, LKR 6,000 is transferred to your bank account simply for keeping the screen active. Run it for 8+ hours a day on average and you receive an additional LKR 2,000 route bonus — LKR 8,000/month, LKR 96,000/year in passive income. Founding drivers also earn LKR 1,500 for every other driver they refer. A fully-refundable LKR 3,500 deposit secures your founding place — returned in full at month 3.
-        </p>
+        <EarningsCalculator />
         <div className="flex gap-3 flex-wrap my-6">
           <Stat value="LKR 8,000" label="Maximum monthly earnings" />
           <Stat value="LKR 96,000" label="Passive income per year" />
           <Stat value="5th" label="Every month, without fail" />
         </div>
-        <FeatureRow icon="🔧" title="Free installation. We come to you." desc="Our team installs the screen at your location in an hour. You pay nothing — installation, maintenance, repairs all on us." color={C.green} />
-        <FeatureRow icon="📱" title="See your earnings in the driver app" desc="Screen uptime, monthly earnings, next payment date, full payment history — all visible and transparent." color={C.green} />
-        <FeatureRow icon="🤝" title="Founding Group A — first 10 drivers only" desc="LKR 5,000 cash loyalty bonus at month 3, limited edition amber founding partner shirt, and a base rate locked permanently." color={C.green} />
         <a
           href="#section-8"
           className="reveal wa-btn inline-block mt-4 font-display"
@@ -913,36 +918,9 @@ export default function MydiioLanding() {
       <Section id="section-8" bg={C.ink}>
         <div className="reveal"><Eyebrow color={C.amber}>Get early access</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(34px, 5vw, 52px)", color: C.amber, lineHeight: 1.05 }}>
-          We are building our founding group of advertisers and drivers in Colombo right now.
+          We are building our founding group right now.
         </h2>
-        <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(255,249,237,0.7)", marginTop: 18, marginBottom: 32 }}>
-          mydiio launches in Colombo in 2026. Founding members receive rates, terms, and benefits that will never be available again. For businesses: 8 of 10 Pioneer spots are still open — LKR 5,000 refundable deposit secures your category. Standard waitlist spots are also open with no deposit. For drivers: Founding Group A has space for 10 — LKR 3,500 refundable deposit, with LKR 5,000 cash returned at month 3. Tap the button that applies to you. We'll WhatsApp you within 24 hours. No sales pressure. No commitment yet.
-        </p>
-        <div className="flex flex-col gap-3">
-          <a
-            href={WA_ADVERTISER}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="reveal wa-btn whatsapp-btn-amber flex items-center justify-center gap-3 font-display"
-            style={{ background: C.amber, color: C.ink, border: `3px solid ${C.ink}`, borderRadius: 14, padding: "18px 24px", fontSize: 19 }}
-          >
-            <WhatsAppIcon color={C.ink} />
-            I want to advertise my business on mydiio →
-          </a>
-          <a
-            href={WA_DRIVER}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="reveal wa-btn whatsapp-btn-green flex items-center justify-center gap-3 font-display"
-            style={{ background: C.green, color: "#fff", border: `3px solid ${C.ink}`, borderRadius: 14, padding: "18px 24px", fontSize: 19 }}
-          >
-            <WhatsAppIcon color="#fff" />
-            I want to earn as a mydiio driver →
-          </a>
-        </div>
-        <div className="font-mono text-center" style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", marginTop: 16 }}>
-          We reply to every message within 24 hours · No payment is taken at this stage · We'll explain everything before you commit
-        </div>
+        <FlipCards />
       </Section>
 
       {/* Footer */}
