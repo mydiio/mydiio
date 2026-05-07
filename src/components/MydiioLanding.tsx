@@ -142,7 +142,7 @@ function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  const scrollToCta = () => document.getElementById("section-8")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToCta = () => document.getElementById("section-9")?.scrollIntoView({ behavior: "smooth" });
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between"
@@ -271,7 +271,7 @@ function Hero() {
           We install a screen inside tuk-tuks. Your ad plays to every passenger — for the full ride. No skip button. No scrolling past. From LKR 20,000 per month. First 14 days credited free.
         </p>
         <a
-          href="#section-8"
+          href="#section-9"
           className="hero-cta hero-spring inline-block"
           style={{
             background: C.amber,
@@ -327,7 +327,7 @@ const sectionColors: Record<string, string> = {
   "section-5": "#1A1A0E",
   "section-6": "#F7E14A",
   "section-7": "#F5A623",
-  "section-8": "#FFFFFF",
+  "section-9": "#FFFFFF",
   "section-9": "#1A1A0E",
 };
 
@@ -852,7 +852,7 @@ export default function MydiioLanding() {
         </h2>
         <HowItWorksFrames />
         <a
-          href="#section-8"
+          href="#section-9"
           className="reveal wa-btn inline-block mt-4 font-display"
           style={{ background: C.yellow, color: C.ink, border: `3px solid ${C.ink}`, boxShadow: `5px 5px 0 ${C.ink}`, borderRadius: 13, padding: "14px 28px", fontSize: 18, marginTop: 18 }}
         >
@@ -893,7 +893,7 @@ export default function MydiioLanding() {
           <Stat value="∞" label="Your rate, locked permanently" />
         </div>
         <a
-          href="#section-8"
+          href="#section-9"
           className="reveal wa-btn inline-block font-display"
           style={{ background: C.ink, color: C.amber, border: `3px solid ${C.amber}`, boxShadow: `5px 5px 0 ${C.amber}`, borderRadius: 13, padding: "14px 28px", fontSize: 18 }}
         >
@@ -914,7 +914,7 @@ export default function MydiioLanding() {
           <Stat value="5th" label="Every month, without fail" />
         </div>
         <a
-          href="#section-8"
+          href="#section-9"
           className="reveal wa-btn inline-block mt-4 font-display"
           style={{ background: C.green, color: "#fff", border: `3px solid ${C.ink}`, boxShadow: `5px 5px 0 ${C.ink}`, borderRadius: 13, padding: "14px 28px", fontSize: 18 }}
         >
@@ -923,7 +923,7 @@ export default function MydiioLanding() {
       </Section>
 
       {/* Section 8 */}
-      <Section id="section-8" bg={C.ink}>
+      <Section id="section-9" bg={C.ink}>
         <div className="reveal"><Eyebrow color={C.amber}>Get early access</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(34px, 5vw, 52px)", color: C.amber, lineHeight: 1.05 }}>
           We are building our founding group right now.
