@@ -677,9 +677,11 @@ export function EarningsCalculator() {
       <div style={{
         fontFamily: "Fredoka One", fontSize: "clamp(48px, 11vw, 64px)",
         color: C.amber, textAlign: "center", lineHeight: 1, marginTop: 10,
-        transition: "color 0.3s",
+        transition: "color 0.3s", fontVariantNumeric: "tabular-nums",
       }}>
-        <AnimatedNumber value={monthly} prefix="LKR " />
+        <span style={{ display: "inline-block", minWidth: "9ch", textAlign: "center" }}>
+          <AnimatedNumber value={monthly} prefix="LKR " />
+        </span>
       </div>
       <div className="font-mono" style={{ fontSize: 11, color: "rgba(26,26,14,0.6)", textAlign: "center", marginTop: 4 }}>
         per month
