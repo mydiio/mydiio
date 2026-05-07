@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const HERO_PHOTO = "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80";
+const HERO_PHOTO = "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=1400&q=80";
 const WA_ADVERTISER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20advertising%20on%20mydiio";
 const WA_DRIVER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20becoming%20a%20mydiio%20driver";
 
@@ -175,6 +175,7 @@ function Hero() {
 
   return (
     <section className="relative w-full overflow-hidden" style={{ height: "100vh", minHeight: 600 }}>
+      {/* Replace with real mydiio photography when available. */}
       <img src={HERO_PHOTO} alt="Inside a Colombo tuk-tuk looking out at the city" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 hero-overlay-1" />
       <div
