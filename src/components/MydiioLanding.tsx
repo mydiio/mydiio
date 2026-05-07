@@ -905,6 +905,8 @@ export default function MydiioLanding() {
   return (
     <div className="w-full">
       <style>{`
+        .portals-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 900px) { .portals-grid { grid-template-columns: 1fr 1fr 1fr; } }
         .hero-overlay-1 { background: rgba(26,26,14,0.55); }
         @keyframes scrollCue { 0%,100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(7px); opacity: 0.7; } }
         .scroll-cue { animation: scrollCue 1.9s ease-in-out infinite; }
