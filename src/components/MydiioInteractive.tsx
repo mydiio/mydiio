@@ -75,7 +75,7 @@ export function RideTimer() {
   const pct = (elapsed / 14) * 100;
 
   return (
-    <div ref={ref} className="reveal" style={{ marginTop: 28 }}>
+    <div ref={ref} className="reveal" style={{ marginTop: 28, minHeight: 280 }}>
       <div
         className="font-display"
         style={{
@@ -85,9 +85,10 @@ export function RideTimer() {
           textAlign: "center",
           lineHeight: 1,
           letterSpacing: "-1px",
+          fontVariantNumeric: "tabular-nums",
         }}
       >
-        {display}
+        <span style={{ display: "inline-block", minWidth: "5ch", textAlign: "center" }}>{display}</span>
       </div>
       <div
         style={{
@@ -111,19 +112,23 @@ export function RideTimer() {
         />
       </div>
       <div style={{ position: "relative", height: 28, marginTop: 18 }}>
-        <div
-          key={activeLabel.text}
-          className="ride-label-fade font-mono"
-          style={{
-            position: "absolute",
-            inset: 0,
-            textAlign: "center",
-            fontSize: 13,
-            color: "#fff",
-          }}
-        >
-          {activeLabel.text}
-        </div>
+        {labels.map((l) => (
+          <div
+            key={l.text}
+            className="font-mono"
+            style={{
+              position: "absolute",
+              inset: 0,
+              textAlign: "center",
+              fontSize: 13,
+              color: "#fff",
+              opacity: l === activeLabel ? 1 : 0,
+              transition: "opacity 0.4s ease",
+            }}
+          >
+            {l.text}
+          </div>
+        ))}
       </div>
       {done && (
         <button
@@ -160,14 +165,14 @@ export function PlatformDiagram() {
   }, [inView]);
 
   return (
-    <div ref={ref} className="reveal" style={{ marginTop: 24 }}>
+    <div ref={ref} className="reveal" style={{ marginTop: 24, minHeight: 320 }}>
       <div
         style={{
           background: C.ink,
           border: `2px solid ${C.ink}`,
           borderRadius: 16,
           padding: 20,
-          minHeight: 240,
+          minHeight: 280,
           position: "relative",
           overflow: "hidden",
         }}
@@ -296,6 +301,7 @@ export function WeeklyReportCard({ compact = false }: { compact?: boolean }) {
         padding: compact ? 16 : 22,
         maxWidth: 420,
         margin: "0 auto",
+        minHeight: compact ? undefined : 360,
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -303,8 +309,8 @@ export function WeeklyReportCard({ compact = false }: { compact?: boolean }) {
         <div className="font-mono" style={{ fontSize: 9, color: "rgba(255,255,255,0.4)" }}>Week of 3 May</div>
       </div>
       <div style={{ height: 1, background: "rgba(245,166,35,0.2)", margin: "12px 0" }} />
-      <div style={{ fontFamily: "Fredoka One", fontSize: compact ? 44 : 64, color: C.amber, lineHeight: 1, textAlign: "center" }}>
-        {count}
+      <div style={{ fontFamily: "Fredoka One", fontSize: compact ? 44 : 64, color: C.amber, lineHeight: 1, textAlign: "center", fontVariantNumeric: "tabular-nums" }}>
+        <span style={{ display: "inline-block", minWidth: "3.5ch", textAlign: "right" }}>{count}</span>
       </div>
       <div className="font-mono" style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", textAlign: "center", marginTop: 4 }}>
         verified impressions this week
@@ -370,7 +376,7 @@ export function HowItWorksFrames() {
   const advance = () => setFrame((f) => (f + 1) % 3);
 
   return (
-    <div ref={ref} className="reveal" style={{ marginTop: 18 }}>
+    <div ref={ref} className="reveal" style={{ marginTop: 18, minHeight: 340 }}>
       <div
         onClick={advance}
         style={{
@@ -378,7 +384,7 @@ export function HowItWorksFrames() {
           border: "1px solid rgba(255,255,255,0.25)",
           borderRadius: 16,
           padding: 18,
-          minHeight: 280,
+          minHeight: 300,
           cursor: "pointer",
         }}
       >
@@ -427,25 +433,26 @@ function Frame1({ showReply }: { showReply: boolean }) {
       }}>
         Hi, I want to advertise my pharmacy on mydiio
       </div>
-      {!showReply ? (
+      <div style={{ position: "relative", marginTop: 8, minHeight: 44 }}>
         <div style={{
-          marginTop: 8, marginRight: "auto", marginLeft: 0, padding: "10px 14px",
+          position: "absolute", inset: 0, marginRight: "auto", padding: "10px 14px",
           background: "rgba(255,255,255,0.15)", borderRadius: "14px 14px 14px 4px",
           width: 50, color: "#fff",
+          opacity: showReply ? 0 : 1, transition: "opacity 0.3s ease",
         }}>
           <span className="typing-dot" />
           <span className="typing-dot" style={{ animationDelay: "0.2s" }} />
           <span className="typing-dot" style={{ animationDelay: "0.4s" }} />
         </div>
-      ) : (
-        <div className="diagram-fade" style={{
-          marginTop: 8, marginRight: "auto", marginLeft: 0, maxWidth: 280,
+        <div style={{
+          marginRight: "auto", marginLeft: 0, maxWidth: 280,
           background: "rgba(255,255,255,0.15)", color: "#fff", padding: "10px 14px",
           borderRadius: "14px 14px 14px 4px", fontFamily: "Nunito", fontWeight: 700, fontSize: 14,
+          opacity: showReply ? 1 : 0, transition: "opacity 0.4s ease",
         }}>
           Perfect! Send us your logo and we'll have your ad ready within 48 hours. 🛺
         </div>
-      )}
+      </div>
     </div>
   );
 }
@@ -470,8 +477,8 @@ function Frame2() {
       <div className="font-mono" style={{
         position: "absolute", top: 0, right: 0,
         background: C.ink, color: C.amber, padding: "4px 8px",
-        borderRadius: 6, fontSize: 10,
-      }}>{count} tuks live</div>
+        borderRadius: 6, fontSize: 10, fontVariantNumeric: "tabular-nums",
+      }}><span style={{ display: "inline-block", minWidth: "1.2ch", textAlign: "right" }}>{count}</span> tuks live</div>
       <svg width="100%" height="180" viewBox="0 0 220 160" style={{ display: "block" }}>
         <rect x="0" y="0" width="220" height="160" fill="rgba(0,0,0,0.2)" rx="8" />
         {/* roads */}
@@ -618,7 +625,7 @@ export function EnhancedPioneerPills() {
           }}>{banner}</div>
         )}
       </div>
-      <div className="reveal flex flex-wrap gap-2 mb-5">
+      <div className="reveal flex flex-wrap gap-2 mb-5" style={{ minHeight: 160 }}>
         {PIONEER_CATEGORIES.map((c, i) => {
           const taken = TAKEN.includes(c);
           const availableIdx = available.indexOf(c);
@@ -653,7 +660,7 @@ export function EarningsCalculator() {
   const annual = monthly * 12;
 
   return (
-    <div className="reveal" style={{ marginTop: 24 }}>
+    <div className="reveal" style={{ marginTop: 24, minHeight: 260 }}>
       <div className="font-mono" style={{ fontSize: 11, color: "rgba(26,26,14,0.6)", marginBottom: 10 }}>
         How many hours do you drive per day?
       </div>
@@ -670,9 +677,11 @@ export function EarningsCalculator() {
       <div style={{
         fontFamily: "Fredoka One", fontSize: "clamp(48px, 11vw, 64px)",
         color: C.amber, textAlign: "center", lineHeight: 1, marginTop: 10,
-        transition: "color 0.3s",
+        transition: "color 0.3s", fontVariantNumeric: "tabular-nums",
       }}>
-        <AnimatedNumber value={monthly} prefix="LKR " />
+        <span style={{ display: "inline-block", minWidth: "9ch", textAlign: "center" }}>
+          <AnimatedNumber value={monthly} prefix="LKR " />
+        </span>
       </div>
       <div className="font-mono" style={{ fontSize: 11, color: "rgba(26,26,14,0.6)", textAlign: "center", marginTop: 4 }}>
         per month
@@ -729,7 +738,7 @@ function AnimatedNumber({ value, prefix = "" }: { value: number; prefix?: string
 /* ============== FLIP CARDS (Section 8) ============== */
 export function FlipCards() {
   return (
-    <div className="reveal" style={{ marginTop: 24 }}>
+    <div className="reveal" style={{ marginTop: 24, minHeight: 320 }}>
       <div className="flip-grid">
         <FlipCard
           bg={C.amber} fg={C.ink} icon="🏪"
@@ -937,4 +946,11 @@ export const InteractiveCSS = `
     display: flex; flex-direction: column; justify-content: center;
   }
   .flip-back { transform: rotateY(180deg); justify-content: flex-start; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 `;
