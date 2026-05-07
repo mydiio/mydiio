@@ -214,7 +214,7 @@ function SkylineLayer() {
             <rect x={x as number} y={y as number} width="50" height={h as number} fill={c as string} />
             {/* lit windows */}
             {Array.from({ length: 6 }).map((_, j) => (
-              <rect key={j} x={(x as number) + 6 + (j%2)*22} y={(y as number) + 8 + Math.floor(j/2)*14} width="10" height="6" fill={Math.random() > 0.4 ? "#FFE066" : "#1A1A0E"} opacity="0.85" />
+              <rect key={j} x={(x as number) + 6 + (j%2)*22} y={(y as number) + 8 + Math.floor(j/2)*14} width="10" height="6" fill={((i * 7 + j * 3) % 5) > 1 ? "#FFE066" : "#1A1A0E"} opacity="0.85" />
             ))}
           </g>
         ))}
