@@ -163,6 +163,11 @@ function Hero() {
   const ctaDelay = subDelay + 600;
   const cueDelay = ctaDelay + 400;
 
+  useEffect(() => {
+    document.body.style.transition = "background-color 0.7s ease";
+    document.body.style.backgroundColor = "#1A1A0E";
+  }, []);
+
   // particles
   const particles = Array.from({ length: 12 }).map((_, i) => {
     const size = 4 + Math.random() * 6;
