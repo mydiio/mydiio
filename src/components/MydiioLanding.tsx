@@ -142,7 +142,7 @@ function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  const scrollToCta = () => document.getElementById("section-8")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToCta = () => document.getElementById("section-9")?.scrollIntoView({ behavior: "smooth" });
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between"
@@ -271,7 +271,7 @@ function Hero() {
           We install a screen inside tuk-tuks. Your ad plays to every passenger — for the full ride. No skip button. No scrolling past. From LKR 20,000 per month. First 14 days credited free.
         </p>
         <a
-          href="#section-8"
+          href="#section-9"
           className="hero-cta hero-spring inline-block"
           style={{
             background: C.amber,
@@ -318,16 +318,303 @@ function Eyebrow({ children, color }: { children: React.ReactNode; color: string
   );
 }
 
+/* ---------- Portals Showcase (Section 5) ---------- */
+function PortalsShowcase() {
+  return (
+    <>
+      <div className="reveal" style={{ textAlign: "center" }}>
+        <span className="font-mono" style={{ fontSize: 10, letterSpacing: "3px", color: C.amber, textTransform: "uppercase" }}>
+          Full Transparency · Three Dedicated Portals
+        </span>
+      </div>
+      <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 48px)", color: C.amber, lineHeight: 1.05, marginTop: 14, textAlign: "center" }}>
+        Every number you see on this page is real. Here is exactly where it comes from.
+      </h2>
+      <p className="reveal" style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 16, color: "rgba(255,249,237,0.65)", maxWidth: 560, margin: "16px auto 0", textAlign: "center" }}>
+        mydiio is not a WhatsApp group and a spreadsheet. We operate three dedicated portals — one for advertisers, one for drivers, and one for our operations team. Every impression verified. Every payment tracked. Every vehicle monitored.
+      </p>
+      <div className="portals-grid" style={{ marginTop: 32 }}>
+        <PortalCard delay={0}>
+          <PortalBadge bg={C.amber} color={C.ink}>FOR ADVERTISERS</PortalBadge>
+          <PortalTitle>Your Campaign Dashboard</PortalTitle>
+          <PortalBody>Every advertiser gets a personal dashboard showing their live campaign data, updated weekly.</PortalBody>
+          <AdvertiserMock />
+          <PortalFeatures items={[
+            "✓ GPS-verified impression reports every Monday",
+            "✓ Loyalty points tracked automatically",
+            "✓ 14-day free credit shown in real time",
+          ]} />
+        </PortalCard>
+        <PortalCard delay={0.15}>
+          <PortalBadge bg={C.green} color="#fff">FOR DRIVERS</PortalBadge>
+          <PortalTitle>Your Earnings Portal</PortalTitle>
+          <PortalBody>Every driver sees their screen uptime, earnings, and payment history in real time.</PortalBody>
+          <DriverMock />
+          <PortalFeatures items={[
+            "✓ Monthly bank transfer on the 5th — no delays",
+            "✓ Screen uptime tracked automatically",
+            "✓ Referral earnings shown in real time",
+          ]} />
+        </PortalCard>
+        <PortalCard delay={0.3}>
+          <PortalBadge bg="rgba(245,166,35,0.15)" color={C.amber} border="1px solid rgba(245,166,35,0.4)">OPERATIONS TEAM</PortalBadge>
+          <PortalTitle>Our Operations Centre</PortalTitle>
+          <PortalBody>Our team monitors every vehicle, every screen, and every ad in real time — 24 hours a day.</PortalBody>
+          <AdminMock />
+          <PortalFeatures items={[
+            "✓ Every creative reviewed before going live",
+            "✓ Fleet monitored 24 hours, GPS every 5 min",
+            "✓ Auto-flagging for policy violations",
+          ]} />
+        </PortalCard>
+      </div>
+      <div style={{ maxWidth: 480, margin: "32px auto 0", textAlign: "center" }}>
+        <p style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 15, color: "rgba(255,249,237,0.5)" }}>
+          Advertisers and drivers receive login credentials when their account is activated. Full platform access from day one.
+        </p>
+        <a
+          href="#section-9"
+          className="font-mono"
+          style={{
+            display: "inline-block", marginTop: 14, color: C.amber,
+            fontSize: 11, textDecoration: "underline", cursor: "pointer",
+          }}
+        >
+          Get early access and receive your portal login →
+        </a>
+      </div>
+    </>
+  );
+}
+
+function PortalCard({ children, delay }: { children: React.ReactNode; delay: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) { setInView(true); io.disconnect(); }
+      }),
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div
+      ref={ref}
+      style={{
+        background: "rgba(255,255,255,0.04)",
+        border: "2px solid rgba(245,166,35,0.25)",
+        borderRadius: 16,
+        padding: "28px 24px",
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(40px)",
+        transition: `opacity 0.55s ease ${delay}s, transform 0.55s ease ${delay}s`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function PortalBadge({ children, bg, color, border }: { children: React.ReactNode; bg: string; color: string; border?: string }) {
+  return (
+    <span className="font-mono" style={{
+      display: "inline-block", background: bg, color, border: border ?? "none",
+      padding: "3px 10px", borderRadius: 12, fontSize: 9, letterSpacing: "1.5px",
+    }}>{children}</span>
+  );
+}
+function PortalTitle({ children }: { children: React.ReactNode }) {
+  return <div className="font-display" style={{ fontSize: 22, color: "#fff", marginTop: 12 }}>{children}</div>;
+}
+function PortalBody({ children }: { children: React.ReactNode }) {
+  return <div style={{ fontFamily: "Nunito", fontWeight: 700, fontSize: 14, color: "rgba(255,249,237,0.6)", marginBottom: 16, marginTop: 6 }}>{children}</div>;
+}
+function PortalFeatures({ items }: { items: string[] }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 12 }}>
+      {items.map((t) => (
+        <div key={t} className="font-mono" style={{ fontSize: 10, color: "rgba(255,249,237,0.5)" }}>{t}</div>
+      ))}
+    </div>
+  );
+}
+
+const innerCardStyle: React.CSSProperties = {
+  background: "#0D0D08",
+  border: "1px solid rgba(245,166,35,0.2)",
+  borderRadius: 10,
+  padding: 16,
+};
+
+function AdvertiserMock() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) { setShow(true); io.disconnect(); }
+    }), { threshold: 0.25 });
+    io.observe(el); return () => io.disconnect();
+  }, []);
+  const heights = [40, 60, 50, 75, 55, 85, 65];
+  const labels = ["M","T","W","T","F","S","S"];
+  const todayIdx = 5;
+  return (
+    <div ref={ref} style={innerCardStyle}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <span className="font-mono" style={{ fontSize: 8, color: C.amber, letterSpacing: 2 }}>CAMPAIGN DASHBOARD</span>
+        <span className="font-mono" style={{ fontSize: 8, color: "rgba(255,255,255,0.4)" }}>Galle Road Pharmacy</span>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 12 }}>
+        {[
+          ["6,841", "Total impressions"],
+          ["10 / 10", "Vehicles active"],
+          ["14.3m", "Avg. dwell time"],
+          ["7 zones", "Colombo coverage"],
+        ].map(([v, l]) => (
+          <div key={l} style={{
+            background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)",
+            borderRadius: 8, padding: "10px 8px", textAlign: "center",
+          }}>
+            <div className="font-display" style={{ fontSize: 22, color: C.amber }}>{v}</div>
+            <div className="font-mono" style={{ fontSize: 8, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>{l}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 4, marginTop: 14, height: 64 }}>
+        {heights.map((h, i) => (
+          <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+            <div style={{
+              width: "100%",
+              height: show ? `${h}%` : "0%",
+              background: i === todayIdx ? C.amber : "rgba(245,166,35,0.6)",
+              borderRadius: 2,
+              transition: `height 0.6s ease ${i * 0.08}s`,
+            }} />
+            <span className="font-mono" style={{ fontSize: 7, color: "rgba(255,255,255,0.3)" }}>{labels[i]}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <span className="pulse-dot-green" />
+          <span className="font-mono" style={{ fontSize: 8, color: C.green, letterSpacing: 1 }}>CAMPAIGN ACTIVE</span>
+        </div>
+        <span className="font-mono" style={{ fontSize: 8, color: "rgba(255,255,255,0.4)" }}>↑ 18% vs last week</span>
+      </div>
+    </div>
+  );
+}
+
+function DriverMock() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) { setShow(true); io.disconnect(); }
+    }), { threshold: 0.25 });
+    io.observe(el); return () => io.disconnect();
+  }, []);
+  return (
+    <div ref={ref} style={innerCardStyle}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <span className="font-mono" style={{ fontSize: 8, color: C.green, letterSpacing: 2 }}>DRIVER PORTAL</span>
+        <span className="font-mono" style={{ fontSize: 8, color: "rgba(255,255,255,0.4)" }}>Kamal · MYD-007</span>
+      </div>
+      <div className="font-display" style={{ fontSize: 28, color: C.green, textAlign: "center", marginTop: 10 }}>LKR 8,000</div>
+      <div className="font-mono" style={{ fontSize: 8, color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: 2 }}>
+        This month · Base + Route Bonus
+      </div>
+      <div style={{ marginTop: 12 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+          <span className="font-mono" style={{ fontSize: 8, color: "rgba(255,255,255,0.4)" }}>SCREEN UPTIME TODAY</span>
+          <span className="font-mono" style={{ fontSize: 10, color: C.green }}>9.2h</span>
+        </div>
+        <div style={{ height: 6, background: "rgba(255,255,255,0.1)", borderRadius: 3, marginTop: 4, overflow: "hidden" }}>
+          <div style={{
+            height: "100%",
+            width: show ? "85%" : "0%",
+            background: C.green,
+            borderRadius: 3,
+            transition: "width 1.2s ease 0.5s",
+          }} />
+        </div>
+      </div>
+      <DriverRow label="ROUTE BONUS" value="✓ Confirmed — LKR 2,000" valueColor={C.green} />
+      <DriverRow label="LOYALTY BONUS" value="Month 2 of 3 · LKR 5,000 incoming" valueColor={C.amber} />
+      <DriverRow label="NEXT PAYMENT" value="5 August 2026" valueColor="#fff" />
+    </div>
+  );
+}
+function DriverRow({ label, value, valueColor }: { label: string; value: string; valueColor: string }) {
+  return (
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 10, gap: 8 }}>
+      <span className="font-mono" style={{ fontSize: 8, color: "rgba(255,255,255,0.4)", flexShrink: 0 }}>{label}</span>
+      <span className="font-mono" style={{ fontSize: 9, color: valueColor, textAlign: "right" }}>{value}</span>
+    </div>
+  );
+}
+
+function AdminMock() {
+  return (
+    <div style={innerCardStyle}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <span className="font-mono" style={{ fontSize: 8, color: C.amber, letterSpacing: 2 }}>OPERATIONS CENTRE</span>
+        <span className="font-mono" style={{ fontSize: 8, color: "rgba(255,255,255,0.4)" }}>Live · Wed 06 May · 22:42</span>
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 8 }}>
+        {["TUK-01 ●","TUK-02 ●","TUK-03 ●","TUK-04 ●"].map((t) => (
+          <span key={t} className="font-mono" style={{
+            background: "rgba(76,175,114,0.15)", border: `1px solid ${C.green}`,
+            color: C.green, fontSize: 8, borderRadius: 4, padding: "4px 8px",
+          }}>{t}</span>
+        ))}
+        <span className="font-mono" style={{
+          background: "rgba(232,69,69,0.15)", border: "1px solid #E84545",
+          color: "#E84545", fontSize: 8, borderRadius: 4, padding: "4px 8px",
+        }}>TUK-05 ○ OFFLINE</span>
+      </div>
+      <div className="font-mono" style={{ fontSize: 9, color: "rgba(255,255,255,0.5)", marginTop: 8 }}>9 / 10 fleet online</div>
+      <div className="font-mono" style={{
+        marginTop: 10, background: "rgba(245,166,35,0.1)",
+        border: "1px solid rgba(245,166,35,0.3)", borderRadius: 6,
+        padding: "6px 10px", fontSize: 8, color: C.amber,
+      }}>⚠ TUK-05 offline 47 min — investigating</div>
+      <div className="font-mono" style={{ fontSize: 8, color: "rgba(255,255,255,0.4)", marginTop: 10 }}>CONTENT QUEUE</div>
+      {([
+        ["pharmacy_promo.mp4", "LIVE", C.green, "#fff"],
+        ["bakery_banner.jpg", "PENDING", C.amber, C.ink],
+        ["finance_ad.mp4", "FLAGGED", "#E84545", "#fff"],
+      ] as const).map(([file, pill, bg, col]) => (
+        <div key={file} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 6 }}>
+          <span className="font-mono" style={{ fontSize: 8, color: "rgba(255,255,255,0.5)" }}>{file}</span>
+          <span className="font-mono" style={{
+            background: bg, color: col, fontSize: 7,
+            padding: "2px 6px", borderRadius: 4, letterSpacing: 1,
+          }}>{pill}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /* ---------- Section with staggered child reveal & ambient bg ---------- */
 const sectionColors: Record<string, string> = {
   "section-1": "#1A1A0E",
   "section-2": "#F5A623",
   "section-3": "#FFFFFF",
   "section-4": "#4CAF72",
-  "section-5": "#F7E14A",
-  "section-6": "#F5A623",
-  "section-7": "#FFFFFF",
-  "section-8": "#1A1A0E",
+  "section-5": "#1A1A0E",
+  "section-6": "#F7E14A",
+  "section-7": "#F5A623",
+  "section-8": "#FFFFFF",
+  "section-9": "#1A1A0E",
 };
 
 function Section({ id, bg, children }: { id?: string; bg: string; children: React.ReactNode }) {
@@ -618,6 +905,8 @@ export default function MydiioLanding() {
   return (
     <div className="w-full">
       <style>{`
+        .portals-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 900px) { .portals-grid { grid-template-columns: 1fr 1fr 1fr; } }
         .hero-overlay-1 { background: rgba(26,26,14,0.55); }
         @keyframes scrollCue { 0%,100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(7px); opacity: 0.7; } }
         .scroll-cue { animation: scrollCue 1.9s ease-in-out infinite; }
@@ -851,7 +1140,7 @@ export default function MydiioLanding() {
         </h2>
         <HowItWorksFrames />
         <a
-          href="#section-8"
+          href="#section-9"
           className="reveal wa-btn inline-block mt-4 font-display"
           style={{ background: C.yellow, color: C.ink, border: `3px solid ${C.ink}`, boxShadow: `5px 5px 0 ${C.ink}`, borderRadius: 13, padding: "14px 28px", fontSize: 18, marginTop: 18 }}
         >
@@ -859,8 +1148,13 @@ export default function MydiioLanding() {
         </a>
       </Section>
 
-      {/* Section 5 */}
-      <Section id="section-5" bg={C.yellow}>
+      {/* Section 5 — Portals */}
+      <Section id="section-5" bg={C.ink}>
+        <PortalsShowcase />
+      </Section>
+
+      {/* Section 6 */}
+      <Section id="section-6" bg={C.yellow}>
         <div className="reveal"><Eyebrow color="rgba(26,26,14,0.55)">Pricing</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05, marginBottom: 28 }}>
           One month on mydiio costs less than one boosted Facebook post. The difference is that your customers cannot skip this one.
@@ -874,8 +1168,8 @@ export default function MydiioLanding() {
         <PriceComparison />
       </Section>
 
-      {/* Section 6 */}
-      <Section id="section-6" bg={C.amber}>
+      {/* Section 7 */}
+      <Section id="section-7" bg={C.amber}>
         <div className="reveal"><Eyebrow color="rgba(26,26,14,0.55)">The Pioneer Programme</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
           There are 10 Pioneer spots. One per category. Two are already taken.
@@ -892,7 +1186,7 @@ export default function MydiioLanding() {
           <Stat value="∞" label="Your rate, locked permanently" />
         </div>
         <a
-          href="#section-8"
+          href="#section-9"
           className="reveal wa-btn inline-block font-display"
           style={{ background: C.ink, color: C.amber, border: `3px solid ${C.amber}`, boxShadow: `5px 5px 0 ${C.amber}`, borderRadius: 13, padding: "14px 28px", fontSize: 18 }}
         >
@@ -900,8 +1194,8 @@ export default function MydiioLanding() {
         </a>
       </Section>
 
-      {/* Section 7 */}
-      <Section id="section-7" bg="#FFFFFF">
+      {/* Section 8 */}
+      <Section id="section-8" bg="#FFFFFF">
         <div className="reveal"><Eyebrow color={C.amber}>For tuk-tuk drivers in Colombo</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(32px, 5vw, 50px)", color: C.ink, lineHeight: 1.05 }}>
           Your tuk earns LKR 6,000 to LKR 8,000 every month.
@@ -913,7 +1207,7 @@ export default function MydiioLanding() {
           <Stat value="5th" label="Every month, without fail" />
         </div>
         <a
-          href="#section-8"
+          href="#section-9"
           className="reveal wa-btn inline-block mt-4 font-display"
           style={{ background: C.green, color: "#fff", border: `3px solid ${C.ink}`, boxShadow: `5px 5px 0 ${C.ink}`, borderRadius: 13, padding: "14px 28px", fontSize: 18 }}
         >
@@ -921,8 +1215,8 @@ export default function MydiioLanding() {
         </a>
       </Section>
 
-      {/* Section 8 */}
-      <Section id="section-8" bg={C.ink}>
+      {/* Section 9 */}
+      <Section id="section-9" bg={C.ink}>
         <div className="reveal"><Eyebrow color={C.amber}>Get early access</Eyebrow></div>
         <h2 className="reveal font-display" style={{ fontSize: "clamp(34px, 5vw, 52px)", color: C.amber, lineHeight: 1.05 }}>
           We are building our founding group right now.
