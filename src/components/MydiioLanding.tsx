@@ -79,43 +79,8 @@ export default function MydiioLanding() {
         </div>
 
         {/* Tuk */}
-        <div className="absolute left-1/2 bottom-[16%] -translate-x-1/2 tuk-wrap" style={{ zIndex: 4, width: "min(520px, 70vw)" }}>
-          <div className="relative">
-            <img
-              src="/tuk.png"
-              alt="mydiio tuk-tuk"
-              className="block w-full h-auto tuk-image"
-              style={{
-                mixBlendMode: "multiply",
-                filter: "hue-rotate(-15deg) saturate(1.25) brightness(1.06)",
-              }}
-            />
-            {/* Phone screen overlay */}
-            <div
-              className="absolute rounded-[3px]"
-              style={{
-                left: "30%",
-                top: "37%",
-                width: "5%",
-                height: "9%",
-                background: screenColor,
-                boxShadow: `0 0 10px ${screenColor}AA`,
-                transition: "background 0.5s ease, box-shadow 0.5s ease",
-                zIndex: 5,
-              }}
-            >
-              <div
-                className="absolute top-[2px] right-[2px] w-[3px] h-[3px] rounded-full bg-[#4CAF72] pulse-dot"
-              />
-            </div>
-            {/* Wheels */}
-            <div className="absolute wheel-spin" style={{ left: "12%", bottom: "6%", width: "13%", aspectRatio: "1" }}>
-              <Wheel />
-            </div>
-            <div className="absolute wheel-spin" style={{ right: "10%", bottom: "6%", width: "13%", aspectRatio: "1" }}>
-              <Wheel />
-            </div>
-          </div>
+        <div className="absolute left-1/2 bottom-[16%] -translate-x-1/2" style={{ zIndex: 4, width: "min(520px, 80vw)" }}>
+          <TukSvg screenColor={screenColor} />
         </div>
 
         {/* Road */}
@@ -162,14 +127,14 @@ export default function MydiioLanding() {
       ))}
 
       <style>{`
-        @keyframes tuktukIdle {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          25% { transform: translateY(-3px) rotate(0.3deg); }
-          75% { transform: translateY(-1px) rotate(-0.2deg); }
+        @keyframes tukIdle {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-4px); }
         }
-        .tuk-wrap { animation: tuktukIdle 0.8s ease-in-out infinite; }
+        .tuk-svg { animation: tukIdle 0.85s ease-in-out infinite; }
         @keyframes wheelSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .wheel-spin { animation: wheelSpin 0.6s linear infinite; }
+        .rear-wheel { transform-origin: 110px 248px; animation: wheelSpin 1.1s linear infinite; transform-box: fill-box; }
+        .front-wheel { transform-origin: 415px 252px; animation: wheelSpin 1.1s linear infinite; transform-box: fill-box; }
         @keyframes cloudDrift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .cloud-drift { animation: cloudDrift 80s linear infinite; }
         @keyframes dashLoop { from { margin-left: 0; } to { margin-left: -128px; } }
@@ -188,6 +153,112 @@ function Cloud({ style, scale = 1 }: { style?: React.CSSProperties; scale?: numb
       <ellipse cx="30" cy="30" rx="25" ry="18" fill="#fff" />
       <ellipse cx="60" cy="22" rx="28" ry="20" fill="#fff" />
       <ellipse cx="90" cy="30" rx="22" ry="16" fill="#fff" />
+    </svg>
+  );
+}
+
+function TukSvg({ screenColor }: { screenColor: string }) {
+  return (
+    <svg viewBox="0 0 520 320" className="w-full h-auto tuk-svg" style={{ overflow: "visible" }}>
+      {/* Ground shadow */}
+      <ellipse cx="260" cy="285" rx="200" ry="12" fill="rgba(0,0,0,0.18)" />
+
+      {/* Roof */}
+      <rect x="60" y="40" width="310" height="55" rx="8" fill="#2D2D2D" />
+      <rect x="60" y="88" width="310" height="8" fill="#1A1A0E" opacity="0.4" />
+      <circle cx="200" cy="40" r="8" fill="#1A1A0E" />
+
+      {/* Rear body panel */}
+      <rect x="55" y="92" width="90" height="130" rx="4" fill="#F5A623" stroke="#1A1A0E" strokeWidth="2.5" />
+
+      {/* Front body panel */}
+      <path d="M 280,92 L 420,92 L 420,185 Q 400,200 360,205 L 280,200 Z" fill="#F5A623" stroke="#1A1A0E" strokeWidth="2.5" />
+
+      {/* Passenger compartment open area */}
+      <rect x="148" y="92" width="132" height="130" fill="rgba(180,220,255,0.15)" />
+
+      {/* Cage bars */}
+      <rect x="148" y="92" width="139" height="7" fill="#1A1A0E" rx="2" />
+      <rect x="148" y="92" width="7" height="130" fill="#1A1A0E" rx="2" />
+      <rect x="192" y="92" width="7" height="130" fill="#1A1A0E" rx="2" />
+      <rect x="236" y="92" width="7" height="130" fill="#1A1A0E" rx="2" />
+      <rect x="280" y="92" width="7" height="130" fill="#1A1A0E" rx="2" />
+
+      {/* Footboard */}
+      <rect x="148" y="218" width="132" height="14" rx="3" fill="#E8920A" stroke="#1A1A0E" strokeWidth="2" />
+
+      {/* Driver windshield */}
+      <path d="M 292,96 L 405,96 L 405,175 L 292,175 Z" fill="rgba(180,220,255,0.5)" stroke="#1A1A0E" strokeWidth="2.5" />
+      <path d="M 292,96 L 405,96 L 405,118 L 292,118 Z" fill="rgba(100,160,220,0.25)" />
+
+      {/* Front nose panel */}
+      <path d="M 405,96 L 440,105 L 445,185 L 405,185 Z" fill="#E8920A" stroke="#1A1A0E" strokeWidth="2" />
+
+      {/* Indicator */}
+      <rect x="420" y="148" width="20" height="10" rx="3" fill="#FF8F00" stroke="#1A1A0E" strokeWidth="1.5" />
+
+      {/* Headlight */}
+      <circle cx="438" cy="165" r="14" fill="#FFFDE7" stroke="#1A1A0E" strokeWidth="2.5" />
+      <circle cx="438" cy="165" r="8" fill="#fff" />
+
+      {/* Front fender */}
+      <path d="M 380,200 Q 430,195 460,210 Q 465,235 445,245 Q 410,248 390,240 Q 368,225 380,200 Z" fill="#F5A623" stroke="#1A1A0E" strokeWidth="2.5" />
+
+      {/* Passenger woman */}
+      <ellipse cx="185" cy="185" rx="22" ry="28" fill="#8B4513" />
+      <ellipse cx="185" cy="135" rx="18" ry="10" fill="#1A1A0E" />
+      <circle cx="185" cy="148" r="18" fill="#D4956A" stroke="#1A1A0E" strokeWidth="1.5" />
+      <ellipse cx="179" cy="148" rx="2" ry="2" fill="#1A1A0E" />
+      <ellipse cx="189" cy="148" rx="2" ry="2" fill="#1A1A0E" />
+      <ellipse cx="184" cy="153" rx="2" ry="1.5" fill="#C17A45" />
+      <path d="M 180,158 Q 184,163 188,158" stroke="#1A1A0E" strokeWidth="1.5" fill="none" />
+      <path d="M 198,138 Q 205,132 202,128 Q 198,124 193,130 Z" fill="#1A1A0E" />
+      <path d="M 170,175 Q 165,190 170,205" stroke="#D4956A" strokeWidth="8" fill="none" strokeLinecap="round" />
+      <path d="M 200,175 Q 205,190 200,205" stroke="#D4956A" strokeWidth="8" fill="none" strokeLinecap="round" />
+
+      {/* Phone screen */}
+      <rect
+        x="162" y="195" width="46" height="32" rx="4"
+        fill={screenColor}
+        stroke="#1A1A0E" strokeWidth="2"
+        style={{ transition: "fill 0.5s ease" }}
+      />
+      <text x="185" y="208" fontFamily="Fredoka One, sans-serif" fontSize="7" fill="white" textAnchor="middle">mydiio</text>
+      <text x="185" y="220" fontFamily="Fredoka One, sans-serif" fontSize="5" fill="white" textAnchor="middle">LIVE ●</text>
+
+      {/* Driver man */}
+      <ellipse cx="345" cy="185" rx="24" ry="28" fill="#CC3333" />
+      <ellipse cx="345" cy="136" rx="17" ry="9" fill="#1A1A0E" />
+      <circle cx="345" cy="148" r="17" fill="#C17A45" stroke="#1A1A0E" strokeWidth="1.5" />
+      <ellipse cx="353" cy="148" rx="2" ry="2" fill="#1A1A0E" />
+      <path d="M 360,178 Q 378,182 390,178" stroke="#C17A45" strokeWidth="7" fill="none" strokeLinecap="round" />
+      <rect x="322" y="205" width="46" height="35" rx="4" fill="#3B5998" />
+
+      {/* Rear wheel */}
+      <g className="rear-wheel">
+        <circle cx="110" cy="248" r="38" fill="#1A1A0E" stroke="#1A1A0E" strokeWidth="3" />
+        <circle cx="110" cy="248" r="30" fill="#2A2A2A" />
+        <circle cx="110" cy="248" r="22" fill="#888888" stroke="#666" strokeWidth="1.5" />
+        <circle cx="110" cy="248" r="14" fill="#C0C0C0" stroke="#888" strokeWidth="1.5" />
+        <line x1="110" y1="226" x2="110" y2="270" stroke="#888" strokeWidth="2" />
+        <line x1="88" y1="248" x2="132" y2="248" stroke="#888" strokeWidth="2" />
+        <line x1="94" y1="232" x2="126" y2="264" stroke="#888" strokeWidth="2" />
+        <line x1="94" y1="264" x2="126" y2="232" stroke="#888" strokeWidth="2" />
+        <circle cx="110" cy="248" r="6" fill="#666666" />
+      </g>
+
+      {/* Front wheel */}
+      <g className="front-wheel">
+        <circle cx="415" cy="252" r="34" fill="#1A1A0E" stroke="#1A1A0E" strokeWidth="3" />
+        <circle cx="415" cy="252" r="27" fill="#2A2A2A" />
+        <circle cx="415" cy="252" r="20" fill="#888888" stroke="#666" strokeWidth="1.5" />
+        <circle cx="415" cy="252" r="13" fill="#C0C0C0" stroke="#888" strokeWidth="1.5" />
+        <line x1="415" y1="232" x2="415" y2="272" stroke="#888" strokeWidth="2" />
+        <line x1="395" y1="252" x2="435" y2="252" stroke="#888" strokeWidth="2" />
+        <line x1="401" y1="238" x2="429" y2="266" stroke="#888" strokeWidth="2" />
+        <line x1="401" y1="266" x2="429" y2="238" stroke="#888" strokeWidth="2" />
+        <circle cx="415" cy="252" r="5" fill="#666666" />
+      </g>
     </svg>
   );
 }
