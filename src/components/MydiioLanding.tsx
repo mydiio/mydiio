@@ -324,10 +324,11 @@ const sectionColors: Record<string, string> = {
   "section-2": "#F5A623",
   "section-3": "#FFFFFF",
   "section-4": "#4CAF72",
-  "section-5": "#F7E14A",
-  "section-6": "#F5A623",
-  "section-7": "#FFFFFF",
-  "section-8": "#1A1A0E",
+  "section-5": "#1A1A0E",
+  "section-6": "#F7E14A",
+  "section-7": "#F5A623",
+  "section-8": "#FFFFFF",
+  "section-9": "#1A1A0E",
 };
 
 function Section({ id, bg, children }: { id?: string; bg: string; children: React.ReactNode }) {
