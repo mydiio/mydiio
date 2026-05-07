@@ -738,7 +738,7 @@ function AnimatedNumber({ value, prefix = "" }: { value: number; prefix?: string
 /* ============== FLIP CARDS (Section 8) ============== */
 export function FlipCards() {
   return (
-    <div className="reveal" style={{ marginTop: 24 }}>
+    <div className="reveal" style={{ marginTop: 24, minHeight: 320 }}>
       <div className="flip-grid">
         <FlipCard
           bg={C.amber} fg={C.ink} icon="🏪"
