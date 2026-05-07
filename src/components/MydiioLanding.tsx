@@ -127,14 +127,14 @@ export default function MydiioLanding() {
       ))}
 
       <style>{`
-        @keyframes tuktukIdle {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          25% { transform: translateY(-3px) rotate(0.3deg); }
-          75% { transform: translateY(-1px) rotate(-0.2deg); }
+        @keyframes tukIdle {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-4px); }
         }
-        .tuk-wrap { animation: tuktukIdle 0.8s ease-in-out infinite; }
+        .tuk-svg { animation: tukIdle 0.85s ease-in-out infinite; }
         @keyframes wheelSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .wheel-spin { animation: wheelSpin 0.6s linear infinite; }
+        .rear-wheel { transform-origin: 110px 248px; animation: wheelSpin 1.1s linear infinite; transform-box: fill-box; }
+        .front-wheel { transform-origin: 415px 252px; animation: wheelSpin 1.1s linear infinite; transform-box: fill-box; }
         @keyframes cloudDrift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .cloud-drift { animation: cloudDrift 80s linear infinite; }
         @keyframes dashLoop { from { margin-left: 0; } to { margin-left: -128px; } }
