@@ -79,43 +79,8 @@ export default function MydiioLanding() {
         </div>
 
         {/* Tuk */}
-        <div className="absolute left-1/2 bottom-[16%] -translate-x-1/2 tuk-wrap" style={{ zIndex: 4, width: "min(520px, 70vw)" }}>
-          <div className="relative">
-            <img
-              src="/tuk.png"
-              alt="mydiio tuk-tuk"
-              className="block w-full h-auto tuk-image"
-              style={{
-                mixBlendMode: "multiply",
-                filter: "hue-rotate(-15deg) saturate(1.25) brightness(1.06)",
-              }}
-            />
-            {/* Phone screen overlay */}
-            <div
-              className="absolute rounded-[3px]"
-              style={{
-                left: "30%",
-                top: "37%",
-                width: "5%",
-                height: "9%",
-                background: screenColor,
-                boxShadow: `0 0 10px ${screenColor}AA`,
-                transition: "background 0.5s ease, box-shadow 0.5s ease",
-                zIndex: 5,
-              }}
-            >
-              <div
-                className="absolute top-[2px] right-[2px] w-[3px] h-[3px] rounded-full bg-[#4CAF72] pulse-dot"
-              />
-            </div>
-            {/* Wheels */}
-            <div className="absolute wheel-spin" style={{ left: "12%", bottom: "6%", width: "13%", aspectRatio: "1" }}>
-              <Wheel />
-            </div>
-            <div className="absolute wheel-spin" style={{ right: "10%", bottom: "6%", width: "13%", aspectRatio: "1" }}>
-              <Wheel />
-            </div>
-          </div>
+        <div className="absolute left-1/2 bottom-[16%] -translate-x-1/2" style={{ zIndex: 4, width: "min(520px, 80vw)" }}>
+          <TukSvg screenColor={screenColor} />
         </div>
 
         {/* Road */}
