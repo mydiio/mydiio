@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import tukImg from "@/assets/tuk.jpeg";
 
 // ======= CONFIG =======
 const WEBHOOK_URL = ""; // Paste your Zapier/Make.com webhook URL here
