@@ -625,7 +625,7 @@ export function EnhancedPioneerPills() {
           }}>{banner}</div>
         )}
       </div>
-      <div className="reveal flex flex-wrap gap-2 mb-5">
+      <div className="reveal flex flex-wrap gap-2 mb-5" style={{ minHeight: 160 }}>
         {PIONEER_CATEGORIES.map((c, i) => {
           const taken = TAKEN.includes(c);
           const availableIdx = available.indexOf(c);
