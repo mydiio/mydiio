@@ -309,8 +309,8 @@ export function WeeklyReportCard({ compact = false }: { compact?: boolean }) {
         <div className="font-mono" style={{ fontSize: 9, color: "rgba(255,255,255,0.4)" }}>Week of 3 May</div>
       </div>
       <div style={{ height: 1, background: "rgba(245,166,35,0.2)", margin: "12px 0" }} />
-      <div style={{ fontFamily: "Fredoka One", fontSize: compact ? 44 : 64, color: C.amber, lineHeight: 1, textAlign: "center" }}>
-        {count}
+      <div style={{ fontFamily: "Fredoka One", fontSize: compact ? 44 : 64, color: C.amber, lineHeight: 1, textAlign: "center", fontVariantNumeric: "tabular-nums" }}>
+        <span style={{ display: "inline-block", minWidth: "3.5ch", textAlign: "right" }}>{count}</span>
       </div>
       <div className="font-mono" style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", textAlign: "center", marginTop: 4 }}>
         verified impressions this week
