@@ -433,25 +433,26 @@ function Frame1({ showReply }: { showReply: boolean }) {
       }}>
         Hi, I want to advertise my pharmacy on mydiio
       </div>
-      {!showReply ? (
+      <div style={{ position: "relative", marginTop: 8, minHeight: 44 }}>
         <div style={{
-          marginTop: 8, marginRight: "auto", marginLeft: 0, padding: "10px 14px",
+          position: "absolute", inset: 0, marginRight: "auto", padding: "10px 14px",
           background: "rgba(255,255,255,0.15)", borderRadius: "14px 14px 14px 4px",
           width: 50, color: "#fff",
+          opacity: showReply ? 0 : 1, transition: "opacity 0.3s ease",
         }}>
           <span className="typing-dot" />
           <span className="typing-dot" style={{ animationDelay: "0.2s" }} />
           <span className="typing-dot" style={{ animationDelay: "0.4s" }} />
         </div>
-      ) : (
-        <div className="diagram-fade" style={{
-          marginTop: 8, marginRight: "auto", marginLeft: 0, maxWidth: 280,
+        <div style={{
+          marginRight: "auto", marginLeft: 0, maxWidth: 280,
           background: "rgba(255,255,255,0.15)", color: "#fff", padding: "10px 14px",
           borderRadius: "14px 14px 14px 4px", fontFamily: "Nunito", fontWeight: 700, fontSize: 14,
+          opacity: showReply ? 1 : 0, transition: "opacity 0.4s ease",
         }}>
           Perfect! Send us your logo and we'll have your ad ready within 48 hours. 🛺
         </div>
-      )}
+      </div>
     </div>
   );
 }
