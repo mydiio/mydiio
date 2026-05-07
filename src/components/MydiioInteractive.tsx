@@ -112,19 +112,23 @@ export function RideTimer() {
         />
       </div>
       <div style={{ position: "relative", height: 28, marginTop: 18 }}>
-        <div
-          key={activeLabel.text}
-          className="ride-label-fade font-mono"
-          style={{
-            position: "absolute",
-            inset: 0,
-            textAlign: "center",
-            fontSize: 13,
-            color: "#fff",
-          }}
-        >
-          {activeLabel.text}
-        </div>
+        {labels.map((l) => (
+          <div
+            key={l.text}
+            className="font-mono"
+            style={{
+              position: "absolute",
+              inset: 0,
+              textAlign: "center",
+              fontSize: 13,
+              color: "#fff",
+              opacity: l === activeLabel ? 1 : 0,
+              transition: "opacity 0.4s ease",
+            }}
+          >
+            {l.text}
+          </div>
+        ))}
       </div>
       {done && (
         <button
