@@ -169,13 +169,14 @@ function Hero() {
   }, []);
 
   // particles
-  const particles = Array.from({ length: 12 }).map((_, i) => {
-    const size = 4 + Math.random() * 6;
+  const particles = Array.from({ length: 10 }).map((_, i) => {
+    const size = 4 + Math.random() * 5;
     const left = Math.random() * 100;
     const top = Math.random() * 100;
-    const dur = 4 + Math.random() * 4;
-    const delay = Math.random() * 4;
-    return { i, size, left, top, dur, delay };
+    const dur = 4 + Math.random() * 5;
+    const delay = Math.random() * 5;
+    const opacity = 0.25 + Math.random() * 0.1;
+    return { i, size, left, top, dur, delay, opacity };
   });
 
   return (
@@ -191,7 +192,7 @@ function Hero() {
         }}
       />
       {/* particles */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
         {particles.map((p) => (
           <span
             key={p.i}
@@ -201,6 +202,7 @@ function Hero() {
               top: `${p.top}%`,
               width: p.size,
               height: p.size,
+              opacity: p.opacity,
               ['--duration' as any]: `${p.dur}s`,
               ['--delay' as any]: `${p.delay}s`,
             } as React.CSSProperties}
