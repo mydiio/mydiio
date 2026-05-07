@@ -672,9 +672,11 @@ export default function MydiioLanding() {
           {SECTIONS.map((s, i) => (
             <section
               key={s.id}
-              ref={(el) => (refs.current[i] = el)}
+              ref={(el) => {
+                refs.current[i] = el;
+                if (s.id === 8) (formRef as React.MutableRefObject<HTMLElement | null>).current = el;
+              }}
               data-idx={i}
-              ref-section={s.id}
               style={{
                 minHeight: "100vh",
                 display: "flex",
@@ -684,7 +686,6 @@ export default function MydiioLanding() {
                 background: s.panelBg,
                 transition: "background-color 0.6s ease",
               }}
-              {...(s.id === 8 ? { ref: (el: HTMLElement | null) => { refs.current[i] = el; (formRef as any).current = el; } } : {})}
             >
               <div style={{ maxWidth: 480, width: "100%" }}>
                 <SectionContent id={s.id} setFormMode={setFormMode} formMode={formMode} />
