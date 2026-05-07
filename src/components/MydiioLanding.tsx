@@ -538,8 +538,8 @@ function CustomCursor() {
     document.addEventListener("mousemove", onMove);
     let raf = 0;
     const tick = () => {
-      cx += (mx - cx) * 0.18;
-      cy += (my - cy) * 0.18;
+      cx += (mx - cx) * 0.12;
+      cy += (my - cy) * 0.12;
       dot.style.transform = `translate(${cx}px, ${cy}px)`;
       raf = requestAnimationFrame(tick);
     };
@@ -547,7 +547,7 @@ function CustomCursor() {
 
     const onOver = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
-      if (t.closest("a, button")) dot.classList.add("big");
+      if (t.closest('a, button, [role="button"], input, textarea, select, label')) dot.classList.add("big");
       else dot.classList.remove("big");
     };
     document.addEventListener("mouseover", onOver);
@@ -734,30 +734,31 @@ export default function MydiioLanding() {
         /* Scroll progress */
         .scroll-progress {
           position: fixed; top: 0; left: 0; height: 3px;
-          background: ${C.amber}; z-index: 9999; width: 0%;
+          background: ${C.amber}; z-index: 99999; width: 0%;
           transition: width 0.05s linear;
-          box-shadow: 0 0 8px rgba(245,166,35,0.5);
+          box-shadow: 0 0 6px rgba(245,166,35,0.4);
         }
 
         /* Custom cursor */
         .custom-cursor {
-          width: 16px; height: 16px;
+          width: 14px; height: 14px;
           background: ${C.amber};
-          border: 2px solid ${C.ink};
+          border: 2.5px solid ${C.ink};
           border-radius: 50%;
-          position: fixed; top: -8px; left: -8px;
-          pointer-events: none; z-index: 9999;
+          position: fixed; top: -7px; left: -7px;
+          pointer-events: none; z-index: 99999;
           box-shadow: 2px 2px 0 ${C.ink};
-          transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+          transition: width 0.2s ease, height 0.2s ease, top 0.2s ease, left 0.2s ease;
           will-change: transform;
         }
-        .custom-cursor.big { width: 32px; height: 32px; top: -16px; left: -16px; }
+        .custom-cursor.big { width: 28px; height: 28px; top: -14px; left: -14px; }
         @media (hover: hover) and (pointer: fine) {
           body { cursor: none; }
-          a, button { cursor: none; }
+          a, button, [role="button"], input, textarea, select, label { cursor: none; }
         }
         @media (hover: none) {
           .custom-cursor { display: none; }
+          body { cursor: auto; }
         }
 
         @media (max-width: 767px) {
