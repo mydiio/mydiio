@@ -155,7 +155,10 @@
     0%, 100% { transform: translateY(0) rotate(-0.4deg); }
     50%      { transform: translateY(-3px) rotate(0.4deg); }
   }
-  .tuk-bob { animation: tuk-bob 0.55s ease-in-out infinite; will-change: transform; }
+  .tuk-bob { animation: tuk-bob 0.8s ease-in-out infinite; will-change: transform; }
+
+  @keyframes wheel-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .wheel-spin { animation: wheel-spin 1.2s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
 
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
