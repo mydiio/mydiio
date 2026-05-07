@@ -17,35 +17,54 @@ const C = {
 /* ---------- Count up ---------- */
 function CountUp({ target, suffix = "", prefix = "", decimals = 0, format = false }: { target: number; suffix?: string; prefix?: string; decimals?: number; format?: boolean }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const done = useRef(false);
+  const hasAnimated = useRef(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting && !done.current) {
-          done.current = true;
-          const start = performance.now();
-          const duration = 1800;
-          const tick = (t: number) => {
-            const p = Math.min((t - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            const cur = eased * target;
-            const value = decimals > 0 ? cur.toFixed(decimals) : Math.floor(cur).toString();
-            const display = format && decimals === 0 ? Math.floor(cur).toLocaleString() : value;
-            el.textContent = `${prefix}${display}${suffix}`;
-            if (p < 1) requestAnimationFrame(tick);
-            else {
-              const finalVal = decimals > 0 ? target.toFixed(decimals) : (format ? target.toLocaleString() : target.toString());
-              el.textContent = `${prefix}${finalVal}${suffix}`;
-            }
-          };
-          requestAnimationFrame(tick);
-          io.disconnect();
-        }
-      });
-    }, { threshold: 0.5 });
+
+    const formatValue = (cur: number) => {
+      if (decimals > 0) return cur.toFixed(decimals);
+      if (format) return Math.floor(cur).toLocaleString();
+      return Math.floor(cur).toString();
+    };
+
+    const run = () => {
+      if (hasAnimated.current) return;
+      hasAnimated.current = true;
+      const start = performance.now();
+      const duration = 1800;
+      const tick = (t: number) => {
+        const p = Math.min((t - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const cur = eased * target;
+        el.textContent = `${prefix}${formatValue(cur)}${suffix}`;
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = `${prefix}${formatValue(target)}${suffix}`;
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+            run();
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
     io.observe(el);
+
+    // Fallback: if already in viewport on mount, trigger immediately
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < vh && rect.bottom > 0) {
+      run();
+      io.disconnect();
+    }
+
     return () => io.disconnect();
   }, [target, suffix, prefix, decimals, format]);
   const initial = `${prefix}${decimals > 0 ? (0).toFixed(decimals) : "0"}${suffix}`;
@@ -200,12 +219,14 @@ function Hero() {
           }}
         >
           {words.map((w, i) => (
-            <span
-              key={i}
-              className="hero-word"
-              style={{ animationDelay: `${300 + i * 80}ms`, marginRight: "0.28em", display: "inline-block" }}
-            >
-              {w}
+            <span key={i} style={{ display: "inline-block", whiteSpace: "pre" }}>
+              <span
+                className="hero-word"
+                style={{ animationDelay: `${300 + i * 80}ms`, display: "inline-block" }}
+              >
+                {w}
+              </span>
+              {i < words.length - 1 ? " " : ""}
             </span>
           ))}
         </h1>
