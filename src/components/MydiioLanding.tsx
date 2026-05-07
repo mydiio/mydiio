@@ -782,6 +782,7 @@ export default function MydiioLanding() {
         @media (max-width: 374px) {
           .hero-sub { display: none; }
         }
+        ${InteractiveCSS}
       `}</style>
 
       <ScrollProgress />
