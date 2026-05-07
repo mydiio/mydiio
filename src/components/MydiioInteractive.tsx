@@ -376,7 +376,7 @@ export function HowItWorksFrames() {
   const advance = () => setFrame((f) => (f + 1) % 3);
 
   return (
-    <div ref={ref} className="reveal" style={{ marginTop: 18 }}>
+    <div ref={ref} className="reveal" style={{ marginTop: 18, minHeight: 340 }}>
       <div
         onClick={advance}
         style={{
@@ -384,7 +384,7 @@ export function HowItWorksFrames() {
           border: "1px solid rgba(255,255,255,0.25)",
           borderRadius: 16,
           padding: 18,
-          minHeight: 280,
+          minHeight: 300,
           cursor: "pointer",
         }}
       >
