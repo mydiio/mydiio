@@ -146,7 +146,16 @@
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
-  .street-track { animation: street-loop 28s linear infinite; will-change: transform; }
+  .street-track       { animation: street-loop 28s linear infinite; will-change: transform; }
+  .street-track-slow  { animation: street-loop 90s linear infinite; will-change: transform; }
+  .street-track-mid   { animation: street-loop 38s linear infinite; will-change: transform; }
+  .street-track-fast  { animation: street-loop 14s linear infinite; will-change: transform; }
+
+  @keyframes tuk-bob {
+    0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+    50%      { transform: translateY(-3px) rotate(0.4deg); }
+  }
+  .tuk-bob { animation: tuk-bob 0.55s ease-in-out infinite; will-change: transform; }
 
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
