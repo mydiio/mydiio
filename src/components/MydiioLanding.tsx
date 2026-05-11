@@ -587,6 +587,28 @@ export default function MydiioLanding() {
       <Founder />
       <Transparency />
 
+      {/* Fleet CTA */}
+      <section className="relative w-full overflow-hidden" style={{ minHeight: 460 }}>
+        <img src={FLEET_SUNSET} alt="A line of mydiio tuk-tuks parked at sunset in Colombo" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55), rgba(26,26,24,0.85))" }} />
+        <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "100px 24px", textAlign: "center" }}>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>
+            A growing Colombo fleet
+          </span>
+          <h2 className="font-display" style={{ fontSize: "clamp(30px, 5vw, 52px)", color: "#fff", lineHeight: 1.05, marginTop: 14, letterSpacing: "-1px" }}>
+            One screen. Every street. <br/>One city, on the move.
+          </h2>
+          <div className="hero-cta-row" style={{ marginTop: 30, justifyContent: "center" }}>
+            <Link to="/advertise" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
+              Advertise on mydiio →
+            </Link>
+            <Link to="/drive" className="btn-bold font-display" style={{ background: C.green, color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
+              Drive & earn →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer style={{ background: C.ink, padding: "48px 24px", textAlign: "center" }}>
         <div className="font-display" style={{ fontSize: 24 }}>
