@@ -60,12 +60,17 @@ export function SiteShell({
         .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
         .btn-bold { min-height: var(--site-btn-height); min-width: var(--site-btn-min); display: inline-flex !important; align-items: center; justify-content: center; text-align: center; white-space: nowrap; line-height: 1.1; box-sizing: border-box; }
         .stable-card { min-height: var(--site-card-min); display: flex; flex-direction: column; }
+        :where(.hover-lift, .path-card, .step-card, .price-card) { min-height: var(--site-card-min); }
+        :where(.price-card, .step-card) { height: 100%; }
         .stable-title { min-height: 2.6em; display: flex; align-items: flex-start; }
         .stable-copy { min-height: 4.8em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
         .stable-kicker { min-height: 1.4em; display: inline-flex; align-items: center; }
         .stable-hero-title { min-height: clamp(118px, 14.4vw, 248px); display: flex; align-items: flex-start; }
         .stable-hero-copy { min-height: 4.8em; }
         .stable-metrics > * { min-height: 68px; }
+        .hero-trust > *, .stable-metrics > * { display: flex; flex-direction: column; justify-content: flex-start; }
+        section[style*="100vh"] { min-height: max(680px, 100svh) !important; }
+        section[style*="100vh"] > .relative { min-height: max(680px, 100svh) !important; }
         .hover-lift { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1); }
         .hover-lift:hover { transform: translateY(-3px); box-shadow: 0 28px 50px -28px rgba(26,26,24,0.4) !important; }
         @media (max-width: 640px) {
