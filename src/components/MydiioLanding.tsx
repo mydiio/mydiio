@@ -446,7 +446,7 @@ function Founder() {
             fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
             fontSize: 15, color: C.ink, lineHeight: 1.6, marginTop: 16, maxWidth: 560,
           }}>
-            [Founder name] started mydiio in 2026 after noticing that every tuk-tuk passenger in Colombo spends 14 minutes looking at nothing. mydiio turns that empty space into advertising that works — and passive income for drivers. We are a registered Sri Lankan business building transparent technology for Colombo's streets.
+            mydiio was created after noticing every tuk-tuk ride contains one rare asset: uninterrupted passenger attention. We turn that attention into measurable advertising revenue for brands and extra income for drivers. Built locally. Designed to scale nationally.
           </p>
           <div className="founder-trust">
             <TrustItem icon={
