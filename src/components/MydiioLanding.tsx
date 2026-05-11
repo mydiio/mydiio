@@ -1,22 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
-import { LanguageSwitcher, useI18n } from "@/lib/i18n";
-
-const C = {
-  amber: "#F5A623",
-  amberDeep: "#E8920A",
-  amberPale: "#FEF3D7",
-  green: "#4CAF72",
-  greenPale: "#EAF2EC",
-  ink: "#1A1A18",
-  inkSoft: "#7A7A72",
-  cream: "#FDFAF3",
-  white: "#FFFFFF",
-};
+import { useI18n } from "@/lib/i18n";
+import { SiteShell } from "@/components/site/SiteShell";
+import { C } from "@/components/site/theme";
 
 function Logo() {
   return (
