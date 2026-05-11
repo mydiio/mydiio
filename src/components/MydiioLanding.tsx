@@ -316,28 +316,31 @@ function TwoPaths() {
           </Link>
         </div>
 
-        <div className="reveal path-card" style={{ background: C.greenPale }}>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: "#2D8A4E", textTransform: "uppercase" }}>
-            For Tuk-Tuk Drivers
-          </span>
-          <h3 className="font-display" style={{ fontSize: 28, color: C.ink, marginTop: 12, lineHeight: 1.1 }}>
-            Earn with mydiio
-          </h3>
-          <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.5 }}>
-            Earn LKR 6,000–8,000/month. Free installation. Drive as you always have.
-          </p>
-          <Link
-            to="/drive"
-            className="btn-bold font-display"
-            style={{
-              display: "inline-block", marginTop: 22,
-              background: C.green, color: "#fff",
-              padding: "13px 20px", borderRadius: 11, fontSize: 15,
-              textDecoration: "none",
-            }}
-          >
-            Start earning →
-          </Link>
+        <div className="reveal path-card" style={{ background: C.greenPale, padding: 0, overflow: "hidden" }}>
+          <img src={DRIVER_PAYMENT} alt="Smiling Colombo tuk-tuk driver holding payment confirmation" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: `3px solid ${C.ink}` }} />
+          <div style={{ padding: "28px 28px 32px" }}>
+            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: "#2D8A4E", textTransform: "uppercase" }}>
+              For Tuk-Tuk Drivers
+            </span>
+            <h3 className="font-display" style={{ fontSize: 28, color: C.ink, marginTop: 12, lineHeight: 1.1 }}>
+              Earn with mydiio
+            </h3>
+            <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.5 }}>
+              Earn LKR 6,000–8,000/month. Free installation. Drive as you always have.
+            </p>
+            <Link
+              to="/drive"
+              className="btn-bold font-display"
+              style={{
+                display: "inline-block", marginTop: 22,
+                background: C.green, color: "#fff",
+                padding: "13px 20px", borderRadius: 11, fontSize: 15,
+                textDecoration: "none",
+              }}
+            >
+              Start earning →
+            </Link>
+          </div>
         </div>
       </div>
     </Section>
