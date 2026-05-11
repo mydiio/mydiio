@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
+import COLOMBO_STREET from "@/assets/colombo-street.jpg";
+import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
+import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
+import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 
 const C = {
   amber: "#F5A623",
