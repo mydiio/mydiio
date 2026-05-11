@@ -78,14 +78,9 @@ function Hero() {
   }, []);
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
-      <video
-        src="/hero-tuktuk.mp4"
-        poster={HERO_PHOTO}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
+      <img
+        src={COLOMBO_STREET}
+        alt="Tuk-tuks filling the streets of Colombo"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div
