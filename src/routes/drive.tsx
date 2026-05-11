@@ -237,6 +237,79 @@ function EarningsCalculator() {
   );
 }
 
+/* ---------- Driver Earnings ---------- */
+function DriverEarnings() {
+  const badges = ["Fast Payments", "Verified Drivers", "Monthly Bonuses"];
+  return (
+    <Section bg={C.cream}>
+      <div className="earnings-grid">
+        <div className="reveal earnings-photo-wrap">
+          <img
+            src={DRIVER_PAYMENT}
+            alt="mydiio driver smiling with a payment confirmation on his phone"
+            style={{
+              width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 20%",
+              borderRadius: 18, border: `3px solid ${C.ink}`, boxShadow: `8px 8px 0 ${C.ink}`,
+              display: "block",
+            }}
+          />
+        </div>
+        <div className="reveal">
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
+            Driver earnings
+          </span>
+          <h2 className="font-display" style={{ fontSize: "clamp(28px, 3.6vw, 42px)", color: C.ink, lineHeight: 1.1, marginTop: 12 }}>
+            Drivers earn more every month.
+          </h2>
+          <p style={{
+            fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
+            fontSize: 16, color: C.ink, lineHeight: 1.6, marginTop: 14, maxWidth: 520,
+          }}>
+            Join our network and get paid through ad revenue.
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 22 }}>
+            {badges.map((b) => (
+              <div key={b} style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: "#fff", border: `2px solid ${C.ink}`, borderRadius: 999,
+                padding: "8px 14px", boxShadow: `3px 3px 0 ${C.ink}`,
+              }}>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke={C.green} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="4 12 10 18 20 6" />
+                </svg>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.5, color: C.ink, textTransform: "uppercase" }}>
+                  {b}
+                </span>
+              </div>
+            ))}
+          </div>
+          <a
+            href={WA_DRIVER}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-bold font-display"
+            style={{
+              display: "inline-block", marginTop: 28,
+              background: C.green, color: "#fff",
+              padding: "15px 22px", borderRadius: 13, fontSize: 16,
+              textDecoration: "none",
+            }}
+          >
+            Join as Driver →
+          </a>
+        </div>
+      </div>
+      <style>{`
+        .earnings-grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+        @media (min-width: 760px) {
+          .earnings-grid { grid-template-columns: 45% 55%; gap: 56px; }
+        }
+        .earnings-photo-wrap { min-height: 280px; }
+      `}</style>
+    </Section>
+  );
+}
+
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
