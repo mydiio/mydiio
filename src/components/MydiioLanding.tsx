@@ -582,6 +582,7 @@ export default function MydiioLanding() {
 
       <Nav />
       <Hero />
+      <StatStrip />
       <HowItWorks />
       <TwoPaths />
       <Founder />
