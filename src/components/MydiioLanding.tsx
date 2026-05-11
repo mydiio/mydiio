@@ -100,7 +100,7 @@ function Hero() {
               letterSpacing: "-1px",
             }}
           >
-            Your ad, inside every tuk-tuk ride.
+            Colombo's most unavoidable ad space.
           </h1>
           <p
             style={{
@@ -112,7 +112,7 @@ function Hero() {
               maxWidth: 600,
             }}
           >
-            Screens inside Colombo's tuk-tuks. 14 minutes per ride. No skip button.
+            Digital screens inside tuk-tuks. 14 minutes of captive attention per ride.
           </p>
 
           <div className="hero-cta-row" style={{ marginTop: 30 }}>
