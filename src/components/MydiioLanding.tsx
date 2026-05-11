@@ -604,6 +604,93 @@ function Transparency() {
   );
 }
 
+/* ---------- FAQ ---------- */
+function FAQ() {
+  const items = [
+    {
+      q: "How many tuk-tuks are live?",
+      a: "We're launching with 50+ tuk-tuks across Colombo and adding new vehicles every week as drivers join the network.",
+    },
+    {
+      q: "How do advertisers measure results?",
+      a: "Every campaign comes with a live dashboard showing impressions, active vehicles, zone coverage and uptime — updated in real time and verified by GPS.",
+    },
+    {
+      q: "How quickly can campaigns launch?",
+      a: "Most campaigns go live within 72 hours of creative approval. No printing, no installation delays — it's all digital.",
+    },
+    {
+      q: "What cities are next?",
+      a: "Colombo first. Kandy, Galle and Negombo are on the roadmap once our Colombo network is fully saturated.",
+    },
+    {
+      q: "How do drivers get paid?",
+      a: "Drivers earn monthly through a share of campaign revenue, paid directly to their preferred mobile wallet or bank account.",
+    },
+  ];
+  return (
+    <Section bg={C.cream}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 48 }}>
+        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
+          Questions
+        </span>
+        <h2 className="font-display" style={{ fontSize: "clamp(32px, 5vw, 52px)", color: C.ink, lineHeight: 1.05, marginTop: 14, letterSpacing: "-1px" }}>
+          Frequently asked.
+        </h2>
+      </div>
+      <div style={{ maxWidth: 780, margin: "0 auto", display: "flex", flexDirection: "column", gap: 14 }}>
+        {items.map((it, i) => (
+          <details
+            key={i}
+            className="reveal faq-item"
+            style={{
+              background: "#fff",
+              border: `3px solid ${C.ink}`,
+              borderRadius: 16,
+              padding: "20px 24px",
+              boxShadow: "0 14px 40px -22px rgba(26,26,24,0.25)",
+            }}
+          >
+            <summary
+              className="font-display"
+              style={{
+                fontSize: "clamp(17px, 2vw, 20px)",
+                color: C.ink,
+                cursor: "pointer",
+                listStyle: "none",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: 16,
+                letterSpacing: "-0.2px",
+              }}
+            >
+              <span>{it.q}</span>
+              <span className="faq-plus" style={{ color: C.amber, fontSize: 24, lineHeight: 1, transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)" }}>+</span>
+            </summary>
+            <p
+              style={{
+                fontFamily: "'DM Sans', Nunito, sans-serif",
+                fontWeight: 500,
+                fontSize: 15,
+                color: C.inkSoft,
+                lineHeight: 1.6,
+                marginTop: 14,
+              }}
+            >
+              {it.a}
+            </p>
+          </details>
+        ))}
+      </div>
+      <style>{`
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item[open] .faq-plus { transform: rotate(45deg); }
+      `}</style>
+    </Section>
+  );
+}
+
 /* ---------- Why this scales ---------- */
 function WhyThisScales() {
   const cards = [
