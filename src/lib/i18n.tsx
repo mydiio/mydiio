@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 export type Lang = "en" | "si" | "ta";
 export const LANGS: { code: Lang; label: string; native: string; htmlLang: string }[] = [
@@ -11,15 +11,15 @@ type Dict = Record<string, { en: string; si: string; ta: string }>;
 
 export const dict: Dict = {
   // --- Nav ---
-  nav_home: { en: "Home", si: "මුල් පිටුව", ta: "முகப்பு" },
-  nav_advertisers: { en: "Advertisers", si: "ප්‍රචාරකයින්", ta: "விளம்பரதாரர்கள்" },
-  nav_drivers: { en: "Drivers", si: "රියදුරන්", ta: "ஓட்டுநர்கள்" },
-  nav_investors: { en: "Investors", si: "ආයෝජකයින්", ta: "முதலீட்டாளர்கள்" },
-  nav_about: { en: "About", si: "අප ගැන", ta: "எங்களை பற்றி" },
-  nav_contact: { en: "Contact", si: "සම්බන්ධ වන්න", ta: "தொடர்பு" },
-  cta_launch: { en: "Launch Campaign", si: "ව්‍යාපාරයක් අරඹන්න", ta: "பிரச்சாரத்தை தொடங்கு" },
-  cta_launch_pilot: { en: "Launch Pilot Campaign →", si: "පරීක්ෂණ ව්‍යාපාරය අරඹන්න →", ta: "முன்னோடி பிரச்சாரத்தை தொடங்கு →" },
-  cta_talk_founder: { en: "Talk To Founder", si: "ආරම්භකයා සමඟ කතා කරන්න", ta: "நிறுவனருடன் பேசுங்கள்" },
+  nav_home: { en: "Home", si: "මුල්", ta: "முகப்பு" },
+  nav_advertisers: { en: "Advertisers", si: "දැන්වීම්", ta: "விளம்பரம்" },
+  nav_drivers: { en: "Drivers", si: "රියදුරු", ta: "ஓட்டுநர்" },
+  nav_investors: { en: "Investors", si: "ආයෝජන", ta: "முதலீடு" },
+  nav_about: { en: "About", si: "අපි", ta: "எங்களை" },
+  nav_contact: { en: "Contact", si: "අමතන්න", ta: "தொடர்பு" },
+  cta_launch: { en: "Launch Campaign", si: "දැන්වීම අරඹන්න", ta: "விளம்பரம் தொடங்கு" },
+  cta_launch_pilot: { en: "Launch Pilot Campaign →", si: "පයිලට් දැන්වීම අරඹන්න →", ta: "பைலட் விளம்பரம் தொடங்கு →" },
+  cta_talk_founder: { en: "Talk To Founder", si: "Founder සමඟ කතා කරන්න", ta: "Founder உடன் பேசுங்கள்" },
 
   // --- Hero ---
   hero_kicker: { en: "Sri Lanka · Mobility media", si: "ශ්‍රී ලංකාව · ජංගම මාධ්‍ය", ta: "இலங்கை · இயக்க ஊடகம்" },
