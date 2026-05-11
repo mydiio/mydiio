@@ -83,11 +83,22 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html, body { background-color: var(--color-cream); color: var(--color-ink); font-family: 'DM Sans', var(--font-body); font-weight: 600; }
-  html[data-lang="si"], html[data-lang="si"] body { font-family: 'Noto Sans Sinhala', 'DM Sans', var(--font-body); }
-  html[data-lang="ta"], html[data-lang="ta"] body { font-family: 'Noto Sans Tamil', 'DM Sans', var(--font-body); }
-  html[data-lang="si"] .font-display, html[data-lang="si"] h1, html[data-lang="si"] h2, html[data-lang="si"] h3 { font-family: 'Noto Sans Sinhala', var(--font-display); font-weight: 800; }
-  html[data-lang="ta"] .font-display, html[data-lang="ta"] h1, html[data-lang="ta"] h2, html[data-lang="ta"] h3 { font-family: 'Noto Sans Tamil', var(--font-display); font-weight: 800; }
+  html, body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: 'DM Sans', 'Noto Sans Sinhala', 'Noto Sans Tamil', var(--font-body), sans-serif;
+    font-weight: 600;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    font-synthesis-weight: none;
+  }
+  html[data-lang="si"], html[data-lang="si"] body,
+  html[data-lang="ta"], html[data-lang="ta"] body {
+    font-family: 'DM Sans', 'Noto Sans Sinhala', 'Noto Sans Tamil', var(--font-body), sans-serif;
+  }
+  html[data-lang="si"] .font-display, html[data-lang="si"] h1, html[data-lang="si"] h2, html[data-lang="si"] h3 { font-family: 'Noto Sans Sinhala', 'DM Sans', var(--font-display), sans-serif; font-weight: 800; }
+  html[data-lang="ta"] .font-display, html[data-lang="ta"] h1, html[data-lang="ta"] h2, html[data-lang="ta"] h3 { font-family: 'Noto Sans Tamil', 'DM Sans', var(--font-display), sans-serif; font-weight: 800; }
+  html[data-lang="si"] body, html[data-lang="ta"] body { line-height: 1.58; }
 }
 
 @layer utilities {
