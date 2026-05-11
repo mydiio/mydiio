@@ -195,8 +195,8 @@ function Section({
     return () => io.disconnect();
   }, []);
   return (
-    <section ref={ref} style={{ background: bg, padding: padded ? "96px 24px" : 0 }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>{children}</div>
+    <section ref={ref} style={{ background: bg, padding: padded ? "clamp(64px, 9vw, 128px) clamp(20px, 4vw, 32px)" : 0 }}>
+      <div style={{ maxWidth: 1120, margin: "0 auto" }}>{children}</div>
     </section>
   );
 }
