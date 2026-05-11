@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
+import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 
 export const Route = createFileRoute("/drive")({
   component: DrivePage,
