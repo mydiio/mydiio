@@ -739,10 +739,10 @@ export default function MydiioLanding() {
       <WhyThisScales />
 
       {/* Fleet CTA */}
-      <section className="relative w-full overflow-hidden" style={{ minHeight: 460 }}>
+      <section className="relative w-full overflow-hidden" style={{ minHeight: 480 }}>
         <img src={FLEET_SUNSET} alt="A line of mydiio tuk-tuks parked at sunset in Colombo" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55), rgba(26,26,24,0.85))" }} />
-        <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "100px 24px", textAlign: "center" }}>
+        <div className="absolute inset-0" style={{ background: "radial-gradient(110% 80% at 50% 30%, rgba(26,26,24,0.45) 0%, rgba(26,26,24,0.78) 60%, rgba(26,26,24,0.95) 100%)" }} />
+        <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(80px, 12vw, 130px) clamp(20px, 4vw, 32px)", textAlign: "center" }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>
             A growing Colombo fleet
           </span>
