@@ -87,10 +87,10 @@ function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.85) 100%)",
+            "radial-gradient(120% 80% at 70% 20%, rgba(26,26,24,0.35) 0%, rgba(26,26,24,0.65) 55%, rgba(26,26,24,0.92) 100%)",
         }}
       />
-      <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "120px 6% 80px" }}>
+      <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
         <div style={{ maxWidth: 760 }}>
           <h1
             className="font-display text-white"
