@@ -1,148 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
-import { LanguageSwitcher, useI18n } from "@/lib/i18n";
+import { useI18n } from "@/lib/i18n";
+import { SiteShell } from "@/components/site/SiteShell";
+import { C } from "@/components/site/theme";
 
-const C = {
-  amber: "#F5A623",
-  amberDeep: "#E8920A",
-  amberPale: "#FEF3D7",
-  green: "#4CAF72",
-  greenPale: "#EAF2EC",
-  ink: "#1A1A18",
-  inkSoft: "#7A7A72",
-  cream: "#FDFAF3",
-  white: "#FFFFFF",
-};
-
-function Logo() {
-  return (
-    <Link
-      to="/"
-      className="font-display text-[20px] inline-flex items-center px-4 py-1 rounded-full bg-white"
-      style={{ border: `3px solid ${C.ink}`, color: C.ink, boxShadow: "2px 2px 0 rgba(26,26,14,0.9)", fontFamily: "'Fredoka One', system-ui, sans-serif" }}
-    >
-      <span style={{ color: C.ink }}>my</span>
-      <span style={{ color: C.amber }}>di</span>
-      <span style={{ color: C.ink }}>io</span>
-    </Link>
-  );
-}
-
-function Nav() {
-  const { t } = useI18n();
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const navLinks = [
-    { to: "/", key: "nav_home" as const },
-    { to: "/advertise", key: "nav_advertisers" as const },
-    { to: "/drive", key: "nav_drivers" as const },
-    { to: "/investors", key: "nav_investors" as const },
-    { to: "/about", key: "nav_about" as const },
-    { to: "/contact", key: "nav_contact" as const },
-  ];
-
-  return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50"
-      style={{
-        padding: "12px 22px",
-        background: scrolled ? "rgba(253,250,243,0.92)" : "rgba(253,250,243,0)",
-        backdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(26,26,24,0.08)" : "1px solid transparent",
-        transition: "background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease",
-      }}
-    >
-      <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
-        <Logo />
-        <div className="nav-links" style={{ display: "none", gap: 22 }}>
-          {navLinks.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              activeOptions={{ exact: l.to === "/" }}
-              activeProps={{ style: { color: C.ink } }}
-              style={{ fontSize: 14, fontWeight: 700, color: C.inkSoft, textDecoration: "none", transition: "color 0.2s ease" }}
-            >
-              {t(l.key)}
-            </Link>
-          ))}
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div className="nav-lang"><LanguageSwitcher /></div>
-          <Link
-            to="/advertise"
-            className="btn-bold font-display nav-cta"
-            style={{ background: C.amber, color: C.ink, padding: "10px 16px", borderRadius: 11, fontSize: 13.5, textDecoration: "none" }}
-          >
-            {t("cta_launch")}
-          </Link>
-          <button
-            onClick={() => setOpen((v) => !v)}
-            aria-label="Toggle menu"
-            className="nav-burger"
-            style={{
-              display: "inline-flex", alignItems: "center", justifyContent: "center",
-              width: 40, height: 40, borderRadius: 11, background: "#fff",
-              border: `2px solid ${C.ink}`, boxShadow: "2px 2px 0 rgba(26,26,14,0.9)",
-            }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.ink} strokeWidth="2.4" strokeLinecap="round">
-              {open ? (<><path d="M6 6l12 12" /><path d="M18 6L6 18" /></>) : (<><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></>)}
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {open && (
-        <div
-          className="nav-mobile-panel"
-          style={{
-            marginTop: 12, padding: 18, borderRadius: 16, background: "#fff",
-            border: `2px solid ${C.ink}`, boxShadow: "4px 4px 0 rgba(26,26,14,0.9)",
-            display: "flex", flexDirection: "column", gap: 4,
-          }}
-        >
-          {navLinks.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              onClick={() => setOpen(false)}
-              className="font-display"
-              style={{
-                fontSize: 18, color: C.ink, padding: "10px 6px",
-                textDecoration: "none", borderBottom: `1px solid rgba(26,26,24,0.06)`,
-              }}
-            >
-              {t(l.key)}
-            </Link>
-          ))}
-        </div>
-      )}
-
-      <style>{`
-        @media (min-width: 980px) {
-          .nav-links { display: flex !important; }
-          .nav-burger { display: none !important; }
-          .nav-mobile-panel { display: none !important; }
-        }
-        @media (max-width: 520px) {
-          .nav-cta { display: none !important; }
-        }
-      `}</style>
-    </nav>
-  );
-}
+// Nav + Logo + Footer live in src/components/site/* and render via SiteShell.
 
 function Hero() {
   const { t } = useI18n();
@@ -497,83 +363,10 @@ function FinalCTA() {
   );
 }
 
-function Footer() {
-  const { t } = useI18n();
-  return (
-    <footer style={{ background: C.ink, padding: "64px 24px 36px" }}>
-      <div style={{ maxWidth: 1180, margin: "0 auto" }}>
-        <div className="footer-grid">
-          <div>
-            <div className="font-display" style={{ fontSize: 26, fontFamily: "'Fredoka One', system-ui, sans-serif" }}>
-              <span style={{ color: "#fff" }}>my</span>
-              <span style={{ color: C.amber }}>di</span>
-              <span style={{ color: "#fff" }}>io</span>
-            </div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, marginTop: 8, textTransform: "uppercase" }}>
-              {t("ft_tagline")}
-            </div>
-            <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 8, fontSize: 13, color: "rgba(255,255,255,0.65)", fontWeight: 500 }}>
-              <span>· {t("ft_l1")}</span>
-              <span>· {t("ft_l2")}</span>
-              <span>· {t("ft_l3")}</span>
-            </div>
-            <div style={{ marginTop: 18 }}>
-              <span style={{
-                display: "inline-block", padding: "5px 11px", borderRadius: 999,
-                background: "rgba(245,166,35,0.12)", border: "1px solid rgba(245,166,35,0.3)",
-                fontFamily: "'DM Mono', monospace", fontSize: 9.5, letterSpacing: 1.5,
-                color: C.amber, textTransform: "uppercase",
-              }}>
-                {t("ft_avail")}
-              </span>
-            </div>
-          </div>
-
-          <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, textTransform: "uppercase" }}>{t("ft_explore")}</div>
-            <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link to="/advertise" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_advertisers")}</Link>
-              <Link to="/drive" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_drivers")}</Link>
-              <Link to="/investors" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_investors")}</Link>
-              <Link to="/about" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_about")}</Link>
-            </div>
-          </div>
-
-          <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, textTransform: "uppercase" }}>{t("ft_legal")}</div>
-            <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link to="/contact" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_contact")}</Link>
-              <a href="#" style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>Privacy</a>
-              <a href="#" style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>Terms</a>
-            </div>
-          </div>
-        </div>
-
-        <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 12, fontFamily: "'DM Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.4)", letterSpacing: 1 }}>
-          <span>© 2026 mydiio · Colombo · Sri Lanka</span>
-          <span>{t("ft_built")}</span>
-        </div>
-      </div>
-      <style>{`
-        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 36px; }
-        @media (min-width: 720px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; } }
-      `}</style>
-    </footer>
-  );
-}
-
 export default function MydiioLanding() {
   return (
-    <div className="w-full" style={{ background: C.cream }}>
+    <SiteShell accent="amber">
       <style>{`
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-        .reveal.in { opacity: 1; transform: translateY(0); }
-
-        .font-display { letter-spacing: -0.5px; }
-        h1.font-display, h2.font-display, h3.font-display { text-wrap: balance; }
-        p { text-wrap: pretty; }
-
-        .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
         .hero-trust { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; max-width: 540px; }
         @media (min-width: 720px) { .hero-trust { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
@@ -588,23 +381,8 @@ export default function MydiioLanding() {
           transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
         }
         .path-card:hover { transform: translateY(-4px); box-shadow: 8px 10px 0 ${C.ink}, 0 36px 60px -28px rgba(26,26,14,0.45); }
-
-        .hover-lift:hover { transform: translateY(-3px); box-shadow: 0 28px 50px -28px rgba(26,26,24,0.4) !important; }
-
-        @media (max-width: 640px) {
-          .hero-cta-row .btn-bold { width: 100%; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-          }
-        }
       `}</style>
 
-      <Nav />
       <Hero />
       <WhyItWorks />
       <HowItWorks />
@@ -615,7 +393,7 @@ export default function MydiioLanding() {
       <FoundingOffer />
       <FAQ />
       <FinalCTA />
-      <Footer />
-    </div>
+    </SiteShell>
   );
 }
+

@@ -1,6 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { LanguageSwitcher, useI18n } from "@/lib/i18n";
+import { useI18n } from "@/lib/i18n";
+import { SiteShell } from "@/components/site/SiteShell";
+import { C } from "@/components/site/theme";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -13,16 +15,6 @@ export const Route = createFileRoute("/contact")({
     ],
   }),
 });
-
-const C = { amber: "#F5A623", amberDeep: "#E8920A", green: "#4CAF72", ink: "#1A1A18", inkSoft: "#7A7A72", cream: "#FDFAF3" };
-
-function Logo() {
-  return (
-    <Link to="/" className="font-display text-[20px] inline-flex items-center px-4 py-1 rounded-full bg-white" style={{ border: `3px solid ${C.ink}`, color: C.ink, boxShadow: "2px 2px 0 rgba(26,26,14,0.9)", fontFamily: "'Fredoka One', system-ui, sans-serif" }}>
-      <span style={{ color: C.ink }}>my</span><span style={{ color: C.amber }}>di</span><span style={{ color: C.ink }}>io</span>
-    </Link>
-  );
-}
 
 const inputStyle: React.CSSProperties = {
   width: "100%", padding: "14px 16px", borderRadius: 12,
@@ -49,20 +41,10 @@ function ContactPage() {
   }
 
   return (
-    <div style={{ background: C.cream, minHeight: "100vh" }}>
-      <nav style={{ position: "sticky", top: 0, zIndex: 50, padding: "12px 22px", background: "rgba(253,250,243,0.92)", backdropFilter: "blur(14px)", borderBottom: "1px solid rgba(26,26,24,0.08)" }}>
-        <div style={{ maxWidth: 1240, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-          <Logo />
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <LanguageSwitcher />
-            <Link to="/advertise" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "10px 16px", borderRadius: 11, fontSize: 13.5, textDecoration: "none" }}>{t("cta_launch")}</Link>
-          </div>
-        </div>
-      </nav>
-
-      <section style={{ padding: "clamp(80px, 12vw, 130px) clamp(22px, 6vw, 80px) clamp(60px, 9vw, 110px)" }}>
+    <SiteShell accent="amber">
+      <section style={{ padding: "clamp(120px, 14vw, 160px) clamp(22px, 6vw, 80px) clamp(60px, 9vw, 110px)" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div className="reveal" style={{ textAlign: "center", marginBottom: 48 }}>
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("contact_kicker")}</span>
             <h1 className="font-display" style={{ fontSize: "clamp(34px, 5.4vw, 56px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1.2px", marginTop: 14 }}>
               {t("contact_title")}
@@ -72,7 +54,7 @@ function ContactPage() {
             </p>
           </div>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center", marginBottom: 28 }}>
+          <div className="reveal" style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center", marginBottom: 28 }}>
             {([
               ["campaign", t("contact_intent_book")],
               ["investor", t("contact_intent_inv")],
@@ -96,7 +78,7 @@ function ContactPage() {
             ))}
           </div>
 
-          <form onSubmit={handleSubmit} style={{
+          <form onSubmit={handleSubmit} className="reveal" style={{
             background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 22,
             padding: "clamp(28px, 4vw, 44px)", boxShadow: "8px 8px 0 rgba(26,26,24,0.92)",
             display: "flex", flexDirection: "column", gap: 16,
@@ -117,7 +99,7 @@ function ContactPage() {
             )}
           </form>
 
-          <div style={{ marginTop: 36, textAlign: "center" }}>
+          <div className="reveal" style={{ marginTop: 36, textAlign: "center" }}>
             <a
               href="https://wa.me/94000000000"
               target="_blank"
@@ -131,10 +113,6 @@ function ContactPage() {
           </div>
         </div>
       </section>
-
-      <footer style={{ background: C.ink, padding: "36px 24px", textAlign: "center" }}>
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.5)", letterSpacing: 2 }}>© 2026 mydiio · Colombo, Sri Lanka</div>
-      </footer>
-    </div>
+    </SiteShell>
   );
 }

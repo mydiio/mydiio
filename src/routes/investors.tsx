@@ -1,10 +1,12 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { LanguageSwitcher, useI18n } from "@/lib/i18n";
+import { useI18n } from "@/lib/i18n";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
+import { SiteShell } from "@/components/site/SiteShell";
+import { C } from "@/components/site/theme";
 
 export const Route = createFileRoute("/investors")({
   component: InvestorsPage,
@@ -19,42 +21,9 @@ export const Route = createFileRoute("/investors")({
   }),
 });
 
-const C = {
-  amber: "#F5A623",
-  amberDeep: "#E8920A",
-  amberPale: "#FEF3D7",
-  green: "#4CAF72",
-  ink: "#1A1A18",
-  inkSoft: "#7A7A72",
-  cream: "#FDFAF3",
-  white: "#FFFFFF",
-};
-
 const MAILTO = "mailto:investors@mydiio.com";
 const WA = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20an%20investor%20interested%20in%20mydiio";
 
-/* ---------- Nav ---------- */
-function Nav() {
-  const { t } = useI18n();
-  return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between"
-      style={{ padding: "12px 22px", background: "rgba(253,250,243,0.92)", backdropFilter: "blur(14px)", borderBottom: "1px solid rgba(26,26,24,0.08)" }}
-    >
-      <Link to="/" className="font-display text-[20px] inline-flex items-center px-4 py-1 rounded-full bg-white" style={{ border: `3px solid ${C.ink}`, color: C.ink, boxShadow: "2px 2px 0 rgba(26,26,14,0.9)", fontFamily: "'Fredoka One', system-ui, sans-serif" }}>
-        <span style={{ color: C.ink }}>my</span>
-        <span style={{ color: C.amber }}>di</span>
-        <span style={{ color: C.ink }}>io</span>
-      </Link>
-      <div className="flex items-center gap-2.5">
-        <LanguageSwitcher />
-        <a href={MAILTO} className="btn-bold font-display text-[13px] sm:text-[14px] px-4 py-2 rounded-[11px]" style={{ background: C.amber, color: C.ink, textDecoration: "none" }}>
-          {t("inv_request_deck")} →
-        </a>
-      </div>
-    </nav>
-  );
-}
 
 /* ---------- Reusable bits ---------- */
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -388,25 +357,6 @@ function FinalCTA() {
   );
 }
 
-function Footer() {
-  return (
-    <footer style={{ background: C.ink, padding: "56px 24px", textAlign: "center" }}>
-      <div className="font-display" style={{ fontSize: 24 }}>
-        <span style={{ color: "#fff" }}>my</span>
-        <span style={{ color: C.amber }}>di</span>
-        <span style={{ color: "#fff" }}>io</span>
-      </div>
-      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.amber, letterSpacing: 2, marginTop: 10 }}>INVESTOR RELATIONS</div>
-      <div style={{ display: "flex", justifyContent: "center", gap: 18, flexWrap: "wrap", marginTop: 18 }}>
-        <a href={MAILTO} style={{ color: "#fff", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>investors@mydiio.com</a>
-        <a href={WA} style={{ color: "#fff", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>WhatsApp</a>
-        <span style={{ color: "rgba(255,255,255,0.6)", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14 }}>Based in Colombo, Sri Lanka</span>
-      </div>
-      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.3)", marginTop: 22 }}>mydiio · Colombo · Sri Lanka · 2026</div>
-    </footer>
-  );
-}
-
 function InvestorsPage() {
   useEffect(() => {
     const els = document.querySelectorAll<HTMLElement>(".reveal");
@@ -419,16 +369,12 @@ function InvestorsPage() {
   }, []);
 
   return (
-    <div style={{ background: C.cream, color: C.ink, minHeight: "100vh" }}>
+    <SiteShell accent="ink">
       <style>{`
         @media (min-width: 860px) {
           .solution-grid { grid-template-columns: 1.1fr 1fr !important; }
         }
-        @media (max-width: 640px) {
-          .hero-cta-row .btn-bold, .hero-cta-row a { width: 100%; text-align: center; }
-        }
       `}</style>
-      <Nav />
       <Hero />
       <Problem />
       <Solution />
@@ -441,7 +387,7 @@ function InvestorsPage() {
       <Team />
       <Fundraise />
       <FinalCTA />
-      <Footer />
-    </div>
+    </SiteShell>
   );
 }
+
