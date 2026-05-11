@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-
-const HERO_PHOTO = "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=1400&q=80";
+import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 
 const C = {
   amber: "#F5A623",
