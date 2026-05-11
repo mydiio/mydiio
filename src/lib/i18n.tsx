@@ -193,12 +193,19 @@ function detectInitialLang(): Lang {
   return "en";
 }
 
-const initialLang: Lang = detectInitialLang();
-
 export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(initialLang);
+  const [lang, setLangState] = useState<Lang>("en");
   const [settling, setSettling] = useState(false);
   const settleTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    const next = detectInitialLang();
+    if (next !== "en") {
+      setSettling(true);
+      setLangState(next);
+      settleTimer.current = window.setTimeout(() => setSettling(false), 120);
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof document !== "undefined") {
