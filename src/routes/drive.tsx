@@ -634,6 +634,7 @@ function DrivePage() {
       <Nav />
       <Hero />
       <EarningsCalculator />
+      <DriverEarnings />
       <HowItWorks />
       <FoundingGroup />
       <DriverPortal />
