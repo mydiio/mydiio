@@ -824,6 +824,7 @@ export default function MydiioLanding() {
       <Founder />
       <Transparency />
       <WhyThisScales />
+      <FAQ />
 
       {/* Fleet CTA */}
       <section className="relative w-full overflow-hidden" style={{ minHeight: 480 }}>
