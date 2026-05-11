@@ -248,12 +248,14 @@ export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }
     <div
       role="group"
       aria-label="Language"
+      className="language-switcher"
       style={{
         display: "inline-flex", alignItems: "center", gap: 0,
         padding: 3, borderRadius: 999,
         background: isDark ? "rgba(26,26,24,0.85)" : "#fff",
         border: `2px solid ${ink}`,
         boxShadow: "2px 2px 0 rgba(26,26,14,0.9)",
+        width: 142, height: 38, flex: "0 0 142px",
       }}
     >
       {LANGS.map((l) => {
@@ -270,11 +272,12 @@ export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }
               fontFamily: l.code === "si" ? "'Noto Sans Sinhala', 'DM Sans', sans-serif" :
                           l.code === "ta" ? "'Noto Sans Tamil', 'DM Sans', sans-serif" :
                           "'DM Sans', sans-serif",
-              fontWeight: 700, fontSize: 12.5, letterSpacing: 0.2,
+              fontWeight: 800, fontSize: 12, letterSpacing: 0,
+              lineHeight: 1, height: 28, flex: "1 1 0", display: "inline-flex", alignItems: "center", justifyContent: "center",
               background: active ? amber : "transparent",
               color: active ? ink : (isDark ? "rgba(255,255,255,0.85)" : ink),
               transition: "background 0.2s ease, color 0.2s ease",
-              minWidth: 36,
+              minWidth: 0,
             }}
           >
             {l.label}
