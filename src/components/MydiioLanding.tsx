@@ -538,6 +538,7 @@ export default function MydiioLanding() {
       <Hero />
       <HowItWorks />
       <TwoPaths />
+      <Founder />
       <Transparency />
 
       {/* Footer */}
