@@ -388,25 +388,6 @@ function FinalCTA() {
   );
 }
 
-function Footer() {
-  return (
-    <footer style={{ background: C.ink, padding: "56px 24px", textAlign: "center" }}>
-      <div className="font-display" style={{ fontSize: 24 }}>
-        <span style={{ color: "#fff" }}>my</span>
-        <span style={{ color: C.amber }}>di</span>
-        <span style={{ color: "#fff" }}>io</span>
-      </div>
-      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.amber, letterSpacing: 2, marginTop: 10 }}>INVESTOR RELATIONS</div>
-      <div style={{ display: "flex", justifyContent: "center", gap: 18, flexWrap: "wrap", marginTop: 18 }}>
-        <a href={MAILTO} style={{ color: "#fff", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>investors@mydiio.com</a>
-        <a href={WA} style={{ color: "#fff", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>WhatsApp</a>
-        <span style={{ color: "rgba(255,255,255,0.6)", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14 }}>Based in Colombo, Sri Lanka</span>
-      </div>
-      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.3)", marginTop: 22 }}>mydiio · Colombo · Sri Lanka · 2026</div>
-    </footer>
-  );
-}
-
 function InvestorsPage() {
   useEffect(() => {
     const els = document.querySelectorAll<HTMLElement>(".reveal");
@@ -419,16 +400,12 @@ function InvestorsPage() {
   }, []);
 
   return (
-    <div style={{ background: C.cream, color: C.ink, minHeight: "100vh" }}>
+    <SiteShell accent="ink">
       <style>{`
         @media (min-width: 860px) {
           .solution-grid { grid-template-columns: 1.1fr 1fr !important; }
         }
-        @media (max-width: 640px) {
-          .hero-cta-row .btn-bold, .hero-cta-row a { width: 100%; text-align: center; }
-        }
       `}</style>
-      <Nav />
       <Hero />
       <Problem />
       <Solution />
@@ -441,7 +418,7 @@ function InvestorsPage() {
       <Team />
       <Fundraise />
       <FinalCTA />
-      <Footer />
-    </div>
+    </SiteShell>
   );
 }
+
