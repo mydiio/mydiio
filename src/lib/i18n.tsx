@@ -193,12 +193,12 @@ function detectInitialLang(): Lang {
   return "en";
 }
 
-export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+const initialLang: Lang = detectInitialLang();
 
-  useEffect(() => {
-    setLangState(detectInitialLang());
-  }, []);
+export function I18nProvider({ children }: { children: React.ReactNode }) {
+  const [lang, setLangState] = useState<Lang>(initialLang);
+  const [settling, setSettling] = useState(false);
+  const settleTimer = useRef<number | null>(null);
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -208,6 +208,8 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   }, [lang]);
 
   const setLang = useCallback((l: Lang) => {
+    if (settleTimer.current !== null) window.clearTimeout(settleTimer.current);
+    setSettling(true);
     setLangState(l);
     try {
       window.localStorage.setItem("mydiio.lang", l);
@@ -215,6 +217,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       url.searchParams.set("lang", l);
       window.history.replaceState({}, "", url.toString());
     } catch {}
+    settleTimer.current = window.setTimeout(() => setSettling(false), 120);
   }, []);
 
   const t = useCallback((k: keyof typeof dict) => {
@@ -224,7 +227,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   }, [lang]);
 
   const value = useMemo(() => ({ lang, setLang, t }), [lang, setLang, t]);
-  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
+  return <I18nContext.Provider value={value}><div className="i18n-root" data-lang-settling={settling ? "true" : "false"}>{children}</div></I18nContext.Provider>;
 }
 
 export function useI18n() {
