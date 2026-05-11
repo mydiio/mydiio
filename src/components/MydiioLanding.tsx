@@ -518,6 +518,22 @@ export default function MydiioLanding() {
         }
         @media (min-width: 760px) { .paths-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
 
+        .founder-grid {
+          display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center;
+        }
+        .founder-photo-wrap { display: flex; justify-content: center; }
+        .founder-text { text-align: center; }
+        .founder-trust {
+          display: flex; flex-wrap: wrap; gap: 14px 22px;
+          margin-top: 22px; justify-content: center;
+        }
+        @media (min-width: 760px) {
+          .founder-grid { grid-template-columns: 40% 60%; gap: 48px; }
+          .founder-photo-wrap { justify-content: flex-start; }
+          .founder-text { text-align: left; }
+          .founder-trust { justify-content: flex-start; }
+        }
+
         .path-card {
           border: 3px solid ${C.ink};
           border-radius: 18px;
