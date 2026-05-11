@@ -264,6 +264,25 @@ function HowItWorks() {
           </div>
         ))}
       </div>
+
+      <div className="reveal" style={{
+        marginTop: 64, borderRadius: 18, overflow: "hidden",
+        border: `3px solid ${C.ink}`, boxShadow: `8px 8px 0 ${C.ink}`,
+        position: "relative",
+      }}>
+        <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
+        <div style={{
+          position: "absolute", left: 20, bottom: 20, right: 20,
+          background: "rgba(26,26,24,0.78)", color: "#fff",
+          padding: "14px 18px", borderRadius: 10, maxWidth: 420,
+          fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 700, fontSize: 14,
+        }}>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amber, textTransform: "uppercase", marginBottom: 6 }}>
+            Captive attention
+          </div>
+          14 minutes inside the tuk-tuk. Eye-level. No skip button.
+        </div>
+      </div>
     </Section>
   );
 }
