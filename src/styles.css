@@ -83,7 +83,11 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html, body { background-color: var(--color-cream); color: var(--color-ink); font-family: var(--font-body); font-weight: 700; }
+  html, body { background-color: var(--color-cream); color: var(--color-ink); font-family: 'DM Sans', var(--font-body); font-weight: 600; }
+  html[data-lang="si"], html[data-lang="si"] body { font-family: 'Noto Sans Sinhala', 'DM Sans', var(--font-body); }
+  html[data-lang="ta"], html[data-lang="ta"] body { font-family: 'Noto Sans Tamil', 'DM Sans', var(--font-body); }
+  html[data-lang="si"] .font-display, html[data-lang="si"] h1, html[data-lang="si"] h2, html[data-lang="si"] h3 { font-family: 'Noto Sans Sinhala', var(--font-display); font-weight: 800; }
+  html[data-lang="ta"] .font-display, html[data-lang="ta"] h1, html[data-lang="ta"] h2, html[data-lang="ta"] h3 { font-family: 'Noto Sans Tamil', var(--font-display); font-weight: 800; }
 }
 
 @layer utilities {

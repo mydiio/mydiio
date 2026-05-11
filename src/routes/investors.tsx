@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { LanguageSwitcher, useI18n } from "@/lib/i18n";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
@@ -34,19 +35,21 @@ const WA = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20an%20investor%20inter
 
 /* ---------- Nav ---------- */
 function Nav() {
+  const { t } = useI18n();
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between"
-      style={{ padding: "14px 28px", background: "rgba(253,250,243,0.85)", backdropFilter: "blur(12px)" }}
+      style={{ padding: "12px 22px", background: "rgba(253,250,243,0.92)", backdropFilter: "blur(14px)", borderBottom: "1px solid rgba(26,26,24,0.08)" }}
     >
-      <Link to="/" className="font-display text-[22px] inline-flex items-center px-4 py-1 rounded-full bg-white" style={{ border: `3px solid ${C.ink}`, color: C.ink, boxShadow: "2px 2px 0 rgba(26,26,14,0.9)" }}>
+      <Link to="/" className="font-display text-[20px] inline-flex items-center px-4 py-1 rounded-full bg-white" style={{ border: `3px solid ${C.ink}`, color: C.ink, boxShadow: "2px 2px 0 rgba(26,26,14,0.9)", fontFamily: "'Fredoka One', system-ui, sans-serif" }}>
         <span style={{ color: C.ink }}>my</span>
         <span style={{ color: C.amber }}>di</span>
         <span style={{ color: C.ink }}>io</span>
       </Link>
-      <div className="flex items-center gap-2">
-        <a href={MAILTO} className="btn-bold font-display text-[14px] sm:text-[15px] px-4 sm:px-5 py-2 rounded-[11px]" style={{ background: C.amber, color: C.ink, textDecoration: "none" }}>
-          Request deck →
+      <div className="flex items-center gap-2.5">
+        <LanguageSwitcher />
+        <a href={MAILTO} className="btn-bold font-display text-[13px] sm:text-[14px] px-4 py-2 rounded-[11px]" style={{ background: C.amber, color: C.ink, textDecoration: "none" }}>
+          {t("inv_request_deck")} →
         </a>
       </div>
     </nav>
@@ -103,6 +106,7 @@ function SectionWrap({ children, bg }: { children: React.ReactNode; bg?: string 
 
 /* ---------- Sections ---------- */
 function Hero() {
+  const { t } = useI18n();
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
       <img src={COLOMBO_STREET} alt="Colombo tuk-tuks at street level" className="absolute inset-0 w-full h-full object-cover" />
