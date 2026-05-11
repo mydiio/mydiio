@@ -20,13 +20,12 @@ const C = {
 
 /* ---------- Logo ---------- */
 function Logo({ scrolled }: { scrolled: boolean }) {
-  const textColor = scrolled ? C.ink : "#fff";
-  const borderColor = scrolled ? C.ink : "#fff";
+  void scrolled;
   return (
-    <Link to="/" className="font-display text-[22px] inline-flex items-center px-4 py-1 rounded-full bg-white" style={{ border: `3px solid ${borderColor}`, color: textColor }}>
-      <span style={{ color: textColor }}>my</span>
+    <Link to="/" className="font-display text-[22px] inline-flex items-center px-4 py-1 rounded-full bg-white" style={{ border: `3px solid ${C.ink}`, color: C.ink, boxShadow: "2px 2px 0 rgba(26,26,14,0.9)" }}>
+      <span style={{ color: C.ink }}>my</span>
       <span style={{ color: C.amber }}>di</span>
-      <span style={{ color: textColor }}>io</span>
+      <span style={{ color: C.ink }}>io</span>
     </Link>
   );
 }
