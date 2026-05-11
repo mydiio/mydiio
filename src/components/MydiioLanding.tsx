@@ -87,10 +87,10 @@ function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.85) 100%)",
+            "radial-gradient(120% 80% at 70% 20%, rgba(26,26,24,0.35) 0%, rgba(26,26,24,0.65) 55%, rgba(26,26,24,0.92) 100%)",
         }}
       />
-      <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "120px 6% 80px" }}>
+      <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
         <div style={{ maxWidth: 760 }}>
           <h1
             className="font-display text-white"
@@ -195,8 +195,8 @@ function Section({
     return () => io.disconnect();
   }, []);
   return (
-    <section ref={ref} style={{ background: bg, padding: padded ? "96px 24px" : 0 }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>{children}</div>
+    <section ref={ref} style={{ background: bg, padding: padded ? "clamp(64px, 9vw, 128px) clamp(20px, 4vw, 32px)" : 0 }}>
+      <div style={{ maxWidth: 1120, margin: "0 auto" }}>{children}</div>
     </section>
   );
 }
@@ -671,16 +671,20 @@ export default function MydiioLanding() {
   return (
     <div className="w-full" style={{ background: C.cream }}>
       <style>{`
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
         .reveal.in { opacity: 1; transform: translateY(0); }
+
+        .font-display { letter-spacing: -0.5px; }
+        h1.font-display, h2.font-display, h3.font-display { text-wrap: balance; }
+        p { text-wrap: pretty; }
 
         .hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
         .stat-pills { display: flex; flex-wrap: wrap; gap: 10px; }
 
         .how-grid {
-          display: grid; grid-template-columns: 1fr; gap: 40px;
+          display: grid; grid-template-columns: 1fr; gap: 48px;
         }
-        @media (min-width: 720px) { .how-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; } }
+        @media (min-width: 720px) { .how-grid { grid-template-columns: 1fr 1fr 1fr; gap: 40px; } }
 
         .paths-grid {
           display: grid; grid-template-columns: 1fr; gap: 22px;
@@ -688,16 +692,16 @@ export default function MydiioLanding() {
         @media (min-width: 760px) { .paths-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
 
         .founder-grid {
-          display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center;
+          display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center;
         }
         .founder-photo-wrap { display: flex; justify-content: center; }
         .founder-text { text-align: center; }
         .founder-trust {
           display: flex; flex-wrap: wrap; gap: 14px 22px;
-          margin-top: 22px; justify-content: center;
+          margin-top: 24px; justify-content: center;
         }
         @media (min-width: 760px) {
-          .founder-grid { grid-template-columns: 40% 60%; gap: 48px; }
+          .founder-grid { grid-template-columns: 40% 60%; gap: 56px; }
           .founder-photo-wrap { justify-content: flex-start; }
           .founder-text { text-align: left; }
           .founder-trust { justify-content: flex-start; }
@@ -705,9 +709,15 @@ export default function MydiioLanding() {
 
         .path-card {
           border: 3px solid ${C.ink};
-          border-radius: 18px;
-          box-shadow: 6px 6px 0 ${C.ink};
-          padding: 32px 28px;
+          border-radius: 20px;
+          box-shadow: 6px 6px 0 ${C.ink}, 0 24px 48px -28px rgba(26,26,14,0.35);
+          padding: clamp(28px, 4vw, 40px);
+          transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        .path-card:hover { transform: translateY(-4px); box-shadow: 8px 10px 0 ${C.ink}, 0 36px 60px -28px rgba(26,26,14,0.45); }
+
+        @media (max-width: 640px) {
+          .hero-cta-row .btn-bold { width: 100%; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -729,10 +739,10 @@ export default function MydiioLanding() {
       <WhyThisScales />
 
       {/* Fleet CTA */}
-      <section className="relative w-full overflow-hidden" style={{ minHeight: 460 }}>
+      <section className="relative w-full overflow-hidden" style={{ minHeight: 480 }}>
         <img src={FLEET_SUNSET} alt="A line of mydiio tuk-tuks parked at sunset in Colombo" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55), rgba(26,26,24,0.85))" }} />
-        <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "100px 24px", textAlign: "center" }}>
+        <div className="absolute inset-0" style={{ background: "radial-gradient(110% 80% at 50% 30%, rgba(26,26,24,0.45) 0%, rgba(26,26,24,0.78) 60%, rgba(26,26,24,0.95) 100%)" }} />
+        <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(80px, 12vw, 130px) clamp(20px, 4vw, 32px)", textAlign: "center" }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>
             A growing Colombo fleet
           </span>
