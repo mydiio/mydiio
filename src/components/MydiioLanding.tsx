@@ -4,6 +4,7 @@ import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
+import { LanguageSwitcher, useI18n } from "@/lib/i18n";
 
 const C = {
   amber: "#F5A623",
@@ -17,13 +18,12 @@ const C = {
   white: "#FFFFFF",
 };
 
-/* ---------- Logo ---------- */
 function Logo() {
   return (
     <Link
       to="/"
       className="font-display text-[20px] inline-flex items-center px-4 py-1 rounded-full bg-white"
-      style={{ border: `3px solid ${C.ink}`, color: C.ink, boxShadow: "2px 2px 0 rgba(26,26,14,0.9)" }}
+      style={{ border: `3px solid ${C.ink}`, color: C.ink, boxShadow: "2px 2px 0 rgba(26,26,14,0.9)", fontFamily: "'Fredoka One', system-ui, sans-serif" }}
     >
       <span style={{ color: C.ink }}>my</span>
       <span style={{ color: C.amber }}>di</span>
@@ -32,8 +32,8 @@ function Logo() {
   );
 }
 
-/* ---------- Nav ---------- */
 function Nav() {
+  const { t } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -44,13 +44,13 @@ function Nav() {
   }, []);
 
   const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/advertise", label: "Advertisers" },
-    { to: "/drive", label: "Drivers" },
-    { to: "/investors", label: "Investors" },
-    { to: "/about", label: "About" },
-    { to: "/contact", label: "Contact" },
-  ] as const;
+    { to: "/", key: "nav_home" as const },
+    { to: "/advertise", key: "nav_advertisers" as const },
+    { to: "/drive", key: "nav_drivers" as const },
+    { to: "/investors", key: "nav_investors" as const },
+    { to: "/about", key: "nav_about" as const },
+    { to: "/contact", key: "nav_contact" as const },
+  ];
 
   return (
     <nav
@@ -63,33 +63,29 @@ function Nav() {
         transition: "background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease",
       }}
     >
-      <div style={{ maxWidth: 1240, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
         <Logo />
-        <div className="nav-links" style={{ display: "none", gap: 26 }}>
+        <div className="nav-links" style={{ display: "none", gap: 22 }}>
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="font-body"
               activeOptions={{ exact: l.to === "/" }}
               activeProps={{ style: { color: C.ink } }}
-              style={{
-                fontSize: 14, fontWeight: 700, color: C.inkSoft,
-                textDecoration: "none", letterSpacing: "-0.1px",
-                transition: "color 0.2s ease",
-              }}
+              style={{ fontSize: 14, fontWeight: 700, color: C.inkSoft, textDecoration: "none", transition: "color 0.2s ease" }}
             >
-              {l.label}
+              {t(l.key)}
             </Link>
           ))}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div className="nav-lang"><LanguageSwitcher /></div>
           <Link
             to="/advertise"
             className="btn-bold font-display nav-cta"
-            style={{ background: C.amber, color: C.ink, padding: "10px 16px", borderRadius: 11, fontSize: 14, textDecoration: "none" }}
+            style={{ background: C.amber, color: C.ink, padding: "10px 16px", borderRadius: 11, fontSize: 13.5, textDecoration: "none" }}
           >
-            Launch Campaign
+            {t("cta_launch")}
           </Link>
           <button
             onClick={() => setOpen((v) => !v)}
@@ -108,7 +104,6 @@ function Nav() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div
           className="nav-mobile-panel"
@@ -129,72 +124,73 @@ function Nav() {
                 textDecoration: "none", borderBottom: `1px solid rgba(26,26,24,0.06)`,
               }}
             >
-              {l.label}
+              {t(l.key)}
             </Link>
           ))}
         </div>
       )}
 
       <style>{`
-        @media (min-width: 880px) {
+        @media (min-width: 980px) {
           .nav-links { display: flex !important; }
           .nav-burger { display: none !important; }
           .nav-mobile-panel { display: none !important; }
+        }
+        @media (max-width: 520px) {
+          .nav-cta { display: none !important; }
         }
       `}</style>
     </nav>
   );
 }
 
-/* ---------- Hero ---------- */
 function Hero() {
+  const { t } = useI18n();
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
       <img src={COLOMBO_STREET} alt="Tuk-tuks moving through Colombo at golden hour" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0" style={{
-        background: "linear-gradient(180deg, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.45) 40%, rgba(26,26,24,0.85) 100%)",
-      }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.45) 40%, rgba(26,26,24,0.85) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(120px, 16vh, 180px) clamp(22px, 6vw, 80px) clamp(72px, 10vh, 110px)" }}>
-        <div style={{ maxWidth: 820 }}>
+        <div style={{ maxWidth: 880 }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>
-            Sri Lanka · Mobility media
+            {t("hero_kicker")}
           </span>
           <h1 className="font-display reveal in" style={{
             color: "#fff",
-            fontSize: "clamp(40px, 7vw, 80px)",
-            lineHeight: 1.02,
-            letterSpacing: "-1.5px",
+            fontSize: "clamp(36px, 6.4vw, 78px)",
+            lineHeight: 1.04,
+            letterSpacing: "-1.2px",
             marginTop: 14,
           }}>
-            Sri Lanka's Urban<br/>Attention Network.
+            {t("hero_title")}
           </h1>
           <p style={{
-            fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
-            fontSize: "clamp(16px, 1.8vw, 20px)", color: "rgba(255,255,255,0.82)",
-            marginTop: 20, maxWidth: 620, lineHeight: 1.5,
+            fontSize: "clamp(15px, 1.7vw, 19px)",
+            color: "rgba(255,255,255,0.84)",
+            marginTop: 20, maxWidth: 640, lineHeight: 1.55, fontWeight: 500,
           }}>
-            We turn tuk-tuks into moving media across Colombo — helping brands reach real people during real journeys.
+            {t("hero_sub")}
           </p>
 
           <div className="hero-cta-row" style={{ marginTop: 32 }}>
-            <Link to="/advertise" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 16, textDecoration: "none" }}>
-              Launch Pilot Campaign →
+            <Link to="/advertise" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none" }}>
+              {t("cta_launch_pilot")}
             </Link>
-            <Link to="/contact" className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 16, textDecoration: "none", border: "2.5px solid #fff", boxShadow: "none" }}>
-              Talk To Founder
+            <Link to="/contact" className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none", border: "2.5px solid #fff", boxShadow: "none" }}>
+              {t("cta_talk_founder")}
             </Link>
           </div>
 
           <div className="hero-trust" style={{ marginTop: 44 }}>
             {[
-              ["50+", "Vehicles ready"],
-              ["7", "Colombo zones"],
-              ["14 min", "Avg ride attention"],
-              ["72 hr", "Campaign launch"],
-            ].map(([v, l]) => (
-              <div key={l} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                <span className="font-display" style={{ color: "#fff", fontSize: "clamp(20px, 2.6vw, 26px)", letterSpacing: "-0.5px" }}>{v}</span>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>{l}</span>
+              { v: "50+", k: "metric_vehicles" as const },
+              { v: "7", k: "metric_zones" as const },
+              { v: `14 ${t("metric_min")}`, k: "metric_attention" as const },
+              { v: `72 ${t("metric_hr")}`, k: "metric_launch" as const },
+            ].map((m) => (
+              <div key={m.k} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                <span className="font-display" style={{ color: "#fff", fontSize: "clamp(20px, 2.6vw, 26px)", letterSpacing: "-0.5px" }}>{m.v}</span>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>{t(m.k)}</span>
               </div>
             ))}
           </div>
@@ -205,17 +201,14 @@ function Hero() {
   );
 }
 
-/* ---------- Section wrapper ---------- */
-function Section({ bg, children, tight = false }: { bg: string; children: React.ReactNode; tight?: boolean }) {
+function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current; if (!el) return;
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
-          el.querySelectorAll<HTMLElement>(".reveal").forEach((item, i) =>
-            setTimeout(() => item.classList.add("in"), i * 80)
-          );
+          el.querySelectorAll<HTMLElement>(".reveal").forEach((item, i) => setTimeout(() => item.classList.add("in"), i * 80));
           io.disconnect();
         }
       });
@@ -224,59 +217,49 @@ function Section({ bg, children, tight = false }: { bg: string; children: React.
     return () => io.disconnect();
   }, []);
   return (
-    <section ref={ref} style={{ background: bg, padding: tight ? "clamp(48px, 7vw, 88px) clamp(20px, 4vw, 32px)" : "clamp(72px, 10vw, 140px) clamp(20px, 4vw, 32px)" }}>
+    <section ref={ref} style={{ background: bg, padding: "clamp(72px, 10vw, 140px) clamp(20px, 4vw, 32px)" }}>
       <div style={{ maxWidth: 1180, margin: "0 auto" }}>{children}</div>
     </section>
   );
 }
 
-/* ---------- Section heading ---------- */
-function SectionHeader({ kicker, title, sub, center = true }: { kicker?: string; title: string; sub?: string; center?: boolean }) {
+function SectionHeader({ kicker, title }: { kicker?: string; title: string }) {
   return (
-    <div className="reveal" style={{ textAlign: center ? "center" : "left", marginBottom: 56, maxWidth: center ? 760 : 720, marginLeft: center ? "auto" : 0, marginRight: center ? "auto" : 0 }}>
+    <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
       {kicker && (
         <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
           {kicker}
         </span>
       )}
-      <h2 className="font-display" style={{ fontSize: "clamp(30px, 4.8vw, 52px)", color: C.ink, lineHeight: 1.04, letterSpacing: "-1.2px", marginTop: kicker ? 14 : 0 }}>
+      <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.6vw, 50px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: kicker ? 14 : 0 }}>
         {title}
       </h2>
-      {sub && (
-        <p style={{
-          fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500,
-          fontSize: "clamp(15px, 1.6vw, 18px)", color: C.inkSoft, lineHeight: 1.55, marginTop: 18, maxWidth: 640,
-          marginLeft: center ? "auto" : 0, marginRight: center ? "auto" : 0,
-        }}>
-          {sub}
-        </p>
-      )}
     </div>
   );
 }
 
-/* ---------- Why It Works ---------- */
 function WhyItWorks() {
+  const { t } = useI18n();
   const cards = [
-    { kicker: "01", title: "Captive Attention", body: "Passengers face your screen during the entire ride." },
-    { kicker: "02", title: "Street Visibility", body: "Thousands of pedestrians and drivers see each vehicle daily." },
-    { kicker: "03", title: "Hyperlocal Reach", body: "Target by zone, route and time of day — not guesswork." },
-    { kicker: "04", title: "Fast Launch", body: "Approved creative goes live across the network in days." },
+    { n: "01", t: t("why_c1_t"), b: t("why_c1_b") },
+    { n: "02", t: t("why_c2_t"), b: t("why_c2_b") },
+    { n: "03", t: t("why_c3_t"), b: t("why_c3_b") },
+    { n: "04", t: t("why_c4_t"), b: t("why_c4_b") },
   ];
   return (
     <Section bg={C.cream}>
-      <SectionHeader kicker="Why it works" title="Where digital ends, real attention begins." />
+      <SectionHeader kicker={t("why_kicker")} title={t("why_title")} />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 18 }}>
         {cards.map((c) => (
-          <div key={c.title} className="reveal hover-lift" style={{
+          <div key={c.n} className="reveal hover-lift" style={{
             background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 18,
             padding: "28px 26px", display: "flex", flexDirection: "column", gap: 12,
             boxShadow: "0 18px 40px -28px rgba(26,26,24,0.35)",
             transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1)",
           }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: C.amber }}>{c.kicker}</div>
-            <div className="font-display" style={{ fontSize: 21, color: C.ink, lineHeight: 1.2, letterSpacing: "-0.4px" }}>{c.title}</div>
-            <div style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55 }}>{c.body}</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: C.amber }}>{c.n}</div>
+            <div className="font-display" style={{ fontSize: 21, color: C.ink, lineHeight: 1.2, letterSpacing: "-0.4px" }}>{c.t}</div>
+            <div style={{ fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, fontWeight: 500 }}>{c.b}</div>
           </div>
         ))}
       </div>
@@ -284,16 +267,16 @@ function WhyItWorks() {
   );
 }
 
-/* ---------- How It Works ---------- */
 function HowItWorks() {
+  const { t } = useI18n();
   const steps = [
-    { n: "01", title: "Choose Areas", body: "Pick the Colombo zones and routes that match your audience." },
-    { n: "02", title: "Upload Creative", body: "Send your video or static. We handle screen formatting end-to-end." },
-    { n: "03", title: "Go Live Fast", body: "Most campaigns launch within 72 hours of approval." },
+    { n: "01", t: t("how_s1_t"), b: t("how_s1_b") },
+    { n: "02", t: t("how_s2_t"), b: t("how_s2_b") },
+    { n: "03", t: t("how_s3_t"), b: t("how_s3_b") },
   ];
   return (
     <Section bg={"#FBF6E8"}>
-      <SectionHeader kicker="How it works" title="Simple for brands. Valuable for drivers." />
+      <SectionHeader kicker={t("how_kicker")} title={t("how_title")} />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 22 }}>
         {steps.map((s) => (
           <div key={s.n} className="reveal" style={{
@@ -301,8 +284,8 @@ function HowItWorks() {
             padding: "32px 28px", boxShadow: "5px 5px 0 rgba(26,26,24,0.92)",
           }}>
             <div className="font-display" style={{ fontSize: 36, color: C.amber, letterSpacing: "-1px" }}>{s.n}</div>
-            <div className="font-display" style={{ fontSize: 22, color: C.ink, marginTop: 10, letterSpacing: "-0.4px" }}>{s.title}</div>
-            <div style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, marginTop: 10 }}>{s.body}</div>
+            <div className="font-display" style={{ fontSize: 22, color: C.ink, marginTop: 10, letterSpacing: "-0.4px" }}>{s.t}</div>
+            <div style={{ fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, marginTop: 10, fontWeight: 500 }}>{s.b}</div>
           </div>
         ))}
       </div>
@@ -313,52 +296,41 @@ function HowItWorks() {
         position: "relative",
       }}>
         <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
-        <div style={{
-          position: "absolute", left: 20, bottom: 20, right: 20,
-          background: "rgba(26,26,24,0.82)", color: "#fff", backdropFilter: "blur(8px)",
-          padding: "14px 18px", borderRadius: 12, maxWidth: 440,
-          fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14,
-        }}>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amber, textTransform: "uppercase", marginBottom: 6 }}>
-            Inside the tuk-tuk
-          </div>
-          14 minutes of eye-level attention. No skip button.
-        </div>
       </div>
     </Section>
   );
 }
 
-/* ---------- Two Audiences ---------- */
 function TwoAudiences() {
+  const { t } = useI18n();
   return (
     <Section bg={C.cream}>
       <div className="paths-grid">
         <div className="reveal path-card" style={{ background: C.amberPale }}>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>For Advertisers</span>
-          <h3 className="font-display" style={{ fontSize: "clamp(26px, 3vw, 32px)", color: C.ink, marginTop: 12, lineHeight: 1.1, letterSpacing: "-0.6px" }}>
-            Turn Colombo traffic into customers.
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("ad_kicker")}</span>
+          <h3 className="font-display" style={{ fontSize: "clamp(24px, 3vw, 32px)", color: C.ink, marginTop: 12, lineHeight: 1.15, letterSpacing: "-0.6px" }}>
+            {t("ad_title")}
           </h3>
-          <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.55 }}>
-            From restaurants to banks to apps — brands use mydiio to stay visible where buying decisions happen.
+          <p style={{ fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
+            {t("ad_body")}
           </p>
-          <Link to="/advertise" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 24, background: C.amber, color: C.ink, padding: "13px 20px", borderRadius: 11, fontSize: 15, textDecoration: "none" }}>
-            Get Pricing →
+          <Link to="/advertise" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 24, background: C.amber, color: C.ink, padding: "13px 20px", borderRadius: 11, fontSize: 14.5, textDecoration: "none" }}>
+            {t("ad_cta")}
           </Link>
         </div>
 
         <div className="reveal path-card" style={{ background: C.greenPale, padding: 0, overflow: "hidden" }}>
           <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: `2.5px solid ${C.ink}` }} />
           <div style={{ padding: "28px 28px 32px" }}>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: "#2D8A4E", textTransform: "uppercase" }}>For Drivers</span>
-            <h3 className="font-display" style={{ fontSize: "clamp(26px, 3vw, 32px)", color: C.ink, marginTop: 12, lineHeight: 1.1, letterSpacing: "-0.6px" }}>
-              Earn more from every ride.
+            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: "#2D8A4E", textTransform: "uppercase" }}>{t("dr_kicker")}</span>
+            <h3 className="font-display" style={{ fontSize: "clamp(24px, 3vw, 32px)", color: C.ink, marginTop: 12, lineHeight: 1.15, letterSpacing: "-0.6px" }}>
+              {t("dr_title")}
             </h3>
-            <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.55 }}>
-              Join the network and unlock extra monthly income — without changing your routes.
+            <p style={{ fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
+              {t("dr_body")}
             </p>
-            <Link to="/drive" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 24, background: C.green, color: "#fff", padding: "13px 20px", borderRadius: 11, fontSize: 15, textDecoration: "none" }}>
-              Join Driver Network →
+            <Link to="/drive" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 24, background: C.green, color: "#fff", padding: "13px 20px", borderRadius: 11, fontSize: 14.5, textDecoration: "none" }}>
+              {t("dr_cta")}
             </Link>
           </div>
         </div>
@@ -367,98 +339,51 @@ function TwoAudiences() {
   );
 }
 
-/* ---------- Dashboard ---------- */
-function DashboardPreview() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const el = ref.current; if (!el) return;
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { setShow(true); io.disconnect(); } }), { threshold: 0.25 });
-    io.observe(el); return () => io.disconnect();
-  }, []);
-  const heights = [40, 60, 50, 75, 55, 85, 65];
-  const labels = ["M", "T", "W", "T", "F", "S", "S"];
-  return (
-    <div ref={ref} style={{
-      position: "relative", background: "#0D0D08", borderRadius: 16,
-      padding: 24, maxWidth: 540, margin: "0 auto",
-      boxShadow: "10px 10px 0 rgba(26,26,24,0.92)",
-      border: `1px solid ${C.ink}`,
-    }}>
-      <div style={{ position: "absolute", top: 14, right: 14, background: C.amber, color: C.ink, fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 2, padding: "4px 10px", borderRadius: 999, fontWeight: 700 }}>LIVE</div>
-      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.amber, letterSpacing: 2 }}>CAMPAIGN DASHBOARD</div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 14 }}>
-        {[["6,841", "Impressions"], ["10 / 10", "Vehicles active"], ["14.3m", "Avg dwell"], ["7 zones", "Coverage"]].map(([v, l]) => (
-          <div key={l} style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "12px 10px", textAlign: "center" }}>
-            <div className="font-display" style={{ fontSize: 18, color: C.amber }}>{v}</div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: "rgba(255,255,255,0.5)", marginTop: 4, letterSpacing: 1.5, textTransform: "uppercase" }}>{l}</div>
-          </div>
-        ))}
-      </div>
-      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 4, marginTop: 18, height: 70 }}>
-        {heights.map((h, i) => (
-          <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-            <div style={{ width: "100%", height: show ? `${h}%` : "0%", background: i === 5 ? C.amber : "rgba(245,166,35,0.55)", borderRadius: 3, transition: `height 0.7s ease ${i * 0.08}s` }} />
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, color: "rgba(255,255,255,0.35)" }}>{labels[i]}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function Reporting() {
+  const { t } = useI18n();
   return (
     <Section bg={"#FBF6E8"}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 56, alignItems: "center" }} className="report-grid">
-        <div className="reveal">
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>Reporting</span>
-          <h2 className="font-display" style={{ fontSize: "clamp(30px, 4.6vw, 48px)", color: C.ink, lineHeight: 1.05, letterSpacing: "-1px", marginTop: 14 }}>
-            Measured, not guessed.
-          </h2>
-          <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 18, maxWidth: 480 }}>
-            Track active vehicles, route coverage, campaign uptime and estimated impressions — verified by GPS and updated in real time.
-          </p>
-        </div>
-        <div className="reveal"><DashboardPreview /></div>
-      </div>
-      <style>{`
-        @media (min-width: 880px) {
-          .report-grid { grid-template-columns: 1fr 1fr !important; gap: 80px !important; }
-        }
-      `}</style>
-    </Section>
-  );
-}
-
-/* ---------- Why Now ---------- */
-function WhyNow() {
-  return (
-    <Section bg={C.cream}>
-      <div className="reveal" style={{ textAlign: "center", maxWidth: 760, margin: "0 auto" }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>Why now</span>
-        <h2 className="font-display" style={{ fontSize: "clamp(30px, 4.8vw, 52px)", color: C.ink, lineHeight: 1.05, letterSpacing: "-1.2px", marginTop: 14 }}>
-          A massive channel hiding in plain sight.
+      <div className="reveal" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
+        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("rep_kicker")}</span>
+        <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.4vw, 48px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
+          {t("rep_title")}
         </h2>
-        <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: "clamp(16px, 1.7vw, 19px)", color: C.inkSoft, lineHeight: 1.6, marginTop: 22 }}>
-          Thousands of tuk-tuks move through Colombo daily. Until now, none were built as media infrastructure.
+        <p style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 18, fontWeight: 500 }}>
+          {t("rep_body")}
         </p>
       </div>
     </Section>
   );
 }
 
-/* ---------- Scale Story ---------- */
+function WhyNow() {
+  const { t } = useI18n();
+  return (
+    <Section bg={C.cream}>
+      <div className="reveal" style={{ textAlign: "center", maxWidth: 760, margin: "0 auto" }}>
+        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("whyn_kicker")}</span>
+        <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.6vw, 50px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
+          {t("whyn_title")}
+        </h2>
+        <p style={{ fontSize: "clamp(15px, 1.7vw, 19px)", color: C.inkSoft, lineHeight: 1.6, marginTop: 22, fontWeight: 500 }}>
+          {t("whyn_body")}
+        </p>
+      </div>
+    </Section>
+  );
+}
+
 function ScaleStory() {
+  const { t } = useI18n();
   const cards = [
-    { n: "01", t: "More Vehicles = More Inventory", b: "Each vehicle added expands ad slots and city coverage." },
-    { n: "02", t: "More Routes = Better Reach", b: "Density compounds as drivers fill new zones." },
-    { n: "03", t: "More Advertisers = Stronger Network", b: "Recurring campaigns build predictable revenue." },
-    { n: "04", t: "More Data = Smarter Campaigns", b: "Route + dwell data sharpens every future buy." },
+    { n: "01", t: t("scale_c1_t"), b: t("scale_c1_b") },
+    { n: "02", t: t("scale_c2_t"), b: t("scale_c2_b") },
+    { n: "03", t: t("scale_c3_t"), b: t("scale_c3_b") },
+    { n: "04", t: t("scale_c4_t"), b: t("scale_c4_b") },
   ];
   return (
     <Section bg={"#FBF6E8"}>
-      <SectionHeader kicker="Scale story" title="Colombo first. Every city next." />
+      <SectionHeader kicker={t("scale_kicker")} title={t("scale_title")} />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 18 }}>
         {cards.map((c) => (
           <div key={c.n} className="reveal hover-lift" style={{
@@ -468,7 +393,7 @@ function ScaleStory() {
           }}>
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: C.amber }}>{c.n}</div>
             <div className="font-display" style={{ fontSize: 19, color: C.ink, lineHeight: 1.2, marginTop: 10, letterSpacing: "-0.3px" }}>{c.t}</div>
-            <div style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, marginTop: 10 }}>{c.b}</div>
+            <div style={{ fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, marginTop: 10, fontWeight: 500 }}>{c.b}</div>
           </div>
         ))}
       </div>
@@ -476,55 +401,52 @@ function ScaleStory() {
   );
 }
 
-/* ---------- Founding Offer ---------- */
 function FoundingOffer() {
-  const benefits = ["Priority placements", "Launch discounts", "Weekly reporting", "Case study support"];
+  const { t } = useI18n();
+  const benefits = [t("fo_b1"), t("fo_b2"), t("fo_b3"), t("fo_b4")];
   return (
     <Section bg={C.cream}>
       <div className="reveal" style={{
         background: "#fff", border: `3px solid ${C.ink}`, borderRadius: 24,
         padding: "clamp(36px, 5vw, 64px)", boxShadow: "8px 8px 0 rgba(26,26,24,0.92)",
-        display: "grid", gridTemplateColumns: "1fr", gap: 32, alignItems: "center",
       }}>
-        <div>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>Founding offer · 10 spots</span>
-          <h2 className="font-display" style={{ fontSize: "clamp(28px, 4vw, 44px)", color: C.ink, lineHeight: 1.05, letterSpacing: "-1px", marginTop: 14 }}>
-            First 10 brands get founding access.
-          </h2>
-          <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 16, maxWidth: 540 }}>
-            We're opening limited pilot campaigns for our first advertisers.
-          </p>
-          <ul style={{ listStyle: "none", padding: 0, margin: "24px 0 0", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10 }}>
-            {benefits.map((b) => (
-              <li key={b} style={{ display: "flex", alignItems: "center", gap: 10, fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14.5, color: C.ink }}>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke={C.amberDeep} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="4 12 10 18 20 6" />
-                </svg>
-                {b}
-              </li>
-            ))}
-          </ul>
-          <Link to="/advertise" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 28, background: C.amber, color: C.ink, padding: "15px 22px", borderRadius: 12, fontSize: 16, textDecoration: "none" }}>
-            Claim Pilot Slot →
-          </Link>
-        </div>
+        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("fo_kicker")}</span>
+        <h2 className="font-display" style={{ fontSize: "clamp(26px, 4vw, 42px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
+          {t("fo_title")}
+        </h2>
+        <p style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 16, maxWidth: 540, fontWeight: 500 }}>
+          {t("fo_body")}
+        </p>
+        <ul style={{ listStyle: "none", padding: 0, margin: "24px 0 0", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10 }}>
+          {benefits.map((b) => (
+            <li key={b} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14.5, color: C.ink, fontWeight: 600 }}>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke={C.amberDeep} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="4 12 10 18 20 6" />
+              </svg>
+              {b}
+            </li>
+          ))}
+        </ul>
+        <Link to="/advertise" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 28, background: C.amber, color: C.ink, padding: "15px 22px", borderRadius: 12, fontSize: 15.5, textDecoration: "none" }}>
+          {t("fo_cta")}
+        </Link>
       </div>
     </Section>
   );
 }
 
-/* ---------- FAQ ---------- */
 function FAQ() {
+  const { t } = useI18n();
   const items = [
-    { q: "How many tuk-tuks are live?", a: "Launching with 50+ across Colombo. New vehicles added weekly as drivers join." },
-    { q: "How do advertisers measure results?", a: "Live dashboard with GPS-verified impressions, active vehicles, zones and uptime." },
-    { q: "How quickly can campaigns launch?", a: "Most go live within 72 hours of creative approval. No printing, no install delays." },
-    { q: "What cities are next?", a: "Colombo first. Kandy, Galle and Negombo follow once the home network is saturated." },
-    { q: "How do drivers get paid?", a: "Monthly via mobile wallet or bank transfer — share of campaign revenue." },
+    { q: t("faq_q1"), a: t("faq_a1") },
+    { q: t("faq_q2"), a: t("faq_a2") },
+    { q: t("faq_q3"), a: t("faq_a3") },
+    { q: t("faq_q4"), a: t("faq_a4") },
+    { q: t("faq_q5"), a: t("faq_a5") },
   ];
   return (
     <Section bg={C.cream}>
-      <SectionHeader kicker="Questions" title="Frequently asked." />
+      <SectionHeader kicker={t("faq_kicker")} title={t("faq_title")} />
       <div style={{ maxWidth: 800, margin: "0 auto", display: "flex", flexDirection: "column", gap: 12 }}>
         {items.map((it, i) => (
           <details key={i} className="reveal faq-item" style={{
@@ -532,17 +454,14 @@ function FAQ() {
             padding: "20px 24px", boxShadow: "0 14px 40px -28px rgba(26,26,24,0.25)",
           }}>
             <summary className="font-display" style={{
-              fontSize: "clamp(16px, 1.8vw, 19px)", color: C.ink, cursor: "pointer",
+              fontSize: "clamp(15px, 1.7vw, 18px)", color: C.ink, cursor: "pointer",
               listStyle: "none", display: "flex", justifyContent: "space-between",
               alignItems: "center", gap: 16, letterSpacing: "-0.2px",
             }}>
               <span>{it.q}</span>
               <span className="faq-plus" style={{ color: C.amber, fontSize: 22, lineHeight: 1, transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)" }}>+</span>
             </summary>
-            <p style={{
-              fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500,
-              fontSize: 15, color: C.inkSoft, lineHeight: 1.6, marginTop: 14,
-            }}>{it.a}</p>
+            <p style={{ fontSize: 15, color: C.inkSoft, lineHeight: 1.6, marginTop: 14, fontWeight: 500 }}>{it.a}</p>
           </details>
         ))}
       </div>
@@ -554,23 +473,23 @@ function FAQ() {
   );
 }
 
-/* ---------- Final CTA ---------- */
 function FinalCTA() {
+  const { t } = useI18n();
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: 520 }}>
       <img src={FLEET_SUNSET} alt="A line of mydiio tuk-tuks parked at sunset in Colombo" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.85) 100%)" }} />
       <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(80px, 12vw, 140px) clamp(20px, 4vw, 32px)", textAlign: "center" }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>Get started</span>
-        <h2 className="font-display" style={{ fontSize: "clamp(30px, 5vw, 56px)", color: "#fff", lineHeight: 1.04, marginTop: 14, letterSpacing: "-1.2px" }}>
-          Ready to own Colombo's streets?
+        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>{t("fcta_kicker")}</span>
+        <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.8vw, 54px)", color: "#fff", lineHeight: 1.05, marginTop: 14, letterSpacing: "-1.2px" }}>
+          {t("fcta_title")}
         </h2>
         <div className="hero-cta-row" style={{ marginTop: 32, justifyContent: "center" }}>
-          <Link to="/advertise" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 16, textDecoration: "none" }}>
-            Launch Campaign →
+          <Link to="/advertise" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none" }}>
+            {t("cta_launch")} →
           </Link>
-          <Link to="/contact" className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 16, textDecoration: "none", border: "2.5px solid #fff", boxShadow: "none" }}>
-            Talk To Founder
+          <Link to="/contact" className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none", border: "2.5px solid #fff", boxShadow: "none" }}>
+            {t("cta_talk_founder")}
           </Link>
         </div>
       </div>
@@ -578,55 +497,61 @@ function FinalCTA() {
   );
 }
 
-/* ---------- Footer ---------- */
 function Footer() {
+  const { t } = useI18n();
   return (
     <footer style={{ background: C.ink, padding: "64px 24px 36px" }}>
       <div style={{ maxWidth: 1180, margin: "0 auto" }}>
         <div className="footer-grid">
           <div>
-            <div className="font-display" style={{ fontSize: 26 }}>
+            <div className="font-display" style={{ fontSize: 26, fontFamily: "'Fredoka One', system-ui, sans-serif" }}>
               <span style={{ color: "#fff" }}>my</span>
               <span style={{ color: C.amber }}>di</span>
               <span style={{ color: "#fff" }}>io</span>
             </div>
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, marginTop: 8, textTransform: "uppercase" }}>
-              Sri Lanka's Urban Attention Network
+              {t("ft_tagline")}
             </div>
-            <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 8, fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 13, color: "rgba(255,255,255,0.65)" }}>
-              <span>· Advertiser bookings open</span>
-              <span>· Investor conversations welcome</span>
-              <span>· Based in Colombo, Sri Lanka</span>
+            <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 8, fontSize: 13, color: "rgba(255,255,255,0.65)", fontWeight: 500 }}>
+              <span>· {t("ft_l1")}</span>
+              <span>· {t("ft_l2")}</span>
+              <span>· {t("ft_l3")}</span>
             </div>
-          </div>
-
-          <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, textTransform: "uppercase" }}>Explore</div>
-            <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 10 }}>
-              {[
-                ["Advertisers", "/advertise"],
-                ["Drivers", "/drive"],
-                ["Investors", "/investors"],
-                ["About", "/about"],
-              ].map(([l, h]) => (
-                <Link key={l} to={h as string} style={{ color: "#fff", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>{l}</Link>
-              ))}
+            <div style={{ marginTop: 18 }}>
+              <span style={{
+                display: "inline-block", padding: "5px 11px", borderRadius: 999,
+                background: "rgba(245,166,35,0.12)", border: "1px solid rgba(245,166,35,0.3)",
+                fontFamily: "'DM Mono', monospace", fontSize: 9.5, letterSpacing: 1.5,
+                color: C.amber, textTransform: "uppercase",
+              }}>
+                {t("ft_avail")}
+              </span>
             </div>
           </div>
 
           <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, textTransform: "uppercase" }}>Legal</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, textTransform: "uppercase" }}>{t("ft_explore")}</div>
             <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link to="/contact" style={{ color: "#fff", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>Contact</Link>
-              <a href="#" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>Privacy</a>
-              <a href="#" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>Terms</a>
+              <Link to="/advertise" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_advertisers")}</Link>
+              <Link to="/drive" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_drivers")}</Link>
+              <Link to="/investors" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_investors")}</Link>
+              <Link to="/about" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_about")}</Link>
+            </div>
+          </div>
+
+          <div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, textTransform: "uppercase" }}>{t("ft_legal")}</div>
+            <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 10 }}>
+              <Link to="/contact" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_contact")}</Link>
+              <a href="#" style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>Privacy</a>
+              <a href="#" style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>Terms</a>
             </div>
           </div>
         </div>
 
         <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 12, fontFamily: "'DM Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.4)", letterSpacing: 1 }}>
           <span>© 2026 mydiio · Colombo · Sri Lanka</span>
-          <span>Built in Colombo, for Colombo.</span>
+          <span>{t("ft_built")}</span>
         </div>
       </div>
       <style>{`
@@ -637,7 +562,6 @@ function Footer() {
   );
 }
 
-/* ============== MAIN ============== */
 export default function MydiioLanding() {
   return (
     <div className="w-full" style={{ background: C.cream }}>
