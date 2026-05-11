@@ -201,7 +201,75 @@ function Section({
   );
 }
 
-/* ---------- Section 2 — How it works ---------- */
+/* ---------- Stat strip ---------- */
+function StatStrip() {
+  const stats = [
+    { num: "50+", label: "Tuk-tuks ready" },
+    { num: "14", label: "Min avg ride", suffix: "min" },
+    { num: "7", label: "Colombo zones" },
+    { num: "72hr", label: "Campaign launch" },
+  ];
+  return (
+    <Section bg={C.cream}>
+      <div
+        className="reveal"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          gap: 0,
+          border: `3px solid ${C.ink}`,
+          borderRadius: 18,
+          background: "#fff",
+          overflow: "hidden",
+          boxShadow: "0 14px 40px -20px rgba(26,26,24,0.25)",
+        }}
+      >
+        {stats.map((s, i) => (
+          <div
+            key={i}
+            className="reveal"
+            style={{
+              padding: "36px 22px",
+              textAlign: "center",
+              borderRight: i < stats.length - 1 ? `1px solid rgba(26,26,24,0.12)` : "none",
+            }}
+          >
+            <div
+              className="font-display"
+              style={{
+                fontSize: "clamp(38px, 5vw, 56px)",
+                lineHeight: 1,
+                color: C.ink,
+                letterSpacing: "-1.5px",
+              }}
+            >
+              {s.num.replace(/[^0-9+hr]/g, "").length ? (
+                <>
+                  <span>{s.num.replace(/[a-zA-Z+]/g, "")}</span>
+                  <span style={{ color: C.amber }}>{s.num.replace(/[0-9.]/g, "")}</span>
+                </>
+              ) : s.num}
+            </div>
+            <div
+              style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 11,
+                letterSpacing: 2,
+                textTransform: "uppercase",
+                color: C.inkSoft,
+                marginTop: 12,
+              }}
+            >
+              {s.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+
 function HowItWorks() {
   const cols = [
     {
