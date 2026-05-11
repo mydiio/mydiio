@@ -582,13 +582,22 @@ function Transparency() {
         ))}
       </ul>
 
-      <div className="reveal" style={{ marginTop: 48 }}>
-        <div style={{
-          fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2,
-          color: C.inkSoft, textAlign: "center", textTransform: "uppercase", marginBottom: 16,
-        }}>
+      <div className="reveal" style={{ marginTop: 64, textAlign: "center" }}>
+        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
           Dashboard preview
-        </div>
+        </span>
+        <h3 className="font-display" style={{ fontSize: "clamp(28px, 4vw, 42px)", color: C.ink, lineHeight: 1.1, marginTop: 12, letterSpacing: "-0.5px" }}>
+          Live reporting included.
+        </h3>
+        <p style={{
+          fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
+          fontSize: 16, color: C.inkSoft, lineHeight: 1.5, marginTop: 12,
+          maxWidth: 580, marginLeft: "auto", marginRight: "auto",
+        }}>
+          Track impressions, active vehicles, zones and campaign uptime in real time.
+        </p>
+      </div>
+      <div className="reveal" style={{ marginTop: 28 }}>
         <DashboardPreview />
       </div>
     </Section>
