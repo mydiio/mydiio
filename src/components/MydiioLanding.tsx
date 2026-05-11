@@ -737,14 +737,14 @@ export default function MydiioLanding() {
             A growing Colombo fleet
           </span>
           <h2 className="font-display" style={{ fontSize: "clamp(30px, 5vw, 52px)", color: "#fff", lineHeight: 1.05, marginTop: 14, letterSpacing: "-1px" }}>
-            One screen. Every street. <br/>One city, on the move.
+            Ready to own Colombo's streets?
           </h2>
           <div className="hero-cta-row" style={{ marginTop: 30, justifyContent: "center" }}>
             <Link to="/advertise" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
-              Advertise on mydiio →
+              Launch campaign →
             </Link>
-            <Link to="/drive" className="btn-bold font-display" style={{ background: C.green, color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
-              Drive & earn →
+            <Link to="/advertise" className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none", border: "3px solid #fff" }}>
+              Talk to founder
             </Link>
           </div>
         </div>
