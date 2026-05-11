@@ -604,6 +604,68 @@ function Transparency() {
   );
 }
 
+/* ---------- Why this scales ---------- */
+function WhyThisScales() {
+  const cards = [
+    {
+      kicker: "01",
+      title: "More vehicles = more inventory",
+      body: "Every new tuk-tuk added to the network expands available ad slots and city coverage.",
+    },
+    {
+      kicker: "02",
+      title: "Colombo first, every city next",
+      body: "A proven model in Colombo unlocks Kandy, Galle and beyond — the same playbook, multiplied.",
+    },
+    {
+      kicker: "03",
+      title: "Recurring monthly ad revenue",
+      body: "Subscription-based campaigns build predictable revenue and lasting advertiser relationships.",
+    },
+  ];
+  return (
+    <Section bg={C.cream}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 56 }}>
+        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
+          The opportunity
+        </span>
+        <h2 className="font-display" style={{ fontSize: "clamp(32px, 5vw, 52px)", color: C.ink, lineHeight: 1.05, marginTop: 14, letterSpacing: "-1px" }}>
+          Why this scales.
+        </h2>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
+        {cards.map((c, i) => (
+          <div
+            key={i}
+            className="reveal"
+            style={{
+              background: "#fff",
+              border: `3px solid ${C.ink}`,
+              borderRadius: 18,
+              padding: "32px 28px",
+              boxShadow: "0 14px 40px -22px rgba(26,26,24,0.25)",
+              display: "flex",
+              flexDirection: "column",
+              gap: 14,
+              minHeight: 220,
+            }}
+          >
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, letterSpacing: 2, color: C.amber }}>
+              {c.kicker}
+            </div>
+            <div className="font-display" style={{ fontSize: 22, color: C.ink, lineHeight: 1.2, letterSpacing: "-0.3px" }}>
+              {c.title}
+            </div>
+            <div style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55 }}>
+              {c.body}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 /* ============== MAIN ============== */
 export default function MydiioLanding() {
   return (
