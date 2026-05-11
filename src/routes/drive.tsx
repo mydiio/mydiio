@@ -627,11 +627,8 @@ function FinalCTA() {
 /* ============== MAIN ============== */
 function DrivePage() {
   return (
-    <div className="w-full" style={{ background: C.cream }}>
+    <SiteShell accent="green">
       <style>{`
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1); }
-        .reveal.in { opacity: 1; transform: translateY(0); }
-
         .how-flow {
           display: grid; grid-template-columns: 1fr; gap: 24px;
           margin-top: 48px; align-items: stretch;
@@ -642,40 +639,18 @@ function DrivePage() {
         }
         .step-circle {
           width: 44px; height: 44px; border-radius: 50%;
-          background: ${C.amber}; color: ${C.ink};
+          background: ${C.green}; color: #fff;
           border: 3px solid ${C.ink}; box-shadow: 3px 3px 0 ${C.ink};
           display: flex; align-items: center; justify-content: center;
           font-size: 20px;
         }
         .step-line { display: none; }
-
         @media (min-width: 900px) {
-          .how-flow {
-            grid-template-columns: 1fr 18px 1fr 18px 1fr 18px 1fr;
-            align-items: stretch;
-          }
-          .step-line {
-            display: block; align-self: center;
-            height: 2px; background: ${C.ink}; opacity: 0.18; width: 100%;
-          }
-        }
-
-        @keyframes ctaPulseAmber {
-          0%,100% { box-shadow: 5px 5px 0 ${C.ink}; }
-          50% { box-shadow: 5px 5px 0 ${C.ink}, 0 0 0 8px rgba(26,26,24,0.18); }
-        }
-        .whatsapp-btn-amber { animation: ctaPulseAmber 3s ease-in-out infinite; }
-
-        @media (prefers-reduced-motion: reduce) {
-          *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-          }
+          .how-flow { grid-template-columns: 1fr 18px 1fr 18px 1fr 18px 1fr; align-items: stretch; }
+          .step-line { display: block; align-self: center; height: 2px; background: ${C.ink}; opacity: 0.18; width: 100%; }
         }
       `}</style>
 
-      <Nav />
       <Hero />
       <EarningsCalculator />
       <DriverEarnings />
@@ -684,16 +659,7 @@ function DrivePage() {
       <DriverPortal />
       <FAQ />
       <FinalCTA />
-
-      <footer style={{ background: C.ink, padding: "48px 24px", textAlign: "center" }}>
-        <div className="font-display" style={{ fontSize: 24 }}>
-          <span style={{ color: "#fff" }}>my</span>
-          <span style={{ color: C.amber }}>di</span>
-          <span style={{ color: "#fff" }}>io</span>
-        </div>
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.amber, letterSpacing: 2, marginTop: 8 }}>ADS ON THE MOVE.</div>
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.3)", marginTop: 6 }}>mydiio · Colombo · Sri Lanka · 2026</div>
-      </footer>
-    </div>
+    </SiteShell>
   );
 }
+
