@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 export type Lang = "en" | "si" | "ta";
 export const LANGS: { code: Lang; label: string; native: string; htmlLang: string }[] = [
@@ -11,15 +11,15 @@ type Dict = Record<string, { en: string; si: string; ta: string }>;
 
 export const dict: Dict = {
   // --- Nav ---
-  nav_home: { en: "Home", si: "මුල් පිටුව", ta: "முகப்பு" },
-  nav_advertisers: { en: "Advertisers", si: "ප්‍රචාරකයින්", ta: "விளம்பரதாரர்கள்" },
-  nav_drivers: { en: "Drivers", si: "රියදුරන්", ta: "ஓட்டுநர்கள்" },
-  nav_investors: { en: "Investors", si: "ආයෝජකයින්", ta: "முதலீட்டாளர்கள்" },
-  nav_about: { en: "About", si: "අප ගැන", ta: "எங்களை பற்றி" },
-  nav_contact: { en: "Contact", si: "සම්බන්ධ වන්න", ta: "தொடர்பு" },
-  cta_launch: { en: "Launch Campaign", si: "ව්‍යාපාරයක් අරඹන්න", ta: "பிரச்சாரத்தை தொடங்கு" },
-  cta_launch_pilot: { en: "Launch Pilot Campaign →", si: "පරීක්ෂණ ව්‍යාපාරය අරඹන්න →", ta: "முன்னோடி பிரச்சாரத்தை தொடங்கு →" },
-  cta_talk_founder: { en: "Talk To Founder", si: "ආරම්භකයා සමඟ කතා කරන්න", ta: "நிறுவனருடன் பேசுங்கள்" },
+  nav_home: { en: "Home", si: "මුල්", ta: "முகப்பு" },
+  nav_advertisers: { en: "Advertisers", si: "දැන්වීම්", ta: "விளம்பரம்" },
+  nav_drivers: { en: "Drivers", si: "රියදුරු", ta: "ஓட்டுநர்" },
+  nav_investors: { en: "Investors", si: "ආයෝජන", ta: "முதலீடு" },
+  nav_about: { en: "About", si: "අපි", ta: "எங்களை" },
+  nav_contact: { en: "Contact", si: "අමතන්න", ta: "தொடர்பு" },
+  cta_launch: { en: "Launch Campaign", si: "දැන්වීම අරඹන්න", ta: "விளம்பரம் தொடங்கு" },
+  cta_launch_pilot: { en: "Launch Pilot Campaign →", si: "පයිලට් දැන්වීම අරඹන්න →", ta: "பைலட் விளம்பரம் தொடங்கு →" },
+  cta_talk_founder: { en: "Talk To Founder", si: "Founder සමඟ කතා කරන්න", ta: "Founder உடன் பேசுங்கள்" },
 
   // --- Hero ---
   hero_kicker: { en: "Sri Lanka · Mobility media", si: "ශ්‍රී ලංකාව · ජංගම මාධ්‍ය", ta: "இலங்கை · இயக்க ஊடகம்" },
@@ -195,9 +195,16 @@ function detectInitialLang(): Lang {
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Lang>("en");
+  const [settling, setSettling] = useState(false);
+  const settleTimer = useRef<number | null>(null);
 
   useEffect(() => {
-    setLangState(detectInitialLang());
+    const next = detectInitialLang();
+    if (next !== "en") {
+      setSettling(true);
+      setLangState(next);
+      settleTimer.current = window.setTimeout(() => setSettling(false), 120);
+    }
   }, []);
 
   useEffect(() => {
@@ -208,6 +215,8 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   }, [lang]);
 
   const setLang = useCallback((l: Lang) => {
+    if (settleTimer.current !== null) window.clearTimeout(settleTimer.current);
+    setSettling(true);
     setLangState(l);
     try {
       window.localStorage.setItem("mydiio.lang", l);
@@ -215,6 +224,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       url.searchParams.set("lang", l);
       window.history.replaceState({}, "", url.toString());
     } catch {}
+    settleTimer.current = window.setTimeout(() => setSettling(false), 120);
   }, []);
 
   const t = useCallback((k: keyof typeof dict) => {
@@ -224,7 +234,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   }, [lang]);
 
   const value = useMemo(() => ({ lang, setLang, t }), [lang, setLang, t]);
-  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
+  return <I18nContext.Provider value={value}><div className="i18n-root" data-lang-settling={settling ? "true" : "false"}>{children}</div></I18nContext.Provider>;
 }
 
 export function useI18n() {
@@ -245,12 +255,14 @@ export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }
     <div
       role="group"
       aria-label="Language"
+      className="language-switcher"
       style={{
         display: "inline-flex", alignItems: "center", gap: 0,
         padding: 3, borderRadius: 999,
         background: isDark ? "rgba(26,26,24,0.85)" : "#fff",
         border: `2px solid ${ink}`,
         boxShadow: "2px 2px 0 rgba(26,26,14,0.9)",
+        width: 142, height: 38, flex: "0 0 142px",
       }}
     >
       {LANGS.map((l) => {
@@ -267,11 +279,12 @@ export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }
               fontFamily: l.code === "si" ? "'Noto Sans Sinhala', 'DM Sans', sans-serif" :
                           l.code === "ta" ? "'Noto Sans Tamil', 'DM Sans', sans-serif" :
                           "'DM Sans', sans-serif",
-              fontWeight: 700, fontSize: 12.5, letterSpacing: 0.2,
+              fontWeight: 800, fontSize: 12, letterSpacing: 0,
+              lineHeight: 1, height: 28, flex: "1 1 0", display: "inline-flex", alignItems: "center", justifyContent: "center",
               background: active ? amber : "transparent",
               color: active ? ink : (isDark ? "rgba(255,255,255,0.85)" : ink),
               transition: "background 0.2s ease, color 0.2s ease",
-              minWidth: 36,
+              minWidth: 0,
             }}
           >
             {l.label}
