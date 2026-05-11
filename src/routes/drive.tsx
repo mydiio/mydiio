@@ -1,8 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
+import { SiteShell } from "@/components/site/SiteShell";
+import { C } from "@/components/site/theme";
 
 export const Route = createFileRoute("/drive")({
   component: DrivePage,
@@ -16,72 +18,9 @@ export const Route = createFileRoute("/drive")({
   }),
 });
 
-const C = {
-  amber: "#F5A623",
-  amberDeep: "#E8920A",
-  amberPale: "#FEF3D7",
-  green: "#4CAF72",
-  ink: "#1A1A18",
-  inkSoft: "#7A7A72",
-  cream: "#FDFAF3",
-  white: "#FFFFFF",
-};
-
 const WA_DRIVER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20becoming%20a%20mydiio%20driver";
 const SPOTS_REMAINING = 7;
 
-/* ---------- Nav ---------- */
-function Logo({ scrolled }: { scrolled: boolean }) {
-  const textColor = scrolled ? C.ink : "#fff";
-  const borderColor = scrolled ? C.ink : "#fff";
-  return (
-    <Link to="/" className="font-display text-[22px] inline-flex items-center px-4 py-1 rounded-full bg-white" style={{ border: `3px solid ${borderColor}`, color: textColor }}>
-      <span style={{ color: textColor }}>my</span>
-      <span style={{ color: C.amber }}>di</span>
-      <span style={{ color: textColor }}>io</span>
-    </Link>
-  );
-}
-
-function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between"
-      style={{
-        padding: "14px 28px",
-        background: scrolled ? "rgba(26,26,24,0.90)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        transition: "background 0.3s ease, backdrop-filter 0.3s ease",
-      }}>
-      <Logo scrolled={scrolled} />
-      <div className="hidden md:flex items-center gap-3">
-        <Link to="/" className="font-display text-[14px]" style={{ color: scrolled ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.85)" }}>
-          ← Back
-        </Link>
-        <Link to="/advertise" className="btn-bold font-display text-[15px] px-5 py-2 rounded-[11px]" style={{ background: C.amber, color: C.ink }}>
-          Advertise →
-        </Link>
-        <Link to="/drive" className="btn-bold font-display text-[15px] px-5 py-2 rounded-[11px]" style={{ background: C.green, color: "#fff" }}>
-          Drive & earn →
-        </Link>
-      </div>
-      <div className="md:hidden flex gap-2">
-        <Link to="/advertise" className="btn-bold font-display text-[13px] px-3 py-2 rounded-full" style={{ background: C.amber, color: C.ink }}>
-          Advertise
-        </Link>
-        <Link to="/drive" className="btn-bold font-display text-[13px] px-3 py-2 rounded-full" style={{ background: C.green, color: "#fff" }}>
-          Drive
-        </Link>
-      </div>
-    </nav>
-  );
-}
 
 /* ---------- Section ---------- */
 function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
