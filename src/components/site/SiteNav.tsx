@@ -58,7 +58,8 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
       className="fixed top-0 left-0 right-0 z-50"
       style={{
         height: "var(--site-nav-height)",
-        padding: scrolled ? "10px 22px" : "14px 22px",
+        padding: "0 22px",
+        boxSizing: "border-box",
         background: scrolled ? "rgba(253,250,243,0.92)" : "rgba(253,250,243,0)",
         backdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
         borderBottom: scrolled ? "1px solid rgba(26,26,24,0.08)" : "1px solid transparent",
