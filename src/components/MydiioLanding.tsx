@@ -363,83 +363,10 @@ function FinalCTA() {
   );
 }
 
-function Footer() {
-  const { t } = useI18n();
-  return (
-    <footer style={{ background: C.ink, padding: "64px 24px 36px" }}>
-      <div style={{ maxWidth: 1180, margin: "0 auto" }}>
-        <div className="footer-grid">
-          <div>
-            <div className="font-display" style={{ fontSize: 26, fontFamily: "'Fredoka One', system-ui, sans-serif" }}>
-              <span style={{ color: "#fff" }}>my</span>
-              <span style={{ color: C.amber }}>di</span>
-              <span style={{ color: "#fff" }}>io</span>
-            </div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, marginTop: 8, textTransform: "uppercase" }}>
-              {t("ft_tagline")}
-            </div>
-            <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 8, fontSize: 13, color: "rgba(255,255,255,0.65)", fontWeight: 500 }}>
-              <span>· {t("ft_l1")}</span>
-              <span>· {t("ft_l2")}</span>
-              <span>· {t("ft_l3")}</span>
-            </div>
-            <div style={{ marginTop: 18 }}>
-              <span style={{
-                display: "inline-block", padding: "5px 11px", borderRadius: 999,
-                background: "rgba(245,166,35,0.12)", border: "1px solid rgba(245,166,35,0.3)",
-                fontFamily: "'DM Mono', monospace", fontSize: 9.5, letterSpacing: 1.5,
-                color: C.amber, textTransform: "uppercase",
-              }}>
-                {t("ft_avail")}
-              </span>
-            </div>
-          </div>
-
-          <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, textTransform: "uppercase" }}>{t("ft_explore")}</div>
-            <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link to="/advertise" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_advertisers")}</Link>
-              <Link to="/drive" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_drivers")}</Link>
-              <Link to="/investors" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_investors")}</Link>
-              <Link to="/about" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_about")}</Link>
-            </div>
-          </div>
-
-          <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, textTransform: "uppercase" }}>{t("ft_legal")}</div>
-            <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link to="/contact" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_contact")}</Link>
-              <a href="#" style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>Privacy</a>
-              <a href="#" style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>Terms</a>
-            </div>
-          </div>
-        </div>
-
-        <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 12, fontFamily: "'DM Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.4)", letterSpacing: 1 }}>
-          <span>© 2026 mydiio · Colombo · Sri Lanka</span>
-          <span>{t("ft_built")}</span>
-        </div>
-      </div>
-      <style>{`
-        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 36px; }
-        @media (min-width: 720px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; } }
-      `}</style>
-    </footer>
-  );
-}
-
 export default function MydiioLanding() {
   return (
-    <div className="w-full" style={{ background: C.cream }}>
+    <SiteShell accent="amber">
       <style>{`
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-        .reveal.in { opacity: 1; transform: translateY(0); }
-
-        .font-display { letter-spacing: -0.5px; }
-        h1.font-display, h2.font-display, h3.font-display { text-wrap: balance; }
-        p { text-wrap: pretty; }
-
-        .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
         .hero-trust { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; max-width: 540px; }
         @media (min-width: 720px) { .hero-trust { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
@@ -454,23 +381,8 @@ export default function MydiioLanding() {
           transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
         }
         .path-card:hover { transform: translateY(-4px); box-shadow: 8px 10px 0 ${C.ink}, 0 36px 60px -28px rgba(26,26,14,0.45); }
-
-        .hover-lift:hover { transform: translateY(-3px); box-shadow: 0 28px 50px -28px rgba(26,26,24,0.4) !important; }
-
-        @media (max-width: 640px) {
-          .hero-cta-row .btn-bold { width: 100%; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-          }
-        }
       `}</style>
 
-      <Nav />
       <Hero />
       <WhyItWorks />
       <HowItWorks />
@@ -481,7 +393,7 @@ export default function MydiioLanding() {
       <FoundingOffer />
       <FAQ />
       <FinalCTA />
-      <Footer />
-    </div>
+    </SiteShell>
   );
 }
+
