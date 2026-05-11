@@ -671,16 +671,20 @@ export default function MydiioLanding() {
   return (
     <div className="w-full" style={{ background: C.cream }}>
       <style>{`
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
         .reveal.in { opacity: 1; transform: translateY(0); }
+
+        .font-display { letter-spacing: -0.5px; }
+        h1.font-display, h2.font-display, h3.font-display { text-wrap: balance; }
+        p { text-wrap: pretty; }
 
         .hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
         .stat-pills { display: flex; flex-wrap: wrap; gap: 10px; }
 
         .how-grid {
-          display: grid; grid-template-columns: 1fr; gap: 40px;
+          display: grid; grid-template-columns: 1fr; gap: 48px;
         }
-        @media (min-width: 720px) { .how-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; } }
+        @media (min-width: 720px) { .how-grid { grid-template-columns: 1fr 1fr 1fr; gap: 40px; } }
 
         .paths-grid {
           display: grid; grid-template-columns: 1fr; gap: 22px;
@@ -688,16 +692,16 @@ export default function MydiioLanding() {
         @media (min-width: 760px) { .paths-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
 
         .founder-grid {
-          display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center;
+          display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center;
         }
         .founder-photo-wrap { display: flex; justify-content: center; }
         .founder-text { text-align: center; }
         .founder-trust {
           display: flex; flex-wrap: wrap; gap: 14px 22px;
-          margin-top: 22px; justify-content: center;
+          margin-top: 24px; justify-content: center;
         }
         @media (min-width: 760px) {
-          .founder-grid { grid-template-columns: 40% 60%; gap: 48px; }
+          .founder-grid { grid-template-columns: 40% 60%; gap: 56px; }
           .founder-photo-wrap { justify-content: flex-start; }
           .founder-text { text-align: left; }
           .founder-trust { justify-content: flex-start; }
@@ -705,9 +709,15 @@ export default function MydiioLanding() {
 
         .path-card {
           border: 3px solid ${C.ink};
-          border-radius: 18px;
-          box-shadow: 6px 6px 0 ${C.ink};
-          padding: 32px 28px;
+          border-radius: 20px;
+          box-shadow: 6px 6px 0 ${C.ink}, 0 24px 48px -28px rgba(26,26,14,0.35);
+          padding: clamp(28px, 4vw, 40px);
+          transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        .path-card:hover { transform: translateY(-4px); box-shadow: 8px 10px 0 ${C.ink}, 0 36px 60px -28px rgba(26,26,14,0.45); }
+
+        @media (max-width: 640px) {
+          .hero-cta-row .btn-bold { width: 100%; }
         }
 
         @media (prefers-reduced-motion: reduce) {
