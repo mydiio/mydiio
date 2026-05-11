@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as InvestorsRouteImport } from './routes/investors'
 import { Route as DriveRouteImport } from './routes/drive'
 import { Route as AdvertiseRouteImport } from './routes/advertise'
 import { Route as IndexRouteImport } from './routes/index'
 
+const InvestorsRoute = InvestorsRouteImport.update({
+  id: '/investors',
+  path: '/investors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DriveRoute = DriveRouteImport.update({
   id: '/drive',
   path: '/drive',
@@ -33,34 +39,45 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/advertise': typeof AdvertiseRoute
   '/drive': typeof DriveRoute
+  '/investors': typeof InvestorsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/advertise': typeof AdvertiseRoute
   '/drive': typeof DriveRoute
+  '/investors': typeof InvestorsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/advertise': typeof AdvertiseRoute
   '/drive': typeof DriveRoute
+  '/investors': typeof InvestorsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/advertise' | '/drive'
+  fullPaths: '/' | '/advertise' | '/drive' | '/investors'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/advertise' | '/drive'
-  id: '__root__' | '/' | '/advertise' | '/drive'
+  to: '/' | '/advertise' | '/drive' | '/investors'
+  id: '__root__' | '/' | '/advertise' | '/drive' | '/investors'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdvertiseRoute: typeof AdvertiseRoute
   DriveRoute: typeof DriveRoute
+  InvestorsRoute: typeof InvestorsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/investors': {
+      id: '/investors'
+      path: '/investors'
+      fullPath: '/investors'
+      preLoaderRoute: typeof InvestorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/drive': {
       id: '/drive'
       path: '/drive'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdvertiseRoute: AdvertiseRoute,
   DriveRoute: DriveRoute,
+  InvestorsRoute: InvestorsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
