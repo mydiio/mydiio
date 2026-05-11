@@ -639,6 +639,13 @@ function AdvertisePage() {
         @media (min-width: 600px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
         @media (min-width: 1000px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
 
+        .coverage-map-wrap { display: none; }
+        .coverage-list { display: flex; }
+        @media (min-width: 720px) {
+          .coverage-map-wrap { display: block; }
+          .coverage-list { display: none; }
+        }
+
         @keyframes ctaPulseAmber {
           0%,100% { box-shadow: 5px 5px 0 ${C.ink}; }
           50% { box-shadow: 5px 5px 0 ${C.ink}, 0 0 0 8px rgba(26,26,24,0.18); }
