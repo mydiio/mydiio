@@ -7,12 +7,15 @@ function Logo() {
   return (
     <Link
       to="/"
-      className="font-display text-[20px] inline-flex items-center px-4 py-1 rounded-full bg-white"
+      className="font-display text-[20px] inline-flex items-center justify-center px-4 py-1 rounded-full bg-white site-logo-lock"
       style={{
         border: `3px solid ${C.ink}`,
         color: C.ink,
         boxShadow: "2px 2px 0 rgba(26,26,14,0.9)",
         fontFamily: "'Fredoka One', system-ui, sans-serif",
+        width: 118,
+        height: 42,
+        flex: "0 0 118px",
       }}
     >
       <span style={{ color: C.ink }}>my</span>
@@ -54,6 +57,7 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
     <nav
       className="fixed top-0 left-0 right-0 z-50"
       style={{
+        height: "var(--site-nav-height)",
         padding: scrolled ? "10px 22px" : "14px 22px",
         background: scrolled ? "rgba(253,250,243,0.92)" : "rgba(253,250,243,0)",
         backdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
@@ -61,16 +65,17 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
         transition: "background 0.35s ease, border-color 0.35s ease, padding 0.35s ease, backdrop-filter 0.35s ease",
       }}
     >
-      <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
+      <div style={{ maxWidth: 1280, height: "100%", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
         <Logo />
-        <div className="site-nav-links" style={{ display: "none", gap: 22 }}>
+        <div className="site-nav-links" style={{ display: "none", gap: 12, flex: "1 1 auto", justifyContent: "center", minWidth: 0 }}>
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               activeOptions={{ exact: l.to === "/" }}
               activeProps={{ style: { color: C.ink } }}
-              style={{ fontSize: 14, fontWeight: 700, color: C.inkSoft, textDecoration: "none", transition: "color 0.2s ease" }}
+              className="site-nav-link"
+              style={{ fontSize: 13.5, fontWeight: 800, color: C.inkSoft, textDecoration: "none", transition: "color 0.2s ease" }}
             >
               {t(l.key)}
             </Link>
@@ -81,7 +86,7 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
           <Link
             to="/advertise"
             className="btn-bold font-display site-nav-cta"
-            style={{ background: a.bg, color: a.fg, padding: "10px 16px", borderRadius: 11, fontSize: 13.5, textDecoration: "none" }}
+            style={{ background: a.bg, color: a.fg, padding: "0 16px", borderRadius: 11, fontSize: 13.5, textDecoration: "none", minWidth: 178, height: 42 }}
           >
             {t("cta_launch")}
           </Link>
@@ -129,7 +134,9 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
       )}
 
       <style>{`
-        @media (min-width: 980px) {
+        .site-nav-link { width: 86px; height: 34px; display: inline-flex; align-items: center; justify-content: center; text-align: center; white-space: nowrap; }
+        .site-nav-lang { width: 142px; height: 38px; flex: 0 0 142px; overflow: hidden; }
+        @media (min-width: 1120px) {
           .site-nav-links { display: flex !important; }
           .site-nav-burger { display: none !important; }
           .site-nav-mobile-panel { display: none !important; }
