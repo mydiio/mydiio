@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
+import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 
 export const Route = createFileRoute("/drive")({
   component: DrivePage,
@@ -553,30 +554,73 @@ function FAQ() {
 /* ---------- Final CTA ---------- */
 function FinalCTA() {
   return (
-    <Section bg={C.amber}>
-      <h2 className="reveal font-display" style={{
-        fontSize: "clamp(30px, 4.4vw, 48px)", color: C.ink, textAlign: "center", lineHeight: 1.05, maxWidth: 720, marginInline: "auto",
-      }}>
-        Ready to start earning?
-      </h2>
-      <div className="reveal" style={{ marginTop: 32, textAlign: "center" }}>
-        <a href={WA_DRIVER} target="_blank" rel="noopener noreferrer"
-          className="whatsapp-btn-amber font-display"
-          style={{
-            display: "inline-block", background: C.ink, color: C.amber,
-            border: `3px solid ${C.ink}`, borderRadius: 13,
-            padding: "16px 28px", fontSize: 18, textDecoration: "none",
-          }}>
-          Join on WhatsApp →
-        </a>
+    <section className="relative w-full overflow-hidden" style={{ minHeight: 520 }}>
+      <img
+        src={FLEET_SUNSET}
+        alt="A line of mydiio tuk-tuks at sunset in Colombo"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(10,10,8,0.78) 0%, rgba(10,10,8,0.72) 50%, rgba(10,10,8,0.92) 100%)",
+        }}
+      />
+      <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "120px 24px", textAlign: "center" }}>
+        <span className="reveal" style={{
+          fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3,
+          color: C.amber, textTransform: "uppercase",
+        }}>
+          The fleet is ready
+        </span>
+        <h2 className="reveal font-display" style={{
+          fontSize: "clamp(32px, 5.2vw, 56px)", color: "#fff",
+          lineHeight: 1.05, marginTop: 16, letterSpacing: "-1px",
+          maxWidth: 880, marginInline: "auto",
+        }}>
+          500+ tuk-tuks ready to promote your brand.
+        </h2>
+        <p className="reveal" style={{
+          fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
+          fontSize: "clamp(15px, 1.8vw, 18px)", color: "rgba(255,255,255,0.78)",
+          marginTop: 18, maxWidth: 620, marginInline: "auto", lineHeight: 1.5,
+        }}>
+          Launch campaigns across Colombo in days.
+        </p>
+        <div className="reveal" style={{
+          marginTop: 36, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center",
+        }}>
+          <a
+            href={WA_DRIVER}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-bold font-display"
+            style={{
+              background: C.amber, color: C.ink,
+              padding: "16px 24px", borderRadius: 13, fontSize: 17,
+              textDecoration: "none", display: "inline-block",
+            }}
+          >
+            Start campaign →
+          </a>
+          <a
+            href={WA_DRIVER}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-bold font-display"
+            style={{
+              background: "transparent", color: "#fff",
+              border: "3px solid #fff", boxShadow: "5px 5px 0 rgba(255,255,255,0.25)",
+              padding: "16px 24px", borderRadius: 13, fontSize: 17,
+              textDecoration: "none", display: "inline-block",
+            }}
+          >
+            Talk to sales
+          </a>
+        </div>
       </div>
-      <div className="reveal" style={{
-        fontFamily: "'DM Mono', monospace", fontSize: 11, color: "rgba(26,26,24,0.55)",
-        textAlign: "center", marginTop: 18, letterSpacing: 1.2,
-      }}>
-        We reply within 24 hours.
-      </div>
-    </Section>
+    </section>
   );
 }
 
