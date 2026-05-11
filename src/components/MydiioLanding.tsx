@@ -281,7 +281,7 @@ function HowItWorks() {
         </svg>
       ),
       title: "Advertiser pays",
-      sub: "From LKR 20,000/month",
+      sub: "Campaigns start from LKR 20,000",
     },
     {
       icon: (
@@ -292,8 +292,8 @@ function HowItWorks() {
           <path d="M18 32 H30" />
         </svg>
       ),
-      title: "Screen plays their ad",
-      sub: "GPS-verified, no skip",
+      title: "Screen plays ads",
+      sub: "Motion-triggered digital playback",
     },
     {
       icon: (
@@ -303,7 +303,7 @@ function HowItWorks() {
         </svg>
       ),
       title: "Passenger watches",
-      sub: "14 minutes average",
+      sub: "Average 14 minutes undivided attention",
     },
   ];
   return (
