@@ -536,6 +536,7 @@ function AdvertisePage() {
       <Hero />
       <HowItWorks />
       <Pricing />
+      <Coverage />
       <DashboardPreview />
       <FAQ />
       <FinalCTA />
