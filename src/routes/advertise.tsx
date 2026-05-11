@@ -641,11 +641,8 @@ function FinalCTA() {
 /* ============== MAIN ============== */
 function AdvertisePage() {
   return (
-    <div className="w-full" style={{ background: C.cream }}>
+    <SiteShell accent="amber">
       <style>{`
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1); }
-        .reveal.in { opacity: 1; transform: translateY(0); }
-
         .how-flow {
           display: grid; grid-template-columns: 1fr; gap: 24px;
           margin-top: 48px; align-items: stretch;
@@ -664,22 +661,11 @@ function AdvertisePage() {
         .step-line { display: none; }
 
         @media (min-width: 820px) {
-          .how-flow {
-            grid-template-columns: 1fr 24px 1fr 24px 1fr;
-            align-items: stretch;
-          }
-          .step-line {
-            display: block;
-            align-self: center;
-            height: 2px; background: ${C.ink}; opacity: 0.18;
-            width: 100%;
-          }
+          .how-flow { grid-template-columns: 1fr 24px 1fr 24px 1fr; align-items: stretch; }
+          .step-line { display: block; align-self: center; height: 2px; background: ${C.ink}; opacity: 0.18; width: 100%; }
         }
 
-        .pricing-grid {
-          display: grid; grid-template-columns: 1fr; gap: 22px;
-          margin-top: 56px;
-        }
+        .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 56px; }
         @media (min-width: 600px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
         @media (min-width: 1000px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
 
@@ -689,23 +675,8 @@ function AdvertisePage() {
           .coverage-map-wrap { display: block; }
           .coverage-list { display: none; }
         }
-
-        @keyframes ctaPulseAmber {
-          0%,100% { box-shadow: 5px 5px 0 ${C.ink}; }
-          50% { box-shadow: 5px 5px 0 ${C.ink}, 0 0 0 8px rgba(26,26,24,0.18); }
-        }
-        .whatsapp-btn-amber { animation: ctaPulseAmber 3s ease-in-out infinite; }
-
-        @media (prefers-reduced-motion: reduce) {
-          *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-          }
-        }
       `}</style>
 
-      <Nav />
       <Hero />
       <HowItWorks />
       <Pricing />
@@ -713,16 +684,7 @@ function AdvertisePage() {
       <DashboardPreview />
       <FAQ />
       <FinalCTA />
-
-      <footer style={{ background: C.ink, padding: "48px 24px", textAlign: "center" }}>
-        <div className="font-display" style={{ fontSize: 24 }}>
-          <span style={{ color: "#fff" }}>my</span>
-          <span style={{ color: C.amber }}>di</span>
-          <span style={{ color: "#fff" }}>io</span>
-        </div>
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.amber, letterSpacing: 2, marginTop: 8 }}>ADS ON THE MOVE.</div>
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.3)", marginTop: 6 }}>mydiio · Colombo · Sri Lanka · 2026</div>
-      </footer>
-    </div>
+    </SiteShell>
   );
 }
+
