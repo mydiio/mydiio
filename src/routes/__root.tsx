@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { I18nProvider } from "@/lib/i18n";
 
 function NotFoundComponent() {
   return (
@@ -85,10 +86,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ccbf7ab9-222f-4fbc-8f0a-c8e029b26913/id-preview-a72443b9--8a77c33a-8b21-48a8-bdbe-b7348ea1c5cb.lovable.app-1778152607889.png" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap",
       },
+      { rel: "alternate", hrefLang: "en", href: "https://mydiio.com/?lang=en" },
+      { rel: "alternate", hrefLang: "si", href: "https://mydiio.com/?lang=si" },
+      { rel: "alternate", hrefLang: "ta", href: "https://mydiio.com/?lang=ta" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://mydiio.com/" },
     ],
   }),
   shellComponent: RootShell,
@@ -116,7 +124,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <I18nProvider>
+        <Outlet />
+      </I18nProvider>
     </QueryClientProvider>
   );
 }
