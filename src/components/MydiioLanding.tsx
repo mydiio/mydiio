@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
+import COLOMBO_STREET from "@/assets/colombo-street.jpg";
+import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
+import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
+import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 
 const C = {
   amber: "#F5A623",
@@ -74,14 +78,9 @@ function Hero() {
   }, []);
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
-      <video
-        src="/hero-tuktuk.mp4"
-        poster={HERO_PHOTO}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
+      <img
+        src={COLOMBO_STREET}
+        alt="Tuk-tuks filling the streets of Colombo"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div
@@ -265,6 +264,25 @@ function HowItWorks() {
           </div>
         ))}
       </div>
+
+      <div className="reveal" style={{
+        marginTop: 64, borderRadius: 18, overflow: "hidden",
+        border: `3px solid ${C.ink}`, boxShadow: `8px 8px 0 ${C.ink}`,
+        position: "relative",
+      }}>
+        <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
+        <div style={{
+          position: "absolute", left: 20, bottom: 20, right: 20,
+          background: "rgba(26,26,24,0.78)", color: "#fff",
+          padding: "14px 18px", borderRadius: 10, maxWidth: 420,
+          fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 700, fontSize: 14,
+        }}>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amber, textTransform: "uppercase", marginBottom: 6 }}>
+            Captive attention
+          </div>
+          14 minutes inside the tuk-tuk. Eye-level. No skip button.
+        </div>
+      </div>
     </Section>
   );
 }
@@ -298,28 +316,31 @@ function TwoPaths() {
           </Link>
         </div>
 
-        <div className="reveal path-card" style={{ background: C.greenPale }}>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: "#2D8A4E", textTransform: "uppercase" }}>
-            For Tuk-Tuk Drivers
-          </span>
-          <h3 className="font-display" style={{ fontSize: 28, color: C.ink, marginTop: 12, lineHeight: 1.1 }}>
-            Earn with mydiio
-          </h3>
-          <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.5 }}>
-            Earn LKR 6,000–8,000/month. Free installation. Drive as you always have.
-          </p>
-          <Link
-            to="/drive"
-            className="btn-bold font-display"
-            style={{
-              display: "inline-block", marginTop: 22,
-              background: C.green, color: "#fff",
-              padding: "13px 20px", borderRadius: 11, fontSize: 15,
-              textDecoration: "none",
-            }}
-          >
-            Start earning →
-          </Link>
+        <div className="reveal path-card" style={{ background: C.greenPale, padding: 0, overflow: "hidden" }}>
+          <img src={DRIVER_PAYMENT} alt="Smiling Colombo tuk-tuk driver holding payment confirmation" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: `3px solid ${C.ink}` }} />
+          <div style={{ padding: "28px 28px 32px" }}>
+            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: "#2D8A4E", textTransform: "uppercase" }}>
+              For Tuk-Tuk Drivers
+            </span>
+            <h3 className="font-display" style={{ fontSize: 28, color: C.ink, marginTop: 12, lineHeight: 1.1 }}>
+              Earn with mydiio
+            </h3>
+            <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.5 }}>
+              Earn LKR 6,000–8,000/month. Free installation. Drive as you always have.
+            </p>
+            <Link
+              to="/drive"
+              className="btn-bold font-display"
+              style={{
+                display: "inline-block", marginTop: 22,
+                background: C.green, color: "#fff",
+                padding: "13px 20px", borderRadius: 11, fontSize: 15,
+                textDecoration: "none",
+              }}
+            >
+              Start earning →
+            </Link>
+          </div>
         </div>
       </div>
     </Section>
@@ -565,6 +586,28 @@ export default function MydiioLanding() {
       <TwoPaths />
       <Founder />
       <Transparency />
+
+      {/* Fleet CTA */}
+      <section className="relative w-full overflow-hidden" style={{ minHeight: 460 }}>
+        <img src={FLEET_SUNSET} alt="A line of mydiio tuk-tuks parked at sunset in Colombo" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55), rgba(26,26,24,0.85))" }} />
+        <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "100px 24px", textAlign: "center" }}>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>
+            A growing Colombo fleet
+          </span>
+          <h2 className="font-display" style={{ fontSize: "clamp(30px, 5vw, 52px)", color: "#fff", lineHeight: 1.05, marginTop: 14, letterSpacing: "-1px" }}>
+            One screen. Every street. <br/>One city, on the move.
+          </h2>
+          <div className="hero-cta-row" style={{ marginTop: 30, justifyContent: "center" }}>
+            <Link to="/advertise" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
+              Advertise on mydiio →
+            </Link>
+            <Link to="/drive" className="btn-bold font-display" style={{ background: C.green, color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
+              Drive & earn →
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer style={{ background: C.ink, padding: "48px 24px", textAlign: "center" }}>
