@@ -102,7 +102,7 @@ export function ColomboMap() {
 
   return (
     <div className="coverage-grid">
-      <div className="coverage-map-wrap" style={{
+      <div ref={wrapRef} className="coverage-map-wrap" style={{
         position: "relative", borderRadius: 16, overflow: "hidden",
         border: `2.5px solid ${C.ink}`, boxShadow: "6px 6px 0 rgba(26,26,24,0.9)",
       }}>
