@@ -89,7 +89,7 @@ function Hero() {
             Free installation. LKR 6,000–8,000 every month. You change nothing.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
-            <a href={WA_DRIVER} target="_blank" rel="noopener noreferrer"
+            <a href={DRIVER_CONTACT}
               className="btn-bold font-display"
               style={{
                 background: C.green, color: "#fff",
@@ -224,7 +224,7 @@ function DriverEarnings() {
             ))}
           </div>
           <a
-            href={WA_DRIVER}
+            href={DRIVER_CONTACT}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-bold font-display"
@@ -531,7 +531,7 @@ function FinalCTA() {
           marginTop: 36, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center",
         }}>
           <a
-            href={WA_DRIVER}
+            href={DRIVER_CONTACT}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-bold font-display"
@@ -544,7 +544,7 @@ function FinalCTA() {
             Start campaign →
           </a>
           <a
-            href={WA_DRIVER}
+            href={DRIVER_CONTACT}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-bold font-display"
