@@ -248,8 +248,10 @@ export function useI18n() {
 /* -------- Switcher UI -------- */
 export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }) {
   const { lang, setLang } = useI18n();
-  const ink = "#1A1A18";
-  const amber = "#F5A623";
+  const ink = "#1E1A15";
+  const accent = "#F4A62A";
+  const accentInk = "#3A2C10";
+  const inkSoft = "#5B5347";
   const isDark = tone === "dark";
   return (
     <div
@@ -257,12 +259,15 @@ export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }
       aria-label="Language"
       className="language-switcher"
       style={{
-        display: "inline-flex", alignItems: "center", gap: 0,
-        padding: 3, borderRadius: 999,
-        background: isDark ? "rgba(26,26,24,0.85)" : "#fff",
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 0,
+        padding: 3,
+        borderRadius: 9999,
+        background: isDark ? "rgba(30,26,21,0.85)" : "transparent",
         border: `2px solid ${ink}`,
-        boxShadow: "2px 2px 0 rgba(26,26,14,0.9)",
-        width: 142, height: 38, flex: "0 0 142px",
+        boxShadow: "2px 2px 0 #1E1A15",
+        height: 38,
       }}
     >
       {LANGS.map((l) => {
@@ -275,16 +280,27 @@ export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }
             aria-pressed={active}
             lang={l.htmlLang}
             style={{
-              padding: "5px 11px", borderRadius: 999, border: "none", cursor: "pointer",
-              fontFamily: l.code === "si" ? "'Noto Sans Sinhala', 'DM Sans', sans-serif" :
-                          l.code === "ta" ? "'Noto Sans Tamil', 'DM Sans', sans-serif" :
-                          "'DM Sans', sans-serif",
-              fontWeight: 800, fontSize: 12, letterSpacing: 0,
-              lineHeight: 1, height: 28, flex: "1 1 0", display: "inline-flex", alignItems: "center", justifyContent: "center",
-              background: active ? amber : "transparent",
-              color: active ? ink : (isDark ? "rgba(255,255,255,0.85)" : ink),
-              transition: "background 0.2s ease, color 0.2s ease",
-              minWidth: 0,
+              padding: "5px 12px",
+              borderRadius: 9999,
+              border: "none",
+              cursor: "pointer",
+              fontFamily:
+                l.code === "si"
+                  ? "'Noto Sans Sinhala', 'Space Grotesk', sans-serif"
+                  : l.code === "ta"
+                  ? "'Noto Sans Tamil', 'Space Grotesk', sans-serif"
+                  : "'Space Mono', monospace",
+              fontWeight: 700,
+              fontSize: 12,
+              letterSpacing: "0.06em",
+              lineHeight: 1,
+              height: 28,
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: active ? accent : "transparent",
+              color: active ? accentInk : isDark ? "rgba(244,239,227,0.85)" : inkSoft,
+              transition: "background 0.18s ease, color 0.18s ease",
             }}
           >
             {l.label}
@@ -294,3 +310,4 @@ export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }
     </div>
   );
 }
+
