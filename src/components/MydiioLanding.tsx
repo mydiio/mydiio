@@ -732,38 +732,62 @@ function FoundingOffer() {
   const { t } = useI18n();
   const benefits = [t("fo_b1"), t("fo_b2"), t("fo_b3"), t("fo_b4")];
   return (
-    <Section bg={C.cream}>
+    <Section bg={"var(--bg)"}>
       <div className="reveal reveal-up" style={{
-        background: "#fff", border: `3px solid ${C.ink}`, borderRadius: 24,
-        padding: "clamp(36px, 5vw, 64px)", boxShadow: "8px 8px 0 rgba(26,26,24,0.92)",
+        position: "relative",
+        background: "var(--paper)",
+        border: "2px solid var(--ink)",
+        borderRadius: 26,
+        padding: "clamp(36px, 5vw, 64px)",
+        boxShadow: "var(--sticker-lg)",
+        overflow: "hidden",
       }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("fo_kicker")}</span>
-        <h2 className="font-display" style={{ fontSize: "clamp(26px, 4vw, 42px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
-          {t("fo_title")}
-        </h2>
-        <p style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 16, maxWidth: 540, fontWeight: 500 }}>
-          {t("fo_body")}
-        </p>
-        <ul style={{ listStyle: "none", padding: 0, margin: "24px 0 0", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10 }}>
-          {benefits.map((b) => (
-            <li key={b} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14.5, color: C.ink, fontWeight: 600 }}>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke={C.amberDeep} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="4 12 10 18 20 6" />
-              </svg>
-              {b}
-            </li>
-          ))}
-        </ul>
-        <Link to="/advertise" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 28, background: C.amber, color: C.ink, padding: "15px 22px", borderRadius: 12, fontSize: 15.5, textDecoration: "none" }}>
-          {t("fo_cta")}
-        </Link>
+        <div aria-hidden style={{
+          position: "absolute",
+          top: -180,
+          right: -180,
+          width: 500,
+          height: 500,
+          borderRadius: "50%",
+          background: "var(--accent-soft)",
+          opacity: 0.6,
+          pointerEvents: "none",
+        }} />
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <span className="eyebrow" style={{ display: "inline-block" }}>{t("fo_kicker")}</span>
+          <h2 className="font-display" style={{ fontSize: "clamp(34px, 5vw, 62px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14, fontWeight: 700 }}>
+            {t("fo_title")}
+          </h2>
+          <p style={{ fontSize: 16, color: "var(--ink-soft)", lineHeight: 1.6, marginTop: 16, maxWidth: 540, fontWeight: 500 }}>
+            {t("fo_body")}
+          </p>
+          <ul style={{ listStyle: "none", padding: 0, margin: "28px 0 0", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: 14 }}>
+            {benefits.map((b) => (
+              <li key={b} style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 15, color: "var(--ink)", fontWeight: 600 }}>
+                <span style={{
+                  display: "inline-flex", alignItems: "center", justifyContent: "center",
+                  width: 22, height: 22, borderRadius: "50%",
+                  background: "var(--accent)", border: "2px solid var(--ink)", flexShrink: 0,
+                }}>
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--ink)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="4 12 10 18 20 6" />
+                  </svg>
+                </span>
+                {b}
+              </li>
+            ))}
+          </ul>
+          <Link to="/advertise" className="btn-bold font-display cta-primary" style={{ display: "inline-block", marginTop: 32, padding: "14px 24px", fontSize: 15, textDecoration: "none" }}>
+            Claim a pilot slot →
+          </Link>
+        </div>
       </div>
     </Section>
   );
 }
 
 function FAQ() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const items = [
     { q: t("faq_q1"), a: t("faq_a1") },
     { q: t("faq_q2"), a: t("faq_a2") },
@@ -771,31 +795,61 @@ function FAQ() {
     { q: t("faq_q4"), a: t("faq_a4") },
     { q: t("faq_q5"), a: t("faq_a5") },
   ];
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
   return (
-    <Section bg={C.cream}>
-      <SectionHeader kicker={t("faq_kicker")} title={t("faq_title")} />
-      <div style={{ maxWidth: 800, margin: "0 auto", display: "flex", flexDirection: "column", gap: 12 }}>
-        {items.map((it, i) => (
-          <details key={i} className={`reveal faq-item reveal-up${i < 4 ? ` delay-${i + 1}` : ""}`} style={{
-            background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 16,
-            padding: "20px 24px", boxShadow: "0 14px 40px -28px rgba(26,26,24,0.25)",
-          }}>
-            <summary className="font-display" style={{
-              fontSize: "clamp(15px, 1.7vw, 18px)", color: C.ink, cursor: "pointer",
-              listStyle: "none", display: "flex", justifyContent: "space-between",
-              alignItems: "center", gap: 16, letterSpacing: "-0.2px",
-            }}>
-              <span>{it.q}</span>
-              <span className="faq-plus" style={{ color: C.amber, fontSize: 22, lineHeight: 1, transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)" }}>+</span>
-            </summary>
-            <p style={{ fontSize: 15, color: C.inkSoft, lineHeight: 1.6, marginTop: 14, fontWeight: 500 }}>{it.a}</p>
-          </details>
-        ))}
+    <Section bg={"var(--bg2)"}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 48, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+        <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("faq_kicker")}</span>
+        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
+          <EmTail text={t("faq_title")} tail="asked." lang={lang} />
+        </h2>
       </div>
-      <style>{`
-        .faq-item summary::-webkit-details-marker { display: none; }
-        .faq-item[open] .faq-plus { transform: rotate(45deg); }
-      `}</style>
+      <div style={{ maxWidth: 880, margin: "0 auto", display: "flex", flexDirection: "column", gap: 14 }}>
+        {items.map((it, i) => {
+          const open = openIdx === i;
+          return (
+            <div key={i} className={`reveal reveal-up${i < 4 ? ` delay-${i + 1}` : ""}`} style={{
+              background: "var(--paper)",
+              border: "2px solid var(--ink)",
+              borderRadius: 14,
+              boxShadow: open ? "var(--sticker)" : "var(--sticker-press)",
+              transition: "box-shadow 0.25s ease",
+              overflow: "hidden",
+            }}>
+              <button
+                type="button"
+                onClick={() => setOpenIdx(open ? null : i)}
+                aria-expanded={open}
+                style={{
+                  width: "100%", background: "transparent", border: 0, cursor: "pointer",
+                  padding: "20px 24px", display: "flex", justifyContent: "space-between",
+                  alignItems: "center", gap: 16, textAlign: "left",
+                  fontFamily: "'Space Grotesk', sans-serif", fontSize: 19, fontWeight: 600,
+                  color: "var(--ink)", letterSpacing: "-0.01em",
+                }}
+              >
+                <span>{it.q}</span>
+                <span style={{
+                  fontFamily: "'Space Mono', monospace",
+                  color: "var(--accent-deep)",
+                  fontSize: 22, lineHeight: 1, flexShrink: 0,
+                  transform: open ? "rotate(45deg)" : "rotate(0deg)",
+                  transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)",
+                }}>+</span>
+              </button>
+              <div style={{
+                maxHeight: open ? 600 : 0,
+                overflow: "hidden",
+                transition: "max-height 0.4s cubic-bezier(0.16,1,0.3,1)",
+              }}>
+                <p style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.65, padding: "0 24px 22px", margin: 0, fontWeight: 500 }}>
+                  {it.a}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </Section>
   );
 }
