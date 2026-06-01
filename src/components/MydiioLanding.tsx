@@ -868,7 +868,8 @@ function FinalCTA() {
           {t("fcta_title")}
         </h2>
         <div style={{ marginTop: 40 }}>
-          <WaitlistForm variant="dark" />
+          <AdvertiserApplication />
+          {false && <WaitlistForm variant="dark" />}
         </div>
       </div>
     </section>
