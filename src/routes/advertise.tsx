@@ -4,6 +4,7 @@ import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
+import { WaitlistForm } from "@/components/site/WaitlistForm";
 
 export const Route = createFileRoute("/advertise")({
   component: AdvertisePage,
@@ -17,7 +18,11 @@ export const Route = createFileRoute("/advertise")({
   }),
 });
 
-const WA_ADVERTISER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20advertising%20on%20mydiio";
+function scrollToWaitlist(e: React.MouseEvent) {
+  e.preventDefault();
+  document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 
 
 /* ---------- Reveal section ---------- */
@@ -72,14 +77,14 @@ function Hero() {
             14 minutes. No skip button. GPS-verified weekly reports. From LKR 20,000/month.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
-            <a href={WA_ADVERTISER} target="_blank" rel="noopener noreferrer"
+            <a href="#waitlist" onClick={scrollToWaitlist}
               className="btn-bold font-display"
               style={{
                 background: C.amber, color: C.ink,
                 padding: "16px 22px", borderRadius: 13, fontSize: 17,
                 textDecoration: "none", display: "inline-block",
               }}>
-              Start a campaign →
+              Join the waiting list →
             </a>
           </div>
           <div style={{ marginTop: 24, display: "flex", flexWrap: "wrap", gap: 10 }}>
@@ -111,9 +116,9 @@ function StatPill({ value, label }: { value: string; label: string }) {
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Send us your ad", body: "WhatsApp us your creative or idea. We'll produce it free." },
+    { n: 1, title: "Send us your ad", body: "Share your creative or idea. We'll produce it free." },
     { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen in the fleet." },
-    { n: 3, title: "Weekly GPS report", body: "Verified impressions delivered to your WhatsApp every Monday." },
+    { n: 3, title: "Weekly GPS report", body: "Verified impressions delivered to your inbox every Monday." },
   ];
   return (
     <Section bg={C.cream}>
@@ -225,7 +230,7 @@ function Pricing() {
                 </li>
               ))}
             </ul>
-            <a href={WA_ADVERTISER} target="_blank" rel="noopener noreferrer"
+            <a href="#waitlist" onClick={scrollToWaitlist}
               className="btn-bold font-display"
               style={{
                 marginTop: "auto", paddingTop: 22,
@@ -237,7 +242,7 @@ function Pricing() {
                 padding: "12px 18px", borderRadius: 11, fontSize: 14,
                 border: `3px solid ${C.ink}`, boxShadow: `4px 4px 0 ${C.ink}`,
               }}>
-                {p.cta}
+                Join waiting list →
               </span>
             </a>
           </div>
@@ -307,7 +312,7 @@ function DashboardPreview() {
             borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center",
           }}>
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.55)", letterSpacing: 1.5 }}>
-              NEXT WHATSAPP REPORT
+              NEXT WEEKLY REPORT
             </span>
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber }}>
               MONDAY · 9:00 AM
@@ -330,7 +335,7 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   const items = [
     { q: "What kind of ads can I run?", a: "15-second or 30-second video ads, or static image ads. We can produce your first creative for free from your existing branding." },
-    { q: "How do I know my ad actually played?", a: "Every play is GPS-logged and timestamped. You receive a verified report on WhatsApp every Monday with impressions, zones covered, and week-on-week trends." },
+    { q: "How do I know my ad actually played?", a: "Every play is GPS-logged and timestamped. You receive a verified weekly report every Monday with impressions, zones covered, and week-on-week trends." },
     { q: "What is Pioneer category exclusivity?", a: "As a Pioneer advertiser, no competitor in your business category can advertise on mydiio in your geographic zone while your contract is active. You are the only pharmacy, or the only restaurant, in your area." },
     { q: "Can I cancel?", a: "After your minimum contract term (3 or 6 months depending on tier), you can cancel with 30 days notice. No exit fees after the minimum term." },
     { q: "What does the LKR 5,000 Pioneer deposit cover?", a: "It's fully refundable and credited against your first invoice. It reserves your exclusive category spot while we prepare your campaign." },
@@ -545,9 +550,8 @@ function FinalCTA() {
           marginTop: 36, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center",
         }}>
           <a
-            href={WA_ADVERTISER}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#waitlist"
+            onClick={scrollToWaitlist}
             className="btn-bold font-display"
             style={{
               background: C.amber, color: C.ink,
@@ -555,12 +559,10 @@ function FinalCTA() {
               textDecoration: "none", display: "inline-block",
             }}
           >
-            Start campaign →
+            Join the waiting list →
           </a>
           <a
-            href={WA_ADVERTISER}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
             className="btn-bold font-display"
             style={{
               background: "transparent", color: "#fff",
@@ -622,6 +624,22 @@ function AdvertisePage() {
       <Coverage />
       <DashboardPreview />
       <FAQ />
+      <section id="waitlist" style={{ background: C.cream, padding: "96px 24px", scrollMarginTop: 96 }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
+            Join the waiting list
+          </span>
+          <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.4vw, 48px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
+            Reserve your Pioneer spot.
+          </h2>
+          <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 14 }}>
+            Tell us about your business. We'll confirm your spot within 24 hours.
+          </p>
+          <div style={{ marginTop: 32 }}>
+            <WaitlistForm />
+          </div>
+        </div>
+      </section>
       <FinalCTA />
     </SiteShell>
   );

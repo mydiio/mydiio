@@ -18,7 +18,7 @@ export const Route = createFileRoute("/drive")({
   }),
 });
 
-const WA_DRIVER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20becoming%20a%20mydiio%20driver";
+const DRIVER_CONTACT = "/contact";
 const SPOTS_REMAINING = 7;
 
 
@@ -89,7 +89,7 @@ function Hero() {
             Free installation. LKR 6,000–8,000 every month. You change nothing.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
-            <a href={WA_DRIVER} target="_blank" rel="noopener noreferrer"
+            <a href={DRIVER_CONTACT}
               className="btn-bold font-display"
               style={{
                 background: C.green, color: "#fff",
@@ -224,9 +224,7 @@ function DriverEarnings() {
             ))}
           </div>
           <a
-            href={WA_DRIVER}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={DRIVER_CONTACT}
             className="btn-bold font-display"
             style={{
               display: "inline-block", marginTop: 28,
@@ -253,7 +251,7 @@ function DriverEarnings() {
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Message us on WhatsApp", body: "We reply within 24 hours." },
+    { n: 1, title: "Get in touch", body: "We reply within 24 hours." },
     { n: 2, title: "We install for free", body: "One hour. No cost. Powered by your vehicle." },
     { n: 3, title: "You drive normally", body: "Same routes, same hours. Screen runs automatically." },
     { n: 4, title: "Money arrives on the 5th", body: "Every month. Direct bank transfer." },
@@ -531,9 +529,7 @@ function FinalCTA() {
           marginTop: 36, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center",
         }}>
           <a
-            href={WA_DRIVER}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={DRIVER_CONTACT}
             className="btn-bold font-display"
             style={{
               background: C.amber, color: C.ink,
@@ -544,9 +540,7 @@ function FinalCTA() {
             Start campaign →
           </a>
           <a
-            href={WA_DRIVER}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={DRIVER_CONTACT}
             className="btn-bold font-display"
             style={{
               background: "transparent", color: "#fff",
