@@ -860,13 +860,13 @@ function FinalCTA() {
     <section id="waitlist" className="relative w-full overflow-hidden" style={{ minHeight: 520, scrollMarginTop: 96 }}>
       <span id="signup-section" style={{ position: "absolute", top: -96 }} aria-hidden />
       <img src={FLEET_SUNSET} alt="A line of mydiio tuk-tuks parked at sunset in Colombo" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.85) 100%)" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(30,26,21,0.3), rgba(30,26,21,0.7))" }} />
       <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(80px, 12vw, 140px) clamp(20px, 4vw, 32px)", textAlign: "center" }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>{t("fcta_kicker")}</span>
-        <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.8vw, 54px)", color: "#fff", lineHeight: 1.05, marginTop: 14, letterSpacing: "-1.2px" }}>
+        <span className="eyebrow" style={{ color: "var(--accent)", display: "inline-block" }}>{t("fcta_kicker")}</span>
+        <h2 className="font-display" style={{ fontSize: "clamp(38px, 6vw, 84px)", color: "var(--on-dark)", lineHeight: 1.02, marginTop: 14, letterSpacing: "-0.03em", fontWeight: 700 }}>
           {t("fcta_title")}
         </h2>
-        <div style={{ marginTop: 36 }}>
+        <div style={{ marginTop: 40 }}>
           <WaitlistForm variant="dark" />
         </div>
       </div>
