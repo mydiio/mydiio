@@ -402,17 +402,6 @@ function FAQ() {
 
 /* ---------- Coverage ---------- */
 function Coverage() {
-  // Stylized positions on a 800x500 viewBox (not geographic)
-  const zones = [
-    { name: "Fort / Pettah",       cx: 230, cy: 170, rx: 70, ry: 38, anchor: "middle" as const },
-    { name: "Town Hall",           cx: 360, cy: 220, rx: 62, ry: 32, anchor: "middle" as const },
-    { name: "Colombo 7",           cx: 470, cy: 170, rx: 78, ry: 36, anchor: "middle" as const },
-    { name: "Kotte",               cx: 640, cy: 240, rx: 70, ry: 34, anchor: "middle" as const },
-    { name: "Bambalapitiya",       cx: 270, cy: 290, rx: 78, ry: 32, anchor: "middle" as const },
-    { name: "Galle Road corridor", cx: 220, cy: 380, rx: 100, ry: 36, anchor: "middle" as const },
-    { name: "Wellawatte",          cx: 370, cy: 420, rx: 78, ry: 32, anchor: "middle" as const },
-  ];
-
   return (
     <Section bg={C.cream}>
       <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
@@ -431,93 +420,9 @@ function Coverage() {
         mydiio tuk-tuks cover 7 key zones across Colombo.
       </p>
 
-      {/* Map (tablet/desktop) */}
-      <div className="reveal coverage-map-wrap" style={{
-        marginTop: 40, maxWidth: 880, marginInline: "auto",
-      }}>
-        <div style={{
-          background: "#fff", border: `2px solid ${C.ink}`, borderRadius: 16,
-          boxShadow: `6px 6px 0 ${C.ink}`, padding: 16, overflow: "hidden",
-        }}>
-          <svg
-            viewBox="0 0 800 500"
-            role="img"
-            aria-label="Stylized map of Colombo coverage zones"
-            style={{ width: "100%", height: "auto", display: "block", background: C.cream, borderRadius: 10 }}
-          >
-            <defs>
-              <pattern id="roadGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke={C.ink} strokeOpacity="0.06" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="800" height="500" fill="url(#roadGrid)" />
-
-            {/* Coastline hint (left edge) */}
-            <path
-              d="M 0 80 Q 60 160 40 260 Q 20 360 80 460 L 0 500 Z"
-              fill={C.amber} fillOpacity="0.06"
-              stroke={C.amberDeep} strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="4 6"
-            />
-            <text x="14" y="56" style={{ fontFamily: "'DM Mono', monospace" }}
-              fontSize="10" fill={C.inkSoft} letterSpacing="2">
-              INDIAN OCEAN
-            </text>
-
-            {/* Galle Road corridor line */}
-            <line x1="180" y1="240" x2="220" y2="450"
-              stroke={C.amberDeep} strokeOpacity="0.35" strokeWidth="2" strokeDasharray="6 6" />
-
-            {zones.map((z) => (
-              <g key={z.name}>
-                <ellipse
-                  cx={z.cx} cy={z.cy} rx={z.rx} ry={z.ry}
-                  fill={C.amber} fillOpacity="0.20"
-                  stroke={C.amber} strokeWidth="2"
-                />
-                <text
-                  x={z.cx} y={z.cy + 4} textAnchor={z.anchor}
-                  style={{ fontFamily: "'DM Mono', monospace" }}
-                  fontSize="11" fill={C.ink} fontWeight="600"
-                >
-                  {z.name}
-                </text>
-              </g>
-            ))}
-          </svg>
-        </div>
+      <div className="reveal" style={{ marginTop: 40 }}>
+        <ColomboMap />
       </div>
-
-      {/* Zone list (mobile) */}
-      <div className="reveal coverage-list" style={{
-        marginTop: 32, maxWidth: 480, marginInline: "auto",
-        display: "flex", flexDirection: "column", gap: 10,
-      }}>
-        {zones.map((z) => (
-          <div key={z.name} style={{
-            display: "flex", alignItems: "center", gap: 12,
-            background: "#fff", border: `2px solid ${C.ink}`,
-            borderRadius: 10, padding: "10px 14px",
-            boxShadow: `3px 3px 0 ${C.ink}`,
-          }}>
-            <span style={{
-              width: 12, height: 12, borderRadius: "50%",
-              background: C.amber, border: `2px solid ${C.amberDeep}`,
-              flexShrink: 0,
-            }} />
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: C.ink, letterSpacing: 1 }}>
-              {z.name}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      <p className="reveal" style={{
-        fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.2,
-        color: C.inkSoft, textAlign: "center", marginTop: 32,
-        maxWidth: 640, marginInline: "auto", lineHeight: 1.6,
-      }}>
-        Coverage expands as more drivers join the fleet. Pioneer advertisers select their preferred zones.
-      </p>
     </Section>
   );
 }
