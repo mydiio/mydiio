@@ -897,6 +897,7 @@ export default function MydiioLanding() {
 
       <Hero />
       <WhyItWorks />
+      <NetworkLive />
       <HowItWorks />
       <TukInterior />
       <Coverage />
