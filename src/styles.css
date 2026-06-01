@@ -1,15 +1,15 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;800;900&family=DM+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Serif+Display&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 14px;
+  --radius-md: 18px;
+  --radius-lg: 22px;
+  --radius-xl: 26px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -37,67 +37,108 @@
   --color-green: var(--green);
   --color-green-deep: var(--green-deep);
   --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-mute: var(--ink-mute);
   --color-sky: var(--sky);
   --color-cream: var(--cream);
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-paper: var(--paper);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-ink: var(--accent-ink);
+  --color-green-soft: var(--green-soft);
+  --color-green-ink: var(--green-ink);
+  --color-on-dark: var(--on-dark);
 
-  --font-display: "Fredoka One", system-ui, sans-serif;
-  --font-body: "Nunito", system-ui, sans-serif;
-  --font-mono: "DM Mono", ui-monospace, monospace;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-serif: "DM Serif Display", Georgia, serif;
+
+  --shadow-sticker: 4px 5px 0 #1E1A15;
+  --shadow-sticker-lg: 6px 7px 0 #1E1A15;
+  --shadow-sticker-press: 2px 2px 0 #1E1A15;
 }
 
 :root {
   --radius: 0.625rem;
+  --radius-card: 26px;
+  --radius-pill: 9999px;
 
-  --amber: #F5A623;
-  --amber-deep: #E8920A;
-  --amber-lite: #FFB930;
+  /* New palette */
+  --bg: #F7F1E5;
+  --bg2: #F2E9D6;
+  --ink: #1E1A15;
+  --ink-soft: #5B5347;
+  --ink-mute: #837B6F;
+  --paper: #FFFEFA;
+  --accent: #F4A62A;
+  --accent-soft: #F8E7C6;
+  --accent-deep: #B07A14;
+  --accent-ink: #3A2C10;
+  --green: #45855A;
+  --green-soft: #E1F0E3;
+  --green-ink: #2E5538;
+  --on-dark: #F4EFE3;
+
+  /* Sticker shadows */
+  --sticker: 4px 5px 0 #1E1A15;
+  --sticker-lg: 6px 7px 0 #1E1A15;
+  --sticker-press: 2px 2px 0 #1E1A15;
+
+  /* Legacy aliases — keep components that reference these working */
+  --amber: var(--accent);
+  --amber-deep: var(--accent-deep);
+  --amber-lite: #F8B947;
   --yellow: #F7E14A;
-  --green: #4CAF72;
-  --green-deep: #2D8A4E;
-  --ink: #1A1A0E;
+  --green-deep: var(--green-ink);
   --sky: #A8D8EA;
-  --cream: #FFF9ED;
+  --cream: var(--bg);
 
-  --background: var(--cream);
+  --background: var(--bg);
   --foreground: var(--ink);
-  --card: #ffffff;
+  --card: var(--paper);
   --card-foreground: var(--ink);
-  --popover: #ffffff;
+  --popover: var(--paper);
   --popover-foreground: var(--ink);
-  --primary: var(--amber);
-  --primary-foreground: var(--ink);
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-ink);
   --secondary: var(--green);
-  --secondary-foreground: #ffffff;
-  --muted: #f3eedb;
-  --muted-foreground: #6b6655;
-  --accent: var(--yellow);
-  --accent-foreground: var(--ink);
+  --secondary-foreground: var(--on-dark);
+  --muted: var(--bg2);
+  --muted-foreground: var(--ink-soft);
+  --accent-foreground: var(--accent-ink);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: #ffffff;
   --border: var(--ink);
   --input: var(--ink);
-  --ring: var(--amber);
+  --ring: var(--accent);
 }
 
 .dark { color-scheme: light; }
 
+::selection { background: var(--accent); color: var(--accent-ink); }
+
 @layer base {
   * { border-color: var(--color-border); }
   html, body {
-    background-color: var(--color-cream);
-    color: var(--color-ink);
-    font-family: 'DM Sans', 'Noto Sans Sinhala', 'Noto Sans Tamil', var(--font-body), sans-serif;
-    font-weight: 600;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', 'Noto Sans Sinhala', 'Noto Sans Tamil', system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.55;
+    font-weight: 500;
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;
     font-synthesis-weight: none;
   }
   html[data-lang="si"], html[data-lang="si"] body,
   html[data-lang="ta"], html[data-lang="ta"] body {
-    font-family: 'DM Sans', 'Noto Sans Sinhala', 'Noto Sans Tamil', var(--font-body), sans-serif;
+    font-family: 'Space Grotesk', 'Noto Sans Sinhala', 'Noto Sans Tamil', system-ui, sans-serif;
   }
-  html[data-lang="si"] .font-display, html[data-lang="si"] h1, html[data-lang="si"] h2, html[data-lang="si"] h3 { font-family: 'Noto Sans Sinhala', 'DM Sans', var(--font-display), sans-serif; font-weight: 800; }
-  html[data-lang="ta"] .font-display, html[data-lang="ta"] h1, html[data-lang="ta"] h2, html[data-lang="ta"] h3 { font-family: 'Noto Sans Tamil', 'DM Sans', var(--font-display), sans-serif; font-weight: 800; }
+  html[data-lang="si"] .font-display, html[data-lang="si"] h1, html[data-lang="si"] h2, html[data-lang="si"] h3 { font-family: 'Noto Sans Sinhala', 'Space Grotesk', sans-serif; font-weight: 700; }
+  html[data-lang="ta"] .font-display, html[data-lang="ta"] h1, html[data-lang="ta"] h2, html[data-lang="ta"] h3 { font-family: 'Noto Sans Tamil', 'Space Grotesk', sans-serif; font-weight: 700; }
   html[data-lang="si"] body, html[data-lang="ta"] body { line-height: 1.58; }
 }
 
@@ -105,55 +146,78 @@
   .font-display { font-family: var(--font-display); }
   .font-body { font-family: var(--font-body); }
   .font-mono { font-family: var(--font-mono); }
+  .font-serif { font-family: var(--font-serif); }
+
+  .shadow-sticker { box-shadow: var(--sticker); }
+  .shadow-sticker-lg { box-shadow: var(--sticker-lg); }
+  .shadow-sticker-press { box-shadow: var(--sticker-press); }
 
   .btn-bold {
-    border: 3px solid var(--ink);
-    box-shadow: 4px 4px 0 var(--ink), 0 18px 32px -18px rgba(26,26,14,0.45);
-    transition: transform 0.18s cubic-bezier(0.16,1,0.3,1), box-shadow 0.18s cubic-bezier(0.16,1,0.3,1);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--sticker);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
     will-change: transform;
   }
-  .btn-bold:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink), 0 24px 40px -20px rgba(26,26,14,0.55); }
-  .btn-bold:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--ink), 0 8px 18px -10px rgba(26,26,14,0.45); }
+  .btn-bold:hover { transform: translate(-2px, -2px); box-shadow: var(--sticker-lg); }
+  .btn-bold:active { transform: translate(2px, 2px); box-shadow: var(--sticker-press); }
+  .btn-bold .arrow, .btn-bold [data-arrow] { display: inline-block; transition: transform 0.18s ease; }
+  .btn-bold:hover .arrow, .btn-bold:hover [data-arrow] { transform: translateX(4px); }
 
   .input-bold {
-    border: 3px solid var(--ink);
-    border-radius: 11px;
-    box-shadow: 3px 3px 0 var(--ink);
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 14px;
-    padding: 10px 12px;
-    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--sticker);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 12px 14px;
+    background: var(--paper);
     color: var(--ink);
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
     width: 100%;
   }
-  .input-bold:focus { outline: none; transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
-  .input-bold::placeholder { color: var(--ink); opacity: 0.28; }
+  .input-bold:focus { outline: none; transform: translate(-1px, -1px); box-shadow: var(--sticker-lg); }
+  .input-bold::placeholder { color: var(--ink-mute); opacity: 0.7; }
 
   .card-bold {
-    border: 4px solid var(--ink);
-    border-radius: 22px;
-    box-shadow: 8px 8px 0 var(--ink);
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-card);
+    box-shadow: var(--sticker);
     padding: 44px 36px;
     max-width: 560px;
     width: 100%;
     margin: 0 auto;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+  .card-bold:hover { transform: translate(-3px, -3px); box-shadow: var(--sticker-lg); }
   @media (min-width: 640px) { .card-bold { padding: 44px 48px; } }
 
   .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 3px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
     text-transform: uppercase;
-    color: var(--amber);
-    background: color-mix(in oklab, var(--amber) 15%, transparent);
-    padding: 5px 10px;
-    border-radius: 999px;
+    letter-spacing: 0.32em;
+    color: var(--accent-deep);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
     display: inline-block;
-    font-weight: 500;
   }
+
+  .section-wrap {
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 5vw, 72px);
+    padding-block: clamp(72px, 11vh, 150px);
+  }
+  .section-wrap.tint { background: var(--bg2); }
+  .section-wrap.dark { background: var(--ink); color: var(--on-dark); }
+
 
   .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s cubic-bezier(.2,.7,.2,1), transform 0.6s cubic-bezier(.2,.7,.2,1); }
   .reveal.in { opacity: 1; transform: translateY(0); }
