@@ -360,11 +360,11 @@ function WhyNow() {
   return (
     <Section bg={C.cream}>
       <div className="reveal" style={{ textAlign: "center", maxWidth: 760, margin: "0 auto" }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("whyn_kicker")}</span>
-        <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.6vw, 50px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
+        <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>{t("whyn_kicker")}</span>
+        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(28px, 4.6vw, 50px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
           {t("whyn_title")}
         </h2>
-        <p style={{ fontSize: "clamp(15px, 1.7vw, 19px)", color: C.inkSoft, lineHeight: 1.6, marginTop: 22, fontWeight: 500 }}>
+        <p className="reveal-up delay-2" style={{ fontSize: "clamp(15px, 1.7vw, 19px)", color: C.inkSoft, lineHeight: 1.6, marginTop: 22, fontWeight: 500 }}>
           {t("whyn_body")}
         </p>
       </div>
