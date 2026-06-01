@@ -1,15 +1,15 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;800;900&family=DM+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Serif+Display&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 14px;
+  --radius-md: 18px;
+  --radius-lg: 22px;
+  --radius-xl: 26px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -37,57 +37,98 @@
   --color-green: var(--green);
   --color-green-deep: var(--green-deep);
   --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-mute: var(--ink-mute);
   --color-sky: var(--sky);
   --color-cream: var(--cream);
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-paper: var(--paper);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-ink: var(--accent-ink);
+  --color-green-soft: var(--green-soft);
+  --color-green-ink: var(--green-ink);
+  --color-on-dark: var(--on-dark);
 
-  --font-display: "Fredoka One", system-ui, sans-serif;
-  --font-body: "Nunito", system-ui, sans-serif;
-  --font-mono: "DM Mono", ui-monospace, monospace;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-serif: "DM Serif Display", Georgia, serif;
+
+  --shadow-sticker: 4px 5px 0 #1E1A15;
+  --shadow-sticker-lg: 6px 7px 0 #1E1A15;
+  --shadow-sticker-press: 2px 2px 0 #1E1A15;
 }
 
 :root {
   --radius: 0.625rem;
+  --radius-card: 26px;
+  --radius-pill: 9999px;
 
-  --amber: #F5A623;
-  --amber-deep: #E8920A;
-  --amber-lite: #FFB930;
+  /* New palette */
+  --bg: #F7F1E5;
+  --bg2: #F2E9D6;
+  --ink: #1E1A15;
+  --ink-soft: #5B5347;
+  --ink-mute: #837B6F;
+  --paper: #FFFEFA;
+  --accent: #F4A62A;
+  --accent-soft: #F8E7C6;
+  --accent-deep: #B07A14;
+  --accent-ink: #3A2C10;
+  --green: #45855A;
+  --green-soft: #E1F0E3;
+  --green-ink: #2E5538;
+  --on-dark: #F4EFE3;
+
+  /* Sticker shadows */
+  --sticker: 4px 5px 0 #1E1A15;
+  --sticker-lg: 6px 7px 0 #1E1A15;
+  --sticker-press: 2px 2px 0 #1E1A15;
+
+  /* Legacy aliases — keep components that reference these working */
+  --amber: var(--accent);
+  --amber-deep: var(--accent-deep);
+  --amber-lite: #F8B947;
   --yellow: #F7E14A;
-  --green: #4CAF72;
-  --green-deep: #2D8A4E;
-  --ink: #1A1A0E;
+  --green-deep: var(--green-ink);
   --sky: #A8D8EA;
-  --cream: #FFF9ED;
+  --cream: var(--bg);
 
-  --background: var(--cream);
+  --background: var(--bg);
   --foreground: var(--ink);
-  --card: #ffffff;
+  --card: var(--paper);
   --card-foreground: var(--ink);
-  --popover: #ffffff;
+  --popover: var(--paper);
   --popover-foreground: var(--ink);
-  --primary: var(--amber);
-  --primary-foreground: var(--ink);
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-ink);
   --secondary: var(--green);
-  --secondary-foreground: #ffffff;
-  --muted: #f3eedb;
-  --muted-foreground: #6b6655;
-  --accent: var(--yellow);
-  --accent-foreground: var(--ink);
+  --secondary-foreground: var(--on-dark);
+  --muted: var(--bg2);
+  --muted-foreground: var(--ink-soft);
+  --accent-foreground: var(--accent-ink);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: #ffffff;
   --border: var(--ink);
   --input: var(--ink);
-  --ring: var(--amber);
+  --ring: var(--accent);
 }
 
 .dark { color-scheme: light; }
 
+::selection { background: var(--accent); color: var(--accent-ink); }
+
 @layer base {
   * { border-color: var(--color-border); }
   html, body {
-    background-color: var(--color-cream);
-    color: var(--color-ink);
-    font-family: 'DM Sans', 'Noto Sans Sinhala', 'Noto Sans Tamil', var(--font-body), sans-serif;
-    font-weight: 600;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', 'Noto Sans Sinhala', 'Noto Sans Tamil', system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.55;
+    font-weight: 500;
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;
     font-synthesis-weight: none;
