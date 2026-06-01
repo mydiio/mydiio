@@ -73,6 +73,14 @@ export function SiteShell({
         .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
         .reveal.in, .reveal.revealed { opacity: 1; transform: translateY(0); }
 
+        /* Scroll-triggered reveal-up (additive) with stagger delay classes */
+        .reveal-up { opacity: 0; transform: translateY(28px); transition: opacity 550ms cubic-bezier(0.22,1,0.36,1), transform 550ms cubic-bezier(0.22,1,0.36,1); }
+        .reveal-up.visible { opacity: 1; transform: translateY(0); }
+        .reveal-up.delay-1 { transition-delay: 80ms; }
+        .reveal-up.delay-2 { transition-delay: 160ms; }
+        .reveal-up.delay-3 { transition-delay: 240ms; }
+        .reveal-up.delay-4 { transition-delay: 320ms; }
+
         /* Hero entrance — fires on mount via CSS keyframes */
         @keyframes heroFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes heroFadeUpLarge { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
