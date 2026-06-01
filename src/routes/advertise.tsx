@@ -312,7 +312,7 @@ function DashboardPreview() {
             borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center",
           }}>
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.55)", letterSpacing: 1.5 }}>
-              NEXT WHATSAPP REPORT
+              NEXT WEEKLY REPORT
             </span>
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber }}>
               MONDAY · 9:00 AM
