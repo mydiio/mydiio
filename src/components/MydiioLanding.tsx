@@ -374,7 +374,7 @@ function HowItWorks() {
 function TukInterior() {
   const { t } = useI18n();
   return (
-    <Section bg={C.cream}>
+    <Section bg="var(--bg)">
       <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 40, alignItems: "center" }}>
         <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <span className="eyebrow">{t("tuk_kicker")}</span>
@@ -464,7 +464,7 @@ function TukInterior() {
 
 function Coverage() {
   return (
-    <Section bg={C.cream}>
+    <Section bg="var(--bg)">
       <div className="reveal" style={{ textAlign: "center", marginBottom: 40, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>
           Coverage
