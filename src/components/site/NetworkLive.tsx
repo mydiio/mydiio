@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ComponentType } from "react";
 import { createClientOnlyFn } from "@tanstack/react-start";
 
 const loadNetworkLive = createClientOnlyFn(() => import("./NetworkLive.client"));
 
 export function NetworkLive() {
-  const [ClientNetworkLive, setClientNetworkLive] = useState<React.ComponentType | null>(null);
+  const [ClientNetworkLive, setClientNetworkLive] = useState<ComponentType | null>(null);
 
   useEffect(() => {
     let mounted = true;
