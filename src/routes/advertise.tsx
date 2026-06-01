@@ -542,7 +542,7 @@ function AdvertisePage() {
       <Coverage />
       <DashboardPreview />
       <FAQ />
-      <section id="waitlist" style={{ background: C.cream, padding: "96px 24px", scrollMarginTop: 96 }}>
+      <section id="apply-section" style={{ background: C.cream, padding: "96px 24px", scrollMarginTop: 96 }}>
         <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
             Join the waiting list
@@ -554,7 +554,7 @@ function AdvertisePage() {
             Tell us about your business. We'll confirm your spot within 24 hours.
           </p>
           <div style={{ marginTop: 32 }}>
-            <WaitlistForm />
+            <AdvertiserApplication />
           </div>
         </div>
       </section>
