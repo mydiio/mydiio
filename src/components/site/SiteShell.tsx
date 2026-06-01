@@ -108,6 +108,7 @@ export function SiteShell({
 
         @media (prefers-reduced-motion: reduce) {
           .reveal, .reveal.in, .reveal.revealed { opacity: 1 !important; transform: none !important; transition: none !important; }
+          .reveal-up, .reveal-up.visible { opacity: 1 !important; transform: none !important; transition: none !important; }
           .site-nav-enter, .hero-badge, .hero-word, .hero-sub, .hero-stat, .hero-ctas { opacity: 1 !important; animation: none !important; transform: none !important; }
           .cta-primary, .site-nav-link::after { transition: none !important; }
         }
