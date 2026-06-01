@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { createClientOnlyFn } from "@tanstack/react-start";
 
-type NetworkLiveComponent = typeof import("./NetworkLive.client").NetworkLive;
+const loadNetworkLive = createClientOnlyFn(() => import("./NetworkLive.client"));
 
 export function NetworkLive() {
-  const [ClientNetworkLive, setClientNetworkLive] = useState<NetworkLiveComponent | null>(null);
+  const [ClientNetworkLive, setClientNetworkLive] = useState<React.ComponentType | null>(null);
 
   useEffect(() => {
     let mounted = true;
-    import("./NetworkLive.client").then((module) => {
+    loadNetworkLive()?.then((module) => {
       if (mounted) setClientNetworkLive(() => module.NetworkLive);
     });
     return () => { mounted = false; };
