@@ -8,6 +8,7 @@ import { useI18n } from "@/lib/i18n";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { WaitlistForm } from "@/components/site/WaitlistForm";
+import { ColomboMap } from "@/components/site/ColomboMap";
 
 // Nav + Logo + Footer live in src/components/site/* and render via SiteShell.
 
@@ -300,6 +301,29 @@ function HowItWorks() {
   );
 }
 
+function Coverage() {
+  return (
+    <Section bg={C.cream}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 40, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+        <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>
+          Coverage
+        </span>
+        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(28px, 4.6vw, 50px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
+          Your campaign, across Colombo.
+        </h2>
+        <p className="reveal-up delay-2" style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 16, fontWeight: 500 }}>
+          Reach passengers in the neighbourhoods where your customers already are. Click any zone to explore.
+        </p>
+      </div>
+      <div className="reveal reveal-up delay-2">
+        <ColomboMap />
+      </div>
+    </Section>
+  );
+}
+
+
+
 function TwoAudiences() {
   const { t } = useI18n();
   return (
@@ -476,6 +500,7 @@ function FinalCTA() {
   const { t } = useI18n();
   return (
     <section id="waitlist" className="relative w-full overflow-hidden" style={{ minHeight: 520, scrollMarginTop: 96 }}>
+      <span id="signup-section" style={{ position: "absolute", top: -96 }} aria-hidden />
       <img src={FLEET_SUNSET} alt="A line of mydiio tuk-tuks parked at sunset in Colombo" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.85) 100%)" }} />
       <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(80px, 12vw, 140px) clamp(20px, 4vw, 32px)", textAlign: "center" }}>
@@ -514,6 +539,7 @@ export default function MydiioLanding() {
       <Hero />
       <WhyItWorks />
       <HowItWorks />
+      <Coverage />
       <TwoAudiences />
       <Reporting />
       <WhyNow />
