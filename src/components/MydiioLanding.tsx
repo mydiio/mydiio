@@ -318,7 +318,7 @@ function TwoAudiences() {
           </Link>
         </div>
 
-        <div className="reveal path-card" style={{ background: C.greenPale, padding: 0, overflow: "hidden" }}>
+        <div className="reveal path-card reveal-up delay-2" style={{ background: C.greenPale, padding: 0, overflow: "hidden" }}>
           <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: `2.5px solid ${C.ink}` }} />
           <div style={{ padding: "28px 28px 32px" }}>
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: "#2D8A4E", textTransform: "uppercase" }}>{t("dr_kicker")}</span>
