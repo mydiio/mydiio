@@ -117,9 +117,12 @@ function ContactPage() {
             </div>
             <input name="email" type="email" placeholder={t("contact_email")} required style={inputStyle} />
             <textarea name="message" placeholder={t("contact_message")} rows={5} required style={{ ...inputStyle, resize: "vertical", minHeight: 120 }} />
-            <button type="submit" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 12, fontSize: 15.5, border: `2.5px solid ${C.ink}`, cursor: "pointer", marginTop: 8 }}>
-              {t("contact_send")}
+            <button type="submit" disabled={submitting} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 12, fontSize: 15.5, border: `2.5px solid ${C.ink}`, cursor: submitting ? "wait" : "pointer", marginTop: 8, opacity: submitting ? 0.7 : 1 }}>
+              {submitting ? "Sending…" : t("contact_send")}
             </button>
+            {error && (
+              <p style={{ fontSize: 13, color: "#B23B3B", fontWeight: 700, textAlign: "center" }}>{error}</p>
+            )}
             {submitted && (
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.amberDeep, letterSpacing: 1.5, textAlign: "center" }}>
                 {t("contact_opening")}
