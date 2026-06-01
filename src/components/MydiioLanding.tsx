@@ -448,7 +448,7 @@ function FAQ() {
       <SectionHeader kicker={t("faq_kicker")} title={t("faq_title")} />
       <div style={{ maxWidth: 800, margin: "0 auto", display: "flex", flexDirection: "column", gap: 12 }}>
         {items.map((it, i) => (
-          <details key={i} className="reveal faq-item" style={{
+          <details key={i} className={`reveal faq-item reveal-up${i < 4 ? ` delay-${i + 1}` : ""}`} style={{
             background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 16,
             padding: "20px 24px", boxShadow: "0 14px 40px -28px rgba(26,26,24,0.25)",
           }}>
