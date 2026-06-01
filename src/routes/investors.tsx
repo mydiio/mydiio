@@ -93,7 +93,7 @@ function Hero() {
             <a href={MAILTO} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
               Request investor deck →
             </a>
-            <a href={WA} className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none", border: "3px solid #fff" }}>
+            <a href={MAILTO} className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none", border: "3px solid #fff" }}>
               Book founder call
             </a>
           </div>
@@ -345,7 +345,7 @@ function FinalCTA() {
           Early stage. Real market. Big surface area.
         </h2>
         <div className="hero-cta-row" style={{ marginTop: 32, display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center" }}>
-          <a href={WA} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
+          <a href={MAILTO} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
             Talk to founder
           </a>
           <a href={MAILTO} className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none", border: "3px solid #fff" }}>
