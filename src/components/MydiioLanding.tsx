@@ -175,7 +175,7 @@ function TukScreenShowcase() {
         <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
         {/* Rotating ad creative overlay positioned over the tablet in the photo */}
         <div className="tuk-screen-overlay" aria-hidden style={{
-          position: "absolute", left: "42%", top: "8%", width: "18%", height: "28%",
+          position: "absolute", left: "35.5%", top: "8.5%", width: "24.5%", height: "27.5%",
           borderRadius: 4, overflow: "hidden",
           boxShadow: "0 2px 8px rgba(0,0,0,0.35)",
         }}>
