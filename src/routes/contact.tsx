@@ -29,9 +29,12 @@ function ContactPage() {
   const { t } = useI18n();
   const [intent, setIntent] = useState<"campaign" | "investor" | "driver">("campaign");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError(null);
     const fd = new FormData(e.currentTarget);
     const name = String(fd.get("name") || "").trim().slice(0, 200);
     const company = String(fd.get("company") || "").trim().slice(0, 200);
@@ -39,17 +42,30 @@ function ContactPage() {
     const message = String(fd.get("message") || "").trim().slice(0, 4000);
     const subjectLabel = intent === "campaign" ? t("contact_intent_book") : intent === "investor" ? t("contact_intent_inv") : t("contact_intent_dr");
     if (!name || !email || !message) return;
-    void supabase.from("enquiries").insert({
-      source: "website",
-      sender_type: "prospect",
-      user_id: null,
-      status: "new",
-      sender_name: company ? `${name} (${company})` : name,
-      sender_contact: email,
-      subject: `${subjectLabel} — ${company || name}`.slice(0, 300),
-      message,
-    });
-    setSubmitted(true);
+    setSubmitting(true);
+    try {
+      const res = await fetch(ENQUIRY_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sender_name: company ? `${name} — ${company}` : name,
+          sender_contact: email,
+          subject: `${subjectLabel} — ${company || name}`.slice(0, 300),
+          message,
+          source: "website",
+          sender_type: "prospect",
+        }),
+      });
+      setSubmitting(false);
+      if (!res.ok) {
+        setError("Something went wrong — please try again or contact us directly.");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setSubmitting(false);
+      setError("Something went wrong — please try again or contact us directly.");
+    }
   }
 
   return (
