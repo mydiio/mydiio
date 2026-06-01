@@ -35,7 +35,28 @@ export function SiteShell({
       { threshold: 0.14 },
     );
     root.querySelectorAll<HTMLElement>("section, footer").forEach((s) => io.observe(s));
-    return () => io.disconnect();
+
+    // Scroll-triggered reveal-up system (delay classes handle stagger)
+    const upObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            upObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+    );
+    const t = window.setTimeout(() => {
+      root.querySelectorAll<HTMLElement>(".reveal-up:not(.visible)").forEach((el) => upObserver.observe(el));
+    }, 10);
+
+    return () => {
+      io.disconnect();
+      upObserver.disconnect();
+      window.clearTimeout(t);
+    };
   }, []);
 
   return (
@@ -51,6 +72,14 @@ export function SiteShell({
         }
         .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
         .reveal.in, .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+        /* Scroll-triggered reveal-up (additive) with stagger delay classes */
+        .reveal-up { opacity: 0; transform: translateY(28px); transition: opacity 550ms cubic-bezier(0.22,1,0.36,1), transform 550ms cubic-bezier(0.22,1,0.36,1); }
+        .reveal-up.visible { opacity: 1; transform: translateY(0); }
+        .reveal-up.delay-1 { transition-delay: 80ms; }
+        .reveal-up.delay-2 { transition-delay: 160ms; }
+        .reveal-up.delay-3 { transition-delay: 240ms; }
+        .reveal-up.delay-4 { transition-delay: 320ms; }
 
         /* Hero entrance — fires on mount via CSS keyframes */
         @keyframes heroFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -79,6 +108,7 @@ export function SiteShell({
 
         @media (prefers-reduced-motion: reduce) {
           .reveal, .reveal.in, .reveal.revealed { opacity: 1 !important; transform: none !important; transition: none !important; }
+          .reveal-up, .reveal-up.visible { opacity: 1 !important; transform: none !important; transition: none !important; }
           .site-nav-enter, .hero-badge, .hero-word, .hero-sub, .hero-stat, .hero-ctas { opacity: 1 !important; animation: none !important; transform: none !important; }
           .cta-primary, .site-nav-link::after { transition: none !important; }
         }
