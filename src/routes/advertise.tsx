@@ -4,7 +4,8 @@ import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
-import { WaitlistForm } from "@/components/site/WaitlistForm";
+import { AdvertiserApplication } from "@/components/site/AdvertiserApplication";
+import { ColomboMap } from "@/components/site/ColomboMap";
 
 export const Route = createFileRoute("/advertise")({
   component: AdvertisePage,
