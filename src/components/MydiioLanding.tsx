@@ -371,6 +371,97 @@ function HowItWorks() {
   );
 }
 
+function TukInterior() {
+  const { t } = useI18n();
+  return (
+    <Section bg={C.cream}>
+      <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 40, alignItems: "center" }}>
+        <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+          <span className="eyebrow">{t("tuk_kicker")}</span>
+          <h3 style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: 700,
+            color: "var(--ink)",
+            fontSize: "clamp(30px, 4.4vw, 56px)",
+            lineHeight: 1.05,
+            letterSpacing: "-0.03em",
+          }}>
+            {t("tuk_title")}
+          </h3>
+          <p style={{
+            fontSize: "clamp(16px, 1.5vw, 19px)",
+            color: "var(--ink-soft)",
+            lineHeight: 1.55,
+            maxWidth: "42ch",
+            fontWeight: 500,
+          }}>
+            {t("tuk_body")}
+          </p>
+          <Link to="/advertise" className="btn-bold" style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            background: "var(--accent)",
+            color: "var(--accent-ink)",
+            padding: "12px 20px",
+            fontSize: 14,
+            fontWeight: 600,
+            textDecoration: "none",
+            marginTop: 8,
+            width: "fit-content",
+          }}>
+            {t("tuk_cta")}
+          </Link>
+        </div>
+        <div className="reveal reveal-up delay-1" style={{ position: "relative" }}>
+          <div style={{
+            border: "2px solid var(--ink)",
+            borderRadius: 20,
+            boxShadow: "var(--sticker-lg)",
+            overflow: "hidden",
+          }}>
+            <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
+          </div>
+          <div style={{
+            position: "absolute",
+            bottom: 16,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 10,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "6px 14px",
+            background: C.paper,
+            color: C.ink,
+            border: `2px solid ${C.ink}`,
+            borderRadius: 9999,
+            boxShadow: "var(--sticker-press)",
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 12,
+            fontWeight: 700,
+            letterSpacing: "0.04em",
+          }}>
+            <span aria-hidden style={{
+              width: 8,
+              height: 8,
+              borderRadius: 9999,
+              background: "#E74C3C",
+              animation: "hero-live-pulse 1.8s ease-in-out infinite",
+            }} />
+            LIVE CAMPAIGN
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @media (min-width: 860px) {
+          .tuk-grid { grid-template-columns: 1fr 1.15fr !important; }
+        }
+      `}</style>
+    </Section>
+  );
+}
+
 function Coverage() {
   return (
     <Section bg={C.cream}>
