@@ -282,10 +282,11 @@ function HowItWorks() {
     <Section bg={"#FBF6E8"}>
       <SectionHeader kicker={t("how_kicker")} title={t("how_title")} />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 22 }}>
-        {steps.map((s) => (
-          <div key={s.n} className="reveal" style={{
+        {steps.map((s, i) => (
+          <div key={s.n} className={`reveal hover-lift reveal-up delay-${i + 1}`} style={{
             background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 20,
             padding: "32px 28px", boxShadow: "5px 5px 0 rgba(26,26,24,0.92)",
+            transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1)",
           }}>
             <div className="font-display" style={{ fontSize: 36, color: C.amber, letterSpacing: "-1px" }}>{s.n}</div>
             <div className="font-display" style={{ fontSize: 22, color: C.ink, marginTop: 10, letterSpacing: "-0.4px" }}>{s.t}</div>
@@ -294,13 +295,7 @@ function HowItWorks() {
         ))}
       </div>
 
-      <div className="reveal" style={{
-        marginTop: 64, borderRadius: 20, overflow: "hidden",
-        border: `2.5px solid ${C.ink}`, boxShadow: "8px 8px 0 rgba(26,26,24,0.92)",
-        position: "relative",
-      }}>
-        <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
-      </div>
+      <TukScreenShowcase />
     </Section>
   );
 }
