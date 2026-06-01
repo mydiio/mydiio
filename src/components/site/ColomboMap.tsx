@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { createClientOnlyFn } from "@tanstack/react-start";
 
-type ColomboMapComponent = typeof import("./ColomboMap.client").ColomboMap;
+const loadColomboMap = createClientOnlyFn(() => import("./ColomboMap.client"));
 
 export function ColomboMap() {
-  const [ClientColomboMap, setClientColomboMap] = useState<ColomboMapComponent | null>(null);
+  const [ClientColomboMap, setClientColomboMap] = useState<React.ComponentType | null>(null);
 
   useEffect(() => {
     let mounted = true;
-    import("./ColomboMap.client").then((module) => {
+    loadColomboMap()?.then((module) => {
       if (mounted) setClientColomboMap(() => module.ColomboMap);
     });
     return () => { mounted = false; };
