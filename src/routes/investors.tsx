@@ -22,7 +22,7 @@ export const Route = createFileRoute("/investors")({
 });
 
 const MAILTO = "mailto:investors@mydiio.com";
-const WA = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20an%20investor%20interested%20in%20mydiio";
+
 
 
 /* ---------- Reusable bits ---------- */
