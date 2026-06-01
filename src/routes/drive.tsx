@@ -251,7 +251,7 @@ function DriverEarnings() {
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Message us on WhatsApp", body: "We reply within 24 hours." },
+    { n: 1, title: "Get in touch", body: "We reply within 24 hours." },
     { n: 2, title: "We install for free", body: "One hour. No cost. Powered by your vehicle." },
     { n: 3, title: "You drive normally", body: "Same routes, same hours. Screen runs automatically." },
     { n: 4, title: "Money arrives on the 5th", body: "Every month. Direct bank transfer." },
