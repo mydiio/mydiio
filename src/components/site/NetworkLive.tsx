@@ -119,7 +119,7 @@ export function NetworkLive() {
               <MapBoot onReady={(m) => { mapRef.current = m; L.control.zoom({ position: "bottomright" }).addTo(m); }} />
               <TileLayer
                 url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-                subdomains={["a", "b", "c", "d"] as unknown as string}
+                subdomains={["a", "b", "c", "d"]}
                 attribution='&copy; OpenStreetMap &copy; CARTO'
               />
               {EDGES.map(([a, b], i) => {
