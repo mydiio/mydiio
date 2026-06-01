@@ -254,8 +254,8 @@ function WhyItWorks() {
     <Section bg={C.cream}>
       <SectionHeader kicker={t("why_kicker")} title={t("why_title")} />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 18 }}>
-        {cards.map((c) => (
-          <div key={c.n} className="reveal hover-lift" style={{
+        {cards.map((c, i) => (
+          <div key={c.n} className={`reveal hover-lift reveal-up delay-${i + 1}`} style={{
             background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 18,
             padding: "28px 26px", display: "flex", flexDirection: "column", gap: 12,
             boxShadow: "0 18px 40px -28px rgba(26,26,24,0.35)",
