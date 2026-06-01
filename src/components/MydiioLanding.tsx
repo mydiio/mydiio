@@ -575,33 +575,117 @@ function TwoAudiences() {
   );
 }
 
-function Reporting() {
-  const { t } = useI18n();
+// Wrap a trailing phrase in <em> for English headings; leave other languages untouched.
+function EmTail({ text, tail, lang }: { text: string; tail: string; lang: string }) {
+  if (lang === "en" && text.endsWith(tail)) {
+    const head = text.slice(0, text.length - tail.length);
+    return (
+      <>
+        {head}
+        <em style={{ color: "var(--accent-deep)", fontStyle: "italic" }}>{tail}</em>
+      </>
+    );
+  }
+  return <>{text}</>;
+}
+
+function useInView<T extends HTMLElement>(threshold = 0.25) {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { setInView(true); io.disconnect(); }
+      });
+    }, { threshold });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [threshold]);
+  return { ref, inView };
+}
+
+function MetricBars({ active }: { active: boolean }) {
+  const heights = [38, 54, 46, 68, 58, 86];
   return (
-    <Section bg={"#FBF6E8"}>
-      <div className="reveal" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
-        <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>{t("rep_kicker")}</span>
-        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(28px, 4.4vw, 48px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
-          {t("rep_title")}
+    <div style={{ display: "flex", alignItems: "flex-end", gap: 6, height: 92, marginTop: 22 }}>
+      {heights.map((h, i) => {
+        const isLast = i === heights.length - 1;
+        return (
+          <div key={i} style={{
+            flex: 1,
+            height: active ? `${h}%` : "0%",
+            background: isLast ? "var(--accent)" : "var(--accent-soft)",
+            border: "2px solid var(--ink)",
+            borderRadius: 6,
+            transition: `height 700ms cubic-bezier(0.22,1,0.36,1) ${i * 70}ms`,
+          }} />
+        );
+      })}
+    </div>
+  );
+}
+
+function MetricCard({ label, value, suffix = "", format }: { label: string; value: number; suffix?: string; format?: (n: number) => string }) {
+  const { ref, inView } = useInView<HTMLDivElement>(0.3);
+  const n = useCountUp(value, 1400, 100, inView);
+  const display = format ? format(n) : `${n}${suffix}`;
+  return (
+    <div ref={ref} className="reveal feature-card" style={{
+      background: "var(--paper)",
+      border: "2px solid var(--ink)",
+      borderRadius: 26,
+      boxShadow: "var(--sticker)",
+      padding: "28px 26px",
+    }}>
+      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, letterSpacing: "0.18em", color: "var(--ink-mute)", textTransform: "uppercase" }}>
+        {label}
+      </div>
+      <div className="font-display" style={{ fontSize: "clamp(40px, 5vw, 56px)", color: "var(--ink)", lineHeight: 1, marginTop: 14, letterSpacing: "-0.02em", fontWeight: 700 }}>
+        {display}
+      </div>
+      <MetricBars active={inView} />
+    </div>
+  );
+}
+
+function Reporting() {
+  const { t, lang } = useI18n();
+  return (
+    <Section bg={"var(--bg)"}>
+      <div className="reveal" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 48px" }}>
+        <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("rep_kicker")}</span>
+        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
+          <EmTail text={t("rep_title")} tail="not guessed." lang={lang} />
         </h2>
-        <p className="reveal-up delay-2" style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 18, fontWeight: 500 }}>
+        <p className="reveal-up delay-2" style={{ fontSize: 16, color: "var(--ink-soft)", lineHeight: 1.6, marginTop: 18, fontWeight: 500 }}>
           {t("rep_body")}
         </p>
+      </div>
+      <div className="reveal" style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
+        gap: 20,
+      }}>
+        <MetricCard label="Active vehicles" value={48} />
+        <MetricCard label="Est. daily impressions" value={412} format={(n) => `${n}k`} />
+        <MetricCard label="Avg screen uptime" value={98} suffix="%" />
+        <MetricCard label="Routes covered" value={34} />
       </div>
     </Section>
   );
 }
 
 function WhyNow() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   return (
-    <Section bg={C.cream}>
+    <Section bg={"var(--bg2)"}>
       <div className="reveal" style={{ textAlign: "center", maxWidth: 760, margin: "0 auto" }}>
-        <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>{t("whyn_kicker")}</span>
-        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(28px, 4.6vw, 50px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
-          {t("whyn_title")}
+        <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("whyn_kicker")}</span>
+        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
+          <EmTail text={t("whyn_title")} tail="hiding in plain sight." lang={lang} />
         </h2>
-        <p className="reveal-up delay-2" style={{ fontSize: "clamp(15px, 1.7vw, 19px)", color: C.inkSoft, lineHeight: 1.6, marginTop: 22, fontWeight: 500 }}>
+        <p className="reveal-up delay-2" style={{ fontSize: "clamp(15px, 1.7vw, 19px)", color: "var(--ink-soft)", lineHeight: 1.6, marginTop: 22, fontWeight: 500 }}>
           {t("whyn_body")}
         </p>
       </div>
@@ -618,18 +702,25 @@ function ScaleStory() {
     { n: "04", t: t("scale_c4_t"), b: t("scale_c4_b") },
   ];
   return (
-    <Section bg={"#FBF6E8"}>
-      <SectionHeader kicker={t("scale_kicker")} title={t("scale_title")} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 18 }}>
+    <Section bg={"var(--bg2)"}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+        <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("scale_kicker")}</span>
+        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
+          {t("scale_title")}
+        </h2>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 20 }}>
         {cards.map((c, i) => (
-          <div key={c.n} className={`reveal hover-lift reveal-up delay-${i + 1}`} style={{
-            background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 18, padding: "28px 26px",
-            boxShadow: "0 18px 40px -28px rgba(26,26,24,0.35)",
-            transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1)",
+          <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
+            background: "var(--paper)",
+            border: "2px solid var(--ink)",
+            borderRadius: 26,
+            padding: "28px 26px",
+            boxShadow: "var(--sticker)",
           }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: C.amber }}>{c.n}</div>
-            <div className="font-display" style={{ fontSize: 19, color: C.ink, lineHeight: 1.2, marginTop: 10, letterSpacing: "-0.3px" }}>{c.t}</div>
-            <div style={{ fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, marginTop: 10, fontWeight: 500 }}>{c.b}</div>
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, letterSpacing: "0.18em", color: "var(--accent-deep)", textTransform: "uppercase" }}>{c.n}</div>
+            <div className="font-display" style={{ fontSize: 23, color: "var(--ink)", lineHeight: 1.2, marginTop: 12, letterSpacing: "-0.01em", fontWeight: 600 }}>{c.t}</div>
+            <div style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.6, marginTop: 12, fontWeight: 500 }}>{c.b}</div>
           </div>
         ))}
       </div>
