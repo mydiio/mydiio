@@ -225,8 +225,6 @@ function DriverEarnings() {
           </div>
           <a
             href={DRIVER_CONTACT}
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn-bold font-display"
             style={{
               display: "inline-block", marginTop: 28,
@@ -532,8 +530,6 @@ function FinalCTA() {
         }}>
           <a
             href={DRIVER_CONTACT}
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn-bold font-display"
             style={{
               background: C.amber, color: C.ink,
@@ -545,8 +541,6 @@ function FinalCTA() {
           </a>
           <a
             href={DRIVER_CONTACT}
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn-bold font-display"
             style={{
               background: "transparent", color: "#fff",
