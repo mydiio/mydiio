@@ -217,6 +217,7 @@ function StepHead({ title, sub }: { title: string; sub: string }) {
 /* ───────────────────────── Component ───────────────────────── */
 
 export function AdvertiserApplication() {
+  const [mounted, setMounted] = useState(false);
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [state, setState] = useState<FormState>(initialState);
   const [agree, setAgree] = useState(false);
@@ -224,6 +225,10 @@ export function AdvertiserApplication() {
   const [error, setError] = useState<string | null>(null);
   const [refCode, setRefCode] = useState<string | null>(null);
   const [preselectedTier, setPreselectedTier] = useState<string | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Read ?tier= from URL and pre-select matching tier card on mount.
   useEffect(() => {
@@ -256,6 +261,10 @@ export function AdvertiserApplication() {
     (state.tier_interest !== null || state.tier_undecided) &&
     state.has_creative !== null
   ), [state]);
+
+  if (!mounted) {
+    return <div style={{ minHeight: 520 }} aria-hidden="true" />;
+  }
 
   async function onSubmit() {
     setError(null);
