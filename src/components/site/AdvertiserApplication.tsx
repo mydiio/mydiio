@@ -223,6 +223,19 @@ export function AdvertiserApplication() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [refCode, setRefCode] = useState<string | null>(null);
+  const [preselectedTier, setPreselectedTier] = useState<string | null>(null);
+
+  // Read ?tier= from URL and pre-select matching tier card on mount.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const t = new URLSearchParams(window.location.search).get("tier");
+    if (!t) return;
+    const match = TIERS.find((x) => x.id.toLowerCase() === t.toLowerCase());
+    if (match) {
+      setState((s) => ({ ...s, tier_interest: match.id, tier_undecided: false }));
+      setPreselectedTier(match.id);
+    }
+  }, []);
 
   const set = <K extends keyof FormState>(k: K, v: FormState[K]) => setState((s) => ({ ...s, [k]: v }));
 
