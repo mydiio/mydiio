@@ -539,6 +539,7 @@ export default function MydiioLanding() {
       <Hero />
       <WhyItWorks />
       <HowItWorks />
+      <Coverage />
       <TwoAudiences />
       <Reporting />
       <WhyNow />
