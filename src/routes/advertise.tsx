@@ -154,28 +154,34 @@ function HowItWorks() {
 
 /* ---------- Pricing ---------- */
 function Pricing() {
-  const plans = [
+  const plans: Array<{
+    name: string; price: string; per: string; features: string[];
+    badge?: string; highlight?: boolean;
+    tierSlug: "pioneer" | "roamer" | "voyager" | "horizon";
+    ctaLabel: string;
+    btnStyle: "primary" | "ink" | "ghost";
+  }> = [
     {
       name: "PIONEER", price: "LKR 25–35k", per: "/mo · 6-month min",
       features: ["Category exclusivity in your zone", "Rate locked for life", "Priority rotation"],
-      cta: "Claim a Pioneer spot →",
       badge: "FOUNDING — 10 SPOTS ONLY",
       highlight: true,
+      tierSlug: "pioneer", ctaLabel: "Apply for Pioneer →", btnStyle: "primary",
     },
     {
       name: "ROAMER", price: "LKR 20,000", per: "/mo · 3-month min",
       features: ["Standard rotation", "Full dashboard access", "Weekly GPS reports"],
-      cta: "Start with Roamer →",
+      tierSlug: "roamer", ctaLabel: "Apply for Roamer →", btnStyle: "ink",
     },
     {
       name: "VOYAGER", price: "LKR 32,000", per: "/mo · 6-month min",
       features: ["Priority rotation", "Better loyalty points rate", "Full dashboard access"],
-      cta: "Choose Voyager →",
+      tierSlug: "voyager", ctaLabel: "Apply for Voyager →", btnStyle: "ink",
     },
     {
       name: "HORIZON", price: "LKR 65,000+", per: "/mo · Custom",
       features: ["Custom zones", "Enterprise support", "Multi-vehicle campaigns"],
-      cta: "Talk to us →",
+      tierSlug: "horizon", ctaLabel: "Contact us about Horizon →", btnStyle: "ghost",
     },
   ];
   return (
