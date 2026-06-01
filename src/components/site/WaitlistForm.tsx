@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
-import { C } from "./theme";
 
 const ENQUIRY_ENDPOINT = "https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-enquiry";
 
@@ -15,23 +14,48 @@ const schema = z.object({
 const BUSINESS_TYPES = ["Restaurant / Café", "Pharmacy", "Retail / Shop", "Services", "E-commerce", "Real estate", "Education", "Other"];
 const TIERS = ["Pioneer — LKR 25–35k", "Roamer — LKR 20k", "Voyager — LKR 32k", "Horizon — LKR 65k+", "Not sure yet"];
 
-const inputStyle: React.CSSProperties = {
-  width: "100%", padding: "13px 15px", borderRadius: 11,
-  border: `2.5px solid ${C.ink}`, background: "#fff",
-  fontWeight: 600, fontSize: 14.5, color: C.ink, outline: "none",
-  boxShadow: "3px 3px 0 rgba(26,26,24,0.92)",
-  fontFamily: "'DM Sans', sans-serif",
+const labelStyle: React.CSSProperties = {
+  fontFamily: "'Space Mono', monospace",
+  fontSize: 11,
+  letterSpacing: "0.18em",
+  color: "var(--ink-mute)",
+  textTransform: "uppercase",
+  fontWeight: 700,
 };
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  padding: "13px 15px",
+  borderRadius: "var(--radius-sm)",
+  border: "2px solid var(--ink)",
+  background: "var(--bg)",
+  fontWeight: 600,
+  fontSize: 15,
+  color: "var(--ink)",
+  outline: "none",
+  boxShadow: "var(--sticker-press)",
+  fontFamily: "'Space Grotesk', sans-serif",
+  transition: "transform 0.18s ease, box-shadow 0.18s ease",
+};
+
+const fieldGroup: React.CSSProperties = { display: "flex", flexDirection: "column", gap: 6 };
 
 export function WaitlistForm({ variant = "light" }: { variant?: "light" | "dark" }) {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (!done) return;
+    const t = setTimeout(() => setDone(false), 2500);
+    return () => clearTimeout(t);
+  }, [done]);
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const parsed = schema.safeParse({
       businessName: fd.get("businessName"),
       yourName: fd.get("yourName"),
@@ -64,70 +88,93 @@ export function WaitlistForm({ variant = "light" }: { variant?: "light" | "dark"
         return;
       }
       setDone(true);
+      form.reset();
     } catch {
       setSubmitting(false);
       setError("Something went wrong — please try again or contact us directly.");
     }
   }
 
-  const labelColor = variant === "dark" ? "rgba(255,255,255,0.85)" : C.inkSoft;
-
-  if (done) {
-    return (
-      <div style={{
-        background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 18,
-        padding: "32px 26px", boxShadow: `8px 8px 0 ${C.ink}`,
-        textAlign: "center", maxWidth: 520, margin: "0 auto",
-      }}>
-        <div className="font-display" style={{ fontSize: 22, color: C.ink, lineHeight: 1.2 }}>
-          You're on the waiting list.
-        </div>
-        <p style={{ marginTop: 10, color: C.inkSoft, fontWeight: 600, fontSize: 14.5, lineHeight: 1.55 }}>
-          We'll contact you within 24 hours to confirm your spot.
-        </p>
-      </div>
-    );
-  }
-
   return (
     <form onSubmit={onSubmit} style={{
-      background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 20,
-      padding: "clamp(22px, 3.4vw, 32px)", boxShadow: `8px 8px 0 ${C.ink}`,
-      display: "flex", flexDirection: "column", gap: 12,
-      maxWidth: 560, margin: "0 auto", textAlign: "left",
+      background: "var(--paper)",
+      border: "2px solid var(--ink)",
+      borderRadius: 26,
+      padding: "clamp(26px, 4vw, 44px)",
+      boxShadow: "var(--sticker-lg)",
+      display: "flex", flexDirection: "column", gap: 16,
+      maxWidth: 620, margin: "0 auto", textAlign: "left",
     }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-        <input name="businessName" placeholder="Business name" required maxLength={120} style={inputStyle} />
-        <input name="yourName" placeholder="Your name" required maxLength={120} style={inputStyle} />
+      <style>{`
+        .wl-input:focus { transform: translate(-1px, -1px); box-shadow: var(--sticker) !important; }
+      `}</style>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 14 }}>
+        <label style={fieldGroup}>
+          <span style={labelStyle}>Business name</span>
+          <input className="wl-input" name="businessName" required maxLength={120} style={inputStyle} placeholder="Your brand" />
+        </label>
+        <label style={fieldGroup}>
+          <span style={labelStyle}>Your name</span>
+          <input className="wl-input" name="yourName" required maxLength={120} style={inputStyle} placeholder="Full name" />
+        </label>
       </div>
-      <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10.5, letterSpacing: 1.4, color: C.inkSoft, textTransform: "uppercase", fontWeight: 700 }}>
-          WhatsApp / Phone number
-        </span>
-        <input name="whatsapp" placeholder="+94 77 000 0000" required maxLength={40} style={inputStyle} inputMode="tel" aria-label="WhatsApp / Phone number" />
+
+      <label style={fieldGroup}>
+        <span style={labelStyle}>WhatsApp / Phone</span>
+        <input className="wl-input" name="whatsapp" required maxLength={40} style={inputStyle} inputMode="tel" placeholder="+94 77 000 0000" />
       </label>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-        <select name="businessType" required defaultValue="" style={inputStyle}>
-          <option value="" disabled>Business type</option>
-          {BUSINESS_TYPES.map((b) => <option key={b} value={b}>{b}</option>)}
-        </select>
-        <select name="tier" required defaultValue="" style={inputStyle}>
-          <option value="" disabled>Preferred tier</option>
-          {TIERS.map((t) => <option key={t} value={t}>{t}</option>)}
-        </select>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 14 }}>
+        <label style={fieldGroup}>
+          <span style={labelStyle}>Business type</span>
+          <select className="wl-input" name="businessType" required defaultValue="" style={inputStyle}>
+            <option value="" disabled>Select…</option>
+            {BUSINESS_TYPES.map((b) => <option key={b} value={b}>{b}</option>)}
+          </select>
+        </label>
+        <label style={fieldGroup}>
+          <span style={labelStyle}>Preferred tier</span>
+          <select className="wl-input" name="tier" required defaultValue="" style={inputStyle}>
+            <option value="" disabled>Select…</option>
+            {TIERS.map((t) => <option key={t} value={t}>{t}</option>)}
+          </select>
+        </label>
       </div>
+
       {error && (
         <div style={{ fontSize: 13, color: "#B23B3B", fontWeight: 700 }}>{error}</div>
       )}
-      <button type="submit" disabled={submitting} className="btn-bold font-display" style={{
-        background: C.amber, color: C.ink, padding: "15px 22px", borderRadius: 12,
-        fontSize: 15.5, border: `2.5px solid ${C.ink}`, cursor: submitting ? "wait" : "pointer",
-        marginTop: 6, opacity: submitting ? 0.7 : 1,
-      }}>
-        {submitting ? "Submitting…" : "Reserve my spot →"}
+
+      <button
+        type="submit"
+        disabled={submitting}
+        className="btn-bold font-display"
+        style={{
+          width: "100%",
+          background: done ? "var(--green)" : "var(--accent)",
+          color: done ? "#fff" : "var(--ink)",
+          padding: "16px 22px",
+          fontSize: 16,
+          fontWeight: 600,
+          cursor: submitting ? "wait" : "pointer",
+          marginTop: 4,
+          opacity: submitting ? 0.7 : 1,
+          transition: "background 0.25s ease, color 0.25s ease",
+        }}
+      >
+        {done ? "Reserved ✓" : submitting ? "Submitting…" : "Reserve my spot →"}
       </button>
-      <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10.5, color: labelColor === C.inkSoft ? C.inkSoft : C.inkSoft, letterSpacing: 1.4, textAlign: "center", marginTop: 4, textTransform: "uppercase" }}>
-        No payment now · 10 Pioneer spots
+
+      <p style={{
+        fontFamily: "'Space Mono', monospace",
+        fontSize: 12,
+        color: "var(--ink-mute)",
+        letterSpacing: "0.12em",
+        textAlign: "center",
+        margin: 0,
+      }}>
+        No payment now · 10 pioneer spots
       </p>
     </form>
   );
