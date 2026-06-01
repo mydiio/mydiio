@@ -384,8 +384,8 @@ function ScaleStory() {
     <Section bg={"#FBF6E8"}>
       <SectionHeader kicker={t("scale_kicker")} title={t("scale_title")} />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 18 }}>
-        {cards.map((c) => (
-          <div key={c.n} className="reveal hover-lift" style={{
+        {cards.map((c, i) => (
+          <div key={c.n} className={`reveal hover-lift reveal-up delay-${i + 1}`} style={{
             background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 18, padding: "28px 26px",
             boxShadow: "0 18px 40px -28px rgba(26,26,24,0.35)",
             transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1)",
