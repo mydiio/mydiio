@@ -9,6 +9,7 @@ import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { AdvertiserApplication } from "@/components/site/AdvertiserApplication";
 import { ColomboMap } from "@/components/site/ColomboMap";
+import { NetworkLive } from "@/components/site/NetworkLive";
 
 // Nav + Logo + Footer live in src/components/site/* and render via SiteShell.
 
