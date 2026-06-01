@@ -367,13 +367,97 @@ function HowItWorks() {
         ))}
       </div>
 
-      <div className="reveal" style={{
-        marginTop: 64, borderRadius: 20, overflow: "hidden",
-        border: `2.5px solid ${C.ink}`, boxShadow: "8px 8px 0 rgba(26,26,24,0.92)",
-        position: "relative",
-      }}>
-        <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
+    </Section>
+  );
+}
+
+function TukInterior() {
+  const { t } = useI18n();
+  return (
+    <Section bg={C.cream}>
+      <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 40, alignItems: "center" }}>
+        <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+          <span className="eyebrow">{t("tuk_kicker")}</span>
+          <h3 style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: 700,
+            color: "var(--ink)",
+            fontSize: "clamp(30px, 4.4vw, 56px)",
+            lineHeight: 1.05,
+            letterSpacing: "-0.03em",
+          }}>
+            {t("tuk_title")}
+          </h3>
+          <p style={{
+            fontSize: "clamp(16px, 1.5vw, 19px)",
+            color: "var(--ink-soft)",
+            lineHeight: 1.55,
+            maxWidth: "42ch",
+            fontWeight: 500,
+          }}>
+            {t("tuk_body")}
+          </p>
+          <Link to="/advertise" className="btn-bold" style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            background: "var(--accent)",
+            color: "var(--accent-ink)",
+            padding: "12px 20px",
+            fontSize: 14,
+            fontWeight: 600,
+            textDecoration: "none",
+            marginTop: 8,
+            width: "fit-content",
+          }}>
+            {t("tuk_cta")}
+          </Link>
+        </div>
+        <div className="reveal reveal-up delay-1" style={{ position: "relative" }}>
+          <div style={{
+            border: "2px solid var(--ink)",
+            borderRadius: 20,
+            boxShadow: "var(--sticker-lg)",
+            overflow: "hidden",
+          }}>
+            <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
+          </div>
+          <div style={{
+            position: "absolute",
+            bottom: 16,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 10,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "6px 14px",
+            background: C.paper,
+            color: C.ink,
+            border: `2px solid ${C.ink}`,
+            borderRadius: 9999,
+            boxShadow: "var(--sticker-press)",
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 12,
+            fontWeight: 700,
+            letterSpacing: "0.04em",
+          }}>
+            <span aria-hidden style={{
+              width: 8,
+              height: 8,
+              borderRadius: 9999,
+              background: "#E74C3C",
+              animation: "hero-live-pulse 1.8s ease-in-out infinite",
+            }} />
+            LIVE CAMPAIGN
+          </div>
+        </div>
       </div>
+      <style>{`
+        @media (min-width: 860px) {
+          .tuk-grid { grid-template-columns: 1fr 1.15fr !important; }
+        }
+      `}</style>
     </Section>
   );
 }
@@ -404,32 +488,84 @@ function Coverage() {
 function TwoAudiences() {
   const { t } = useI18n();
   return (
-    <Section bg={C.cream}>
+    <Section bg="var(--bg2)">
       <div className="paths-grid">
-        <div className="reveal path-card reveal-up delay-1" style={{ background: C.amberPale }}>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("ad_kicker")}</span>
-          <h3 className="font-display" style={{ fontSize: "clamp(24px, 3vw, 32px)", color: C.ink, marginTop: 12, lineHeight: 1.15, letterSpacing: "-0.6px" }}>
+        <div className="reveal path-card reveal-up delay-1" style={{
+          background: "var(--accent-soft)",
+          border: "2px solid var(--ink)",
+          borderRadius: 26,
+          boxShadow: "var(--sticker)",
+          overflow: "hidden",
+          padding: "clamp(28px, 4vw, 40px)",
+        }}>
+          <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
+          <h3 style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: 700,
+            fontSize: "clamp(26px, 3vw, 38px)",
+            color: "var(--ink)",
+            marginTop: 12,
+            lineHeight: 1.1,
+            letterSpacing: "-0.03em",
+          }}>
             {t("ad_title")}
           </h3>
-          <p style={{ fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
+          <p style={{ fontSize: 15, color: "var(--ink)", marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
             {t("ad_body")}
           </p>
-          <Link to="/advertise" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 24, background: C.amber, color: C.ink, padding: "13px 20px", borderRadius: 11, fontSize: 14.5, textDecoration: "none" }}>
+          <Link to="/advertise" className="btn-bold" style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            marginTop: 24,
+            background: "var(--accent)",
+            color: "var(--accent-ink)",
+            padding: "12px 20px",
+            fontSize: 14,
+            fontWeight: 600,
+            textDecoration: "none",
+          }}>
             {t("ad_cta")}
           </Link>
         </div>
 
-        <div className="reveal path-card reveal-up delay-2" style={{ background: C.greenPale, padding: 0, overflow: "hidden" }}>
-          <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: `2.5px solid ${C.ink}` }} />
-          <div style={{ padding: "28px 28px 32px" }}>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: "#2D8A4E", textTransform: "uppercase" }}>{t("dr_kicker")}</span>
-            <h3 className="font-display" style={{ fontSize: "clamp(24px, 3vw, 32px)", color: C.ink, marginTop: 12, lineHeight: 1.15, letterSpacing: "-0.6px" }}>
+        <div className="reveal path-card reveal-up delay-2" style={{
+          background: "var(--green-soft)",
+          border: "2px solid var(--ink)",
+          borderRadius: 26,
+          boxShadow: "var(--sticker)",
+          overflow: "hidden",
+          padding: 0,
+        }}>
+          <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: "2px solid var(--ink)" }} />
+          <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
+            <span className="eyebrow" style={{ color: "var(--green-ink)" }}>{t("dr_kicker")}</span>
+            <h3 style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(26px, 3vw, 38px)",
+              color: "var(--ink)",
+              marginTop: 12,
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+            }}>
               {t("dr_title")}
             </h3>
-            <p style={{ fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
+            <p style={{ fontSize: 15, color: "var(--ink)", marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
               {t("dr_body")}
             </p>
-            <Link to="/drive" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 24, background: C.green, color: "#fff", padding: "13px 20px", borderRadius: 11, fontSize: 14.5, textDecoration: "none" }}>
+            <Link to="/drive" className="btn-bold" style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              marginTop: 24,
+              background: "var(--green)",
+              color: "#fff",
+              padding: "12px 20px",
+              fontSize: 14,
+              fontWeight: 600,
+              textDecoration: "none",
+            }}>
               {t("dr_cta")}
             </Link>
           </div>
@@ -604,18 +740,19 @@ export default function MydiioLanding() {
         @media (min-width: 760px) { .paths-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
 
         .path-card {
-          border: 2.5px solid ${C.ink};
-          border-radius: 22px;
-          box-shadow: 6px 6px 0 ${C.ink}, 0 24px 48px -28px rgba(26,26,14,0.35);
-          padding: clamp(28px, 4vw, 40px);
+          border: 2px solid var(--ink);
+          border-radius: 26px;
+          box-shadow: var(--sticker);
+          overflow: hidden;
           transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
         }
-        .path-card:hover { transform: translateY(-4px); box-shadow: 8px 10px 0 ${C.ink}, 0 36px 60px -28px rgba(26,26,14,0.45); }
+        .path-card:hover { transform: translateY(-4px); box-shadow: var(--sticker-lg); }
       `}</style>
 
       <Hero />
       <WhyItWorks />
       <HowItWorks />
+      <TukInterior />
       <Coverage />
       <TwoAudiences />
       <Reporting />
