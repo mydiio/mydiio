@@ -1,24 +1,38 @@
 // Single source of truth for mydiio brand tokens used inline.
-// CSS variables live in src/styles.css — these mirror them for inline styles.
+// Mirrors CSS custom properties defined in src/styles.css.
 export const C = {
-  amber: "#F5A623",
-  amberDeep: "#E8920A",
-  amberPale: "#FEF3D7",
+  // New palette
+  bg: "#F7F1E5",
+  bg2: "#F2E9D6",
+  paper: "#FFFEFA",
+  ink: "#1E1A15",
+  inkSoft: "#5B5347",
+  inkMute: "#837B6F",
+  accent: "#F4A62A",
+  accentSoft: "#F8E7C6",
+  accentDeep: "#B07A14",
+  accentInk: "#3A2C10",
+  green: "#45855A",
+  greenSoft: "#E1F0E3",
+  greenInk: "#2E5538",
+  onDark: "#F4EFE3",
+
+  // Legacy aliases (kept so existing inline styles don't break)
+  amber: "#F4A62A",
+  amberDeep: "#B07A14",
+  amberPale: "#F8E7C6",
   yellow: "#F7E14A",
-  green: "#4CAF72",
-  greenDeep: "#2D8A4E",
-  greenPale: "#EAF2EC",
-  ink: "#1A1A18",
-  inkSoft: "#7A7A72",
-  cream: "#FDFAF3",
-  creamWarm: "#FBF6E8",
-  white: "#FFFFFF",
+  greenDeep: "#2E5538",
+  greenPale: "#E1F0E3",
+  cream: "#F7F1E5",
+  creamWarm: "#F2E9D6",
+  white: "#FFFEFA",
 } as const;
 
 export type Accent = "amber" | "green" | "ink";
 
 export function accentColor(a: Accent = "amber") {
-  if (a === "green") return { bg: C.green, fg: "#fff", deep: C.greenDeep };
-  if (a === "ink") return { bg: C.ink, fg: "#fff", deep: C.ink };
-  return { bg: C.amber, fg: C.ink, deep: C.amberDeep };
+  if (a === "green") return { bg: C.green, fg: C.onDark, deep: C.greenInk };
+  if (a === "ink") return { bg: C.ink, fg: C.onDark, deep: C.ink };
+  return { bg: C.accent, fg: C.accentInk, deep: C.accentDeep };
 }
