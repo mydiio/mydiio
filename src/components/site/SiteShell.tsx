@@ -35,7 +35,28 @@ export function SiteShell({
       { threshold: 0.14 },
     );
     root.querySelectorAll<HTMLElement>("section, footer").forEach((s) => io.observe(s));
-    return () => io.disconnect();
+
+    // Scroll-triggered reveal-up system (delay classes handle stagger)
+    const upObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            upObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+    );
+    const t = window.setTimeout(() => {
+      root.querySelectorAll<HTMLElement>(".reveal-up:not(.visible)").forEach((el) => upObserver.observe(el));
+    }, 10);
+
+    return () => {
+      io.disconnect();
+      upObserver.disconnect();
+      window.clearTimeout(t);
+    };
   }, []);
 
   return (
