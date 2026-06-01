@@ -488,32 +488,84 @@ function Coverage() {
 function TwoAudiences() {
   const { t } = useI18n();
   return (
-    <Section bg={C.cream}>
+    <Section bg="var(--bg2)">
       <div className="paths-grid">
-        <div className="reveal path-card reveal-up delay-1" style={{ background: C.amberPale }}>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("ad_kicker")}</span>
-          <h3 className="font-display" style={{ fontSize: "clamp(24px, 3vw, 32px)", color: C.ink, marginTop: 12, lineHeight: 1.15, letterSpacing: "-0.6px" }}>
+        <div className="reveal path-card reveal-up delay-1" style={{
+          background: "var(--accent-soft)",
+          border: "2px solid var(--ink)",
+          borderRadius: 26,
+          boxShadow: "var(--sticker)",
+          overflow: "hidden",
+          padding: "clamp(28px, 4vw, 40px)",
+        }}>
+          <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
+          <h3 style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: 700,
+            fontSize: "clamp(26px, 3vw, 38px)",
+            color: "var(--ink)",
+            marginTop: 12,
+            lineHeight: 1.1,
+            letterSpacing: "-0.03em",
+          }}>
             {t("ad_title")}
           </h3>
-          <p style={{ fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
+          <p style={{ fontSize: 15, color: "var(--ink)", marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
             {t("ad_body")}
           </p>
-          <Link to="/advertise" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 24, background: C.amber, color: C.ink, padding: "13px 20px", borderRadius: 11, fontSize: 14.5, textDecoration: "none" }}>
+          <Link to="/advertise" className="btn-bold" style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            marginTop: 24,
+            background: "var(--accent)",
+            color: "var(--accent-ink)",
+            padding: "12px 20px",
+            fontSize: 14,
+            fontWeight: 600,
+            textDecoration: "none",
+          }}>
             {t("ad_cta")}
           </Link>
         </div>
 
-        <div className="reveal path-card reveal-up delay-2" style={{ background: C.greenPale, padding: 0, overflow: "hidden" }}>
-          <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: `2.5px solid ${C.ink}` }} />
-          <div style={{ padding: "28px 28px 32px" }}>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: "#2D8A4E", textTransform: "uppercase" }}>{t("dr_kicker")}</span>
-            <h3 className="font-display" style={{ fontSize: "clamp(24px, 3vw, 32px)", color: C.ink, marginTop: 12, lineHeight: 1.15, letterSpacing: "-0.6px" }}>
+        <div className="reveal path-card reveal-up delay-2" style={{
+          background: "var(--green-soft)",
+          border: "2px solid var(--ink)",
+          borderRadius: 26,
+          boxShadow: "var(--sticker)",
+          overflow: "hidden",
+          padding: 0,
+        }}>
+          <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: "2px solid var(--ink)" }} />
+          <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
+            <span className="eyebrow" style={{ color: "var(--green-ink)" }}>{t("dr_kicker")}</span>
+            <h3 style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(26px, 3vw, 38px)",
+              color: "var(--ink)",
+              marginTop: 12,
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+            }}>
               {t("dr_title")}
             </h3>
-            <p style={{ fontSize: 15, color: C.ink, marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
+            <p style={{ fontSize: 15, color: "var(--ink)", marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
               {t("dr_body")}
             </p>
-            <Link to="/drive" className="btn-bold font-display" style={{ display: "inline-block", marginTop: 24, background: C.green, color: "#fff", padding: "13px 20px", borderRadius: 11, fontSize: 14.5, textDecoration: "none" }}>
+            <Link to="/drive" className="btn-bold" style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              marginTop: 24,
+              background: "var(--green)",
+              color: "#fff",
+              padding: "12px 20px",
+              fontSize: 14,
+              fontWeight: 600,
+              textDecoration: "none",
+            }}>
               {t("dr_cta")}
             </Link>
           </div>
