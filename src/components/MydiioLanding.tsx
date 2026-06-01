@@ -305,7 +305,7 @@ function TwoAudiences() {
   return (
     <Section bg={C.cream}>
       <div className="paths-grid">
-        <div className="reveal path-card" style={{ background: C.amberPale }}>
+        <div className="reveal path-card reveal-up delay-1" style={{ background: C.amberPale }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("ad_kicker")}</span>
           <h3 className="font-display" style={{ fontSize: "clamp(24px, 3vw, 32px)", color: C.ink, marginTop: 12, lineHeight: 1.15, letterSpacing: "-0.6px" }}>
             {t("ad_title")}
