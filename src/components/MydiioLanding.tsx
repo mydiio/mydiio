@@ -326,7 +326,7 @@ function HowItWorks() {
     { n: "03", t: t("how_s3_t"), b: t("how_s3_b") },
   ];
   return (
-    <Section bg="var(--bg2)">
+    <Section bg="var(--bg)">
       <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up">{t("how_kicker")}</span>
         <h2 className="font-display reveal-up delay-1" style={{
