@@ -301,6 +301,29 @@ function HowItWorks() {
   );
 }
 
+function Coverage() {
+  return (
+    <Section bg={C.cream}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 40, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+        <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>
+          Coverage
+        </span>
+        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(28px, 4.6vw, 50px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
+          Your campaign, across Colombo.
+        </h2>
+        <p className="reveal-up delay-2" style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 16, fontWeight: 500 }}>
+          Reach passengers in the neighbourhoods where your customers already are. Click any zone to explore.
+        </p>
+      </div>
+      <div className="reveal reveal-up delay-2">
+        <ColomboMap />
+      </div>
+    </Section>
+  );
+}
+
+
+
 function TwoAudiences() {
   const { t } = useI18n();
   return (
