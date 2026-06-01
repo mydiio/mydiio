@@ -350,13 +350,8 @@ function FinalCTA() {
         <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.8vw, 54px)", color: "#fff", lineHeight: 1.05, marginTop: 14, letterSpacing: "-1.2px" }}>
           {t("fcta_title")}
         </h2>
-        <div className="hero-cta-row" style={{ marginTop: 32, justifyContent: "center" }}>
-          <Link to="/advertise" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none" }}>
-            {t("cta_launch")} →
-          </Link>
-          <Link to="/contact" className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none", border: "2.5px solid #fff", boxShadow: "none" }}>
-            {t("cta_talk_founder")}
-          </Link>
+        <div style={{ marginTop: 36 }}>
+          <WaitlistForm variant="dark" />
         </div>
       </div>
     </section>
