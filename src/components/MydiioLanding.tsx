@@ -62,60 +62,175 @@ function Hero() {
   const v2 = useCountUp(7, 1400, 100);
   const v3 = useCountUp(14, 1400, 200);
   const v4 = useCountUp(72, 1400, 300);
+
+  // Split trailing period off the headline so we can color it.
+  const rawTitle = t("hero_title");
+  const endsWithPeriod = /[.।。]$/.test(rawTitle);
+  const titleBody = endsWithPeriod ? rawTitle.slice(0, -1) : rawTitle;
+  const titlePeriod = endsWithPeriod ? rawTitle.slice(-1) : "";
+
+  // On-dark color adaptations of the global tokens
+  const ON_DARK = "#F4EFE3";
+  const ON_DARK_SOFT = "rgba(244,239,227,0.78)";
+  const ON_DARK_MUTE = "rgba(244,239,227,0.55)";
+
   return (
-    <section className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
+    <section data-nav-section="home" className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
       <img src={COLOMBO_STREET} alt="Tuk-tuks moving through Colombo at golden hour" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.45) 40%, rgba(26,26,24,0.85) 100%)" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.45) 40%, rgba(20,16,12,0.88) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(120px, 16vh, 180px) clamp(22px, 6vw, 80px) clamp(72px, 10vh, 110px)" }}>
-        <div style={{ maxWidth: 880 }}>
-          <span className="hero-enter hero-badge" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase", display: "inline-block" }}>
-            {t("hero_kicker")}
+        <div style={{ maxWidth: 980 }}>
+          <span className="eyebrow hero-enter hero-badge" style={{ color: C.accent }}>
+            Sri Lanka · Mobility Media
           </span>
-          <h1 className="font-display hero-headline" style={{
+          <h1 className="hero-headline" style={{
+            fontFamily: "'Space Grotesk', system-ui, sans-serif",
+            fontWeight: 700,
             color: "#fff",
-            fontSize: "clamp(36px, 6.4vw, 78px)",
-            lineHeight: 1.04,
-            letterSpacing: "-1.2px",
-            marginTop: 14,
+            fontSize: "clamp(44px, 7.4vw, 104px)",
+            lineHeight: 0.93,
+            letterSpacing: "-0.04em",
+            marginTop: 18,
           }}>
-            <HeroWords text={t("hero_title")} />
+            <HeroWords text={titleBody} />
+            {endsWithPeriod && (
+              <span className="hero-word" style={{ color: C.accentDeep, display: "inline-block", animationDelay: "900ms" }}>
+                {titlePeriod}
+              </span>
+            )}
           </h1>
           <p className="hero-enter hero-sub" style={{
-            fontSize: "clamp(15px, 1.7vw, 19px)",
-            color: "rgba(255,255,255,0.84)",
-            marginTop: 20, maxWidth: 640, lineHeight: 1.55, fontWeight: 500,
+            fontSize: "clamp(18px, 1.8vw, 22px)",
+            color: ON_DARK_SOFT,
+            marginTop: 24,
+            maxWidth: "46ch",
+            lineHeight: 1.55,
+            fontWeight: 500,
           }}>
             {t("hero_sub")}
           </p>
 
-          <div className="hero-cta-row hero-enter hero-ctas" style={{ marginTop: 32 }}>
-            <Link to="/advertise" className="btn-bold font-display cta-primary" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none" }}>
+          <div className="hero-cta-row hero-enter hero-ctas" style={{ marginTop: 36 }}>
+            <Link
+              to="/advertise"
+              className="btn-bold cta-primary"
+              style={{
+                background: C.accent,
+                color: C.accentInk,
+                padding: "14px 22px",
+                fontSize: 15,
+                fontWeight: 600,
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+              }}
+            >
               {t("cta_launch_pilot")}
             </Link>
-            <Link to="/contact" className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none", border: "2.5px solid #fff", boxShadow: "none" }}>
+            <Link
+              to="/contact"
+              className="btn-bold"
+              style={{
+                background: "transparent",
+                color: ON_DARK,
+                padding: "14px 22px",
+                fontSize: 15,
+                fontWeight: 600,
+                textDecoration: "none",
+                border: `2px solid ${ON_DARK}`,
+                boxShadow: "none",
+              }}
+            >
               {t("cta_talk_founder")}
             </Link>
           </div>
 
-          <div className="hero-trust" style={{ marginTop: 44 }}>
+          <div
+            className="hero-trust"
+            style={{
+              marginTop: 52,
+              paddingTop: 28,
+              borderTop: "1px solid rgba(244,239,227,0.18)",
+            }}
+          >
             {[
-              { v: `${v1}+`, k: "metric_vehicles" as const },
-              { v: `${v2}`, k: "metric_zones" as const },
-              { v: `${v3} ${t("metric_min")}`, k: "metric_attention" as const },
-              { v: `${v4} ${t("metric_hr")}`, k: "metric_launch" as const },
+              { v: `${v1}`, suffix: "+", k: "metric_vehicles" as const },
+              { v: `${v2}`, suffix: "", k: "metric_zones" as const },
+              { v: `${v3}`, suffix: ` ${t("metric_min")}`, k: "metric_attention" as const },
+              { v: `${v4}`, suffix: ` ${t("metric_hr")}`, k: "metric_launch" as const },
             ].map((m, i) => (
-              <div key={m.k} className="hero-enter hero-stat" style={{ display: "flex", flexDirection: "column", gap: 4, animationDelay: `${900 + i * 100}ms` }}>
-                <span className="font-display" style={{ color: "#fff", fontSize: "clamp(20px, 2.6vw, 26px)", letterSpacing: "-0.5px" }}>{m.v}</span>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>{t(m.k)}</span>
+              <div key={m.k} className="hero-enter hero-stat" style={{ display: "flex", flexDirection: "column", gap: 6, animationDelay: `${900 + i * 100}ms` }}>
+                <span style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: 700,
+                  color: "#fff",
+                  fontSize: "clamp(28px, 3.5vw, 42px)",
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1,
+                }}>
+                  {m.v}{m.suffix && <span style={{ color: C.accent }}>{m.suffix}</span>}
+                </span>
+                <span style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: 11,
+                  letterSpacing: "0.18em",
+                  color: ON_DARK_MUTE,
+                  textTransform: "uppercase",
+                }}>
+                  {t(m.k)}
+                </span>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0" style={{ height: 4, background: C.amber }} />
+
+      {/* Live vehicles badge pinned bottom-left over the hero photo */}
+      <div
+        className="hero-live-badge"
+        style={{
+          position: "absolute",
+          left: "clamp(22px, 6vw, 80px)",
+          bottom: 28,
+          zIndex: 10,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "6px 14px",
+          background: C.paper,
+          color: C.ink,
+          border: `2px solid ${C.ink}`,
+          borderRadius: 9999,
+          boxShadow: "var(--sticker-press)",
+          fontFamily: "'Space Mono', monospace",
+          fontSize: 12,
+          fontWeight: 700,
+          letterSpacing: "0.04em",
+        }}
+      >
+        <span
+          aria-hidden
+          style={{
+            width: 8,
+            height: 8,
+            borderRadius: 9999,
+            background: C.green,
+            animation: "hero-live-pulse 1.8s ease-in-out infinite",
+          }}
+        />
+        50+ vehicles live
+      </div>
+      <style>{`
+        @keyframes hero-live-pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
+      `}</style>
     </section>
   );
 }
+
 
 function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
