@@ -100,7 +100,12 @@ export function WaitlistForm({ variant = "light" }: { variant?: "light" | "dark"
         <input name="businessName" placeholder="Business name" required maxLength={120} style={inputStyle} />
         <input name="yourName" placeholder="Your name" required maxLength={120} style={inputStyle} />
       </div>
-      <input name="whatsapp" placeholder="WhatsApp number (e.g. +94 77 123 4567)" required maxLength={40} style={inputStyle} inputMode="tel" />
+      <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10.5, letterSpacing: 1.4, color: C.inkSoft, textTransform: "uppercase", fontWeight: 700 }}>
+          WhatsApp / Phone number
+        </span>
+        <input name="whatsapp" placeholder="+94 77 000 0000" required maxLength={40} style={inputStyle} inputMode="tel" aria-label="WhatsApp / Phone number" />
+      </label>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
         <select name="businessType" required defaultValue="" style={inputStyle}>
           <option value="" disabled>Business type</option>
@@ -119,7 +124,7 @@ export function WaitlistForm({ variant = "light" }: { variant?: "light" | "dark"
         fontSize: 15.5, border: `2.5px solid ${C.ink}`, cursor: submitting ? "wait" : "pointer",
         marginTop: 6, opacity: submitting ? 0.7 : 1,
       }}>
-        {submitting ? "Submitting…" : "Join the waiting list →"}
+        {submitting ? "Submitting…" : "Reserve my spot →"}
       </button>
       <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10.5, color: labelColor === C.inkSoft ? C.inkSoft : C.inkSoft, letterSpacing: 1.4, textAlign: "center", marginTop: 4, textTransform: "uppercase" }}>
         No payment now · 10 Pioneer spots
