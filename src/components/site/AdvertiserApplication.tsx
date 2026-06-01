@@ -398,6 +398,14 @@ export function AdvertiserApplication() {
 
           <div style={fieldGroup}>
             <span style={labelStyle}>Which tier interests you?</span>
+            {preselectedTier && (
+              <div style={{
+                fontFamily: "'Space Mono', monospace", fontSize: 12,
+                color: "var(--accent-deep)", marginTop: 4, letterSpacing: "0.04em",
+              }}>
+                You selected {preselectedTier} — you can change this below.
+              </div>
+            )}
             <div style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
