@@ -374,7 +374,7 @@ function HowItWorks() {
 function TukInterior() {
   const { t } = useI18n();
   return (
-    <Section bg="var(--bg)">
+    <Section bg="var(--bg2)">
       <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 40, alignItems: "center" }}>
         <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <span className="eyebrow">{t("tuk_kicker")}</span>
