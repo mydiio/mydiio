@@ -271,7 +271,7 @@ function SectionHeader({ kicker, title }: { kicker?: string; title: string }) {
 
 
 function WhyItWorks() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const cards = [
     { n: "01", t: t("why_c1_t"), b: t("why_c1_b") },
     { n: "02", t: t("why_c2_t"), b: t("why_c2_b") },
@@ -279,19 +279,38 @@ function WhyItWorks() {
     { n: "04", t: t("why_c4_t"), b: t("why_c4_b") },
   ];
   return (
-    <Section bg={C.cream}>
-      <SectionHeader kicker={t("why_kicker")} title={t("why_title")} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 18 }}>
+    <Section bg="var(--bg2)">
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+        <span className="eyebrow reveal-up">{t("why_kicker")}</span>
+        <h2 className="reveal-up delay-1" style={{
+          fontFamily: "'DM Serif Display', Georgia, serif",
+          fontSize: "clamp(34px, 5.4vw, 72px)",
+          color: "var(--ink)",
+          lineHeight: 1.06,
+          letterSpacing: "-0.02em",
+          marginTop: 14,
+        }}>
+          {lang === "en" ? (
+            <>Where digital ends, <em style={{ color: "var(--accent-deep)", fontStyle: "italic" }}>real attention</em> begins.</>
+          ) : (
+            t("why_title")
+          )}
+        </h2>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 18 }}>
         {cards.map((c, i) => (
-          <div key={c.n} className={`reveal hover-lift reveal-up delay-${i + 1}`} style={{
-            background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 18,
-            padding: "28px 26px", display: "flex", flexDirection: "column", gap: 12,
-            boxShadow: "0 18px 40px -28px rgba(26,26,24,0.35)",
-            transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1)",
+          <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
+            background: "var(--paper)",
+            border: "2px solid var(--ink)",
+            borderRadius: "var(--radius-card)",
+            padding: "28px 26px",
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
           }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: C.amber }}>{c.n}</div>
-            <div className="font-display" style={{ fontSize: 21, color: C.ink, lineHeight: 1.2, letterSpacing: "-0.4px" }}>{c.t}</div>
-            <div style={{ fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, fontWeight: 500 }}>{c.b}</div>
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", color: "var(--accent-deep)" }}>{c.n}</div>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", lineHeight: 1.2, letterSpacing: "-0.4px" }}>{c.t}</div>
+            <div style={{ fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.55, fontWeight: 500 }}>{c.b}</div>
           </div>
         ))}
       </div>
@@ -300,25 +319,50 @@ function WhyItWorks() {
 }
 
 function HowItWorks() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const steps = [
     { n: "01", t: t("how_s1_t"), b: t("how_s1_b") },
     { n: "02", t: t("how_s2_t"), b: t("how_s2_b") },
     { n: "03", t: t("how_s3_t"), b: t("how_s3_b") },
   ];
   return (
-    <Section bg={"#FBF6E8"}>
-      <SectionHeader kicker={t("how_kicker")} title={t("how_title")} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 22 }}>
+    <Section bg="var(--bg2)">
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+        <span className="eyebrow reveal-up">{t("how_kicker")}</span>
+        <h2 className="font-display reveal-up delay-1" style={{
+          fontSize: "clamp(28px, 4.6vw, 50px)",
+          color: "var(--ink)",
+          lineHeight: 1.06,
+          letterSpacing: "-1px",
+          marginTop: 14,
+        }}>
+          {lang === "en" ? (
+            <>Simple for brands. <em style={{ color: "var(--accent-deep)", fontStyle: "italic" }}>Valuable</em> for drivers.</>
+          ) : (
+            t("how_title")
+          )}
+        </h2>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 22 }}>
         {steps.map((s, i) => (
-          <div key={s.n} className={`reveal hover-lift reveal-up delay-${i + 1}`} style={{
-            background: "#fff", border: `2.5px solid ${C.ink}`, borderRadius: 20,
-            padding: "32px 28px", boxShadow: "5px 5px 0 rgba(26,26,24,0.92)",
-            transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1)",
+          <div key={s.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
+            background: "var(--paper)",
+            border: "2px solid var(--ink)",
+            borderRadius: "var(--radius-card)",
+            padding: "32px 28px",
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
           }}>
-            <div className="font-display" style={{ fontSize: 36, color: C.amber, letterSpacing: "-1px" }}>{s.n}</div>
-            <div className="font-display" style={{ fontSize: 22, color: C.ink, marginTop: 10, letterSpacing: "-0.4px" }}>{s.t}</div>
-            <div style={{ fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, marginTop: 10, fontWeight: 500 }}>{s.b}</div>
+            <div style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "clamp(40px, 5vw, 60px)",
+              fontWeight: 700,
+              lineHeight: 1,
+              color: "var(--accent-deep)",
+            }}>{s.n}</div>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", marginTop: 10, letterSpacing: "-0.4px", lineHeight: 1.2 }}>{s.t}</div>
+            <div style={{ fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.55, marginTop: 10, fontWeight: 500 }}>{s.b}</div>
           </div>
         ))}
       </div>
