@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
@@ -11,27 +11,75 @@ import { WaitlistForm } from "@/components/site/WaitlistForm";
 
 // Nav + Logo + Footer live in src/components/site/* and render via SiteShell.
 
+function prefersReducedMotion() {
+  return typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+}
+
+function useCountUp(target: number, durationMs = 1400, delayMs = 0, start = true) {
+  const [value, setValue] = useState(start && !prefersReducedMotion() ? 0 : target);
+  useEffect(() => {
+    if (!start) return;
+    if (prefersReducedMotion()) { setValue(target); return; }
+    let raf = 0; let startTs = 0;
+    const tick = (ts: number) => {
+      if (!startTs) startTs = ts;
+      const elapsed = ts - startTs - delayMs;
+      if (elapsed < 0) { raf = requestAnimationFrame(tick); return; }
+      const p = Math.min(1, elapsed / durationMs);
+      const eased = 1 - Math.pow(1 - p, 4);
+      setValue(Math.round(target * eased));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, durationMs, delayMs, start]);
+  return value;
+}
+
+function HeroWords({ text }: { text: string }) {
+  const words = text.split(/(\s+)/);
+  let i = 0;
+  return (
+    <>
+      {words.map((w, idx) => {
+        if (/^\s+$/.test(w)) return <span key={idx}>{w}</span>;
+        const delay = 300 + i * 60;
+        i += 1;
+        return (
+          <span key={idx} className="hero-word" style={{ animationDelay: `${delay}ms`, display: "inline-block" }}>
+            {w}
+          </span>
+        );
+      })}
+    </>
+  );
+}
+
 function Hero() {
   const { t } = useI18n();
+  const v1 = useCountUp(50, 1400, 0);
+  const v2 = useCountUp(7, 1400, 100);
+  const v3 = useCountUp(14, 1400, 200);
+  const v4 = useCountUp(72, 1400, 300);
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
       <img src={COLOMBO_STREET} alt="Tuk-tuks moving through Colombo at golden hour" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.45) 40%, rgba(26,26,24,0.85) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(120px, 16vh, 180px) clamp(22px, 6vw, 80px) clamp(72px, 10vh, 110px)" }}>
         <div style={{ maxWidth: 880 }}>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>
+          <span className="hero-enter hero-badge" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase", display: "inline-block" }}>
             {t("hero_kicker")}
           </span>
-          <h1 className="font-display reveal in" style={{
+          <h1 className="font-display hero-headline" style={{
             color: "#fff",
             fontSize: "clamp(36px, 6.4vw, 78px)",
             lineHeight: 1.04,
             letterSpacing: "-1.2px",
             marginTop: 14,
           }}>
-            {t("hero_title")}
+            <HeroWords text={t("hero_title")} />
           </h1>
-          <p style={{
+          <p className="hero-enter hero-sub" style={{
             fontSize: "clamp(15px, 1.7vw, 19px)",
             color: "rgba(255,255,255,0.84)",
             marginTop: 20, maxWidth: 640, lineHeight: 1.55, fontWeight: 500,
@@ -39,8 +87,8 @@ function Hero() {
             {t("hero_sub")}
           </p>
 
-          <div className="hero-cta-row" style={{ marginTop: 32 }}>
-            <Link to="/advertise" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none" }}>
+          <div className="hero-cta-row hero-enter hero-ctas" style={{ marginTop: 32 }}>
+            <Link to="/advertise" className="btn-bold font-display cta-primary" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none" }}>
               {t("cta_launch_pilot")}
             </Link>
             <Link to="/contact" className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 15.5, textDecoration: "none", border: "2.5px solid #fff", boxShadow: "none" }}>
@@ -50,12 +98,12 @@ function Hero() {
 
           <div className="hero-trust" style={{ marginTop: 44 }}>
             {[
-              { v: "50+", k: "metric_vehicles" as const },
-              { v: "7", k: "metric_zones" as const },
-              { v: `14 ${t("metric_min")}`, k: "metric_attention" as const },
-              { v: `72 ${t("metric_hr")}`, k: "metric_launch" as const },
-            ].map((m) => (
-              <div key={m.k} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              { v: `${v1}+`, k: "metric_vehicles" as const },
+              { v: `${v2}`, k: "metric_zones" as const },
+              { v: `${v3} ${t("metric_min")}`, k: "metric_attention" as const },
+              { v: `${v4} ${t("metric_hr")}`, k: "metric_launch" as const },
+            ].map((m, i) => (
+              <div key={m.k} className="hero-enter hero-stat" style={{ display: "flex", flexDirection: "column", gap: 4, animationDelay: `${900 + i * 100}ms` }}>
                 <span className="font-display" style={{ color: "#fff", fontSize: "clamp(20px, 2.6vw, 26px)", letterSpacing: "-0.5px" }}>{m.v}</span>
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>{t(m.k)}</span>
               </div>
