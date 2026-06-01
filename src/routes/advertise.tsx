@@ -116,9 +116,9 @@ function StatPill({ value, label }: { value: string; label: string }) {
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Send us your ad", body: "WhatsApp us your creative or idea. We'll produce it free." },
+    { n: 1, title: "Send us your ad", body: "Share your creative or idea. We'll produce it free." },
     { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen in the fleet." },
-    { n: 3, title: "Weekly GPS report", body: "Verified impressions delivered to your WhatsApp every Monday." },
+    { n: 3, title: "Weekly GPS report", body: "Verified impressions delivered to your inbox every Monday." },
   ];
   return (
     <Section bg={C.cream}>
