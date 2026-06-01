@@ -242,10 +242,6 @@ export function AdvertiserApplication() {
     }
   }, []);
 
-  if (!mounted) {
-    return <div style={{ minHeight: 520 }} aria-hidden="true" />;
-  }
-
   const set = <K extends keyof FormState>(k: K, v: FormState[K]) => setState((s) => ({ ...s, [k]: v }));
 
   const toggleZone = (z: string) => set("zones_selected",
@@ -265,6 +261,10 @@ export function AdvertiserApplication() {
     (state.tier_interest !== null || state.tier_undecided) &&
     state.has_creative !== null
   ), [state]);
+
+  if (!mounted) {
+    return <div style={{ minHeight: 520 }} aria-hidden="true" />;
+  }
 
   async function onSubmit() {
     setError(null);
