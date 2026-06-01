@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { z } from "zod";
-import { supabase } from "@/integrations/supabase/client";
 import { C } from "./theme";
+
+const ENQUIRY_ENDPOINT = "https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-enquiry";
 
 const schema = z.object({
   businessName: z.string().trim().min(1, "Business name is required").max(120),
@@ -44,22 +45,29 @@ export function WaitlistForm({ variant = "light" }: { variant?: "light" | "dark"
     }
     const v = parsed.data;
     setSubmitting(true);
-    const { error: insertError } = await supabase.from("enquiries").insert({
-      source: "website",
-      sender_type: "prospect",
-      user_id: null,
-      status: "new",
-      sender_name: `${v.businessName} (${v.yourName})`,
-      sender_contact: v.whatsapp,
-      subject: `Waitlist — ${v.businessName}`,
-      message: `Business type: ${v.businessType}. Preferred tier: ${v.tier}.`,
-    });
-    setSubmitting(false);
-    if (insertError) {
-      setError("Could not submit. Please try again or message us on WhatsApp.");
-      return;
+    try {
+      const res = await fetch(ENQUIRY_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sender_name: `${v.businessName} — ${v.yourName}`,
+          sender_contact: v.whatsapp,
+          subject: `Waitlist — ${v.businessType} — ${v.tier}`,
+          message: `Business name: ${v.businessName}. Your name: ${v.yourName}. Business type: ${v.businessType}. Preferred tier: ${v.tier}.`,
+          source: "website",
+          sender_type: "prospect",
+        }),
+      });
+      setSubmitting(false);
+      if (!res.ok) {
+        setError("Something went wrong — please try again or contact us directly.");
+        return;
+      }
+      setDone(true);
+    } catch {
+      setSubmitting(false);
+      setError("Something went wrong — please try again or contact us directly.");
     }
-    setDone(true);
   }
 
   const labelColor = variant === "dark" ? "rgba(255,255,255,0.85)" : C.inkSoft;

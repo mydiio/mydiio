@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
-import { supabase } from "@/integrations/supabase/client";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
+
+const ENQUIRY_ENDPOINT = "https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-enquiry";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -28,9 +29,12 @@ function ContactPage() {
   const { t } = useI18n();
   const [intent, setIntent] = useState<"campaign" | "investor" | "driver">("campaign");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError(null);
     const fd = new FormData(e.currentTarget);
     const name = String(fd.get("name") || "").trim().slice(0, 200);
     const company = String(fd.get("company") || "").trim().slice(0, 200);
@@ -38,17 +42,30 @@ function ContactPage() {
     const message = String(fd.get("message") || "").trim().slice(0, 4000);
     const subjectLabel = intent === "campaign" ? t("contact_intent_book") : intent === "investor" ? t("contact_intent_inv") : t("contact_intent_dr");
     if (!name || !email || !message) return;
-    void supabase.from("enquiries").insert({
-      source: "website",
-      sender_type: "prospect",
-      user_id: null,
-      status: "new",
-      sender_name: company ? `${name} (${company})` : name,
-      sender_contact: email,
-      subject: `${subjectLabel} — ${company || name}`.slice(0, 300),
-      message,
-    });
-    setSubmitted(true);
+    setSubmitting(true);
+    try {
+      const res = await fetch(ENQUIRY_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sender_name: company ? `${name} — ${company}` : name,
+          sender_contact: email,
+          subject: `${subjectLabel} — ${company || name}`.slice(0, 300),
+          message,
+          source: "website",
+          sender_type: "prospect",
+        }),
+      });
+      setSubmitting(false);
+      if (!res.ok) {
+        setError("Something went wrong — please try again or contact us directly.");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setSubmitting(false);
+      setError("Something went wrong — please try again or contact us directly.");
+    }
   }
 
   return (
@@ -100,9 +117,12 @@ function ContactPage() {
             </div>
             <input name="email" type="email" placeholder={t("contact_email")} required style={inputStyle} />
             <textarea name="message" placeholder={t("contact_message")} rows={5} required style={{ ...inputStyle, resize: "vertical", minHeight: 120 }} />
-            <button type="submit" className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 12, fontSize: 15.5, border: `2.5px solid ${C.ink}`, cursor: "pointer", marginTop: 8 }}>
-              {t("contact_send")}
+            <button type="submit" disabled={submitting} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 12, fontSize: 15.5, border: `2.5px solid ${C.ink}`, cursor: submitting ? "wait" : "pointer", marginTop: 8, opacity: submitting ? 0.7 : 1 }}>
+              {submitting ? "Sending…" : t("contact_send")}
             </button>
+            {error && (
+              <p style={{ fontSize: 13, color: "#B23B3B", fontWeight: 700, textAlign: "center" }}>{error}</p>
+            )}
             {submitted && (
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.amberDeep, letterSpacing: 1.5, textAlign: "center" }}>
                 {t("contact_opening")}
