@@ -335,7 +335,7 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   const items = [
     { q: "What kind of ads can I run?", a: "15-second or 30-second video ads, or static image ads. We can produce your first creative for free from your existing branding." },
-    { q: "How do I know my ad actually played?", a: "Every play is GPS-logged and timestamped. You receive a verified report on WhatsApp every Monday with impressions, zones covered, and week-on-week trends." },
+    { q: "How do I know my ad actually played?", a: "Every play is GPS-logged and timestamped. You receive a verified weekly report every Monday with impressions, zones covered, and week-on-week trends." },
     { q: "What is Pioneer category exclusivity?", a: "As a Pioneer advertiser, no competitor in your business category can advertise on mydiio in your geographic zone while your contract is active. You are the only pharmacy, or the only restaurant, in your area." },
     { q: "Can I cancel?", a: "After your minimum contract term (3 or 6 months depending on tier), you can cancel with 30 days notice. No exit fees after the minimum term." },
     { q: "What does the LKR 5,000 Pioneer deposit cover?", a: "It's fully refundable and credited against your first invoice. It reserves your exclusive category spot while we prepare your campaign." },
