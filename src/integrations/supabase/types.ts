@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      advertiser_applications: {
+        Row: {
+          budget_range: string | null
+          business_name: string
+          business_type: string
+          campaign_goals: string[]
+          contact_name: string
+          created_at: string
+          has_creative: boolean | null
+          id: string
+          referral_source: string | null
+          status: string
+          tier_interest: string | null
+          whatsapp_number: string
+          zones_selected: string[]
+        }
+        Insert: {
+          budget_range?: string | null
+          business_name: string
+          business_type: string
+          campaign_goals?: string[]
+          contact_name: string
+          created_at?: string
+          has_creative?: boolean | null
+          id?: string
+          referral_source?: string | null
+          status?: string
+          tier_interest?: string | null
+          whatsapp_number: string
+          zones_selected?: string[]
+        }
+        Update: {
+          budget_range?: string | null
+          business_name?: string
+          business_type?: string
+          campaign_goals?: string[]
+          contact_name?: string
+          created_at?: string
+          has_creative?: boolean | null
+          id?: string
+          referral_source?: string | null
+          status?: string
+          tier_interest?: string | null
+          whatsapp_number?: string
+          zones_selected?: string[]
+        }
+        Relationships: []
+      }
       enquiries: {
         Row: {
           assigned_to: string | null

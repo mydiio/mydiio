@@ -7,7 +7,7 @@ import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import { useI18n } from "@/lib/i18n";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
-import { WaitlistForm } from "@/components/site/WaitlistForm";
+import { AdvertiserApplication } from "@/components/site/AdvertiserApplication";
 import { ColomboMap } from "@/components/site/ColomboMap";
 
 // Nav + Logo + Footer live in src/components/site/* and render via SiteShell.
@@ -867,7 +867,7 @@ function FinalCTA() {
           {t("fcta_title")}
         </h2>
         <div style={{ marginTop: 40 }}>
-          <WaitlistForm variant="dark" />
+          <AdvertiserApplication />
         </div>
       </div>
     </section>
