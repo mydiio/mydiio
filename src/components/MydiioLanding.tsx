@@ -405,7 +405,7 @@ function FoundingOffer() {
   const benefits = [t("fo_b1"), t("fo_b2"), t("fo_b3"), t("fo_b4")];
   return (
     <Section bg={C.cream}>
-      <div className="reveal" style={{
+      <div className="reveal reveal-up" style={{
         background: "#fff", border: `3px solid ${C.ink}`, borderRadius: 24,
         padding: "clamp(36px, 5vw, 64px)", boxShadow: "8px 8px 0 rgba(26,26,24,0.92)",
       }}>
