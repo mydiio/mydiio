@@ -18,7 +18,7 @@ export const Route = createFileRoute("/drive")({
   }),
 });
 
-const WA_DRIVER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20becoming%20a%20mydiio%20driver";
+const DRIVER_CONTACT = "/contact";
 const SPOTS_REMAINING = 7;
 
 
