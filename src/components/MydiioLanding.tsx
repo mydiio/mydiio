@@ -367,13 +367,6 @@ function HowItWorks() {
         ))}
       </div>
 
-      <div className="reveal" style={{
-        marginTop: 64, borderRadius: 20, overflow: "hidden",
-        border: `2.5px solid ${C.ink}`, boxShadow: "8px 8px 0 rgba(26,26,24,0.92)",
-        position: "relative",
-      }}>
-        <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
-      </div>
     </Section>
   );
 }
