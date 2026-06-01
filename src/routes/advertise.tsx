@@ -624,6 +624,22 @@ function AdvertisePage() {
       <Coverage />
       <DashboardPreview />
       <FAQ />
+      <section id="waitlist" style={{ background: C.cream, padding: "96px 24px", scrollMarginTop: 96 }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
+            Join the waiting list
+          </span>
+          <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.4vw, 48px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
+            Reserve your Pioneer spot.
+          </h2>
+          <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 14 }}>
+            Tell us about your business. We'll confirm your spot within 24 hours.
+          </p>
+          <div style={{ marginTop: 32 }}>
+            <WaitlistForm />
+          </div>
+        </div>
+      </section>
       <FinalCTA />
     </SiteShell>
   );
