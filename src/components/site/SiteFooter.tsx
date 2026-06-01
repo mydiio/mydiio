@@ -1,68 +1,121 @@
 import { Link } from "@tanstack/react-router";
 import { useI18n } from "@/lib/i18n";
-import { C } from "./theme";
 
 /** Unified footer used across every mydiio page. */
 export function SiteFooter() {
   const { t } = useI18n();
+
+  const colHeading: React.CSSProperties = {
+    fontFamily: "'Space Mono', monospace",
+    fontSize: 11,
+    color: "var(--accent)",
+    letterSpacing: "0.22em",
+    textTransform: "uppercase",
+    fontWeight: 700,
+  };
+  const linkStyle: React.CSSProperties = {
+    color: "var(--on-dark)",
+    fontSize: 14,
+    textDecoration: "none",
+    fontWeight: 600,
+    transition: "transform 0.15s ease",
+    display: "inline-block",
+  };
+
   return (
-    <footer style={{ background: C.ink, padding: "64px 24px 36px" }}>
+    <footer style={{ background: "var(--ink)", color: "var(--on-dark)", padding: "72px 24px 40px" }}>
       <div style={{ maxWidth: 1180, margin: "0 auto" }}>
         <div className="site-footer-grid">
+          {/* Column 1 — brand */}
           <div>
-            <div className="font-display" style={{ fontSize: 26, fontFamily: "'Fredoka One', system-ui, sans-serif" }}>
-              <span style={{ color: "#fff" }}>my</span>
-              <span style={{ color: C.amber }}>di</span>
-              <span style={{ color: "#fff" }}>io</span>
+            <div style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 34,
+              fontWeight: 700,
+              lineHeight: 1,
+              letterSpacing: "-0.02em",
+            }}>
+              <span style={{ color: "var(--on-dark)" }}>my</span>
+              <span style={{ color: "var(--accent)" }}>dii</span>
+              <span style={{ color: "var(--on-dark)" }}>o</span>
             </div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, marginTop: 8, textTransform: "uppercase" }}>
-              {t("ft_tagline")}
+            <div style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 11,
+              color: "var(--accent)",
+              letterSpacing: "0.18em",
+              marginTop: 12,
+              textTransform: "uppercase",
+            }}>
+              Sri Lanka's urban attention network
             </div>
-            <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 8, fontSize: 13, color: "rgba(255,255,255,0.65)", fontWeight: 500 }}>
+            <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 8, fontSize: 13, color: "rgba(244,239,227,0.6)", fontWeight: 500 }}>
               <span>· {t("ft_l1")}</span>
               <span>· {t("ft_l2")}</span>
               <span>· {t("ft_l3")}</span>
             </div>
-            <div style={{ marginTop: 18 }}>
+            <div style={{ marginTop: 20 }}>
               <span style={{
-                display: "inline-block", padding: "5px 11px", borderRadius: 999,
-                background: "rgba(245,166,35,0.12)", border: "1px solid rgba(245,166,35,0.3)",
-                fontFamily: "'DM Mono', monospace", fontSize: 9.5, letterSpacing: 1.5,
-                color: C.amber, textTransform: "uppercase",
+                display: "inline-block",
+                padding: "5px 14px",
+                borderRadius: "var(--radius-pill)",
+                border: "1px solid rgba(244,166,42,0.4)",
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 11,
+                letterSpacing: "0.14em",
+                color: "var(--accent)",
+                textTransform: "uppercase",
               }}>
-                {t("ft_avail")}
+                Available in English · Sinhala · Tamil
               </span>
             </div>
           </div>
 
+          {/* Column 2 — Explore */}
           <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, textTransform: "uppercase" }}>{t("ft_explore")}</div>
-            <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link to="/advertise" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_advertisers")}</Link>
-              <Link to="/drive" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_drivers")}</Link>
-              <Link to="/investors" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_investors")}</Link>
-              <Link to="/about" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_about")}</Link>
+            <div style={colHeading}>Explore</div>
+            <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 12 }}>
+              <Link to="/advertise" className="footer-link" style={linkStyle}>Advertisers</Link>
+              <Link to="/drive" className="footer-link" style={linkStyle}>Drivers</Link>
+              <Link to="/investors" className="footer-link" style={linkStyle}>Network</Link>
+              <Link to="/about" className="footer-link" style={linkStyle}>About</Link>
             </div>
           </div>
 
+          {/* Column 3 — Legal */}
           <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber, letterSpacing: 2, textTransform: "uppercase" }}>{t("ft_legal")}</div>
-            <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link to="/contact" style={{ color: "#fff", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>{t("nav_contact")}</Link>
-              <a href="#" style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>Privacy</a>
-              <a href="#" style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontWeight: 600 }}>Terms</a>
+            <div style={colHeading}>Legal</div>
+            <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 12 }}>
+              <Link to="/contact" className="footer-link" style={linkStyle}>Contact</Link>
+              <a href="#" className="footer-link" style={linkStyle}>Privacy</a>
+              <a href="#" className="footer-link" style={linkStyle}>Terms</a>
             </div>
           </div>
         </div>
 
-        <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 12, fontFamily: "'DM Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.4)", letterSpacing: 1 }}>
+        <div style={{
+          marginTop: 56,
+          paddingTop: 24,
+          borderTop: "1px solid rgba(244,239,227,0.12)",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+          gap: 12,
+          fontFamily: "'Space Mono', monospace",
+          fontSize: 12,
+          color: "var(--ink-mute)",
+          letterSpacing: "0.08em",
+        }}>
           <span>© 2026 mydiio · Colombo · Sri Lanka</span>
-          <span>{t("ft_built")}</span>
+          <span>Built in Colombo, for Colombo</span>
         </div>
       </div>
       <style>{`
-        .site-footer-grid { display: grid; grid-template-columns: 1fr; gap: 36px; }
-        @media (min-width: 720px) { .site-footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; } }
+        .site-footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+        @media (min-width: 720px) {
+          .site-footer-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 56px; }
+        }
+        .footer-link:hover { transform: translateX(4px); }
       `}</style>
     </footer>
   );
