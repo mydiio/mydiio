@@ -732,7 +732,7 @@ function FoundingOffer() {
   const { t } = useI18n();
   const benefits = [t("fo_b1"), t("fo_b2"), t("fo_b3"), t("fo_b4")];
   return (
-    <Section bg={"var(--bg)"}>
+    <Section bg={"var(--bg2)"}>
       <div className="reveal reveal-up" style={{
         position: "relative",
         background: "var(--paper)",
