@@ -702,7 +702,7 @@ function ScaleStory() {
     { n: "04", t: t("scale_c4_t"), b: t("scale_c4_b") },
   ];
   return (
-    <Section bg={"var(--bg2)"}>
+    <Section bg={"var(--bg)"}>
       <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("scale_kicker")}</span>
         <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
