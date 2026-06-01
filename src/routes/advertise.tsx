@@ -230,7 +230,7 @@ function Pricing() {
                 </li>
               ))}
             </ul>
-            <a href={WA_ADVERTISER} target="_blank" rel="noopener noreferrer"
+            <a href="#waitlist" onClick={scrollToWaitlist}
               className="btn-bold font-display"
               style={{
                 marginTop: "auto", paddingTop: 22,
@@ -242,7 +242,7 @@ function Pricing() {
                 padding: "12px 18px", borderRadius: 11, fontSize: 14,
                 border: `3px solid ${C.ink}`, boxShadow: `4px 4px 0 ${C.ink}`,
               }}>
-                {p.cta}
+                Join waiting list →
               </span>
             </a>
           </div>
