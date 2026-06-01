@@ -83,7 +83,7 @@ export function WaitlistForm({ variant = "light" }: { variant?: "light" | "dark"
           You're on the waiting list.
         </div>
         <p style={{ marginTop: 10, color: C.inkSoft, fontWeight: 600, fontSize: 14.5, lineHeight: 1.55 }}>
-          We'll WhatsApp you within 24 hours to confirm your spot.
+          We'll contact you within 24 hours to confirm your spot.
         </p>
       </div>
     );
