@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      enquiries: {
+        Row: {
+          assigned_to: string | null
+          created_at: string
+          id: string
+          message: string | null
+          sender_contact: string | null
+          sender_name: string | null
+          sender_type: string
+          source: string
+          status: string
+          subject: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          assigned_to?: string | null
+          created_at?: string
+          id?: string
+          message?: string | null
+          sender_contact?: string | null
+          sender_name?: string | null
+          sender_type?: string
+          source?: string
+          status?: string
+          subject?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          assigned_to?: string | null
+          created_at?: string
+          id?: string
+          message?: string | null
+          sender_contact?: string | null
+          sender_name?: string | null
+          sender_type?: string
+          source?: string
+          status?: string
+          subject?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

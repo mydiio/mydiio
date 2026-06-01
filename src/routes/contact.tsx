@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
+import { supabase } from "@/integrations/supabase/client";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 
@@ -31,12 +32,22 @@ function ContactPage() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const subject = intent === "campaign" ? t("contact_intent_book") : intent === "investor" ? t("contact_intent_inv") : t("contact_intent_dr");
-    const params = new URLSearchParams({
-      subject: `${subject} — ${fd.get("name") || ""}`,
-      body: `${t("contact_name")}: ${fd.get("name")}\n${t("contact_company")}: ${fd.get("company")}\n${t("contact_email")}: ${fd.get("email")}\n\n${fd.get("message")}`,
+    const name = String(fd.get("name") || "").trim().slice(0, 200);
+    const company = String(fd.get("company") || "").trim().slice(0, 200);
+    const email = String(fd.get("email") || "").trim().slice(0, 200);
+    const message = String(fd.get("message") || "").trim().slice(0, 4000);
+    const subjectLabel = intent === "campaign" ? t("contact_intent_book") : intent === "investor" ? t("contact_intent_inv") : t("contact_intent_dr");
+    if (!name || !email || !message) return;
+    void supabase.from("enquiries").insert({
+      source: "website",
+      sender_type: "prospect",
+      user_id: null,
+      status: "new",
+      sender_name: company ? `${name} (${company})` : name,
+      sender_contact: email,
+      subject: `${subjectLabel} — ${company || name}`.slice(0, 300),
+      message,
     });
-    window.location.href = `mailto:hello@mydiio.com?${params.toString()}`;
     setSubmitted(true);
   }
 
