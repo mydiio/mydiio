@@ -70,6 +70,12 @@ export const dict: Dict = {
   how_s3_t: { en: "Go Live Fast", si: "ඉක්මනින් සජීවී වන්න", ta: "வேகமாக நேரலை செல்லுங்கள்" },
   how_s3_b: { en: "Most campaigns launch within 72 hours of approval.", si: "බොහෝ ව්‍යාපාර අනුමත වී පැය 72ක් ඇතුළත දියත් වේ.", ta: "பெரும்பாலான பிரச்சாரங்கள் ஒப்புதல் பெற்ற 72 மணி நேரத்திற்குள் தொடங்கும்." },
 
+  // --- Tuk Interior ---
+  tuk_kicker: { en: "Inside the ride", si: "ගමන තුළ", ta: "பயணத்தின் உள்ளே" },
+  tuk_title: { en: "The screen they can't look away from.", si: "ඔවුන් ඉවත බලා ගත නොහැකි තිරය.", ta: "அவர்கள் கண்களை அகற்ற முடியாத திரை." },
+  tuk_body: { en: "A bright display mounted at eye level — playing your message while the meter runs and the city rolls by.", si: "ඇස මට්ටමේ සවිකර ඇති දීප්තිමත් තිරයක් — මීටරය දුවන අතරතුර සහ නගරය ගමන් කරන විට ඔබේ පණිවිඩය ප්‍රදර්ශනය කරයි.", ta: "கண் மட்டத்தில் பொருத்தப்பட்ட பிரகாசமான திரை — மீட்டர் ஓடும்போதும் நகரம் செல்லும்போதும் உங்கள் செய்தியை காட்டுகிறது." },
+  tuk_cta: { en: "See it in a pilot →", si: "පයිලට් එකකින් බලන්න →", ta: "பைலட்டில் பாருங்கள் →" },
+
   // --- Two Audiences ---
   ad_kicker: { en: "For Advertisers", si: "ප්‍රචාරකයින් සඳහා", ta: "விளம்பரதாரர்களுக்கு" },
   ad_title: { en: "Turn Colombo traffic into customers.", si: "කොළඹ ගමනාගමනය පාරිභෝගිකයන් බවට පත් කරන්න.", ta: "கொழும்பு போக்குவரத்தை வாடிக்கையாளர்களாக மாற்றுங்கள்." },
