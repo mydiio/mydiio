@@ -550,9 +550,8 @@ function FinalCTA() {
           marginTop: 36, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center",
         }}>
           <a
-            href={WA_ADVERTISER}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#waitlist"
+            onClick={scrollToWaitlist}
             className="btn-bold font-display"
             style={{
               background: C.amber, color: C.ink,
@@ -560,12 +559,10 @@ function FinalCTA() {
               textDecoration: "none", display: "inline-block",
             }}
           >
-            Start campaign →
+            Join the waiting list →
           </a>
           <a
-            href={WA_ADVERTISER}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
             className="btn-bold font-display"
             style={{
               background: "transparent", color: "#fff",
