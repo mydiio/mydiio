@@ -77,14 +77,14 @@ function Hero() {
             14 minutes. No skip button. GPS-verified weekly reports. From LKR 20,000/month.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
-            <a href={WA_ADVERTISER} target="_blank" rel="noopener noreferrer"
+            <a href="#waitlist" onClick={scrollToWaitlist}
               className="btn-bold font-display"
               style={{
                 background: C.amber, color: C.ink,
                 padding: "16px 22px", borderRadius: 13, fontSize: 17,
                 textDecoration: "none", display: "inline-block",
               }}>
-              Start a campaign →
+              Join the waiting list →
             </a>
           </div>
           <div style={{ marginTop: 24, display: "flex", flexWrap: "wrap", gap: 10 }}>
