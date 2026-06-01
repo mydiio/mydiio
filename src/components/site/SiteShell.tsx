@@ -50,7 +50,39 @@ export function SiteShell({
           --site-line-heading: 1.08;
         }
         .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-        .reveal.in { opacity: 1; transform: translateY(0); }
+        .reveal.in, .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+        /* Hero entrance — fires on mount via CSS keyframes */
+        @keyframes heroFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes heroFadeUpLarge { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes heroFadeUpSub { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes heroFadeScale { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+        @keyframes navFadeDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .site-nav-enter { opacity: 0; animation: navFadeDown 400ms ease-out 0ms forwards; }
+        .hero-badge { opacity: 0; animation: heroFadeUp 400ms ease-out 150ms forwards; }
+        .hero-word { opacity: 0; animation: heroFadeUpLarge 500ms cubic-bezier(0.22,1,0.36,1) both; }
+        .hero-sub { opacity: 0; animation: heroFadeUpSub 400ms ease-out 700ms forwards; }
+        .hero-stat { opacity: 0; animation: heroFadeUp 400ms ease-out both; }
+        .hero-ctas { opacity: 0; animation: heroFadeScale 350ms ease-out 1150ms forwards; }
+
+        /* Hover micro-interactions */
+        .cta-primary { transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important; }
+        .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(245,166,35,0.3) !important; }
+        .site-nav-link { position: relative; }
+        .site-nav-link::after {
+          content: ""; position: absolute; left: 12px; right: 12px; bottom: 6px; height: 2px;
+          background: var(--amber, #F5A623); transform: scaleX(0); transform-origin: left;
+          transition: transform 200ms ease;
+        }
+        .site-nav-link:hover::after { transform: scaleX(1); }
+
+        @media (prefers-reduced-motion: reduce) {
+          .reveal, .reveal.in, .reveal.revealed { opacity: 1 !important; transform: none !important; transition: none !important; }
+          .site-nav-enter, .hero-badge, .hero-word, .hero-sub, .hero-stat, .hero-ctas { opacity: 1 !important; animation: none !important; transform: none !important; }
+          .cta-primary, .site-nav-link::after { transition: none !important; }
+        }
+
         .i18n-root { transition: opacity 120ms ease; }
         .i18n-root[data-lang-settling="true"] { opacity: 0.975; }
         .font-display { letter-spacing: 0 !important; }
