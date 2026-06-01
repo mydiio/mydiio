@@ -343,11 +343,11 @@ function Reporting() {
   return (
     <Section bg={"#FBF6E8"}>
       <div className="reveal" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>{t("rep_kicker")}</span>
-        <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.4vw, 48px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
+        <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>{t("rep_kicker")}</span>
+        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(28px, 4.4vw, 48px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
           {t("rep_title")}
         </h2>
-        <p style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 18, fontWeight: 500 }}>
+        <p className="reveal-up delay-2" style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 18, fontWeight: 500 }}>
           {t("rep_body")}
         </p>
       </div>
