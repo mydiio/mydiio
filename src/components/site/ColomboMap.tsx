@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ComponentType } from "react";
 import { createClientOnlyFn } from "@tanstack/react-start";
 
 const loadColomboMap = createClientOnlyFn(() => import("./ColomboMap.client"));
 
 export function ColomboMap() {
-  const [ClientColomboMap, setClientColomboMap] = useState<React.ComponentType | null>(null);
+  const [ClientColomboMap, setClientColomboMap] = useState<ComponentType | null>(null);
 
   useEffect(() => {
     let mounted = true;
