@@ -150,6 +150,23 @@
   .font-mono { font-family: var(--font-mono); }
   .font-serif { font-family: var(--font-serif); }
 
+  .heading-editorial {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+    color: var(--ink);
+  }
+  .heading-editorial em { font-style: italic; color: var(--accent-deep); }
+
+  .heading-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    color: var(--ink);
+  }
+
   .shadow-sticker { box-shadow: var(--sticker); }
   .shadow-sticker-lg { box-shadow: var(--sticker-lg); }
   .shadow-sticker-press { box-shadow: var(--sticker-press); }
