@@ -326,7 +326,7 @@ function HowItWorks() {
     { n: "03", t: t("how_s3_t"), b: t("how_s3_b") },
   ];
   return (
-    <Section bg="var(--bg2)">
+    <Section bg="var(--bg)">
       <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up">{t("how_kicker")}</span>
         <h2 className="font-display reveal-up delay-1" style={{
@@ -374,7 +374,7 @@ function HowItWorks() {
 function TukInterior() {
   const { t } = useI18n();
   return (
-    <Section bg={C.cream}>
+    <Section bg="var(--bg2)">
       <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 40, alignItems: "center" }}>
         <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <span className="eyebrow">{t("tuk_kicker")}</span>
@@ -464,7 +464,7 @@ function TukInterior() {
 
 function Coverage() {
   return (
-    <Section bg={C.cream}>
+    <Section bg="var(--bg)">
       <div className="reveal" style={{ textAlign: "center", marginBottom: 40, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>
           Coverage
@@ -702,7 +702,7 @@ function ScaleStory() {
     { n: "04", t: t("scale_c4_t"), b: t("scale_c4_b") },
   ];
   return (
-    <Section bg={"var(--bg2)"}>
+    <Section bg={"var(--bg)"}>
       <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("scale_kicker")}</span>
         <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
@@ -732,7 +732,7 @@ function FoundingOffer() {
   const { t } = useI18n();
   const benefits = [t("fo_b1"), t("fo_b2"), t("fo_b3"), t("fo_b4")];
   return (
-    <Section bg={"var(--bg)"}>
+    <Section bg={"var(--bg2)"}>
       <div className="reveal reveal-up" style={{
         position: "relative",
         background: "var(--paper)",
@@ -797,7 +797,7 @@ function FAQ() {
   ];
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   return (
-    <Section bg={"var(--bg2)"}>
+    <Section bg={"var(--bg)"}>
       <div className="reveal" style={{ textAlign: "center", marginBottom: 48, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("faq_kicker")}</span>
         <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>

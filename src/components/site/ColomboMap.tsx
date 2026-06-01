@@ -64,7 +64,26 @@ function densityDots(density: string) {
 export function ColomboMap() {
   const [activeId, setActiveId] = useState<number | null>(null);
   const mapRef = useRef<L.Map | null>(null);
+  const wrapRef = useRef<HTMLDivElement | null>(null);
   const active = useMemo(() => ZONES.find((z) => z.id === activeId) || null, [activeId]);
+
+  // Leaflet renders before the animated container has its final size; trigger
+  // invalidateSize() once the map scrolls into view so tiles align correctly.
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting && mapRef.current) {
+          // Allow the reveal transform to settle, then invalidate.
+          setTimeout(() => mapRef.current?.invalidateSize(), 250);
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.15 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const selectZone = (z: Zone) => {
     setActiveId(z.id);
@@ -83,7 +102,7 @@ export function ColomboMap() {
 
   return (
     <div className="coverage-grid">
-      <div className="coverage-map-wrap" style={{
+      <div ref={wrapRef} className="coverage-map-wrap" style={{
         position: "relative", borderRadius: 16, overflow: "hidden",
         border: `2.5px solid ${C.ink}`, boxShadow: "6px 6px 0 rgba(26,26,24,0.9)",
       }}>
