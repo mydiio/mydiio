@@ -237,7 +237,7 @@ function Pricing() {
                 </li>
               ))}
             </ul>
-            <a href="#waitlist" onClick={scrollToWaitlist}
+            <a href={`/advertise?tier=${p.tierSlug}#apply-section`}
               className="btn-bold font-display"
               style={{
                 marginTop: "auto", paddingTop: 22,
@@ -245,11 +245,17 @@ function Pricing() {
               }}>
               <span style={{
                 display: "inline-block",
-                background: p.highlight ? C.amber : C.ink, color: p.highlight ? C.ink : "#fff",
-                padding: "12px 18px", borderRadius: 11, fontSize: 14,
-                border: `3px solid ${C.ink}`, boxShadow: `4px 4px 0 ${C.ink}`,
+                background: p.btnStyle === "primary" ? "var(--accent)"
+                  : p.btnStyle === "ink" ? "var(--ink)"
+                  : "transparent",
+                color: p.btnStyle === "primary" ? "var(--accent-ink)"
+                  : p.btnStyle === "ink" ? "var(--on-dark)"
+                  : "var(--ink)",
+                padding: "12px 18px", borderRadius: "var(--radius-pill)", fontSize: 14,
+                border: "2px solid var(--ink)", boxShadow: "var(--sticker)",
+                fontWeight: 600,
               }}>
-                Join waiting list →
+                {p.ctaLabel}
               </span>
             </a>
           </div>
