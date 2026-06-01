@@ -142,13 +142,102 @@ function SectionHeader({ kicker, title }: { kicker?: string; title: string }) {
   return (
     <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
       {kicker && (
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
+        <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>
           {kicker}
         </span>
       )}
-      <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.6vw, 50px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: kicker ? 14 : 0 }}>
+      <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(28px, 4.6vw, 50px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: kicker ? 14 : 0 }}>
         {title}
       </h2>
+    </div>
+  );
+}
+
+function TukScreenShowcase() {
+  const creatives = [
+    { bg: "#1B4D8E", fg: "#fff", pillBg: "#F5A623", pillFg: "#1A1A18", headline: "Feel better. Live better.", sub: "City Pharma · Colombo 03" },
+    { bg: "#2D6B4F", fg: "#fff", pillBg: "#F5A623", pillFg: "#1A1A18", headline: "Fresh bread, every morning.", sub: "Green Bakery · Nugegoda" },
+    { bg: "#8B2500", fg: "#fff", pillBg: "#F5A623", pillFg: "#1A1A18", headline: "40% off this week.", sub: "Style House · Colombo 04" },
+    { bg: "#F5A623", fg: "#1A1A18", pillBg: "#1A1A18", pillFg: "#F5A623", headline: "Open for lunch.", sub: "The Rice Bowl · Fort" },
+  ];
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(() => setIdx((i) => (i + 1) % creatives.length), 3500);
+    return () => window.clearInterval(id);
+  }, []);
+  return (
+    <div className="reveal" style={{ marginTop: 64 }}>
+      <div style={{
+        position: "relative", borderRadius: 20, overflow: "hidden",
+        border: `2.5px solid ${C.ink}`, boxShadow: "8px 8px 0 rgba(26,26,24,0.92)",
+      }}>
+        <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
+        {/* Rotating ad creative overlay positioned over the tablet in the photo */}
+        <div className="tuk-screen-overlay" aria-hidden style={{
+          position: "absolute", left: "42%", top: "8%", width: "18%", height: "28%",
+          borderRadius: 4, overflow: "hidden",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.35)",
+        }}>
+          {creatives.map((c, i) => (
+            <div key={i} style={{
+              position: "absolute", inset: 0, background: c.bg, color: c.fg,
+              opacity: i === idx ? 1 : 0, transition: "opacity 600ms ease-in-out",
+              display: "flex", flexDirection: "column", justifyContent: "space-between",
+              padding: "clamp(6px, 1vw, 14px)",
+            }}>
+              <div>
+                <div className="font-display tuk-creative-h" style={{ fontSize: "clamp(9px, 1.15vw, 16px)", lineHeight: 1.1, letterSpacing: "-0.3px" }}>
+                  {c.headline}
+                </div>
+                <div className="tuk-creative-s" style={{ fontSize: "clamp(6px, 0.7vw, 10px)", marginTop: 4, opacity: 0.85, lineHeight: 1.2 }}>
+                  {c.sub}
+                </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <span style={{
+                  background: c.pillBg, color: c.pillFg, fontFamily: "'DM Mono', monospace",
+                  fontSize: "clamp(5px, 0.55vw, 8px)", letterSpacing: 1, padding: "2px 5px",
+                  borderRadius: 999, textTransform: "uppercase", fontWeight: 700,
+                }}>SPONSORED</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Live campaign pill */}
+        <div style={{
+          position: "absolute", left: 14, bottom: 14,
+          background: "rgba(26,26,24,0.75)", color: "#fff",
+          fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.5,
+          padding: "6px 10px", borderRadius: 999, display: "inline-flex",
+          alignItems: "center", gap: 6,
+        }}>
+          <span className="tuk-live-dot" style={{ width: 7, height: 7, borderRadius: "50%", background: "#F5A623", display: "inline-block" }} />
+          LIVE CAMPAIGN
+        </div>
+      </div>
+      {/* Dot indicators */}
+      <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 16 }}>
+        {creatives.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Show creative ${i + 1}`}
+            onClick={() => setIdx(i)}
+            style={{
+              width: i === idx ? 8 : 6, height: i === idx ? 8 : 6,
+              borderRadius: "50%", border: "none", padding: 0, cursor: "pointer",
+              background: i === idx ? C.amber : "rgba(26,26,24,0.25)",
+              transition: "background 200ms ease, width 200ms ease, height 200ms ease",
+            }}
+          />
+        ))}
+      </div>
+      <style>{`
+        @keyframes tuk-live-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .tuk-live-dot { animation: tuk-live-pulse 1.8s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) { .tuk-live-dot { animation: none; } }
+      `}</style>
     </div>
   );
 }
