@@ -4,6 +4,7 @@ import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
+import { WaitlistForm } from "@/components/site/WaitlistForm";
 
 export const Route = createFileRoute("/advertise")({
   component: AdvertisePage,
@@ -17,7 +18,11 @@ export const Route = createFileRoute("/advertise")({
   }),
 });
 
-const WA_ADVERTISER = "https://wa.me/94XXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20advertising%20on%20mydiio";
+function scrollToWaitlist(e: React.MouseEvent) {
+  e.preventDefault();
+  document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 
 
 /* ---------- Reveal section ---------- */
