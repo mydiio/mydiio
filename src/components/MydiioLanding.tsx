@@ -740,18 +740,19 @@ export default function MydiioLanding() {
         @media (min-width: 760px) { .paths-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
 
         .path-card {
-          border: 2.5px solid ${C.ink};
-          border-radius: 22px;
-          box-shadow: 6px 6px 0 ${C.ink}, 0 24px 48px -28px rgba(26,26,14,0.35);
-          padding: clamp(28px, 4vw, 40px);
+          border: 2px solid var(--ink);
+          border-radius: 26px;
+          box-shadow: var(--sticker);
+          overflow: hidden;
           transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
         }
-        .path-card:hover { transform: translateY(-4px); box-shadow: 8px 10px 0 ${C.ink}, 0 36px 60px -28px rgba(26,26,14,0.45); }
+        .path-card:hover { transform: translateY(-4px); box-shadow: var(--sticker-lg); }
       `}</style>
 
       <Hero />
       <WhyItWorks />
       <HowItWorks />
+      <TukInterior />
       <Coverage />
       <TwoAudiences />
       <Reporting />
