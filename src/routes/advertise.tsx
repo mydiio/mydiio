@@ -21,7 +21,7 @@ export const Route = createFileRoute("/advertise")({
 
 function scrollToWaitlist(e: React.MouseEvent) {
   e.preventDefault();
-  document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  document.getElementById("apply-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 
