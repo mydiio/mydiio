@@ -96,7 +96,7 @@ export function ColomboMap() {
   };
 
   const onGetCoverage = () => {
-    const el = document.getElementById("signup-section");
+    const el = document.getElementById("apply-section") || document.getElementById("signup-section");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
