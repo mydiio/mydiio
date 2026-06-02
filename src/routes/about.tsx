@@ -286,20 +286,18 @@ function AboutPage() {
             </p>
           </div>
           <div className="problem-grid reveal-up delay-3">
-            <div data-toggle="advertiser" style={{ background: "var(--paper)", border: "2px solid var(--ink)", borderRadius: 26, boxShadow: "var(--sticker)", padding: "clamp(24px, 3vw, 36px)" }}>
-              <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--accent-deep)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em" }}>For business owners</div>
-              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink)", margin: "8px 0 12px" }}>Advertising was only for big companies.</h3>
+            <BeforeAfterCard variant="advertiser">
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink)", margin: "0 0 12px" }}>Advertising was only for big companies.</h3>
               <p style={{ color: "var(--ink-soft)", fontSize: 15, lineHeight: 1.65, margin: 0 }}>
                 A pharmacy in Nugegoda. A bakery in Fort. A clothing shop in Wellawatte. They had nowhere to go. Billboards cost millions. TV ads need an agency. Digital requires expertise most small businesses don't have. mydiio changes that — starting from LKR 20,000 a month, with GPS-verified proof that your ad ran.
               </p>
-            </div>
-            <div data-toggle="driver" style={{ background: "var(--green-soft)", border: "2px solid var(--green)", borderRadius: 26, boxShadow: "4px 4px 0 var(--green)", padding: "clamp(24px, 3vw, 36px)" }}>
-              <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--green-ink)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em" }}>For tuk-tuk drivers</div>
-              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink)", margin: "8px 0 12px" }}>Driving was the only way to earn.</h3>
+            </BeforeAfterCard>
+            <BeforeAfterCard variant="driver">
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink)", margin: "0 0 12px" }}>Driving was the only way to earn.</h3>
               <p style={{ color: "var(--ink-soft)", fontSize: 15, lineHeight: 1.65, margin: 0 }}>
                 Over a million tuk-tuks move through Sri Lanka every day. Their drivers earn from fares and nothing else. mydiio installs a screen in your tuk — you drive your normal routes, and earn LKR 6,000 every month as a base. Drive 8+ hours a day and that becomes LKR 8,000. The screen does the work. You just drive.
               </p>
-            </div>
+            </BeforeAfterCard>
           </div>
         </div>
       </section>
