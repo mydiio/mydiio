@@ -1,6 +1,179 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+
+type Variant = "advertiser" | "driver";
+
+const BEFORE_DATA: Record<Variant, { eyebrow: string; eyebrowColor: string; heading: string; rows: string[]; afterBg: string; afterShadow: string; afterBorder: string }> = {
+  advertiser: {
+    eyebrow: "For business owners",
+    eyebrowColor: "var(--accent-deep)",
+    heading: "Advertising was only for big companies.",
+    rows: [
+      "Billboard — LKR 200,000+ per month",
+      "TV slot — LKR 500,000+ minimum",
+      "No proof your ad ever ran",
+      "Need an agency just to start",
+    ],
+    afterBg: "var(--paper)",
+    afterShadow: "var(--sticker)",
+    afterBorder: "var(--ink)",
+  },
+  driver: {
+    eyebrow: "For tuk-tuk drivers",
+    eyebrowColor: "var(--green-ink)",
+    heading: "Driving was the only way to earn.",
+    rows: [
+      "Zero passive income from the vehicle",
+      "Income drops if you take a day off",
+      "No benefits, no recognition, no bonus",
+      "Tuk-tuk interior earns nothing while you drive",
+    ],
+    afterBg: "var(--green-soft)",
+    afterShadow: "4px 4px 0 var(--green)",
+    afterBorder: "var(--green)",
+  },
+};
+
+function BeforeAfterCard({ variant, children }: { variant: Variant; children: React.ReactNode }) {
+  const [showBefore, setShowBefore] = useState(false);
+  const [opacity, setOpacity] = useState(1);
+  const [renderBefore, setRenderBefore] = useState(false);
+  const meta = BEFORE_DATA[variant];
+
+  useEffect(() => {
+    setOpacity(0);
+    const t = setTimeout(() => {
+      setRenderBefore(showBefore);
+      setOpacity(1);
+    }, 150);
+    return () => clearTimeout(t);
+  }, [showBefore]);
+
+  const bg = showBefore ? "var(--bg2)" : meta.afterBg;
+  const border = showBefore ? "var(--ink)" : meta.afterBorder;
+  const shadow = showBefore ? "var(--sticker)" : meta.afterShadow;
+
+  return (
+    <div
+      data-toggle={variant}
+      style={{
+        background: bg,
+        border: `2px solid ${border}`,
+        borderRadius: 26,
+        boxShadow: shadow,
+        padding: "clamp(24px, 3vw, 36px)",
+        transition: "background 300ms ease, border-color 300ms ease, box-shadow 300ms ease",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <div style={{ fontFamily: "'Space Mono', monospace", color: showBefore ? "var(--ink-mute)" : meta.eyebrowColor, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em", transition: "color 300ms ease" }}>
+        {showBefore ? "Before mydiio" : meta.eyebrow}
+      </div>
+      <div style={{ opacity, transition: "opacity 300ms ease", flex: 1, marginTop: 8 }}>
+        {renderBefore ? (
+          <>
+            <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink-mute)", textDecoration: "line-through", margin: "0 0 16px" }}>
+              {meta.heading}
+            </h3>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+              {meta.rows.map((r) => (
+                <li key={r} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                  <span style={{ color: "#E24B4A", fontWeight: 700, fontSize: 16, lineHeight: 1.3 }}>×</span>
+                  <span style={{ color: "var(--ink-mute)", textDecoration: "line-through", fontSize: 14, lineHeight: 1.5, fontFamily: "'Space Grotesk', sans-serif" }}>{r}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          children
+        )}
+      </div>
+      <button
+        onClick={() => setShowBefore((v) => !v)}
+        className="ba-toggle"
+        style={{ background: "none", border: "none", padding: 0, marginTop: 18, fontFamily: "'Space Mono', monospace", fontSize: 12, color: "var(--accent-deep)", cursor: "pointer", textAlign: "left", letterSpacing: "0.08em", alignSelf: "flex-start" }}
+      >
+        {showBefore ? "← See what changed" : "What was it like before? →"}
+      </button>
+    </div>
+  );
+}
+
+const PILLAR_PANELS: Record<string, { rows: string[]; chip?: string }> = {
+  "01": {
+    rows: [
+      "Every play logged — vehicle ID, GPS location, timestamp, duration",
+      "Weekly report delivered every Monday to your portal",
+      "No estimates. No 'we think around X impressions'. Exact numbers.",
+      "GPS-verified — not self-reported",
+    ],
+  },
+  "02": {
+    rows: [
+      "Paid on the 5th of every month by bank transfer — without exception",
+      "Clear written agreement before any screen is installed",
+      "Never penalised for genuine technical faults",
+      "Branded merchandise, loyalty bonuses, founding partner status",
+    ],
+    chip: "A competitor can copy our screens. They cannot copy our culture.",
+  },
+  "03": {
+    rows: [
+      "A percentage of net revenue reinvested into driver communities",
+      "Commitment built in from day one — not added later as PR",
+      "The city that powers our network shares in its growth",
+    ],
+    chip: "Built in Colombo. For Colombo.",
+  },
+};
+
+function PillarCard({ n, h, b, i, openId, setOpenId }: { n: string; h: string; b: string; i: number; openId: string | null; setOpenId: (v: string | null) => void }) {
+  const open = openId === n;
+  const panel = PILLAR_PANELS[n];
+  return (
+    <div
+      data-pillar={n}
+      className={`pillar-card reveal-up delay-${i + 1}`}
+      style={{
+        textAlign: "left",
+        background: open ? "rgba(255,255,255,0.11)" : undefined,
+        borderColor: open ? "var(--accent)" : undefined,
+        transition: "all 0.2s ease",
+      }}
+    >
+      <div style={{ fontFamily: "'Space Mono', monospace", fontWeight: 700, color: "var(--accent)", fontSize: "clamp(32px,4vw,48px)", lineHeight: 1 }}>{n}</div>
+      <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 20, color: "var(--on-dark)", margin: "12px 0 8px" }}>{h}</h3>
+      <p style={{ color: "var(--on-dark)", opacity: 0.65, fontSize: 14, lineHeight: 1.65, margin: 0, fontFamily: "'Space Grotesk', sans-serif", overflow: open ? "visible" : "hidden", display: open ? "block" : "-webkit-box", WebkitLineClamp: open ? "unset" : 2, WebkitBoxOrient: "vertical" as const }}>
+        {b}
+      </p>
+      <button
+        onClick={() => setOpenId(open ? null : n)}
+        style={{ background: "none", border: "none", padding: 0, marginTop: 14, fontFamily: "'Space Mono', monospace", color: "var(--accent)", fontSize: 12, letterSpacing: "0.08em", cursor: "pointer" }}
+      >
+        Read more <span style={{ display: "inline-block", transform: open ? "rotate(45deg)" : "rotate(0deg)", transition: "transform 0.2s ease" }}>+</span>
+      </button>
+      <div style={{ maxHeight: open ? 400 : 0, overflow: "hidden", transition: "max-height 500ms cubic-bezier(0.22, 1, 0.36, 1)" }}>
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)", paddingTop: 16, marginTop: 16, display: "flex", flexDirection: "column", gap: 10 }}>
+          {panel.rows.map((r) => (
+            <div key={r} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+              <span style={{ color: "var(--accent)", fontSize: 12, lineHeight: 1.5 }}>●</span>
+              <span style={{ color: "var(--on-dark)", opacity: 0.7, fontSize: 13, lineHeight: 1.55, fontFamily: "'Space Grotesk', sans-serif" }}>{r}</span>
+            </div>
+          ))}
+          {panel.chip && (
+            <div style={{ marginTop: 6 }}>
+              <span style={{ display: "inline-block", background: "var(--accent)", color: "var(--accent-ink)", borderRadius: 20, padding: "4px 12px", fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700 }}>
+                {panel.chip}
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -39,9 +212,11 @@ const greenBtn: React.CSSProperties = {
 const tickerText = "Ads on the Move · GPS Verified · Built in Colombo · For Colombo · Every Ride · Every Screen · Every Business · ";
 
 function AboutPage() {
+  const [openPillar, setOpenPillar] = useState<string | null>(null);
   return (
     <SiteShell accent="amber">
       <style>{`
+        .ba-toggle:hover { text-decoration: underline; }
         .about-eyebrow { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-deep); }
         .about-h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(44px, 7vw, 96px); letter-spacing: -0.04em; line-height: 0.93; color: var(--ink); margin: 14px 0 0; }
         .about-h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 5vw, 64px); letter-spacing: -0.03em; color: var(--ink); margin: 12px 0 0; line-height: 1.05; }
@@ -111,20 +286,18 @@ function AboutPage() {
             </p>
           </div>
           <div className="problem-grid reveal-up delay-3">
-            <div data-toggle="advertiser" style={{ background: "var(--paper)", border: "2px solid var(--ink)", borderRadius: 26, boxShadow: "var(--sticker)", padding: "clamp(24px, 3vw, 36px)" }}>
-              <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--accent-deep)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em" }}>For business owners</div>
-              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink)", margin: "8px 0 12px" }}>Advertising was only for big companies.</h3>
+            <BeforeAfterCard variant="advertiser">
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink)", margin: "0 0 12px" }}>Advertising was only for big companies.</h3>
               <p style={{ color: "var(--ink-soft)", fontSize: 15, lineHeight: 1.65, margin: 0 }}>
                 A pharmacy in Nugegoda. A bakery in Fort. A clothing shop in Wellawatte. They had nowhere to go. Billboards cost millions. TV ads need an agency. Digital requires expertise most small businesses don't have. mydiio changes that — starting from LKR 20,000 a month, with GPS-verified proof that your ad ran.
               </p>
-            </div>
-            <div data-toggle="driver" style={{ background: "var(--green-soft)", border: "2px solid var(--green)", borderRadius: 26, boxShadow: "4px 4px 0 var(--green)", padding: "clamp(24px, 3vw, 36px)" }}>
-              <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--green-ink)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em" }}>For tuk-tuk drivers</div>
-              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink)", margin: "8px 0 12px" }}>Driving was the only way to earn.</h3>
+            </BeforeAfterCard>
+            <BeforeAfterCard variant="driver">
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink)", margin: "0 0 12px" }}>Driving was the only way to earn.</h3>
               <p style={{ color: "var(--ink-soft)", fontSize: 15, lineHeight: 1.65, margin: 0 }}>
                 Over a million tuk-tuks move through Sri Lanka every day. Their drivers earn from fares and nothing else. mydiio installs a screen in your tuk — you drive your normal routes, and earn LKR 6,000 every month as a base. Drive 8+ hours a day and that becomes LKR 8,000. The screen does the work. You just drive.
               </p>
-            </div>
+            </BeforeAfterCard>
           </div>
         </div>
       </section>
@@ -170,12 +343,7 @@ function AboutPage() {
               { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer — without exception, without delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors. A competitor that copies our screens cannot copy our culture." },
               { n: "03", h: "Community reinvestment", b: "A share of mydiio's revenue goes back into the communities our drivers serve. Not as a PR exercise — as a founding commitment built into the business from day one. The city that powers our network shares in its growth." },
             ].map((p, i) => (
-              <div key={p.n} data-pillar={p.n} className={`pillar-card reveal-up delay-${i + 1}`} style={{ textAlign: "left" }}>
-                <div style={{ fontFamily: "'Space Mono', monospace", fontWeight: 700, color: "var(--accent)", fontSize: "clamp(32px,4vw,48px)", lineHeight: 1 }}>{p.n}</div>
-                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 20, color: "var(--on-dark)", margin: "12px 0 8px" }}>{p.h}</h3>
-                <p style={{ color: "var(--on-dark)", opacity: 0.65, fontSize: 14, lineHeight: 1.65, margin: 0, fontFamily: "'Space Grotesk', sans-serif" }}>{p.b}</p>
-                <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--accent)", fontSize: 12, marginTop: 14, letterSpacing: "0.08em" }}>Read more +</div>
-              </div>
+              <PillarCard key={p.n} n={p.n} h={p.h} b={p.b} i={i} openId={openPillar} setOpenId={setOpenPillar} />
             ))}
           </div>
         </div>
