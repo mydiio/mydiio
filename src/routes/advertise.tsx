@@ -208,10 +208,12 @@ function Pricing() {
             {p.badge && (
               <div style={{
                 position: "absolute", top: -14, left: 18,
-                background: C.amber, color: C.ink,
-                fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 2,
-                padding: "5px 10px", borderRadius: 999, fontWeight: 700,
-                border: `2px solid ${C.ink}`,
+                background: "var(--accent)", color: "var(--accent-ink)",
+                fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: "0.08em",
+                padding: "4px 12px", borderRadius: 20, fontWeight: 700,
+                textTransform: "uppercase",
+                border: "2px solid var(--ink)",
+                boxShadow: "2px 2px 0 var(--ink)",
               }}>
                 {p.badge}
               </div>
@@ -238,25 +240,27 @@ function Pricing() {
               ))}
             </ul>
             <a href={`/advertise?tier=${p.tierSlug}#apply-section`}
-              className="btn-bold font-display"
+              className={`tier-cta tier-cta-${p.btnStyle}`}
               style={{
-                marginTop: "auto", paddingTop: 22,
-                display: "block", textAlign: "center", textDecoration: "none",
-              }}>
-              <span style={{
-                display: "inline-block",
+                marginTop: "auto", textDecoration: "none",
+                display: "block", textAlign: "center",
                 background: p.btnStyle === "primary" ? "var(--accent)"
                   : p.btnStyle === "ink" ? "var(--ink)"
                   : "transparent",
                 color: p.btnStyle === "primary" ? "var(--accent-ink)"
                   : p.btnStyle === "ink" ? "var(--on-dark)"
                   : "var(--ink)",
-                padding: "12px 18px", borderRadius: "var(--radius-pill)", fontSize: 14,
-                border: "2px solid var(--ink)", boxShadow: "var(--sticker)",
-                fontWeight: 600,
+                padding: "12px 24px", borderRadius: 14, fontSize: 15,
+                border: "2px solid var(--ink)",
+                boxShadow: p.btnStyle === "ink"
+                  ? "3px 3px 0 rgba(30,26,21,0.25)"
+                  : "3px 3px 0 var(--ink)",
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 600, width: "100%",
+                cursor: "pointer", transition: "all 0.15s ease",
+                marginTop: 22,
               }}>
-                {p.ctaLabel}
-              </span>
+              {p.ctaLabel}
             </a>
           </div>
         ))}
