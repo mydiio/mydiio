@@ -343,12 +343,8 @@ function AboutPage() {
               { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer — without exception, without delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors. A competitor that copies our screens cannot copy our culture." },
               { n: "03", h: "Community reinvestment", b: "A share of mydiio's revenue goes back into the communities our drivers serve. Not as a PR exercise — as a founding commitment built into the business from day one. The city that powers our network shares in its growth." },
             ].map((p, i) => (
-              <div key={p.n} data-pillar={p.n} className={`pillar-card reveal-up delay-${i + 1}`} style={{ textAlign: "left" }}>
-                <div style={{ fontFamily: "'Space Mono', monospace", fontWeight: 700, color: "var(--accent)", fontSize: "clamp(32px,4vw,48px)", lineHeight: 1 }}>{p.n}</div>
-                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 20, color: "var(--on-dark)", margin: "12px 0 8px" }}>{p.h}</h3>
-                <p style={{ color: "var(--on-dark)", opacity: 0.65, fontSize: 14, lineHeight: 1.65, margin: 0, fontFamily: "'Space Grotesk', sans-serif" }}>{p.b}</p>
-                <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--accent)", fontSize: 12, marginTop: 14, letterSpacing: "0.08em" }}>Read more +</div>
-              </div>
+              <PillarCard key={p.n} n={p.n} h={p.h} b={p.b} i={i} openId={openPillar} setOpenId={setOpenPillar} />
+            ))}
             ))}
           </div>
         </div>
