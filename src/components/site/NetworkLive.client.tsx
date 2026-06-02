@@ -1,7 +1,19 @@
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import iconUrl from "leaflet/dist/images/marker-icon.png";
+import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
+import iconShadowUrl from "leaflet/dist/images/marker-shadow.png";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { MapContainer, TileLayer, Marker, Polyline, useMap } from "react-leaflet";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
+
+// Fix default marker icons in Vite builds (prevents silent console errors).
+// @ts-expect-error - private prop in Leaflet typings
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconUrl,
+  iconRetinaUrl,
+  shadowUrl: iconShadowUrl,
+});
 
 type Zone = {
   id: string; name: string; sub: string; lat: number; lng: number;
@@ -49,9 +61,26 @@ function buildIcon(z: Zone, selected: boolean) {
   });
 }
 
-function MapBoot({ onReady }: { onReady: (m: L.Map) => void }) {
+function MapController({ selectedZone, onReady }: { selectedZone: Zone | null; onReady: (m: L.Map) => void }) {
   const map = useMap();
-  useEffect(() => { onReady(map); }, [map, onReady]);
+
+  useEffect(() => {
+    onReady(map);
+    L.control.zoom({ position: "bottomright" }).addTo(map);
+    const t1 = setTimeout(() => map.invalidateSize({ animate: false }), 100);
+    const t2 = setTimeout(() => map.invalidateSize({ animate: false }), 500);
+    const t3 = setTimeout(() => map.invalidateSize({ animate: false }), 1000);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (selectedZone) {
+      map.invalidateSize({ animate: false });
+      map.setView([selectedZone.lat, selectedZone.lng], 13, { animate: true, duration: 0.5 });
+    }
+  }, [selectedZone, map]);
+
   return null;
 }
 
@@ -71,24 +100,31 @@ export function NetworkLive() {
   const selected = useMemo(() => ZONES.find(z => z.id === selectedId)!, [selectedId]);
   const byId = useMemo(() => Object.fromEntries(ZONES.map(z => [z.id, z])) as Record<string, Zone>, []);
   const mapRef = useRef<L.Map | null>(null);
-  const wrapRef = useRef<HTMLDivElement | null>(null);
   const [barsKey, setBarsKey] = useState(0);
 
   useEffect(() => { setBarsKey(k => k + 1); }, [selectedId]);
 
+  // Map-specific fade-in observer (separate from reveal-up transforms so Leaflet
+  // never initialises inside a transformed/zero-size container).
   useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting && mapRef.current) {
-          setTimeout(() => mapRef.current?.invalidateSize(), 220);
-          io.disconnect();
-        }
-      });
-    }, { threshold: 0.15 });
-    io.observe(el);
-    return () => io.disconnect();
+    const mapWrapper = document.querySelector(".map-container-wrapper");
+    if (!mapWrapper) return;
+    const mapObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            mapWrapper.classList.add("map-visible");
+            if (mapRef.current) {
+              setTimeout(() => mapRef.current?.invalidateSize({ animate: false }), 350);
+            }
+            mapObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    mapObserver.observe(mapWrapper);
+    return () => mapObserver.disconnect();
   }, []);
 
   return (
@@ -108,18 +144,22 @@ export function NetworkLive() {
         </div>
 
         <div className="nl-grid">
-          <div ref={wrapRef} className="nl-map reveal reveal-up" style={{
+          <div className="nl-map map-container-wrapper" style={{
             border: "2px solid var(--ink)", borderRadius: 26, overflow: "hidden",
-            boxShadow: "var(--sticker)", background: "var(--paper)", minHeight: 480,
+            boxShadow: "var(--sticker)", background: "var(--paper)", height: 480,
           }}>
             <MapContainer
               center={[6.9035, 79.859]} zoom={13} scrollWheelZoom={false}
-              zoomControl={false} style={{ width: "100%", height: "100%", minHeight: 480 }}
+              zoomControl={false} style={{ height: "480px", width: "100%" }}
             >
-              <MapBoot onReady={(m) => { mapRef.current = m; L.control.zoom({ position: "bottomright" }).addTo(m); }} />
+              <MapController
+                selectedZone={selected}
+                onReady={(m) => { mapRef.current = m; }}
+              />
               <TileLayer
                 url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
                 subdomains={["a", "b", "c", "d"]}
+                maxZoom={19}
                 attribution='&copy; OpenStreetMap &copy; CARTO'
               />
               {EDGES.map(([a, b], i) => {
@@ -205,6 +245,11 @@ export function NetworkLive() {
         @media (min-width: 1080px) {
           .nl-grid { grid-template-columns: 1.2fr 0.8fr; gap: 28px; }
         }
+        .map-container-wrapper {
+          opacity: 0;
+          transition: opacity 600ms ease 300ms;
+        }
+        .map-container-wrapper.map-visible { opacity: 1; }
         .nl-map .leaflet-tile-pane { filter: sepia(0.14) saturate(0.96) contrast(1.05) hue-rotate(-4deg); }
         .nl-map .leaflet-container { background: #F2E9D6; font-family: inherit; }
         .nl-map .leaflet-control-zoom { border: 2px solid #1E1A15 !important; border-radius: 10px !important; box-shadow: 2px 2px 0 #1E1A15; overflow: hidden; }
@@ -230,6 +275,7 @@ export function NetworkLive() {
         @media (prefers-reduced-motion: reduce) {
           .nl-ping, .nl-grid [style*="nl-pulse"] { animation: none !important; }
           [style*="nl-bar"] > * { animation: none !important; transform: translateX(0) !important; }
+          .map-container-wrapper { opacity: 1; transition: none; }
         }
       `}</style>
     </section>
