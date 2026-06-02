@@ -345,7 +345,6 @@ function AboutPage() {
             ].map((p, i) => (
               <PillarCard key={p.n} n={p.n} h={p.h} b={p.b} i={i} openId={openPillar} setOpenId={setOpenPillar} />
             ))}
-            ))}
           </div>
         </div>
       </section>
