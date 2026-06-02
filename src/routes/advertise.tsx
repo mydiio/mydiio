@@ -242,7 +242,7 @@ function Pricing() {
             <a href={`/advertise?tier=${p.tierSlug}#apply-section`}
               className={`tier-cta tier-cta-${p.btnStyle}`}
               style={{
-                marginTop: "auto", textDecoration: "none",
+                marginTop: 22, textDecoration: "none",
                 display: "block", textAlign: "center",
                 background: p.btnStyle === "primary" ? "var(--accent)"
                   : p.btnStyle === "ink" ? "var(--ink)"
@@ -258,7 +258,6 @@ function Pricing() {
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontWeight: 600, width: "100%",
                 cursor: "pointer", transition: "all 0.15s ease",
-                marginTop: 22,
               }}>
               {p.ctaLabel}
             </a>
