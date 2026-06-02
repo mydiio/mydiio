@@ -143,14 +143,14 @@ function AboutPage() {
               { n: "02", h: "We go live overnight", b: "Your ad loads to every active screen in the fleet across your chosen zones. GPS tracking starts immediately. The whole process takes less than 72 hours from approval." },
               { n: "03", h: "You get the proof", b: "Every Monday you receive a verified report: which vehicles showed your ad, where they were, and how many times it played. No estimates. No guessing. Exact data." },
             ].map((s, i, arr) => (
-              <>
-                <div key={s.n} className="step-card" style={{ textAlign: "left" }}>
+              <Fragment key={s.n}>
+                <div className="step-card" style={{ textAlign: "left" }}>
                   <div style={{ fontFamily: "'Space Mono', monospace", fontWeight: 700, color: "var(--accent-deep)", fontSize: "clamp(36px,4vw,52px)", lineHeight: 1 }}>{s.n}</div>
                   <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 20, color: "var(--ink)", margin: "12px 0 8px" }}>{s.h}</h4>
                   <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65, margin: 0 }}>{s.b}</p>
                 </div>
-                {i < arr.length - 1 && <div key={`c-${i}`} className="step-connector" />}
-              </>
+                {i < arr.length - 1 && <div className="step-connector" />}
+              </Fragment>
             ))}
           </div>
         </div>
