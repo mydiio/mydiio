@@ -82,6 +82,10 @@
   --green-ink: #2E5538;
   --on-dark: #F4EFE3;
 
+  /* Unified section spacing */
+  --section-py: clamp(64px, 10vh, 120px);
+  --section-py-sm: clamp(40px, 6vh, 72px);
+
   /* Sticker shadows */
   --sticker: 4px 5px 0 #1E1A15;
   --sticker-lg: 6px 7px 0 #1E1A15;
@@ -276,4 +280,25 @@
     100% { transform: translateY(-18px) scale(1.4); opacity: 0; }
   }
   .steam { animation: steam-rise 2.2s ease-out infinite; }
+
+  /* Unified section spacing — only applies where no inline padding is set */
+  section:not([style*="padding"]),
+  .section-wrapper:not([style*="padding"]),
+  [data-section]:not([style*="padding"]) {
+    padding-top: var(--section-py);
+    padding-bottom: var(--section-py);
+  }
+
+  /* Reveal-up: prevent transform from creating layout gaps */
+  .reveal-up {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+  .reveal-up { margin-top: 0 !important; }
+
+  /* Hero: no trailing margin on last child */
+  .hero-section > *:last-child,
+  [data-hero] > *:last-child {
+    margin-bottom: 0;
+  }
 }
