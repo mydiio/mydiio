@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AdvertiseRouteImport } from './routes/advertise'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DriversApplyRouteImport } from './routes/drivers.apply'
 import { Route as AdvertiseApplyRouteImport } from './routes/advertise.apply'
 
 const InvestorsRoute = InvestorsRouteImport.update({
@@ -47,6 +48,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DriversApplyRoute = DriversApplyRouteImport.update({
+  id: '/drivers/apply',
+  path: '/drivers/apply',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdvertiseApplyRoute = AdvertiseApplyRouteImport.update({
   id: '/apply',
   path: '/apply',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
   '/advertise/apply': typeof AdvertiseApplyRoute
+  '/drivers/apply': typeof DriversApplyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
   '/advertise/apply': typeof AdvertiseApplyRoute
+  '/drivers/apply': typeof DriversApplyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
   '/advertise/apply': typeof AdvertiseApplyRoute
+  '/drivers/apply': typeof DriversApplyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/drive'
     | '/investors'
     | '/advertise/apply'
+    | '/drivers/apply'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/drive'
     | '/investors'
     | '/advertise/apply'
+    | '/drivers/apply'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/drive'
     | '/investors'
     | '/advertise/apply'
+    | '/drivers/apply'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DriveRoute: typeof DriveRoute
   InvestorsRoute: typeof InvestorsRoute
+  DriversApplyRoute: typeof DriversApplyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -164,6 +177,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/drivers/apply': {
+      id: '/drivers/apply'
+      path: '/drivers/apply'
+      fullPath: '/drivers/apply'
+      preLoaderRoute: typeof DriversApplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/advertise/apply': {
       id: '/advertise/apply'
       path: '/apply'
@@ -193,7 +213,18 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DriveRoute: DriveRoute,
   InvestorsRoute: InvestorsRoute,
+  DriversApplyRoute: DriversApplyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
