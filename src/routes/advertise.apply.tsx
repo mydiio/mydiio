@@ -35,9 +35,9 @@ const REFERRALS = ["Word of mouth", "Social media", "Saw a tuk-tuk screen", "Goo
 
 const TIER_MAP: Record<string, { name: string; desc: string }> = {
   "Under LKR 20k": { name: "Let's talk", desc: "We'll find the right entry point for your budget." },
-  "LKR 20–35k": { name: "Roamer", desc: "Local reach — LKR 20,000/month, 3-month minimum." },
-  "LKR 35–65k": { name: "Voyager", desc: "City coverage — LKR 32,000/month, 6-month minimum." },
-  "LKR 65k+": { name: "Horizon", desc: "Full Colombo — LKR 65,000+/month, custom terms." },
+  "LKR 20–35k": { name: "Roamer", desc: "Up to 5 tuk-tuks in your area — LKR 25,000/month, 3-month minimum." },
+  "LKR 35–65k": { name: "Voyager", desc: "Up to 15 tuk-tuks across Colombo — LKR 38,000/month, 6-month minimum." },
+  "LKR 65k+": { name: "Horizon", desc: "15 to 100+ tuk-tuks — LKR 65,000+/month, custom terms." },
 };
 
 const ALL_TIERS = ["Pioneer", "Roamer", "Voyager", "Horizon", "Not sure — help me choose"];
