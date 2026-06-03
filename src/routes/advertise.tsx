@@ -64,7 +64,7 @@ function Hero() {
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "120px 6% 80px" }}>
         <div style={{ maxWidth: 760 }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>
-            For Colombo Businesses
+            For advertisers
           </span>
           <h1 className="font-display" style={{
             color: "#fff",
