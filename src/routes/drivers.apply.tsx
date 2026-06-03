@@ -574,7 +574,9 @@ function DriversApplyPage() {
               </div>
             )}
           </div>
+          </div>
         </div>
+
       </section>
     </SiteShell>
   );
