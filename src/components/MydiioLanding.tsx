@@ -306,17 +306,17 @@ function WhyItWorks() {
       <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
         <img src={COLOMBO_FLEET_GOLDEN.url} alt="mydiio tuk-tuk fleet in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 24 }}>
-
+      <div className="why-grid">
         {cards.map((c, i) => (
           <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
             background: "var(--paper)",
             border: "2px solid var(--ink)",
             borderRadius: "var(--radius-card)",
-            padding: "28px 26px",
+            padding: "28px",
             display: "flex",
             flexDirection: "column",
             gap: 12,
+            height: "100%",
           }}>
             <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", color: "var(--accent-deep)" }}>{c.n}</div>
             <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", lineHeight: 1.2, letterSpacing: "-0.4px" }}>{c.t}</div>
@@ -324,6 +324,28 @@ function WhyItWorks() {
           </div>
         ))}
       </div>
+      <style>{`
+        .why-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          align-items: stretch;
+        }
+        @media (max-width: 899px) {
+          .why-grid {
+            gap: 16px;
+          }
+        }
+        @media (max-width: 599px) {
+          .why-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+          .why-grid > .feature-card {
+            padding: 20px !important;
+          }
+        }
+      `}</style>
     </Section>
   );
 }
