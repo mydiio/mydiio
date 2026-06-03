@@ -2,10 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
+import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { AdvertiserApplication } from "@/components/site/AdvertiserApplication";
 import { ColomboMap } from "@/components/site/ColomboMap";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/advertise")({
   component: AdvertisePage,
@@ -45,7 +47,7 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
     return () => io.disconnect();
   }, []);
   return (
-    <section ref={ref} style={{ background: bg, padding: "96px 24px" }}>
+    <section ref={ref} className="section-wrap" style={{ background: bg, maxWidth: "none" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>{children}</div>
     </section>
   );
@@ -123,18 +125,18 @@ function HowItWorks() {
   ];
   return (
     <Section bg={C.cream}>
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
-          How it works
-        </span>
+      <div style={{ maxWidth: 880, margin: "0 auto" }}>
+        <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
+          <span className="eyebrow" style={{ textAlign: "center" }}>How it works</span>
+        </div>
+        <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+          Three steps. That's the whole thing.
+        </h2>
       </div>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
-        Three steps. That's the whole thing.
-      </h2>
       <div className="how-flow">
         {steps.map((s, i) => (
-          <div key={s.n} className="reveal step-item" style={{ display: "contents" }}>
-            <div className="step-card">
+          <div key={s.n} className={`reveal reveal-up delay-${i + 1} step-item`} style={{ display: "contents" }}>
+            <div className="step-card mydiio-card">
               <div className="step-circle font-display">{s.n}</div>
               <div className="font-display" style={{ fontSize: 18, color: C.ink, marginTop: 16 }}>{s.title}</div>
               <p style={{
@@ -184,12 +186,32 @@ function Pricing() {
       tierSlug: "horizon", ctaLabel: "Contact us about Horizon →", btnStyle: "ghost",
     },
   ];
+  const [pioneerCount, setPioneerCount] = useState(3);
+  const [progressWidth, setProgressWidth] = useState(0);
+  useEffect(() => {
+    supabase
+      .from("advertiser_applications")
+      .select("id", { count: "exact", head: true })
+      .eq("tier_interest", "pioneer")
+      .then(({ count }) => {
+        if (count !== null && count !== undefined) setPioneerCount(Math.min(count, 10));
+      });
+  }, []);
+  useEffect(() => {
+    const t = setTimeout(() => setProgressWidth((pioneerCount / 10) * 100), 50);
+    return () => clearTimeout(t);
+  }, [pioneerCount]);
+  const remaining = Math.max(0, 10 - pioneerCount);
+
   return (
     <Section bg={C.cream}>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(30px, 4vw, 44px)", color: C.ink, textAlign: "center", lineHeight: 1.05 }}>
+      <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
+        <span className="eyebrow">Pricing</span>
+      </div>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(30px, 4vw, 44px)", color: C.ink, textAlign: "center", lineHeight: 1.05 }}>
         Simple plans. No hidden costs.
       </h2>
-      <p className="reveal" style={{
+      <p className="reveal reveal-up" style={{
         fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
         fontSize: 16, color: C.inkSoft, textAlign: "center", marginTop: 14, maxWidth: 560, marginInline: "auto",
       }}>
@@ -197,8 +219,8 @@ function Pricing() {
       </p>
 
       <div className="pricing-grid">
-        {plans.map((p) => (
-          <div key={p.name} className="reveal price-card" style={{
+        {plans.map((p, idx) => (
+          <div key={p.name} className={`reveal reveal-up delay-${idx + 1} price-card mydiio-card`} style={{
             background: "#fff",
             border: `${p.highlight ? 3 : 2}px solid ${p.highlight ? C.amber : C.ink}`,
             boxShadow: `${p.highlight ? 8 : 6}px ${p.highlight ? 8 : 6}px 0 ${C.ink}`,
@@ -239,6 +261,26 @@ function Pricing() {
                 </li>
               ))}
             </ul>
+            {p.tierSlug === "pioneer" && (
+              <div style={{ marginTop: 16 }}>
+                <div style={{
+                  fontFamily: "'Space Mono', monospace", fontSize: 11,
+                  color: "var(--accent-deep)", fontWeight: 700, marginBottom: 6,
+                }}>
+                  {remaining} of 10 Pioneer spots remaining
+                </div>
+                <div style={{
+                  width: "100%", height: 3, background: "var(--accent-soft)",
+                  borderRadius: 2, overflow: "hidden",
+                }}>
+                  <div style={{
+                    width: `${progressWidth}%`, height: "100%",
+                    background: "var(--accent)", borderRadius: 2,
+                    transition: "width 800ms var(--ease-spring)",
+                  }} />
+                </div>
+              </div>
+            )}
             <a href={`/advertise?tier=${p.tierSlug}#apply-section`}
               className={`tier-cta tier-cta-${p.btnStyle}`}
               style={{
@@ -265,7 +307,7 @@ function Pricing() {
         ))}
       </div>
 
-      <p className="reveal" style={{
+      <p className="reveal reveal-up" style={{
         fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.2,
         color: C.inkSoft, textAlign: "center", marginTop: 36, maxWidth: 640, marginInline: "auto", lineHeight: 1.6,
       }}>
@@ -275,20 +317,100 @@ function Pricing() {
   );
 }
 
+/* ---------- Social proof strip ---------- */
+function SocialProofStrip() {
+  const chips = ["Green Bakery · Nugegoda", "City Pharma · Colombo 03", "Style House · Fort"];
+  return (
+    <section className="reveal reveal-up sp-strip" style={{
+      background: "var(--ink)",
+      padding: "16px var(--section-px)",
+      display: "flex", alignItems: "center", justifyContent: "space-between",
+      gap: 16, flexWrap: "wrap",
+    }}>
+      <div style={{
+        fontFamily: "'Space Mono', monospace", fontSize: 10,
+        color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.12em",
+      }}>
+        Businesses already interested
+      </div>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {chips.map((c) => (
+          <span key={c} style={{
+            background: "rgba(244,166,42,0.15)",
+            border: "1px solid rgba(244,166,42,0.4)",
+            borderRadius: 20, padding: "5px 12px",
+            fontFamily: "'Space Mono', monospace", fontSize: 11,
+            color: "var(--accent)", fontWeight: 700,
+          }}>{c}</span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Tuk interior feature ---------- */
+function TukInterior() {
+  return (
+    <section className="section-wrap" style={{ background: C.cream, maxWidth: "none" }}>
+      <div className="tuk-interior-grid" style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div className="reveal reveal-up" style={{
+          border: "2px solid var(--ink)", borderRadius: 22,
+          boxShadow: "var(--shadow-card-lg)", overflow: "hidden",
+        }}>
+          <img src={TUKTUK_INTERIOR} alt="Tuk-tuk interior screen playing an advertisement" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        </div>
+        <div>
+          <span className="eyebrow reveal reveal-up">Every ride</span>
+          <h3 className="reveal reveal-up font-display" style={{ fontSize: "clamp(24px, 3vw, 36px)", color: C.ink, lineHeight: 1.1, marginTop: 8 }}>
+            Your ad plays for the full ride.
+          </h3>
+          <p className="reveal reveal-up" style={{ color: "var(--ink-soft)", fontSize: 15, marginTop: 14, lineHeight: 1.6 }}>
+            Passengers face the screen for 10–20 minutes with nothing else to look at. No scroll button. No skip. No competition.
+          </p>
+          <div className="reveal reveal-up" style={{
+            fontFamily: "'Space Mono', monospace", fontSize: 13,
+            color: "var(--accent-deep)", fontWeight: 700, marginTop: 16,
+          }}>
+            14 minutes avg. passenger attention
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- Dashboard preview ---------- */
 function DashboardPreview() {
-  const metrics = [
-    ["Total impressions"],
-    ["Vehicles active"],
-    ["Avg. dwell time"],
-    ["Colombo coverage"],
+  const statSets = [
+    { impressions: "6,841", vehicles: "8 / 10", dwell: "14.3m", coverage: "7 zones" },
+    { impressions: "7,204", vehicles: "9 / 10", dwell: "15.1m", coverage: "7 zones" },
+    { impressions: "8,011", vehicles: "10 / 10", dwell: "13.8m", coverage: "7 zones" },
+  ];
+  const [statIndex, setStatIndex] = useState(0);
+  const [fade, setFade] = useState(false);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(true);
+      setTimeout(() => {
+        setStatIndex((i) => (i + 1) % statSets.length);
+        setFade(false);
+      }, 200);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+  const current = statSets[statIndex];
+  const cells: Array<[string, string]> = [
+    [current.impressions, "Total impressions"],
+    [current.vehicles, "Vehicles active"],
+    [current.dwell, "Avg. dwell time"],
+    [current.coverage, "Colombo coverage"],
   ];
   return (
     <Section bg={C.cream}>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
         See exactly what's running.
       </h2>
-      <div className="reveal" style={{ marginTop: 36, maxWidth: 560, marginInline: "auto" }}>
+      <div className="reveal reveal-up" style={{ marginTop: 36, maxWidth: 560, marginInline: "auto" }}>
         <div style={{
           position: "relative",
           background: "#0D0D08",
@@ -311,15 +433,32 @@ function DashboardPreview() {
             Your Campaign Dashboard
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 14 }}>
-            {metrics.map(([label]) => (
+            {cells.map(([value, label]) => (
               <div key={label} style={{
                 background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)",
                 borderRadius: 8, padding: "12px 8px", textAlign: "center",
               }}>
-                <div className="font-display" style={{ fontSize: 22, color: "rgba(255,255,255,0.25)" }}>---</div>
+                <div className="font-display" style={{
+                  fontSize: 22, color: "#fff",
+                  opacity: fade ? 0.6 : 1, transition: "opacity 0.4s ease",
+                }}>{value}</div>
                 <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>{label}</div>
               </div>
             ))}
+          </div>
+          <div style={{
+            marginTop: 12, display: "flex", alignItems: "center", gap: 8, justifyContent: "center",
+          }}>
+            <span style={{
+              width: 6, height: 6, borderRadius: "50%", background: "#45855A",
+              animation: "live-dot 1.8s ease-in-out infinite",
+            }} />
+            <span style={{
+              fontFamily: "'Space Mono', monospace", fontSize: 10,
+              color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em",
+            }}>
+              LIVE DATA · UPDATES IN REAL TIME
+            </span>
           </div>
           <div style={{
             marginTop: 14, padding: "10px 12px",
@@ -511,7 +650,7 @@ function AdvertisePage() {
         }
         .step-card {
           background: #fff; border: 2px solid ${C.ink}; border-radius: 16px;
-          padding: 26px; box-shadow: 5px 5px 0 ${C.ink};
+          padding: 26px; box-shadow: var(--shadow-card);
         }
         .step-circle {
           width: 44px; height: 44px; border-radius: 50%;
@@ -523,9 +662,15 @@ function AdvertisePage() {
         .step-line { display: none; }
 
         @media (min-width: 820px) {
-          .how-flow { grid-template-columns: 1fr 24px 1fr 24px 1fr; align-items: stretch; }
-          .step-line { display: block; align-self: center; height: 2px; background: ${C.ink}; opacity: 0.18; width: 100%; }
+          .how-flow { grid-template-columns: 1fr 16px 1fr 16px 1fr; align-items: stretch; }
+          .step-line {
+            display: block; width: 2px; height: 36px;
+            background: var(--accent); opacity: 0.45;
+            border-radius: 1px; flex-shrink: 0;
+            align-self: center; margin: 0 4px;
+          }
         }
+        @media (max-width: 767px) { .step-line { display: none !important; } }
 
         .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 56px; }
         @media (min-width: 600px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
@@ -537,15 +682,33 @@ function AdvertisePage() {
           .coverage-map-wrap { display: block; }
           .coverage-list { display: none; }
         }
+
+        .tuk-interior-grid {
+          display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center;
+        }
+        @media (min-width: 820px) {
+          .tuk-interior-grid { grid-template-columns: 45fr 55fr; gap: 48px; }
+        }
+
+        @keyframes live-dot {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
+
+        @media (max-width: 640px) {
+          .sp-strip { flex-direction: column; align-items: flex-start; }
+        }
       `}</style>
 
       <Hero />
       <HowItWorks />
+      <TukInterior />
       <Pricing />
+      <SocialProofStrip />
       <Coverage />
       <DashboardPreview />
       <FAQ />
-      <section id="apply-section" style={{ background: C.cream, padding: "96px 24px", scrollMarginTop: 96 }}>
+      <section id="apply-section" className="section-wrap" style={{ background: C.cream, scrollMarginTop: 96, maxWidth: "none" }}>
         <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
             Join the waiting list
@@ -565,4 +728,5 @@ function AdvertisePage() {
     </SiteShell>
   );
 }
+
 
