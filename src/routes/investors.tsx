@@ -230,8 +230,8 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
           <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 20, maxWidth: 720 }}>
             {[
               ["Colombo", "Launching"],
-              ["50+", "Vehicles pipeline"],
-              ["7", "Zones identified"],
+              ["10", "Pilot vehicles"],
+              ["10", "Pioneer spots"],
               ["Open", "Pilot sales"],
             ].map(([n, l]) => (
               <div key={l}>
@@ -423,16 +423,16 @@ function Traction() {
   const items: Array<{ k: string; v: React.ReactNode; sub: string }> = [
     {
       k: "Driver interest",
-      v: "Collected",
-      sub: "Founding group applications open",
+      v: "Open",
+      sub: "Founding applications now live",
     },
     {
       k: "Advertiser meetings",
-      v: "Started",
+      v: "Active",
       sub: "Warm conversations in progress",
     },
-    { k: "Pilot routes", v: "Ready", sub: "Fort · Nugegoda · Wellawatte corridors" },
-    { k: "Website", v: "Live", sub: "mydiio.lovable.app · All pages deployed" },
+    { k: "Pilot routes", v: "Ready", sub: "Fort · Nugegoda · Wellawatte" },
+    { k: "Website", v: "Live", sub: "mydiio.lovable.app" },
     { k: "Screen sourcing", v: "Underway", sub: "First 10 units being confirmed" },
   ];
 
