@@ -714,6 +714,9 @@ function ScaleStory() {
           {t("scale_title")}
         </h2>
       </div>
+      <div className="reveal reveal-up delay-2" style={{ marginBottom: 40 }}>
+        <img src={TUK_STAND.url} alt="Sri Lankan tuk-tuk drivers at a stand in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
+      </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 20 }}>
         {cards.map((c, i) => (
           <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
