@@ -894,11 +894,11 @@ export default function MydiioLanding() {
       <HowItWorks />
       <TukInterior />
       <Coverage />
-      <TwoAudiences />
       <ScaleStory />
       <FoundingOffer />
       <FAQ />
       <FinalCTA />
+      <TwoAudiences />
     </SiteShell>
   );
 }
