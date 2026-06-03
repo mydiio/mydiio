@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useI18n } from "@/lib/i18n";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
@@ -7,6 +7,7 @@ import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/investors")({
   component: InvestorsPage,
@@ -23,41 +24,35 @@ export const Route = createFileRoute("/investors")({
 
 const MAILTO = "mailto:investors@mydiio.com";
 
-
-
 /* ---------- Reusable bits ---------- */
-function Eyebrow({ children }: { children: React.ReactNode }) {
+function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase", fontWeight: 500 }}>
+    <span className={className} style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase", fontWeight: 700 }}>
       {children}
     </span>
   );
 }
 
-function H2({ children }: { children: React.ReactNode }) {
+function H2({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <h2 className="font-display" style={{ fontSize: "clamp(30px, 4.6vw, 52px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-0.8px", marginTop: 14, textWrap: "balance" as const }}>
+    <h2 className={`font-display ${className ?? ""}`} style={{ fontSize: "clamp(30px, 4.6vw, 52px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-0.8px", marginTop: 14, textWrap: "balance" as const }}>
       {children}
     </h2>
   );
 }
 
-function Card({ title, body, accent }: { title: string; body?: string; accent?: boolean }) {
+function Card({ title, body, accent, className }: { title: string; body?: string; accent?: boolean; className?: string }) {
   return (
     <div
-      className="reveal"
+      className={`mydiio-card reveal reveal-up ${className ?? ""}`}
       style={{
-        background: accent ? C.amberPale : "#fff",
-        border: `3px solid ${C.ink}`,
-        borderRadius: 18,
+        background: accent ? "var(--accent-soft)" : "var(--paper)",
         padding: "26px 24px",
-        boxShadow: `5px 5px 0 ${C.ink}, 0 18px 40px -24px rgba(26,26,14,0.3)`,
-        transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1)",
       }}
     >
       <div className="font-display" style={{ fontSize: 19, color: C.ink, lineHeight: 1.25, letterSpacing: "-0.2px" }}>{title}</div>
       {body && (
-        <div style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 15, color: C.inkSoft, marginTop: 10, lineHeight: 1.55 }}>
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: 15, color: "var(--ink-soft)", marginTop: 10, lineHeight: 1.55 }}>
           {body}
         </div>
       )}
@@ -65,17 +60,151 @@ function Card({ title, body, accent }: { title: string; body?: string; accent?: 
   );
 }
 
-function SectionWrap({ children, bg }: { children: React.ReactNode; bg?: string }) {
+function SectionWrap({ children, bg, className }: { children: React.ReactNode; bg?: string; className?: string }) {
   return (
-    <section style={{ background: bg ?? C.cream, padding: "clamp(72px, 10vw, 130px) clamp(20px, 4vw, 32px)" }}>
+    <section className={`section-wrap ${className ?? ""}`} style={{ background: bg ?? C.cream, paddingLeft: "clamp(20px, 4vw, 32px)", paddingRight: "clamp(20px, 4vw, 32px)" }}>
       <div style={{ maxWidth: 1140, margin: "0 auto" }}>{children}</div>
     </section>
   );
 }
 
+/* ---------- Deck request modal ---------- */
+function DeckRequestModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [name, setName] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [firm, setFirm] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!open) {
+      setName(""); setWhatsapp(""); setFirm("");
+      setSubmitting(false); setDone(false); setError(null);
+    }
+  }, [open]);
+
+  if (!open) return null;
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    const n = name.trim();
+    const w = whatsapp.trim();
+    if (!n || !w) { setError("Name and WhatsApp number are required."); return; }
+    if (n.length > 200 || w.length > 50 || firm.length > 200) { setError("Input too long."); return; }
+    setSubmitting(true); setError(null);
+    const { error: insErr } = await supabase.from("investor_enquiries").insert({
+      name: n,
+      whatsapp_number: w,
+      fund_or_firm: firm.trim() || null,
+    });
+    setSubmitting(false);
+    if (insErr) { setError("Couldn't send. Please try again."); return; }
+    setDone(true);
+  }
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, zIndex: 100,
+        background: "rgba(30,26,21,0.6)",
+        backdropFilter: "blur(4px)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        padding: 20,
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "var(--paper)",
+          border: "var(--card-border)",
+          borderRadius: "var(--card-radius)",
+          boxShadow: "var(--shadow-card-lg)",
+          padding: "clamp(28px, 4vw, 44px)",
+          maxWidth: 480, width: "100%",
+        }}
+      >
+        {done ? (
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 16, color: C.ink, lineHeight: 1.5 }}>
+              Request received. Deck will arrive on WhatsApp within 24 hours.
+            </div>
+            <button
+              onClick={onClose}
+              className="font-display"
+              style={{
+                marginTop: 24,
+                background: "var(--accent)", color: "var(--ink)",
+                border: "2px solid var(--ink)", borderRadius: 14,
+                boxShadow: "3px 3px 0 var(--ink)",
+                padding: "12px 22px", fontSize: 15, cursor: "pointer",
+              }}
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <span className="eyebrow">Investor brief</span>
+            <h3 className="font-display" style={{ fontSize: 22, color: C.ink, marginTop: 4, marginBottom: 10, letterSpacing: "-0.3px" }}>
+              Request the mydiio deck.
+            </h3>
+            <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.55, marginBottom: 18 }}>
+              We'll send the full investor brief to your WhatsApp within 24 hours.
+            </p>
+            <div style={{ display: "grid", gap: 12 }}>
+              <input type="text" required maxLength={200} placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)}
+                style={inputStyle} />
+              <input type="tel" required maxLength={50} placeholder="+94 77 000 0000" value={whatsapp} onChange={(e) => setWhatsapp(e.target.value)}
+                style={inputStyle} />
+              <input type="text" maxLength={200} placeholder="Fund or firm (optional)" value={firm} onChange={(e) => setFirm(e.target.value)}
+                style={inputStyle} />
+            </div>
+            {error && <div style={{ color: "#B33", fontSize: 13, marginTop: 10 }}>{error}</div>}
+            <button
+              type="submit" disabled={submitting}
+              className="font-display"
+              style={{
+                marginTop: 18, width: "100%",
+                background: "var(--accent)", color: "var(--ink)",
+                border: "2px solid var(--ink)", borderRadius: 14,
+                boxShadow: "3px 3px 0 var(--ink)",
+                padding: "14px 20px", fontSize: 16,
+                cursor: submitting ? "wait" : "pointer",
+                opacity: submitting ? 0.7 : 1,
+              }}
+            >
+              {submitting ? "Sending…" : "Send request →"}
+            </button>
+            <button
+              type="button" onClick={onClose}
+              style={{ marginTop: 10, width: "100%", background: "transparent", border: "none", color: "var(--ink-mute)", fontSize: 13, cursor: "pointer", fontFamily: "'Space Mono', monospace" }}
+            >
+              Cancel
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  padding: "12px 14px",
+  border: "var(--card-border)",
+  borderRadius: 14,
+  background: "var(--paper)",
+  color: "var(--ink)",
+  fontSize: 15,
+  fontFamily: "'Space Grotesk', sans-serif",
+  outline: "none",
+};
+
 /* ---------- Sections ---------- */
-function Hero() {
-  const { t } = useI18n();
+function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
+  useI18n();
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
       <img src={COLOMBO_STREET} alt="Colombo tuk-tuks at street level" className="absolute inset-0 w-full h-full object-cover" />
@@ -86,14 +215,14 @@ function Hero() {
           <h1 className="font-display" style={{ color: "#fff", fontSize: "clamp(40px, 7vw, 76px)", lineHeight: 1.04, letterSpacing: "-1px", marginTop: 14, textWrap: "balance" as const }}>
             Building Sri Lanka's first tuk-tuk media network.
           </h1>
-          <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: "clamp(16px, 2vw, 20px)", color: "rgba(255,255,255,0.82)", marginTop: 20, maxWidth: 640, lineHeight: 1.5 }}>
+          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(16px, 2vw, 20px)", color: "rgba(255,255,255,0.82)", marginTop: 20, maxWidth: 640, lineHeight: 1.5 }}>
             mydiio turns thousands of daily tuk-tuk rides into measurable advertising inventory and recurring revenue.
           </p>
           <div className="hero-cta-row" style={{ marginTop: 32, display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <a href={MAILTO} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
+            <button onClick={onRequestDeck} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 14, fontSize: 17, border: "2px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", cursor: "pointer" }}>
               Request investor deck →
-            </a>
-            <a href={MAILTO} className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none", border: "3px solid #fff" }}>
+            </button>
+            <a href={MAILTO} className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 14, fontSize: 17, textDecoration: "none", border: "2px solid #fff" }}>
               Book founder call
             </a>
           </div>
@@ -107,7 +236,7 @@ function Hero() {
             ].map(([n, l]) => (
               <div key={l}>
                 <div className="font-display" style={{ color: "#fff", fontSize: 26, lineHeight: 1, letterSpacing: "-0.5px" }}>{n}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amber, textTransform: "uppercase", marginTop: 6 }}>{l}</div>
+                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amber, textTransform: "uppercase", marginTop: 6 }}>{l}</div>
               </div>
             ))}
           </div>
@@ -120,8 +249,8 @@ function Hero() {
 function Problem() {
   return (
     <SectionWrap>
-      <Eyebrow>The problem</Eyebrow>
-      <H2>Attention is expensive. Local reach is broken.</H2>
+      <Eyebrow className="reveal-up">The problem</Eyebrow>
+      <H2 className="reveal-up">Attention is expensive. Local reach is broken.</H2>
       <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
         <Card title="Digital ads are crowded and costly" body="CPMs keep climbing while clicks become harder to convert in local markets." />
         <Card title="Traditional outdoor is hard to measure" body="Billboards and posters offer no proof of delivery, frequency, or audience." />
@@ -131,18 +260,36 @@ function Problem() {
   );
 }
 
+/* Change 9 — visual bridge between problem and business model */
+function OpportunityBridge() {
+  return (
+    <div style={{ position: "relative", width: "100%", height: 320, overflow: "hidden" }}>
+      <img src={COLOMBO_STREET} alt="Colombo street" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.85 }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(30,26,21,0.75) 0%, rgba(30,26,21,0.2) 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", padding: "clamp(20px, 4vw, 32px)", maxWidth: 1140, marginInline: "auto" }}>
+        <span className="reveal-up" style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--accent)", textTransform: "uppercase", letterSpacing: 3, fontWeight: 700, marginBottom: 8 }}>
+          The opportunity
+        </span>
+        <h2 className="font-display reveal-up" style={{ color: "var(--on-dark)", fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.8px", textWrap: "balance" as const, maxWidth: 820 }}>
+          1.1M tuk-tuks. 0 with screens. Until now.
+        </h2>
+      </div>
+    </div>
+  );
+}
+
 function Solution() {
   return (
     <SectionWrap bg="#fff">
       <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 56, alignItems: "center" }} className="solution-grid">
         <div>
-          <Eyebrow>The solution</Eyebrow>
-          <H2>We use existing urban movement.</H2>
-          <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 17, color: C.inkSoft, marginTop: 18, lineHeight: 1.6, maxWidth: 620 }}>
+          <Eyebrow className="reveal-up">The solution</Eyebrow>
+          <H2 className="reveal-up">We use existing urban movement.</H2>
+          <p className="reveal-up" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: 17, color: "var(--ink-soft)", marginTop: 18, lineHeight: 1.6, maxWidth: 620 }}>
             Tuk-tuks already move through the highest-density commercial areas of Colombo every day. We install digital screens, sell campaigns, measure delivery, and share revenue with drivers.
           </p>
         </div>
-        <div style={{ borderRadius: 22, overflow: "hidden", border: `4px solid ${C.ink}`, boxShadow: `8px 8px 0 ${C.ink}` }}>
+        <div className="reveal-up" style={{ borderRadius: "var(--card-radius)", overflow: "hidden", border: "var(--card-border)", boxShadow: "var(--shadow-card-lg)" }}>
           <img src={TUKTUK_INTERIOR} alt="In-tuk-tuk digital screen" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </div>
       </div>
@@ -159,8 +306,8 @@ function Solution() {
 function WhyTukTuks() {
   return (
     <SectionWrap>
-      <Eyebrow>Why this vehicle</Eyebrow>
-      <H2>Why tuk-tuks win.</H2>
+      <Eyebrow className="reveal-up">Why this vehicle</Eyebrow>
+      <H2 className="reveal-up">Why tuk-tuks win.</H2>
       <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 20 }}>
         <Card title="High daily utilization" body="Active across morning, midday, and evening hours." accent />
         <Card title="Constant urban presence" body="Always inside the commercial core, not parked on highways." />
@@ -180,12 +327,12 @@ function BusinessModel() {
   ];
   return (
     <SectionWrap bg="#fff">
-      <Eyebrow>Business model</Eyebrow>
-      <H2>Simple, repeatable revenue.</H2>
+      <Eyebrow className="reveal-up">Business model</Eyebrow>
+      <H2 className="reveal-up">Simple, repeatable revenue.</H2>
       <div style={{ marginTop: 48, maxWidth: 620, marginInline: "auto", display: "flex", flexDirection: "column", alignItems: "stretch", gap: 14 }}>
         {flow.map((step, i) => (
-          <div key={step}>
-            <div style={{ background: i === 0 ? C.amber : i === flow.length - 1 ? C.green : "#fff", color: i === flow.length - 1 ? "#fff" : C.ink, border: `3px solid ${C.ink}`, borderRadius: 14, padding: "18px 22px", boxShadow: `4px 4px 0 ${C.ink}`, textAlign: "center", fontFamily: "var(--font-display)", fontSize: 17 }}>
+          <div key={step} className="reveal-up">
+            <div style={{ background: i === 0 ? C.amber : i === flow.length - 1 ? C.green : "var(--paper)", color: i === flow.length - 1 ? "#fff" : C.ink, border: "var(--card-border)", borderRadius: 14, padding: "18px 22px", boxShadow: "var(--shadow-card)", textAlign: "center", fontFamily: "var(--font-display)", fontSize: 17 }}>
               {step}
             </div>
             {i < flow.length - 1 && (
@@ -203,41 +350,137 @@ function BusinessModel() {
   );
 }
 
+/* Change 8 — expansion cities timeline */
 function Market() {
-  const cities = ["Colombo", "Kandy", "Galle", "Negombo", "Jaffna", "Regional expansion"];
+  const groups = [
+    { time: "Now · 2026", cities: "Colombo", note: "Launching first network", active: true },
+    { time: "Year 2", cities: "Kandy, Galle", note: "Second-city expansion", active: false },
+    { time: "Year 3", cities: "Negombo, Jaffna", note: "National coverage", active: false },
+    { time: "Year 4+", cities: "Regional expansion", note: "South Asian tuk-tuk markets", active: false },
+  ];
   return (
     <SectionWrap>
-      <Eyebrow>Market</Eyebrow>
-      <H2>Large local market. Regional potential.</H2>
-      <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 17, color: C.inkSoft, marginTop: 18, lineHeight: 1.6, maxWidth: 620 }}>
+      <Eyebrow className="reveal-up">Market</Eyebrow>
+      <H2 className="reveal-up">Large local market. Regional potential.</H2>
+      <p className="reveal-up" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: 17, color: "var(--ink-soft)", marginTop: 18, lineHeight: 1.6, maxWidth: 620 }}>
         Start with Colombo. Expand into every major Sri Lankan city. Then replicate into tuk-tuk-dense South Asian markets.
       </p>
-      <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16 }}>
-        {cities.map((c, i) => (
-          <Card key={c} title={c} accent={i === 0} />
+
+      <style>{`
+        .timeline-row { display: flex; align-items: stretch; gap: 0; margin-top: 56px; }
+        .timeline-group { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+        .timeline-node-row { display: flex; align-items: center; width: 100%; }
+        .timeline-line { height: 2px; background: var(--accent); opacity: 0.3; flex: 1; align-self: center; }
+        .timeline-line.edge { visibility: hidden; }
+        .timeline-node {
+          width: 32px; height: 32px; border-radius: 999px;
+          border: 2px solid var(--ink);
+          background: var(--paper);
+          box-shadow: var(--shadow-card-press);
+          flex-shrink: 0;
+        }
+        .timeline-node.active { background: var(--accent); }
+        .timeline-content { margin-top: 18px; padding: 0 8px; }
+        .timeline-time { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--ink-mute); letter-spacing: 2px; text-transform: uppercase; }
+        .timeline-city { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--ink); margin-top: 8px; }
+        .timeline-note { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--ink-soft); margin-top: 6px; line-height: 1.5; }
+        @media (max-width: 720px) {
+          .timeline-row { flex-direction: column; gap: 0; }
+          .timeline-group { flex-direction: row; align-items: flex-start; text-align: left; gap: 16px; }
+          .timeline-node-row { width: auto; flex-direction: column; height: 100%; align-self: stretch; }
+          .timeline-line { width: 2px; height: auto; min-height: 24px; flex: 1; }
+          .timeline-content { margin-top: 0; padding-bottom: 24px; flex: 1; }
+        }
+      `}</style>
+
+      <div className="timeline-row">
+        {groups.map((g, i) => (
+          <div key={g.time} className="timeline-group reveal-up" style={{ transitionDelay: `${i * 100}ms` }}>
+            <div className="timeline-node-row">
+              <div className={`timeline-line ${i === 0 ? "edge" : ""}`} />
+              <div className={`timeline-node ${g.active ? "active" : ""}`} />
+              <div className={`timeline-line ${i === groups.length - 1 ? "edge" : ""}`} />
+            </div>
+            <div className="timeline-content">
+              <div className="timeline-time">{g.time}</div>
+              <div className="timeline-city">{g.cities}</div>
+              <div className="timeline-note">{g.note}</div>
+            </div>
+          </div>
         ))}
       </div>
     </SectionWrap>
   );
 }
 
+/* Change 5/6/7 — traction with unit economics + live counters */
 function Traction() {
-  const items = [
-    ["Driver interest", "Collected"],
-    ["Advertiser meetings", "Started"],
-    ["Pilot routes", "Ready"],
-    ["Website", "Live"],
-    ["Screen sourcing", "Underway"],
+  const [driverCount, setDriverCount] = useState<number | null>(null);
+  const [advCount, setAdvCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    supabase.from("driver_applications").select("id", { count: "exact", head: true })
+      .then(({ count }) => setDriverCount(count ?? 0));
+    supabase.from("advertiser_applications").select("id", { count: "exact", head: true })
+      .then(({ count }) => setAdvCount(count ?? 0));
+  }, []);
+
+  const items: Array<{ k: string; v: React.ReactNode; sub: string }> = [
+    {
+      k: "Driver interest",
+      v: <>{driverCount === null ? "—" : `${driverCount} applications`}</>,
+      sub: "Founding group applications open",
+    },
+    {
+      k: "Advertiser meetings",
+      v: <>{advCount === null ? "—" : `${advCount} applications`}</>,
+      sub: "Warm conversations in progress",
+    },
+    { k: "Pilot routes", v: "Ready", sub: "Fort · Nugegoda · Wellawatte corridors" },
+    { k: "Website", v: "Live", sub: "mydiio.lovable.app · All pages deployed" },
+    { k: "Screen sourcing", v: "Underway", sub: "First 10 units being confirmed" },
   ];
+
   return (
     <SectionWrap bg="#fff">
-      <Eyebrow>Early traction</Eyebrow>
-      <H2>Early momentum.</H2>
-      <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 18 }}>
-        {items.map(([k, v]) => (
-          <div key={k} className="reveal" style={{ background: C.cream, border: `3px solid ${C.ink}`, borderRadius: 18, padding: "24px 22px", boxShadow: `5px 5px 0 ${C.ink}` }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amber, textTransform: "uppercase" }}>{k}</div>
-            <div className="font-display" style={{ fontSize: 22, color: C.ink, marginTop: 10, letterSpacing: "-0.3px" }}>{v}</div>
+      <Eyebrow className="reveal-up">Early traction</Eyebrow>
+      <H2 className="reveal-up">Early momentum.</H2>
+      <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 18 }}>
+        {/* Unit economics dark card */}
+        <div
+          className="reveal-up"
+          style={{
+            background: "var(--ink)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            borderRadius: "var(--card-radius-sm)",
+            padding: "20px 24px",
+          }}
+        >
+          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: "var(--accent)", letterSpacing: 2, textTransform: "uppercase" }}>
+            Unit economics
+          </div>
+          <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 32, color: "var(--accent)", marginTop: 8, lineHeight: 1.1 }}>
+            LKR 3,050
+          </div>
+          <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: "var(--on-dark)", opacity: 0.65, marginTop: 6, lineHeight: 1.5 }}>
+            Net per tuk per month at break-even
+          </div>
+          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--accent)", marginTop: 8 }}>
+            Break-even: Month 4 with 4 advertisers
+          </div>
+        </div>
+
+        {items.map(({ k, v, sub }) => (
+          <div
+            key={k}
+            className="mydiio-card reveal reveal-up"
+            style={{ background: C.cream, padding: "24px 22px" }}
+          >
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amber, textTransform: "uppercase" }}>{k}</div>
+            <div className="font-display" style={{ fontSize: 22, color: C.ink, marginTop: 10, letterSpacing: "-0.3px", fontWeight: 700 }}>{v}</div>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: "var(--ink-soft)", marginTop: 8, lineHeight: 1.5 }}>
+              {sub}
+            </div>
           </div>
         ))}
       </div>
@@ -248,8 +491,8 @@ function Traction() {
 function WhyNow() {
   return (
     <SectionWrap>
-      <Eyebrow>Why now</Eyebrow>
-      <H2>Why now.</H2>
+      <Eyebrow className="reveal-up">Why now</Eyebrow>
+      <H2 className="reveal-up">Why now.</H2>
       <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
         <Card title="Cheap screens, better hardware" body="Display and connectivity costs are at an all-time low." />
         <Card title="Local businesses need ROI" body="SMB ad budgets demand measurable, accountable channels." />
@@ -262,8 +505,8 @@ function WhyNow() {
 function Defensibility() {
   return (
     <SectionWrap bg="#fff">
-      <Eyebrow>Defensibility</Eyebrow>
-      <H2>What gets stronger over time.</H2>
+      <Eyebrow className="reveal-up">Defensibility</Eyebrow>
+      <H2 className="reveal-up">What gets stronger over time.</H2>
       <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 18 }}>
         <Card title="Driver network density" />
         <Card title="Route data" />
@@ -279,18 +522,18 @@ function Team() {
   return (
     <SectionWrap>
       <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 48, alignItems: "center" }} className="solution-grid">
-        <div style={{ borderRadius: 22, overflow: "hidden", border: `4px solid ${C.ink}`, boxShadow: `8px 8px 0 ${C.ink}` }}>
+        <div className="reveal-up" style={{ borderRadius: "var(--card-radius)", overflow: "hidden", border: "var(--card-border)", boxShadow: "var(--shadow-card-lg)" }}>
           <img src={DRIVER_PAYMENT} alt="mydiio team and driver in Colombo" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </div>
         <div>
-          <Eyebrow>Team</Eyebrow>
-          <H2>Operator-led, Colombo-built.</H2>
-          <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 17, color: C.inkSoft, marginTop: 18, lineHeight: 1.6, maxWidth: 580 }}>
+          <Eyebrow className="reveal-up">Team</Eyebrow>
+          <H2 className="reveal-up">Operator-led, Colombo-built.</H2>
+          <p className="reveal-up" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: 17, color: "var(--ink-soft)", marginTop: 18, lineHeight: 1.6, maxWidth: 580 }}>
             Built by founders focused on execution, local trust, and category creation.
           </p>
           <div style={{ marginTop: 24, display: "flex", flexWrap: "wrap", gap: 10 }}>
             {["Sri Lankan registered", "Founder led", "Colombo based"].map((b) => (
-              <span key={b} className="font-display" style={{ background: "#fff", border: `3px solid ${C.ink}`, color: C.ink, borderRadius: 999, padding: "8px 14px", fontSize: 14, boxShadow: `3px 3px 0 ${C.ink}` }}>
+              <span key={b} className="font-display reveal-up" style={{ background: "var(--paper)", border: "var(--card-border)", color: C.ink, borderRadius: 999, padding: "8px 14px", fontSize: 14, boxShadow: "var(--shadow-card-press)" }}>
                 {b}
               </span>
             ))}
@@ -301,40 +544,40 @@ function Team() {
   );
 }
 
-function Fundraise() {
+function Fundraise({ onRequestDeck }: { onRequestDeck: () => void }) {
   const uses = ["Fleet rollout", "Hardware installs", "Sales hires", "Tech platform", "Operations"];
   return (
     <SectionWrap bg="#fff">
-      <Eyebrow>Fundraise</Eyebrow>
-      <H2>Currently raising.</H2>
+      <Eyebrow className="reveal-up">Fundraise</Eyebrow>
+      <H2 className="reveal-up">Currently raising.</H2>
       <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
-        <div className="reveal" style={{ background: C.amberPale, border: `3px solid ${C.ink}`, borderRadius: 18, padding: "28px 26px", boxShadow: `5px 5px 0 ${C.ink}` }}>
+        <div className="mydiio-card reveal reveal-up" style={{ background: "var(--accent-soft)", padding: "28px 26px" }}>
           <div className="font-display" style={{ fontSize: 21, color: C.ink, letterSpacing: "-0.3px" }}>Use of funds</div>
           <ul style={{ marginTop: 16, padding: 0, listStyle: "none", display: "grid", gap: 10 }}>
             {uses.map((u) => (
-              <li key={u} style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 15, color: C.ink, display: "flex", alignItems: "center", gap: 10 }}>
+              <li key={u} style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 15, color: C.ink, display: "flex", alignItems: "center", gap: 10 }}>
                 <span style={{ width: 7, height: 7, borderRadius: "50%", background: C.amber, display: "inline-block" }} /> {u}
               </li>
             ))}
           </ul>
         </div>
-        <div className="reveal" style={{ background: "#fff", border: `3px solid ${C.ink}`, borderRadius: 18, padding: "28px 26px", boxShadow: `5px 5px 0 ${C.ink}`, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+        <div className="mydiio-card reveal reveal-up" style={{ padding: "28px 26px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
           <div>
             <div className="font-display" style={{ fontSize: 21, color: C.ink, letterSpacing: "-0.3px" }}>Strategic alignment</div>
-            <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 500, fontSize: 15, color: C.inkSoft, marginTop: 12, lineHeight: 1.55 }}>
+            <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: 15, color: "var(--ink-soft)", marginTop: 12, lineHeight: 1.55 }}>
               Seeking strategic investors aligned with Sri Lanka growth, media, and urban infrastructure.
             </p>
           </div>
-          <a href={MAILTO} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "14px 18px", borderRadius: 12, fontSize: 16, textDecoration: "none", marginTop: 24, display: "inline-block", alignSelf: "flex-start" }}>
+          <button onClick={onRequestDeck} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "14px 18px", borderRadius: 14, fontSize: 16, marginTop: 24, alignSelf: "flex-start", border: "2px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", cursor: "pointer" }}>
             Request investor deck →
-          </a>
+          </button>
         </div>
       </div>
     </SectionWrap>
   );
 }
 
-function FinalCTA() {
+function FinalCTA({ onRequestDeck }: { onRequestDeck: () => void }) {
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: 480 }}>
       <img src={FLEET_SUNSET} alt="mydiio tuk-tuks at sunset" className="absolute inset-0 w-full h-full object-cover" />
@@ -345,12 +588,12 @@ function FinalCTA() {
           Early stage. Real market. Big surface area.
         </h2>
         <div className="hero-cta-row" style={{ marginTop: 32, display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center" }}>
-          <a href={MAILTO} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none" }}>
+          <a href={MAILTO} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 14, fontSize: 17, textDecoration: "none", border: "2px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)" }}>
             Talk to founder
           </a>
-          <a href={MAILTO} className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 13, fontSize: 17, textDecoration: "none", border: "3px solid #fff" }}>
+          <button onClick={onRequestDeck} className="btn-bold font-display" style={{ background: "transparent", color: "#fff", padding: "16px 22px", borderRadius: 14, fontSize: 17, border: "2px solid #fff", cursor: "pointer" }}>
             Request deck
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -358,36 +601,29 @@ function FinalCTA() {
 }
 
 function InvestorsPage() {
-  useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>(".reveal");
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("in")),
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
+  const [deckOpen, setDeckOpen] = useState(false);
 
   return (
-    <SiteShell accent="ink">
+    <SiteShell accent="amber">
       <style>{`
         @media (min-width: 860px) {
           .solution-grid { grid-template-columns: 1.1fr 1fr !important; }
         }
       `}</style>
-      <Hero />
+      <Hero onRequestDeck={() => setDeckOpen(true)} />
       <Problem />
+      <OpportunityBridge />
+      <BusinessModel />
       <Solution />
       <WhyTukTuks />
-      <BusinessModel />
       <Market />
       <Traction />
       <WhyNow />
       <Defensibility />
       <Team />
-      <Fundraise />
-      <FinalCTA />
+      <Fundraise onRequestDeck={() => setDeckOpen(true)} />
+      <FinalCTA onRequestDeck={() => setDeckOpen(true)} />
+      <DeckRequestModal open={deckOpen} onClose={() => setDeckOpen(false)} />
     </SiteShell>
   );
 }
-
