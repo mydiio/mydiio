@@ -1227,6 +1227,11 @@ function AdvertisePage() {
         .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 56px; align-items: stretch; }
         @media (min-width: 560px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
         @media (min-width: 900px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
+        .price-card { padding-bottom: 28px !important; }
+        @media (max-width: 639px) { .price-card { padding-bottom: 20px !important; } }
+        .pricing-footnote { margin-top: 40px; padding-top: 24px; }
+        @media (max-width: 1023px) { .pricing-footnote { margin-top: 28px; } }
+        @media (max-width: 639px) { .pricing-footnote { margin-top: 20px; padding-top: 16px; } }
         .tier-cta-primary:hover, .tier-cta-ghost:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink) !important; }
         .tier-cta-ink:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 rgba(30,26,21,0.35) !important; }
         .tier-cta-ghost:hover { background: var(--ink) !important; color: var(--on-dark) !important; }
