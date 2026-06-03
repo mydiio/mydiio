@@ -405,8 +405,8 @@ function AdvertiseApplyPage() {
             )}
           </div>
           </div>
-          </div>
         </div>
+
 
 
       </section>
