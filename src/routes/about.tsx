@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+import COLOMBO_STREET from "@/assets/colombo-street.jpg";
+import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 
 type Variant = "advertiser" | "driver";
 
