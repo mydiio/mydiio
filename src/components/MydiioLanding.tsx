@@ -60,7 +60,7 @@ function HeroWords({ text }: { text: string }) {
 function Hero() {
   const { t } = useI18n();
   const v1 = useCountUp(50, 1400, 0);
-  const v2 = useCountUp(7, 1400, 100);
+  const v2 = useCountUp(50, 1400, 100);
   const v3 = useCountUp(14, 1400, 200);
   const v4 = useCountUp(72, 1400, 300);
 
