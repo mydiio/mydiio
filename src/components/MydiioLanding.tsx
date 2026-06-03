@@ -831,7 +831,7 @@ function FAQ() {
           <EmTail text={t("faq_title")} tail="asked." lang={lang} />
         </h2>
       </div>
-      <div style={{ maxWidth: 880, margin: "0 auto", display: "flex", flexDirection: "column", gap: 14 }}>
+      <div style={{ maxWidth: 880, margin: "0 auto", display: "flex", flexDirection: "column", gap: 16 }}>
         {items.map((it, i) => {
           const open = openIdx === i;
           return (
