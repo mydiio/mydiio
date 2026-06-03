@@ -92,7 +92,7 @@ function Hero() {
           </div>
           <div style={{ marginTop: 24, display: "flex", flexWrap: "wrap", gap: 10 }}>
             <StatPill value="14 min" label="captive attention" />
-            <StatPill value="14 days" label="first weeks free" />
+            <StatPill value="7 days" label="first week free" />
           </div>
         </div>
       </div>
