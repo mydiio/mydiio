@@ -5,6 +5,7 @@ import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/drive")({
   component: DrivePage,
@@ -41,7 +42,7 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
     return () => io.disconnect();
   }, []);
   return (
-    <section ref={ref} style={{ background: bg, padding: "96px 24px" }}>
+    <section ref={ref} className="section-wrap" style={{ background: bg, maxWidth: "none" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>{children}</div>
     </section>
   );
@@ -113,65 +114,119 @@ function Hero() {
 /* ---------- Earnings Calculator ---------- */
 function EarningsCalculator() {
   const [hours, setHours] = useState(8);
-  const monthly = Math.round(6000 + ((hours - 4) / 10) * 2000);
+  const monthly = hours >= 8 ? 8000 : 6000;
   const annual = monthly * 12;
+
+  const [approvedCount, setApprovedCount] = useState(0);
+  useEffect(() => {
+    (async () => {
+      try {
+        const { count } = await (supabase as any)
+          .from("driver_applications")
+          .select("id", { count: "exact", head: true })
+          .eq("status", "approved");
+        if (typeof count === "number") setApprovedCount(count);
+      } catch {
+        /* table may not exist yet */
+      }
+    })();
+  }, []);
+  const groupARemaining = Math.max(0, 10 - approvedCount);
+
   return (
     <Section bg={C.cream}>
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
-          Earnings calculator
-        </span>
+      <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
+        <span className="eyebrow">Earnings calculator</span>
       </div>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
         See exactly what you could earn.
       </h2>
 
-      <div className="reveal" style={{
+      <div className="reveal reveal-up" style={{
         marginTop: 40, maxWidth: 560, marginInline: "auto",
-        background: "#fff", border: `2px solid ${C.ink}`, borderRadius: 16,
-        boxShadow: `6px 6px 0 ${C.ink}`, padding: "36px 28px",
+        background: "var(--paper)",
+        border: "var(--card-border)",
+        borderRadius: "var(--card-radius)",
+        boxShadow: "var(--shadow-card-lg)",
+        overflow: "hidden",
       }}>
-        <div style={{ textAlign: "center" }}>
-          <div className="font-display" style={{
-            fontSize: "clamp(56px, 11vw, 84px)", color: C.amber,
-            lineHeight: 1, fontVariantNumeric: "tabular-nums",
-          }}>
-            LKR {monthly.toLocaleString()}
-          </div>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 2, marginTop: 8, textTransform: "uppercase" }}>
-            per month
-          </div>
-          <div className="font-display" style={{
-            fontSize: 22, color: C.ink, marginTop: 18,
-            fontVariantNumeric: "tabular-nums",
-          }}>
-            LKR {annual.toLocaleString()}
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 1.5, marginLeft: 8 }}>/ YEAR</span>
-          </div>
-        </div>
-
-        <div style={{ marginTop: 32 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.inkSoft, letterSpacing: 1.5 }}>HOURS PER DAY</span>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, color: C.amberDeep, fontVariantNumeric: "tabular-nums" }}>{hours}h</span>
-          </div>
-          <input
-            type="range" min={4} max={14} step={1} value={hours}
-            onChange={(e) => setHours(parseInt(e.target.value))}
-            style={{ width: "100%", marginTop: 10, accentColor: C.amber }}
-          />
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.inkSoft }}>4h</span>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.inkSoft }}>14h</span>
-          </div>
-        </div>
-
-        <p style={{
-          fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft,
-          textAlign: "center", marginTop: 28, lineHeight: 1.6,
+        <div style={{
+          background: "var(--ink)", padding: "12px 24px",
+          fontFamily: "'Space Mono', monospace", fontSize: 10,
+          color: "var(--accent)", textTransform: "uppercase", letterSpacing: "0.12em",
+          fontWeight: 700,
         }}>
-          Base pay: LKR 6,000. Route bonus: LKR 2,000 (8+ hours/day).
-        </p>
+          Earnings calculator · based on your hours
+        </div>
+        <div style={{ padding: "36px 28px" }}>
+          <div style={{ textAlign: "center" }}>
+            <div className="font-display" style={{
+              fontSize: "clamp(56px, 11vw, 84px)", color: C.amber,
+              lineHeight: 1, fontVariantNumeric: "tabular-nums",
+            }}>
+              LKR {monthly.toLocaleString()}
+            </div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 2, marginTop: 8, textTransform: "uppercase" }}>
+              per month
+            </div>
+            <div className="font-display" style={{
+              fontSize: 22, color: C.ink, marginTop: 18,
+              fontVariantNumeric: "tabular-nums",
+            }}>
+              LKR {annual.toLocaleString()}
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 1.5, marginLeft: 8 }}>/ YEAR</span>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 32 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.inkSoft, letterSpacing: 1.5 }}>HOURS PER DAY</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, color: C.amberDeep, fontVariantNumeric: "tabular-nums" }}>{hours}h</span>
+            </div>
+            <input
+              type="range" min={4} max={14} step={1} value={hours}
+              onChange={(e) => setHours(parseInt(e.target.value))}
+              style={{ width: "100%", marginTop: 10, accentColor: C.amber }}
+            />
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.inkSoft }}>4h</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.inkSoft }}>14h</span>
+            </div>
+          </div>
+
+          <p style={{
+            fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft,
+            textAlign: "center", marginTop: 28, lineHeight: 1.6,
+          }}>
+            Base pay: LKR 6,000. Route bonus: LKR 2,000 (8+ hours/day).
+          </p>
+        </div>
+      </div>
+
+      <div className="reveal reveal-up" style={{ textAlign: "center", marginTop: 16 }}>
+        <div style={{
+          display: "inline-flex", alignItems: "center", gap: 8,
+          background: "var(--green-soft)", border: "2px solid var(--green)",
+          borderRadius: 9999, padding: "8px 18px",
+        }}>
+          <span style={{
+            fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700,
+            color: "var(--green-ink)", letterSpacing: "0.06em",
+          }}>
+            ✓ PAYMENT ON THE 5TH · EVERY MONTH · BANK TRANSFER · NO EXCEPTIONS
+          </span>
+        </div>
+      </div>
+
+      <div className="reveal reveal-up" style={{ textAlign: "center", marginTop: 12 }}>
+        <div style={{
+          display: "inline-block",
+          background: "var(--ink)", borderRadius: 20, padding: "6px 16px",
+          fontFamily: "'Space Mono', monospace", fontSize: 11,
+          color: "var(--accent)", fontWeight: 700,
+        }}>
+          Group A Founding Partners: {groupARemaining} of 10 spots remaining
+        </div>
       </div>
     </Section>
   );
@@ -258,18 +313,16 @@ function HowItWorks() {
   ];
   return (
     <Section bg={C.white}>
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
-          How it works
-        </span>
+      <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
+        <span className="eyebrow">How it works</span>
       </div>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
         Four steps. That's the whole thing.
       </h2>
       <div className="how-flow">
         {steps.map((s, i) => (
-          <div key={s.n} className="reveal" style={{ display: "contents" }}>
-            <div className="step-card">
+          <div key={s.n} className={`reveal reveal-up delay-${i + 1}`} style={{ display: "contents" }}>
+            <div className="step-card mydiio-card">
               <div className="step-circle font-display">{s.n}</div>
               <div className="font-display" style={{ fontSize: 17, color: C.ink, marginTop: 16 }}>{s.title}</div>
               <p style={{
@@ -282,6 +335,46 @@ function HowItWorks() {
             {i < steps.length - 1 && <div className="step-line" aria-hidden />}
           </div>
         ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- Installation ---------- */
+function Installation() {
+  return (
+    <Section bg={C.cream}>
+      <div className="install-grid">
+        <div>
+          <span className="eyebrow reveal reveal-up" style={{ color: "var(--green-ink)" }}>Installation</span>
+          <h3 className="reveal reveal-up font-display" style={{ fontSize: "clamp(22px, 3vw, 32px)", color: C.ink, lineHeight: 1.1, marginTop: 10 }}>
+            We install it. You drive.
+          </h3>
+          <p className="reveal reveal-up" style={{ color: "var(--ink-soft)", fontSize: 15, lineHeight: 1.65, marginTop: 14 }}>
+            One hour. No cost to you. Powered by your vehicle's existing electrics. You won't notice it's there — but your passengers will.
+          </p>
+          <ul className="reveal reveal-up" style={{ listStyle: "none", padding: 0, margin: "18px 0 0", display: "flex", flexDirection: "column", gap: 8 }}>
+            {["✓ Installed at our cost", "✓ Replaced free if damaged", "✓ Removed free if you leave"].map((t) => (
+              <li key={t} style={{
+                fontFamily: "'Space Mono', monospace", fontSize: 12,
+                color: "var(--green-ink)", fontWeight: 700,
+              }}>{t}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="reveal reveal-up" style={{
+          background: "var(--bg2)",
+          border: "2px dashed rgba(30,26,21,0.3)",
+          borderRadius: 18, aspectRatio: "4 / 3",
+          display: "flex", alignItems: "center", justifyContent: "center",
+        }}>
+          <span style={{
+            fontFamily: "'Space Mono', monospace", fontSize: 11,
+            color: "var(--ink-mute)",
+          }}>
+            📸 Installation photo — coming soon
+          </span>
+        </div>
       </div>
     </Section>
   );
@@ -352,17 +445,17 @@ function FoundingGroup() {
 function DriverPortal() {
   return (
     <Section bg={C.white}>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
         Your portal. Everything visible.
       </h2>
 
-      <div className="reveal" style={{ marginTop: 36, maxWidth: 520, marginInline: "auto" }}>
+      <div className="reveal reveal-up" style={{ marginTop: 36, maxWidth: 520, marginInline: "auto" }}>
         <div style={{
           position: "relative",
           background: "#0D0D08",
-          border: `1px solid ${C.ink}`,
+          border: "var(--card-border)",
           borderRadius: 14, padding: 22,
-          boxShadow: `8px 8px 0 ${C.ink}`,
+          boxShadow: "var(--shadow-card-lg)",
         }}>
           <div style={{
             position: "absolute", top: 14, right: 14,
@@ -443,14 +536,14 @@ function FAQ() {
   ];
   return (
     <Section bg={C.cream}>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
         Everything you need to know
       </h2>
       <div style={{ maxWidth: 720, margin: "32px auto 0" }}>
         {items.map((it, i) => {
           const isOpen = open === i;
           return (
-            <div key={i} className="reveal" style={{
+            <div key={i} className={`reveal reveal-up delay-${(i % 3) + 1}`} style={{
               background: "#fff", border: `2px solid ${C.ink}`,
               borderRadius: 12, marginBottom: 12, overflow: "hidden",
               boxShadow: isOpen ? `5px 5px 0 ${C.ink}` : `3px 3px 0 ${C.ink}`,
@@ -559,6 +652,33 @@ function FinalCTA() {
 
 /* ============== MAIN ============== */
 function DrivePage() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const sticky = document.getElementById("driver-sticky-cta");
+      if (sticky) sticky.classList.toggle("visible", window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    const target = document.getElementById("drivers-apply-anchor");
+    let io: IntersectionObserver | null = null;
+    if (target) {
+      io = new IntersectionObserver(
+        ([entry]) => {
+          const sticky = document.getElementById("driver-sticky-cta");
+          if (!sticky) return;
+          if (entry.isIntersecting) sticky.classList.remove("visible");
+          else if (window.scrollY > 300) sticky.classList.add("visible");
+        },
+        { threshold: 0.1 }
+      );
+      io.observe(target);
+    }
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      io?.disconnect();
+    };
+  }, []);
+
   return (
     <SiteShell accent="green">
       <style>{`
@@ -568,7 +688,7 @@ function DrivePage() {
         }
         .step-card {
           background: #fff; border: 2px solid ${C.ink}; border-radius: 16px;
-          padding: 26px; box-shadow: 5px 5px 0 ${C.ink};
+          padding: 26px; box-shadow: var(--shadow-card);
         }
         .step-circle {
           width: 44px; height: 44px; border-radius: 50%;
@@ -579,8 +699,26 @@ function DrivePage() {
         }
         .step-line { display: none; }
         @media (min-width: 900px) {
-          .how-flow { grid-template-columns: 1fr 18px 1fr 18px 1fr 18px 1fr; align-items: stretch; }
-          .step-line { display: block; align-self: center; height: 2px; background: ${C.ink}; opacity: 0.18; width: 100%; }
+          .how-flow { grid-template-columns: 1fr 12px 1fr 12px 1fr 12px 1fr; align-items: stretch; }
+          .step-line {
+            display: block; width: 2px; height: 36px;
+            background: var(--accent); opacity: 0.45;
+            border-radius: 1px; flex-shrink: 0;
+            align-self: center; margin: 0 4px;
+          }
+        }
+        @media (max-width: 767px) { .step-line { display: none !important; } }
+
+        .install-grid {
+          display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center;
+        }
+        @media (min-width: 820px) {
+          .install-grid { grid-template-columns: 55fr 45fr; gap: 48px; }
+        }
+
+        #driver-sticky-cta:hover {
+          transform: translate(-2px, -2px);
+          box-shadow: var(--shadow-card-hover);
         }
       `}</style>
 
@@ -590,8 +728,26 @@ function DrivePage() {
       <HowItWorks />
       <FoundingGroup />
       <DriverPortal />
+      <Installation />
       <FAQ />
+      <div id="drivers-apply-anchor" />
       <FinalCTA />
+
+      <a
+        id="driver-sticky-cta"
+        className="sticky-cta"
+        href="/drivers/apply"
+        style={{
+          background: "var(--green)", color: "var(--on-dark)",
+          border: "2px solid var(--ink)", borderRadius: 12,
+          boxShadow: "var(--shadow-card)", padding: "12px 22px",
+          fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 14,
+          textDecoration: "none", display: "inline-block",
+          transition: "transform 0.18s var(--ease-spring), box-shadow 0.18s var(--ease-spring), opacity 0.3s ease",
+        }}
+      >
+        Apply to drive →
+      </a>
     </SiteShell>
   );
 }
