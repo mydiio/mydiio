@@ -5,7 +5,7 @@ export const C = {
   bg: "#F7F1E5",
   bg2: "#F2E9D6",
   paper: "#FFFEFA",
-  ink: "#1E1A15",
+  ink: "#1A1A18",
   inkSoft: "#5B5347",
   inkMute: "#837B6F",
   accent: "#F5A623",
@@ -15,7 +15,7 @@ export const C = {
   green: "#45855A",
   greenSoft: "#E1F0E3",
   greenInk: "#2E5538",
-  onDark: "#F4EFE3",
+  onDark: "#FDFAF3",
 
   // Legacy aliases (kept so existing inline styles don't break)
   amber: "#F5A623",

@@ -56,9 +56,9 @@
   --font-mono: "Space Mono", ui-monospace, monospace;
   --font-serif: "DM Serif Display", Georgia, serif;
 
-  --shadow-sticker: 4px 5px 0 #1E1A15;
-  --shadow-sticker-lg: 6px 7px 0 #1E1A15;
-  --shadow-sticker-press: 2px 2px 0 #1E1A15;
+  --shadow-sticker: 4px 5px 0 #1A1A18;
+  --shadow-sticker-lg: 6px 7px 0 #1A1A18;
+  --shadow-sticker-press: 2px 2px 0 #1A1A18;
 }
 
 :root {
@@ -69,7 +69,7 @@
   /* New palette */
   --bg: #F7F1E5;
   --bg2: #F2E9D6;
-  --ink: #1E1A15;
+  --ink: #1A1A18;
   --ink-soft: #5B5347;
   --ink-mute: #837B6F;
   --paper: #FFFEFA;
@@ -80,7 +80,7 @@
   --green: #45855A;
   --green-soft: #E1F0E3;
   --green-ink: #2E5538;
-  --on-dark: #F4EFE3;
+  --on-dark: #FDFAF3;
 
   /* Unified section spacing */
   --section-py: clamp(64px, 9vh, 112px);
@@ -88,10 +88,10 @@
   --section-px: clamp(20px, 5vw, 72px);
 
   /* Shadow system — single source of truth */
-  --shadow-card: 4px 4px 0 #1E1A15;
-  --shadow-card-hover: 7px 7px 0 #1E1A15;
-  --shadow-card-lg: 6px 6px 0 #1E1A15;
-  --shadow-card-press: 2px 2px 0 #1E1A15;
+  --shadow-card: 4px 4px 0 #1A1A18;
+  --shadow-card-hover: 7px 7px 0 #1A1A18;
+  --shadow-card-lg: 6px 6px 0 #1A1A18;
+  --shadow-card-press: 2px 2px 0 #1A1A18;
   --shadow-green: 4px 4px 0 #45855A;
   --shadow-green-hover: 7px 7px 0 #45855A;
   --shadow-amber: 4px 4px 0 #F5A623;
@@ -99,16 +99,16 @@
   /* Card tokens */
   --card-radius: 22px;
   --card-radius-sm: 14px;
-  --card-border: 2px solid #1E1A15;
+  --card-border: 2px solid #1A1A18;
 
   /* Animation timing */
   --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Sticker shadows */
-  --sticker: 4px 5px 0 #1E1A15;
-  --sticker-lg: 6px 7px 0 #1E1A15;
-  --sticker-press: 2px 2px 0 #1E1A15;
+  --sticker: 4px 5px 0 #1A1A18;
+  --sticker-lg: 6px 7px 0 #1A1A18;
+  --sticker-press: 2px 2px 0 #1A1A18;
 
   /* Legacy aliases — keep components that reference these working */
   --amber: var(--accent);
@@ -287,7 +287,7 @@
   .mydiio-card:hover { transform: translate(-3px, -3px); box-shadow: var(--shadow-card-hover); }
   .mydiio-card.green-variant { border-color: #45855A; box-shadow: var(--shadow-green); }
   .mydiio-card.green-variant:hover { box-shadow: var(--shadow-green-hover); }
-  .mydiio-card.dark-variant { background: #1E1A15; border-color: rgba(255,255,255,0.12); box-shadow: none; }
+  .mydiio-card.dark-variant { background: #1A1A18; border-color: rgba(255,255,255,0.12); box-shadow: none; }
 
   .sticky-cta {
     position: fixed;
