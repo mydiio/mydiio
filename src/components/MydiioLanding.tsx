@@ -908,8 +908,9 @@ export default function MydiioLanding() {
         .hero-trust { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; max-width: 540px; }
         @media (min-width: 720px) { .hero-trust { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
-        .paths-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
-        @media (min-width: 760px) { .paths-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+        .paths-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 760px) { .paths-grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
+
 
         .path-card {
           border: 2px solid var(--ink);
