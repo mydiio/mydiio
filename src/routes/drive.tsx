@@ -74,20 +74,20 @@ function Hero() {
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "120px 6% 80px" }}>
         <div style={{ maxWidth: 760 }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.green, textTransform: "uppercase" }}>
-            For Colombo Tuk-Tuk Drivers
+            Driver earnings
           </span>
           <h1 className="font-display" style={{
             color: "#fff",
             fontSize: "clamp(38px, 6.5vw, 72px)", lineHeight: 1.05, letterSpacing: "-1px", marginTop: 14,
           }}>
-            Your tuk earns while you drive.
+            Drivers earn more every month.
           </h1>
           <p style={{
             fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
             fontSize: "clamp(15px, 1.8vw, 19px)",
             color: "rgba(255,255,255,0.78)", marginTop: 18, maxWidth: 600,
           }}>
-            Free installation. LKR 6,000–8,000 every month. You change nothing.
+            Join our network and get paid through ad revenue. Your tuk-tuk earns while you drive your normal routes.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
             <a href={DRIVER_CONTACT}
@@ -97,7 +97,7 @@ function Hero() {
                 padding: "16px 22px", borderRadius: 13, fontSize: 17,
                 textDecoration: "none", display: "inline-block",
               }}>
-              Join as a driver →
+              Join as Driver →
             </a>
           </div>
           <div style={{ marginTop: 24, display: "flex", flexWrap: "wrap", gap: 10 }}>
@@ -174,13 +174,13 @@ function EarningsCalculator() {
               fontVariantNumeric: "tabular-nums",
             }}>
               LKR {annual.toLocaleString()}
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 1.5, marginLeft: 8 }}>/ YEAR</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 1.5, marginLeft: 8 }}>/ year</span>
             </div>
           </div>
 
           <div style={{ marginTop: 32 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.inkSoft, letterSpacing: 1.5 }}>HOURS PER DAY</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.inkSoft, letterSpacing: 1.5 }}>Hours per day</span>
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, color: C.amberDeep, fontVariantNumeric: "tabular-nums" }}>{hours}h</span>
             </div>
             <input
@@ -234,7 +234,7 @@ function EarningsCalculator() {
 
 /* ---------- Driver Earnings ---------- */
 function DriverEarnings() {
-  const badges = ["Fast Payments", "Verified Drivers", "Monthly Bonuses"];
+  const badges = ["Fast payments", "Verified drivers", "Monthly bonuses"];
   return (
     <Section bg={C.cream}>
       <div className="earnings-grid">
@@ -260,7 +260,7 @@ function DriverEarnings() {
             fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
             fontSize: 16, color: C.ink, lineHeight: 1.6, marginTop: 14, maxWidth: 520,
           }}>
-            Join our network and get paid through ad revenue.
+            Join our network and get paid through ad revenue. Your tuk-tuk earns while you drive your normal routes.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 22 }}>
             {badges.map((b) => (
