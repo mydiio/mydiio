@@ -215,7 +215,7 @@ function Pricing() {
         fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
         fontSize: 16, color: C.inkSoft, textAlign: "center", marginTop: 14, maxWidth: 560, marginInline: "auto",
       }}>
-        All plans include first 14 days free and GPS-verified weekly reports.
+        All plans include first 7 days free and GPS-verified weekly reports.
       </p>
 
       <div className="pricing-grid">
