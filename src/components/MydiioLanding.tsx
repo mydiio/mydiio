@@ -8,6 +8,8 @@ import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.asset.json";
 import TUK_STAND from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
+import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
+import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.asset.json";
 import { useI18n } from "@/lib/i18n";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
@@ -299,6 +301,9 @@ function WhyItWorks() {
           {t("why_title")}
         </h2>
       </div>
+      <div className="reveal reveal-up delay-1" style={{ marginBottom: 40 }}>
+        <img src={COLOMBO_FLEET_GOLDEN.url} alt="mydiio tuk-tuk fleet in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
+      </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 18 }}>
         {cards.map((c, i) => (
           <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
@@ -342,6 +347,9 @@ function HowItWorks() {
         }}>
           {t("how_title")}
         </h2>
+      </div>
+      <div className="reveal reveal-up delay-1" style={{ marginBottom: 40 }}>
+        <img src={COLOMBO_TUK_DAYTIME.url} alt="tuk-tuks moving through a Colombo street in daytime" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 22 }}>
         {steps.map((s, i) => (
@@ -477,6 +485,9 @@ function Coverage() {
         <p className="reveal-up delay-2" style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 16, fontWeight: 500 }}>
           Reach passengers in the neighbourhoods where your customers already are. Click any zone to explore.
         </p>
+      </div>
+      <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
+        <img src={COLOMBO_STREET} alt="tuk-tuks on a Colombo street" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
       <div className="reveal reveal-up delay-2">
         <ColomboMap />
