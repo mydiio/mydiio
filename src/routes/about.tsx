@@ -54,7 +54,7 @@ function BeforeAfterCard({ variant, children }: { variant: Variant; children: Re
 
   const bg = showBefore ? "var(--bg2)" : meta.afterBg;
   const border = showBefore ? "var(--ink)" : meta.afterBorder;
-  const shadow = showBefore ? "var(--sticker)" : meta.afterShadow;
+  const shadow = showBefore ? "var(--shadow-card)" : meta.afterShadow;
 
   return (
     <div
