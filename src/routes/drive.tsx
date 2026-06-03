@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
+import TUK_STAND from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
+import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.asset.json";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { supabase } from "@/integrations/supabase/client";
@@ -66,12 +68,12 @@ function StatPill({ value, label }: { value: string; label: string }) {
 
 function Hero() {
   return (
-    <section className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
-      <img src={HERO_PHOTO} alt="Tuk-tuk driver in Colombo" className="absolute inset-0 w-full h-full object-cover" />
+    <section className="relative w-full overflow-hidden page-hero-fixed">
+      <img src={TUK_STAND.url} alt="Sri Lankan tuk-tuk drivers at a Colombo stand" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
       <div className="absolute inset-0" style={{
         background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)",
       }} />
-      <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "120px 6% 80px" }}>
+      <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "120px 6% 80px" }}>
         <div style={{ maxWidth: 760 }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.green, textTransform: "uppercase" }}>
             Driver earnings
@@ -107,6 +109,14 @@ function Hero() {
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0" style={{ height: 6, background: C.green }} />
+      <style>{`
+        .page-hero-fixed { min-height: 560px; }
+        .page-hero-inner { min-height: 560px; }
+        @media (max-width: 767px) {
+          .page-hero-fixed { min-height: 380px; }
+          .page-hero-inner { min-height: 380px; }
+        }
+      `}</style>
     </section>
   );
 }
@@ -724,6 +734,19 @@ function DrivePage() {
       <Hero />
       <EarningsCalculator />
       <DriverEarnings />
+      <section className="relative w-full overflow-hidden drive-supporting-band">
+        <img
+          src={COLOMBO_TUK_DAYTIME.url}
+          alt="mydiio tuk-tuks on a Colombo street in daytime"
+          className="absolute inset-0 w-full h-full"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.4)" }} />
+        <style>{`
+          .drive-supporting-band { height: 400px; }
+          @media (max-width: 767px) { .drive-supporting-band { height: 280px; } }
+        `}</style>
+      </section>
       <HowItWorks />
       <FoundingGroup />
       <DriverPortal />
