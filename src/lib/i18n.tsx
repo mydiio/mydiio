@@ -22,16 +22,16 @@ export const dict: Dict = {
   cta_talk_founder: { en: "Become a driver →", si: "Founder සමඟ කතා කරන්න", ta: "Founder உடன் பேசுங்கள்" },
 
   // --- Hero ---
-  hero_kicker: { en: "Sri Lanka · Mobility Media", si: "ශ්‍රී ලංකාව · ජංගම මාධ්‍ය", ta: "இலங்கை · இயக்க ஊடகம்" },
+  hero_kicker: { en: "mydiio", si: "mydiio", ta: "mydiio" },
   hero_title: {
-    en: "mydiio",
-    si: "mydiio",
-    ta: "mydiio",
+    en: "The digital advertising network inside Sri Lanka's tuk-tuks",
+    si: "The digital advertising network inside Sri Lanka's tuk-tuks",
+    ta: "The digital advertising network inside Sri Lanka's tuk-tuks",
   },
   hero_sub: {
-    en: "The digital advertising network inside Sri Lanka's tuk-tuks. mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
-    si: "The digital advertising network inside Sri Lanka's tuk-tuks. mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
-    ta: "The digital advertising network inside Sri Lanka's tuk-tuks. mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
+    en: "mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
+    si: "mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
+    ta: "mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
   },
   metric_vehicles: { en: "Pilot vehicles", si: "පයිලට් වාහන", ta: "பைலட் வாகனங்கள்" },
   metric_zones: { en: "Avg. ride attention", si: "සාමාන්‍ය ගමන් අවධානය", ta: "சராசரி பயண கவனம்" },
