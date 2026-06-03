@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+import COLOMBO_STREET from "@/assets/colombo-street.jpg";
+import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 
 type Variant = "advertiser" | "driver";
 
@@ -12,11 +14,11 @@ const BEFORE_DATA: Record<Variant, { eyebrow: string; eyebrowColor: string; head
     rows: [
       "Billboard — LKR 200,000+ per month",
       "TV slot — LKR 500,000+ minimum",
-      "No proof your ad ever ran",
+      "Zero proof your ad ever ran",
       "Need an agency just to start",
     ],
     afterBg: "var(--paper)",
-    afterShadow: "var(--sticker)",
+    afterShadow: "var(--shadow-card)",
     afterBorder: "var(--ink)",
   },
   driver: {
@@ -25,12 +27,12 @@ const BEFORE_DATA: Record<Variant, { eyebrow: string; eyebrowColor: string; head
     heading: "Driving was the only way to earn.",
     rows: [
       "Zero passive income from the vehicle",
-      "Income drops if you take a day off",
+      "Income drops the moment you stop driving",
       "No benefits, no recognition, no bonus",
-      "Tuk-tuk interior earns nothing while you drive",
+      "The tuk-tuk interior earned nothing while you drove",
     ],
     afterBg: "var(--green-soft)",
-    afterShadow: "4px 4px 0 var(--green)",
+    afterShadow: "var(--shadow-green)",
     afterBorder: "var(--green)",
   },
 };
@@ -52,7 +54,7 @@ function BeforeAfterCard({ variant, children }: { variant: Variant; children: Re
 
   const bg = showBefore ? "var(--bg2)" : meta.afterBg;
   const border = showBefore ? "var(--ink)" : meta.afterBorder;
-  const shadow = showBefore ? "var(--sticker)" : meta.afterShadow;
+  const shadow = showBefore ? "var(--shadow-card)" : meta.afterShadow;
 
   return (
     <div
@@ -95,7 +97,7 @@ function BeforeAfterCard({ variant, children }: { variant: Variant; children: Re
         className="ba-toggle"
         style={{ background: "none", border: "none", padding: 0, marginTop: 18, fontFamily: "'Space Mono', monospace", fontSize: 12, color: "var(--accent-deep)", cursor: "pointer", textAlign: "left", letterSpacing: "0.08em", alignSelf: "flex-start" }}
       >
-        {showBefore ? "← See what changed" : "What was it like before? →"}
+        {showBefore ? "← Back to now" : "What was it like before? →"}
       </button>
     </div>
   );
@@ -154,7 +156,7 @@ function PillarCard({ n, h, b, i, openId, setOpenId }: { n: string; h: string; b
       >
         Read more <span style={{ display: "inline-block", transform: open ? "rotate(45deg)" : "rotate(0deg)", transition: "transform 0.2s ease" }}>+</span>
       </button>
-      <div style={{ maxHeight: open ? 400 : 0, overflow: "hidden", transition: "max-height 500ms cubic-bezier(0.22, 1, 0.36, 1)" }}>
+      <div style={{ maxHeight: open ? 400 : 0, overflow: "hidden", transition: "max-height 0.5s var(--ease-spring)" }}>
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)", paddingTop: 16, marginTop: 16, display: "flex", flexDirection: "column", gap: 10 }}>
           {panel.rows.map((r) => (
             <div key={r} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
@@ -230,7 +232,7 @@ function AboutPage() {
         @media (max-width: 480px) { .about-cta-row { flex-direction: column; align-items: stretch; } .about-cta-row a { text-align: center; } }
 
         @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .ticker-strip { background: var(--ink); padding: 11px 0; overflow: hidden; margin-top: 40px; width: 100%; }
+        .ticker-strip { background: var(--ink); padding: 11px 0; overflow: hidden; margin: 0; width: 100%; }
         .ticker-inner { display: flex; white-space: nowrap; animation: ticker 28s linear infinite; font-family: 'Space Mono', monospace; font-size: 12px; color: var(--on-dark); opacity: 0.8; letter-spacing: 0.12em; }
         .ticker-strip:hover .ticker-inner { animation-play-state: paused; }
 
@@ -255,11 +257,25 @@ function AboutPage() {
       `}</style>
 
       {/* SECTION 1 — HERO */}
-      <section style={{ background: "var(--bg)", padding: "clamp(80px, 12vh, 140px) 0 clamp(60px, 8vh, 100px)", textAlign: "center" }}>
-        <div style={{ padding: "0 clamp(20px, 5vw, 72px)" }}>
-          <span className="about-eyebrow reveal-up">About mydiio</span>
-          <h1 className="about-h1 reveal-up delay-1">Ads on the move.</h1>
-          <p className="about-lead reveal-up delay-2" style={{ maxWidth: "46ch", margin: "20px auto 32px" }}>
+      <section style={{ background: "var(--ink)", padding: "clamp(80px, 12vh, 140px) 0 clamp(48px, 6vh, 80px)", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        {/* Amber arcs decoration */}
+        <svg
+          aria-hidden="true"
+          width="520"
+          height="520"
+          viewBox="0 0 520 520"
+          style={{ position: "absolute", right: "-160px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.08 }}
+        >
+          <g fill="none" stroke="var(--accent)" strokeWidth="2">
+            <circle cx="260" cy="260" r="120" />
+            <circle cx="260" cy="260" r="180" />
+            <circle cx="260" cy="260" r="240" />
+          </g>
+        </svg>
+        <div style={{ padding: "0 clamp(20px, 5vw, 72px)", position: "relative", zIndex: 1 }}>
+          <span className="about-eyebrow reveal-up" style={{ color: "var(--accent)" }}>About mydiio</span>
+          <h1 className="about-h1 reveal-up delay-1" style={{ color: "var(--on-dark)" }}>Ads on the move.</h1>
+          <p className="about-lead reveal-up delay-2" style={{ maxWidth: "46ch", margin: "20px auto 32px", color: "rgba(244,239,227,0.7)" }}>
             mydiio puts digital advertising screens inside tuk-tuks across Colombo. Every ride is an audience. Every driver earns more. Every impression is verified.
           </p>
           <div className="about-cta-row reveal-up delay-3">
@@ -267,7 +283,7 @@ function AboutPage() {
             <a href="/drivers/apply" className="about-btn" style={greenBtn}>Become a driver →</a>
           </div>
         </div>
-        <div className="ticker-strip">
+        <div className="ticker-strip" style={{ marginTop: "clamp(40px, 6vh, 64px)" }}>
           <div className="ticker-inner">
             <span>{tickerText.repeat(6)}</span>
             <span>{tickerText.repeat(6)}</span>
@@ -276,7 +292,7 @@ function AboutPage() {
       </section>
 
       {/* SECTION 2 — THE PROBLEM */}
-      <section style={{ background: "var(--bg2)", padding: "clamp(72px, 10vh, 120px) clamp(20px, 5vw, 72px)" }}>
+      <section style={{ background: "var(--bg2)", padding: "var(--section-py) clamp(20px, 5vw, 72px)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 52 }}>
             <span className="about-eyebrow reveal-up">The problem we solve</span>
@@ -303,7 +319,7 @@ function AboutPage() {
       </section>
 
       {/* SECTION 3 — HOW IT WORKS */}
-      <section style={{ background: "var(--bg)", padding: "clamp(72px, 10vh, 120px) clamp(20px, 5vw, 72px)", textAlign: "center" }}>
+      <section style={{ background: "var(--bg)", padding: "var(--section-py) clamp(20px, 5vw, 72px)", textAlign: "center" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <span className="about-eyebrow reveal-up">How it works</span>
           <h2 className="about-h2 reveal-up delay-1" dangerouslySetInnerHTML={{ __html: "Simple for brands. Valuable for <em>drivers</em>." }} />
@@ -330,7 +346,7 @@ function AboutPage() {
       </section>
 
       {/* SECTION 4 — COMMITMENTS */}
-      <section style={{ background: "var(--ink)", padding: "clamp(72px, 10vh, 120px) clamp(20px, 5vw, 72px)", textAlign: "center" }}>
+      <section style={{ background: "var(--ink)", padding: "var(--section-py) clamp(20px, 5vw, 72px)", textAlign: "center" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <span className="about-eyebrow reveal-up" style={{ color: "var(--accent)" }}>Our commitments</span>
           <h2 className="about-h2 about-h2-dark reveal-up delay-1" style={{ fontSize: "clamp(30px, 4.4vw, 60px)" }} dangerouslySetInnerHTML={{ __html: "Not just the right thing to do. The <em>smart</em> thing to do." }} />
@@ -349,22 +365,45 @@ function AboutPage() {
         </div>
       </section>
 
+      {/* SECTION 4.5 — DRIVER DIGNITY PROOF (transitional) */}
+      <section style={{ background: "var(--bg2)", padding: "var(--section-py) clamp(20px, 5vw, 72px)" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(24px, 4vw, 56px)", alignItems: "center" }} className="dignity-grid">
+          <div className="reveal-up" style={{ background: "var(--bg)", border: "2px dashed rgba(30,26,21,0.2)", borderRadius: 18, aspectRatio: "16 / 9", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+            <img src={DRIVER_PAYMENT} alt="Driver payment confirmation" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+          </div>
+          <div className="reveal-up delay-1">
+            <span className="eyebrow" style={{ color: "var(--green-ink)" }}>Driver Dignity</span>
+            <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "clamp(22px, 3vw, 34px)", color: "var(--ink)", margin: "8px 0 14px", letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+              Paid on the 5th. Every month.
+            </h3>
+            <p style={{ color: "var(--ink-soft)", fontSize: 15, lineHeight: 1.65, margin: 0 }}>
+              Not a promise on a website. A commitment built into the business from day one. Every driver receives a bank transfer on the 5th of every calendar month, without exception. We've built the platform around this — not around it.
+            </p>
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: "var(--green-ink)", fontWeight: 700, marginTop: 16, letterSpacing: "0.08em" }}>
+              No exceptions · No delays · No excuses
+            </div>
+          </div>
+        </div>
+        <style>{`@media (max-width: 768px) { .dignity-grid { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+
       {/* SECTION 5 — CTA */}
-      <section style={{ background: "var(--bg2)", padding: "clamp(72px, 10vh, 120px) clamp(20px, 5vw, 72px)", textAlign: "center" }}>
-        <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      <section style={{ background: "var(--bg2)", padding: "var(--section-py) clamp(20px, 5vw, 72px)", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <img src={COLOMBO_STREET} alt="" aria-hidden="true" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.06, zIndex: 0, pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1080, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <span className="about-eyebrow reveal-up">Get involved</span>
           <h2 className="about-h2 reveal-up delay-1" style={{ fontSize: "clamp(30px, 4.4vw, 60px)" }}>There's a place for you in the network.</h2>
           <p className="about-lead reveal-up delay-2" style={{ maxWidth: "48ch", margin: "16px auto 40px" }}>
             Whether you want to reach Colombo's daily commuters or earn extra income alongside your existing routes — the door is open.
           </p>
           <div className="cta-grid reveal-up delay-3">
-            <div style={{ background: "var(--accent-soft)", border: "2px solid var(--ink)", borderRadius: 26, boxShadow: "var(--sticker)", padding: "32px 28px", textAlign: "left" }}>
+            <div className="cta-card-amber" style={{ background: "var(--accent-soft)", border: "2px solid var(--ink)", borderRadius: 26, boxShadow: "var(--shadow-card)", padding: "32px 28px", textAlign: "left", transition: "all 0.2s ease" }}>
               <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--accent-deep)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em" }}>For businesses</div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 22, color: "var(--ink)", margin: "8px 0 10px" }}>Run your first campaign.</h3>
               <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>From LKR 20,000/month. GPS-verified impressions. First 14 days free. No agency needed.</p>
               <a href="/advertise/apply" className="about-btn" style={{ ...primaryBtn, marginTop: 20, width: "100%", textAlign: "center", boxSizing: "border-box" }}>Apply for a spot →</a>
             </div>
-            <div style={{ background: "var(--green-soft)", border: "2px solid var(--ink)", borderRadius: 26, boxShadow: "3px 3px 0 var(--green)", padding: "32px 28px", textAlign: "left" }}>
+            <div className="cta-card-green" style={{ background: "var(--green-soft)", border: "2px solid var(--green)", borderRadius: 26, boxShadow: "var(--shadow-green)", padding: "32px 28px", textAlign: "left", transition: "all 0.2s ease" }}>
               <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--green-ink)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em" }}>For tuk-tuk drivers</div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 22, color: "var(--ink)", margin: "8px 0 10px" }}>Earn more from every ride.</h3>
               <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>LKR 6,000 base pay every month. Keep your routes. Screen installed free. Payment on the 5th, every month, without fail.</p>
@@ -375,6 +414,10 @@ function AboutPage() {
             No payment today. We'll contact you within 24 hours.
           </p>
         </div>
+        <style>{`
+          .cta-card-amber:hover { transform: translate(-3px,-3px); box-shadow: var(--shadow-card-hover) !important; }
+          .cta-card-green:hover { transform: translate(-3px,-3px); box-shadow: var(--shadow-green-hover) !important; }
+        `}</style>
       </section>
     </SiteShell>
   );
