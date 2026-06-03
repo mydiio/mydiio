@@ -2,10 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
+import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { AdvertiserApplication } from "@/components/site/AdvertiserApplication";
 import { ColomboMap } from "@/components/site/ColomboMap";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/advertise")({
   component: AdvertisePage,
