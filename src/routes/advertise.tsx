@@ -311,7 +311,7 @@ function Pricing() {
         fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.2,
         color: C.inkSoft, textAlign: "center", marginTop: 36, maxWidth: 640, marginInline: "auto", lineHeight: 1.6,
       }}>
-        Every ad minute earns loyalty points — redeemable for free ad time. Founding Pioneer partners earn points at the highest rate, permanently.
+        Every ad minute earns loyalty points — redeemable for free screen time. Founding Pioneer partners earn points at the highest rate, permanently. Points start accumulating from Day 8.
       </p>
     </Section>
   );
