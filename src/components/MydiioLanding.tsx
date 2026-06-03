@@ -285,11 +285,12 @@ function WhyItWorks() {
         <span className="eyebrow reveal-up">{t("why_kicker")}</span>
         <h2 className="reveal-up delay-1" style={{
           fontFamily: "'Space Grotesk', system-ui, sans-serif",
+          fontWeight: 700,
           fontSize: "clamp(44px, 7.4vw, 104px)",
           color: "var(--ink)",
-          lineHeight: 1.06,
-          letterSpacing: "-0.02em",
-          marginTop: 14,
+          lineHeight: 0.93,
+          letterSpacing: "-0.04em",
+          marginTop: 18,
         }}>
           {t("why_title")}
         </h2>
