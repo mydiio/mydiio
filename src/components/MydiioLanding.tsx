@@ -88,7 +88,7 @@ function Hero() {
             fontFamily: "'Space Grotesk', system-ui, sans-serif",
             fontWeight: 700,
             color: "#fff",
-            fontSize: "clamp(44px, 7.4vw, 104px)",
+            fontSize: "clamp(42px, 7.2vw, 102px)",
             lineHeight: 0.93,
             letterSpacing: "-0.04em",
             marginTop: 18,
