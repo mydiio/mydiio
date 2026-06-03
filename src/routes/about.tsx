@@ -365,22 +365,45 @@ function AboutPage() {
         </div>
       </section>
 
+      {/* SECTION 4.5 — DRIVER DIGNITY PROOF (transitional) */}
+      <section style={{ background: "var(--bg2)", padding: "var(--section-py) clamp(20px, 5vw, 72px)" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(24px, 4vw, 56px)", alignItems: "center" }} className="dignity-grid">
+          <div className="reveal-up" style={{ background: "var(--bg)", border: "2px dashed rgba(30,26,21,0.2)", borderRadius: 18, aspectRatio: "16 / 9", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+            <img src={DRIVER_PAYMENT} alt="Driver payment confirmation" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+          </div>
+          <div className="reveal-up delay-1">
+            <span className="eyebrow" style={{ color: "var(--green-ink)" }}>Driver Dignity</span>
+            <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "clamp(22px, 3vw, 34px)", color: "var(--ink)", margin: "8px 0 14px", letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+              Paid on the 5th. Every month.
+            </h3>
+            <p style={{ color: "var(--ink-soft)", fontSize: 15, lineHeight: 1.65, margin: 0 }}>
+              Not a promise on a website. A commitment built into the business from day one. Every driver receives a bank transfer on the 5th of every calendar month, without exception. We've built the platform around this — not around it.
+            </p>
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: "var(--green-ink)", fontWeight: 700, marginTop: 16, letterSpacing: "0.08em" }}>
+              No exceptions · No delays · No excuses
+            </div>
+          </div>
+        </div>
+        <style>{`@media (max-width: 768px) { .dignity-grid { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+
       {/* SECTION 5 — CTA */}
-      <section style={{ background: "var(--bg2)", padding: "clamp(72px, 10vh, 120px) clamp(20px, 5vw, 72px)", textAlign: "center" }}>
-        <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      <section style={{ background: "var(--bg2)", padding: "var(--section-py) clamp(20px, 5vw, 72px)", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <img src={COLOMBO_STREET} alt="" aria-hidden="true" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.06, zIndex: 0, pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1080, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <span className="about-eyebrow reveal-up">Get involved</span>
           <h2 className="about-h2 reveal-up delay-1" style={{ fontSize: "clamp(30px, 4.4vw, 60px)" }}>There's a place for you in the network.</h2>
           <p className="about-lead reveal-up delay-2" style={{ maxWidth: "48ch", margin: "16px auto 40px" }}>
             Whether you want to reach Colombo's daily commuters or earn extra income alongside your existing routes — the door is open.
           </p>
           <div className="cta-grid reveal-up delay-3">
-            <div style={{ background: "var(--accent-soft)", border: "2px solid var(--ink)", borderRadius: 26, boxShadow: "var(--sticker)", padding: "32px 28px", textAlign: "left" }}>
+            <div className="cta-card-amber" style={{ background: "var(--accent-soft)", border: "2px solid var(--ink)", borderRadius: 26, boxShadow: "var(--shadow-card)", padding: "32px 28px", textAlign: "left", transition: "all 0.2s ease" }}>
               <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--accent-deep)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em" }}>For businesses</div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 22, color: "var(--ink)", margin: "8px 0 10px" }}>Run your first campaign.</h3>
               <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>From LKR 20,000/month. GPS-verified impressions. First 14 days free. No agency needed.</p>
               <a href="/advertise/apply" className="about-btn" style={{ ...primaryBtn, marginTop: 20, width: "100%", textAlign: "center", boxSizing: "border-box" }}>Apply for a spot →</a>
             </div>
-            <div style={{ background: "var(--green-soft)", border: "2px solid var(--ink)", borderRadius: 26, boxShadow: "3px 3px 0 var(--green)", padding: "32px 28px", textAlign: "left" }}>
+            <div className="cta-card-green" style={{ background: "var(--green-soft)", border: "2px solid var(--green)", borderRadius: 26, boxShadow: "var(--shadow-green)", padding: "32px 28px", textAlign: "left", transition: "all 0.2s ease" }}>
               <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--green-ink)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em" }}>For tuk-tuk drivers</div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 22, color: "var(--ink)", margin: "8px 0 10px" }}>Earn more from every ride.</h3>
               <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>LKR 6,000 base pay every month. Keep your routes. Screen installed free. Payment on the 5th, every month, without fail.</p>
@@ -391,6 +414,10 @@ function AboutPage() {
             No payment today. We'll contact you within 24 hours.
           </p>
         </div>
+        <style>{`
+          .cta-card-amber:hover { transform: translate(-3px,-3px); box-shadow: var(--shadow-card-hover) !important; }
+          .cta-card-green:hover { transform: translate(-3px,-3px); box-shadow: var(--shadow-green-hover) !important; }
+        `}</style>
       </section>
     </SiteShell>
   );
