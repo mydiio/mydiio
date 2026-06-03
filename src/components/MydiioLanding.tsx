@@ -284,18 +284,14 @@ function WhyItWorks() {
       <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up">{t("why_kicker")}</span>
         <h2 className="reveal-up delay-1" style={{
-          fontFamily: "'DM Serif Display', Georgia, serif",
-          fontSize: "clamp(34px, 5.4vw, 72px)",
+          fontFamily: "'Space Grotesk', system-ui, sans-serif",
+          fontSize: "clamp(44px, 7.4vw, 104px)",
           color: "var(--ink)",
           lineHeight: 1.06,
           letterSpacing: "-0.02em",
           marginTop: 14,
         }}>
-          {lang === "en" ? (
-            <>Where digital ends, <em style={{ color: "var(--accent-deep)", fontStyle: "italic" }}>real attention</em> begins.</>
-          ) : (
-            t("why_title")
-          )}
+          {t("why_title")}
         </h2>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 18 }}>
@@ -337,11 +333,7 @@ function HowItWorks() {
           letterSpacing: "-1px",
           marginTop: 14,
         }}>
-          {lang === "en" ? (
-            <>Simple for brands. <em style={{ color: "var(--accent-deep)", fontStyle: "italic" }}>Valuable</em> for drivers.</>
-          ) : (
-            t("how_title")
-          )}
+          {t("how_title")}
         </h2>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 22 }}>
