@@ -125,18 +125,18 @@ function HowItWorks() {
   ];
   return (
     <Section bg={C.cream}>
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
-          How it works
-        </span>
+      <div style={{ maxWidth: 880, margin: "0 auto" }}>
+        <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
+          <span className="eyebrow" style={{ textAlign: "center" }}>How it works</span>
+        </div>
+        <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+          Three steps. That's the whole thing.
+        </h2>
       </div>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
-        Three steps. That's the whole thing.
-      </h2>
       <div className="how-flow">
         {steps.map((s, i) => (
-          <div key={s.n} className="reveal step-item" style={{ display: "contents" }}>
-            <div className="step-card">
+          <div key={s.n} className={`reveal reveal-up delay-${i + 1} step-item`} style={{ display: "contents" }}>
+            <div className="step-card mydiio-card">
               <div className="step-circle font-display">{s.n}</div>
               <div className="font-display" style={{ fontSize: 18, color: C.ink, marginTop: 16 }}>{s.title}</div>
               <p style={{
