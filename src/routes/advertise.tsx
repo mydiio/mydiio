@@ -756,7 +756,7 @@ function PioneerProgramme() {
           fontWeight: 400, color: "var(--on-dark)", opacity: 0.65, textAlign: "center",
           maxWidth: "52ch", margin: "16px auto 56px", lineHeight: 1.65,
         }}>
-          Pioneer spots are not a promotional offer — they are a permanent founding partnership. Your rate, your category exclusivity, and your priority placement are locked in for the life of your contract. When Pioneer is full, it is full. There will only ever be 10.
+          Pioneer spots are not a promotional offer — they are a permanent founding partnership. Your rate is locked in for life. Your category exclusivity means you are the only business in your sector advertising on mydiio. When Pioneer is full, it is full. There will only ever be 10.
         </p>
 
         <div className="reveal reveal-up" style={{ maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
