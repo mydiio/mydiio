@@ -102,16 +102,16 @@ export const dict: Dict = {
   whyn_body: { en: "1.1 million tuk-tuks operate across Sri Lanka. 320,000 in and around Colombo. Zero of them had screens until now. mydiio is the first platform to change that.", si: "ශ්‍රී ලංකාව පුරා මිලියන 1.1ක ත්‍රිරෝද රථ ක්‍රියාත්මක වේ. කොළඹ සහ අවට 320,000ක්. මෙතෙක්, ඔවුන්ගෙන් කිසිවකුට තිර තිබුණේ නැත.", ta: "இலங்கை முழுவதும் 1.1 மில்லியன் டுக்-டுக்குகள் இயங்குகின்றன. கொழும்பிலும் சுற்றியும் 320,000. இதுவரை, அவற்றில் எதற்கும் திரைகள் இல்லை." },
 
   // --- Scale Story ---
-  scale_kicker: { en: "Scale story", si: "වර්ධන කතාව", ta: "வளர்ச்சி கதை" },
+  scale_kicker: { en: "The Road Ahead", si: "The Road Ahead", ta: "The Road Ahead" },
   scale_title: { en: "Colombo first. Every city next.", si: "මුලින්ම කොළඹ. ඊළඟට සෑම නගරයක්ම.", ta: "முதலில் கொழும்பு. அடுத்து ஒவ்வொரு நகரமும்." },
-  scale_c1_t: { en: "More vehicles = more reach", si: "වැඩි වාහන = වැඩි ඉන්වෙන්ටරිය", ta: "அதிக வாகனங்கள் = அதிக சரக்கு" },
-  scale_c1_b: { en: "Every tuk-tuk that joins the network adds advertising slots and city coverage.", si: "එකතු කරන සෑම වාහනයක්ම දැන්වීම් අවස්ථා සහ නගර ආවරණය පුළුල් කරයි.", ta: "சேர்க்கப்படும் ஒவ்வொரு வாகனமும் விளம்பர இடங்கள் மற்றும் நகர கவரேஜை விரிவுபடுத்துகிறது." },
-  scale_c2_t: { en: "More routes = better data", si: "වැඩි මාර්ග = වඩා හොඳ ළඟාවීම", ta: "அதிக வழிகள் = சிறந்த அணுகல்" },
-  scale_c2_b: { en: "As the fleet grows, route density improves — meaning better zone coverage for advertisers.", si: "රියදුරන් නව කලාප පුරවන විට ඝනත්වය වැඩි වේ.", ta: "ஓட்டுநர்கள் புதிய மண்டலங்களை நிரப்பும்போது அடர்த்தி கூடுகிறது." },
-  scale_c3_t: { en: "More advertisers = stronger network", si: "වැඩි ප්‍රචාරකයින් = ශක්තිමත් ජාලයක්", ta: "அதிக விளம்பரதாரர்கள் = வலுவான வலைப்பின்னல்" },
-  scale_c3_b: { en: "Recurring campaigns build predictable revenue that funds fleet expansion.", si: "පුනරාවර්තන ව්‍යාපාර පුරෝකථනය කළ හැකි ආදායම ගොඩනඟයි.", ta: "தொடர்ச்சியான பிரச்சாரங்கள் கணிக்கக்கூடிய வருவாயை உருவாக்குகின்றன." },
-  scale_c4_t: { en: "More data = smarter campaigns", si: "වැඩි දත්ත = දක්ෂ ව්‍යාපාර", ta: "அதிக தரவு = புத்திசாலி பிரச்சாரங்கள்" },
-  scale_c4_b: { en: "Route and impression data grows more valuable over time — improving results for every advertiser.", si: "මාර්ග + රැඳී සිටීමේ දත්ත සෑම අනාගත මිලදී ගැනීමක්ම තියුණු කරයි.", ta: "வழி + தங்கும் தரவு ஒவ்வொரு எதிர்கால வாங்குதலையும் கூர்மைப்படுத்துகிறது." },
+  scale_c1_t: { en: "More screens.", si: "More screens.", ta: "More screens." },
+  scale_c1_b: { en: "As the network grows, your campaigns can reach more passengers across more areas.", si: "As the network grows, your campaigns can reach more passengers across more areas.", ta: "As the network grows, your campaigns can reach more passengers across more areas." },
+  scale_c2_t: { en: "More locations.", si: "More locations.", ta: "More locations." },
+  scale_c2_b: { en: "Expand into new areas and connect with audiences wherever they travel.", si: "Expand into new areas and connect with audiences wherever they travel.", ta: "Expand into new areas and connect with audiences wherever they travel." },
+  scale_c3_t: { en: "More insights.", si: "More insights.", ta: "More insights." },
+  scale_c3_b: { en: "Smarter campaigns backed by real data.", si: "Smarter campaigns backed by real data.", ta: "Smarter campaigns backed by real data." },
+  scale_c4_t: { en: "More growth.", si: "More growth.", ta: "More growth." },
+  scale_c4_b: { en: "More value for businesses, drivers and passengers.", si: "More value for businesses, drivers and passengers.", ta: "More value for businesses, drivers and passengers." },
 
   // --- Founding Offer ---
   fo_kicker: { en: "Founding offer · 10 spots", si: "ආරම්භක දීමනාව · ස්ථාන 10", ta: "நிறுவன சலுகை · 10 இடங்கள்" },
