@@ -314,6 +314,10 @@ function AboutPage() {
               Small businesses couldn't afford to advertise. Tuk-tuk drivers had no way to earn extra income. mydiio fixes both at once.
             </p>
           </div>
+          <div className="reveal-up delay-2" style={{ position: "relative", width: "100%", height: "clamp(280px, 35vw, 400px)", overflow: "hidden", borderRadius: 18, marginBottom: 52 }}>
+            <img src={COLOMBO_TUK_DAYTIME.url} alt="Colombo tuk-tuks on a busy daytime street" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+            <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+          </div>
           <div className="problem-grid reveal-up delay-3">
             <BeforeAfterCard variant="advertiser">
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink)", margin: "0 0 12px" }}>Advertising was only for big companies.</h3>
