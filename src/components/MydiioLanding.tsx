@@ -480,7 +480,7 @@ function TukInterior() {
 function Coverage() {
   return (
     <Section bg="var(--bg)">
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 40, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>
           Coverage
         </span>
@@ -494,6 +494,7 @@ function Coverage() {
       <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
         <img src={COLOMBO_STREET} alt="tuk-tuks on a Colombo street" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
+
       <div className="reveal reveal-up delay-2">
         <ColomboMap />
       </div>
