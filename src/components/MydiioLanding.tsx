@@ -726,16 +726,17 @@ function ScaleStory() {
   ];
   return (
     <Section bg={"var(--bg)"}>
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("scale_kicker")}</span>
         <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
           {t("scale_title")}
         </h2>
       </div>
-      <div className="reveal reveal-up delay-2" style={{ marginBottom: 40 }}>
+      <div className="reveal reveal-up delay-2" style={{ marginBottom: 32 }}>
         <img src={TUK_STAND.url} alt="Sri Lankan tuk-tuk drivers at a stand in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 20 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 24 }}>
+
         {cards.map((c, i) => (
           <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
             background: "var(--paper)",
