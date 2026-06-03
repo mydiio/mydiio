@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { useI18n } from "@/lib/i18n";
-import COLOMBO_STREET from "@/assets/colombo-street.jpg";
+import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
