@@ -205,7 +205,9 @@
   }
   .btn-bold:hover { transform: translate(-2px, -2px); box-shadow: var(--sticker-lg); }
   .btn-bold:active { transform: translate(2px, 2px); box-shadow: var(--sticker-press); }
-  .btn-bold .arrow, .btn-bold [data-arrow] { display: inline-block; transition: transform 0.18s ease; }
+  .arrow, [data-arrow] { display: inline-block; transition: transform 0.18s ease; }
+  a:hover .arrow, button:hover .arrow,
+  a:hover [data-arrow], button:hover [data-arrow],
   .btn-bold:hover .arrow, .btn-bold:hover [data-arrow] { transform: translateX(4px); }
 
   .input-bold {
