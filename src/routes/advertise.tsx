@@ -186,12 +186,32 @@ function Pricing() {
       tierSlug: "horizon", ctaLabel: "Contact us about Horizon →", btnStyle: "ghost",
     },
   ];
+  const [pioneerCount, setPioneerCount] = useState(3);
+  const [progressWidth, setProgressWidth] = useState(0);
+  useEffect(() => {
+    supabase
+      .from("advertiser_applications")
+      .select("id", { count: "exact", head: true })
+      .eq("tier_interest", "pioneer")
+      .then(({ count }) => {
+        if (count !== null && count !== undefined) setPioneerCount(Math.min(count, 10));
+      });
+  }, []);
+  useEffect(() => {
+    const t = setTimeout(() => setProgressWidth((pioneerCount / 10) * 100), 50);
+    return () => clearTimeout(t);
+  }, [pioneerCount]);
+  const remaining = Math.max(0, 10 - pioneerCount);
+
   return (
     <Section bg={C.cream}>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(30px, 4vw, 44px)", color: C.ink, textAlign: "center", lineHeight: 1.05 }}>
+      <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
+        <span className="eyebrow">Pricing</span>
+      </div>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(30px, 4vw, 44px)", color: C.ink, textAlign: "center", lineHeight: 1.05 }}>
         Simple plans. No hidden costs.
       </h2>
-      <p className="reveal" style={{
+      <p className="reveal reveal-up" style={{
         fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
         fontSize: 16, color: C.inkSoft, textAlign: "center", marginTop: 14, maxWidth: 560, marginInline: "auto",
       }}>
@@ -199,8 +219,8 @@ function Pricing() {
       </p>
 
       <div className="pricing-grid">
-        {plans.map((p) => (
-          <div key={p.name} className="reveal price-card" style={{
+        {plans.map((p, idx) => (
+          <div key={p.name} className={`reveal reveal-up delay-${idx + 1} price-card mydiio-card`} style={{
             background: "#fff",
             border: `${p.highlight ? 3 : 2}px solid ${p.highlight ? C.amber : C.ink}`,
             boxShadow: `${p.highlight ? 8 : 6}px ${p.highlight ? 8 : 6}px 0 ${C.ink}`,
@@ -241,6 +261,26 @@ function Pricing() {
                 </li>
               ))}
             </ul>
+            {p.tierSlug === "pioneer" && (
+              <div style={{ marginTop: 16 }}>
+                <div style={{
+                  fontFamily: "'Space Mono', monospace", fontSize: 11,
+                  color: "var(--accent-deep)", fontWeight: 700, marginBottom: 6,
+                }}>
+                  {remaining} of 10 Pioneer spots remaining
+                </div>
+                <div style={{
+                  width: "100%", height: 3, background: "var(--accent-soft)",
+                  borderRadius: 2, overflow: "hidden",
+                }}>
+                  <div style={{
+                    width: `${progressWidth}%`, height: "100%",
+                    background: "var(--accent)", borderRadius: 2,
+                    transition: "width 800ms var(--ease-spring)",
+                  }} />
+                </div>
+              </div>
+            )}
             <a href={`/advertise?tier=${p.tierSlug}#apply-section`}
               className={`tier-cta tier-cta-${p.btnStyle}`}
               style={{
@@ -267,13 +307,75 @@ function Pricing() {
         ))}
       </div>
 
-      <p className="reveal" style={{
+      <p className="reveal reveal-up" style={{
         fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.2,
         color: C.inkSoft, textAlign: "center", marginTop: 36, maxWidth: 640, marginInline: "auto", lineHeight: 1.6,
       }}>
         Every ad minute earns loyalty points — redeemable for free airtime. Pioneer partners earn at the highest rate, permanently.
       </p>
     </Section>
+  );
+}
+
+/* ---------- Social proof strip ---------- */
+function SocialProofStrip() {
+  const chips = ["Green Bakery · Nugegoda", "City Pharma · Colombo 03", "Style House · Fort"];
+  return (
+    <section className="reveal reveal-up sp-strip" style={{
+      background: "var(--ink)",
+      padding: "16px var(--section-px)",
+      display: "flex", alignItems: "center", justifyContent: "space-between",
+      gap: 16, flexWrap: "wrap",
+    }}>
+      <div style={{
+        fontFamily: "'Space Mono', monospace", fontSize: 10,
+        color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.12em",
+      }}>
+        Businesses already interested
+      </div>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {chips.map((c) => (
+          <span key={c} style={{
+            background: "rgba(244,166,42,0.15)",
+            border: "1px solid rgba(244,166,42,0.4)",
+            borderRadius: 20, padding: "5px 12px",
+            fontFamily: "'Space Mono', monospace", fontSize: 11,
+            color: "var(--accent)", fontWeight: 700,
+          }}>{c}</span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Tuk interior feature ---------- */
+function TukInterior() {
+  return (
+    <section className="section-wrap" style={{ background: C.cream, maxWidth: "none" }}>
+      <div className="tuk-interior-grid" style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div className="reveal reveal-up" style={{
+          border: "2px solid var(--ink)", borderRadius: 22,
+          boxShadow: "var(--shadow-card-lg)", overflow: "hidden",
+        }}>
+          <img src={TUKTUK_INTERIOR} alt="Tuk-tuk interior screen playing an advertisement" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        </div>
+        <div>
+          <span className="eyebrow reveal reveal-up">Every ride</span>
+          <h3 className="reveal reveal-up font-display" style={{ fontSize: "clamp(24px, 3vw, 36px)", color: C.ink, lineHeight: 1.1, marginTop: 8 }}>
+            Your ad plays for the full ride.
+          </h3>
+          <p className="reveal reveal-up" style={{ color: "var(--ink-soft)", fontSize: 15, marginTop: 14, lineHeight: 1.6 }}>
+            Passengers face the screen for 10–20 minutes with nothing else to look at. No scroll button. No skip. No competition.
+          </p>
+          <div className="reveal reveal-up" style={{
+            fontFamily: "'Space Mono', monospace", fontSize: 13,
+            color: "var(--accent-deep)", fontWeight: 700, marginTop: 16,
+          }}>
+            14 minutes avg. passenger attention
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
