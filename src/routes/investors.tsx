@@ -93,7 +93,7 @@ function DeckRequestModal({ open, onClose }: { open: boolean; onClose: () => voi
     if (!n || !w) { setError("Name and WhatsApp number are required."); return; }
     if (n.length > 200 || w.length > 50 || firm.length > 200) { setError("Input too long."); return; }
     setSubmitting(true); setError(null);
-    const { error: insErr } = await supabase.from("investor_enquiries").insert({
+    const { error: insErr } = await (supabase as any).from("investor_enquiries").insert({
       name: n,
       whatsapp_number: w,
       fund_or_firm: firm.trim() || null,
