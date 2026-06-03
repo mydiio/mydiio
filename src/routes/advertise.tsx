@@ -321,12 +321,18 @@ function Pricing() {
         ))}
       </div>
 
-      <p className="reveal reveal-up" style={{
-        fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.2,
-        color: C.inkSoft, textAlign: "center", marginTop: 36, maxWidth: 640, marginInline: "auto", lineHeight: 1.6,
+      <p className="reveal reveal-up pricing-footnote" style={{
+        fontSize: 13,
+        color: "#7A7A72",
+        textAlign: "center",
+        lineHeight: 1.7,
+        maxWidth: 640,
+        margin: "0 auto",
+        borderTop: "1px solid rgba(26,26,24,0.1)",
       }}>
         Every ad minute earns loyalty points — redeemable for free screen time. Founding Pioneer partners earn points at the highest rate, permanently. Points start accumulating from Day 8.
       </p>
+
     </Section>
   );
 }
@@ -1221,6 +1227,11 @@ function AdvertisePage() {
         .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 56px; align-items: stretch; }
         @media (min-width: 560px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
         @media (min-width: 900px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
+        .price-card { padding-bottom: 28px !important; }
+        @media (max-width: 639px) { .price-card { padding-bottom: 20px !important; } }
+        .pricing-footnote { margin-top: 40px; padding-top: 24px; }
+        @media (max-width: 1023px) { .pricing-footnote { margin-top: 28px; } }
+        @media (max-width: 639px) { .pricing-footnote { margin-top: 20px; padding-top: 16px; } }
         .tier-cta-primary:hover, .tier-cta-ghost:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink) !important; }
         .tier-cta-ink:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 rgba(30,26,21,0.35) !important; }
         .tier-cta-ghost:hover { background: var(--ink) !important; color: var(--on-dark) !important; }
