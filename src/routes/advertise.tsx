@@ -64,7 +64,7 @@ function Hero() {
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "120px 6% 80px" }}>
         <div style={{ maxWidth: 760 }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>
-            For Colombo Businesses
+            For advertisers
           </span>
           <h1 className="font-display" style={{
             color: "#fff",
@@ -77,7 +77,7 @@ function Hero() {
             fontSize: "clamp(15px, 1.8vw, 19px)",
             color: "rgba(255,255,255,0.78)", marginTop: 18, maxWidth: 600,
           }}>
-            14 minutes. No skip button. GPS-verified weekly reports. From LKR 20,000/month.
+            mydiio puts your ad on a screen inside every tuk-tuk ride. Passengers sit facing it for 10 to 20 minutes, with nothing else to look at. Your first 14 days are completely free.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
             <a href="#waitlist" onClick={scrollToWaitlist}
@@ -119,9 +119,9 @@ function StatPill({ value, label }: { value: string; label: string }) {
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Send us your ad", body: "Share your creative or idea. We'll produce it free." },
-    { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen in the fleet." },
-    { n: 3, title: "Weekly GPS report", body: "Verified impressions delivered to your inbox every Monday." },
+    { n: 1, title: "Send us your ad", body: "Share your video or image creative — 15 or 30 seconds long. No production house needed. We'll make your first one for free to get you started." },
+    { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen across the fleet in your chosen zones. Campaigns go live within 72 hours of approval." },
+    { n: 3, title: "Weekly GPS report", body: "Every Monday you receive a verified report: every vehicle, every GPS location, every play count. Proof your ad ran — every single time." },
   ];
   return (
     <Section bg={C.cream}>
@@ -165,24 +165,24 @@ function Pricing() {
   }> = [
     {
       name: "PIONEER", price: "LKR 25–35k", per: "/mo · 6-month min",
-      features: ["Category exclusivity in your zone", "Rate locked for life", "Priority rotation"],
-      badge: "FOUNDING — 10 SPOTS ONLY",
+      features: ["Category exclusivity in your zone", "Rate locked for life — never increases", "Priority rotation across all 10 zones", "Free ad creative production"],
+      badge: "Founding — 10 spots only",
       highlight: true,
       tierSlug: "pioneer", ctaLabel: "Apply for Pioneer →", btnStyle: "primary",
     },
     {
       name: "ROAMER", price: "LKR 20,000", per: "/mo · 3-month min",
-      features: ["Standard rotation", "Full dashboard access", "Weekly GPS reports"],
+      features: ["Standard rotation", "Up to 3 Colombo zones", "Full dashboard access", "Weekly GPS reports"],
       tierSlug: "roamer", ctaLabel: "Apply for Roamer →", btnStyle: "ink",
     },
     {
       name: "VOYAGER", price: "LKR 32,000", per: "/mo · 6-month min",
-      features: ["Priority rotation", "Better loyalty points rate", "Full dashboard access"],
+      features: ["Priority rotation", "Up to 7 Colombo zones", "Better loyalty points rate", "Full dashboard access"],
       tierSlug: "voyager", ctaLabel: "Apply for Voyager →", btnStyle: "ink",
     },
     {
       name: "HORIZON", price: "LKR 65,000+", per: "/mo · Custom",
-      features: ["Custom zones", "Enterprise support", "Multi-vehicle campaigns"],
+      features: ["Custom zone configuration", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
       tierSlug: "horizon", ctaLabel: "Contact us about Horizon →", btnStyle: "ghost",
     },
   ];
@@ -311,7 +311,7 @@ function Pricing() {
         fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.2,
         color: C.inkSoft, textAlign: "center", marginTop: 36, maxWidth: 640, marginInline: "auto", lineHeight: 1.6,
       }}>
-        Every ad minute earns loyalty points — redeemable for free airtime. Pioneer partners earn at the highest rate, permanently.
+        Every ad minute earns loyalty points — redeemable for free ad time. Founding Pioneer partners earn points at the highest rate, permanently.
       </p>
     </Section>
   );
@@ -489,11 +489,11 @@ function DashboardPreview() {
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   const items = [
-    { q: "What kind of ads can I run?", a: "15-second or 30-second video ads, or static image ads. We can produce your first creative for free from your existing branding." },
-    { q: "How do I know my ad actually played?", a: "Every play is GPS-logged and timestamped. You receive a verified weekly report every Monday with impressions, zones covered, and week-on-week trends." },
-    { q: "What is Pioneer category exclusivity?", a: "As a Pioneer advertiser, no competitor in your business category can advertise on mydiio in your geographic zone while your contract is active. You are the only pharmacy, or the only restaurant, in your area." },
-    { q: "Can I cancel?", a: "After your minimum contract term (3 or 6 months depending on tier), you can cancel with 30 days notice. No exit fees after the minimum term." },
-    { q: "What does the LKR 5,000 Pioneer deposit cover?", a: "It's fully refundable and credited against your first invoice. It reserves your exclusive category spot while we prepare your campaign." },
+    { q: "What kind of ads can I run?", a: "15-second or 30-second video ads, or static image ads. We can produce your first creative for free from your existing branding — just share your logo, colours, and a short brief." },
+    { q: "How do I know my ad actually played?", a: "Every Monday you receive a GPS-verified report showing each vehicle that ran your ad, the GPS location at the time of each play, and the total play count. There is no guessing — every impression is logged." },
+    { q: "What is Pioneer category exclusivity?", a: "Pioneer advertisers are the only business in their category allowed to advertise in their active zones. For example, a Pioneer pharmacy in Fort means no other pharmacy can run on the mydiio fleet in Fort while your campaign is active." },
+    { q: "Can I cancel?", a: "Subscription plans have minimum terms: 3 months for Roamer, 6 months for Voyager and Pioneer. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
+    { q: "What does the LKR 5,000 Pioneer deposit cover?", a: "The LKR 5,000 deposit secures your Pioneer spot on the waiting list. It is fully refundable — credited against your first invoice if you proceed, or returned in full if you decide not to. No risk." },
   ];
   return (
     <Section bg={C.cream}>
@@ -552,14 +552,14 @@ function Coverage() {
         </span>
       </div>
       <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
-        Where your ad travels
+        Where your ad travels.
       </h2>
       <p className="reveal" style={{
         fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
         fontSize: 16, color: C.inkSoft, textAlign: "center", marginTop: 14,
         maxWidth: 560, marginInline: "auto",
       }}>
-        mydiio tuk-tuks cover 7 key zones across Colombo.
+        mydiio tuk-tuks operate across 10 key zones in Greater Colombo. Every advertiser chooses which zones they want to be active in. Pioneer advertisers can access all 10 zones simultaneously.
       </p>
 
       <div className="reveal" style={{ marginTop: 40 }}>
