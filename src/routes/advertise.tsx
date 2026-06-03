@@ -176,8 +176,8 @@ function Pricing() {
       tierSlug: "roamer", ctaLabel: "Apply for Roamer →", btnStyle: "ink",
     },
     {
-      name: "VOYAGER", price: "LKR 32,000", per: "/mo · 6-month min",
-      features: ["Priority rotation", "Up to 7 Colombo zones", "Better loyalty points rate", "Full dashboard access"],
+      name: "VOYAGER", price: "LKR 38,000", per: "/mo · 6-month min",
+      features: ["Priority rotation", "Up to 15 tuk-tuks across Colombo", "Better loyalty points rate", "Full dashboard access"],
       tierSlug: "voyager", ctaLabel: "Apply for Voyager →", btnStyle: "ink",
     },
     {
