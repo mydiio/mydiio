@@ -82,7 +82,7 @@ function Hero() {
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(120px, 16vh, 180px) clamp(22px, 6vw, 80px) clamp(72px, 10vh, 110px)" }}>
         <div style={{ maxWidth: 980 }}>
           <span className="eyebrow hero-enter hero-badge" style={{ color: C.accent }}>
-            Sri Lanka · Mobility Media
+            {t("hero_kicker")}
           </span>
           <h1 className="hero-headline" style={{
             fontFamily: "'Space Grotesk', system-ui, sans-serif",
