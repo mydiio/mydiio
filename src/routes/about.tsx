@@ -156,7 +156,7 @@ function PillarCard({ n, h, b, i, openId, setOpenId }: { n: string; h: string; b
       >
         Read more <span style={{ display: "inline-block", transform: open ? "rotate(45deg)" : "rotate(0deg)", transition: "transform 0.2s ease" }}>+</span>
       </button>
-      <div style={{ maxHeight: open ? 400 : 0, overflow: "hidden", transition: "max-height 500ms cubic-bezier(0.22, 1, 0.36, 1)" }}>
+      <div style={{ maxHeight: open ? 400 : 0, overflow: "hidden", transition: "max-height 0.5s var(--ease-spring)" }}>
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)", paddingTop: 16, marginTop: 16, display: "flex", flexDirection: "column", gap: 10 }}>
           {panel.rows.map((r) => (
             <div key={r} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
