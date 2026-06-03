@@ -255,7 +255,7 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
     return () => io.disconnect();
   }, []);
   return (
-    <section ref={ref} style={{ background: bg, padding: "clamp(72px, 10vw, 140px) clamp(20px, 4vw, 32px)" }}>
+    <section ref={ref} style={{ background: bg, padding: "clamp(32px, 5vw, 64px) clamp(16px, 3vw, 24px)" }}>
       <div style={{ maxWidth: 1180, margin: "0 auto" }}>{children}</div>
     </section>
   );
@@ -263,7 +263,8 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
 
 function SectionHeader({ kicker, title }: { kicker?: string; title: string }) {
   return (
-    <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+    <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+
       {kicker && (
         <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>
           {kicker}
@@ -287,7 +288,8 @@ function WhyItWorks() {
   ];
   return (
     <Section bg="var(--bg2)">
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+
         <span className="eyebrow reveal-up">{t("why_kicker")}</span>
         <h2 className="reveal-up delay-1" style={{
           fontFamily: "'Space Grotesk', system-ui, sans-serif",
@@ -301,10 +303,11 @@ function WhyItWorks() {
           {t("why_title")}
         </h2>
       </div>
-      <div className="reveal reveal-up delay-1" style={{ marginBottom: 40 }}>
+      <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
         <img src={COLOMBO_FLEET_GOLDEN.url} alt="mydiio tuk-tuk fleet in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 18 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 24 }}>
+
         {cards.map((c, i) => (
           <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
             background: "var(--paper)",
@@ -334,7 +337,8 @@ function HowItWorks() {
   ];
   return (
     <Section bg="var(--bg)">
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+
         <span className="eyebrow reveal-up">{t("how_kicker")}</span>
         <h2 className="reveal-up delay-1" style={{
           fontFamily: "'Space Grotesk', system-ui, sans-serif",
@@ -348,10 +352,11 @@ function HowItWorks() {
           {t("how_title")}
         </h2>
       </div>
-      <div className="reveal reveal-up delay-1" style={{ marginBottom: 40 }}>
+      <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
         <img src={COLOMBO_TUK_DAYTIME.url} alt="tuk-tuks moving through a Colombo street in daytime" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 22 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 24 }}>
+
         {steps.map((s, i) => (
           <div key={s.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
             background: "var(--paper)",
@@ -383,7 +388,7 @@ function TukInterior() {
   const { t } = useI18n();
   return (
     <Section bg="var(--bg2)">
-      <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 40, alignItems: "center" }}>
+      <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 32, alignItems: "center" }}>
         <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <span className="eyebrow">{t("tuk_kicker")}</span>
           <h3 style={{
@@ -475,7 +480,7 @@ function TukInterior() {
 function Coverage() {
   return (
     <Section bg="var(--bg)">
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 40, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>
           Coverage
         </span>
@@ -489,6 +494,7 @@ function Coverage() {
       <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
         <img src={COLOMBO_STREET} alt="tuk-tuks on a Colombo street" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
+
       <div className="reveal reveal-up delay-2">
         <ColomboMap />
       </div>
@@ -669,7 +675,7 @@ function Reporting() {
   const { t, lang } = useI18n();
   return (
     <Section bg={"var(--bg)"}>
-      <div className="reveal" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 48px" }}>
+      <div className="reveal" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 32px" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("rep_kicker")}</span>
         <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
           <EmTail text={t("rep_title")} tail="not guessed." lang={lang} />
@@ -681,8 +687,9 @@ function Reporting() {
       <div className="reveal" style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
-        gap: 20,
+        gap: 24,
       }}>
+
         <MetricCard label="Active vehicles" value={48} />
         <MetricCard label="Est. daily impressions" value={412} format={(n) => `${n}k`} />
         <MetricCard label="Avg screen uptime" value={98} suffix="%" />
@@ -719,16 +726,17 @@ function ScaleStory() {
   ];
   return (
     <Section bg={"var(--bg)"}>
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("scale_kicker")}</span>
         <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
           {t("scale_title")}
         </h2>
       </div>
-      <div className="reveal reveal-up delay-2" style={{ marginBottom: 40 }}>
+      <div className="reveal reveal-up delay-2" style={{ marginBottom: 32 }}>
         <img src={TUK_STAND.url} alt="Sri Lankan tuk-tuk drivers at a stand in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 20 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 24 }}>
+
         {cards.map((c, i) => (
           <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
             background: "var(--paper)",
@@ -817,13 +825,13 @@ function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   return (
     <Section bg={"var(--bg)"}>
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 48, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("faq_kicker")}</span>
         <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
           <EmTail text={t("faq_title")} tail="asked." lang={lang} />
         </h2>
       </div>
-      <div style={{ maxWidth: 880, margin: "0 auto", display: "flex", flexDirection: "column", gap: 14 }}>
+      <div style={{ maxWidth: 880, margin: "0 auto", display: "flex", flexDirection: "column", gap: 16 }}>
         {items.map((it, i) => {
           const open = openIdx === i;
           return (
@@ -900,8 +908,9 @@ export default function MydiioLanding() {
         .hero-trust { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; max-width: 540px; }
         @media (min-width: 720px) { .hero-trust { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
-        .paths-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
-        @media (min-width: 760px) { .paths-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+        .paths-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 760px) { .paths-grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
+
 
         .path-card {
           border: 2px solid var(--ink);
