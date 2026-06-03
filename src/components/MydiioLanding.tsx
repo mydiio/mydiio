@@ -81,7 +81,7 @@ function Hero() {
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.45) 40%, rgba(20,16,12,0.88) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(120px, 16vh, 180px) clamp(22px, 6vw, 80px) clamp(72px, 10vh, 110px)" }}>
         <div style={{ maxWidth: 980 }}>
-          <span className="eyebrow hero-enter hero-badge" style={{ color: C.accent }}>
+          <span className="eyebrow hero-enter hero-badge text-lg text-left font-bold" style={{ color: C.accent }}>
             {t("hero_kicker")}
           </span>
           <h1 className="hero-headline" style={{
