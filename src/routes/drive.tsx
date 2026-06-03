@@ -42,7 +42,7 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
     return () => io.disconnect();
   }, []);
   return (
-    <section ref={ref} style={{ background: bg, padding: "96px 24px" }}>
+    <section ref={ref} className="section-wrap" style={{ background: bg, maxWidth: "none" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>{children}</div>
     </section>
   );
