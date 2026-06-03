@@ -205,7 +205,9 @@
   }
   .btn-bold:hover { transform: translate(-2px, -2px); box-shadow: var(--sticker-lg); }
   .btn-bold:active { transform: translate(2px, 2px); box-shadow: var(--sticker-press); }
-  .btn-bold .arrow, .btn-bold [data-arrow] { display: inline-block; transition: transform 0.18s ease; }
+  .arrow, [data-arrow] { display: inline-block; transition: transform 0.18s ease; }
+  a:hover .arrow, button:hover .arrow,
+  a:hover [data-arrow], button:hover [data-arrow],
   .btn-bold:hover .arrow, .btn-bold:hover [data-arrow] { transform: translateX(4px); }
 
   .input-bold {
@@ -360,6 +362,30 @@
   .hero-section > *:last-child,
   [data-hero] > *:last-child {
     margin-bottom: 0;
+  }
+
+  /* Reduced motion: disable transforms, marquees, pulses, slide-ins. Opacity fades OK. */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-up,
+    .reveal-up.in,
+    .reveal { transform: none !important; transition: opacity 0.2s ease !important; }
+    .street-track,
+    .street-track-slow,
+    .street-track-mid,
+    .street-track-fast,
+    .tuk-bob,
+    .wheel-spin,
+    .pulse-dot,
+    .steam,
+    .stat-live,
+    .status-dot-pulse { animation: none !important; }
+    .sticky-cta { transition: opacity 0.2s ease !important; transform: none !important; }
+    .sticky-cta.visible { transform: none !important; }
+    .btn-bold:hover { transform: none !important; }
+    .mydiio-card:hover { transform: none !important; }
+    .arrow, [data-arrow] { transition: none !important; }
+    a:hover .arrow, button:hover .arrow,
+    a:hover [data-arrow], button:hover [data-arrow] { transform: none !important; }
   }
 }
 
