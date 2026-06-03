@@ -313,18 +313,16 @@ function HowItWorks() {
   ];
   return (
     <Section bg={C.white}>
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
-          How it works
-        </span>
+      <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
+        <span className="eyebrow">How it works</span>
       </div>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
         Four steps. That's the whole thing.
       </h2>
       <div className="how-flow">
         {steps.map((s, i) => (
-          <div key={s.n} className="reveal" style={{ display: "contents" }}>
-            <div className="step-card">
+          <div key={s.n} className={`reveal reveal-up delay-${i + 1}`} style={{ display: "contents" }}>
+            <div className="step-card mydiio-card">
               <div className="step-circle font-display">{s.n}</div>
               <div className="font-display" style={{ fontSize: 17, color: C.ink, marginTop: 16 }}>{s.title}</div>
               <p style={{
@@ -337,6 +335,46 @@ function HowItWorks() {
             {i < steps.length - 1 && <div className="step-line" aria-hidden />}
           </div>
         ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- Installation ---------- */
+function Installation() {
+  return (
+    <Section bg={C.cream}>
+      <div className="install-grid">
+        <div>
+          <span className="eyebrow reveal reveal-up" style={{ color: "var(--green-ink)" }}>Installation</span>
+          <h3 className="reveal reveal-up font-display" style={{ fontSize: "clamp(22px, 3vw, 32px)", color: C.ink, lineHeight: 1.1, marginTop: 10 }}>
+            We install it. You drive.
+          </h3>
+          <p className="reveal reveal-up" style={{ color: "var(--ink-soft)", fontSize: 15, lineHeight: 1.65, marginTop: 14 }}>
+            One hour. No cost to you. Powered by your vehicle's existing electrics. You won't notice it's there — but your passengers will.
+          </p>
+          <ul className="reveal reveal-up" style={{ listStyle: "none", padding: 0, margin: "18px 0 0", display: "flex", flexDirection: "column", gap: 8 }}>
+            {["✓ Installed at our cost", "✓ Replaced free if damaged", "✓ Removed free if you leave"].map((t) => (
+              <li key={t} style={{
+                fontFamily: "'Space Mono', monospace", fontSize: 12,
+                color: "var(--green-ink)", fontWeight: 700,
+              }}>{t}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="reveal reveal-up" style={{
+          background: "var(--bg2)",
+          border: "2px dashed rgba(30,26,21,0.3)",
+          borderRadius: 18, aspectRatio: "4 / 3",
+          display: "flex", alignItems: "center", justifyContent: "center",
+        }}>
+          <span style={{
+            fontFamily: "'Space Mono', monospace", fontSize: 11,
+            color: "var(--ink-mute)",
+          }}>
+            📸 Installation photo — coming soon
+          </span>
+        </div>
       </div>
     </Section>
   );
