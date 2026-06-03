@@ -18,7 +18,7 @@ export const Route = createFileRoute("/investors")({
       { name: "description", content: "mydiio turns thousands of daily tuk-tuk rides into measurable advertising inventory and recurring revenue. Currently raising." },
       { property: "og:title", content: "Investors — mydiio" },
       { property: "og:description", content: "Building Sri Lanka's first tuk-tuk media network. Recurring revenue. Asset-light. Regional potential." },
-      { property: "og:image", content: COLOMBO_STREET },
+      { property: "og:image", content: COLOMBO_FLEET_GOLDEN.url },
     ],
   }),
 });
