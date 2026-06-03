@@ -253,8 +253,9 @@ function Problem() {
       <H2 className="reveal-up">Attention is expensive. Local reach is broken.</H2>
       <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
         <Card title="Digital ads are crowded and costly" body="CPMs keep climbing while clicks become harder to convert in local markets." />
-        <Card title="Traditional outdoor is hard to measure" body="Billboards and posters offer no proof of delivery, frequency, or audience." />
-        <Card title="Local businesses need affordable acquisition" body="SMBs in Colombo want predictable reach without enterprise budgets." />
+        <Card title="Traditional outdoor is hard to measure" body="Billboards and posters offer no proof of delivery, frequency, or audience data." />
+        <Card title="Local businesses need affordable reach" body="SMBs in Colombo want predictable local reach without enterprise-level budgets." />
+
       </div>
     </SectionWrap>
   );
@@ -343,8 +344,9 @@ function BusinessModel() {
       </div>
       <div style={{ marginTop: 56, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 18 }}>
         <Card title="Recurring revenue" body="Monthly campaign subscriptions, not one-off bookings." />
-        <Card title="Asset-light growth" body="Drivers own the vehicles. We own the network and software." />
-        <Card title="High inventory expansion" body="Each new screen adds inventory without proportional cost." />
+        <Card title="Asset-light growth" body="Drivers own the vehicles. We own the network and the software." />
+        <Card title="High inventory expansion" body="Each new screen added to the network increases advertising slots without proportional cost." />
+
       </div>
     </SectionWrap>
   );
@@ -353,10 +355,11 @@ function BusinessModel() {
 /* Change 8 — expansion cities timeline */
 function Market() {
   const groups = [
-    { time: "Now · 2026", cities: "Colombo", note: "Launching first network", active: true },
-    { time: "Year 2", cities: "Kandy, Galle", note: "Second-city expansion", active: false },
-    { time: "Year 3", cities: "Negombo, Jaffna", note: "National coverage", active: false },
-    { time: "Year 4+", cities: "Regional expansion", note: "South Asian tuk-tuk markets", active: false },
+    { time: "Now · 2026", cities: "Colombo", note: "Pilot launch", active: true },
+    { time: "Year 2", cities: "Kandy · Galle", note: "Year 2 target", active: false },
+    { time: "Year 3", cities: "Negombo · Jaffna", note: "Year 3 target", active: false },
+    { time: "Year 4+", cities: "Regional expansion", note: "Bangladesh · Myanmar · Year 4+", active: false },
+
   ];
   return (
     <SectionWrap>
@@ -428,18 +431,19 @@ function Traction() {
   const items: Array<{ k: string; v: React.ReactNode; sub: string }> = [
     {
       k: "Driver interest",
-      v: <>{driverCount === null ? "—" : `${driverCount} applications`}</>,
+      v: "Collected",
       sub: "Founding group applications open",
     },
     {
       k: "Advertiser meetings",
-      v: <>{advCount === null ? "—" : `${advCount} applications`}</>,
+      v: "Started",
       sub: "Warm conversations in progress",
     },
     { k: "Pilot routes", v: "Ready", sub: "Fort · Nugegoda · Wellawatte corridors" },
     { k: "Website", v: "Live", sub: "mydiio.lovable.app · All pages deployed" },
     { k: "Screen sourcing", v: "Underway", sub: "First 10 units being confirmed" },
   ];
+
 
   return (
     <SectionWrap bg="#fff">

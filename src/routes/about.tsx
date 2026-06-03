@@ -106,9 +106,9 @@ function BeforeAfterCard({ variant, children }: { variant: Variant; children: Re
 const PILLAR_PANELS: Record<string, { rows: string[]; chip?: string }> = {
   "01": {
     rows: [
-      "Every play logged — vehicle ID, GPS location, timestamp, duration",
-      "Weekly report delivered every Monday to your portal",
-      "No estimates. No 'we think around X impressions'. Exact numbers.",
+      "Every play logged with vehicle ID, GPS location, time, and duration",
+      "Weekly verified report delivered every Monday",
+      "No estimates — exact numbers only",
       "GPS-verified — not self-reported",
     ],
   },
@@ -117,19 +117,20 @@ const PILLAR_PANELS: Record<string, { rows: string[]; chip?: string }> = {
       "Paid on the 5th of every month by bank transfer — without exception",
       "Clear written agreement before any screen is installed",
       "Never penalised for genuine technical faults",
-      "Branded merchandise, loyalty bonuses, founding partner status",
+      "Branded merchandise, loyalty bonuses, founding partner recognition",
     ],
     chip: "A competitor can copy our screens. They cannot copy our culture.",
   },
   "03": {
     rows: [
       "A percentage of net revenue reinvested into driver communities",
-      "Commitment built in from day one — not added later as PR",
+      "Commitment built in from day one — not added later",
       "The city that powers our network shares in its growth",
     ],
     chip: "Built in Colombo. For Colombo.",
   },
 };
+
 
 function PillarCard({ n, h, b, i, openId, setOpenId }: { n: string; h: string; b: string; i: number; openId: string | null; setOpenId: (v: string | null) => void }) {
   const open = openId === n;
@@ -324,13 +325,14 @@ function AboutPage() {
           <span className="about-eyebrow reveal-up">How it works</span>
           <h2 className="about-h2 reveal-up delay-1" dangerouslySetInnerHTML={{ __html: "Simple for brands. Valuable for <em>drivers</em>." }} />
           <p className="about-lead reveal-up delay-2" style={{ maxWidth: "46ch", margin: "16px auto 48px" }}>
-            Three steps. No technical knowledge needed. From upload to live in 72 hours.
+            Three steps. No technical knowledge needed. From sending your ad to going live in 72 hours.
           </p>
           <div className="steps-row reveal-up delay-3">
             {[
-              { n: "01", h: "Send us your creative", b: "A 15 or 30-second video, or a static image. Don't have one yet? We'll produce your first ad for free as part of onboarding." },
-              { n: "02", h: "We go live overnight", b: "Your ad loads to every active screen in the fleet across your chosen zones. GPS tracking starts immediately. The whole process takes less than 72 hours from approval." },
-              { n: "03", h: "You get the proof", b: "Every Monday you receive a verified report: which vehicles showed your ad, where they were, and how many times it played. No estimates. No guessing. Exact data." },
+              { n: "01", h: "Send us your creative", b: "A 15 or 30-second video, or a static image. Don't have one yet? We'll produce your first ad for free as part of getting started." },
+              { n: "02", h: "We go live overnight", b: "Your ad loads to every active screen in your chosen zones across the fleet. GPS tracking starts the moment it goes live." },
+              { n: "03", h: "You get the proof", b: "Every Monday you receive a verified report. It shows every vehicle, every GPS location, every play. No estimates. No guessing. Exact numbers." },
+
             ].map((s, i, arr) => (
               <Fragment key={s.n}>
                 <div className="step-card" style={{ textAlign: "left" }}>
@@ -351,13 +353,14 @@ function AboutPage() {
           <span className="about-eyebrow reveal-up" style={{ color: "var(--accent)" }}>Our commitments</span>
           <h2 className="about-h2 about-h2-dark reveal-up delay-1" style={{ fontSize: "clamp(30px, 4.4vw, 60px)" }} dangerouslySetInnerHTML={{ __html: "Not just the right thing to do. The <em>smart</em> thing to do." }} />
           <p className="reveal-up delay-2" style={{ color: "var(--on-dark)", opacity: 0.65, fontSize: "clamp(15px,1.4vw,18px)", maxWidth: "52ch", margin: "16px auto 48px", lineHeight: 1.55, fontFamily: "'Space Grotesk', sans-serif" }}>
-            Three commitments that make us better to work with — and harder for anyone to copy.
+            Three commitments that make us better to work with — and harder for anyone else to copy.
           </p>
           <div className="pillars-row">
             {[
-              { n: "01", h: "Radical transparency", b: "Every advertiser sees exactly which vehicles showed their ad, when, and where — GPS-verified and timestamped. Most advertising in Sri Lanka offers zero proof of delivery. mydiio offers complete verification. No black box. No estimates." },
-              { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer — without exception, without delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors. A competitor that copies our screens cannot copy our culture." },
-              { n: "03", h: "Community reinvestment", b: "A share of mydiio's revenue goes back into the communities our drivers serve. Not as a PR exercise — as a founding commitment built into the business from day one. The city that powers our network shares in its growth." },
+              { n: "01", h: "Radical transparency", b: "Every advertiser sees exactly which vehicles showed their ad, when, and where — GPS-verified and time-stamped. Most advertising in Sri Lanka offers zero proof of delivery. mydiio offers complete verification. No black box. No estimates." },
+              { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer — without exception or delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors." },
+              { n: "03", h: "Community reinvestment", b: "A share of mydiio's revenue goes back into the communities our drivers serve. Not as a PR exercise — as a founding commitment built into the business from day one." },
+
             ].map((p, i) => (
               <PillarCard key={p.n} n={p.n} h={p.h} b={p.b} i={i} openId={openPillar} setOpenId={setOpenPillar} />
             ))}
@@ -400,7 +403,7 @@ function AboutPage() {
             <div className="cta-card-amber" style={{ background: "var(--accent-soft)", border: "2px solid var(--ink)", borderRadius: 26, boxShadow: "var(--shadow-card)", padding: "32px 28px", textAlign: "left", transition: "all 0.2s ease" }}>
               <div style={{ fontFamily: "'Space Mono', monospace", color: "var(--accent-deep)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em" }}>For businesses</div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 22, color: "var(--ink)", margin: "8px 0 10px" }}>Run your first campaign.</h3>
-              <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>From LKR 20,000/month. GPS-verified impressions. First 14 days free. No agency needed.</p>
+              <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>From LKR 20,000 a month. First 14 days free. GPS-verified proof every Monday. No agency needed.</p>
               <a href="/advertise/apply" className="about-btn" style={{ ...primaryBtn, marginTop: 20, width: "100%", textAlign: "center", boxSizing: "border-box" }}>Apply for a spot →</a>
             </div>
             <div className="cta-card-green" style={{ background: "var(--green-soft)", border: "2px solid var(--green)", borderRadius: 26, boxShadow: "var(--shadow-green)", padding: "32px 28px", textAlign: "left", transition: "all 0.2s ease" }}>
