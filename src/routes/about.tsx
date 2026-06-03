@@ -292,7 +292,7 @@ function AboutPage() {
       </section>
 
       {/* SECTION 2 — THE PROBLEM */}
-      <section style={{ background: "var(--bg2)", padding: "clamp(72px, 10vh, 120px) clamp(20px, 5vw, 72px)" }}>
+      <section style={{ background: "var(--bg2)", padding: "var(--section-py) clamp(20px, 5vw, 72px)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 52 }}>
             <span className="about-eyebrow reveal-up">The problem we solve</span>
