@@ -734,6 +734,19 @@ function DrivePage() {
       <Hero />
       <EarningsCalculator />
       <DriverEarnings />
+      <section className="relative w-full overflow-hidden drive-supporting-band">
+        <img
+          src={COLOMBO_TUK_DAYTIME.url}
+          alt="mydiio tuk-tuks on a Colombo street in daytime"
+          className="absolute inset-0 w-full h-full"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.4)" }} />
+        <style>{`
+          .drive-supporting-band { height: 400px; }
+          @media (max-width: 767px) { .drive-supporting-band { height: 280px; } }
+        `}</style>
+      </section>
       <HowItWorks />
       <FoundingGroup />
       <DriverPortal />
