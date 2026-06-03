@@ -194,7 +194,16 @@ function AdvertiseApplyPage() {
           </div>
 
           {/* Form Card */}
-          <div style={{ maxWidth: 660, margin: "0 auto", background: C.paper, border: `2px solid ${C.ink}`, borderRadius: 22, boxShadow: `6px 6px 0 ${C.ink}`, overflow: "hidden" }}>
+          <div style={{ maxWidth: 660, margin: "0 auto" }}>
+            <button
+              type="button"
+              onClick={() => navigate({ to: "/contact" })}
+              style={{ fontFamily: "Space Mono, monospace", fontSize: 11, color: C.inkMute, background: "none", border: "none", cursor: "pointer", padding: "0 0 14px", display: "block", textDecoration: "underline" }}
+            >
+              ← Back to contact
+            </button>
+          <div style={{ background: C.paper, border: `2px solid ${C.ink}`, borderRadius: 22, boxShadow: `6px 6px 0 ${C.ink}`, overflow: "hidden" }}>
+
             {/* Progress strip */}
             {!successId && (
               <div style={{ background: C.ink, padding: "18px 26px", display: "flex", alignItems: "flex-start" }}>
