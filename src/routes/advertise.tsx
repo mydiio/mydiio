@@ -852,6 +852,29 @@ function AdvertisePage() {
         @media (max-width: 640px) {
           .sp-strip { flex-direction: column; align-items: flex-start; }
         }
+
+        .burst-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 768px) { .burst-grid { grid-template-columns: repeat(3, 1fr); } }
+        .burst-card {
+          background: ${C.paper}; border: 2px solid ${C.ink}; border-radius: 22px;
+          box-shadow: 4px 4px 0 ${C.ink}; padding: clamp(24px, 3vw, 36px);
+          display: flex; flex-direction: column; transition: all 0.2s ease;
+        }
+        .burst-card:hover { transform: translate(-3px, -3px); box-shadow: 7px 7px 0 ${C.ink}; }
+        .burst-cta-ghost {
+          display: block; text-align: center; padding: 12px 20px; border-radius: 12px;
+          font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px;
+          text-decoration: none; background: transparent; color: ${C.ink};
+          border: 2px solid ${C.ink}; box-shadow: 3px 3px 0 ${C.ink}; transition: all 0.2s ease;
+        }
+        .burst-cta-ghost:hover { background: ${C.ink}; color: ${C.onDark}; }
+        .burst-cta-primary {
+          display: block; text-align: center; padding: 12px 20px; border-radius: 12px;
+          font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px;
+          text-decoration: none; background: ${C.accent}; color: ${C.ink};
+          border: 2px solid ${C.ink}; box-shadow: 4px 4px 0 ${C.ink}; transition: all 0.2s ease;
+        }
+        .burst-cta-primary:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 ${C.ink}; }
       `}</style>
 
       <Hero />
