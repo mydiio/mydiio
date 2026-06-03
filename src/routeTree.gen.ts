@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AdvertiseRouteImport } from './routes/advertise'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdvertiseApplyRouteImport } from './routes/advertise.apply'
 
 const InvestorsRoute = InvestorsRouteImport.update({
   id: '/investors',
@@ -46,31 +47,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdvertiseApplyRoute = AdvertiseApplyRouteImport.update({
+  id: '/apply',
+  path: '/apply',
+  getParentRoute: () => AdvertiseRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/advertise': typeof AdvertiseRoute
+  '/advertise': typeof AdvertiseRouteWithChildren
   '/contact': typeof ContactRoute
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
+  '/advertise/apply': typeof AdvertiseApplyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/advertise': typeof AdvertiseRoute
+  '/advertise': typeof AdvertiseRouteWithChildren
   '/contact': typeof ContactRoute
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
+  '/advertise/apply': typeof AdvertiseApplyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/advertise': typeof AdvertiseRoute
+  '/advertise': typeof AdvertiseRouteWithChildren
   '/contact': typeof ContactRoute
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
+  '/advertise/apply': typeof AdvertiseApplyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,8 +90,16 @@ export interface FileRouteTypes {
     | '/contact'
     | '/drive'
     | '/investors'
+    | '/advertise/apply'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/advertise' | '/contact' | '/drive' | '/investors'
+  to:
+    | '/'
+    | '/about'
+    | '/advertise'
+    | '/contact'
+    | '/drive'
+    | '/investors'
+    | '/advertise/apply'
   id:
     | '__root__'
     | '/'
@@ -91,12 +108,13 @@ export interface FileRouteTypes {
     | '/contact'
     | '/drive'
     | '/investors'
+    | '/advertise/apply'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AdvertiseRoute: typeof AdvertiseRoute
+  AdvertiseRoute: typeof AdvertiseRouteWithChildren
   ContactRoute: typeof ContactRoute
   DriveRoute: typeof DriveRoute
   InvestorsRoute: typeof InvestorsRoute
@@ -146,13 +164,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/advertise/apply': {
+      id: '/advertise/apply'
+      path: '/apply'
+      fullPath: '/advertise/apply'
+      preLoaderRoute: typeof AdvertiseApplyRouteImport
+      parentRoute: typeof AdvertiseRoute
+    }
   }
 }
+
+interface AdvertiseRouteChildren {
+  AdvertiseApplyRoute: typeof AdvertiseApplyRoute
+}
+
+const AdvertiseRouteChildren: AdvertiseRouteChildren = {
+  AdvertiseApplyRoute: AdvertiseApplyRoute,
+}
+
+const AdvertiseRouteWithChildren = AdvertiseRoute._addFileChildren(
+  AdvertiseRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AdvertiseRoute: AdvertiseRoute,
+  AdvertiseRoute: AdvertiseRouteWithChildren,
   ContactRoute: ContactRoute,
   DriveRoute: DriveRoute,
   InvestorsRoute: InvestorsRoute,
