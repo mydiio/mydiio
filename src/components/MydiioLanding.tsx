@@ -675,7 +675,7 @@ function Reporting() {
   const { t, lang } = useI18n();
   return (
     <Section bg={"var(--bg)"}>
-      <div className="reveal" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 48px" }}>
+      <div className="reveal" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 32px" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("rep_kicker")}</span>
         <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
           <EmTail text={t("rep_title")} tail="not guessed." lang={lang} />
@@ -687,8 +687,9 @@ function Reporting() {
       <div className="reveal" style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
-        gap: 20,
+        gap: 24,
       }}>
+
         <MetricCard label="Active vehicles" value={48} />
         <MetricCard label="Est. daily impressions" value={412} format={(n) => `${n}k`} />
         <MetricCard label="Avg screen uptime" value={98} suffix="%" />
