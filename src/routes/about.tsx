@@ -14,11 +14,11 @@ const BEFORE_DATA: Record<Variant, { eyebrow: string; eyebrowColor: string; head
     rows: [
       "Billboard — LKR 200,000+ per month",
       "TV slot — LKR 500,000+ minimum",
-      "No proof your ad ever ran",
+      "Zero proof your ad ever ran",
       "Need an agency just to start",
     ],
     afterBg: "var(--paper)",
-    afterShadow: "var(--sticker)",
+    afterShadow: "var(--shadow-card)",
     afterBorder: "var(--ink)",
   },
   driver: {
@@ -27,12 +27,12 @@ const BEFORE_DATA: Record<Variant, { eyebrow: string; eyebrowColor: string; head
     heading: "Driving was the only way to earn.",
     rows: [
       "Zero passive income from the vehicle",
-      "Income drops if you take a day off",
+      "Income drops the moment you stop driving",
       "No benefits, no recognition, no bonus",
-      "Tuk-tuk interior earns nothing while you drive",
+      "The tuk-tuk interior earned nothing while you drove",
     ],
     afterBg: "var(--green-soft)",
-    afterShadow: "4px 4px 0 var(--green)",
+    afterShadow: "var(--shadow-green)",
     afterBorder: "var(--green)",
   },
 };
