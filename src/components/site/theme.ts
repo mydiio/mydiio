@@ -8,9 +8,9 @@ export const C = {
   ink: "#1E1A15",
   inkSoft: "#5B5347",
   inkMute: "#837B6F",
-  accent: "#F4A62A",
+  accent: "#F5A623",
   accentSoft: "#F8E7C6",
-  accentDeep: "#B07A14",
+  accentDeep: "#F5A623",
   accentInk: "#3A2C10",
   green: "#45855A",
   greenSoft: "#E1F0E3",
@@ -18,8 +18,8 @@ export const C = {
   onDark: "#F4EFE3",
 
   // Legacy aliases (kept so existing inline styles don't break)
-  amber: "#F4A62A",
-  amberDeep: "#B07A14",
+  amber: "#F5A623",
+  amberDeep: "#F5A623",
   amberPale: "#F8E7C6",
   yellow: "#F7E14A",
   greenDeep: "#2E5538",
