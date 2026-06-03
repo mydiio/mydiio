@@ -34,7 +34,7 @@ export const dict: Dict = {
     ta: "நாங்கள் கொழும்பு முழுவதும் டுக்-டுக்குகளை நகரும் ஊடகமாக மாற்றுகிறோம் — உண்மையான பயணங்களின்போது உண்மையான மக்களை அடைய பிராண்டுகளுக்கு உதவுகிறோம்.",
   },
   metric_vehicles: { en: "Vehicles ready", si: "සූදානම් වාහන", ta: "தயார் வாகனங்கள்" },
-  metric_zones: { en: "Colombo zones", si: "කොළඹ කලාප", ta: "கொழும்பு மண்டலங்கள்" },
+  metric_zones: { en: "Vehicles ready", si: "සූදානම් වාහන", ta: "தயார் வாகனங்கள்" },
   metric_attention: { en: "Avg ride attention", si: "සාමාන්‍ය ගමන් අවධානය", ta: "சராசரி பயண கவனம்" },
   metric_launch: { en: "Campaign launch", si: "ව්‍යාපාර දියත් කිරීම", ta: "பிரச்சார தொடக்கம்" },
   metric_min: { en: "min", si: "මිනි", ta: "நிமி" },
