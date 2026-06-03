@@ -77,15 +77,15 @@ export const dict: Dict = {
   tuk_cta: { en: "See it in a pilot →", si: "පයිලට් එකකින් බලන්න →", ta: "பைலட்டில் பாருங்கள் →" },
 
   // --- Two Audiences ---
-  ad_kicker: { en: "For Advertisers", si: "ප්‍රචාරකයින් සඳහා", ta: "விளம்பரதாரர்களுக்கு" },
+  ad_kicker: { en: "For advertisers", si: "ප්‍රචාරකයින් සඳහා", ta: "விளம்பரதாரர்களுக்கு" },
   ad_title: { en: "Turn Colombo traffic into customers.", si: "කොළඹ ගමනාගමනය පාරිභෝගිකයන් බවට පත් කරන්න.", ta: "கொழும்பு போக்குவரத்தை வாடிக்கையாளர்களாக மாற்றுங்கள்." },
-  ad_body: { en: "From restaurants to banks to apps — brands use mydiio to stay visible where buying decisions happen.", si: "අවන්හල් සිට බැංකු දක්වා — සන්නාම මිලදී ගැනීමේ තීරණ ගන්නා ස්ථානවල දෘශ්‍යමාන වීමට mydiio භාවිතා කරයි.", ta: "உணவகங்கள் முதல் வங்கிகள் வரை — வாங்கும் முடிவுகள் நடக்கும் இடத்தில் தெரியும்படி பிராண்டுகள் mydiio-ஐப் பயன்படுத்துகின்றன." },
-  ad_cta: { en: "Get Pricing →", si: "මිල ලබා ගන්න →", ta: "விலையை பெறுங்கள் →" },
+  ad_body: { en: "From restaurants to banks to apps — businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 20,000 a month, with your first 14 days completely free.", si: "අවන්හල් සිට බැංකු දක්වා — සන්නාම මිලදී ගැනීමේ තීරණ ගන්නා ස්ථානවල දෘශ්‍යමාන වීමට mydiio භාවිතා කරයි.", ta: "உணவகங்கள் முதல் வங்கிகள் வரை — வாங்கும் முடிவுகள் நடக்கும் இடத்தில் தெரியும்படி பிராண்டுகள் mydiio-ஐப் பயன்படுத்துகின்றன." },
+  ad_cta: { en: "Get pricing →", si: "මිල ලබා ගන්න →", ta: "விலையை பெறுங்கள் →" },
 
-  dr_kicker: { en: "For Drivers", si: "රියදුරන් සඳහා", ta: "ஓட்டுநர்களுக்கு" },
+  dr_kicker: { en: "For drivers", si: "රියදුරන් සඳහා", ta: "ஓட்டுநர்களுக்கு" },
   dr_title: { en: "Earn more from every ride.", si: "සෑම ගමනකින්ම වැඩි ආදායමක්.", ta: "ஒவ்வொரு பயணத்திலும் அதிக சம்பாதியுங்கள்." },
-  dr_body: { en: "Join the network and unlock extra monthly income — without changing your routes.", si: "ජාලයට එක්වී අමතර මාසික ආදායමක් ලබා ගන්න — ඔබේ මාර්ග වෙනස් නොකර.", ta: "வலைப்பின்னலில் சேர்ந்து கூடுதல் மாத வருமானத்தைப் பெறுங்கள் — உங்கள் வழிகளை மாற்றாமல்." },
-  dr_cta: { en: "Join Driver Network →", si: "රියදුරු ජාලයට එක්වන්න →", ta: "ஓட்டுநர் வலைப்பின்னலில் சேருங்கள் →" },
+  dr_body: { en: "Join the network and unlock extra monthly income — without changing your routes. We install a screen in your tuk. You just drive. We pay you on the 5th of every month.", si: "ජාලයට එක්වී අමතර මාසික ආදායමක් ලබා ගන්න — ඔබේ මාර්ග වෙනස් නොකර.", ta: "வலைப்பின்னலில் சேர்ந்து கூடுதல் மாத வருமானத்தைப் பெறுங்கள் — உங்கள் வழிகளை மாற்றாமல்." },
+  dr_cta: { en: "Join the driver network →", si: "රියදුරු ජාලයට එක්වන්න →", ta: "ஓட்டுநர் வலைப்பின்னலில் சேருங்கள் →" },
 
   // --- Reporting ---
   rep_kicker: { en: "Reporting", si: "වාර්තාකරණය", ta: "அறிக்கையிடல்" },
