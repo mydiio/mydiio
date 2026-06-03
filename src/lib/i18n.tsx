@@ -63,12 +63,12 @@ export const dict: Dict = {
     si: "සන්නාම සඳහා සරලයි. රියදුරන්ට වටිනවා.",
     ta: "பிராண்டுகளுக்கு எளிதானது. ஓட்டுநர்களுக்கு மதிப்புமிக்கது.",
   },
-  how_s1_t: { en: "Choose Areas", si: "ප්‍රදේශ තෝරන්න", ta: "பகுதிகளை தேர்வு செய்யுங்கள்" },
-  how_s1_b: { en: "Pick the Colombo zones and routes that match your audience.", si: "ඔබේ ප්‍රේක්ෂකයින්ට ගැලපෙන කොළඹ කලාප සහ මාර්ග තෝරන්න.", ta: "உங்கள் பார்வையாளர்களுக்கு ஏற்ற கொழும்பு மண்டலங்கள் மற்றும் வழிகளை தேர்ந்தெடுங்கள்." },
-  how_s2_t: { en: "Upload Creative", si: "නිර්මාණය උඩුගත කරන්න", ta: "படைப்பை பதிவேற்றுங்கள்" },
-  how_s2_b: { en: "Send your video or static. We handle screen formatting end-to-end.", si: "ඔබේ වීඩියෝව හෝ ස්ථිර රූපය එවන්න. අපි තිර හැඩතල කිරීම සියල්ල කළමනාකරණය කරමු.", ta: "உங்கள் வீடியோ அல்லது படத்தை அனுப்புங்கள். திரை வடிவமைப்பை நாங்கள் முழுமையாக கையாள்கிறோம்." },
-  how_s3_t: { en: "Go Live Fast", si: "ඉක්මනින් සජීවී වන්න", ta: "வேகமாக நேரலை செல்லுங்கள்" },
-  how_s3_b: { en: "Most campaigns launch within 72 hours of approval.", si: "බොහෝ ව්‍යාපාර අනුමත වී පැය 72ක් ඇතුළත දියත් වේ.", ta: "பெரும்பாலான பிரச்சாரங்கள் ஒப்புதல் பெற்ற 72 மணி நேரத்திற்குள் தொடங்கும்." },
+  how_s1_t: { en: "Send us your creative", si: "ප්‍රදේශ තෝරන්න", ta: "பகுதிகளை தேர்வு செய்யுங்கள்" },
+  how_s1_b: { en: "A 15 or 30-second video, or a static image. Don't have one yet? We'll produce your first ad for free as part of getting started.", si: "ඔබේ ප්‍රේක්ෂකයින්ට ගැලපෙන කොළඹ කලාප සහ මාර්ග තෝරන්න.", ta: "உங்கள் பார்வையாளர்களுக்கு ஏற்ற கொழும்பு மண்டலங்கள் மற்றும் வழிகளை தேர்ந்தெடுங்கள்." },
+  how_s2_t: { en: "We go live overnight", si: "නිර්මාණය උඩුගත කරන්න", ta: "படைப்பை பதிவேற்றுங்கள்" },
+  how_s2_b: { en: "Your ad loads to every active screen in your chosen zones across the fleet. GPS tracking starts the moment it goes live.", si: "ඔබේ වීඩියෝව හෝ ස්ථිර රූපය එවන්න. අපි තිර හැඩතල කිරීම සියල්ල කළමනාකරණය කරමු.", ta: "உங்கள் வீடியோ அல்லது படத்தை அனுப்புங்கள். திரை வடிவமைப்பை நாங்கள் முழுமையாக கையாள்கிறோம்." },
+  how_s3_t: { en: "You get the proof", si: "ඉක්මනින් සජීවී වන්න", ta: "வேகமாக நேரலை செல்லுங்கள்" },
+  how_s3_b: { en: "Every Monday, a verified report lands in your inbox. It shows every vehicle, every GPS location, every play. No estimates. Just facts.", si: "බොහෝ ව්‍යාපාර අනුමත වී පැය 72ක් ඇතුළත දියත් වේ.", ta: "பெரும்பாலான பிரச்சாரங்கள் ஒப்புதல் பெற்ற 72 மணி நேரத்திற்குள் தொடங்கும்." },
 
   // --- Tuk Interior ---
   tuk_kicker: { en: "Inside the ride", si: "ගමන තුළ", ta: "பயணத்தின் உள்ளே" },
