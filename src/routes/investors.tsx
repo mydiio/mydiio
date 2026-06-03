@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { useI18n } from "@/lib/i18n";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
+import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/investors")({
       { name: "description", content: "mydiio turns thousands of daily tuk-tuk rides into measurable advertising inventory and recurring revenue. Currently raising." },
       { property: "og:title", content: "Investors — mydiio" },
       { property: "og:description", content: "Building Sri Lanka's first tuk-tuk media network. Recurring revenue. Asset-light. Regional potential." },
-      { property: "og:image", content: COLOMBO_STREET },
+      { property: "og:image", content: COLOMBO_FLEET_GOLDEN.url },
     ],
   }),
 });
@@ -206,10 +207,10 @@ const inputStyle: React.CSSProperties = {
 function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
   useI18n();
   return (
-    <section className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
-      <img src={COLOMBO_STREET} alt="Colombo tuk-tuks at street level" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0" style={{ background: "radial-gradient(120% 80% at 70% 20%, rgba(26,26,24,0.4) 0%, rgba(26,26,24,0.7) 55%, rgba(26,26,24,0.94) 100%)" }} />
-      <div className="relative z-10 flex flex-col justify-end" style={{ minHeight: "100vh", padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
+    <section className="relative w-full overflow-hidden page-hero-fixed">
+      <img src={COLOMBO_FLEET_GOLDEN.url} alt="Colombo tuk-tuk fleet at golden hour" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
+      <div className="relative z-10 flex flex-col justify-end page-hero-inner" style={{ padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
         <div style={{ maxWidth: 820 }}>
           <Eyebrow>Investor brief · 2026</Eyebrow>
           <h1 className="font-display" style={{ color: "#fff", fontSize: "clamp(40px, 7vw, 76px)", lineHeight: 1.04, letterSpacing: "-1px", marginTop: 14, textWrap: "balance" as const }}>
@@ -242,6 +243,14 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
           </div>
         </div>
       </div>
+      <style>{`
+        .page-hero-fixed { min-height: 560px; }
+        .page-hero-inner { min-height: 560px; }
+        @media (max-width: 767px) {
+          .page-hero-fixed { min-height: 380px; }
+          .page-hero-inner { min-height: 380px; }
+        }
+      `}</style>
     </section>
   );
 }
