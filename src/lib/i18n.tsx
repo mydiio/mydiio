@@ -57,11 +57,11 @@ export const dict: Dict = {
   why_c4_b: { en: "From approval to launch, most mydiio campaigns are live within 72 hours, helping businesses get in front of customers faster.", si: "From approval to launch, most mydiio campaigns are live within 72 hours, helping businesses get in front of customers faster.", ta: "From approval to launch, most mydiio campaigns are live within 72 hours, helping businesses get in front of customers faster." },
 
   // --- How It Works ---
-  how_kicker: { en: "Simple. Fast. Verified.", si: "Simple. Fast. Verified.", ta: "Simple. Fast. Verified." },
+  how_kicker: { en: "how it works", si: "how it works", ta: "how it works" },
   how_title: {
-    en: "How it Works",
-    si: "How it Works",
-    ta: "How it Works",
+    en: "Simple. Fast. Verified.",
+    si: "Simple. Fast. Verified.",
+    ta: "Simple. Fast. Verified.",
   },
   how_s1_t: { en: "Submit your ad.", si: "Submit your ad.", ta: "Submit your ad." },
   how_s1_b: { en: "Send us your 15 or 30-second video or image. Don't have creative ready? Our team can help you get started.", si: "Send us your 15 or 30-second video or image. Don't have creative ready? Our team can help you get started.", ta: "Send us your 15 or 30-second video or image. Don't have creative ready? Our team can help you get started." },

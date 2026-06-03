@@ -327,12 +327,14 @@ function HowItWorks() {
     <Section bg="var(--bg)">
       <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up">{t("how_kicker")}</span>
-        <h2 className="font-display reveal-up delay-1" style={{
-          fontSize: "clamp(28px, 4.6vw, 50px)",
+        <h2 className="reveal-up delay-1" style={{
+          fontFamily: "'Space Grotesk', system-ui, sans-serif",
+          fontWeight: 700,
+          fontSize: "clamp(44px, 7.4vw, 104px)",
           color: "var(--ink)",
-          lineHeight: 1.06,
-          letterSpacing: "-1px",
-          marginTop: 14,
+          lineHeight: 0.93,
+          letterSpacing: "-0.04em",
+          marginTop: 18,
         }}>
           {t("how_title")}
         </h2>
@@ -896,10 +898,10 @@ export default function MydiioLanding() {
       <TukInterior />
       <Coverage />
       <ScaleStory />
+      <TwoAudiences />
       <FoundingOffer />
       <FAQ />
       <FinalCTA />
-      <TwoAudiences />
     </SiteShell>
   );
 }
