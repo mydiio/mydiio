@@ -182,7 +182,7 @@ function Pricing() {
     },
     {
       name: "HORIZON", price: "LKR 65,000+", per: "/mo · Custom",
-      features: ["Custom zone configuration", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
+      features: ["15 to 100+ tuk-tuks — your choice", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
       tierSlug: "horizon", ctaLabel: "Contact us about Horizon →", btnStyle: "ghost",
     },
   ];
