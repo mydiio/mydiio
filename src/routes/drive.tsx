@@ -445,17 +445,17 @@ function FoundingGroup() {
 function DriverPortal() {
   return (
     <Section bg={C.white}>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
         Your portal. Everything visible.
       </h2>
 
-      <div className="reveal" style={{ marginTop: 36, maxWidth: 520, marginInline: "auto" }}>
+      <div className="reveal reveal-up" style={{ marginTop: 36, maxWidth: 520, marginInline: "auto" }}>
         <div style={{
           position: "relative",
           background: "#0D0D08",
-          border: `1px solid ${C.ink}`,
+          border: "var(--card-border)",
           borderRadius: 14, padding: 22,
-          boxShadow: `8px 8px 0 ${C.ink}`,
+          boxShadow: "var(--shadow-card-lg)",
         }}>
           <div style={{
             position: "absolute", top: 14, right: 14,
