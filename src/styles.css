@@ -83,8 +83,27 @@
   --on-dark: #F4EFE3;
 
   /* Unified section spacing */
-  --section-py: clamp(64px, 10vh, 120px);
-  --section-py-sm: clamp(40px, 6vh, 72px);
+  --section-py: clamp(64px, 9vh, 112px);
+  --section-py-sm: clamp(40px, 5vh, 72px);
+  --section-px: clamp(20px, 5vw, 72px);
+
+  /* Shadow system — single source of truth */
+  --shadow-card: 4px 4px 0 #1E1A15;
+  --shadow-card-hover: 7px 7px 0 #1E1A15;
+  --shadow-card-lg: 6px 6px 0 #1E1A15;
+  --shadow-card-press: 2px 2px 0 #1E1A15;
+  --shadow-green: 4px 4px 0 #45855A;
+  --shadow-green-hover: 7px 7px 0 #45855A;
+  --shadow-amber: 4px 4px 0 #F4A62A;
+
+  /* Card tokens */
+  --card-radius: 22px;
+  --card-radius-sm: 14px;
+  --card-border: 2px solid #1E1A15;
+
+  /* Animation timing */
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Sticker shadows */
   --sticker: 4px 5px 0 #1E1A15;
