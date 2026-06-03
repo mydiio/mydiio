@@ -306,7 +306,7 @@ function AboutPage() {
             <BeforeAfterCard variant="advertiser">
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(20px, 2.4vw, 28px)", color: "var(--ink)", margin: "0 0 12px" }}>Advertising was only for big companies.</h3>
               <p style={{ color: "var(--ink-soft)", fontSize: 15, lineHeight: 1.65, margin: 0 }}>
-                A pharmacy in Nugegoda. A bakery in Fort. A clothing shop in Wellawatte. They had nowhere to go. Billboards cost millions. TV ads need an agency. Digital requires expertise most small businesses don't have. mydiio changes that — starting from LKR 20,000 a month, with GPS-verified proof that your ad ran.
+                A pharmacy in Nugegoda. A bakery in Fort. A clothing shop in Wellawatte. They had nowhere to go. Billboards cost millions. TV ads need an agency. Digital requires expertise most small businesses don't have. mydiio changes that — starting from LKR 25,000 a month, with GPS-verified proof that your ad ran.
               </p>
             </BeforeAfterCard>
             <BeforeAfterCard variant="driver">
