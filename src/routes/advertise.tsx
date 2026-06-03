@@ -77,7 +77,7 @@ function Hero() {
             fontSize: "clamp(15px, 1.8vw, 19px)",
             color: "rgba(255,255,255,0.78)", marginTop: 18, maxWidth: 600,
           }}>
-            mydiio puts your ad on a screen inside every tuk-tuk ride. Passengers sit facing it for 10 to 20 minutes, with nothing else to look at. Your first 14 days are completely free.
+            mydiio puts your ad on a screen inside every tuk-tuk ride. Passengers sit facing it for 10 to 20 minutes, with nothing else to look at. Your first 7 days are completely free.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
             <a href="#waitlist" onClick={scrollToWaitlist}
