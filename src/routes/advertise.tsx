@@ -14,9 +14,9 @@ export const Route = createFileRoute("/advertise")({
   head: () => ({
     meta: [
       { title: "Advertise on mydiio — Reach Colombo's Tuk-Tuk Passengers" },
-      { name: "description", content: "14 minutes. No skip button. GPS-verified weekly reports. From LKR 25,000/month with 7 days free." },
+      { name: "description", content: "Up to 20 minutes per ride. No skip button. GPS-verified weekly reports. From LKR 25,000/month with 7 days free." },
       { property: "og:title", content: "Advertise on mydiio — Reach Colombo's Tuk-Tuk Passengers" },
-      { property: "og:description", content: "14 minutes. No skip button. GPS-verified. From LKR 25,000/month with 7 days free." },
+      { property: "og:description", content: "Up to 20 minutes per ride. GPS-verified. From LKR 25,000/month with 7 days free." },
     ],
   }),
 });
@@ -80,18 +80,18 @@ function Hero() {
             mydiio puts your ad on a screen inside every tuk-tuk ride. Passengers sit facing it for 10 to 20 minutes, with nothing else to look at. Your first 7 days are completely free.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
-            <a href="#waitlist" onClick={scrollToWaitlist}
+            <a href="/advertise/apply"
               className="btn-bold font-display"
               style={{
                 background: C.amber, color: C.ink,
                 padding: "16px 22px", borderRadius: 13, fontSize: 17,
                 textDecoration: "none", display: "inline-block",
               }}>
-              Join the waiting list →
+              Apply for a campaign spot →
             </a>
           </div>
           <div style={{ marginTop: 24, display: "flex", flexWrap: "wrap", gap: 10 }}>
-            <StatPill value="14 min" label="captive attention" />
+            <StatPill value="20 min" label="per ride attention" />
             <StatPill value="7 days" label="first week free" />
           </div>
         </div>
@@ -124,6 +124,7 @@ function HowItWorks() {
     { n: 3, title: "Weekly GPS report", body: "Every Monday you receive a verified report: every vehicle, every GPS location, every play count. Proof your ad ran — every single time." },
   ];
   return (
+    <div id="how-it-works" style={{ scrollMarginTop: 96 }}>
     <Section bg={C.cream}>
       <div style={{ maxWidth: 880, margin: "0 auto" }}>
         <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
@@ -151,6 +152,7 @@ function HowItWorks() {
         ))}
       </div>
     </Section>
+    </div>
   );
 }
 
@@ -215,7 +217,7 @@ function Pricing() {
         fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
         fontSize: 16, color: C.inkSoft, textAlign: "center", marginTop: 14, maxWidth: 560, marginInline: "auto",
       }}>
-        All plans include first 7 days free and GPS-verified weekly reports.
+        All plans include your first 7 days completely free. GPS-verified weekly reports included.
       </p>
 
       <div className="pricing-grid">
@@ -957,28 +959,27 @@ function FinalCTA() {
           fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3,
           color: C.amber, textTransform: "uppercase",
         }}>
-          The fleet is ready
+          Colombo · Pilot launch · 2026
         </span>
         <h2 className="reveal font-display" style={{
           fontSize: "clamp(32px, 5.2vw, 56px)", color: "#fff",
           lineHeight: 1.05, marginTop: 16, letterSpacing: "-1px",
           maxWidth: 880, marginInline: "auto",
         }}>
-          500+ tuk-tuks ready to promote your brand.
+          The first ad network built inside Colombo's tuk-tuks.
         </h2>
         <p className="reveal" style={{
           fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
           fontSize: "clamp(15px, 1.8vw, 18px)", color: "rgba(255,255,255,0.78)",
           marginTop: 18, maxWidth: 620, marginInline: "auto", lineHeight: 1.5,
         }}>
-          Launch campaigns across Colombo in days.
+          mydiio puts your brand on a screen that passengers face for up to 20 minutes per ride. GPS-verified. Reported every Monday. First 7 days free.
         </p>
         <div className="reveal" style={{
           marginTop: 36, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center",
         }}>
           <a
-            href="#waitlist"
-            onClick={scrollToWaitlist}
+            href="/advertise/apply"
             className="btn-bold font-display"
             style={{
               background: C.amber, color: C.ink,
@@ -986,10 +987,14 @@ function FinalCTA() {
               textDecoration: "none", display: "inline-block",
             }}
           >
-            Join the waiting list →
+            Apply for a campaign spot →
           </a>
           <a
-            href="/contact"
+            href="#how-it-works"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
             className="btn-bold font-display"
             style={{
               background: "transparent", color: "#fff",
@@ -998,7 +1003,7 @@ function FinalCTA() {
               textDecoration: "none", display: "inline-block",
             }}
           >
-            Talk to sales
+            See how it works →
           </a>
         </div>
       </div>
@@ -1262,7 +1267,7 @@ function AdvertisePage() {
       <section id="apply-section" className="section-wrap" style={{ background: C.cream, scrollMarginTop: 96, maxWidth: "none" }}>
         <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
-            Join the waiting list
+            Apply now
           </span>
           <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.4vw, 48px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
             Reserve your Pioneer spot.

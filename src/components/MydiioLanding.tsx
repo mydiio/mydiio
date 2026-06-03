@@ -59,10 +59,10 @@ function HeroWords({ text }: { text: string }) {
 
 function Hero() {
   const { t } = useI18n();
-  const v1 = useCountUp(50, 1400, 0);
-  const v2 = useCountUp(7, 1400, 100);
-  const v3 = useCountUp(14, 1400, 200);
-  const v4 = useCountUp(72, 1400, 300);
+  const v1 = useCountUp(10, 1400, 0);
+  const v2 = useCountUp(20, 1400, 100);
+  const v3 = useCountUp(72, 1400, 200);
+  const v4 = useCountUp(10, 1400, 300);
 
   // Split trailing period off the headline so we can color it.
   const rawTitle = t("hero_title");
@@ -156,10 +156,10 @@ function Hero() {
             }}
           >
             {[
-              { v: `${v1}`, suffix: "+", k: "metric_vehicles" as const },
-              { v: `${v2}`, suffix: "", k: "metric_zones" as const },
-              { v: `${v3}`, suffix: ` ${t("metric_min")}`, k: "metric_attention" as const },
-              { v: `${v4}`, suffix: ` ${t("metric_hr")}`, k: "metric_launch" as const },
+              { v: `${v1}`, suffix: "", k: "metric_vehicles" as const },
+              { v: `${v2}`, suffix: ` ${t("metric_min")}`, k: "metric_zones" as const },
+              { v: `${v3}`, suffix: ` ${t("metric_hr")}`, k: "metric_attention" as const },
+              { v: `${v4}`, suffix: "", k: "metric_launch" as const },
             ].map((m, i) => (
               <div key={m.k} className="hero-enter hero-stat" style={{ display: "flex", flexDirection: "column", gap: 6, animationDelay: `${900 + i * 100}ms` }}>
                 <span style={{
@@ -220,7 +220,7 @@ function Hero() {
             animation: "hero-live-pulse 1.8s ease-in-out infinite",
           }}
         />
-        50+ vehicles live
+        Founding fleet · launching now
       </div>
       <style>{`
         @keyframes hero-live-pulse {

@@ -33,10 +33,10 @@ export const dict: Dict = {
     si: "අපි කොළඹ පුරා ත්‍රිරෝද රථ ජංගම මාධ්‍ය බවට පත් කරමු — සැබෑ ගමන් අතරතුර සැබෑ පාරිභෝගිකයන් වෙත සන්නාම ළඟා කරවමින්.",
     ta: "நாங்கள் கொழும்பு முழுவதும் டுக்-டுக்குகளை நகரும் ஊடகமாக மாற்றுகிறோம் — உண்மையான பயணங்களின்போது உண்மையான மக்களை அடைய பிராண்டுகளுக்கு உதவுகிறோம்.",
   },
-  metric_vehicles: { en: "Vehicles ready", si: "සූදානම් වාහන", ta: "தயார் வாகனங்கள்" },
-  metric_zones: { en: "Colombo zones", si: "කොළඹ කලාප", ta: "கொழும்பு மண்டலங்கள்" },
-  metric_attention: { en: "Avg ride attention", si: "සාමාන්‍ය ගමන් අවධානය", ta: "சராசரி பயண கவனம்" },
-  metric_launch: { en: "Campaign launch", si: "ව්‍යාපාර දියත් කිරීම", ta: "பிரச்சார தொடக்கம்" },
+  metric_vehicles: { en: "Pilot vehicles", si: "පයිලට් වාහන", ta: "பைலட் வாகனங்கள்" },
+  metric_zones: { en: "Avg. ride attention", si: "සාමාන්‍ය ගමන් අවධානය", ta: "சராசரி பயண கவனம்" },
+  metric_attention: { en: "Campaign launch", si: "ව්‍යාපාර දියත් කිරීම", ta: "பிரச்சார தொடக்கம்" },
+  metric_launch: { en: "Pioneer spots", si: "පුරෝගාමී ස්ථාන", ta: "முன்னோடி இடங்கள்" },
   metric_min: { en: "min", si: "මිනි", ta: "நிமி" },
   metric_hr: { en: "hrs", si: "පැය", ta: "மணி" },
 
@@ -95,7 +95,7 @@ export const dict: Dict = {
   // --- Why Now ---
   whyn_kicker: { en: "Why now", si: "දැන් ඇයි", ta: "ஏன் இப்போது" },
   whyn_title: { en: "A massive channel hiding in plain sight.", si: "පැහැදිලිව පෙනෙන තැන සැඟවී ඇති විශාල නාලිකාවක්.", ta: "வெளிப்படையாக மறைந்திருக்கும் ஒரு பெரிய சேனல்." },
-  whyn_body: { en: "Thousands of tuk-tuks move through Colombo every day. Until now, none of them were built as media. mydiio is the first platform to change that.", si: "දහස් ගණන් ත්‍රිරෝද දිනපතා කොළඹ පුරා ගමන් කරයි. මෙතෙක්, කිසිවක් මාධ්‍ය යටිතල පහසුකම් ලෙස ගොඩනගා නොතිබුණි.", ta: "ஆயிரக்கணக்கான டுக்-டுக்குகள் தினமும் கொழும்பு வழியாக நகர்கின்றன. இதுவரை, எதுவும் ஊடக உள்கட்டமைப்பாக கட்டப்படவில்லை." },
+  whyn_body: { en: "1.1 million tuk-tuks operate across Sri Lanka. 320,000 in and around Colombo. Zero of them had screens until now. mydiio is the first platform to change that.", si: "ශ්‍රී ලංකාව පුරා මිලියන 1.1ක ත්‍රිරෝද රථ ක්‍රියාත්මක වේ. කොළඹ සහ අවට 320,000ක්. මෙතෙක්, ඔවුන්ගෙන් කිසිවකුට තිර තිබුණේ නැත.", ta: "இலங்கை முழுவதும் 1.1 மில்லியன் டுக்-டுக்குகள் இயங்குகின்றன. கொழும்பிலும் சுற்றியும் 320,000. இதுவரை, அவற்றில் எதற்கும் திரைகள் இல்லை." },
 
   // --- Scale Story ---
   scale_kicker: { en: "Scale story", si: "වර්ධන කතාව", ta: "வளர்ச்சி கதை" },

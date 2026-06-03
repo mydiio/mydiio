@@ -601,27 +601,27 @@ function FinalCTA() {
           fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3,
           color: C.amber, textTransform: "uppercase",
         }}>
-          The fleet is ready
+          Colombo · Pilot launch · 2026
         </span>
         <h2 className="reveal font-display" style={{
           fontSize: "clamp(32px, 5.2vw, 56px)", color: "#fff",
           lineHeight: 1.05, marginTop: 16, letterSpacing: "-1px",
           maxWidth: 880, marginInline: "auto",
         }}>
-          500+ tuk-tuks ready to promote your brand.
+          Join Colombo's first in-tuk advertising network.
         </h2>
         <p className="reveal" style={{
           fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
           fontSize: "clamp(15px, 1.8vw, 18px)", color: "rgba(255,255,255,0.78)",
           marginTop: 18, maxWidth: 620, marginInline: "auto", lineHeight: 1.5,
         }}>
-          Launch campaigns across Colombo in days.
+          Free screen installation. LKR 6,000–8,000 every month. Paid on the 5th, without fail.
         </p>
         <div className="reveal" style={{
           marginTop: 36, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center",
         }}>
           <a
-            href={DRIVER_CONTACT}
+            href="/drivers/apply"
             className="btn-bold font-display"
             style={{
               background: C.amber, color: C.ink,
@@ -629,10 +629,10 @@ function FinalCTA() {
               textDecoration: "none", display: "inline-block",
             }}
           >
-            Start campaign →
+            Apply to drive →
           </a>
           <a
-            href={DRIVER_CONTACT}
+            href="/contact"
             className="btn-bold font-display"
             style={{
               background: "transparent", color: "#fff",
@@ -641,7 +641,7 @@ function FinalCTA() {
               textDecoration: "none", display: "inline-block",
             }}
           >
-            Talk to sales
+            Get in touch →
           </a>
         </div>
       </div>
