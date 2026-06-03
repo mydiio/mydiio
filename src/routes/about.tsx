@@ -232,7 +232,7 @@ function AboutPage() {
         @media (max-width: 480px) { .about-cta-row { flex-direction: column; align-items: stretch; } .about-cta-row a { text-align: center; } }
 
         @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .ticker-strip { background: var(--ink); padding: 11px 0; overflow: hidden; margin-top: 40px; width: 100%; }
+        .ticker-strip { background: var(--ink); padding: 11px 0; overflow: hidden; margin: 0; width: 100%; }
         .ticker-inner { display: flex; white-space: nowrap; animation: ticker 28s linear infinite; font-family: 'Space Mono', monospace; font-size: 12px; color: var(--on-dark); opacity: 0.8; letter-spacing: 0.12em; }
         .ticker-strip:hover .ticker-inner { animation-play-state: paused; }
 
