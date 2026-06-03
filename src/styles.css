@@ -287,7 +287,7 @@
   .mydiio-card:hover { transform: translate(-3px, -3px); box-shadow: var(--shadow-card-hover); }
   .mydiio-card.green-variant { border-color: #45855A; box-shadow: var(--shadow-green); }
   .mydiio-card.green-variant:hover { box-shadow: var(--shadow-green-hover); }
-  .mydiio-card.dark-variant { background: #1A1A18; border-color: rgba(255,255,255,0.12); box-shadow: none; }
+  .mydiio-card.dark-variant { background: #242422; border-color: rgba(255,255,255,0.08); box-shadow: none; }
 
   .sticky-cta {
     position: fixed;
