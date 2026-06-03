@@ -387,6 +387,7 @@ function TukInterior() {
             lineHeight: 1.55,
             maxWidth: "42ch",
             fontWeight: 500,
+            whiteSpace: "pre-line",
           }}>
             {t("tuk_body")}
           </p>
@@ -889,13 +890,11 @@ export default function MydiioLanding() {
 
       <Hero />
       <WhyItWorks />
-      
+
       <HowItWorks />
       <TukInterior />
       <Coverage />
       <TwoAudiences />
-      <Reporting />
-      <WhyNow />
       <ScaleStory />
       <FoundingOffer />
       <FAQ />

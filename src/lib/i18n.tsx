@@ -73,7 +73,11 @@ export const dict: Dict = {
   // --- Tuk Interior ---
   tuk_kicker: { en: "Inside the ride", si: "ගමන තුළ", ta: "பயணத்தின் உள்ளே" },
   tuk_title: { en: "The screen they can't look away from.", si: "ඔවුන් ඉවත බලා ගත නොහැකි තිරය.", ta: "அவர்கள் கண்களை அகற்ற முடியாத திரை." },
-  tuk_body: { en: "A bright display mounted at eye level — playing your message while the meter runs and the city rolls by.", si: "ඇස මට්ටමේ සවිකර ඇති දීප්තිමත් තිරයක් — මීටරය දුවන අතරතුර සහ නගරය ගමන් කරන විට ඔබේ පණිවිඩය ප්‍රදර්ශනය කරයි.", ta: "கண் மட்டத்தில் பொருத்தப்பட்ட பிரகாசமான திரை — மீட்டர் ஓடும்போதும் நகரம் செல்லும்போதும் உங்கள் செய்தியை காட்டுகிறது." },
+  tuk_body: {
+    en: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\nTuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first tuk-tuk media network, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
+    si: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\nTuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first tuk-tuk media network, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
+    ta: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\nTuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first tuk-tuk media network, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
+  },
   tuk_cta: { en: "See it in a pilot →", si: "පයිලට් එකකින් බලන්න →", ta: "பைலட்டில் பாருங்கள் →" },
 
   // --- Two Audiences ---
