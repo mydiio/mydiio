@@ -128,6 +128,32 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            entry.target.classList.add("in");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    const run = () => {
+      document.querySelectorAll(".reveal-up:not(.visible), .reveal:not(.in)").forEach((el) => observer.observe(el));
+    };
+    run();
+    const t = setTimeout(run, 100);
+    return () => {
+      clearTimeout(t);
+      observer.disconnect();
+    };
+  }, [location]);
 
   return (
     <QueryClientProvider client={queryClient}>
