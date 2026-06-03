@@ -94,7 +94,6 @@ function Hero() {
             fontFamily: "'Space Grotesk', system-ui, sans-serif",
             fontWeight: 500,
             color: "#fff",
-            fontSize: 28,
             lineHeight: 1.4,
             marginTop: 18,
           }}>
