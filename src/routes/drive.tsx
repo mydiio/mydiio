@@ -74,20 +74,20 @@ function Hero() {
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "120px 6% 80px" }}>
         <div style={{ maxWidth: 760 }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.green, textTransform: "uppercase" }}>
-            For Colombo Tuk-Tuk Drivers
+            Driver earnings
           </span>
           <h1 className="font-display" style={{
             color: "#fff",
             fontSize: "clamp(38px, 6.5vw, 72px)", lineHeight: 1.05, letterSpacing: "-1px", marginTop: 14,
           }}>
-            Your tuk earns while you drive.
+            Drivers earn more every month.
           </h1>
           <p style={{
             fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
             fontSize: "clamp(15px, 1.8vw, 19px)",
             color: "rgba(255,255,255,0.78)", marginTop: 18, maxWidth: 600,
           }}>
-            Free installation. LKR 6,000–8,000 every month. You change nothing.
+            Join our network and get paid through ad revenue. Your tuk-tuk earns while you drive your normal routes.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
             <a href={DRIVER_CONTACT}
@@ -97,7 +97,7 @@ function Hero() {
                 padding: "16px 22px", borderRadius: 13, fontSize: 17,
                 textDecoration: "none", display: "inline-block",
               }}>
-              Join as a driver →
+              Join as Driver →
             </a>
           </div>
           <div style={{ marginTop: 24, display: "flex", flexWrap: "wrap", gap: 10 }}>
@@ -174,13 +174,13 @@ function EarningsCalculator() {
               fontVariantNumeric: "tabular-nums",
             }}>
               LKR {annual.toLocaleString()}
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 1.5, marginLeft: 8 }}>/ YEAR</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 1.5, marginLeft: 8 }}>/ year</span>
             </div>
           </div>
 
           <div style={{ marginTop: 32 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.inkSoft, letterSpacing: 1.5 }}>HOURS PER DAY</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.inkSoft, letterSpacing: 1.5 }}>Hours per day</span>
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, color: C.amberDeep, fontVariantNumeric: "tabular-nums" }}>{hours}h</span>
             </div>
             <input
@@ -234,7 +234,7 @@ function EarningsCalculator() {
 
 /* ---------- Driver Earnings ---------- */
 function DriverEarnings() {
-  const badges = ["Fast Payments", "Verified Drivers", "Monthly Bonuses"];
+  const badges = ["Fast payments", "Verified drivers", "Monthly bonuses"];
   return (
     <Section bg={C.cream}>
       <div className="earnings-grid">
@@ -260,7 +260,7 @@ function DriverEarnings() {
             fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
             fontSize: 16, color: C.ink, lineHeight: 1.6, marginTop: 14, maxWidth: 520,
           }}>
-            Join our network and get paid through ad revenue.
+            Join our network and get paid through ad revenue. Your tuk-tuk earns while you drive your normal routes.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 22 }}>
             {badges.map((b) => (
@@ -306,10 +306,10 @@ function DriverEarnings() {
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Get in touch", body: "We reply within 24 hours." },
-    { n: 2, title: "We install for free", body: "One hour. No cost. Powered by your vehicle." },
-    { n: 3, title: "You drive normally", body: "Same routes, same hours. Screen runs automatically." },
-    { n: 4, title: "Money arrives on the 5th", body: "Every month. Direct bank transfer." },
+    { n: 1, title: "Get in touch", body: "Apply through our website or reach out directly. We reply within 24 hours." },
+    { n: 2, title: "We install for free", body: "We fit a small screen in your tuk at no cost to you. It takes about an hour and is powered by your vehicle." },
+    { n: 3, title: "You drive normally", body: "Same routes, same hours. The screen runs automatically. You do not need to do anything differently." },
+    { n: 4, title: "Money arrives on the 5th", body: "Every month, your earnings are paid directly to your bank account on the 5th. Without exception." },
   ];
   return (
     <Section bg={C.white}>
@@ -383,21 +383,20 @@ function Installation() {
 /* ---------- Founding Group ---------- */
 function FoundingGroup() {
   const items = [
-    "LKR 3,500 refundable deposit (returned at month 3)",
-    "LKR 5,000 loyalty bonus at month 3",
-    "Net gain: LKR 1,500 ahead after 3 months",
-    "Base rate locked permanently",
-    "Limited edition amber founding partner shirt",
+    "Group A (drivers 1–10) — LKR 5,000 loyalty bonus at Month 3, putting you ahead of what you paid to join",
+    "Group B (drivers 11–20) — LKR 3,000 loyalty bonus at Month 3",
+    "Limited-edition amber founding partner shirt — only 10 will ever exist",
+    "Branded merchandise every 6 months — polo shirt, umbrella, phone holder, fuel card",
   ];
   return (
     <Section bg={C.cream}>
       <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
         <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
-          Founding Group A
+          First 20 drivers only
         </span>
       </div>
       <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
-        First 10 drivers only.
+        Be a founding driver.
       </h2>
 
       <div className="reveal" style={{
@@ -527,12 +526,12 @@ function DriverPortal() {
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   const items = [
-    { q: "How long is the commitment?", a: "12-month minimum agreement. Your deposit is returned in full after 6 months of continuous participation." },
-    { q: "What if I want to stop early?", a: "Exit before 6 months: deposit is forfeited. Exit between 6–12 months: 50% of deposit returned. After 6 months: full deposit returned." },
-    { q: "What powers the screen?", a: "The 7-inch screen is powered by your vehicle's 12V electrical system. It adds minimal power draw — less than a phone charger." },
-    { q: "What if the screen breaks or is damaged?", a: "mydiio covers replacement of defective screens at no cost to you. Deliberate damage or tampering may result in deposit forfeiture." },
-    { q: "Can I refer other drivers?", a: "Yes. Share your referral code and earn LKR 1,500 for every driver who joins and stays for 30 days." },
-    { q: "When and how do I get paid?", a: "Monthly bank transfer on the 5th of every month. This is a fixed commitment — never late, never missed." },
+    { q: "How long is the commitment?", a: "We ask for a minimum 12-month agreement. Your deposit is returned in full after 6 months of continuous participation. Founding drivers receive a loyalty bonus at Month 3 that puts them ahead of what they paid to join." },
+    { q: "What if I want to stop early?", a: "If you leave before 6 months, your deposit is forfeited. If you leave between 6 and 12 months, half the deposit is returned. After 12 months, you are free to leave with your full deposit returned." },
+    { q: "What powers the screen?", a: "The screen runs off your vehicle's existing power supply. An auto-electrician installs it in about an hour. There are no batteries to charge and nothing extra to do." },
+    { q: "What if the screen breaks or is damaged?", a: "Normal wear is covered. We handle repairs and replacements at no cost to you. The screen belongs to mydiio — you are hosting it, not responsible for it." },
+    { q: "Can I refer other drivers?", a: "Yes. You earn LKR 1,500 for every driver you refer who successfully installs a screen and stays active for 30 days. There is no limit on how many drivers you can refer." },
+    { q: "When exactly do I get paid?", a: "On the 5th of every calendar month, by bank transfer. This is a firm commitment — not 'around the 5th' or 'within the first week'. The 5th. Every month." },
   ];
   return (
     <Section bg={C.cream}>
