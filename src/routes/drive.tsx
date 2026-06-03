@@ -5,6 +5,7 @@ import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/drive")({
   component: DrivePage,
