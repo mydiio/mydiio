@@ -882,6 +882,7 @@ function AdvertisePage() {
       <TukInterior />
       <Pricing />
       <BurstPackages />
+      <PioneerProgramme />
       <SocialProofStrip />
       <Coverage />
       <DashboardPreview />
