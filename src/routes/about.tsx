@@ -260,7 +260,7 @@ function AboutPage() {
       `}</style>
 
       {/* SECTION 1 — HERO */}
-      <section className="page-hero-fixed" style={{ textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section className="page-hero-fixed" style={{ textAlign: "center", position: "relative", overflow: "hidden", paddingBottom: "clamp(48px, 6vh, 80px)" }}>
         <img src={HERO_NIGHT.url} alt="Tuk-tuks moving through Colombo at night" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
         {/* Amber arcs decoration */}
