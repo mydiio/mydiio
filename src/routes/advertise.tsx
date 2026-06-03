@@ -14,9 +14,9 @@ export const Route = createFileRoute("/advertise")({
   head: () => ({
     meta: [
       { title: "Advertise on mydiio — Reach Colombo's Tuk-Tuk Passengers" },
-      { name: "description", content: "14 minutes. No skip button. GPS-verified weekly reports. From LKR 20,000/month with 14 days free." },
+      { name: "description", content: "14 minutes. No skip button. GPS-verified weekly reports. From LKR 25,000/month with 7 days free." },
       { property: "og:title", content: "Advertise on mydiio — Reach Colombo's Tuk-Tuk Passengers" },
-      { property: "og:description", content: "14 minutes. No skip button. GPS-verified. From LKR 20,000/month with 14 days free." },
+      { property: "og:description", content: "14 minutes. No skip button. GPS-verified. From LKR 25,000/month with 7 days free." },
     ],
   }),
 });
