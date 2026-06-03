@@ -114,65 +114,119 @@ function Hero() {
 /* ---------- Earnings Calculator ---------- */
 function EarningsCalculator() {
   const [hours, setHours] = useState(8);
-  const monthly = Math.round(6000 + ((hours - 4) / 10) * 2000);
+  const monthly = hours >= 8 ? 8000 : 6000;
   const annual = monthly * 12;
+
+  const [approvedCount, setApprovedCount] = useState(0);
+  useEffect(() => {
+    (async () => {
+      try {
+        const { count } = await (supabase as any)
+          .from("driver_applications")
+          .select("id", { count: "exact", head: true })
+          .eq("status", "approved");
+        if (typeof count === "number") setApprovedCount(count);
+      } catch {
+        /* table may not exist yet */
+      }
+    })();
+  }, []);
+  const groupARemaining = Math.max(0, 10 - approvedCount);
+
   return (
     <Section bg={C.cream}>
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
-          Earnings calculator
-        </span>
+      <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
+        <span className="eyebrow">Earnings calculator</span>
       </div>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
         See exactly what you could earn.
       </h2>
 
-      <div className="reveal" style={{
+      <div className="reveal reveal-up" style={{
         marginTop: 40, maxWidth: 560, marginInline: "auto",
-        background: "#fff", border: `2px solid ${C.ink}`, borderRadius: 16,
-        boxShadow: `6px 6px 0 ${C.ink}`, padding: "36px 28px",
+        background: "var(--paper)",
+        border: "var(--card-border)",
+        borderRadius: "var(--card-radius)",
+        boxShadow: "var(--shadow-card-lg)",
+        overflow: "hidden",
       }}>
-        <div style={{ textAlign: "center" }}>
-          <div className="font-display" style={{
-            fontSize: "clamp(56px, 11vw, 84px)", color: C.amber,
-            lineHeight: 1, fontVariantNumeric: "tabular-nums",
-          }}>
-            LKR {monthly.toLocaleString()}
-          </div>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 2, marginTop: 8, textTransform: "uppercase" }}>
-            per month
-          </div>
-          <div className="font-display" style={{
-            fontSize: 22, color: C.ink, marginTop: 18,
-            fontVariantNumeric: "tabular-nums",
-          }}>
-            LKR {annual.toLocaleString()}
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 1.5, marginLeft: 8 }}>/ YEAR</span>
-          </div>
-        </div>
-
-        <div style={{ marginTop: 32 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.inkSoft, letterSpacing: 1.5 }}>HOURS PER DAY</span>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, color: C.amberDeep, fontVariantNumeric: "tabular-nums" }}>{hours}h</span>
-          </div>
-          <input
-            type="range" min={4} max={14} step={1} value={hours}
-            onChange={(e) => setHours(parseInt(e.target.value))}
-            style={{ width: "100%", marginTop: 10, accentColor: C.amber }}
-          />
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.inkSoft }}>4h</span>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.inkSoft }}>14h</span>
-          </div>
-        </div>
-
-        <p style={{
-          fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft,
-          textAlign: "center", marginTop: 28, lineHeight: 1.6,
+        <div style={{
+          background: "var(--ink)", padding: "12px 24px",
+          fontFamily: "'Space Mono', monospace", fontSize: 10,
+          color: "var(--accent)", textTransform: "uppercase", letterSpacing: "0.12em",
+          fontWeight: 700,
         }}>
-          Base pay: LKR 6,000. Route bonus: LKR 2,000 (8+ hours/day).
-        </p>
+          Earnings calculator · based on your hours
+        </div>
+        <div style={{ padding: "36px 28px" }}>
+          <div style={{ textAlign: "center" }}>
+            <div className="font-display" style={{
+              fontSize: "clamp(56px, 11vw, 84px)", color: C.amber,
+              lineHeight: 1, fontVariantNumeric: "tabular-nums",
+            }}>
+              LKR {monthly.toLocaleString()}
+            </div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 2, marginTop: 8, textTransform: "uppercase" }}>
+              per month
+            </div>
+            <div className="font-display" style={{
+              fontSize: 22, color: C.ink, marginTop: 18,
+              fontVariantNumeric: "tabular-nums",
+            }}>
+              LKR {annual.toLocaleString()}
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 1.5, marginLeft: 8 }}>/ YEAR</span>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 32 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.inkSoft, letterSpacing: 1.5 }}>HOURS PER DAY</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, color: C.amberDeep, fontVariantNumeric: "tabular-nums" }}>{hours}h</span>
+            </div>
+            <input
+              type="range" min={4} max={14} step={1} value={hours}
+              onChange={(e) => setHours(parseInt(e.target.value))}
+              style={{ width: "100%", marginTop: 10, accentColor: C.amber }}
+            />
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.inkSoft }}>4h</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.inkSoft }}>14h</span>
+            </div>
+          </div>
+
+          <p style={{
+            fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft,
+            textAlign: "center", marginTop: 28, lineHeight: 1.6,
+          }}>
+            Base pay: LKR 6,000. Route bonus: LKR 2,000 (8+ hours/day).
+          </p>
+        </div>
+      </div>
+
+      <div className="reveal reveal-up" style={{ textAlign: "center", marginTop: 16 }}>
+        <div style={{
+          display: "inline-flex", alignItems: "center", gap: 8,
+          background: "var(--green-soft)", border: "2px solid var(--green)",
+          borderRadius: 9999, padding: "8px 18px",
+        }}>
+          <span style={{
+            fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700,
+            color: "var(--green-ink)", letterSpacing: "0.06em",
+          }}>
+            ✓ PAYMENT ON THE 5TH · EVERY MONTH · BANK TRANSFER · NO EXCEPTIONS
+          </span>
+        </div>
+      </div>
+
+      <div className="reveal reveal-up" style={{ textAlign: "center", marginTop: 12 }}>
+        <div style={{
+          display: "inline-block",
+          background: "var(--ink)", borderRadius: 20, padding: "6px 16px",
+          fontFamily: "'Space Mono', monospace", fontSize: 11,
+          color: "var(--accent)", fontWeight: 700,
+        }}>
+          Group A Founding Partners: {groupARemaining} of 10 spots remaining
+        </div>
       </div>
     </Section>
   );
