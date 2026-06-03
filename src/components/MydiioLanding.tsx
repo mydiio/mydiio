@@ -81,7 +81,7 @@ function Hero() {
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.45) 40%, rgba(20,16,12,0.88) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(120px, 16vh, 180px) clamp(22px, 6vw, 80px) clamp(72px, 10vh, 110px)" }}>
         <div style={{ maxWidth: 980 }}>
-          <span className="eyebrow hero-enter hero-badge text-lg text-left font-bold" style={{ color: C.accent }}>
+          <span className="eyebrow hero-enter hero-badge" style={{ color: C.accent }}>
             {t("hero_kicker")}
           </span>
           <h1 className="hero-headline" style={{
@@ -375,12 +375,13 @@ function TukInterior() {
         <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <span className="eyebrow">{t("tuk_kicker")}</span>
           <h3 style={{
-            fontFamily: "'Space Grotesk', sans-serif",
+            fontFamily: "'Space Grotesk', system-ui, sans-serif",
             fontWeight: 700,
             color: "var(--ink)",
-            fontSize: "clamp(30px, 4.4vw, 56px)",
-            lineHeight: 1.05,
-            letterSpacing: "-0.03em",
+            fontSize: "clamp(44px, 7.4vw, 104px)",
+            lineHeight: 0.93,
+            letterSpacing: "-0.04em",
+            marginTop: 18,
           }}>
             {t("tuk_title")}
           </h3>
@@ -463,10 +464,10 @@ function Coverage() {
   return (
     <Section bg="var(--bg)">
       <div className="reveal" style={{ textAlign: "center", marginBottom: 40, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
-        <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>
+        <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>
           Coverage
         </span>
-        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(28px, 4.6vw, 50px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
+        <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: C.ink, lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
           Your campaign, across Colombo.
         </h2>
         <p className="reveal-up delay-2" style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 16, fontWeight: 500 }}>
@@ -702,7 +703,7 @@ function ScaleStory() {
     <Section bg={"var(--bg)"}>
       <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("scale_kicker")}</span>
-        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
+        <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
           {t("scale_title")}
         </h2>
       </div>
@@ -752,7 +753,7 @@ function FoundingOffer() {
         }} />
         <div style={{ position: "relative", zIndex: 1 }}>
           <span className="eyebrow" style={{ display: "inline-block" }}>{t("fo_kicker")}</span>
-          <h2 className="font-display" style={{ fontSize: "clamp(34px, 5vw, 62px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14, fontWeight: 700 }}>
+          <h2 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
             {t("fo_title")}
           </h2>
           <p style={{ fontSize: 16, color: "var(--ink-soft)", lineHeight: 1.6, marginTop: 16, maxWidth: 540, fontWeight: 500 }}>
@@ -797,7 +798,7 @@ function FAQ() {
     <Section bg={"var(--bg)"}>
       <div className="reveal" style={{ textAlign: "center", marginBottom: 48, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
         <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("faq_kicker")}</span>
-        <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
+        <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
           <EmTail text={t("faq_title")} tail="asked." lang={lang} />
         </h2>
       </div>
@@ -860,7 +861,7 @@ function FinalCTA() {
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(30,26,21,0.3), rgba(30,26,21,0.7))" }} />
       <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(80px, 12vw, 140px) clamp(20px, 4vw, 32px)", textAlign: "center" }}>
         <span className="eyebrow" style={{ color: "var(--accent)", display: "inline-block" }}>{t("fcta_kicker")}</span>
-        <h2 className="font-display" style={{ fontSize: "clamp(38px, 6vw, 84px)", color: "var(--on-dark)", lineHeight: 1.02, marginTop: 14, letterSpacing: "-0.03em", fontWeight: 700 }}>
+        <h2 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--on-dark)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
           {t("fcta_title")}
         </h2>
         <div style={{ marginTop: 40 }}>
