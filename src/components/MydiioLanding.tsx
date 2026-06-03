@@ -337,7 +337,8 @@ function HowItWorks() {
   ];
   return (
     <Section bg="var(--bg)">
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+
         <span className="eyebrow reveal-up">{t("how_kicker")}</span>
         <h2 className="reveal-up delay-1" style={{
           fontFamily: "'Space Grotesk', system-ui, sans-serif",
