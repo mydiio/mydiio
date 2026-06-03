@@ -1193,9 +1193,13 @@ function AdvertisePage() {
         }
         @media (max-width: 767px) { .step-line { display: none !important; } }
 
-        .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 56px; }
-        @media (min-width: 600px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
-        @media (min-width: 1000px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
+        .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 56px; align-items: stretch; }
+        @media (min-width: 560px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
+        @media (min-width: 900px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
+        .tier-cta-primary:hover, .tier-cta-ghost:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink) !important; }
+        .tier-cta-ink:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 rgba(30,26,21,0.35) !important; }
+        .tier-cta-ghost:hover { background: var(--ink) !important; color: var(--on-dark) !important; }
+
 
         .coverage-map-wrap { display: none; }
         .coverage-list { display: flex; }
