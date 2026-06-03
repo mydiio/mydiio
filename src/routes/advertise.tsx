@@ -371,7 +371,7 @@ function ColomboCoverage() {
             fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: "0.2em",
             color: "var(--accent-deep)", textTransform: "uppercase", display: "inline-block",
           }}>
-            Colombo coverage
+            Where your audience is
           </span>
         </div>
         <h2 className="reveal reveal-up font-display" style={{
