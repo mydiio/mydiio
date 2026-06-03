@@ -231,6 +231,25 @@ function Hero() {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.3; }
         }
+        .hero-brand {
+          font-family: 'Space Grotesk', system-ui, sans-serif;
+          font-size: 32px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          text-transform: none;
+          line-height: 1.1;
+        }
+        .hero-headline {
+          font-size: 18px;
+        }
+        @media (min-width: 768px) {
+          .hero-brand { font-size: 40px; }
+          .hero-headline { font-size: 22px; }
+        }
+        @media (min-width: 1025px) {
+          .hero-brand { font-size: 56px; }
+          .hero-headline { font-size: 28px; }
+        }
       `}</style>
     </section>
   );
