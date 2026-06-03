@@ -526,12 +526,12 @@ function DriverPortal() {
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   const items = [
-    { q: "How long is the commitment?", a: "12-month minimum agreement. Your deposit is returned in full after 6 months of continuous participation." },
-    { q: "What if I want to stop early?", a: "Exit before 6 months: deposit is forfeited. Exit between 6–12 months: 50% of deposit returned. After 6 months: full deposit returned." },
-    { q: "What powers the screen?", a: "The 7-inch screen is powered by your vehicle's 12V electrical system. It adds minimal power draw — less than a phone charger." },
-    { q: "What if the screen breaks or is damaged?", a: "mydiio covers replacement of defective screens at no cost to you. Deliberate damage or tampering may result in deposit forfeiture." },
-    { q: "Can I refer other drivers?", a: "Yes. Share your referral code and earn LKR 1,500 for every driver who joins and stays for 30 days." },
-    { q: "When and how do I get paid?", a: "Monthly bank transfer on the 5th of every month. This is a fixed commitment — never late, never missed." },
+    { q: "How long is the commitment?", a: "We ask for a minimum 12-month agreement. Your deposit is returned in full after 6 months of continuous participation. Founding drivers receive a loyalty bonus at Month 3 that puts them ahead of what they paid to join." },
+    { q: "What if I want to stop early?", a: "If you leave before 6 months, your deposit is forfeited. If you leave between 6 and 12 months, half the deposit is returned. After 12 months, you are free to leave with your full deposit returned." },
+    { q: "What powers the screen?", a: "The screen runs off your vehicle's existing power supply. An auto-electrician installs it in about an hour. There are no batteries to charge and nothing extra to do." },
+    { q: "What if the screen breaks or is damaged?", a: "Normal wear is covered. We handle repairs and replacements at no cost to you. The screen belongs to mydiio — you are hosting it, not responsible for it." },
+    { q: "Can I refer other drivers?", a: "Yes. You earn LKR 1,500 for every driver you refer who successfully installs a screen and stays active for 30 days. There is no limit on how many drivers you can refer." },
+    { q: "When exactly do I get paid?", a: "On the 5th of every calendar month, by bank transfer. This is a firm commitment — not 'around the 5th' or 'within the first week'. The 5th. Every month." },
   ];
   return (
     <Section bg={C.cream}>
