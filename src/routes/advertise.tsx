@@ -718,7 +718,7 @@ function DashboardPreview() {
           </div>
         </div>
       </div>
-      <div className="reveal reveal-up" style={{ marginTop: 32, maxWidth: 600, marginInline: "auto", width: "100%" }}>
+      <div className="reveal reveal-up dashboard-image-wrap" style={{ maxWidth: 600, marginInline: "auto", width: "100%" }}>
         <img
           src={ADVERTISER_DASHBOARD.url}
           alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand"
@@ -728,6 +728,12 @@ function DashboardPreview() {
           }}
         />
       </div>
+      <style>{`
+        .dashboard-image-wrap { margin-top: 48px; }
+        @media (max-width: 1023px) { .dashboard-image-wrap { margin-top: 32px; } }
+        @media (max-width: 639px) { .dashboard-image-wrap { margin-top: 24px; } }
+      `}</style>
+
       <p className="reveal" style={{
         fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
         fontSize: 14, color: C.inkSoft, textAlign: "center", marginTop: 22, maxWidth: 520, marginInline: "auto",
