@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import HERO_NIGHT from "@/assets/hero-tuk-tuk-night-screen.png.asset.json";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
+import INSIDE_RIDE from "@/assets/inside-ride-passenger-pov-screen.png.asset.json";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
+import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.asset.json";
+import TUK_STAND from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
 import { useI18n } from "@/lib/i18n";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
@@ -77,7 +81,7 @@ function Hero() {
 
   return (
     <section data-nav-section="home" className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
-      <img src={COLOMBO_STREET} alt="tuk-tuks moving through Colombo at golden hour" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={HERO_NIGHT.url} alt="tuk-tuks moving through Colombo at golden hour" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.45) 40%, rgba(20,16,12,0.88) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(120px, 16vh, 180px) clamp(22px, 6vw, 80px) clamp(72px, 10vh, 110px)" }}>
         <div style={{ maxWidth: 980 }}>
@@ -418,7 +422,7 @@ function TukInterior() {
             boxShadow: "var(--sticker-lg)",
             overflow: "hidden",
           }}>
-            <img src={TUKTUK_INTERIOR} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
+            <img src={INSIDE_RIDE.url} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
           </div>
           <div style={{
             position: "absolute",
@@ -494,37 +498,40 @@ function TwoAudiences() {
           borderRadius: 26,
           boxShadow: "var(--sticker)",
           overflow: "hidden",
-          padding: "clamp(28px, 4vw, 40px)",
+          padding: 0,
         }}>
-          <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
-          <h3 style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontWeight: 700,
-            fontSize: "clamp(26px, 3vw, 38px)",
-            color: "var(--ink)",
-            marginTop: 12,
-            lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-          }}>
-            {t("ad_title")}
-          </h3>
-          <p style={{ fontSize: 15, color: "var(--ink)", marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
-            {t("ad_body")}
-          </p>
-          <Link to="/advertise" className="btn-bold" style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            marginTop: 24,
-            background: "var(--accent)",
-            color: "var(--accent-ink)",
-            padding: "12px 20px",
-            fontSize: 14,
-            fontWeight: 600,
-            textDecoration: "none",
-          }}>
-            {t("ad_cta")}
-          </Link>
+          <img src={ADVERTISER_DASHBOARD.url} alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: "2px solid var(--ink)" }} />
+          <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
+            <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
+            <h3 style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(26px, 3vw, 38px)",
+              color: "var(--ink)",
+              marginTop: 12,
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+            }}>
+              {t("ad_title")}
+            </h3>
+            <p style={{ fontSize: 15, color: "var(--ink)", marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
+              {t("ad_body")}
+            </p>
+            <Link to="/advertise" className="btn-bold" style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              marginTop: 24,
+              background: "var(--accent)",
+              color: "var(--accent-ink)",
+              padding: "12px 20px",
+              fontSize: 14,
+              fontWeight: 600,
+              textDecoration: "none",
+            }}>
+              {t("ad_cta")}
+            </Link>
+          </div>
         </div>
 
         <div className="reveal path-card reveal-up delay-2" style={{
@@ -706,6 +713,9 @@ function ScaleStory() {
         <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
           {t("scale_title")}
         </h2>
+      </div>
+      <div className="reveal reveal-up delay-2" style={{ marginBottom: 40 }}>
+        <img src={TUK_STAND.url} alt="Sri Lankan tuk-tuk drivers at a stand in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 20 }}>
         {cards.map((c, i) => (
