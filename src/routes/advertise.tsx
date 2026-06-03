@@ -351,16 +351,16 @@ function ColomboCoverage() {
   ];
 
   const tiers = [
-    { name: "PIONEER", zones: "All 10 zones", accent: true },
-    { name: "ROAMER", zones: "3 zones", accent: false },
-    { name: "VOYAGER", zones: "7 zones", accent: false },
-    { name: "HORIZON", zones: "All 10 zones", accent: false },
+    { name: "PIONEER", zones: "Full fleet", accent: true },
+    { name: "ROAMER", zones: "Up to 5 tuks", accent: false },
+    { name: "VOYAGER", zones: "Up to 15 tuks", accent: false },
+    { name: "HORIZON", zones: "15–100+ tuks", accent: false },
   ];
 
   const bursts = [
-    { name: "SPARK", zones: "1 zone" },
-    { name: "BLAST", zones: "3 zones" },
-    { name: "SURGE", zones: "All 10 zones" },
+    { name: "SPARK", zones: "Up to 5 tuks" },
+    { name: "BLAST", zones: "Up to 10 tuks" },
+    { name: "SURGE", zones: "Full fleet" },
   ];
 
   return (
@@ -371,21 +371,21 @@ function ColomboCoverage() {
             fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: "0.2em",
             color: "var(--accent-deep)", textTransform: "uppercase", display: "inline-block",
           }}>
-            Colombo coverage
+            Where your audience is
           </span>
         </div>
         <h2 className="reveal reveal-up font-display" style={{
           fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 700, letterSpacing: "-0.03em",
           color: "var(--ink)", textAlign: "center", marginTop: 12, lineHeight: 1.1,
         }}>
-          Where your ad travels.
+          Your ad moves with Colombo.
         </h2>
         <p className="reveal reveal-up" style={{
           fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(15px, 1.4vw, 17px)",
           fontWeight: 400, color: "var(--ink-soft)", textAlign: "center",
           maxWidth: "50ch", margin: "12px auto 48px", lineHeight: 1.5,
         }}>
-          mydiio tuk-tuks operate across 10 key zones in Greater Colombo. Every advertiser chooses the zones that matter to their business. Pioneer advertisers access all 10 simultaneously.
+          mydiio tuk-tuks drive through every part of Colombo every day. Your weekly report shows exactly which neighbourhoods your ad reached — verified by GPS on every vehicle.
         </p>
 
         <div className="coverage-tier-wrap">
@@ -419,13 +419,13 @@ function ColomboCoverage() {
               fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
               fontSize: 17, color: "var(--ink)", marginBottom: 4,
             }}>
-              Zones by plan
+              Vehicles by plan
             </div>
             <div style={{
               fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
               color: "var(--ink-soft)", marginBottom: 20,
             }}>
-              The number of zones you can run in at the same time depends on your plan.
+              The number of tuk-tuks carrying your ad at the same time depends on your plan.
             </div>
 
             {tiers.map((t, i) => (
@@ -488,7 +488,7 @@ function ColomboCoverage() {
           fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
           color: "var(--ink-soft)", marginTop: 14, lineHeight: 1.6, textAlign: "left",
         }}>
-          Zone limits apply to simultaneous deployment. You can change your active zones at any time by contacting your account manager.
+          Vehicle count is based on your plan. Your weekly GPS report shows which neighbourhoods your campaign reached across the fleet.
         </p>
 
         <p style={{
