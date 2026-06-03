@@ -58,12 +58,12 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
 /* ---------- Hero ---------- */
 function Hero() {
   return (
-    <section className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
-      <img src={HERO_PHOTO} alt="Tuk-tuk screen in Colombo" className="absolute inset-0 w-full h-full object-cover" />
+    <section className="relative w-full overflow-hidden page-hero-fixed">
+      <img src={INSIDE_RIDE.url} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "top center" }} />
       <div className="absolute inset-0" style={{
         background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)",
       }} />
-      <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "120px 6% 80px" }}>
+      <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "120px 6% 80px" }}>
         <div style={{ maxWidth: 760 }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase" }}>
             For advertisers
@@ -99,6 +99,14 @@ function Hero() {
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0" style={{ height: 6, background: C.amber }} />
+      <style>{`
+        .page-hero-fixed { min-height: 560px; }
+        .page-hero-inner { min-height: 560px; }
+        @media (max-width: 767px) {
+          .page-hero-fixed { min-height: 380px; }
+          .page-hero-inner { min-height: 380px; }
+        }
+      `}</style>
     </section>
   );
 }
