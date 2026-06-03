@@ -131,7 +131,7 @@ function ContactPage() {
               Launch a campaign.
             </h3>
             <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65 }}>
-              From LKR 20,000 a month. First 14 days free. GPS-verified proof every Monday. No agency needed.
+              From LKR 25,000 a month. First 7 days free. GPS-verified proof every Monday. No agency needed.
             </p>
 
             <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", margin: "14px 0 20px" }}>

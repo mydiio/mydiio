@@ -14,9 +14,9 @@ export const Route = createFileRoute("/advertise")({
   head: () => ({
     meta: [
       { title: "Advertise on mydiio — Reach Colombo's Tuk-Tuk Passengers" },
-      { name: "description", content: "14 minutes. No skip button. GPS-verified weekly reports. From LKR 20,000/month with 14 days free." },
+      { name: "description", content: "14 minutes. No skip button. GPS-verified weekly reports. From LKR 25,000/month with 7 days free." },
       { property: "og:title", content: "Advertise on mydiio — Reach Colombo's Tuk-Tuk Passengers" },
-      { property: "og:description", content: "14 minutes. No skip button. GPS-verified. From LKR 20,000/month with 14 days free." },
+      { property: "og:description", content: "14 minutes. No skip button. GPS-verified. From LKR 25,000/month with 7 days free." },
     ],
   }),
 });
@@ -77,7 +77,7 @@ function Hero() {
             fontSize: "clamp(15px, 1.8vw, 19px)",
             color: "rgba(255,255,255,0.78)", marginTop: 18, maxWidth: 600,
           }}>
-            mydiio puts your ad on a screen inside every tuk-tuk ride. Passengers sit facing it for 10 to 20 minutes, with nothing else to look at. Your first 14 days are completely free.
+            mydiio puts your ad on a screen inside every tuk-tuk ride. Passengers sit facing it for 10 to 20 minutes, with nothing else to look at. Your first 7 days are completely free.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
             <a href="#waitlist" onClick={scrollToWaitlist}
@@ -92,7 +92,7 @@ function Hero() {
           </div>
           <div style={{ marginTop: 24, display: "flex", flexWrap: "wrap", gap: 10 }}>
             <StatPill value="14 min" label="captive attention" />
-            <StatPill value="14 days" label="first weeks free" />
+            <StatPill value="7 days" label="first week free" />
           </div>
         </div>
       </div>

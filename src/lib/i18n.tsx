@@ -34,7 +34,7 @@ export const dict: Dict = {
     ta: "நாங்கள் கொழும்பு முழுவதும் டுக்-டுக்குகளை நகரும் ஊடகமாக மாற்றுகிறோம் — உண்மையான பயணங்களின்போது உண்மையான மக்களை அடைய பிராண்டுகளுக்கு உதவுகிறோம்.",
   },
   metric_vehicles: { en: "Vehicles ready", si: "සූදානම් වාහන", ta: "தயார் வாகனங்கள்" },
-  metric_zones: { en: "Colombo zones", si: "කොළඹ කලාප", ta: "கொழும்பு மண்டலங்கள்" },
+  metric_zones: { en: "Vehicles ready", si: "සූදානම් වාහන", ta: "தயார் வாகனங்கள்" },
   metric_attention: { en: "Avg ride attention", si: "සාමාන්‍ය ගමන් අවධානය", ta: "சராசரி பயண கவனம்" },
   metric_launch: { en: "Campaign launch", si: "ව්‍යාපාර දියත් කිරීම", ta: "பிரச்சார தொடக்கம்" },
   metric_min: { en: "min", si: "මිනි", ta: "நிமி" },
@@ -79,7 +79,7 @@ export const dict: Dict = {
   // --- Two Audiences ---
   ad_kicker: { en: "For advertisers", si: "ප්‍රචාරකයින් සඳහා", ta: "விளம்பரதாரர்களுக்கு" },
   ad_title: { en: "Turn Colombo traffic into customers.", si: "කොළඹ ගමනාගමනය පාරිභෝගිකයන් බවට පත් කරන්න.", ta: "கொழும்பு போக்குவரத்தை வாடிக்கையாளர்களாக மாற்றுங்கள்." },
-  ad_body: { en: "From restaurants to banks to apps — businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 20,000 a month, with your first 14 days completely free.", si: "අවන්හල් සිට බැංකු දක්වා — සන්නාම මිලදී ගැනීමේ තීරණ ගන්නා ස්ථානවල දෘශ්‍යමාන වීමට mydiio භාවිතා කරයි.", ta: "உணவகங்கள் முதல் வங்கிகள் வரை — வாங்கும் முடிவுகள் நடக்கும் இடத்தில் தெரியும்படி பிராண்டுகள் mydiio-ஐப் பயன்படுத்துகின்றன." },
+  ad_body: { en: "From restaurants to banks to apps — businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 25,000 a month, with your first 7 days completely free.", si: "අවන්හල් සිට බැංකු දක්වා — සන්නාම මිලදී ගැනීමේ තීරණ ගන්නා ස්ථානවල දෘශ්‍යමාන වීමට mydiio භාවිතා කරයි.", ta: "உணவகங்கள் முதல் வங்கிகள் வரை — வாங்கும் முடிவுகள் நடக்கும் இடத்தில் தெரியும்படி பிராண்டுகள் mydiio-ஐப் பயன்படுத்துகின்றன." },
   ad_cta: { en: "Get pricing →", si: "මිල ලබා ගන්න →", ta: "விலையை பெறுங்கள் →" },
 
   dr_kicker: { en: "For drivers", si: "රියදුරන් සඳහා", ta: "ஓட்டுநர்களுக்கு" },
@@ -115,7 +115,7 @@ export const dict: Dict = {
   fo_body: { en: "We're opening a limited number of pilot campaigns for our first advertisers. Founding partners get priority placement, a locked-in rate, and full dashboard access from day one.", si: "අපගේ පළමු ප්‍රචාරකයින් සඳහා සීමිත පරීක්ෂණ ව්‍යාපාර අපි විවෘත කරන්නෙමු.", ta: "எங்கள் முதல் விளம்பரதாரர்களுக்கு வரம்புக்குட்பட்ட முன்னோடி பிரச்சாரங்களை திறக்கிறோம்." },
   fo_b1: { en: "Priority placements across the fleet", si: "ප්‍රමුඛතා ස්ථානගත කිරීම්", ta: "முன்னுரிமை இடங்கள்" },
   fo_b2: { en: "Rate locked in for the life of your contract", si: "දියත් කිරීමේ වට්ටම්", ta: "தொடக்க தள்ளுபடி" },
-  fo_b3: { en: "First 14 days completely free", si: "සතිපතා වාර්තා", ta: "வாராந்திர அறிக்கை" },
+  fo_b3: { en: "First 7 days completely free", si: "සතිපතා වාර්තා", ta: "வாராந்திர அறிக்கை" },
   fo_b4: { en: "Free ad creative production to get you started", si: "අවස්ථා අධ්‍යයන සහාය", ta: "வழக்கு ஆய்வு ஆதரவு" },
   fo_cta: { en: "Claim a pilot slot →", si: "පරීක්ෂණ ස්ථානය ලබාගන්න →", ta: "முன்னோடி இடத்தை பெறுங்கள் →" },
 
@@ -131,7 +131,7 @@ export const dict: Dict = {
   faq_q4: { en: "What cities are next?", si: "ඊළඟට කුමන නගරද?", ta: "அடுத்து என்ன நகரங்கள்?" },
   faq_a4: { en: "We start in Colombo. Kandy and Galle are targeted for Year 2. Negombo, Jaffna, and other major cities follow in Year 3. The network is built to expand.", si: "මුලින්ම කොළඹ. නිවාස ජාලය සංතෘප්ත වූ පසු මහනුවර, ගාල්ල සහ මීගමුව අනුගමනය කරයි.", ta: "முதலில் கொழும்பு. வீட்டு வலைப்பின்னல் நிறைவடைந்தவுடன் கண்டி, காலி மற்றும் நீர்கொழும்பு தொடரும்." },
   faq_q5: { en: "How do drivers get paid?", si: "රියදුරන්ට ගෙවන්නේ කෙසේද?", ta: "ஓட்டுநர்களுக்கு எப்படி பணம் செலுத்தப்படுகிறது?" },
-  faq_a5: { en: "Drivers receive a bank transfer on the 5th of every month. Base pay is LKR 6,000 unconditionally. Drivers who keep their screen active for an average of 8 or more hours per day earn an additional LKR 2,000 route bonus.", si: "ජංගම මුදල් පසුම්බිය හෝ බැංකු මාරුව හරහා මාසිකව — ව්‍යාපාර ආදායමේ කොටසක්.", ta: "மொபைல் வாலட் அல்லது வங்கி பரிமாற்றம் மூலம் மாதந்தோறும் — பிரச்சார வருவாயின் பங்கு." },
+  faq_a5: { en: "On the 5th of every calendar month, by bank transfer. Base pay is LKR 6,000 unconditionally every month. Drivers who keep their screen active for an average of 8 or more hours per day earn an additional LKR 2,000 route bonus.", si: "ජංගම මුදල් පසුම්බිය හෝ බැංකු මාරුව හරහා මාසිකව — ව්‍යාපාර ආදායමේ කොටසක්.", ta: "மொபைல் வாலட் அல்லது வங்கி பரிமாற்றம் மூலம் மாதந்தோறும் — பிரச்சார வருவாயின் பங்கு." },
 
   // --- Final CTA ---
   fcta_kicker: { en: "Get started", si: "ආරම්භ කරන්න", ta: "தொடங்குங்கள்" },

@@ -16,10 +16,10 @@ const ZONES = [
 ] as const;
 
 const TIERS = [
-  { id: "PIONEER", price: "LKR 25–35k/mo", desc: "Founding partner — category exclusivity", term: "6-month min" },
-  { id: "ROAMER", price: "LKR 20k/mo", desc: "Local reach — 3 zones", term: "3-month min" },
-  { id: "VOYAGER", price: "LKR 32k/mo", desc: "City coverage — 7 zones", term: "6-month min" },
-  { id: "HORIZON", price: "LKR 65k+/mo", desc: "Enterprise — full Colombo", term: "Negotiated" },
+  { id: "PIONEER", price: "LKR 25–35k/mo", desc: "Founding partner — full fleet, exclusive to your category", term: "6-month min" },
+  { id: "ROAMER", price: "LKR 25k/mo", desc: "Up to 5 tuk-tuks in your area", term: "3-month min" },
+  { id: "VOYAGER", price: "LKR 38k/mo", desc: "Up to 15 tuk-tuks across Colombo", term: "6-month min" },
+  { id: "HORIZON", price: "LKR 65k+/mo", desc: "15 to 100+ tuk-tuks, enterprise terms", term: "Negotiated" },
 ] as const;
 
 const CREATIVE_OPTIONS = [
