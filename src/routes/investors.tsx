@@ -243,6 +243,14 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
           </div>
         </div>
       </div>
+      <style>{`
+        .page-hero-fixed { min-height: 560px; }
+        .page-hero-inner { min-height: 560px; }
+        @media (max-width: 767px) {
+          .page-hero-fixed { min-height: 380px; }
+          .page-hero-inner { min-height: 380px; }
+        }
+      `}</style>
     </section>
   );
 }
