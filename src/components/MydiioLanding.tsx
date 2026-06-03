@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import HERO_NIGHT from "@/assets/hero-tuk-tuk-night-screen.png.asset.json";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
+import INSIDE_RIDE from "@/assets/inside-ride-passenger-pov-screen.png.asset.json";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.asset.json";
