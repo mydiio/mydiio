@@ -712,6 +712,16 @@ function DashboardPreview() {
           </div>
         </div>
       </div>
+      <div className="reveal reveal-up" style={{ marginTop: 32, maxWidth: 600, marginInline: "auto", width: "100%" }}>
+        <img
+          src={ADVERTISER_DASHBOARD.url}
+          alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand"
+          style={{
+            width: "100%", aspectRatio: "16 / 9", objectFit: "cover", objectPosition: "center",
+            display: "block", borderRadius: 16, border: `2px solid ${C.ink}`, boxShadow: `6px 6px 0 ${C.ink}`,
+          }}
+        />
+      </div>
       <p className="reveal" style={{
         fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
         fontSize: 14, color: C.inkSoft, textAlign: "center", marginTop: 22, maxWidth: 520, marginInline: "auto",
