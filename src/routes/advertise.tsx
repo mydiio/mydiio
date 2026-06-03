@@ -165,7 +165,7 @@ function Pricing() {
   }> = [
     {
       name: "PIONEER", price: "LKR 25–35k", per: "/mo · 6-month min",
-      features: ["Category exclusivity in your zone", "Rate locked for life — never increases", "Priority rotation across all 10 zones", "Free ad creative production"],
+      features: ["Category exclusivity — you're the only business in your category on mydiio", "Rate locked for life — never increases", "Priority placement across the full fleet", "Free ad creative production"],
       badge: "Founding — 10 spots only",
       highlight: true,
       tierSlug: "pioneer", ctaLabel: "Apply for Pioneer →", btnStyle: "primary",
