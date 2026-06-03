@@ -378,7 +378,7 @@ function ColomboCoverage() {
           fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 700, letterSpacing: "-0.03em",
           color: "var(--ink)", textAlign: "center", marginTop: 12, lineHeight: 1.1,
         }}>
-          Where your ad travels.
+          Your ad moves with Colombo.
         </h2>
         <p className="reveal reveal-up" style={{
           fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(15px, 1.4vw, 17px)",
