@@ -18,18 +18,18 @@ export const dict: Dict = {
   nav_about: { en: "About", si: "අපි", ta: "எங்களை" },
   nav_contact: { en: "Contact", si: "අමතන්න", ta: "தொடர்பு" },
   cta_launch: { en: "Launch Campaign", si: "දැන්වීම අරඹන්න", ta: "விளம்பரம் தொடங்கு" },
-  cta_launch_pilot: { en: "Launch Pilot Campaign →", si: "පයිලට් දැන්වීම අරඹන්න →", ta: "பைலட் விளம்பரம் தொடங்கு →" },
-  cta_talk_founder: { en: "Talk To Founder", si: "Founder සමඟ කතා කරන්න", ta: "Founder உடன் பேசுங்கள்" },
+  cta_launch_pilot: { en: "Launch a campaign →", si: "පයිලට් දැන්වීම අරඹන්න →", ta: "பைலட் விளம்பரம் தொடங்கு →" },
+  cta_talk_founder: { en: "Become a driver →", si: "Founder සමඟ කතා කරන්න", ta: "Founder உடன் பேசுங்கள்" },
 
   // --- Hero ---
-  hero_kicker: { en: "Sri Lanka · Mobility media", si: "ශ්‍රී ලංකාව · ජංගම මාධ්‍ය", ta: "இலங்கை · இயக்க ஊடகம்" },
+  hero_kicker: { en: "Sri Lanka · Mobility Media", si: "ශ්‍රී ලංකාව · ජංගම මාධ්‍ය", ta: "இலங்கை · இயக்க ஊடகம்" },
   hero_title: {
     en: "Sri Lanka's Urban Attention Network.",
     si: "ශ්‍රී ලංකාවේ නගර අවධාන ජාලය.",
     ta: "இலங்கையின் நகர கவன ஈர்ப்பு வலைப்பின்னல்.",
   },
   hero_sub: {
-    en: "We turn tuk-tuks into moving media across Colombo — helping brands reach real people during real journeys.",
+    en: "mydiio puts digital advertising screens inside tuk-tuks across Colombo. Every ride is an audience. Every driver earns more. Every impression is verified.",
     si: "අපි කොළඹ පුරා ත්‍රිරෝද රථ ජංගම මාධ්‍ය බවට පත් කරමු — සැබෑ ගමන් අතරතුර සැබෑ පාරිභෝගිකයන් වෙත සන්නාම ළඟා කරවමින්.",
     ta: "நாங்கள் கொழும்பு முழுவதும் டுக்-டுக்குகளை நகரும் ஊடகமாக மாற்றுகிறோம் — உண்மையான பயணங்களின்போது உண்மையான மக்களை அடைய பிராண்டுகளுக்கு உதவுகிறோம்.",
   },
@@ -38,7 +38,7 @@ export const dict: Dict = {
   metric_attention: { en: "Avg ride attention", si: "සාමාන්‍ය ගමන් අවධානය", ta: "சராசரி பயண கவனம்" },
   metric_launch: { en: "Campaign launch", si: "ව්‍යාපාර දියත් කිරීම", ta: "பிரச்சார தொடக்கம்" },
   metric_min: { en: "min", si: "මිනි", ta: "நிமி" },
-  metric_hr: { en: "hr", si: "පැය", ta: "மணி" },
+  metric_hr: { en: "hrs", si: "පැය", ta: "மணி" },
 
   // --- Why It Works ---
   why_kicker: { en: "Why it works", si: "ඇයි මෙය ක්‍රියා කරන්නේ", ta: "இது ஏன் வேலை செய்கிறது" },
