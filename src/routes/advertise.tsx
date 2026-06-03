@@ -321,12 +321,18 @@ function Pricing() {
         ))}
       </div>
 
-      <p className="reveal reveal-up" style={{
-        fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.2,
-        color: C.inkSoft, textAlign: "center", marginTop: 36, maxWidth: 640, marginInline: "auto", lineHeight: 1.6,
+      <p className="reveal reveal-up pricing-footnote" style={{
+        fontSize: 13,
+        color: "#7A7A72",
+        textAlign: "center",
+        lineHeight: 1.7,
+        maxWidth: 640,
+        margin: "0 auto",
+        borderTop: "1px solid rgba(26,26,24,0.1)",
       }}>
         Every ad minute earns loyalty points — redeemable for free screen time. Founding Pioneer partners earn points at the highest rate, permanently. Points start accumulating from Day 8.
       </p>
+
     </Section>
   );
 }
