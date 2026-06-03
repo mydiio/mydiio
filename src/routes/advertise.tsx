@@ -77,7 +77,7 @@ function Hero() {
             fontSize: "clamp(15px, 1.8vw, 19px)",
             color: "rgba(255,255,255,0.78)", marginTop: 18, maxWidth: 600,
           }}>
-            14 minutes. No skip button. GPS-verified weekly reports. From LKR 20,000/month.
+            mydiio puts your ad on a screen inside every tuk-tuk ride. Passengers sit facing it for 10 to 20 minutes, with nothing else to look at. Your first 14 days are completely free.
           </p>
           <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
             <a href="#waitlist" onClick={scrollToWaitlist}
@@ -119,9 +119,9 @@ function StatPill({ value, label }: { value: string; label: string }) {
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Send us your ad", body: "Share your creative or idea. We'll produce it free." },
-    { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen in the fleet." },
-    { n: 3, title: "Weekly GPS report", body: "Verified impressions delivered to your inbox every Monday." },
+    { n: 1, title: "Send us your ad", body: "Share your video or image creative — 15 or 30 seconds long. No production house needed. We'll make your first one for free to get you started." },
+    { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen across the fleet in your chosen zones. Campaigns go live within 72 hours of approval." },
+    { n: 3, title: "Weekly GPS report", body: "Every Monday you receive a verified report: every vehicle, every GPS location, every play count. Proof your ad ran — every single time." },
   ];
   return (
     <Section bg={C.cream}>
@@ -165,24 +165,24 @@ function Pricing() {
   }> = [
     {
       name: "PIONEER", price: "LKR 25–35k", per: "/mo · 6-month min",
-      features: ["Category exclusivity in your zone", "Rate locked for life", "Priority rotation"],
-      badge: "FOUNDING — 10 SPOTS ONLY",
+      features: ["Category exclusivity in your zone", "Rate locked for life — never increases", "Priority rotation across all 10 zones", "Free ad creative production"],
+      badge: "Founding — 10 spots only",
       highlight: true,
       tierSlug: "pioneer", ctaLabel: "Apply for Pioneer →", btnStyle: "primary",
     },
     {
       name: "ROAMER", price: "LKR 20,000", per: "/mo · 3-month min",
-      features: ["Standard rotation", "Full dashboard access", "Weekly GPS reports"],
+      features: ["Standard rotation", "Up to 3 Colombo zones", "Full dashboard access", "Weekly GPS reports"],
       tierSlug: "roamer", ctaLabel: "Apply for Roamer →", btnStyle: "ink",
     },
     {
       name: "VOYAGER", price: "LKR 32,000", per: "/mo · 6-month min",
-      features: ["Priority rotation", "Better loyalty points rate", "Full dashboard access"],
+      features: ["Priority rotation", "Up to 7 Colombo zones", "Better loyalty points rate", "Full dashboard access"],
       tierSlug: "voyager", ctaLabel: "Apply for Voyager →", btnStyle: "ink",
     },
     {
       name: "HORIZON", price: "LKR 65,000+", per: "/mo · Custom",
-      features: ["Custom zones", "Enterprise support", "Multi-vehicle campaigns"],
+      features: ["Custom zone configuration", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
       tierSlug: "horizon", ctaLabel: "Contact us about Horizon →", btnStyle: "ghost",
     },
   ];
@@ -311,7 +311,7 @@ function Pricing() {
         fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.2,
         color: C.inkSoft, textAlign: "center", marginTop: 36, maxWidth: 640, marginInline: "auto", lineHeight: 1.6,
       }}>
-        Every ad minute earns loyalty points — redeemable for free airtime. Pioneer partners earn at the highest rate, permanently.
+        Every ad minute earns loyalty points — redeemable for free ad time. Founding Pioneer partners earn points at the highest rate, permanently.
       </p>
     </Section>
   );
