@@ -485,6 +485,148 @@ function DashboardPreview() {
   );
 }
 
+/* ---------- Pioneer Programme ---------- */
+function PioneerProgramme() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          el.querySelectorAll<HTMLElement>(".reveal").forEach((item, i) =>
+            setTimeout(() => item.classList.add("in"), i * 80)
+          );
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.18 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const items = [
+    { n: "01", h: "Category exclusivity", b: "You are the only business in your category advertising in your active zones. A Pioneer pharmacy in Fort means no other pharmacy runs on the mydiio fleet in Fort while your campaign is active." },
+    { n: "02", h: "Rate locked for life", b: "Your monthly rate never increases — regardless of how the network grows, how many advertisers join, or how many vehicles are added. The rate you start with is yours permanently." },
+    { n: "03", h: "Priority rotation", b: "Your campaign always runs first in the ad rotation on every vehicle in your active zones. You are never bumped, delayed, or deprioritised by a higher-spending advertiser." },
+    { n: "04", h: "Free creative production", b: "We produce your first campaign creative at no charge — a 15 or 30-second video ad or a static image, built from your existing branding. No agency needed to get started." },
+  ];
+
+  return (
+    <section ref={ref} className="section-wrap" style={{ background: "var(--ink)", maxWidth: "none", color: "var(--on-dark)" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div className="reveal reveal-up" style={{ textAlign: "center" }}>
+          <span style={{
+            fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: "0.2em",
+            color: "var(--accent)", textTransform: "uppercase", display: "inline-block",
+          }}>
+            Pioneer programme
+          </span>
+        </div>
+        <h2 className="reveal reveal-up font-display" style={{
+          fontSize: "clamp(32px, 5vw, 64px)", fontWeight: 700, letterSpacing: "-0.03em",
+          color: "var(--on-dark)", textAlign: "center", marginTop: 12, lineHeight: 1.1,
+        }}>
+          Only 10 founding advertisers. Ever.
+        </h2>
+        <p className="reveal reveal-up" style={{
+          fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(15px, 1.4vw, 18px)",
+          fontWeight: 400, color: "var(--on-dark)", opacity: 0.65, textAlign: "center",
+          maxWidth: "52ch", margin: "16px auto 56px", lineHeight: 1.65,
+        }}>
+          Pioneer spots are not a promotional offer — they are a permanent founding partnership. Your rate, your category exclusivity, and your priority placement are locked in for the life of your contract. When Pioneer is full, it is full. There will only ever be 10.
+        </p>
+
+        <div className="reveal reveal-up" style={{ maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: 8 }}>
+            {Array.from({ length: 10 }).map((_, i) => {
+              const filled = i < 3;
+              return (
+                <div key={i} style={{
+                  width: 28, height: 28, borderRadius: "50%",
+                  background: filled ? "var(--accent)" : "transparent",
+                  border: filled ? "none" : "1.5px solid rgba(255,255,255,0.2)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  color: "#fff", fontFamily: "'Space Mono', monospace", fontSize: 10, fontWeight: 700,
+                }}>
+                  {filled ? "✓" : ""}
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, color: "var(--accent)", marginTop: 14 }}>
+            3 of 10 Pioneer spots claimed
+          </div>
+          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>
+            7 remaining
+          </div>
+        </div>
+
+        <div className="pioneer-grid">
+          {items.map((it, i) => (
+            <div key={it.n} className={`reveal reveal-up delay-${i + 1} pioneer-card`}>
+              <div style={{
+                fontFamily: "'Space Mono', monospace", fontWeight: 700,
+                fontSize: "clamp(36px, 4vw, 48px)", color: "var(--accent)", lineHeight: 1,
+              }}>{it.n}</div>
+              <h4 style={{
+                fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 20,
+                color: "var(--on-dark)", margin: "10px 0 8px",
+              }}>{it.h}</h4>
+              <p style={{
+                fontFamily: "'Space Grotesk', sans-serif", fontSize: 14,
+                color: "var(--on-dark)", opacity: 0.65, lineHeight: 1.65, margin: 0,
+              }}>{it.b}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: 48 }}>
+          <div style={{
+            fontFamily: "'Space Grotesk', sans-serif", fontSize: 15,
+            color: "var(--on-dark)", opacity: 0.55, marginBottom: 20,
+          }}>
+            10 spots total. First come, first served. Colombo launch.
+          </div>
+          <a href="/advertise/apply?tier=pioneer" className="pioneer-cta" style={{
+            display: "inline-block", maxWidth: 280, width: "100%",
+            background: "var(--accent)", color: "var(--ink)",
+            border: "2px solid var(--on-dark)", borderRadius: 12,
+            boxShadow: "4px 4px 0 var(--on-dark)",
+            fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 15,
+            padding: "14px 28px", textDecoration: "none", transition: "all 0.2s ease",
+          }}>
+            Claim a Pioneer spot →
+          </a>
+          <div style={{
+            fontFamily: "'Space Mono', monospace", fontSize: 11,
+            color: "var(--on-dark)", opacity: 0.4, marginTop: 12,
+          }}>
+            No payment now · We'll contact you within 24 hours
+          </div>
+        </div>
+      </div>
+      <style>{`
+        .pioneer-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .pioneer-grid { grid-template-columns: repeat(2, 1fr); } }
+        .pioneer-card {
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 16px; padding: 24px;
+          transition: all 0.2s ease;
+        }
+        .pioneer-card:hover {
+          background: rgba(255,255,255,0.1);
+          border-color: var(--accent);
+        }
+        .pioneer-cta:hover {
+          transform: translate(-2px, -2px);
+          box-shadow: 6px 6px 0 var(--on-dark);
+        }
+      `}</style>
+    </section>
+  );
+}
+
 /* ---------- FAQ ---------- */
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
