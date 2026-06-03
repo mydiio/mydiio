@@ -1026,7 +1026,7 @@ function BurstPackages() {
     {
       tier: "SPARK",
       price: "LKR 5,000",
-      features: ["500 screen minutes", "1 Colombo zone", "Up to 5 vehicles", "Valid for 7 days"],
+      features: ["500 screen minutes", "Up to 5 vehicles", "Valid for 7 days"],
       bestFor: "A weekend event or a quick test",
       href: "/advertise/apply?tier=burst-spark",
       popular: false,
