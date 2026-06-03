@@ -498,37 +498,40 @@ function TwoAudiences() {
           borderRadius: 26,
           boxShadow: "var(--sticker)",
           overflow: "hidden",
-          padding: "clamp(28px, 4vw, 40px)",
+          padding: 0,
         }}>
-          <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
-          <h3 style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontWeight: 700,
-            fontSize: "clamp(26px, 3vw, 38px)",
-            color: "var(--ink)",
-            marginTop: 12,
-            lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-          }}>
-            {t("ad_title")}
-          </h3>
-          <p style={{ fontSize: 15, color: "var(--ink)", marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
-            {t("ad_body")}
-          </p>
-          <Link to="/advertise" className="btn-bold" style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            marginTop: 24,
-            background: "var(--accent)",
-            color: "var(--accent-ink)",
-            padding: "12px 20px",
-            fontSize: 14,
-            fontWeight: 600,
-            textDecoration: "none",
-          }}>
-            {t("ad_cta")}
-          </Link>
+          <img src={ADVERTISER_DASHBOARD.url} alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: "2px solid var(--ink)" }} />
+          <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
+            <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
+            <h3 style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(26px, 3vw, 38px)",
+              color: "var(--ink)",
+              marginTop: 12,
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+            }}>
+              {t("ad_title")}
+            </h3>
+            <p style={{ fontSize: 15, color: "var(--ink)", marginTop: 14, lineHeight: 1.55, fontWeight: 500 }}>
+              {t("ad_body")}
+            </p>
+            <Link to="/advertise" className="btn-bold" style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              marginTop: 24,
+              background: "var(--accent)",
+              color: "var(--accent-ink)",
+              padding: "12px 20px",
+              fontSize: 14,
+              fontWeight: 600,
+              textDecoration: "none",
+            }}>
+              {t("ad_cta")}
+            </Link>
+          </div>
         </div>
 
         <div className="reveal path-card reveal-up delay-2" style={{
