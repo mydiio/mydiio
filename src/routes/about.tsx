@@ -97,7 +97,7 @@ function BeforeAfterCard({ variant, children }: { variant: Variant; children: Re
         className="ba-toggle"
         style={{ background: "none", border: "none", padding: 0, marginTop: 18, fontFamily: "'Space Mono', monospace", fontSize: 12, color: "var(--accent-deep)", cursor: "pointer", textAlign: "left", letterSpacing: "0.08em", alignSelf: "flex-start" }}
       >
-        {showBefore ? "← See what changed" : "What was it like before? →"}
+        {showBefore ? "← Back to now" : "What was it like before? →"}
       </button>
     </div>
   );
