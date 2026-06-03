@@ -306,10 +306,10 @@ function DriverEarnings() {
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Get in touch", body: "We reply within 24 hours." },
-    { n: 2, title: "We install for free", body: "One hour. No cost. Powered by your vehicle." },
-    { n: 3, title: "You drive normally", body: "Same routes, same hours. Screen runs automatically." },
-    { n: 4, title: "Money arrives on the 5th", body: "Every month. Direct bank transfer." },
+    { n: 1, title: "Get in touch", body: "Apply through our website or reach out directly. We reply within 24 hours." },
+    { n: 2, title: "We install for free", body: "We fit a small screen in your tuk at no cost to you. It takes about an hour and is powered by your vehicle." },
+    { n: 3, title: "You drive normally", body: "Same routes, same hours. The screen runs automatically. You do not need to do anything differently." },
+    { n: 4, title: "Money arrives on the 5th", body: "Every month, your earnings are paid directly to your bank account on the 5th. Without exception." },
   ];
   return (
     <Section bg={C.white}>
@@ -383,21 +383,20 @@ function Installation() {
 /* ---------- Founding Group ---------- */
 function FoundingGroup() {
   const items = [
-    "LKR 3,500 refundable deposit (returned at month 3)",
-    "LKR 5,000 loyalty bonus at month 3",
-    "Net gain: LKR 1,500 ahead after 3 months",
-    "Base rate locked permanently",
-    "Limited edition amber founding partner shirt",
+    "Group A (drivers 1–10) — LKR 5,000 loyalty bonus at Month 3, putting you ahead of what you paid to join",
+    "Group B (drivers 11–20) — LKR 3,000 loyalty bonus at Month 3",
+    "Limited-edition amber founding partner shirt — only 10 will ever exist",
+    "Branded merchandise every 6 months — polo shirt, umbrella, phone holder, fuel card",
   ];
   return (
     <Section bg={C.cream}>
       <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
         <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
-          Founding Group A
+          First 20 drivers only
         </span>
       </div>
       <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
-        First 10 drivers only.
+        Be a founding driver.
       </h2>
 
       <div className="reveal" style={{
