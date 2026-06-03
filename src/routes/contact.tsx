@@ -131,8 +131,9 @@ function ContactPage() {
               Launch a campaign.
             </h3>
             <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65 }}>
-              From LKR 20,000/month. 14-day free trial. GPS-verified proof every Monday. No agency needed.
+              From LKR 20,000 a month. First 14 days free. GPS-verified proof every Monday. No agency needed.
             </p>
+
             <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", margin: "14px 0 20px" }}>
               Takes 2 minutes · No payment now
             </p>
@@ -168,8 +169,9 @@ function ContactPage() {
               Join the network.
             </h3>
             <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65 }}>
-              LKR 6,000 base pay every month. Screen installed free. Keep your routes. Bank transfer on the 5th, every month.
+              LKR 6,000 base pay every month. Screen installed free. Keep your routes. Payment on the 5th, every month, without fail.
             </p>
+
             <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", margin: "14px 0 20px" }}>
               Takes 5 minutes · No deposit now
             </p>
@@ -200,7 +202,7 @@ function ContactPage() {
 
           {/* Card 3 — Investors & general */}
           <div className="mydiio-card reveal-up delay-3" style={{ padding: 24, display: "flex", flexDirection: "column" }}>
-            <span className="eyebrow">Investors & press</span>
+            <span className="eyebrow">Investors and press</span>
             <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 22, color: "var(--ink)", margin: "8px 0 10px" }}>
               Get in touch.
             </h3>
