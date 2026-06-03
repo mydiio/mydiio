@@ -224,9 +224,10 @@ function Pricing() {
             background: "#fff",
             border: `${p.highlight ? 3 : 2}px solid ${p.highlight ? C.amber : C.ink}`,
             boxShadow: `${p.highlight ? 8 : 6}px ${p.highlight ? 8 : 6}px 0 ${C.ink}`,
-            borderRadius: 16, padding: 26, position: "relative",
-            display: "flex", flexDirection: "column",
+            borderRadius: 16, padding: "clamp(24px, 3vw, 32px)", position: "relative",
+            display: "flex", flexDirection: "column", height: "100%",
           }}>
+
             {p.badge && (
               <div style={{
                 position: "absolute", top: -14, left: 18,
