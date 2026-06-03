@@ -260,14 +260,16 @@ function AboutPage() {
       `}</style>
 
       {/* SECTION 1 — HERO */}
-      <section style={{ background: "var(--ink)", padding: "clamp(80px, 12vh, 140px) 0 clamp(48px, 6vh, 80px)", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section className="page-hero-fixed" style={{ textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <img src={HERO_NIGHT.url} alt="Tuk-tuks moving through Colombo at night" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
         {/* Amber arcs decoration */}
         <svg
           aria-hidden="true"
           width="520"
           height="520"
           viewBox="0 0 520 520"
-          style={{ position: "absolute", right: "-160px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.08 }}
+          style={{ position: "absolute", right: "-160px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.08, zIndex: 1 }}
         >
           <g fill="none" stroke="var(--accent)" strokeWidth="2">
             <circle cx="260" cy="260" r="120" />
@@ -275,7 +277,7 @@ function AboutPage() {
             <circle cx="260" cy="260" r="240" />
           </g>
         </svg>
-        <div style={{ padding: "0 clamp(20px, 5vw, 72px)", position: "relative", zIndex: 1 }}>
+        <div className="page-hero-inner" style={{ padding: "clamp(80px, 12vh, 140px) clamp(20px, 5vw, 72px) clamp(48px, 6vh, 80px)", position: "relative", zIndex: 1 }}>
           <span className="about-eyebrow reveal-up" style={{ color: "var(--accent)" }}>About mydiio</span>
           <h1 className="about-h1 reveal-up delay-1" style={{ color: "var(--on-dark)" }}>Ads on the move.</h1>
           <p className="about-lead reveal-up delay-2" style={{ maxWidth: "46ch", margin: "20px auto 32px", color: "rgba(244,239,227,0.7)" }}>
@@ -286,12 +288,20 @@ function AboutPage() {
             <a href="/drivers/apply" className="about-btn" style={greenBtn}>Become a driver →</a>
           </div>
         </div>
-        <div className="ticker-strip" style={{ marginTop: "clamp(40px, 6vh, 64px)" }}>
+        <div className="ticker-strip" style={{ marginTop: "clamp(40px, 6vh, 64px)", position: "relative", zIndex: 1 }}>
           <div className="ticker-inner">
             <span>{tickerText.repeat(6)}</span>
             <span>{tickerText.repeat(6)}</span>
           </div>
         </div>
+        <style>{`
+          .page-hero-fixed { min-height: 480px; }
+          .page-hero-inner { min-height: 480px; }
+          @media (max-width: 767px) {
+            .page-hero-fixed { min-height: 320px; }
+            .page-hero-inner { min-height: 320px; }
+          }
+        `}</style>
       </section>
 
       {/* SECTION 2 — THE PROBLEM */}
