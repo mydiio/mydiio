@@ -71,6 +71,96 @@ export type Database = {
         }
         Relationships: []
       }
+      driver_applications: {
+        Row: {
+          account_holder_name: string
+          account_number: string
+          admin_notes: string | null
+          alternate_number: string | null
+          bank_name: string
+          contacted_at: string | null
+          created_at: string
+          daily_hours: number
+          date_of_birth: string
+          driving_days: string
+          driving_experience: string
+          full_name: string
+          home_address: string
+          id: string
+          licence_expiry: string
+          licence_number: string
+          nic_number: string
+          operating_zones: string[]
+          platform_usage: string[] | null
+          preferred_language: string
+          referral_name: string | null
+          status: string
+          vehicle_age: string
+          vehicle_colour: string
+          vehicle_ownership: string
+          vehicle_registration: string
+          whatsapp_number: string
+        }
+        Insert: {
+          account_holder_name: string
+          account_number: string
+          admin_notes?: string | null
+          alternate_number?: string | null
+          bank_name: string
+          contacted_at?: string | null
+          created_at?: string
+          daily_hours: number
+          date_of_birth: string
+          driving_days: string
+          driving_experience: string
+          full_name: string
+          home_address: string
+          id?: string
+          licence_expiry: string
+          licence_number: string
+          nic_number: string
+          operating_zones?: string[]
+          platform_usage?: string[] | null
+          preferred_language: string
+          referral_name?: string | null
+          status?: string
+          vehicle_age: string
+          vehicle_colour: string
+          vehicle_ownership: string
+          vehicle_registration: string
+          whatsapp_number: string
+        }
+        Update: {
+          account_holder_name?: string
+          account_number?: string
+          admin_notes?: string | null
+          alternate_number?: string | null
+          bank_name?: string
+          contacted_at?: string | null
+          created_at?: string
+          daily_hours?: number
+          date_of_birth?: string
+          driving_days?: string
+          driving_experience?: string
+          full_name?: string
+          home_address?: string
+          id?: string
+          licence_expiry?: string
+          licence_number?: string
+          nic_number?: string
+          operating_zones?: string[]
+          platform_usage?: string[] | null
+          preferred_language?: string
+          referral_name?: string | null
+          status?: string
+          vehicle_age?: string
+          vehicle_colour?: string
+          vehicle_ownership?: string
+          vehicle_registration?: string
+          whatsapp_number?: string
+        }
+        Relationships: []
+      }
       enquiries: {
         Row: {
           assigned_to: string | null
