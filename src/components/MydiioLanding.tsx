@@ -157,7 +157,7 @@ function Hero() {
           >
             {[
               { v: `${v1}`, suffix: "+", k: "metric_vehicles" as const },
-              { v: `${v2}`, suffix: "", k: "metric_zones" as const },
+              { v: `${v2}`, suffix: "+", k: "metric_zones" as const },
               { v: `${v3}`, suffix: ` ${t("metric_min")}`, k: "metric_attention" as const },
               { v: `${v4}`, suffix: ` ${t("metric_hr")}`, k: "metric_launch" as const },
             ].map((m, i) => (
