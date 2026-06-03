@@ -258,7 +258,7 @@ export function useI18n() {
 /* -------- Switcher UI -------- */
 export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }) {
   const { lang, setLang } = useI18n();
-  const ink = "#1E1A15";
+  const ink = "#1A1A18";
   const accent = "#F5A623";
   const accentInk = "#3A2C10";
   const inkSoft = "#5B5347";
@@ -276,7 +276,7 @@ export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }
         borderRadius: 9999,
         background: isDark ? "rgba(30,26,21,0.85)" : "transparent",
         border: `2px solid ${ink}`,
-        boxShadow: "2px 2px 0 #1E1A15",
+        boxShadow: "2px 2px 0 #1A1A18",
         height: 38,
       }}
     >
