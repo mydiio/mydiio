@@ -419,13 +419,13 @@ function ColomboCoverage() {
               fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
               fontSize: 17, color: "var(--ink)", marginBottom: 4,
             }}>
-              Zones by plan
+              Vehicles by plan
             </div>
             <div style={{
               fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
               color: "var(--ink-soft)", marginBottom: 20,
             }}>
-              The number of zones you can run in at the same time depends on your plan.
+              The number of tuk-tuks carrying your ad at the same time depends on your plan.
             </div>
 
             {tiers.map((t, i) => (
