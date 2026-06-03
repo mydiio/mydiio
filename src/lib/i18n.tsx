@@ -24,14 +24,14 @@ export const dict: Dict = {
   // --- Hero ---
   hero_kicker: { en: "Sri Lanka · Mobility Media", si: "ශ්‍රී ලංකාව · ජංගම මාධ්‍ය", ta: "இலங்கை · இயக்க ஊடகம்" },
   hero_title: {
-    en: "Sri Lanka's Urban Attention Network.",
-    si: "ශ්‍රී ලංකාවේ නගර අවධාන ජාලය.",
-    ta: "இலங்கையின் நகர கவன ஈர்ப்பு வலைப்பின்னல்.",
+    en: "mydiio",
+    si: "mydiio",
+    ta: "mydiio",
   },
   hero_sub: {
-    en: "mydiio puts digital advertising screens inside tuk-tuks across Colombo. Every ride is an audience. Every driver earns more. Every impression is verified.",
-    si: "අපි කොළඹ පුරා ත්‍රිරෝද රථ ජංගම මාධ්‍ය බවට පත් කරමු — සැබෑ ගමන් අතරතුර සැබෑ පාරිභෝගිකයන් වෙත සන්නාම ළඟා කරවමින්.",
-    ta: "நாங்கள் கொழும்பு முழுவதும் டுக்-டுக்குகளை நகரும் ஊடகமாக மாற்றுகிறோம் — உண்மையான பயணங்களின்போது உண்மையான மக்களை அடைய பிராண்டுகளுக்கு உதவுகிறோம்.",
+    en: "The digital advertising network inside Sri Lanka's tuk-tuks. mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
+    si: "The digital advertising network inside Sri Lanka's tuk-tuks. mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
+    ta: "The digital advertising network inside Sri Lanka's tuk-tuks. mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
   },
   metric_vehicles: { en: "Pilot vehicles", si: "පයිලට් වාහන", ta: "பைலட் வாகனங்கள்" },
   metric_zones: { en: "Avg. ride attention", si: "සාමාන්‍ය ගමන් අවධානය", ta: "சராசரி பயண கவனம்" },
