@@ -250,7 +250,7 @@ function Pricing() {
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, marginTop: 4 }}>
               {p.per}
             </div>
-            <ul style={{ listStyle: "none", padding: 0, margin: "18px 0 0" }}>
+            <ul style={{ listStyle: "none", padding: 0, margin: "18px 0 0", flex: 1 }}>
               {p.features.map((f) => (
                 <li key={f} style={{
                   display: "flex", alignItems: "flex-start", gap: 8,
@@ -263,7 +263,7 @@ function Pricing() {
               ))}
             </ul>
             {p.tierSlug === "pioneer" && (
-              <div style={{ marginTop: 16 }}>
+              <div style={{ marginTop: 16, marginBottom: 16 }}>
                 <div style={{
                   fontFamily: "'Space Mono', monospace", fontSize: 11,
                   color: "var(--accent-deep)", fontWeight: 700, marginBottom: 6,
@@ -285,15 +285,15 @@ function Pricing() {
             <a href={`/advertise?tier=${p.tierSlug}#apply-section`}
               className={`tier-cta tier-cta-${p.btnStyle}`}
               style={{
-                marginTop: 22, textDecoration: "none",
+                marginTop: "auto", textDecoration: "none",
                 display: "block", textAlign: "center",
                 background: p.btnStyle === "primary" ? "var(--accent)"
                   : p.btnStyle === "ink" ? "var(--ink)"
                   : "transparent",
-                color: p.btnStyle === "primary" ? "var(--accent-ink)"
+                color: p.btnStyle === "primary" ? "var(--ink)"
                   : p.btnStyle === "ink" ? "var(--on-dark)"
                   : "var(--ink)",
-                padding: "12px 24px", borderRadius: 14, fontSize: 15,
+                padding: "12px 20px", borderRadius: 12, fontSize: 15,
                 border: "2px solid var(--ink)",
                 boxShadow: p.btnStyle === "ink"
                   ? "3px 3px 0 rgba(30,26,21,0.25)"
@@ -304,6 +304,7 @@ function Pricing() {
               }}>
               {p.ctaLabel}
             </a>
+
           </div>
         ))}
       </div>
