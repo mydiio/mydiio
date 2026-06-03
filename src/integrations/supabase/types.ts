@@ -107,6 +107,33 @@ export type Database = {
         }
         Relationships: []
       }
+      investor_enquiries: {
+        Row: {
+          created_at: string
+          fund_or_firm: string | null
+          id: string
+          name: string
+          status: string
+          whatsapp_number: string
+        }
+        Insert: {
+          created_at?: string
+          fund_or_firm?: string | null
+          id?: string
+          name: string
+          status?: string
+          whatsapp_number: string
+        }
+        Update: {
+          created_at?: string
+          fund_or_firm?: string | null
+          id?: string
+          name?: string
+          status?: string
+          whatsapp_number?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
