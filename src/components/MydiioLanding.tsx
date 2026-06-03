@@ -255,7 +255,7 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
     return () => io.disconnect();
   }, []);
   return (
-    <section ref={ref} style={{ background: bg, padding: "clamp(72px, 10vw, 140px) clamp(20px, 4vw, 32px)" }}>
+    <section ref={ref} style={{ background: bg, padding: "clamp(32px, 5vw, 64px) clamp(16px, 3vw, 24px)" }}>
       <div style={{ maxWidth: 1180, margin: "0 auto" }}>{children}</div>
     </section>
   );
