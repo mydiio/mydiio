@@ -536,14 +536,14 @@ function FAQ() {
   ];
   return (
     <Section bg={C.cream}>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
         Everything you need to know
       </h2>
       <div style={{ maxWidth: 720, margin: "32px auto 0" }}>
         {items.map((it, i) => {
           const isOpen = open === i;
           return (
-            <div key={i} className="reveal" style={{
+            <div key={i} className={`reveal reveal-up delay-${(i % 3) + 1}`} style={{
               background: "#fff", border: `2px solid ${C.ink}`,
               borderRadius: 12, marginBottom: 12, overflow: "hidden",
               boxShadow: isOpen ? `5px 5px 0 ${C.ink}` : `3px 3px 0 ${C.ink}`,
