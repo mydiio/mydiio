@@ -224,9 +224,10 @@ function Pricing() {
             background: "#fff",
             border: `${p.highlight ? 3 : 2}px solid ${p.highlight ? C.amber : C.ink}`,
             boxShadow: `${p.highlight ? 8 : 6}px ${p.highlight ? 8 : 6}px 0 ${C.ink}`,
-            borderRadius: 16, padding: 26, position: "relative",
-            display: "flex", flexDirection: "column",
+            borderRadius: 16, padding: "clamp(24px, 3vw, 32px)", position: "relative",
+            display: "flex", flexDirection: "column", height: "100%",
           }}>
+
             {p.badge && (
               <div style={{
                 position: "absolute", top: -14, left: 18,
@@ -249,7 +250,7 @@ function Pricing() {
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, marginTop: 4 }}>
               {p.per}
             </div>
-            <ul style={{ listStyle: "none", padding: 0, margin: "18px 0 0" }}>
+            <ul style={{ listStyle: "none", padding: 0, margin: "18px 0 0", flex: 1 }}>
               {p.features.map((f) => (
                 <li key={f} style={{
                   display: "flex", alignItems: "flex-start", gap: 8,
@@ -262,7 +263,7 @@ function Pricing() {
               ))}
             </ul>
             {p.tierSlug === "pioneer" && (
-              <div style={{ marginTop: 16 }}>
+              <div style={{ marginTop: 16, marginBottom: 16 }}>
                 <div style={{
                   fontFamily: "'Space Mono', monospace", fontSize: 11,
                   color: "var(--accent-deep)", fontWeight: 700, marginBottom: 6,
@@ -284,15 +285,15 @@ function Pricing() {
             <a href={`/advertise?tier=${p.tierSlug}#apply-section`}
               className={`tier-cta tier-cta-${p.btnStyle}`}
               style={{
-                marginTop: 22, textDecoration: "none",
+                marginTop: "auto", textDecoration: "none",
                 display: "block", textAlign: "center",
                 background: p.btnStyle === "primary" ? "var(--accent)"
                   : p.btnStyle === "ink" ? "var(--ink)"
                   : "transparent",
-                color: p.btnStyle === "primary" ? "var(--accent-ink)"
+                color: p.btnStyle === "primary" ? "var(--ink)"
                   : p.btnStyle === "ink" ? "var(--on-dark)"
                   : "var(--ink)",
-                padding: "12px 24px", borderRadius: 14, fontSize: 15,
+                padding: "12px 20px", borderRadius: 12, fontSize: 15,
                 border: "2px solid var(--ink)",
                 boxShadow: p.btnStyle === "ink"
                   ? "3px 3px 0 rgba(30,26,21,0.25)"
@@ -303,6 +304,7 @@ function Pricing() {
               }}>
               {p.ctaLabel}
             </a>
+
           </div>
         ))}
       </div>
@@ -1191,9 +1193,13 @@ function AdvertisePage() {
         }
         @media (max-width: 767px) { .step-line { display: none !important; } }
 
-        .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 56px; }
-        @media (min-width: 600px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
-        @media (min-width: 1000px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
+        .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 56px; align-items: stretch; }
+        @media (min-width: 560px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
+        @media (min-width: 900px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
+        .tier-cta-primary:hover, .tier-cta-ghost:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink) !important; }
+        .tier-cta-ink:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 rgba(30,26,21,0.35) !important; }
+        .tier-cta-ghost:hover { background: var(--ink) !important; color: var(--on-dark) !important; }
+
 
         .coverage-map-wrap { display: none; }
         .coverage-list { display: flex; }
