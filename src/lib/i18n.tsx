@@ -259,7 +259,7 @@ export function useI18n() {
 export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }) {
   const { lang, setLang } = useI18n();
   const ink = "#1E1A15";
-  const accent = "#F4A62A";
+  const accent = "#F5A623";
   const accentInk = "#3A2C10";
   const inkSoft = "#5B5347";
   const isDark = tone === "dark";
