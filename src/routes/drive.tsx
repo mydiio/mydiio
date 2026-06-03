@@ -652,6 +652,33 @@ function FinalCTA() {
 
 /* ============== MAIN ============== */
 function DrivePage() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const sticky = document.getElementById("driver-sticky-cta");
+      if (sticky) sticky.classList.toggle("visible", window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    const target = document.getElementById("drivers-apply-anchor");
+    let io: IntersectionObserver | null = null;
+    if (target) {
+      io = new IntersectionObserver(
+        ([entry]) => {
+          const sticky = document.getElementById("driver-sticky-cta");
+          if (!sticky) return;
+          if (entry.isIntersecting) sticky.classList.remove("visible");
+          else if (window.scrollY > 300) sticky.classList.add("visible");
+        },
+        { threshold: 0.1 }
+      );
+      io.observe(target);
+    }
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      io?.disconnect();
+    };
+  }, []);
+
   return (
     <SiteShell accent="green">
       <style>{`
@@ -661,7 +688,7 @@ function DrivePage() {
         }
         .step-card {
           background: #fff; border: 2px solid ${C.ink}; border-radius: 16px;
-          padding: 26px; box-shadow: 5px 5px 0 ${C.ink};
+          padding: 26px; box-shadow: var(--shadow-card);
         }
         .step-circle {
           width: 44px; height: 44px; border-radius: 50%;
@@ -672,8 +699,26 @@ function DrivePage() {
         }
         .step-line { display: none; }
         @media (min-width: 900px) {
-          .how-flow { grid-template-columns: 1fr 18px 1fr 18px 1fr 18px 1fr; align-items: stretch; }
-          .step-line { display: block; align-self: center; height: 2px; background: ${C.ink}; opacity: 0.18; width: 100%; }
+          .how-flow { grid-template-columns: 1fr 12px 1fr 12px 1fr 12px 1fr; align-items: stretch; }
+          .step-line {
+            display: block; width: 2px; height: 36px;
+            background: var(--accent); opacity: 0.45;
+            border-radius: 1px; flex-shrink: 0;
+            align-self: center; margin: 0 4px;
+          }
+        }
+        @media (max-width: 767px) { .step-line { display: none !important; } }
+
+        .install-grid {
+          display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center;
+        }
+        @media (min-width: 820px) {
+          .install-grid { grid-template-columns: 55fr 45fr; gap: 48px; }
+        }
+
+        #driver-sticky-cta:hover {
+          transform: translate(-2px, -2px);
+          box-shadow: var(--shadow-card-hover);
         }
       `}</style>
 
@@ -683,8 +728,26 @@ function DrivePage() {
       <HowItWorks />
       <FoundingGroup />
       <DriverPortal />
+      <Installation />
       <FAQ />
+      <div id="drivers-apply-anchor" />
       <FinalCTA />
+
+      <a
+        id="driver-sticky-cta"
+        className="sticky-cta"
+        href="/drivers/apply"
+        style={{
+          background: "var(--green)", color: "var(--on-dark)",
+          border: "2px solid var(--ink)", borderRadius: 12,
+          boxShadow: "var(--shadow-card)", padding: "12px 22px",
+          fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 14,
+          textDecoration: "none", display: "inline-block",
+          transition: "transform 0.18s var(--ease-spring), box-shadow 0.18s var(--ease-spring), opacity 0.3s ease",
+        }}
+      >
+        Apply to drive →
+      </a>
     </SiteShell>
   );
 }
