@@ -171,8 +171,8 @@ function Pricing() {
       tierSlug: "pioneer", ctaLabel: "Apply for Pioneer →", btnStyle: "primary",
     },
     {
-      name: "ROAMER", price: "LKR 20,000", per: "/mo · 3-month min",
-      features: ["Standard rotation", "Up to 3 Colombo zones", "Full dashboard access", "Weekly GPS reports"],
+      name: "ROAMER", price: "LKR 25,000", per: "/mo · 3-month min",
+      features: ["Standard rotation", "Up to 5 tuk-tuks in your area", "Full dashboard access", "Weekly GPS reports"],
       tierSlug: "roamer", ctaLabel: "Apply for Roamer →", btnStyle: "ink",
     },
     {
