@@ -1026,7 +1026,7 @@ function BurstPackages() {
     {
       tier: "SPARK",
       price: "LKR 5,000",
-      features: ["500 screen minutes", "1 Colombo zone", "Up to 5 vehicles", "Valid for 7 days"],
+      features: ["500 screen minutes", "Up to 5 vehicles", "Valid for 7 days"],
       bestFor: "A weekend event or a quick test",
       href: "/advertise/apply?tier=burst-spark",
       popular: false,
@@ -1034,7 +1034,7 @@ function BurstPackages() {
     {
       tier: "BLAST",
       price: "LKR 18,000",
-      features: ["2,000 screen minutes", "Up to 3 zones", "Up to 10 vehicles", "Valid for 14 days"],
+      features: ["2,000 screen minutes", "Up to 10 vehicles", "Valid for 14 days"],
       bestFor: "A week-long campaign or product launch",
       href: "/advertise/apply?tier=burst-blast",
       popular: true,
@@ -1042,7 +1042,7 @@ function BurstPackages() {
     {
       tier: "SURGE",
       price: "LKR 40,000",
-      features: ["5,000 screen minutes", "All 10 Colombo zones", "Full fleet", "Valid for 30 days"],
+      features: ["5,000 screen minutes", "Full fleet", "Valid for 30 days"],
       bestFor: "A major event — full citywide reach",
       href: "/advertise/apply?tier=burst-surge",
       popular: false,
@@ -1145,13 +1145,13 @@ function BurstPackages() {
           fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, color: "var(--ink-soft)",
           textAlign: "center", maxWidth: "60ch", margin: "32px auto 0", lineHeight: 1.6,
         }}>
-          Burst packages are one-off purchases with no ongoing commitment. When your minutes run out or the validity period ends, the campaign closes automatically.
+          Burst packages are one-off purchases with no ongoing commitment. Your campaign runs on the number of tuk-tuks shown until your minutes are used or your validity period ends — whichever comes first. Subscribed advertisers always have priority in the rotation.
         </p>
         <p style={{
           fontFamily: "'Space Mono', monospace", fontSize: 12, color: "var(--accent-deep)",
           textAlign: "center", marginTop: 10,
         }}>
-          Want consistent visibility? Monthly plans start from LKR 20,000 — including loyalty points, priority rotation, and no expiry.
+          Want consistent visibility? Monthly plans start from LKR 25,000 — with loyalty points, priority rotation, and no expiry date on your campaign.
         </p>
       </div>
     </section>
