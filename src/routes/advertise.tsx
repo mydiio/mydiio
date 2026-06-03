@@ -1246,6 +1246,7 @@ function AdvertisePage() {
       <HowItWorks />
       <TukInterior />
       <Pricing />
+      <ColomboCoverage />
       <BurstPackages />
       <PioneerProgramme />
       <SocialProofStrip />
