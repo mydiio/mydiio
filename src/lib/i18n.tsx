@@ -131,7 +131,7 @@ export const dict: Dict = {
   faq_q4: { en: "What cities are next?", si: "ඊළඟට කුමන නගරද?", ta: "அடுத்து என்ன நகரங்கள்?" },
   faq_a4: { en: "We start in Colombo. Kandy and Galle are targeted for Year 2. Negombo, Jaffna, and other major cities follow in Year 3. The network is built to expand.", si: "මුලින්ම කොළඹ. නිවාස ජාලය සංතෘප්ත වූ පසු මහනුවර, ගාල්ල සහ මීගමුව අනුගමනය කරයි.", ta: "முதலில் கொழும்பு. வீட்டு வலைப்பின்னல் நிறைவடைந்தவுடன் கண்டி, காலி மற்றும் நீர்கொழும்பு தொடரும்." },
   faq_q5: { en: "How do drivers get paid?", si: "රියදුරන්ට ගෙවන්නේ කෙසේද?", ta: "ஓட்டுநர்களுக்கு எப்படி பணம் செலுத்தப்படுகிறது?" },
-  faq_a5: { en: "Drivers receive a bank transfer on the 5th of every month. Base pay is LKR 6,000 unconditionally. Drivers who keep their screen active for an average of 8 or more hours per day earn an additional LKR 2,000 route bonus.", si: "ජංගම මුදල් පසුම්බිය හෝ බැංකු මාරුව හරහා මාසිකව — ව්‍යාපාර ආදායමේ කොටසක්.", ta: "மொபைல் வாலட் அல்லது வங்கி பரிமாற்றம் மூலம் மாதந்தோறும் — பிரச்சார வருவாயின் பங்கு." },
+  faq_a5: { en: "On the 5th of every calendar month, by bank transfer. Base pay is LKR 6,000 unconditionally every month. Drivers who keep their screen active for an average of 8 or more hours per day earn an additional LKR 2,000 route bonus.", si: "ජංගම මුදල් පසුම්බිය හෝ බැංකු මාරුව හරහා මාසිකව — ව්‍යාපාර ආදායමේ කොටසක්.", ta: "மொபைல் வாலட் அல்லது வங்கி பரிமாற்றம் மூலம் மாதந்தோறும் — பிரச்சார வருவாயின் பங்கு." },
 
   // --- Final CTA ---
   fcta_kicker: { en: "Get started", si: "ආරම්භ කරන්න", ta: "தொடங்குங்கள்" },
