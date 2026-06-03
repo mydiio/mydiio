@@ -165,24 +165,24 @@ function Pricing() {
   }> = [
     {
       name: "PIONEER", price: "LKR 25–35k", per: "/mo · 6-month min",
-      features: ["Category exclusivity in your zone", "Rate locked for life — never increases", "Priority rotation across all 10 zones", "Free ad creative production"],
+      features: ["Category exclusivity — you're the only business in your category on mydiio", "Rate locked for life — never increases", "Priority placement across the full fleet", "Free ad creative production"],
       badge: "Founding — 10 spots only",
       highlight: true,
       tierSlug: "pioneer", ctaLabel: "Apply for Pioneer →", btnStyle: "primary",
     },
     {
-      name: "ROAMER", price: "LKR 20,000", per: "/mo · 3-month min",
-      features: ["Standard rotation", "Up to 3 Colombo zones", "Full dashboard access", "Weekly GPS reports"],
+      name: "ROAMER", price: "LKR 25,000", per: "/mo · 3-month min",
+      features: ["Standard rotation", "Up to 5 tuk-tuks in your area", "Full dashboard access", "Weekly GPS reports"],
       tierSlug: "roamer", ctaLabel: "Apply for Roamer →", btnStyle: "ink",
     },
     {
-      name: "VOYAGER", price: "LKR 32,000", per: "/mo · 6-month min",
-      features: ["Priority rotation", "Up to 7 Colombo zones", "Better loyalty points rate", "Full dashboard access"],
+      name: "VOYAGER", price: "LKR 38,000", per: "/mo · 6-month min",
+      features: ["Priority rotation", "Up to 15 tuk-tuks across Colombo", "Better loyalty points rate", "Full dashboard access"],
       tierSlug: "voyager", ctaLabel: "Apply for Voyager →", btnStyle: "ink",
     },
     {
       name: "HORIZON", price: "LKR 65,000+", per: "/mo · Custom",
-      features: ["Custom zone configuration", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
+      features: ["15 to 100+ tuk-tuks — your choice", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
       tierSlug: "horizon", ctaLabel: "Contact us about Horizon →", btnStyle: "ghost",
     },
   ];
@@ -215,7 +215,7 @@ function Pricing() {
         fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
         fontSize: 16, color: C.inkSoft, textAlign: "center", marginTop: 14, maxWidth: 560, marginInline: "auto",
       }}>
-        All plans include first 14 days free and GPS-verified weekly reports.
+        All plans include first 7 days free and GPS-verified weekly reports.
       </p>
 
       <div className="pricing-grid">
@@ -311,7 +311,7 @@ function Pricing() {
         fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.2,
         color: C.inkSoft, textAlign: "center", marginTop: 36, maxWidth: 640, marginInline: "auto", lineHeight: 1.6,
       }}>
-        Every ad minute earns loyalty points — redeemable for free ad time. Founding Pioneer partners earn points at the highest rate, permanently.
+        Every ad minute earns loyalty points — redeemable for free screen time. Founding Pioneer partners earn points at the highest rate, permanently. Points start accumulating from Day 8.
       </p>
     </Section>
   );
@@ -728,7 +728,7 @@ function PioneerProgramme() {
   }, []);
 
   const items = [
-    { n: "01", h: "Category exclusivity", b: "You are the only business in your category advertising in your active zones. A Pioneer pharmacy in Fort means no other pharmacy runs on the mydiio fleet in Fort while your campaign is active." },
+    { n: "01", h: "Category exclusivity", b: "You are the only business in your category advertising on mydiio. A Pioneer pharmacy means no other pharmacy — anywhere on the fleet, anywhere in Colombo — can run ads on mydiio while your campaign is active." },
     { n: "02", h: "Rate locked for life", b: "Your monthly rate never increases — regardless of how the network grows, how many advertisers join, or how many vehicles are added. The rate you start with is yours permanently." },
     { n: "03", h: "Priority rotation", b: "Your campaign always runs first in the ad rotation on every vehicle in your active zones. You are never bumped, delayed, or deprioritised by a higher-spending advertiser." },
     { n: "04", h: "Free creative production", b: "We produce your first campaign creative at no charge — a 15 or 30-second video ad or a static image, built from your existing branding. No agency needed to get started." },
@@ -756,7 +756,7 @@ function PioneerProgramme() {
           fontWeight: 400, color: "var(--on-dark)", opacity: 0.65, textAlign: "center",
           maxWidth: "52ch", margin: "16px auto 56px", lineHeight: 1.65,
         }}>
-          Pioneer spots are not a promotional offer — they are a permanent founding partnership. Your rate, your category exclusivity, and your priority placement are locked in for the life of your contract. When Pioneer is full, it is full. There will only ever be 10.
+          Pioneer spots are not a promotional offer — they are a permanent founding partnership. Your rate is locked in for life. Your category exclusivity means you are the only business in your sector advertising on mydiio. When Pioneer is full, it is full. There will only ever be 10.
         </p>
 
         <div className="reveal reveal-up" style={{ maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
@@ -858,7 +858,7 @@ function FAQ() {
     { q: "How do I know my ad actually played?", a: "Every Monday you receive a GPS-verified report showing each vehicle that ran your ad, the GPS location at the time of each play, and the total play count. There is no guessing — every impression is logged." },
     { q: "What is Pioneer category exclusivity?", a: "Pioneer advertisers are the only business in their category allowed to advertise in their active zones. For example, a Pioneer pharmacy in Fort means no other pharmacy can run on the mydiio fleet in Fort while your campaign is active." },
     { q: "Can I cancel?", a: "Subscription plans have minimum terms: 3 months for Roamer, 6 months for Voyager and Pioneer. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
-    { q: "What does the LKR 5,000 Pioneer deposit cover?", a: "The LKR 5,000 deposit secures your Pioneer spot on the waiting list. It is fully refundable — credited against your first invoice if you proceed, or returned in full if you decide not to. No risk." },
+    { q: "What does the LKR 5,000 Pioneer deposit cover?", a: "The LKR 5,000 deposit secures your spot on the waiting list. It is fully refundable — credited against your first invoice when you proceed, or returned in full if you decide not to. No risk. No commitment." },
   ];
   return (
     <Section bg={C.cream}>
