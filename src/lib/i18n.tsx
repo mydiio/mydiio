@@ -41,11 +41,11 @@ export const dict: Dict = {
   metric_hr: { en: "hrs", si: "පැය", ta: "மணி" },
 
   // --- Why It Works ---
-  why_kicker: { en: "Turn travel time into advertising time", si: "Turn travel time into advertising time", ta: "Turn travel time into advertising time" },
+  why_kicker: { en: "mydiio", si: "mydiio", ta: "mydiio" },
   why_title: {
-    en: "why mydiio",
-    si: "why mydiio",
-    ta: "why mydiio",
+    en: "Turn travel time into advertising time",
+    si: "Turn travel time into advertising time",
+    ta: "Turn travel time into advertising time",
   },
   why_c1_t: { en: "Advertising people actually see.", si: "Advertising people actually see.", ta: "Advertising people actually see." },
   why_c1_b: { en: "Unlike social media ads that are skipped in seconds, mydiio places your message directly in front of engaged passengers during their daily journeys. No scroll button. No skip.", si: "Unlike social media ads that are skipped in seconds, mydiio places your message directly in front of engaged passengers during their daily journeys. No scroll button. No skip.", ta: "Unlike social media ads that are skipped in seconds, mydiio places your message directly in front of engaged passengers during their daily journeys. No scroll button. No skip." },
