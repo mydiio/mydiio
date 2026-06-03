@@ -374,18 +374,27 @@ function Installation() {
             ))}
           </ul>
         </div>
-        <div className="reveal reveal-up" style={{
-          background: "var(--bg2)",
-          border: "2px dashed rgba(30,26,21,0.3)",
-          borderRadius: 18, aspectRatio: "4 / 3",
-          display: "flex", alignItems: "center", justifyContent: "center",
+        <div className="reveal reveal-up install-photos" style={{
+          display: "flex", flexDirection: "column", gap: 12,
         }}>
-          <span style={{
-            fontFamily: "'Space Mono', monospace", fontSize: 11,
-            color: "var(--ink-mute)",
-          }}>
-            📸 Installation photo — coming soon
-          </span>
+          <img
+            src={INSTALL_HANDS.url}
+            alt="Hands fitting a tablet screen into the roof frame of a tuk-tuk on a Colombo street"
+            className="install-photo install-photo-top"
+            style={{ width: "100%", height: 260, objectFit: "cover", objectPosition: "center", borderRadius: 12, display: "block" }}
+          />
+          <img
+            src={INSTALL_LIVE.url}
+            alt="Installed tuk-tuk screen displaying an amber and cream advertisement on a Colombo street"
+            className="install-photo install-photo-bottom"
+            style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center", borderRadius: 12, display: "block" }}
+          />
+          <style>{`
+            @media (max-width: 640px) {
+              .install-photo-top { height: 200px !important; }
+              .install-photo-bottom { height: 180px !important; }
+            }
+          `}</style>
         </div>
       </div>
     </Section>
