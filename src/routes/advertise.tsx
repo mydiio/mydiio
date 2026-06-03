@@ -351,16 +351,16 @@ function ColomboCoverage() {
   ];
 
   const tiers = [
-    { name: "PIONEER", zones: "All 10 zones", accent: true },
-    { name: "ROAMER", zones: "3 zones", accent: false },
-    { name: "VOYAGER", zones: "7 zones", accent: false },
-    { name: "HORIZON", zones: "All 10 zones", accent: false },
+    { name: "PIONEER", zones: "Full fleet", accent: true },
+    { name: "ROAMER", zones: "Up to 5 tuks", accent: false },
+    { name: "VOYAGER", zones: "Up to 15 tuks", accent: false },
+    { name: "HORIZON", zones: "15–100+ tuks", accent: false },
   ];
 
   const bursts = [
-    { name: "SPARK", zones: "1 zone" },
-    { name: "BLAST", zones: "3 zones" },
-    { name: "SURGE", zones: "All 10 zones" },
+    { name: "SPARK", zones: "Up to 5 tuks" },
+    { name: "BLAST", zones: "Up to 10 tuks" },
+    { name: "SURGE", zones: "Full fleet" },
   ];
 
   return (
