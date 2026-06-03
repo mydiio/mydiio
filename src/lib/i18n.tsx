@@ -112,12 +112,12 @@ export const dict: Dict = {
   // --- Founding Offer ---
   fo_kicker: { en: "Founding offer · 10 spots", si: "ආරම්භක දීමනාව · ස්ථාන 10", ta: "நிறுவன சலுகை · 10 இடங்கள்" },
   fo_title: { en: "First 10 brands get founding access.", si: "පළමු සන්නාම 10ට ආරම්භක ප්‍රවේශය ලැබේ.", ta: "முதல் 10 பிராண்டுகள் நிறுவன அணுகலைப் பெறுகின்றன." },
-  fo_body: { en: "We're opening limited pilot campaigns for our first advertisers.", si: "අපගේ පළමු ප්‍රචාරකයින් සඳහා සීමිත පරීක්ෂණ ව්‍යාපාර අපි විවෘත කරන්නෙමු.", ta: "எங்கள் முதல் விளம்பரதாரர்களுக்கு வரம்புக்குட்பட்ட முன்னோடி பிரச்சாரங்களை திறக்கிறோம்." },
-  fo_b1: { en: "Priority placements", si: "ප්‍රමුඛතා ස්ථානගත කිරීම්", ta: "முன்னுரிமை இடங்கள்" },
-  fo_b2: { en: "Launch discounts", si: "දියත් කිරීමේ වට්ටම්", ta: "தொடக்க தள்ளுபடி" },
-  fo_b3: { en: "Weekly reporting", si: "සතිපතා වාර්තා", ta: "வாராந்திர அறிக்கை" },
-  fo_b4: { en: "Case study support", si: "අවස්ථා අධ්‍යයන සහාය", ta: "வழக்கு ஆய்வு ஆதரவு" },
-  fo_cta: { en: "Claim Pilot Slot →", si: "පරීක්ෂණ ස්ථානය ලබාගන්න →", ta: "முன்னோடி இடத்தை பெறுங்கள் →" },
+  fo_body: { en: "We're opening a limited number of pilot campaigns for our first advertisers. Founding partners get priority placement, a locked-in rate, and full dashboard access from day one.", si: "අපගේ පළමු ප්‍රචාරකයින් සඳහා සීමිත පරීක්ෂණ ව්‍යාපාර අපි විවෘත කරන්නෙමු.", ta: "எங்கள் முதல் விளம்பரதாரர்களுக்கு வரம்புக்குட்பட்ட முன்னோடி பிரச்சாரங்களை திறக்கிறோம்." },
+  fo_b1: { en: "Priority placements across the fleet", si: "ප්‍රමුඛතා ස්ථානගත කිරීම්", ta: "முன்னுரிமை இடங்கள்" },
+  fo_b2: { en: "Rate locked in for the life of your contract", si: "දියත් කිරීමේ වට්ටම්", ta: "தொடக்க தள்ளுபடி" },
+  fo_b3: { en: "First 14 days completely free", si: "සතිපතා වාර්තා", ta: "வாராந்திர அறிக்கை" },
+  fo_b4: { en: "Free ad creative production to get you started", si: "අවස්ථා අධ්‍යයන සහාය", ta: "வழக்கு ஆய்வு ஆதரவு" },
+  fo_cta: { en: "Claim a pilot slot →", si: "පරීක්ෂණ ස්ථානය ලබාගන්න →", ta: "முன்னோடி இடத்தை பெறுங்கள் →" },
 
   // --- FAQ ---
   faq_kicker: { en: "Questions", si: "ප්‍රශ්න", ta: "கேள்விகள்" },
