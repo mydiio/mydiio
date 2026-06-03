@@ -319,7 +319,7 @@ function AboutPage() {
       </section>
 
       {/* SECTION 3 — HOW IT WORKS */}
-      <section style={{ background: "var(--bg)", padding: "clamp(72px, 10vh, 120px) clamp(20px, 5vw, 72px)", textAlign: "center" }}>
+      <section style={{ background: "var(--bg)", padding: "var(--section-py) clamp(20px, 5vw, 72px)", textAlign: "center" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <span className="about-eyebrow reveal-up">How it works</span>
           <h2 className="about-h2 reveal-up delay-1" dangerouslySetInnerHTML={{ __html: "Simple for brands. Valuable for <em>drivers</em>." }} />
