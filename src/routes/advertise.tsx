@@ -650,7 +650,7 @@ function AdvertisePage() {
         }
         .step-card {
           background: #fff; border: 2px solid ${C.ink}; border-radius: 16px;
-          padding: 26px; box-shadow: 5px 5px 0 ${C.ink};
+          padding: 26px; box-shadow: var(--shadow-card);
         }
         .step-circle {
           width: 44px; height: 44px; border-radius: 50%;
@@ -662,9 +662,15 @@ function AdvertisePage() {
         .step-line { display: none; }
 
         @media (min-width: 820px) {
-          .how-flow { grid-template-columns: 1fr 24px 1fr 24px 1fr; align-items: stretch; }
-          .step-line { display: block; align-self: center; height: 2px; background: ${C.ink}; opacity: 0.18; width: 100%; }
+          .how-flow { grid-template-columns: 1fr 16px 1fr 16px 1fr; align-items: stretch; }
+          .step-line {
+            display: block; width: 2px; height: 36px;
+            background: var(--accent); opacity: 0.45;
+            border-radius: 1px; flex-shrink: 0;
+            align-self: center; margin: 0 4px;
+          }
         }
+        @media (max-width: 767px) { .step-line { display: none !important; } }
 
         .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 56px; }
         @media (min-width: 600px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
@@ -676,15 +682,33 @@ function AdvertisePage() {
           .coverage-map-wrap { display: block; }
           .coverage-list { display: none; }
         }
+
+        .tuk-interior-grid {
+          display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center;
+        }
+        @media (min-width: 820px) {
+          .tuk-interior-grid { grid-template-columns: 45fr 55fr; gap: 48px; }
+        }
+
+        @keyframes live-dot {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
+
+        @media (max-width: 640px) {
+          .sp-strip { flex-direction: column; align-items: flex-start; }
+        }
       `}</style>
 
       <Hero />
       <HowItWorks />
+      <TukInterior />
       <Pricing />
+      <SocialProofStrip />
       <Coverage />
       <DashboardPreview />
       <FAQ />
-      <section id="apply-section" style={{ background: C.cream, padding: "96px 24px", scrollMarginTop: 96 }}>
+      <section id="apply-section" className="section-wrap" style={{ background: C.cream, scrollMarginTop: 96, maxWidth: "none" }}>
         <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
             Join the waiting list
@@ -704,4 +728,5 @@ function AdvertisePage() {
     </SiteShell>
   );
 }
+
 
