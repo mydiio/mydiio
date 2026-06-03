@@ -486,6 +486,9 @@ function Coverage() {
           Reach passengers in the neighbourhoods where your customers already are. Click any zone to explore.
         </p>
       </div>
+      <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
+        <img src={COLOMBO_STREET} alt="tuk-tuks on a Colombo street" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
+      </div>
       <div className="reveal reveal-up delay-2">
         <ColomboMap />
       </div>
