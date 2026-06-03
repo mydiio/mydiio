@@ -257,11 +257,25 @@ function AboutPage() {
       `}</style>
 
       {/* SECTION 1 — HERO */}
-      <section style={{ background: "var(--bg)", padding: "clamp(80px, 12vh, 140px) 0 clamp(60px, 8vh, 100px)", textAlign: "center" }}>
-        <div style={{ padding: "0 clamp(20px, 5vw, 72px)" }}>
-          <span className="about-eyebrow reveal-up">About mydiio</span>
-          <h1 className="about-h1 reveal-up delay-1">Ads on the move.</h1>
-          <p className="about-lead reveal-up delay-2" style={{ maxWidth: "46ch", margin: "20px auto 32px" }}>
+      <section style={{ background: "var(--ink)", padding: "clamp(80px, 12vh, 140px) 0 clamp(48px, 6vh, 80px)", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        {/* Amber arcs decoration */}
+        <svg
+          aria-hidden="true"
+          width="520"
+          height="520"
+          viewBox="0 0 520 520"
+          style={{ position: "absolute", right: "-160px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.08 }}
+        >
+          <g fill="none" stroke="var(--accent)" strokeWidth="2">
+            <circle cx="260" cy="260" r="120" />
+            <circle cx="260" cy="260" r="180" />
+            <circle cx="260" cy="260" r="240" />
+          </g>
+        </svg>
+        <div style={{ padding: "0 clamp(20px, 5vw, 72px)", position: "relative", zIndex: 1 }}>
+          <span className="about-eyebrow reveal-up" style={{ color: "var(--accent)" }}>About mydiio</span>
+          <h1 className="about-h1 reveal-up delay-1" style={{ color: "var(--on-dark)" }}>Ads on the move.</h1>
+          <p className="about-lead reveal-up delay-2" style={{ maxWidth: "46ch", margin: "20px auto 32px", color: "rgba(244,239,227,0.7)" }}>
             mydiio puts digital advertising screens inside tuk-tuks across Colombo. Every ride is an audience. Every driver earns more. Every impression is verified.
           </p>
           <div className="about-cta-row reveal-up delay-3">
@@ -269,7 +283,7 @@ function AboutPage() {
             <a href="/drivers/apply" className="about-btn" style={greenBtn}>Become a driver →</a>
           </div>
         </div>
-        <div className="ticker-strip">
+        <div className="ticker-strip" style={{ marginTop: "clamp(40px, 6vh, 64px)" }}>
           <div className="ticker-inner">
             <span>{tickerText.repeat(6)}</span>
             <span>{tickerText.repeat(6)}</span>
