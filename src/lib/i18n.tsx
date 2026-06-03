@@ -90,12 +90,12 @@ export const dict: Dict = {
   // --- Reporting ---
   rep_kicker: { en: "Reporting", si: "වාර්තාකරණය", ta: "அறிக்கையிடல்" },
   rep_title: { en: "Measured, not guessed.", si: "මනින ලද, අනුමාන කරන ලද නොවේ.", ta: "அளவிடப்பட்டது, யூகிக்கப்பட்டதல்ல." },
-  rep_body: { en: "Track active vehicles, route coverage, campaign uptime and estimated impressions — verified by GPS and updated in real time.", si: "ක්‍රියාකාරී වාහන, මාර්ග ආවරණය, ව්‍යාපාර ක්‍රියාත්මක කාලය සහ අනුමාන හැඟීම් අනුගමනය කරන්න — GPS මගින් තහවුරු කර තත්‍ය කාලීනව යාවත්කාලීන කරයි.", ta: "செயலில் உள்ள வாகனங்கள், வழி கவரேஜ், பிரச்சார இயங்கு நேரம் மற்றும் மதிப்பிடப்பட்ட பதிவுகளை கண்காணிக்கவும் — GPS மூலம் சரிபார்க்கப்பட்டு நிகழ்நேரத்தில் புதுப்பிக்கப்படுகிறது." },
+  rep_body: { en: "Track active vehicles, zone coverage, campaign uptime, and verified impressions — updated in real time. Every advertiser gets full dashboard access the moment their campaign goes live.", si: "ක්‍රියාකාරී වාහන, මාර්ග ආවරණය, ව්‍යාපාර ක්‍රියාත්මක කාලය සහ අනුමාන හැඟීම් අනුගමනය කරන්න — GPS මගින් තහවුරු කර තත්‍ය කාලීනව යාවත්කාලීන කරයි.", ta: "செயலில் உள்ள வாகனங்கள், வழி கவரேஜ், பிரச்சார இயங்கு நேரம் மற்றும் மதிப்பிடப்பட்ட பதிவுகளை கண்காணிக்கவும் — GPS மூலம் சரிபார்க்கப்பட்டு நிகழ்நேரத்தில் புதுப்பிக்கப்படுகிறது." },
 
   // --- Why Now ---
   whyn_kicker: { en: "Why now", si: "දැන් ඇයි", ta: "ஏன் இப்போது" },
   whyn_title: { en: "A massive channel hiding in plain sight.", si: "පැහැදිලිව පෙනෙන තැන සැඟවී ඇති විශාල නාලිකාවක්.", ta: "வெளிப்படையாக மறைந்திருக்கும் ஒரு பெரிய சேனல்." },
-  whyn_body: { en: "Thousands of tuk-tuks move through Colombo daily. Until now, none were built as media infrastructure.", si: "දහස් ගණන් ත්‍රිරෝද දිනපතා කොළඹ පුරා ගමන් කරයි. මෙතෙක්, කිසිවක් මාධ්‍ය යටිතල පහසුකම් ලෙස ගොඩනගා නොතිබුණි.", ta: "ஆயிரக்கணக்கான டுக்-டுக்குகள் தினமும் கொழும்பு வழியாக நகர்கின்றன. இதுவரை, எதுவும் ஊடக உள்கட்டமைப்பாக கட்டப்படவில்லை." },
+  whyn_body: { en: "Thousands of tuk-tuks move through Colombo every day. Until now, none of them were built as media. mydiio is the first platform to change that.", si: "දහස් ගණන් ත්‍රිරෝද දිනපතා කොළඹ පුරා ගමන් කරයි. මෙතෙක්, කිසිවක් මාධ්‍ය යටිතල පහසුකම් ලෙස ගොඩනගා නොතිබුණි.", ta: "ஆயிரக்கணக்கான டுக்-டுக்குகள் தினமும் கொழும்பு வழியாக நகர்கின்றன. இதுவரை, எதுவும் ஊடக உள்கட்டமைப்பாக கட்டப்படவில்லை." },
 
   // --- Scale Story ---
   scale_kicker: { en: "Scale story", si: "වර්ධන කතාව", ta: "வளர்ச்சி கதை" },
