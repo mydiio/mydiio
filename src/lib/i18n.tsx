@@ -41,20 +41,20 @@ export const dict: Dict = {
   metric_hr: { en: "hrs", si: "පැය", ta: "மணி" },
 
   // --- Why It Works ---
-  why_kicker: { en: "Why it works", si: "ඇයි මෙය ක්‍රියා කරන්නේ", ta: "இது ஏன் வேலை செய்கிறது" },
+  why_kicker: { en: "Turn travel time into advertising time", si: "Turn travel time into advertising time", ta: "Turn travel time into advertising time" },
   why_title: {
-    en: "Where digital ends, real attention begins.",
-    si: "ඩිජිටල් අවසන් වන තැන සැබෑ අවධානය ආරම්භ වේ.",
-    ta: "டிஜிட்டல் முடியும் இடத்தில், உண்மையான கவனம் தொடங்குகிறது.",
+    en: "why mydiio",
+    si: "why mydiio",
+    ta: "why mydiio",
   },
-  why_c1_t: { en: "Captive attention", si: "අල්ලාගත් අවධානය", ta: "பிடித்த கவனம்" },
-  why_c1_b: { en: "Passengers sit facing the screen for the entire ride. No scroll button. No skip. No competition. Just your message, playing to a real person on a real journey.", si: "මගීන් සම්පූර්ණ ගමන පුරා ඔබේ තිරය දෙස බලා සිටිති.", ta: "பயணிகள் முழு பயணத்திலும் உங்கள் திரையை எதிர்நோக்குகிறார்கள்." },
-  why_c2_t: { en: "Hyperlocal reach", si: "වීදී දෘශ්‍යතාව", ta: "தெரு தெரிவு" },
-  why_c2_b: { en: "Choose exactly which neighbourhoods your ad runs in. From Fort to Nugegoda, Wellawatte to Maharagama — you pick the areas that matter to your business.", si: "දිනපතා දහස් ගණනක් පදිකයන් සහ රියදුරන් එක් එක් වාහනය දකියි.", ta: "ஒவ்வொரு நாளும் ஆயிரக்கணக்கான பாதசாரிகள் ஒவ்வொரு வாகனத்தையும் காண்கிறார்கள்." },
-  why_c3_t: { en: "Verified every time", si: "අතිශය දේශීය ළඟාවීම", ta: "மிக உள்ளூர் அணுகல்" },
-  why_c3_b: { en: "Every single ad play is logged with the time, the vehicle, and the GPS location. You receive a report every Monday showing exactly where your campaign ran.", si: "කලාපය, මාර්ගය සහ දිනයේ වේලාව අනුව ඉලක්ක කරන්න — අනුමානයෙන් නොවේ.", ta: "மண்டலம், வழி, நாளின் நேரம் வாரியாக இலக்கு — யூகம் அல்ல." },
-  why_c4_t: { en: "Up in 72 hours", si: "වේගවත් දියත් කිරීම", ta: "வேகமான தொடக்கம்" },
-  why_c4_b: { en: "Send us your video or image. We handle all the formatting and scheduling. Most campaigns go live across the fleet within 72 hours of approval.", si: "අනුමත නිර්මාණයක් දිනකින් ජාලය පුරා සජීවී වේ.", ta: "அங்கீகரிக்கப்பட்ட படைப்பு நாட்களில் வலைப்பின்னல் முழுவதும் நேரலையாகும்." },
+  why_c1_t: { en: "Advertising people actually see.", si: "Advertising people actually see.", ta: "Advertising people actually see." },
+  why_c1_b: { en: "Unlike social media ads that are skipped in seconds, mydiio places your message directly in front of engaged passengers during their daily journeys. No scroll button. No skip.", si: "Unlike social media ads that are skipped in seconds, mydiio places your message directly in front of engaged passengers during their daily journeys. No scroll button. No skip.", ta: "Unlike social media ads that are skipped in seconds, mydiio places your message directly in front of engaged passengers during their daily journeys. No scroll button. No skip." },
+  why_c2_t: { en: "Verified campaign reporting.", si: "Verified campaign reporting.", ta: "Verified campaign reporting." },
+  why_c2_b: { en: "Every ad play is automatically logged with location and time data. Advertisers receive regular reports showing where their campaign was displayed, how often it was played, and which areas of the city it reached.", si: "Every ad play is automatically logged with location and time data. Advertisers receive regular reports showing where their campaign was displayed, how often it was played, and which areas of the city it reached.", ta: "Every ad play is automatically logged with location and time data. Advertisers receive regular reports showing where their campaign was displayed, how often it was played, and which areas of the city it reached." },
+  why_c3_t: { en: "Full Visibility.", si: "Full Visibility.", ta: "Full Visibility." },
+  why_c3_b: { en: "Know exactly where your advertising budget is being spent. Our reporting provides clear visibility of campaign delivery across the mydiio network.", si: "Know exactly where your advertising budget is being spent. Our reporting provides clear visibility of campaign delivery across the mydiio network.", ta: "Know exactly where your advertising budget is being spent. Our reporting provides clear visibility of campaign delivery across the mydiio network." },
+  why_c4_t: { en: "Quick campaign launch.", si: "Quick campaign launch.", ta: "Quick campaign launch." },
+  why_c4_b: { en: "From approval to launch, most mydiio campaigns are live within 72 hours, helping businesses get in front of customers faster.", si: "From approval to launch, most mydiio campaigns are live within 72 hours, helping businesses get in front of customers faster.", ta: "From approval to launch, most mydiio campaigns are live within 72 hours, helping businesses get in front of customers faster." },
 
   // --- How It Works ---
   how_kicker: { en: "How it works", si: "ක්‍රියා කරන ආකාරය", ta: "எவ்வாறு செயல்படுகிறது" },
