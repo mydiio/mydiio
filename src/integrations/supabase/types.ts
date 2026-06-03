@@ -16,11 +16,14 @@ export type Database = {
     Tables: {
       advertiser_applications: {
         Row: {
+          admin_notes: string | null
           budget_range: string | null
           business_name: string
           business_type: string
+          campaign_goal: string | null
           campaign_goals: string[]
           contact_name: string
+          contacted_at: string | null
           created_at: string
           has_creative: boolean | null
           id: string
@@ -31,11 +34,14 @@ export type Database = {
           zones_selected: string[]
         }
         Insert: {
+          admin_notes?: string | null
           budget_range?: string | null
           business_name: string
           business_type: string
+          campaign_goal?: string | null
           campaign_goals?: string[]
           contact_name: string
+          contacted_at?: string | null
           created_at?: string
           has_creative?: boolean | null
           id?: string
@@ -46,11 +52,14 @@ export type Database = {
           zones_selected?: string[]
         }
         Update: {
+          admin_notes?: string | null
           budget_range?: string | null
           business_name?: string
           business_type?: string
+          campaign_goal?: string | null
           campaign_goals?: string[]
           contact_name?: string
+          contacted_at?: string | null
           created_at?: string
           has_creative?: boolean | null
           id?: string
