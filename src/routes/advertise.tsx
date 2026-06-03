@@ -639,6 +639,160 @@ function FinalCTA() {
   );
 }
 
+/* ---------- Burst Packages ---------- */
+function BurstPackages() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          el.querySelectorAll<HTMLElement>(".reveal").forEach((item, i) =>
+            setTimeout(() => item.classList.add("in"), i * 80)
+          );
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.18 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const bursts = [
+    {
+      tier: "SPARK",
+      price: "LKR 5,000",
+      features: ["500 screen minutes", "1 Colombo zone", "Up to 5 vehicles", "Valid for 7 days"],
+      bestFor: "A weekend event or a quick test",
+      href: "/advertise/apply?tier=burst-spark",
+      popular: false,
+    },
+    {
+      tier: "BLAST",
+      price: "LKR 18,000",
+      features: ["2,000 screen minutes", "Up to 3 zones", "Up to 10 vehicles", "Valid for 14 days"],
+      bestFor: "A week-long campaign or product launch",
+      href: "/advertise/apply?tier=burst-blast",
+      popular: true,
+    },
+    {
+      tier: "SURGE",
+      price: "LKR 40,000",
+      features: ["5,000 screen minutes", "All 10 Colombo zones", "Full fleet", "Valid for 30 days"],
+      bestFor: "A major event — full citywide reach",
+      href: "/advertise/apply?tier=burst-surge",
+      popular: false,
+    },
+  ];
+
+  return (
+    <section ref={ref} className="section-wrap" style={{ background: "var(--bg2)", maxWidth: "none" }}>
+      <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+        <div className="reveal reveal-up" style={{ textAlign: "center" }}>
+          <span style={{
+            fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: "0.2em",
+            color: "var(--accent-deep)", textTransform: "uppercase", display: "inline-block",
+          }}>
+            Burst packages
+          </span>
+        </div>
+        <h2 className="reveal reveal-up font-display" style={{
+          fontSize: "clamp(30px, 4.4vw, 56px)", fontWeight: 700, letterSpacing: "-0.03em",
+          color: "var(--ink)", textAlign: "center", marginTop: 12, lineHeight: 1.1,
+        }}>
+          Need advertising without a monthly plan?
+        </h2>
+        <p className="reveal reveal-up" style={{
+          fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(15px, 1.4vw, 17px)",
+          fontWeight: 400, color: "var(--ink-soft)", textAlign: "center",
+          maxWidth: "52ch", margin: "12px auto 48px", lineHeight: 1.5,
+        }}>
+          Burst packages let you buy a block of screen time with no contract. Perfect for events, product launches, and seasonal campaigns.
+        </p>
+
+        <div className="burst-grid">
+          {bursts.map((b, i) => (
+            <div key={b.tier} className={`reveal reveal-up delay-${i + 1} burst-card`}>
+              {b.popular && (
+                <div style={{
+                  display: "inline-block", background: "var(--accent)", color: "var(--ink)",
+                  border: "2px solid var(--ink)", borderRadius: 20, padding: "3px 12px",
+                  fontFamily: "'Space Mono', monospace", fontSize: 10, fontWeight: 700,
+                  textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12,
+                }}>
+                  MOST POPULAR
+                </div>
+              )}
+              <div style={{
+                fontFamily: "'Space Mono', monospace", fontSize: 13, fontWeight: 700,
+                letterSpacing: "0.12em", color: "var(--ink)", textTransform: "uppercase",
+              }}>
+                {b.tier}
+              </div>
+              <div className="font-display" style={{
+                fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700,
+                color: "var(--ink)", margin: "8px 0 4px", lineHeight: 1.1,
+              }}>
+                {b.price}
+              </div>
+              <div style={{ height: 1, background: "rgba(30,26,21,0.1)", margin: "16px 0" }} />
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, flex: "1 1 auto" }}>
+                {b.features.map((f) => (
+                  <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "5px 0" }}>
+                    <span style={{
+                      width: 6, height: 6, borderRadius: "50%", background: "var(--accent)",
+                      flexShrink: 0, marginTop: 6,
+                    }} />
+                    <span style={{
+                      fontFamily: "'Space Grotesk', sans-serif", fontSize: 14,
+                      color: "var(--ink-soft)", lineHeight: 1.5,
+                    }}>
+                      {f}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <div style={{ marginTop: "auto", paddingTop: 16 }}>
+                <div style={{
+                  fontFamily: "'Space Mono', monospace", fontSize: 10,
+                  color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: "0.08em",
+                }}>
+                  BEST FOR
+                </div>
+                <div style={{
+                  fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
+                  color: "var(--ink-soft)", marginTop: 4, lineHeight: 1.5,
+                }}>
+                  {b.bestFor}
+                </div>
+              </div>
+              <a href={b.href} className={b.popular ? "burst-cta-primary" : "burst-cta-ghost"} style={{
+                marginTop: 16, textDecoration: "none", display: "block", textAlign: "center",
+                padding: "12px 20px", borderRadius: 12, fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 600, fontSize: 14,
+              }}>
+                Get started →
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <p style={{
+          fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, color: "var(--ink-soft)",
+          textAlign: "center", maxWidth: "60ch", margin: "32px auto 0", lineHeight: 1.6,
+        }}>
+          Burst packages are one-off purchases with no ongoing commitment. When your minutes run out or the validity period ends, the campaign closes automatically.
+        </p>
+        <p style={{
+          fontFamily: "'Space Mono', monospace", fontSize: 12, color: "var(--accent-deep)",
+          textAlign: "center", marginTop: 10,
+        }}>
+          Want consistent visibility? Monthly plans start from LKR 20,000 — including loyalty points, priority rotation, and no expiry.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 /* ============== MAIN ============== */
 function AdvertisePage() {
   return (
