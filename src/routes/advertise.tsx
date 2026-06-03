@@ -488,7 +488,7 @@ function ColomboCoverage() {
           fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
           color: "var(--ink-soft)", marginTop: 14, lineHeight: 1.6, textAlign: "left",
         }}>
-          Zone limits apply to simultaneous deployment. You can change your active zones at any time by contacting your account manager.
+          Vehicle count is based on your plan. Your weekly GPS report shows which neighbourhoods your campaign reached across the fleet.
         </p>
 
         <p style={{
