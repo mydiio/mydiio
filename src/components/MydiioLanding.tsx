@@ -263,7 +263,8 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
 
 function SectionHeader({ kicker, title }: { kicker?: string; title: string }) {
   return (
-    <div className="reveal" style={{ textAlign: "center", marginBottom: 56, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+    <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+
       {kicker && (
         <span className="reveal-up" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase", display: "inline-block" }}>
           {kicker}
