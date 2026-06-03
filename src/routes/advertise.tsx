@@ -381,18 +381,36 @@ function TukInterior() {
 
 /* ---------- Dashboard preview ---------- */
 function DashboardPreview() {
-  const metrics = [
-    ["Total impressions"],
-    ["Vehicles active"],
-    ["Avg. dwell time"],
-    ["Colombo coverage"],
+  const statSets = [
+    { impressions: "6,841", vehicles: "8 / 10", dwell: "14.3m", coverage: "7 zones" },
+    { impressions: "7,204", vehicles: "9 / 10", dwell: "15.1m", coverage: "7 zones" },
+    { impressions: "8,011", vehicles: "10 / 10", dwell: "13.8m", coverage: "7 zones" },
+  ];
+  const [statIndex, setStatIndex] = useState(0);
+  const [fade, setFade] = useState(false);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(true);
+      setTimeout(() => {
+        setStatIndex((i) => (i + 1) % statSets.length);
+        setFade(false);
+      }, 200);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+  const current = statSets[statIndex];
+  const cells: Array<[string, string]> = [
+    [current.impressions, "Total impressions"],
+    [current.vehicles, "Vehicles active"],
+    [current.dwell, "Avg. dwell time"],
+    [current.coverage, "Colombo coverage"],
   ];
   return (
     <Section bg={C.cream}>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
         See exactly what's running.
       </h2>
-      <div className="reveal" style={{ marginTop: 36, maxWidth: 560, marginInline: "auto" }}>
+      <div className="reveal reveal-up" style={{ marginTop: 36, maxWidth: 560, marginInline: "auto" }}>
         <div style={{
           position: "relative",
           background: "#0D0D08",
@@ -415,15 +433,32 @@ function DashboardPreview() {
             Your Campaign Dashboard
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 14 }}>
-            {metrics.map(([label]) => (
+            {cells.map(([value, label]) => (
               <div key={label} style={{
                 background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)",
                 borderRadius: 8, padding: "12px 8px", textAlign: "center",
               }}>
-                <div className="font-display" style={{ fontSize: 22, color: "rgba(255,255,255,0.25)" }}>---</div>
+                <div className="font-display" style={{
+                  fontSize: 22, color: "#fff",
+                  opacity: fade ? 0.6 : 1, transition: "opacity 0.4s ease",
+                }}>{value}</div>
                 <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>{label}</div>
               </div>
             ))}
+          </div>
+          <div style={{
+            marginTop: 12, display: "flex", alignItems: "center", gap: 8, justifyContent: "center",
+          }}>
+            <span style={{
+              width: 6, height: 6, borderRadius: "50%", background: "#45855A",
+              animation: "live-dot 1.8s ease-in-out infinite",
+            }} />
+            <span style={{
+              fontFamily: "'Space Mono', monospace", fontSize: 10,
+              color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em",
+            }}>
+              LIVE DATA · UPDATES IN REAL TIME
+            </span>
           </div>
           <div style={{
             marginTop: 14, padding: "10px 12px",
