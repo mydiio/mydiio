@@ -346,7 +346,7 @@ function AboutPage() {
       </section>
 
       {/* SECTION 4 — COMMITMENTS */}
-      <section style={{ background: "var(--ink)", padding: "clamp(72px, 10vh, 120px) clamp(20px, 5vw, 72px)", textAlign: "center" }}>
+      <section style={{ background: "var(--ink)", padding: "var(--section-py) clamp(20px, 5vw, 72px)", textAlign: "center" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <span className="about-eyebrow reveal-up" style={{ color: "var(--accent)" }}>Our commitments</span>
           <h2 className="about-h2 about-h2-dark reveal-up delay-1" style={{ fontSize: "clamp(30px, 4.4vw, 60px)" }} dangerouslySetInnerHTML={{ __html: "Not just the right thing to do. The <em>smart</em> thing to do." }} />
