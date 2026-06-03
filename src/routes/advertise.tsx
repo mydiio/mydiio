@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
+import INSIDE_RIDE from "@/assets/inside-ride-passenger-pov-screen.png.asset.json";
+import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.asset.json";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { AdvertiserApplication } from "@/components/site/AdvertiserApplication";
