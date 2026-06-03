@@ -47,7 +47,7 @@ export function SiteFooter() {
               marginTop: 12,
               textTransform: "uppercase",
             }}>
-              Sri Lanka's urban attention network
+              Sri Lanka's Urban Attention Network
             </div>
             <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 8, fontSize: 13, color: "rgba(244,239,227,0.6)", fontWeight: 500 }}>
               <span>· {t("ft_l1")}</span>
