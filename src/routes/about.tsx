@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+import HERO_NIGHT from "@/assets/hero-tuk-tuk-night-screen.png.asset.json";
+import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.asset.json";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 
