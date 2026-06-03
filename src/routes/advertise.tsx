@@ -317,6 +317,229 @@ function Pricing() {
   );
 }
 
+/* ---------- Colombo Coverage ---------- */
+function ColomboCoverage() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          el.querySelectorAll<HTMLElement>(".reveal").forEach((item, i) =>
+            setTimeout(() => item.classList.add("in"), i * 80)
+          );
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.18 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const zones = [
+    { id: "CMB-01", name: "Fort / Pettah", desc: "Government, banking and commercial core" },
+    { id: "CMB-02", name: "Kollupitiya", desc: "Retail, hotels and seafront corridor" },
+    { id: "CMB-03", name: "Bambalapitiya", desc: "Shopping, schools and coast" },
+    { id: "CMB-04", name: "Wellawatte", desc: "Dense residential and dining strip" },
+    { id: "CMB-05", name: "Dehiwala", desc: "Major suburban hub south of the city" },
+    { id: "CMB-06", name: "Borella", desc: "Hospitals, offices and key junctions" },
+    { id: "CMB-07", name: "Maradana", desc: "Transport hub and rail interchange" },
+    { id: "CMB-08", name: "Rajagiriya / Kotte", desc: "Government and business district" },
+    { id: "NUG-01", name: "Nugegoda", desc: "Suburban retail and commuter belt" },
+    { id: "MAH-01", name: "Maharagama", desc: "Fast-growing outer suburb" },
+  ];
+
+  const tiers = [
+    { name: "PIONEER", zones: "All 10 zones", accent: true },
+    { name: "ROAMER", zones: "3 zones", accent: false },
+    { name: "VOYAGER", zones: "7 zones", accent: false },
+    { name: "HORIZON", zones: "All 10 zones", accent: false },
+  ];
+
+  const bursts = [
+    { name: "SPARK", zones: "1 zone" },
+    { name: "BLAST", zones: "3 zones" },
+    { name: "SURGE", zones: "All 10 zones" },
+  ];
+
+  return (
+    <section ref={ref} className="section-wrap" style={{ background: "var(--bg)", maxWidth: "none" }}>
+      <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+        <div className="reveal reveal-up" style={{ textAlign: "center" }}>
+          <span style={{
+            fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: "0.2em",
+            color: "var(--accent-deep)", textTransform: "uppercase", display: "inline-block",
+          }}>
+            Colombo coverage
+          </span>
+        </div>
+        <h2 className="reveal reveal-up font-display" style={{
+          fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 700, letterSpacing: "-0.03em",
+          color: "var(--ink)", textAlign: "center", marginTop: 12, lineHeight: 1.1,
+        }}>
+          Where your ad travels.
+        </h2>
+        <p className="reveal reveal-up" style={{
+          fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(15px, 1.4vw, 17px)",
+          fontWeight: 400, color: "var(--ink-soft)", textAlign: "center",
+          maxWidth: "50ch", margin: "12px auto 48px", lineHeight: 1.5,
+        }}>
+          mydiio tuk-tuks operate across 10 key zones in Greater Colombo. Every advertiser chooses the zones that matter to their business. Pioneer advertisers access all 10 simultaneously.
+        </p>
+
+        <div className="coverage-tier-wrap">
+          <div className="reveal reveal-up zone-grid">
+            {zones.map((z) => (
+              <div key={z.id} className="zone-card">
+                <div style={{
+                  fontFamily: "'Space Mono', monospace", fontSize: 10, fontWeight: 700,
+                  color: "var(--accent-deep)",
+                }}>
+                  {z.id}
+                </div>
+                <div style={{
+                  fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+                  fontSize: 15, color: "var(--ink)", marginTop: 4,
+                }}>
+                  {z.name}
+                </div>
+                <div style={{
+                  fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
+                  color: "var(--ink-soft)", lineHeight: 1.5, marginTop: 2,
+                }}>
+                  {z.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="reveal reveal-up tier-card">
+            <div style={{
+              fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+              fontSize: 17, color: "var(--ink)", marginBottom: 4,
+            }}>
+              Zones by plan
+            </div>
+            <div style={{
+              fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
+              color: "var(--ink-soft)", marginBottom: 20,
+            }}>
+              The number of zones you can run in at the same time depends on your plan.
+            </div>
+
+            {tiers.map((t, i) => (
+              <div key={t.name} className="tier-row" style={{
+                borderBottom: i === tiers.length - 1 ? "none" : "1px solid rgba(30,26,21,0.08)",
+              }}>
+                <span style={{
+                  fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700,
+                  color: t.accent ? "var(--accent-deep)" : "var(--ink-soft)",
+                }}>
+                  {t.name}
+                </span>
+                <span style={{
+                  background: t.accent ? "var(--accent)" : "var(--paper)",
+                  border: "2px solid var(--ink)", borderRadius: 20,
+                  padding: "3px 12px",
+                  fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700,
+                  color: "var(--ink)",
+                }}>
+                  {t.zones}
+                </span>
+              </div>
+            ))}
+
+            <div style={{ height: 1, background: "rgba(30,26,21,0.08)", margin: "16px 0" }} />
+
+            <div style={{
+              fontFamily: "'Space Mono', monospace", fontSize: 10,
+              color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: "0.1em",
+              margin: "16px 0 10px",
+            }}>
+              BURST PACKAGES
+            </div>
+
+            {bursts.map((b, i) => (
+              <div key={b.name} className="tier-row" style={{
+                borderBottom: i === bursts.length - 1 ? "none" : "1px solid rgba(30,26,21,0.08)",
+              }}>
+                <span style={{
+                  fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700,
+                  color: "var(--ink-soft)",
+                }}>
+                  {b.name}
+                </span>
+                <span style={{
+                  background: "var(--paper)",
+                  border: "2px solid var(--ink)", borderRadius: 20,
+                  padding: "3px 12px",
+                  fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700,
+                  color: "var(--ink)",
+                }}>
+                  {b.zones}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p style={{
+          fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
+          color: "var(--ink-soft)", marginTop: 14, lineHeight: 1.6, textAlign: "left",
+        }}>
+          Zone limits apply to simultaneous deployment. You can change your active zones at any time by contacting your account manager.
+        </p>
+
+        <p style={{
+          fontFamily: "'Space Mono', monospace", fontSize: 12,
+          color: "var(--accent-deep)", fontWeight: 700,
+          textAlign: "center", marginTop: 32,
+        }}>
+          Coverage expands as more drivers join the fleet. Pioneer advertisers select their preferred zones at sign-up.
+        </p>
+      </div>
+
+      <style>{`
+        .coverage-tier-wrap { display: flex; gap: 40px; flex-wrap: wrap; }
+        .coverage-tier-wrap > .zone-grid { flex: 1 1 55%; min-width: 280px; }
+        .coverage-tier-wrap > .tier-card { flex: 1 1 45%; min-width: 280px; }
+        @media (max-width: 767px) {
+          .coverage-tier-wrap > .zone-grid,
+          .coverage-tier-wrap > .tier-card { flex: 1 1 100%; }
+        }
+        .zone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .zone-card {
+          background: var(--paper);
+          border: 2px solid var(--ink);
+          border-radius: 14px;
+          box-shadow: 3px 3px 0 var(--ink);
+          padding: 14px 16px;
+          cursor: pointer;
+          transition: all 0.18s ease;
+        }
+        .zone-card:hover {
+          transform: translate(-2px, -2px);
+          box-shadow: 5px 5px 0 var(--ink);
+        }
+        .tier-card {
+          background: var(--paper);
+          border: 2px solid var(--ink);
+          border-radius: 22px;
+          box-shadow: 4px 4px 0 var(--ink);
+          padding: 24px;
+        }
+        .tier-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 0;
+        }
+      `}</style>
+    </section>
+  );
+}
+
 /* ---------- Social proof strip ---------- */
 function SocialProofStrip() {
   const chips = ["Green Bakery · Nugegoda", "City Pharma · Colombo 03", "Style House · Fort"];
@@ -1023,6 +1246,7 @@ function AdvertisePage() {
       <HowItWorks />
       <TukInterior />
       <Pricing />
+      <ColomboCoverage />
       <BurstPackages />
       <PioneerProgramme />
       <SocialProofStrip />
