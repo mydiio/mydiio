@@ -79,7 +79,7 @@ export const dict: Dict = {
   // --- Two Audiences ---
   ad_kicker: { en: "For advertisers", si: "ප්‍රචාරකයින් සඳහා", ta: "விளம்பரதாரர்களுக்கு" },
   ad_title: { en: "Turn Colombo traffic into customers.", si: "කොළඹ ගමනාගමනය පාරිභෝගිකයන් බවට පත් කරන්න.", ta: "கொழும்பு போக்குவரத்தை வாடிக்கையாளர்களாக மாற்றுங்கள்." },
-  ad_body: { en: "From restaurants to banks to apps — businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 20,000 a month, with your first 14 days completely free.", si: "අවන්හල් සිට බැංකු දක්වා — සන්නාම මිලදී ගැනීමේ තීරණ ගන්නා ස්ථානවල දෘශ්‍යමාන වීමට mydiio භාවිතා කරයි.", ta: "உணவகங்கள் முதல் வங்கிகள் வரை — வாங்கும் முடிவுகள் நடக்கும் இடத்தில் தெரியும்படி பிராண்டுகள் mydiio-ஐப் பயன்படுத்துகின்றன." },
+  ad_body: { en: "From restaurants to banks to apps — businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 25,000 a month, with your first 7 days completely free.", si: "අවන්හල් සිට බැංකු දක්වා — සන්නාම මිලදී ගැනීමේ තීරණ ගන්නා ස්ථානවල දෘශ්‍යමාන වීමට mydiio භාවිතා කරයි.", ta: "உணவகங்கள் முதல் வங்கிகள் வரை — வாங்கும் முடிவுகள் நடக்கும் இடத்தில் தெரியும்படி பிராண்டுகள் mydiio-ஐப் பயன்படுத்துகின்றன." },
   ad_cta: { en: "Get pricing →", si: "මිල ලබා ගන්න →", ta: "விலையை பெறுங்கள் →" },
 
   dr_kicker: { en: "For drivers", si: "රියදුරන් සඳහා", ta: "ஓட்டுநர்களுக்கு" },
