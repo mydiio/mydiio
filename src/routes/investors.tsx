@@ -419,10 +419,10 @@ function Traction() {
   const [advCount, setAdvCount] = useState<number | null>(null);
 
   useEffect(() => {
-    supabase.from("driver_applications").select("id", { count: "exact", head: true })
-      .then(({ count }) => setDriverCount(count ?? 0));
-    supabase.from("advertiser_applications").select("id", { count: "exact", head: true })
-      .then(({ count }) => setAdvCount(count ?? 0));
+    (supabase as any).from("driver_applications").select("id", { count: "exact", head: true })
+      .then(({ count }: { count: number | null }) => setDriverCount(count ?? 0));
+    (supabase as any).from("advertiser_applications").select("id", { count: "exact", head: true })
+      .then(({ count }: { count: number | null }) => setAdvCount(count ?? 0));
   }, []);
 
   const items: Array<{ k: string; v: React.ReactNode; sub: string }> = [
