@@ -517,7 +517,11 @@ function TukInterior() {
         @media (min-width: 860px) {
           .tuk-grid { grid-template-columns: 1fr 1.15fr !important; }
         }
+        @media (max-width: 599px) {
+          .inside-ride-img { height: 280px !important; }
+        }
       `}</style>
+
     </Section>
   );
 }
