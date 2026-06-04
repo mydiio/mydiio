@@ -73,7 +73,7 @@ function BeforeAfterCard({ variant, children }: { variant: Variant; children: Re
       }}
     >
       <div style={{ fontFamily: "'Space Mono', monospace", color: showBefore ? "var(--ink-mute)" : meta.eyebrowColor, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em", transition: "color 300ms ease" }}>
-        {showBefore ? "Before mydiio" : meta.eyebrow}
+        {showBefore ? <>Before <span className="brand">mydiio</span></> : meta.eyebrow}
       </div>
       <div style={{ opacity, transition: "opacity 300ms ease", flex: 1, marginTop: 8 }}>
         {renderBefore ? (
@@ -280,7 +280,7 @@ function AboutPage() {
         <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "clamp(80px, 12vh, 140px) clamp(20px, 5vw, 72px) clamp(48px, 6vh, 80px)" }}>
           <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
             <span className="page-hero-label">
-              About mydiio
+              About <span className="brand">mydiio</span>
             </span>
             <h1 className="page-hero-headline" style={{
               fontFamily: "'Space Grotesk', system-ui, sans-serif",

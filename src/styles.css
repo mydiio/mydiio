@@ -479,6 +479,9 @@ h1 em, h2 em, h3 em {
   .page-hero-headline { font-size: 20px !important; }
 }
 
+/* Brand wordmark — always lowercase, even inside uppercase labels */
+.brand { text-transform: none !important; }
+
 
 
 
