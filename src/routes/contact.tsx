@@ -68,10 +68,11 @@ function ContactPage() {
     <SiteShell accent="amber">
       {/* Section 1 — Header */}
       <section
+        className="contact-hero"
         style={{
           position: "relative",
           background: "var(--bg)",
-          padding: "clamp(72px,10vh,120px) var(--section-px) clamp(48px,6vh,80px)",
+          padding: "0 var(--section-px)",
           textAlign: "center",
           overflow: "hidden",
         }}
