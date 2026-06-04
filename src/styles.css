@@ -430,8 +430,9 @@ h1 em, h2 em, h3 em {
   .eyebrow, .about-eyebrow { font-size: 30px !important; }
 }
 @media (max-width: 639px) {
-  .eyebrow, .about-eyebrow { font-size: 24px !important; }
+  .eyebrow, .about-eyebrow { font-size: 30px !important; }
 }
+
 
 /* Section heading (h2/h3) that follows an eyebrow — supporting descriptor */
 .eyebrow + h2, .eyebrow + h3,
