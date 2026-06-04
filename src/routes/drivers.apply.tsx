@@ -227,7 +227,7 @@ function DriversApplyPage() {
   }
 
   const startFresh = () => {
-    try { localStorage.removeItem(DRAFT_KEY); } catch {}
+    try { sessionStorage.removeItem(DRAFT_KEY); localStorage.removeItem(DRAFT_KEY); } catch {}
     window.location.reload();
   };
 
