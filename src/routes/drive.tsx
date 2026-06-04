@@ -284,10 +284,10 @@ function DriverEarnings() {
           />
         </div>
         <div className="reveal">
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
+          <span className="eyebrow">
             Driver earnings
           </span>
-          <h2 className="font-display" style={{ fontSize: "clamp(28px, 3.6vw, 42px)", color: C.ink, lineHeight: 1.1, marginTop: 12 }}>
+          <h2 className="font-display" style={{ fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: C.ink, lineHeight: 1.5, marginTop: 0, letterSpacing: 0 }}>
             Drivers earn more every month.
           </h2>
           <p style={{
@@ -434,11 +434,11 @@ function FoundingGroup() {
   return (
     <Section bg={C.cream}>
       <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
+        <span className="eyebrow" style={{ textAlign: "center" }}>
           First 20 drivers only
         </span>
       </div>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal font-display" style={{ fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: C.ink, textAlign: "center", lineHeight: 1.5, marginTop: 0, letterSpacing: 0 }}>
         Be a founding driver.
       </h2>
 
@@ -640,15 +640,12 @@ function FinalCTA() {
         }}
       />
       <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "120px 24px", textAlign: "center" }}>
-        <span className="reveal" style={{
-          fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3,
-          color: C.amber, textTransform: "uppercase",
-        }}>
+        <span className="reveal eyebrow" style={{ textAlign: "center" }}>
           Colombo · Pilot launch · 2026
         </span>
         <h2 className="reveal font-display" style={{
-          fontSize: "clamp(32px, 5.2vw, 56px)", color: "#fff",
-          lineHeight: 1.05, marginTop: 16, letterSpacing: "-1px",
+          fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: "#fff",
+          lineHeight: 1.5, marginTop: 0, letterSpacing: 0,
           maxWidth: 880, marginInline: "auto",
         }}>
           Join Colombo's first in-tuk advertising network.

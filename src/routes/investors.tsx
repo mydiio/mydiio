@@ -28,7 +28,7 @@ const MAILTO = "mailto:investors@mydiio.com";
 /* ---------- Reusable bits ---------- */
 function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <span className={className} style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amber, textTransform: "uppercase", fontWeight: 700 }}>
+    <span className={`eyebrow ${className ?? ""}`}>
       {children}
     </span>
   );
@@ -36,7 +36,7 @@ function Eyebrow({ children, className }: { children: React.ReactNode; className
 
 function H2({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <h2 className={`font-display ${className ?? ""}`} style={{ fontSize: "clamp(30px, 4.6vw, 52px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-0.8px", marginTop: 14, textWrap: "balance" as const }}>
+    <h2 className={`font-display ${className ?? ""}`} style={{ fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: C.ink, lineHeight: 1.5, letterSpacing: 0, marginTop: 0, textWrap: "balance" as const }}>
       {children}
     </h2>
   );
