@@ -206,20 +206,38 @@ const inputStyle: React.CSSProperties = {
 /* ---------- Sections ---------- */
 function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
   useI18n();
+  const stats = [
+    { v: "320k", suffix: "", label: "tuks in Colombo" },
+    { v: "1.1m", suffix: "", label: "across Sri Lanka" },
+    { v: "Zero", suffix: "", label: "screens before mydiio" },
+    { v: "2026", suffix: "", label: "pilot year" },
+  ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed">
       <img src={COLOMBO_FLEET_GOLDEN.url} alt="Colombo tuk-tuk fleet at golden hour" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
-      <div className="relative z-10 flex flex-col justify-end page-hero-inner" style={{ padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
-        <div style={{ maxWidth: 820 }}>
-          <Eyebrow>Investor brief · 2026</Eyebrow>
-          <h1 className="font-display" style={{ color: "#fff", fontSize: "clamp(40px, 7vw, 76px)", lineHeight: 1.04, letterSpacing: "-1px", marginTop: 14, textWrap: "balance" as const }}>
+      <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
+        <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
+          <span style={{ display: "block", fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: 11, letterSpacing: "0.14em", color: "#F5A623", textTransform: "uppercase", fontWeight: 600 }}>
+            Investor brief · 2026
+          </span>
+          <h1 className="page-hero-headline" style={{
+            fontFamily: "'Space Grotesk', system-ui, sans-serif",
+            color: "#fff",
+            fontWeight: 500,
+            lineHeight: 1.4,
+            marginTop: 14,
+          }}>
             Building Sri Lanka's first tuk-tuk media network.
           </h1>
-          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "clamp(16px, 2vw, 20px)", color: "rgba(255,255,255,0.82)", marginTop: 20, maxWidth: 640, lineHeight: 1.5 }}>
+          <p style={{
+            fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 400,
+            fontSize: 16,
+            color: "rgba(253,250,243,0.85)", marginTop: 18, maxWidth: 600, lineHeight: 1.7,
+          }}>
             mydiio turns thousands of daily tuk-tuk rides into measurable advertising inventory and recurring revenue.
           </p>
-          <div className="hero-cta-row" style={{ marginTop: 32, display: "flex", gap: 14, flexWrap: "wrap" }}>
+          <div className="hero-cta-row" style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
             <button onClick={onRequestDeck} className="btn-bold font-display" style={{ background: C.amber, color: C.ink, padding: "16px 22px", borderRadius: 14, fontSize: 17, border: "2px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", cursor: "pointer" }}>
               Request investor deck →
             </button>
@@ -228,16 +246,15 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
             </a>
           </div>
 
-          <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 20, maxWidth: 720 }}>
-            {[
-              ["Colombo", "Launching"],
-              ["10", "Pilot vehicles"],
-              ["10", "Pioneer spots"],
-              ["Open", "Pilot sales"],
-            ].map(([n, l]) => (
-              <div key={l}>
-                <div className="font-display" style={{ color: "#fff", fontSize: 26, lineHeight: 1, letterSpacing: "-0.5px" }}>{n}</div>
-                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amber, textTransform: "uppercase", marginTop: 6 }}>{l}</div>
+          <div className="page-hero-stats" style={{ marginTop: 44, paddingTop: 24, borderTop: "1px solid rgba(253,250,243,0.18)", display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 16 }}>
+            {stats.map((s, i) => (
+              <div key={s.label} style={{ display: "flex", flexDirection: "column", gap: 4, paddingLeft: i === 0 ? 0 : 16, borderLeft: i === 0 ? "none" : "1px solid rgba(253,250,243,0.18)" }}>
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: "#fff", fontSize: "clamp(20px, 2.4vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1 }}>
+                  {s.v}{s.suffix && <span style={{ color: "#F5A623" }}>{s.suffix}</span>}
+                </span>
+                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, letterSpacing: "0.16em", color: "rgba(253,250,243,0.65)", textTransform: "uppercase" }}>
+                  {s.label}
+                </span>
               </div>
             ))}
           </div>
@@ -246,9 +263,13 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
       <style>{`
         .page-hero-fixed { min-height: 560px; }
         .page-hero-inner { min-height: 560px; }
+        .page-hero-headline { font-size: 28px; }
         @media (max-width: 767px) {
           .page-hero-fixed { min-height: 380px; }
           .page-hero-inner { min-height: 380px; }
+          .page-hero-headline { font-size: 22px; }
+          .page-hero-textblock { max-width: 100% !important; }
+          .page-hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
         }
       `}</style>
     </section>
