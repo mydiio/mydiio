@@ -218,7 +218,7 @@ function DriversApplyPage() {
         .select("id")
         .single();
       if (insErr) throw insErr;
-      try { localStorage.removeItem(DRAFT_KEY); } catch {}
+      try { sessionStorage.removeItem(DRAFT_KEY); localStorage.removeItem(DRAFT_KEY); } catch {}
       setSuccessId(inserted.id);
     } catch {
       setErrorMsg("Something went wrong — please try again.");
