@@ -547,6 +547,12 @@ function Coverage() {
       <div className="reveal reveal-up delay-2">
         <ColomboMap />
       </div>
+      <style>{`
+        @media (max-width: 599px) {
+          .coverage-strip { height: 160px !important; }
+        }
+      `}</style>
+
     </Section>
   );
 }
