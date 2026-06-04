@@ -321,12 +321,12 @@ function ContactPage() {
 
       <style>{`
         .contact-hero {
-          padding-top: 24px;
-          padding-bottom: 32px;
-          margin-top: 0;
+          padding-top: calc(var(--site-nav-height, 68px) + 24px) !important;
+          padding-bottom: 32px !important;
+          margin-top: 0 !important;
         }
         @media (min-width: 900px) {
-          .contact-hero { padding-top: 32px; padding-bottom: 48px; }
+          .contact-hero { padding-top: calc(var(--site-nav-height, 72px) + 32px) !important; padding-bottom: 48px !important; }
         }
         .contact-grid {
           display: grid;
