@@ -1110,16 +1110,13 @@ function BurstPackages() {
     <section ref={ref} className="section-wrap" style={{ background: "var(--bg2)", maxWidth: "none" }}>
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <div className="reveal reveal-up" style={{ textAlign: "center" }}>
-          <span style={{
-            fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: "0.2em",
-            color: "var(--accent-deep)", textTransform: "uppercase", display: "inline-block",
-          }}>
+          <span className="eyebrow" style={{ textAlign: "center" }}>
             Burst packages
           </span>
         </div>
         <h2 className="reveal reveal-up font-display" style={{
-          fontSize: "clamp(30px, 4.4vw, 56px)", fontWeight: 700, letterSpacing: "-0.03em",
-          color: "var(--ink)", textAlign: "center", marginTop: 12, lineHeight: 1.1,
+          fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, letterSpacing: 0,
+          color: "var(--ink)", textAlign: "center", marginTop: 0, lineHeight: 1.5,
         }}>
           Need advertising without a monthly plan?
         </h2>
