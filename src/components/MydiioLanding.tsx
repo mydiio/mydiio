@@ -541,7 +541,7 @@ function Coverage() {
         </p>
       </div>
       <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
-        <img src={COLOMBO_STREET} alt="tuk-tuks on a Colombo street" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
+        <img src={COVERAGE_AERIAL.url} alt="Aerial view of Colombo tuk-tuks moving through the city" loading="lazy" className="coverage-strip" style={{ width: "100%", display: "block", height: 220, borderRadius: 12, objectFit: "cover", objectPosition: "center" }} />
       </div>
 
       <div className="reveal reveal-up delay-2">
