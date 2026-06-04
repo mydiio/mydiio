@@ -218,7 +218,7 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
         <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
-          <span style={{ display: "block", fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: 11, letterSpacing: "0.14em", color: "#F5A623", textTransform: "uppercase", fontWeight: 600 }}>
+          <span style={{ display: "block", fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: 12, letterSpacing: "0.14em", color: "#F5A623", textTransform: "uppercase", fontWeight: 600 }}>
             Investor brief · 2026
           </span>
           <h1 className="page-hero-headline" style={{
