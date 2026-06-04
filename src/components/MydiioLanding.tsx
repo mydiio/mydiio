@@ -614,7 +614,7 @@ function TwoAudiences() {
           overflow: "hidden",
           padding: 0,
         }}>
-          <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: "2px solid var(--ink)" }} />
+          <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" loading="lazy" className="audience-img" style={{ width: "100%", height: 200, objectFit: "cover", objectPosition: "center 25%", display: "block", borderRadius: "10px 10px 0 0", borderBottom: "2px solid var(--ink)" }} />
           <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
             <span className="eyebrow" style={{ color: "var(--green-ink)" }}>{t("dr_kicker")}</span>
             <h3 style={{
