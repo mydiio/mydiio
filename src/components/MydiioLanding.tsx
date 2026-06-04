@@ -471,7 +471,7 @@ function TukInterior() {
             {t("tuk_cta")}
           </Link>
         </div>
-        <div className="reveal reveal-up delay-1" style={{ position: "relative" }}>
+        <div className="reveal reveal-up delay-1 tuk-image" style={{ position: "relative" }}>
           <div style={{
             border: "2px solid var(--ink)",
             borderRadius: 20,
