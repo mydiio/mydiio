@@ -73,7 +73,7 @@ function BeforeAfterCard({ variant, children }: { variant: Variant; children: Re
       }}
     >
       <div style={{ fontFamily: "'Space Mono', monospace", color: showBefore ? "var(--ink-mute)" : meta.eyebrowColor, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.12em", transition: "color 300ms ease" }}>
-        {showBefore ? "Before mydiio" : meta.eyebrow}
+        {showBefore ? <>Before <span className="brand">mydiio</span></> : meta.eyebrow}
       </div>
       <div style={{ opacity, transition: "opacity 300ms ease", flex: 1, marginTop: 8 }}>
         {renderBefore ? (
