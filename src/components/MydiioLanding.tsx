@@ -312,7 +312,7 @@ function WhyItWorks() {
     <Section bg="var(--bg2)">
       <div className="why-split">
         <div className="why-content reveal">
-          <span className="eyebrow reveal-up">{t("why_kicker")}</span>
+          <span className="eyebrow reveal-up"><span className="brand">{t("why_kicker")}</span></span>
           <h2 className="reveal-up delay-1" style={{
             fontFamily: "'Space Grotesk', system-ui, sans-serif",
             fontWeight: 700,
