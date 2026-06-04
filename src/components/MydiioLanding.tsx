@@ -312,67 +312,65 @@ function WhyItWorks() {
   ];
   return (
     <Section bg="var(--bg2)">
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
-
-        <span className="eyebrow reveal-up">{t("why_kicker")}</span>
-        <h2 className="reveal-up delay-1" style={{
-          fontFamily: "'Space Grotesk', system-ui, sans-serif",
-          fontWeight: 700,
-          fontSize: "clamp(44px, 7.4vw, 104px)",
-          color: "var(--ink)",
-          lineHeight: 0.93,
-          letterSpacing: "-0.04em",
-          marginTop: 18,
-        }}>
-          {t("why_title")}
-        </h2>
-      </div>
-      <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
-        <img src={COLOMBO_FLEET_GOLDEN.url} alt="mydiio tuk-tuk fleet in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
-      </div>
-      <div className="why-grid">
-        {cards.map((c, i) => (
-          <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
-            background: "var(--paper)",
-            border: "2px solid var(--ink)",
-            borderRadius: "var(--radius-card)",
-            padding: "28px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 12,
-            height: "100%",
+      <div className="why-split">
+        <div className="why-content reveal">
+          <span className="eyebrow reveal-up">{t("why_kicker")}</span>
+          <h2 className="reveal-up delay-1" style={{
+            fontFamily: "'Space Grotesk', system-ui, sans-serif",
+            fontWeight: 700,
+            fontSize: "clamp(34px, 5vw, 56px)",
+            color: "var(--ink)",
+            lineHeight: 1.0,
+            letterSpacing: "-0.03em",
+            marginTop: 12,
+            marginBottom: 28,
           }}>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", color: "var(--accent-deep)" }}>{c.n}</div>
-            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", lineHeight: 1.2, letterSpacing: "-0.4px" }}>{c.t}</div>
-            <div style={{ fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.55, fontWeight: 500 }}>{c.b}</div>
+            {t("why_title")}
+          </h2>
+          <div className="why-grid">
+            {cards.map((c, i) => (
+              <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
+                background: "var(--paper)",
+                border: "2px solid var(--ink)",
+                borderRadius: "var(--radius-card)",
+                padding: "22px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+                height: "100%",
+              }}>
+                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", color: "var(--accent-deep)" }}>{c.n}</div>
+                <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 19, fontWeight: 600, color: "var(--ink)", lineHeight: 1.2, letterSpacing: "-0.3px" }}>{c.t}</div>
+                <div style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.55, fontWeight: 500 }}>{c.b}</div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+        <div className="why-image reveal reveal-up delay-1">
+          <img src={COLOMBO_FLEET_GOLDEN.url} alt="mydiio tuk-tuk fleet in Colombo at golden hour" loading="lazy" style={{ width: "100%", height: 380, display: "block", borderRadius: 16, objectFit: "cover", objectPosition: "center" }} />
+        </div>
       </div>
       <style>{`
-        .why-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-          align-items: stretch;
+        .why-split { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+        @media (min-width: 900px) {
+          .why-split { grid-template-columns: 55fr 45fr; gap: 40px; }
         }
         @media (max-width: 899px) {
-          .why-grid {
-            gap: 16px;
-          }
+          .why-image img { height: 240px !important; }
+          .why-split { grid-template-areas: "img" "content"; }
+          .why-image { grid-area: img; }
+          .why-content { grid-area: content; }
         }
         @media (max-width: 599px) {
-          .why-grid {
-            grid-template-columns: 1fr;
-            gap: 12px;
-          }
-          .why-grid > .feature-card {
-            padding: 20px !important;
-          }
+          .why-grid { grid-template-columns: 1fr; gap: 12px; }
+          .why-grid > .feature-card { padding: 18px !important; }
         }
       `}</style>
     </Section>
   );
 }
+
 
 function HowItWorks() {
   const { t, lang } = useI18n();
