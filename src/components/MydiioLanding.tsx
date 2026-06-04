@@ -432,7 +432,7 @@ function TukInterior() {
   return (
     <Section bg="var(--bg2)">
       <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 32, alignItems: "center" }}>
-        <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+        <div className="reveal tuk-text" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <span className="eyebrow">{t("tuk_kicker")}</span>
           <h3 style={{
             fontFamily: "'Space Grotesk', system-ui, sans-serif",
