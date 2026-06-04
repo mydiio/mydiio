@@ -450,6 +450,35 @@ h1 em, h2 em, h3 em {
   }
 }
 
+/* Hero amber label — shared across every page hero (matches homepage scale) */
+.page-hero-label {
+  display: block !important;
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif !important;
+  font-size: 56px !important;
+  font-weight: 700 !important;
+  color: #F5A623 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  line-height: 1.1 !important;
+  margin-bottom: 10px;
+}
+@media (max-width: 1023px) {
+  .page-hero-label { font-size: 40px !important; }
+}
+@media (max-width: 639px) {
+  .page-hero-label { font-size: 32px !important; }
+}
+
+/* Hero headline beneath the amber label — supporting white line */
+.page-hero-headline {
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+}
+@media (max-width: 639px) {
+  .page-hero-headline { font-size: 20px !important; }
+}
+
 
 
 

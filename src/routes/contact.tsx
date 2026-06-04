@@ -91,7 +91,7 @@ function ContactPage() {
           }}
         />
         <div style={{ position: "relative", zIndex: 1 }}>
-          <span className="eyebrow contact-hero-display" style={{ fontSize: "clamp(32px, 5.6vw, 56px)", letterSpacing: "0.04em", marginBottom: 10 }}>Contact</span>
+          <span className="page-hero-label">Contact</span>
           <h1
             className="reveal-up contact-hero-headline"
             style={{
