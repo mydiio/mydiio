@@ -1,15 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import HERO_NIGHT from "@/assets/hero-tuk-tuk-night-screen.png.asset.json";
-import COLOMBO_STREET from "@/assets/colombo-street.jpg";
-import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import INSIDE_RIDE from "@/assets/inside-ride-passenger-pov-screen.png.asset.json";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.asset.json";
-import TUK_STAND from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
+
 import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
-import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.asset.json";
+
+import HOW_STEP1 from "@/assets/interior-pharmacy-ad-daytime.png.asset.json";
+import HOW_STEP2 from "@/assets/interior-mobile-network-ad-evening.png.asset.json";
+import HOW_STEP3 from "@/assets/advertiser-woman-laptop-dashboard.png.asset.json";
+import COVERAGE_AERIAL from "@/assets/aerial-colombo-tuk-tuks-overhead.png.asset.json";
+import ROAD_FORT from "@/assets/tuk-tuk-colombo-fort-landmark.png.asset.json";
+import ROAD_NIGHT from "@/assets/colombo-night-light-trails.png.asset.json";
+
 import { useI18n } from "@/lib/i18n";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
@@ -305,74 +310,72 @@ function WhyItWorks() {
   ];
   return (
     <Section bg="var(--bg2)">
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
-
-        <span className="eyebrow reveal-up">{t("why_kicker")}</span>
-        <h2 className="reveal-up delay-1" style={{
-          fontFamily: "'Space Grotesk', system-ui, sans-serif",
-          fontWeight: 700,
-          fontSize: "clamp(44px, 7.4vw, 104px)",
-          color: "var(--ink)",
-          lineHeight: 0.93,
-          letterSpacing: "-0.04em",
-          marginTop: 18,
-        }}>
-          {t("why_title")}
-        </h2>
-      </div>
-      <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
-        <img src={COLOMBO_FLEET_GOLDEN.url} alt="mydiio tuk-tuk fleet in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
-      </div>
-      <div className="why-grid">
-        {cards.map((c, i) => (
-          <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
-            background: "var(--paper)",
-            border: "2px solid var(--ink)",
-            borderRadius: "var(--radius-card)",
-            padding: "28px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 12,
-            height: "100%",
+      <div className="why-split">
+        <div className="why-content reveal">
+          <span className="eyebrow reveal-up">{t("why_kicker")}</span>
+          <h2 className="reveal-up delay-1" style={{
+            fontFamily: "'Space Grotesk', system-ui, sans-serif",
+            fontWeight: 700,
+            fontSize: "clamp(34px, 5vw, 56px)",
+            color: "var(--ink)",
+            lineHeight: 1.0,
+            letterSpacing: "-0.03em",
+            marginTop: 12,
+            marginBottom: 28,
           }}>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", color: "var(--accent-deep)" }}>{c.n}</div>
-            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", lineHeight: 1.2, letterSpacing: "-0.4px" }}>{c.t}</div>
-            <div style={{ fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.55, fontWeight: 500 }}>{c.b}</div>
+            {t("why_title")}
+          </h2>
+          <div className="why-grid">
+            {cards.map((c, i) => (
+              <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
+                background: "var(--paper)",
+                border: "2px solid var(--ink)",
+                borderRadius: "var(--radius-card)",
+                padding: "22px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+                height: "100%",
+              }}>
+                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", color: "var(--accent-deep)" }}>{c.n}</div>
+                <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 19, fontWeight: 600, color: "var(--ink)", lineHeight: 1.2, letterSpacing: "-0.3px" }}>{c.t}</div>
+                <div style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.55, fontWeight: 500 }}>{c.b}</div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+        <div className="why-image reveal reveal-up delay-1">
+          <img src={COLOMBO_FLEET_GOLDEN.url} alt="mydiio tuk-tuk fleet in Colombo at golden hour" loading="lazy" style={{ width: "100%", height: 380, display: "block", borderRadius: 16, objectFit: "cover", objectPosition: "center" }} />
+        </div>
       </div>
       <style>{`
-        .why-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-          align-items: stretch;
+        .why-split { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+        @media (min-width: 900px) {
+          .why-split { grid-template-columns: 55fr 45fr; gap: 40px; }
         }
         @media (max-width: 899px) {
-          .why-grid {
-            gap: 16px;
-          }
+          .why-image img { height: 240px !important; }
+          .why-split { grid-template-areas: "img" "content"; }
+          .why-image { grid-area: img; }
+          .why-content { grid-area: content; }
         }
         @media (max-width: 599px) {
-          .why-grid {
-            grid-template-columns: 1fr;
-            gap: 12px;
-          }
-          .why-grid > .feature-card {
-            padding: 20px !important;
-          }
+          .why-grid { grid-template-columns: 1fr; gap: 12px; }
+          .why-grid > .feature-card { padding: 18px !important; }
         }
       `}</style>
     </Section>
   );
 }
 
+
 function HowItWorks() {
   const { t, lang } = useI18n();
   const steps = [
-    { n: "01", t: t("how_s1_t"), b: t("how_s1_b") },
-    { n: "02", t: t("how_s2_t"), b: t("how_s2_b") },
-    { n: "03", t: t("how_s3_t"), b: t("how_s3_b") },
+    { n: "01", t: t("how_s1_t"), b: t("how_s1_b"), img: HOW_STEP1.url, alt: "tuk-tuk interior screen showing a pharmacy ad in daytime" },
+    { n: "02", t: t("how_s2_t"), b: t("how_s2_b"), img: HOW_STEP2.url, alt: "tuk-tuk interior screen showing a mobile network ad in the evening" },
+    { n: "03", t: t("how_s3_t"), b: t("how_s3_b"), img: HOW_STEP3.url, alt: "advertiser reviewing campaign dashboard on a laptop" },
   ];
   return (
     <Section bg="var(--bg)">
@@ -382,17 +385,14 @@ function HowItWorks() {
         <h2 className="reveal-up delay-1" style={{
           fontFamily: "'Space Grotesk', system-ui, sans-serif",
           fontWeight: 700,
-          fontSize: "clamp(44px, 7.4vw, 104px)",
+          fontSize: "clamp(34px, 5vw, 56px)",
           color: "var(--ink)",
-          lineHeight: 0.93,
-          letterSpacing: "-0.04em",
-          marginTop: 18,
+          lineHeight: 1.0,
+          letterSpacing: "-0.03em",
+          marginTop: 12,
         }}>
           {t("how_title")}
         </h2>
-      </div>
-      <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
-        <img src={COLOMBO_TUK_DAYTIME.url} alt="tuk-tuks moving through a Colombo street in daytime" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 24 }}>
 
@@ -401,20 +401,23 @@ function HowItWorks() {
             background: "var(--paper)",
             border: "2px solid var(--ink)",
             borderRadius: "var(--radius-card)",
-            padding: "32px 28px",
+            padding: 0,
             display: "flex",
             flexDirection: "column",
-            gap: 12,
+            overflow: "hidden",
           }}>
-            <div style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: "clamp(40px, 5vw, 60px)",
-              fontWeight: 700,
-              lineHeight: 1,
-              color: "var(--accent-deep)",
-            }}>{s.n}</div>
-            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", marginTop: 10, letterSpacing: "-0.4px", lineHeight: 1.2 }}>{s.t}</div>
-            <div style={{ fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.55, marginTop: 10, fontWeight: 500 }}>{s.b}</div>
+            <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 160, objectFit: "cover", objectPosition: "center", display: "block", borderRadius: "10px 10px 0 0" }} />
+            <div style={{ padding: "28px 28px 32px", display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: "clamp(40px, 5vw, 60px)",
+                fontWeight: 700,
+                lineHeight: 1,
+                color: "var(--accent-deep)",
+              }}>{s.n}</div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", marginTop: 6, letterSpacing: "-0.4px", lineHeight: 1.2 }}>{s.t}</div>
+              <div style={{ fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.55, marginTop: 4, fontWeight: 500 }}>{s.b}</div>
+            </div>
           </div>
         ))}
       </div>
@@ -422,6 +425,7 @@ function HowItWorks() {
     </Section>
   );
 }
+
 
 function TukInterior() {
   const { t } = useI18n();
@@ -474,7 +478,7 @@ function TukInterior() {
             boxShadow: "var(--sticker-lg)",
             overflow: "hidden",
           }}>
-            <img src={INSIDE_RIDE.url} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }} />
+            <img src={INSIDE_RIDE.url} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" loading="lazy" className="inside-ride-img" style={{ width: "100%", display: "block", height: 400, objectFit: "cover", objectPosition: "center top" }} />
           </div>
           <div style={{
             position: "absolute",
@@ -511,7 +515,11 @@ function TukInterior() {
         @media (min-width: 860px) {
           .tuk-grid { grid-template-columns: 1fr 1.15fr !important; }
         }
+        @media (max-width: 599px) {
+          .inside-ride-img { height: 280px !important; }
+        }
       `}</style>
+
     </Section>
   );
 }
@@ -531,12 +539,18 @@ function Coverage() {
         </p>
       </div>
       <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
-        <img src={COLOMBO_STREET} alt="tuk-tuks on a Colombo street" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
+        <img src={COVERAGE_AERIAL.url} alt="Aerial view of Colombo tuk-tuks moving through the city" loading="lazy" className="coverage-strip" style={{ width: "100%", display: "block", height: 220, borderRadius: 12, objectFit: "cover", objectPosition: "center" }} />
       </div>
 
       <div className="reveal reveal-up delay-2">
         <ColomboMap />
       </div>
+      <style>{`
+        @media (max-width: 599px) {
+          .coverage-strip { height: 160px !important; }
+        }
+      `}</style>
+
     </Section>
   );
 }
@@ -556,7 +570,7 @@ function TwoAudiences() {
           overflow: "hidden",
           padding: 0,
         }}>
-          <img src={ADVERTISER_DASHBOARD.url} alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: "2px solid var(--ink)" }} />
+          <img src={ADVERTISER_DASHBOARD.url} alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand" loading="lazy" className="audience-img" style={{ width: "100%", height: 200, objectFit: "cover", objectPosition: "center 25%", display: "block", borderRadius: "10px 10px 0 0", borderBottom: "2px solid var(--ink)" }} />
           <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
             <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
             <h3 style={{
@@ -598,7 +612,7 @@ function TwoAudiences() {
           overflow: "hidden",
           padding: 0,
         }}>
-          <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center 25%", display: "block", borderBottom: "2px solid var(--ink)" }} />
+          <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" loading="lazy" className="audience-img" style={{ width: "100%", height: 200, objectFit: "cover", objectPosition: "center 25%", display: "block", borderRadius: "10px 10px 0 0", borderBottom: "2px solid var(--ink)" }} />
           <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
             <span className="eyebrow" style={{ color: "var(--green-ink)" }}>{t("dr_kicker")}</span>
             <h3 style={{
@@ -632,7 +646,13 @@ function TwoAudiences() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 599px) {
+          .audience-img { height: 160px !important; }
+        }
+      `}</style>
     </Section>
+
   );
 }
 
@@ -771,9 +791,17 @@ function ScaleStory() {
           {t("scale_title")}
         </h2>
       </div>
-      <div className="reveal reveal-up delay-2" style={{ marginBottom: 32 }}>
-        <img src={TUK_STAND.url} alt="Sri Lankan tuk-tuk drivers at a stand in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
+      <div className="reveal reveal-up delay-2 road-pair" style={{ marginBottom: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        <img src={ROAD_FORT.url} alt="Colombo tuk-tuk passing the Old Lighthouse clock tower landmark" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 14, objectFit: "cover", objectPosition: "center" }} />
+        <img src={ROAD_NIGHT.url} alt="Colombo city night scene with traffic light trails" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 14, objectFit: "cover", objectPosition: "center" }} />
       </div>
+      <style>{`
+        @media (max-width: 599px) {
+          .road-pair { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .road-pair-img { height: 180px !important; }
+        }
+      `}</style>
+
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 24 }}>
 
         {cards.map((c, i) => (
