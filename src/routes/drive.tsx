@@ -70,27 +70,36 @@ function StatPill({ value, label }: { value: string; label: string }) {
 }
 
 function Hero() {
+  const stats = [
+    { v: "LKR 8,000", suffix: "", label: "per month max" },
+    { v: "LKR 96,000", suffix: "", label: "per year" },
+    { v: "1", suffix: " hr", label: "installation time" },
+    { v: "0", suffix: "", label: "cost to join" },
+  ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed">
-      <img src={TUK_STAND.url} alt="Sri Lankan tuk-tuk drivers at a Colombo stand" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
+      <img src={DRIVER_PORTRAIT.url} alt="Sri Lankan tuk-tuk driver at golden hour in Colombo" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
       <div className="absolute inset-0" style={{
-        background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)",
+        background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
       }} />
       <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "120px 6% 80px" }}>
-        <div style={{ maxWidth: 760 }}>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.green, textTransform: "uppercase" }}>
-            Driver earnings
+        <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
+          <span style={{ display: "block", fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: 11, letterSpacing: "0.14em", color: "#F5A623", textTransform: "uppercase", fontWeight: 600 }}>
+            For drivers
           </span>
-          <h1 className="font-display" style={{
+          <h1 className="page-hero-headline" style={{
+            fontFamily: "'Space Grotesk', system-ui, sans-serif",
             color: "#fff",
-            fontSize: "clamp(38px, 6.5vw, 72px)", lineHeight: 1.05, letterSpacing: "-1px", marginTop: 14,
+            fontWeight: 500,
+            lineHeight: 1.4,
+            marginTop: 14,
           }}>
             Drivers earn more every month.
           </h1>
           <p style={{
-            fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
-            fontSize: "clamp(15px, 1.8vw, 19px)",
-            color: "rgba(255,255,255,0.78)", marginTop: 18, maxWidth: 600,
+            fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 400,
+            fontSize: 16,
+            color: "rgba(253,250,243,0.85)", marginTop: 18, maxWidth: 600, lineHeight: 1.7,
           }}>
             Join our network and get paid through ad revenue. Your tuk-tuk earns while you drive your normal routes.
           </p>
@@ -105,9 +114,17 @@ function Hero() {
               Join as Driver →
             </a>
           </div>
-          <div style={{ marginTop: 24, display: "flex", flexWrap: "wrap", gap: 10 }}>
-            <StatPill value="LKR 8,000" label="per month maximum" />
-            <StatPill value="LKR 96,000" label="per year" />
+          <div className="page-hero-stats" style={{ marginTop: 44, paddingTop: 24, borderTop: "1px solid rgba(253,250,243,0.18)", display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 16 }}>
+            {stats.map((s, i) => (
+              <div key={s.label} style={{ display: "flex", flexDirection: "column", gap: 4, paddingLeft: i === 0 ? 0 : 16, borderLeft: i === 0 ? "none" : "1px solid rgba(253,250,243,0.18)" }}>
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: "#fff", fontSize: "clamp(20px, 2.4vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1 }}>
+                  {s.v}{s.suffix && <span style={{ color: "#F5A623" }}>{s.suffix}</span>}
+                </span>
+                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, letterSpacing: "0.16em", color: "rgba(253,250,243,0.65)", textTransform: "uppercase" }}>
+                  {s.label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -115,9 +132,13 @@ function Hero() {
       <style>{`
         .page-hero-fixed { min-height: 560px; }
         .page-hero-inner { min-height: 560px; }
+        .page-hero-headline { font-size: 28px; }
         @media (max-width: 767px) {
           .page-hero-fixed { min-height: 380px; }
           .page-hero-inner { min-height: 380px; }
+          .page-hero-headline { font-size: 22px; }
+          .page-hero-textblock { max-width: 100% !important; }
+          .page-hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
         }
       `}</style>
     </section>
