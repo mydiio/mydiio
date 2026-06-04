@@ -375,9 +375,9 @@ function WhyItWorks() {
 function HowItWorks() {
   const { t, lang } = useI18n();
   const steps = [
-    { n: "01", t: t("how_s1_t"), b: t("how_s1_b") },
-    { n: "02", t: t("how_s2_t"), b: t("how_s2_b") },
-    { n: "03", t: t("how_s3_t"), b: t("how_s3_b") },
+    { n: "01", t: t("how_s1_t"), b: t("how_s1_b"), img: HOW_STEP1.url, alt: "tuk-tuk interior screen showing a pharmacy ad in daytime" },
+    { n: "02", t: t("how_s2_t"), b: t("how_s2_b"), img: HOW_STEP2.url, alt: "tuk-tuk interior screen showing a mobile network ad in the evening" },
+    { n: "03", t: t("how_s3_t"), b: t("how_s3_b"), img: HOW_STEP3.url, alt: "advertiser reviewing campaign dashboard on a laptop" },
   ];
   return (
     <Section bg="var(--bg)">
@@ -387,17 +387,14 @@ function HowItWorks() {
         <h2 className="reveal-up delay-1" style={{
           fontFamily: "'Space Grotesk', system-ui, sans-serif",
           fontWeight: 700,
-          fontSize: "clamp(44px, 7.4vw, 104px)",
+          fontSize: "clamp(34px, 5vw, 56px)",
           color: "var(--ink)",
-          lineHeight: 0.93,
-          letterSpacing: "-0.04em",
-          marginTop: 18,
+          lineHeight: 1.0,
+          letterSpacing: "-0.03em",
+          marginTop: 12,
         }}>
           {t("how_title")}
         </h2>
-      </div>
-      <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
-        <img src={COLOMBO_TUK_DAYTIME.url} alt="tuk-tuks moving through a Colombo street in daytime" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 24 }}>
 
@@ -406,20 +403,23 @@ function HowItWorks() {
             background: "var(--paper)",
             border: "2px solid var(--ink)",
             borderRadius: "var(--radius-card)",
-            padding: "32px 28px",
+            padding: 0,
             display: "flex",
             flexDirection: "column",
-            gap: 12,
+            overflow: "hidden",
           }}>
-            <div style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: "clamp(40px, 5vw, 60px)",
-              fontWeight: 700,
-              lineHeight: 1,
-              color: "var(--accent-deep)",
-            }}>{s.n}</div>
-            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", marginTop: 10, letterSpacing: "-0.4px", lineHeight: 1.2 }}>{s.t}</div>
-            <div style={{ fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.55, marginTop: 10, fontWeight: 500 }}>{s.b}</div>
+            <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 160, objectFit: "cover", objectPosition: "center", display: "block", borderRadius: "10px 10px 0 0" }} />
+            <div style={{ padding: "28px 28px 32px", display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: "clamp(40px, 5vw, 60px)",
+                fontWeight: 700,
+                lineHeight: 1,
+                color: "var(--accent-deep)",
+              }}>{s.n}</div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", marginTop: 6, letterSpacing: "-0.4px", lineHeight: 1.2 }}>{s.t}</div>
+              <div style={{ fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.55, marginTop: 4, fontWeight: 500 }}>{s.b}</div>
+            </div>
           </div>
         ))}
       </div>
@@ -427,6 +427,7 @@ function HowItWorks() {
     </Section>
   );
 }
+
 
 function TukInterior() {
   const { t } = useI18n();
