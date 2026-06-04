@@ -68,10 +68,11 @@ function ContactPage() {
     <SiteShell accent="amber">
       {/* Section 1 — Header */}
       <section
+        className="contact-hero"
         style={{
           position: "relative",
           background: "var(--bg)",
-          padding: "clamp(72px,10vh,120px) var(--section-px) clamp(48px,6vh,80px)",
+          padding: "0 var(--section-px)",
           textAlign: "center",
           overflow: "hidden",
         }}
@@ -319,10 +320,21 @@ function ContactPage() {
       </p>
 
       <style>{`
+        .contact-hero {
+          padding-top: 48px;
+          padding-bottom: 32px;
+        }
+        @media (min-width: 700px) {
+          .contact-hero { padding-top: 64px; }
+        }
+        @media (min-width: 900px) {
+          .contact-hero { padding-top: 80px; padding-bottom: 48px; }
+        }
         .contact-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
+          margin-top: 40px;
         }
         @media (max-width: 900px) {
           .contact-grid { grid-template-columns: 1fr; }
