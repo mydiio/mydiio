@@ -91,21 +91,22 @@ function ContactPage() {
           }}
         />
         <div style={{ position: "relative", zIndex: 1 }}>
-          <span className="eyebrow">Contact</span>
+          <span className="eyebrow contact-hero-display" style={{ fontSize: "clamp(32px, 5.6vw, 56px)", letterSpacing: "0.04em", marginBottom: 10 }}>Contact</span>
           <h1
-            className="reveal-up"
+            className="reveal-up contact-hero-headline"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
-              fontWeight: 700,
-              fontSize: "clamp(48px,7vw,96px)",
-              letterSpacing: "-0.04em",
-              lineHeight: 0.93,
+              fontWeight: 500,
+              fontSize: "clamp(22px, 2.4vw, 28px)",
+              letterSpacing: 0,
+              lineHeight: 1.4,
               color: "var(--ink)",
               marginTop: 12,
             }}
           >
             Let's talk.
           </h1>
+
           <p
             className="reveal-up delay-1"
             style={{
