@@ -648,7 +648,13 @@ function TwoAudiences() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 599px) {
+          .audience-img { height: 160px !important; }
+        }
+      `}</style>
     </Section>
+
   );
 }
 
