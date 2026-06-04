@@ -434,11 +434,11 @@ function FoundingGroup() {
   return (
     <Section bg={C.cream}>
       <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
-        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
+        <span className="eyebrow" style={{ textAlign: "center" }}>
           First 20 drivers only
         </span>
       </div>
-      <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+      <h2 className="reveal font-display" style={{ fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: C.ink, textAlign: "center", lineHeight: 1.5, marginTop: 0, letterSpacing: 0 }}>
         Be a founding driver.
       </h2>
 
