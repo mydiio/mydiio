@@ -432,7 +432,7 @@ function TukInterior() {
   return (
     <Section bg="var(--bg2)">
       <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 32, alignItems: "center" }}>
-        <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+        <div className="reveal tuk-text" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <span className="eyebrow">{t("tuk_kicker")}</span>
           <h3 style={{
             fontFamily: "'Space Grotesk', system-ui, sans-serif",
@@ -471,7 +471,7 @@ function TukInterior() {
             {t("tuk_cta")}
           </Link>
         </div>
-        <div className="reveal reveal-up delay-1" style={{ position: "relative" }}>
+        <div className="reveal reveal-up delay-1 tuk-image" style={{ position: "relative" }}>
           <div style={{
             border: "2px solid var(--ink)",
             borderRadius: 20,
@@ -517,6 +517,28 @@ function TukInterior() {
         }
         @media (max-width: 599px) {
           .inside-ride-img { height: 280px !important; }
+        }
+        @media (max-width: 1023px) {
+          .tuk-text {
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+            gap: 10px !important;
+          }
+          .tuk-text .eyebrow {
+            margin-bottom: 0 !important;
+          }
+          .tuk-text h3 {
+            margin-top: 4px !important;
+          }
+          .tuk-text .btn-bold {
+            align-self: flex-start !important;
+            margin-top: 2px !important;
+          }
+          .tuk-image {
+            margin-top: 24px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
         }
       `}</style>
 
