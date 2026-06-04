@@ -640,15 +640,12 @@ function FinalCTA() {
         }}
       />
       <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "120px 24px", textAlign: "center" }}>
-        <span className="reveal" style={{
-          fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3,
-          color: C.amber, textTransform: "uppercase",
-        }}>
+        <span className="reveal eyebrow" style={{ textAlign: "center" }}>
           Colombo · Pilot launch · 2026
         </span>
         <h2 className="reveal font-display" style={{
-          fontSize: "clamp(32px, 5.2vw, 56px)", color: "#fff",
-          lineHeight: 1.05, marginTop: 16, letterSpacing: "-1px",
+          fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: "#fff",
+          lineHeight: 1.5, marginTop: 0, letterSpacing: 0,
           maxWidth: 880, marginInline: "auto",
         }}>
           Join Colombo's first in-tuk advertising network.
