@@ -284,10 +284,10 @@ function DriverEarnings() {
           />
         </div>
         <div className="reveal">
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
+          <span className="eyebrow">
             Driver earnings
           </span>
-          <h2 className="font-display" style={{ fontSize: "clamp(28px, 3.6vw, 42px)", color: C.ink, lineHeight: 1.1, marginTop: 12 }}>
+          <h2 className="font-display" style={{ fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: C.ink, lineHeight: 1.5, marginTop: 0, letterSpacing: 0 }}>
             Drivers earn more every month.
           </h2>
           <p style={{
