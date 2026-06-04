@@ -518,6 +518,28 @@ function TukInterior() {
         @media (max-width: 599px) {
           .inside-ride-img { height: 280px !important; }
         }
+        @media (max-width: 1023px) {
+          .tuk-text {
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+            gap: 10px !important;
+          }
+          .tuk-text .eyebrow {
+            margin-bottom: 0 !important;
+          }
+          .tuk-text h3 {
+            margin-top: 4px !important;
+          }
+          .tuk-text .btn-bold {
+            align-self: flex-start !important;
+            margin-top: 2px !important;
+          }
+          .tuk-image {
+            margin-top: 24px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+        }
       `}</style>
 
     </Section>
