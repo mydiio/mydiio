@@ -279,9 +279,8 @@ function AboutPage() {
         </svg>
         <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "clamp(80px, 12vh, 140px) clamp(20px, 5vw, 72px) clamp(48px, 6vh, 80px)" }}>
           <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
-            <span style={{ display: "block", fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: 12, letterSpacing: "0.14em", color: "#F5A623", textTransform: "uppercase", fontWeight: 600 }}>
+            <span className="page-hero-label">
               About mydiio
-
             </span>
             <h1 className="page-hero-headline" style={{
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
