@@ -787,9 +787,17 @@ function ScaleStory() {
           {t("scale_title")}
         </h2>
       </div>
-      <div className="reveal reveal-up delay-2" style={{ marginBottom: 32 }}>
-        <img src={TUK_STAND.url} alt="Sri Lankan tuk-tuk drivers at a stand in Colombo at golden hour" style={{ width: "100%", display: "block", borderRadius: 20, border: "2px solid var(--ink)", boxShadow: "var(--sticker-lg)", objectFit: "cover", aspectRatio: "16/9" }} />
+      <div className="reveal reveal-up delay-2 road-pair" style={{ marginBottom: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        <img src={ROAD_FORT.url} alt="Colombo tuk-tuk passing the Old Lighthouse clock tower landmark" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 14, objectFit: "cover", objectPosition: "center" }} />
+        <img src={ROAD_NIGHT.url} alt="Colombo city night scene with traffic light trails" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 14, objectFit: "cover", objectPosition: "center" }} />
       </div>
+      <style>{`
+        @media (max-width: 599px) {
+          .road-pair { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .road-pair-img { height: 180px !important; }
+        }
+      `}</style>
+
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 24 }}>
 
         {cards.map((c, i) => (
