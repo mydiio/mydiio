@@ -413,45 +413,34 @@ h1 em, h2 em, h3 em {
   color: var(--accent-deep);
 }
 
-/* Eyebrow / label — section heading anchor */
+/* Eyebrow / label — small spaced caps above section heading */
 .eyebrow, .about-eyebrow {
   font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif !important;
-  font-size: 36px !important;
-  font-weight: 700 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.14em !important;
   color: #F5A623 !important;
   display: block !important;
   margin-bottom: 12px;
   line-height: 1.1;
 }
-@media (max-width: 1023px) {
-  .eyebrow, .about-eyebrow { font-size: 28px !important; }
-}
-@media (max-width: 639px) {
-  .eyebrow, .about-eyebrow { font-size: 22px !important; }
-}
 
-/* Section heading (h2/h3) that follows an eyebrow — supporting descriptor */
+/* Section heading (h2/h3) that follows an eyebrow */
 .eyebrow + h2, .eyebrow + h3,
 .about-eyebrow + h2, .about-eyebrow + h3 {
-  font-size: 22px !important;
-  font-weight: 500 !important;
-  line-height: 1.5 !important;
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
   letter-spacing: normal !important;
-}
-@media (max-width: 1023px) {
-  .eyebrow + h2, .eyebrow + h3,
-  .about-eyebrow + h2, .about-eyebrow + h3 {
-    font-size: 18px !important;
-  }
 }
 @media (max-width: 639px) {
   .eyebrow + h2, .eyebrow + h3,
   .about-eyebrow + h2, .about-eyebrow + h3 {
-    font-size: 16px !important;
+    font-size: 24px !important;
   }
 }
+
 
 
 /* Mono enforcement on specific elements */
