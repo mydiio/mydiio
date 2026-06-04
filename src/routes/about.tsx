@@ -260,7 +260,7 @@ function AboutPage() {
       `}</style>
 
       {/* SECTION 1 — HERO */}
-      <section className="page-hero-fixed" style={{ textAlign: "center", position: "relative", overflow: "hidden", paddingBottom: "clamp(48px, 6vh, 80px)" }}>
+      <section className="page-hero-fixed" style={{ position: "relative", overflow: "hidden", paddingBottom: "clamp(48px, 6vh, 80px)" }}>
         <img src={HERO_NIGHT.url} alt="Tuk-tuks moving through Colombo at night" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
         {/* Amber arcs decoration */}
@@ -277,29 +277,60 @@ function AboutPage() {
             <circle cx="260" cy="260" r="240" />
           </g>
         </svg>
-        <div className="page-hero-inner" style={{ padding: "clamp(80px, 12vh, 140px) clamp(20px, 5vw, 72px) clamp(48px, 6vh, 80px)", position: "relative", zIndex: 1 }}>
-          <span className="about-eyebrow reveal-up" style={{ color: "var(--accent)" }}>About mydiio</span>
-          <h1 className="about-h1 reveal-up delay-1" style={{ color: "var(--on-dark)" }}>Ads on the move.</h1>
-          <p className="about-lead reveal-up delay-2" style={{ maxWidth: "46ch", margin: "20px auto 32px", color: "rgba(244,239,227,0.7)" }}>
-            mydiio puts digital advertising screens inside tuk-tuks across Colombo. Every ride is an audience. Every driver earns more. Every impression is verified.
-          </p>
-          <div className="about-cta-row reveal-up delay-3">
-            <a href="/advertise/apply" className="about-btn" style={primaryBtn}>Launch a campaign →</a>
-            <a href="/drivers/apply" className="about-btn" style={greenBtn}>Become a driver →</a>
-          </div>
-        </div>
-        <div className="ticker-strip" style={{ marginTop: "clamp(40px, 6vh, 64px)", position: "relative", zIndex: 1 }}>
-          <div className="ticker-inner">
-            <span>{tickerText.repeat(6)}</span>
-            <span>{tickerText.repeat(6)}</span>
+        <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "clamp(80px, 12vh, 140px) clamp(20px, 5vw, 72px) clamp(48px, 6vh, 80px)" }}>
+          <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
+            <span style={{ display: "block", fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: 11, letterSpacing: "0.14em", color: "#F5A623", textTransform: "uppercase", fontWeight: 600 }}>
+              ABOUT MYDIIO
+            </span>
+            <h1 className="page-hero-headline" style={{
+              fontFamily: "'Space Grotesk', system-ui, sans-serif",
+              color: "#fff",
+              fontWeight: 500,
+              lineHeight: 1.4,
+              marginTop: 14,
+            }}>
+              Ads on the move.
+            </h1>
+            <p style={{
+              fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 400,
+              fontSize: 16,
+              color: "rgba(253,250,243,0.85)", marginTop: 18, maxWidth: 600, lineHeight: 1.7,
+            }}>
+              mydiio puts digital advertising screens inside tuk-tuks across Colombo. Every ride is an audience. Every driver earns more. Every impression is verified.
+            </p>
+            <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
+              <a href="/advertise/apply" className="about-btn" style={primaryBtn}>Launch a campaign →</a>
+              <a href="/drivers/apply" className="about-btn" style={greenBtn}>Become a driver →</a>
+            </div>
+            <div className="page-hero-stats" style={{ marginTop: 44, paddingTop: 24, borderTop: "1px solid rgba(253,250,243,0.18)", display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 16 }}>
+              {[
+                { v: "Colombo", suffix: "", label: "where we operate" },
+                { v: "2026", suffix: "", label: "founded" },
+                { v: "Drivers", suffix: "", label: "our partners" },
+                { v: "Verified", suffix: "", label: "every impression" },
+              ].map((s, i) => (
+                <div key={s.label} style={{ display: "flex", flexDirection: "column", gap: 4, paddingLeft: i === 0 ? 0 : 16, borderLeft: i === 0 ? "none" : "1px solid rgba(253,250,243,0.18)" }}>
+                  <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: "#fff", fontSize: "clamp(20px, 2.4vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1 }}>
+                    {s.v}{s.suffix && <span style={{ color: "#F5A623" }}>{s.suffix}</span>}
+                  </span>
+                  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, letterSpacing: "0.16em", color: "rgba(253,250,243,0.65)", textTransform: "uppercase" }}>
+                    {s.label}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <style>{`
           .page-hero-fixed { min-height: 480px; }
           .page-hero-inner { min-height: 480px; }
+          .page-hero-headline { font-size: 28px; }
           @media (max-width: 767px) {
             .page-hero-fixed { min-height: 320px; }
             .page-hero-inner { min-height: 320px; }
+            .page-hero-headline { font-size: 22px; }
+            .page-hero-textblock { max-width: 100% !important; }
+            .page-hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           }
         `}</style>
       </section>
