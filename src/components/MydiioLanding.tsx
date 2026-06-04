@@ -9,7 +9,7 @@ import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.asset.json";
 import TUK_STAND from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
 import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
-import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.asset.json";
+
 import HOW_STEP1 from "@/assets/interior-pharmacy-ad-daytime.png.asset.json";
 import HOW_STEP2 from "@/assets/interior-mobile-network-ad-evening.png.asset.json";
 import HOW_STEP3 from "@/assets/advertiser-woman-laptop-dashboard.png.asset.json";
