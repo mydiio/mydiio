@@ -10,6 +10,13 @@ import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.ass
 import TUK_STAND from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
 import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
 import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.asset.json";
+import HOW_STEP1 from "@/assets/interior-pharmacy-ad-daytime.png.asset.json";
+import HOW_STEP2 from "@/assets/interior-mobile-network-ad-evening.png.asset.json";
+import HOW_STEP3 from "@/assets/advertiser-woman-laptop-dashboard.png.asset.json";
+import COVERAGE_AERIAL from "@/assets/aerial-colombo-tuk-tuks-overhead.png.asset.json";
+import ROAD_FORT from "@/assets/tuk-tuk-colombo-fort-landmark.png.asset.json";
+import ROAD_NIGHT from "@/assets/colombo-night-light-trails.png.asset.json";
+
 import { useI18n } from "@/lib/i18n";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
