@@ -99,26 +99,23 @@ function DriversApplyPage() {
   const [duplicateMsg, setDuplicateMsg] = useState("");
   const [successId, setSuccessId] = useState<string | null>(null);
 
-  // Rehydrate
+  // Rehydrate (sessionStorage only, sensitive fields excluded)
   useEffect(() => {
     try {
-      const raw = localStorage.getItem(DRAFT_KEY);
+      const raw = sessionStorage.getItem(DRAFT_KEY);
       if (!raw) return;
       const d: Draft = JSON.parse(raw);
       const s1 = d.s1 || {};
       setFullName(s1.fullName || "");
-      setNicNumber(s1.nicNumber || "");
-      setDateOfBirth(s1.dateOfBirth || "");
+      // nicNumber, dateOfBirth, homeAddress intentionally NOT persisted (sensitive PII)
       setWhatsappNumber(s1.whatsappNumber || "");
       setAlternateNumber(s1.alternateNumber || "");
-      setHomeAddress(s1.homeAddress || "");
       setPreferredLanguage(s1.preferredLanguage || "Sinhala");
       setVehicleRegistration(s1.vehicleRegistration || "");
       setVehicleColour(s1.vehicleColour || "");
       setVehicleAge(s1.vehicleAge || "");
       setVehicleOwnership(s1.vehicleOwnership || "");
-      setLicenceNumber(s1.licenceNumber || "");
-      setLicenceExpiry(s1.licenceExpiry || "");
+      // licenceNumber / licenceExpiry intentionally NOT persisted
       setDrivingExperience(s1.drivingExperience || "");
       const s2 = d.s2 || {};
       setDailyHours(s2.dailyHours ?? 8);
@@ -126,28 +123,27 @@ function DriversApplyPage() {
       setOperatingZones(s2.operatingZones || []);
       setPlatformUsage(s2.platformUsage || []);
       setReferralName(s2.referralName || "");
-      const s3 = d.s3 || {};
-      setBankName(s3.bankName || "");
-      setAccountNumber(s3.accountNumber || "");
-      setAccountHolderName(s3.accountHolderName || "");
+      // s3 (bank details) intentionally NOT persisted — re-enter each session
       if (d.step && d.step > 1) {
         setCurrentStep(d.step);
         setHadDraft(true);
       }
     } catch {}
+    // Clean up any legacy localStorage draft from older versions
+    try { localStorage.removeItem(DRAFT_KEY); } catch {}
   }, []);
 
-  // Save draft
+  // Save draft — sessionStorage only, sensitive PII (NIC, DOB, address, licence, bank) excluded
   useEffect(() => {
     if (successId) return;
     const d: Draft = {
       step: currentStep,
-      s1: { fullName, nicNumber, dateOfBirth, whatsappNumber, alternateNumber, homeAddress, preferredLanguage, vehicleRegistration, vehicleColour, vehicleAge, vehicleOwnership, licenceNumber, licenceExpiry, drivingExperience },
+      s1: { fullName, whatsappNumber, alternateNumber, preferredLanguage, vehicleRegistration, vehicleColour, vehicleAge, vehicleOwnership, drivingExperience },
       s2: { dailyHours, drivingDays, operatingZones, platformUsage, referralName },
-      s3: { bankName, accountNumber, accountHolderName },
     };
-    try { localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); } catch {}
-  }, [currentStep, fullName, nicNumber, dateOfBirth, whatsappNumber, alternateNumber, homeAddress, preferredLanguage, vehicleRegistration, vehicleColour, vehicleAge, vehicleOwnership, licenceNumber, licenceExpiry, drivingExperience, dailyHours, drivingDays, operatingZones, platformUsage, referralName, bankName, accountNumber, accountHolderName, successId]);
+    try { sessionStorage.setItem(DRAFT_KEY, JSON.stringify(d)); } catch {}
+  }, [currentStep, fullName, whatsappNumber, alternateNumber, preferredLanguage, vehicleRegistration, vehicleColour, vehicleAge, vehicleOwnership, drivingExperience, dailyHours, drivingDays, operatingZones, platformUsage, referralName, successId]);
+
 
   // Validation
   const nicValid = !nicNumber || NIC_REGEX.test(nicNumber);
@@ -222,7 +218,7 @@ function DriversApplyPage() {
         .select("id")
         .single();
       if (insErr) throw insErr;
-      try { localStorage.removeItem(DRAFT_KEY); } catch {}
+      try { sessionStorage.removeItem(DRAFT_KEY); localStorage.removeItem(DRAFT_KEY); } catch {}
       setSuccessId(inserted.id);
     } catch {
       setErrorMsg("Something went wrong — please try again.");
@@ -231,7 +227,7 @@ function DriversApplyPage() {
   }
 
   const startFresh = () => {
-    try { localStorage.removeItem(DRAFT_KEY); } catch {}
+    try { sessionStorage.removeItem(DRAFT_KEY); localStorage.removeItem(DRAFT_KEY); } catch {}
     window.location.reload();
   };
 
