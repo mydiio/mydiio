@@ -7,6 +7,7 @@ import TUK_STAND from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
 import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.asset.json";
 import INSTALL_HANDS from "@/assets/installation-hands-fitting-screen.png.asset.json";
 import INSTALL_LIVE from "@/assets/installation-screen-live-colombo.png.asset.json";
+import DRIVER_PORTRAIT from "@/assets/driver-portrait-tuk-golden-hour.png.asset.json";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { supabase } from "@/integrations/supabase/client";
