@@ -178,48 +178,49 @@ function DriversApplyPage() {
     setSubmitting(true);
     try {
       const phone = whatsappNumber.trim();
-      const { data: existing } = await supabase
-        .from("driver_applications")
-        .select("id")
-        .eq("whatsapp_number", phone)
-        .limit(1);
-      if (existing && existing.length > 0) {
-        setDuplicateMsg("We already have an application from this number. We'll be in touch soon.");
+      const payload = {
+        sender_name: fullName,
+        sender_contact: phone,
+        subject: `Driver application — ${fullName}`,
+        message: [
+          `Full name: ${fullName}`,
+          `NIC: ${nicNumber}`,
+          `Date of birth: ${dateOfBirth}`,
+          `WhatsApp: ${phone}`,
+          `Alternate number: ${alternateNumber || "—"}`,
+          `Home address: ${homeAddress}`,
+          `Preferred language: ${preferredLanguage}`,
+          `Vehicle registration: ${vehicleRegistration.toUpperCase()}`,
+          `Vehicle colour: ${vehicleColour}`,
+          `Vehicle age: ${vehicleAge}`,
+          `Vehicle ownership: ${vehicleOwnership}`,
+          `Licence number: ${licenceNumber}`,
+          `Licence expiry: ${licenceExpiry}`,
+          `Driving experience: ${drivingExperience}`,
+          `Operating zones: ${operatingZones.join(", ")}`,
+          `Daily hours: ${dailyHours}`,
+          `Driving days: ${drivingDays}`,
+          `Platform usage: ${platformUsage}`,
+          `Bank: ${bankName}`,
+          `Account number: ${accountNumber}`,
+          `Account holder: ${accountHolderName}`,
+          `Referral: ${referralName || "—"}`,
+        ].join(". "),
+        source: "website",
+        sender_type: "driver",
+      };
+      const res = await fetch("https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        setErrorMsg("Something went wrong — please try again.");
         setSubmitting(false);
         return;
       }
-      const { data: inserted, error: insErr } = await supabase
-        .from("driver_applications")
-        .insert({
-          full_name: fullName,
-          nic_number: nicNumber,
-          date_of_birth: dateOfBirth,
-          whatsapp_number: phone,
-          alternate_number: alternateNumber || null,
-          home_address: homeAddress,
-          preferred_language: preferredLanguage,
-          vehicle_registration: vehicleRegistration.toUpperCase(),
-          vehicle_colour: vehicleColour,
-          vehicle_age: vehicleAge,
-          vehicle_ownership: vehicleOwnership,
-          licence_number: licenceNumber,
-          licence_expiry: licenceExpiry,
-          driving_experience: drivingExperience,
-          operating_zones: operatingZones,
-          daily_hours: dailyHours,
-          driving_days: drivingDays,
-          platform_usage: platformUsage,
-          bank_name: bankName,
-          account_number: accountNumber,
-          account_holder_name: accountHolderName,
-          referral_name: referralName || null,
-          status: "new",
-        })
-        .select("id")
-        .single();
-      if (insErr) throw insErr;
       try { sessionStorage.removeItem(DRAFT_KEY); localStorage.removeItem(DRAFT_KEY); } catch {}
-      setSuccessId(inserted.id);
+      setSuccessId("received");
     } catch {
       setErrorMsg("Something went wrong — please try again.");
       setSubmitting(false);
