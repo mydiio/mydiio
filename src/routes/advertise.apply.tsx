@@ -132,32 +132,27 @@ function AdvertiseApplyPage() {
     setDuplicateMsg("");
     setSubmitting(true);
     try {
-      const phone = whatsappNumber.trim();
-      const payload = {
-        sender_name: `${businessName} — ${contactName}`,
-        sender_contact: phone,
-        subject: `Advertiser application — ${businessName}`,
-        message: [
-          `Business name: ${businessName}`,
-          `Contact name: ${contactName}`,
-          `WhatsApp: ${phone}`,
-          `Business type: ${businessType}`,
-          `Zones selected: ${zonesSelected.join(", ")}`,
-          `Budget range: ${budgetRange}`,
-          `Tier interest: ${tierInterest}`,
-          `Campaign goal: ${campaignGoal}`,
-          `Has creative: ${hasCreative}`,
-          `Referral source: ${referralSource || "—"}`,
-        ].join(". "),
-        source: "website",
-        sender_type: "advertiser",
-      };
-      const res = await fetch("https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) {
+      const response = await fetch(
+        "https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-application",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            application_type: "advertiser",
+            business_name: businessName,
+            contact_name: contactName,
+            phone: whatsappNumber,
+            business_type: businessType,
+            zones: zonesSelected,
+            budget_range: budgetRange,
+            tier_interest: tierInterest,
+            campaign_goal: campaignGoal,
+            has_creative: hasCreative,
+            referral_source: referralSource,
+          }),
+        }
+      );
+      if (!response.ok) {
         setErrorMsg("Something went wrong — please try again.");
         setSubmitting(false);
         return;
