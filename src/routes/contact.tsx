@@ -49,13 +49,14 @@ function ContactPage() {
     setError(null);
     const fd = new FormData(e.currentTarget);
     const name = String(fd.get("name") || "").trim().slice(0, 200);
+    const email = String(fd.get("email") || "").trim().slice(0, 255);
     const phone = String(fd.get("phone") || "").trim().slice(0, 50);
     const message = String(fd.get("message") || "").trim().slice(0, 4000);
-    if (!name || !phone || !message) return;
+    if (!name || !email || !phone || !message) return;
     setSubmitting(true);
     const { error: dbError } = await externalSupabase
       .from("general_enquiries")
-      .insert({ name, phone, message });
+      .insert({ name, email, phone, message });
     setSubmitting(false);
     if (dbError) {
       setError("Something went wrong — please try again.");
@@ -230,6 +231,10 @@ function ContactPage() {
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>Your name</span>
                   <input name="name" required maxLength={200} placeholder="Full name" style={inputStyle} className="contact-input" />
+                </label>
+                <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>Your email</span>
+                  <input name="email" type="email" required maxLength={255} placeholder="hello@company.com" style={inputStyle} className="contact-input" />
                 </label>
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>WhatsApp / Phone</span>
