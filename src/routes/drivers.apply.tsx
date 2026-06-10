@@ -177,44 +177,40 @@ function DriversApplyPage() {
     setDuplicateMsg("");
     setSubmitting(true);
     try {
-      const phone = whatsappNumber.trim();
-      const payload = {
-        sender_name: fullName,
-        sender_contact: phone,
-        subject: `Driver application — ${fullName}`,
-        message: [
-          `Full name: ${fullName}`,
-          `NIC: ${nicNumber}`,
-          `Date of birth: ${dateOfBirth}`,
-          `WhatsApp: ${phone}`,
-          `Alternate number: ${alternateNumber || "—"}`,
-          `Home address: ${homeAddress}`,
-          `Preferred language: ${preferredLanguage}`,
-          `Vehicle registration: ${vehicleRegistration.toUpperCase()}`,
-          `Vehicle colour: ${vehicleColour}`,
-          `Vehicle age: ${vehicleAge}`,
-          `Vehicle ownership: ${vehicleOwnership}`,
-          `Licence number: ${licenceNumber}`,
-          `Licence expiry: ${licenceExpiry}`,
-          `Driving experience: ${drivingExperience}`,
-          `Operating zones: ${operatingZones.join(", ")}`,
-          `Daily hours: ${dailyHours}`,
-          `Driving days: ${drivingDays}`,
-          `Platform usage: ${platformUsage}`,
-          `Bank: ${bankName}`,
-          `Account number: ${accountNumber}`,
-          `Account holder: ${accountHolderName}`,
-          `Referral: ${referralName || "—"}`,
-        ].join(". "),
-        source: "website",
-        sender_type: "driver",
-      };
-      const res = await fetch("https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) {
+      const response = await fetch(
+        "https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-application",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            application_type: "driver",
+            full_name: fullName,
+            phone: whatsappNumber,
+            whatsapp_number: whatsappNumber,
+            nic_number: nicNumber,
+            date_of_birth: dateOfBirth,
+            alternate_number: alternateNumber,
+            home_address: homeAddress,
+            preferred_language: preferredLanguage,
+            vehicle_registration: vehicleRegistration,
+            vehicle_colour: vehicleColour,
+            vehicle_age: vehicleAge,
+            vehicle_ownership: vehicleOwnership,
+            licence_number: licenceNumber,
+            licence_expiry: licenceExpiry,
+            driving_experience: drivingExperience,
+            operating_zones: operatingZones,
+            daily_hours: dailyHours,
+            driving_days: drivingDays,
+            platform_usage: platformUsage,
+            referral_name: referralName,
+            bank_name: bankName,
+            bank_account_number: accountNumber,
+            account_holder_name: accountHolderName,
+          }),
+        }
+      );
+      if (!response.ok) {
         setErrorMsg("Something went wrong — please try again.");
         setSubmitting(false);
         return;
