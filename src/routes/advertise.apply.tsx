@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
-import { supabase } from "@/integrations/supabase/client";
+
 
 export const Route = createFileRoute("/advertise/apply")({
   component: AdvertiseApplyPage,
@@ -133,37 +133,37 @@ function AdvertiseApplyPage() {
     setSubmitting(true);
     try {
       const phone = whatsappNumber.trim();
-      const { data: existing, error: dupErr } = await supabase
-        .from("advertiser_applications")
-        .select("id")
-        .eq("whatsapp_number", phone)
-        .limit(1);
-      if (dupErr) throw dupErr;
-      if (existing && existing.length > 0) {
-        setDuplicateMsg("We already have an application from this number. We'll be in touch soon.");
+      const payload = {
+        sender_name: `${businessName} — ${contactName}`,
+        sender_contact: phone,
+        subject: `Advertiser application — ${businessName}`,
+        message: [
+          `Business name: ${businessName}`,
+          `Contact name: ${contactName}`,
+          `WhatsApp: ${phone}`,
+          `Business type: ${businessType}`,
+          `Zones selected: ${zonesSelected.join(", ")}`,
+          `Budget range: ${budgetRange}`,
+          `Tier interest: ${tierInterest}`,
+          `Campaign goal: ${campaignGoal}`,
+          `Has creative: ${hasCreative}`,
+          `Referral source: ${referralSource || "—"}`,
+        ].join(". "),
+        source: "website",
+        sender_type: "advertiser",
+      };
+      const res = await fetch("https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        setErrorMsg("Something went wrong — please try again.");
         setSubmitting(false);
         return;
       }
-      const { data: inserted, error: insErr } = await supabase
-        .from("advertiser_applications")
-        .insert({
-          business_name: businessName,
-          contact_name: contactName,
-          whatsapp_number: phone,
-          business_type: businessType,
-          zones_selected: zonesSelected,
-          budget_range: budgetRange,
-          campaign_goal: campaignGoal,
-          tier_interest: tierInterest,
-          has_creative: hasCreative,
-          referral_source: referralSource || null,
-          status: "new",
-        })
-        .select("id")
-        .single();
-      if (insErr) throw insErr;
       try { localStorage.removeItem(DRAFT_KEY); } catch {}
-      setSuccessId(inserted.id);
+      setSuccessId("received");
     } catch (e) {
       setErrorMsg("Something went wrong — please try again.");
       setSubmitting(false);
