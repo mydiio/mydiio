@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
-import { supabase } from "@/integrations/supabase/client";
+import { externalSupabase } from "@/integrations/external-supabase/client";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 
 export const Route = createFileRoute("/contact")({
@@ -53,7 +53,7 @@ function ContactPage() {
     const message = String(fd.get("message") || "").trim().slice(0, 4000);
     if (!name || !phone || !message) return;
     setSubmitting(true);
-    const { error: dbError } = await (supabase as any)
+    const { error: dbError } = await externalSupabase
       .from("general_enquiries")
       .insert({ name, phone, message });
     setSubmitting(false);
