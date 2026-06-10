@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
-import { supabase } from "@/integrations/supabase/client";
+
 
 export const Route = createFileRoute("/drivers/apply")({
   component: DriversApplyPage,
