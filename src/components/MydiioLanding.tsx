@@ -5,6 +5,7 @@ import INSIDE_RIDE from "@/assets/inside-ride-passenger-pov-screen.png.asset.jso
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import DRIVER_CARD from "@/assets/illustration-kamal-driver.png.asset.json";
+import TUK_SCREEN from "@/assets/illustration-tuk-screen.png.asset.json";
 
 import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
 
