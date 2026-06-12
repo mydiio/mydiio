@@ -1147,6 +1147,22 @@ export default function MydiioLanding() {
           transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
         }
         .path-card:hover { transform: translateY(-4px); box-shadow: var(--sticker-lg); }
+
+        .founding-tuk-accent {
+          position: absolute;
+          right: -20px;
+          bottom: -20px;
+          width: 100px;
+          opacity: 0.85;
+          z-index: 0;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+          border: none;
+          box-shadow: none;
+        }
+        @media (min-width: 768px) {
+          .founding-tuk-accent { width: 160px; }
+        }
       `}</style>
 
       <Hero />
