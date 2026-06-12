@@ -70,10 +70,8 @@ function HeroWords({ text }: { text: string }) {
 
 function Hero() {
   const { t } = useI18n();
-  const v1 = useCountUp(10, 1400, 0);
-  const v2 = useCountUp(20, 1400, 100);
-  const v3 = useCountUp(72, 1400, 200);
-  const v4 = useCountUp(10, 1400, 300);
+
+
 
   // Split trailing period off the headline so we can color it.
   const rawTitle = t("hero_title");
