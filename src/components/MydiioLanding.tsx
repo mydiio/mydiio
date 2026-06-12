@@ -4,7 +4,7 @@ import HERO_NIGHT from "@/assets/hero-tuk-tuk-night-screen.png.asset.json";
 import INSIDE_RIDE from "@/assets/inside-ride-passenger-pov-screen.png.asset.json";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
-import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.asset.json";
+import DRIVER_CARD from "@/assets/illustration-kamal-driver.png.asset.json";
 
 import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
 
@@ -678,7 +678,7 @@ function TwoAudiences() {
           padding: 0,
         }}>
           <div className="brutal-frame">
-            <img src={ADVERTISER_DASHBOARD.url} alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand" loading="lazy" className="audience-img" style={{ width: "100%", height: 200, objectFit: "cover", objectPosition: "center 25%", display: "block", borderRadius: 0 }} />
+            <img src={HOW_STEP3.url} alt="boutique owner reviewing her brand on mydiio" loading="lazy" className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
           </div>
           <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
             <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
@@ -722,7 +722,7 @@ function TwoAudiences() {
           padding: 0,
         }}>
           <div className="brutal-frame">
-            <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" loading="lazy" className="audience-img" style={{ width: "100%", height: 200, objectFit: "cover", objectPosition: "center 25%", display: "block", borderRadius: 0 }} />
+            <img src={DRIVER_CARD.url} alt="tuk-tuk driver on the road with mydiio" loading="lazy" className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
           </div>
           <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
             <span className="eyebrow" style={{ color: "var(--green-ink)" }}>{t("dr_kicker")}</span>
