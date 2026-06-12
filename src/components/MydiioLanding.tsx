@@ -677,7 +677,7 @@ function Coverage() {
       </div>
       <style>{`
         @media (max-width: 599px) {
-          .coverage-strip { height: 160px !important; }
+          .coverage-strip { height: 260px !important; }
         }
       `}</style>
 
