@@ -449,7 +449,7 @@ function FoundingGroup() {
         maxWidth: 560, marginInline: "auto", marginTop: 40,
         background: "#fff", border: `3px solid ${C.amber}`,
         boxShadow: `8px 8px 0 ${C.ink}`, borderRadius: 16,
-        padding: 28, position: "relative",
+        padding: 28, position: "relative", overflow: "visible",
       }}>
         <div style={{
           position: "absolute", top: -14, right: 18,
@@ -473,6 +473,15 @@ function FoundingGroup() {
             </li>
           ))}
         </ul>
+        <img
+          src={PIONEER_TUK.url}
+          alt=""
+          style={{
+            position: "absolute", right: -16, bottom: -16,
+            width: 130, opacity: 0.9, mixBlendMode: "multiply",
+            zIndex: 0, pointerEvents: "none",
+          }}
+        />
       </div>
 
       <p className="reveal" style={{
