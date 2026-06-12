@@ -198,6 +198,7 @@ function PillarCard({ n, h, b, i, openId, setOpenId, img }: { n: string; h: stri
           )}
         </div>
       </div>
+      </div>
     </div>
   );
 }
