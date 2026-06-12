@@ -442,12 +442,12 @@ function AboutPage() {
           </p>
           <div className="pillars-row">
             {[
-              { n: "01", h: "Radical transparency", b: "Every advertiser sees exactly which vehicles showed their ad, when, and where — GPS-verified and time-stamped. Most advertising in Sri Lanka offers zero proof of delivery. mydiio offers complete verification. No black box. No estimates." },
-              { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer — without exception or delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors." },
-              { n: "03", h: "Community reinvestment", b: "A share of mydiio's revenue goes back into the communities our drivers serve. Not as a PR exercise — as a founding commitment built into the business from day one." },
-
-            ].map((p, i) => (
-              <PillarCard key={p.n} n={p.n} h={p.h} b={p.b} i={i} openId={openPillar} setOpenId={setOpenPillar} />
+            {([
+              { n: "01", h: "Radical transparency", b: "Every advertiser sees exactly which vehicles showed their ad, when, and where — GPS-verified and time-stamped. Most advertising in Sri Lanka offers zero proof of delivery. mydiio offers complete verification. No black box. No estimates.", img: { url: AYASHA.url, alt: "Passenger viewing tuk-tuk screen", fit: "cover" as const } },
+              { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer — without exception or delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors.", img: { url: KAMAL.url, alt: "Kamal, mydiio driver", fit: "cover" as const } },
+              { n: "03", h: "Community reinvestment", b: "A share of mydiio's revenue goes back into the communities our drivers serve. Not as a PR exercise — as a founding commitment built into the business from day one.", img: { url: PIONEER_TUK.url, alt: "Pioneer tuk-tuk", fit: "contain" as const, blend: true } },
+            ]).map((p, i) => (
+              <PillarCard key={p.n} n={p.n} h={p.h} b={p.b} i={i} openId={openPillar} setOpenId={setOpenPillar} img={p.img} />
             ))}
           </div>
         </div>
