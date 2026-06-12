@@ -413,6 +413,7 @@
     .reveal-up,
     .reveal-up.in,
     .reveal { transform: none !important; transition: opacity 0.2s ease !important; }
+    .marquee-track,
     .street-track,
     .street-track-slow,
     .street-track-mid,
