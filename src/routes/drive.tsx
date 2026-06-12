@@ -8,6 +8,9 @@ import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.ass
 import INSTALL_HANDS from "@/assets/installation-hands-fitting-screen.png.asset.json";
 import INSTALL_LIVE from "@/assets/installation-screen-live-colombo.png.asset.json";
 import DRIVER_PORTRAIT from "@/assets/driver-portrait-tuk-golden-hour.png.asset.json";
+import DILINI from "@/assets/illustration-dilini-driver.png.asset.json";
+import KAMAL from "@/assets/illustration-kamal-driver.png.asset.json";
+import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { supabase } from "@/integrations/supabase/client";
@@ -77,8 +80,8 @@ function Hero() {
     { v: "0", suffix: "", label: "cost to join" },
   ];
   return (
-    <section className="relative w-full overflow-hidden page-hero-fixed">
-      <img src={DRIVER_PORTRAIT.url} alt="Sri Lankan tuk-tuk driver at golden hour in Colombo" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
+    <section className="relative w-full overflow-hidden page-hero-fixed" style={{ borderBottom: "2px solid #1A1A18" }}>
+      <img src={DILINI.url} alt="Sri Lankan tuk-tuk driver at golden hour in Colombo" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top" }} />
       <div className="absolute inset-0" style={{
         background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
       }} />
@@ -130,12 +133,12 @@ function Hero() {
       </div>
       <div className="absolute bottom-0 left-0 right-0" style={{ height: 6, background: C.green }} />
       <style>{`
-        .page-hero-fixed { min-height: 560px; }
-        .page-hero-inner { min-height: 560px; }
+        .page-hero-fixed { min-height: 400px; }
+        .page-hero-inner { min-height: 400px; }
         .page-hero-headline { font-size: 28px; }
         @media (max-width: 767px) {
-          .page-hero-fixed { min-height: 380px; }
-          .page-hero-inner { min-height: 380px; }
+          .page-hero-fixed { min-height: 250px; }
+          .page-hero-inner { min-height: 250px; }
           .page-hero-headline { font-size: 22px; }
           .page-hero-textblock { max-width: 100% !important; }
           .page-hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
@@ -274,11 +277,11 @@ function DriverEarnings() {
       <div className="earnings-grid">
         <div className="reveal earnings-photo-wrap">
           <img
-            src={DRIVER_PAYMENT}
+            src={KAMAL.url}
             alt="mydiio driver smiling with a payment confirmation on his phone"
             style={{
-              width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 20%",
-              borderRadius: 18, border: `3px solid ${C.ink}`, boxShadow: `8px 8px 0 ${C.ink}`,
+              width: "100%", height: 320, objectFit: "cover", objectPosition: "center top",
+              borderRadius: 4, border: "2px solid #1A1A18", boxShadow: "#1A1A18 -5px 5px 0px 0px",
               display: "block",
             }}
           />
@@ -446,7 +449,7 @@ function FoundingGroup() {
         maxWidth: 560, marginInline: "auto", marginTop: 40,
         background: "#fff", border: `3px solid ${C.amber}`,
         boxShadow: `8px 8px 0 ${C.ink}`, borderRadius: 16,
-        padding: 28, position: "relative",
+        padding: 28, position: "relative", overflow: "visible",
       }}>
         <div style={{
           position: "absolute", top: -14, right: 18,
@@ -470,6 +473,15 @@ function FoundingGroup() {
             </li>
           ))}
         </ul>
+        <img
+          src={PIONEER_TUK.url}
+          alt=""
+          style={{
+            position: "absolute", right: -16, bottom: -16,
+            width: 130, opacity: 0.9, mixBlendMode: "multiply",
+            zIndex: 0, pointerEvents: "none",
+          }}
+        />
       </div>
 
       <p className="reveal" style={{
@@ -766,15 +778,18 @@ function DrivePage() {
       <DriverEarnings />
       <section className="relative w-full overflow-hidden drive-supporting-band">
         <img
-          src={COLOMBO_TUK_DAYTIME.url}
+          src="/illustrations/coverage-fleet.png"
           alt="mydiio tuk-tuks on a Colombo street in daytime"
           className="absolute inset-0 w-full h-full"
-          style={{ objectFit: "cover", objectPosition: "center" }}
+          style={{
+            objectFit: "cover", objectPosition: "center",
+            border: "2px solid #1A1A18", borderRadius: 4,
+            boxShadow: "#1A1A18 -5px 5px 0px 0px",
+          }}
         />
         <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.4)" }} />
         <style>{`
-          .drive-supporting-band { height: 400px; }
-          @media (max-width: 767px) { .drive-supporting-band { height: 280px; } }
+          .drive-supporting-band { height: 280px; }
         `}</style>
       </section>
       <HowItWorks />
