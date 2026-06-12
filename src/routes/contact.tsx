@@ -219,8 +219,7 @@ function ContactPage() {
 
             <img
               src={PIONEER_TUK.url}
-              alt=""
-              aria-hidden="true"
+              alt="mydiio pioneer tuk-tuk with amber flag — founding advertiser programme"
               className="contact-pioneer-tuk"
               style={{
                 display: "block",
