@@ -274,14 +274,10 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
           <Link
             to="/advertise"
             onClick={() => setOpen(false)}
-            className="btn-bold"
+            className="nav-cta-brutal"
             style={{
-              background: a.bg,
-              color: a.fg,
               padding: "14px 20px",
               fontSize: 15,
-              fontWeight: 600,
-              textDecoration: "none",
               textAlign: "center",
               display: "block",
               width: "100%",
