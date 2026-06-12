@@ -924,8 +924,8 @@ function ScaleStory() {
         </h2>
       </div>
       <div className="reveal reveal-up delay-2 road-pair" style={{ marginBottom: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-left.png" alt="Sri Lankan city street illustration" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
-        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-right.png" alt="Sri Lankan city night illustration" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-left.png" alt="mydiio tuk-tuk driving past Colombo clock tower on tree-lined boulevard" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-right.png" alt="mydiio tuk-tuks with glowing ad screens in Colombo evening traffic" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
       </div>
       <style>{`
         @media (max-width: 599px) {
@@ -981,7 +981,7 @@ function FoundingOffer() {
         }} />
         <img
           src={PIONEER_TUK.url}
-          alt="decorative tuk-tuk illustration"
+          alt="mydiio pioneer tuk-tuk with amber flag — founding advertiser programme"
           className="founding-tuk-accent"
           aria-hidden
         />
