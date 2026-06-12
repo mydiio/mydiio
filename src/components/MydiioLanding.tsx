@@ -938,13 +938,13 @@ function FoundingOffer() {
   const benefits = [t("fo_b1"), t("fo_b2"), t("fo_b3"), t("fo_b4")];
   return (
     <Section bg={"var(--bg2)"}>
-      <div className="reveal reveal-up" style={{
+      <div className="reveal reveal-up fade-up" style={{
         position: "relative",
         background: "var(--paper)",
-        border: "2px solid var(--ink)",
-        borderRadius: 26,
+        border: "2px solid #1A1A18",
+        borderRadius: 4,
         padding: "clamp(36px, 5vw, 64px)",
-        boxShadow: "var(--sticker-lg)",
+        boxShadow: "#1A1A18 -6px 6px 0px 0px",
         overflow: "hidden",
       }}>
         <div aria-hidden style={{
@@ -959,7 +959,15 @@ function FoundingOffer() {
           pointerEvents: "none",
         }} />
         <div style={{ position: "relative", zIndex: 1 }}>
-          <span className="eyebrow" style={{ display: "inline-block" }}>{t("fo_kicker")}</span>
+          <span style={{
+            display: "inline-block",
+            fontFamily: "'Space Mono', monospace",
+            fontWeight: 700,
+            color: "#F5A623",
+            textTransform: "uppercase",
+            letterSpacing: "0.04em",
+            fontSize: "clamp(24px, 3vw, 32px)",
+          }}>{t("fo_kicker")}</span>
           <h2 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
             {t("fo_title")}
           </h2>
@@ -974,7 +982,7 @@ function FoundingOffer() {
                   width: 22, height: 22, borderRadius: "50%",
                   background: "var(--accent)", border: "2px solid var(--ink)", flexShrink: 0,
                 }}>
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--ink)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#F5A623" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="4 12 10 18 20 6" />
                   </svg>
                 </span>
@@ -982,7 +990,7 @@ function FoundingOffer() {
               </li>
             ))}
           </ul>
-          <Link to="/advertise" className="btn-bold font-display cta-primary" style={{ display: "inline-block", marginTop: 32, padding: "14px 24px", fontSize: 15, textDecoration: "none" }}>
+          <Link to="/advertise" className="btn-brutal" style={{ display: "inline-block", marginTop: 32, padding: "14px 24px", fontSize: 15, textDecoration: "none", background: "#F5A623", color: "#1A1A18" }}>
             Claim a pilot slot →
           </Link>
         </div>
