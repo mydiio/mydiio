@@ -214,6 +214,19 @@ function ContactPage() {
               Raising a pre-seed round. Strong early traction. Full investor brief available on request.
             </p>
 
+            <img
+              src={PIONEER_TUK.url}
+              alt=""
+              aria-hidden="true"
+              className="contact-pioneer-tuk"
+              style={{
+                display: "block",
+                margin: "0 auto 16px",
+                mixBlendMode: "multiply",
+                pointerEvents: "none",
+              }}
+            />
+
             {submitted ? (
               <p
                 style={{
