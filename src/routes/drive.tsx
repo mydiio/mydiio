@@ -85,7 +85,7 @@ function Hero() {
   ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed" style={{ borderBottom: "2px solid #1A1A18" }}>
-      <img src={DILINI.url} alt="Sri Lankan tuk-tuk driver at golden hour in Colombo" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top" }} />
+      <img src={DILINI.url} alt="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top" }} />
       <div className="absolute inset-0" style={{
         background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
       }} />
@@ -785,7 +785,7 @@ function DrivePage() {
       <section className="relative w-full overflow-hidden drive-supporting-band">
         <img
           src="/illustrations/coverage-fleet.png"
-          alt="mydiio tuk-tuks on a Colombo street in daytime"
+          alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs"
           className="absolute inset-0 w-full h-full"
           style={{
             objectFit: "cover", objectPosition: "center",

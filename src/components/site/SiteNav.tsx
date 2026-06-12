@@ -7,7 +7,7 @@ function Logo() {
   return (
     <Link
       to="/"
-      aria-label="mydiio home"
+      aria-label="mydiio logo — Sri Lanka tuk-tuk advertising platform"
       className="font-display inline-flex items-center justify-center site-logo-lock"
       style={{
         background: C.paper,

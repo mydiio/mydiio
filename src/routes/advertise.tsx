@@ -109,7 +109,7 @@ function Hero() {
   ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed">
-      <img src={NISHARA.url} alt="Boutique owner reviewing her mydiio campaign" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top", borderBottom: "2px solid #1A1A18" }} />
+      <img src={NISHARA.url} alt="Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top", borderBottom: "2px solid #1A1A18" }} />
       <div className="absolute inset-0" style={{
         background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
       }} />
@@ -194,9 +194,9 @@ function StatPill({ value, label }: { value: string; label: string }) {
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Send us your ad", body: "Share your video or image creative — 15 or 30 seconds long. No production house needed. We'll make your first one for free to get you started.", img: PERERA.url, alt: "Pharmacy owner creating a campaign" },
-    { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen across the fleet in your chosen zones. Campaigns go live within 72 hours of approval.", img: AYASHA.url, alt: "Passenger riding in a tuk-tuk with a screen ad" },
-    { n: 3, title: "Weekly GPS report", body: "Every Monday you receive a verified report: every vehicle, every GPS location, every play count. Proof your ad ran — every single time.", img: NISHARA.url, alt: "Boutique owner reviewing proof of play" },
+    { n: 1, title: "Send us your ad", body: "Share your video or image creative — 15 or 30 seconds long. No production house needed. We'll make your first one for free to get you started.", img: PERERA.url, alt: "Colombo business owner launching a tuk-tuk advertising campaign on tablet" },
+    { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen across the fleet in your chosen zones. Campaigns go live within 72 hours of approval.", img: AYASHA.url, alt: "Passenger watching tuk-tuk advertising screen inside a Colombo tuk-tuk" },
+    { n: 3, title: "Weekly GPS report", body: "Every Monday you receive a verified report: every vehicle, every GPS location, every play count. Proof your ad ran — every single time.", img: NISHARA.url, alt: "Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign" },
   ];
   return (
     <div id="how-it-works" style={{ scrollMarginTop: 96 }}>
@@ -678,7 +678,7 @@ function TukInterior() {
           border: "2px solid var(--ink)", borderRadius: 22,
           boxShadow: "var(--shadow-card-lg)", overflow: "hidden",
         }}>
-          <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet across Colombo" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+          <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
         </div>
         <div>
           <span className="eyebrow reveal reveal-up">Every ride</span>
