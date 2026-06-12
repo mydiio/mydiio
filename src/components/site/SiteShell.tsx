@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { C, type Accent } from "./theme";
 import { SiteNav } from "./SiteNav";
 import { SiteFooter } from "./SiteFooter";
+import { AnnouncementBar } from "./AnnouncementBar";
 
 /**
  * Wraps a page with the unified nav, footer, scroll-reveal animations, and
