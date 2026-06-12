@@ -561,12 +561,7 @@ function TukInterior() {
           </Link>
         </div>
         <div className="reveal reveal-up delay-1 tuk-image" style={{ position: "relative" }}>
-          <div style={{
-            border: "2px solid var(--ink)",
-            borderRadius: 20,
-            boxShadow: "var(--sticker-lg)",
-            overflow: "hidden",
-          }}>
+          <div className="brutal-frame">
             <img src={INSIDE_RIDE.url} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" loading="lazy" className="inside-ride-img" style={{ width: "100%", display: "block", height: 400, objectFit: "cover", objectPosition: "center top" }} />
           </div>
           <div style={{
