@@ -9,8 +9,11 @@ export const Route = createFileRoute("/terms")({
       { name: "description", content: "mydiio terms and conditions governing use of the platform, portals, and services for advertisers, driver partners, and website visitors." },
       { property: "og:title", content: "Terms and Conditions — mydiio" },
       { property: "og:description", content: "Terms governing use of the mydiio platform, portals, and services." },
+      { property: "og:url", content: "https://mydiio.com/terms" },
     ],
+    links: [{ rel: "canonical", href: "https://mydiio.com/terms" }],
   }),
+
 });
 
 const ink = "#1A1A18";

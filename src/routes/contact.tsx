@@ -13,8 +13,11 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Campaign bookings, driver applications, investor questions — find your path. Based in Colombo." },
       { property: "og:title", content: "Contact — mydiio" },
       { property: "og:description", content: "Campaign bookings, driver applications, investor questions." },
+      { property: "og:url", content: "https://mydiio.com/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://mydiio.com/contact" }],
   }),
+
 });
 
 const inputStyle: React.CSSProperties = {
@@ -244,20 +247,21 @@ function ContactPage() {
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: "auto" }}>
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>Your name</span>
-                  <input name="name" required maxLength={200} placeholder="Full name" style={inputStyle} className="contact-input" />
+                  <input name="name" aria-label="Your name" required maxLength={200} placeholder="Full name" style={inputStyle} className="contact-input" />
                 </label>
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>Your email</span>
-                  <input name="email" type="email" required maxLength={255} placeholder="hello@company.com" style={inputStyle} className="contact-input" />
+                  <input name="email" aria-label="Your email" type="email" required maxLength={255} placeholder="hello@company.com" style={inputStyle} className="contact-input" />
                 </label>
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>WhatsApp / Phone</span>
-                  <input name="phone" type="tel" required maxLength={50} placeholder="+94 77 000 0000" style={inputStyle} className="contact-input" />
+                  <input name="phone" aria-label="WhatsApp or phone number" type="tel" required maxLength={50} placeholder="+94 77 000 0000" style={inputStyle} className="contact-input" />
                 </label>
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>Your message</span>
-                  <textarea name="message" required maxLength={4000} rows={3} placeholder="Tell us what you're working on." style={{ ...inputStyle, resize: "vertical" }} className="contact-input" />
+                  <textarea name="message" aria-label="Your message" required maxLength={4000} rows={3} placeholder="Tell us what you're working on." style={{ ...inputStyle, resize: "vertical" }} className="contact-input" />
                 </label>
+
                 <button
                   type="submit"
                   disabled={submitting}

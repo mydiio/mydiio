@@ -23,8 +23,47 @@ export const Route = createFileRoute("/advertise")({
       { name: "description", content: "Up to 20 minutes per ride. No skip button. GPS-verified weekly reports. From LKR 25,000/month with 7 days free." },
       { property: "og:title", content: "Advertise on mydiio — Reach Colombo's Tuk-Tuk Passengers" },
       { property: "og:description", content: "Up to 20 minutes per ride. GPS-verified. From LKR 25,000/month with 7 days free." },
+      { property: "og:url", content: "https://mydiio.com/advertise" },
+    ],
+    links: [{ rel: "canonical", href: "https://mydiio.com/advertise" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "What kind of ads can I run?",
+              acceptedAnswer: { "@type": "Answer", text: "15-second or 30-second video ads, or static image ads. We can produce your first creative for free from your existing branding — just share your logo, colours, and a short brief." },
+            },
+            {
+              "@type": "Question",
+              name: "How do I know my ad actually played?",
+              acceptedAnswer: { "@type": "Answer", text: "Every Monday you receive a GPS-verified report showing each vehicle that ran your ad, the GPS location at the time of each play, and the total play count. There is no guessing — every impression is logged." },
+            },
+            {
+              "@type": "Question",
+              name: "What is Pioneer category exclusivity?",
+              acceptedAnswer: { "@type": "Answer", text: "Pioneer advertisers are the only business in their category allowed to advertise in their active zones. For example, a Pioneer pharmacy in Fort means no other pharmacy can run on the mydiio fleet in Fort while your campaign is active." },
+            },
+            {
+              "@type": "Question",
+              name: "Can I cancel?",
+              acceptedAnswer: { "@type": "Answer", text: "Subscription plans have minimum terms: 3 months for Roamer, 6 months for Voyager and Pioneer. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
+            },
+            {
+              "@type": "Question",
+              name: "What does the LKR 5,000 Pioneer deposit cover?",
+              acceptedAnswer: { "@type": "Answer", text: "The LKR 5,000 deposit secures your spot on the waiting list. It is fully refundable — credited against your first invoice when you proceed, or returned in full if you decide not to. No risk. No commitment." },
+            },
+          ],
+        }),
+      },
     ],
   }),
+
 });
 
 function scrollToWaitlist(e: React.MouseEvent) {

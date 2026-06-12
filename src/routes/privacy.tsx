@@ -9,8 +9,11 @@ export const Route = createFileRoute("/privacy")({
       { name: "description", content: "mydiio privacy policy. What we collect, why we collect it, who we share it with, and your rights." },
       { property: "og:title", content: "Privacy Policy — mydiio" },
       { property: "og:description", content: "What we collect, why we collect it, who we share it with, and your rights." },
+      { property: "og:url", content: "https://mydiio.com/privacy" },
     ],
+    links: [{ rel: "canonical", href: "https://mydiio.com/privacy" }],
   }),
+
 });
 
 const ink = "#1A1A18";

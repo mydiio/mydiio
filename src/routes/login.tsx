@@ -7,8 +7,12 @@ export const Route = createFileRoute("/login")({
     meta: [
       { title: "Sign in — mydiio" },
       { name: "description", content: "Sign in to your mydiio account." },
+      { property: "og:url", content: "https://mydiio.com/login" },
+      { name: "robots", content: "noindex" },
     ],
+    links: [{ rel: "canonical", href: "https://mydiio.com/login" }],
   }),
+
   component: LoginPage,
 });
 

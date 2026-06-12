@@ -19,8 +19,11 @@ export const Route = createFileRoute("/investors")({
       { property: "og:title", content: "Investors — mydiio" },
       { property: "og:description", content: "Building Sri Lanka's first tuk-tuk media network. Recurring revenue. Asset-light. Regional potential." },
       { property: "og:image", content: COLOMBO_FLEET_GOLDEN.url },
+      { property: "og:url", content: "https://mydiio.com/investors" },
     ],
+    links: [{ rel: "canonical", href: "https://mydiio.com/investors" }],
   }),
+
 });
 
 const MAILTO = "mailto:investors@mydiio.com";
