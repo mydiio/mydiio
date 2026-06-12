@@ -390,7 +390,7 @@ const BUSINESS_TYPES = [
   "Other",
 ];
 
-function AdvertiserSignUp() {
+function AdvertiserSignUp({ onSwitchToSignIn }: { onSwitchToSignIn: () => void }) {
   const [fullName, setFullName] = useState("");
   const [businessName, setBusinessName] = useState("");
   const [businessType, setBusinessType] = useState("");
