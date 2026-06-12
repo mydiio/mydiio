@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as InvestorsRouteImport } from './routes/investors'
 import { Route as DriveRouteImport } from './routes/drive'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriversApplyRouteImport } from './routes/drivers.apply'
 import { Route as AdvertiseApplyRouteImport } from './routes/advertise.apply'
 
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InvestorsRoute = InvestorsRouteImport.update({
   id: '/investors',
   path: '/investors',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
+  '/privacy': typeof PrivacyRoute
   '/advertise/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
+  '/privacy': typeof PrivacyRoute
   '/advertise/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
+  '/privacy': typeof PrivacyRoute
   '/advertise/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/drive'
     | '/investors'
+    | '/privacy'
     | '/advertise/apply'
     | '/drivers/apply'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/drive'
     | '/investors'
+    | '/privacy'
     | '/advertise/apply'
     | '/drivers/apply'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/drive'
     | '/investors'
+    | '/privacy'
     | '/advertise/apply'
     | '/drivers/apply'
   fileRoutesById: FileRoutesById
@@ -130,11 +142,19 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DriveRoute: typeof DriveRoute
   InvestorsRoute: typeof InvestorsRoute
+  PrivacyRoute: typeof PrivacyRoute
   DriversApplyRoute: typeof DriversApplyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/investors': {
       id: '/investors'
       path: '/investors'
@@ -213,6 +233,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DriveRoute: DriveRoute,
   InvestorsRoute: InvestorsRoute,
+  PrivacyRoute: PrivacyRoute,
   DriversApplyRoute: DriversApplyRoute,
 }
 export const routeTree = rootRouteImport
