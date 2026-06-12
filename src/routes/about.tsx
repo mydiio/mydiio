@@ -207,10 +207,11 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => ({
     meta: [
-      { title: "About — mydiio | Ads on the move" },
-      { name: "description", content: "mydiio puts digital advertising screens inside tuk-tuks across Colombo. Every ride an audience. Every driver earns more. Every impression verified." },
+      { title: "About mydiio — Built in Colombo, for Colombo" },
+      { name: "description", content: "mydiio is Sri Lanka's first tuk-tuk advertising network. Built on three pillars: radical transparency, driver dignity, and community reinvestment. Ads on the Move." },
       { property: "og:title", content: "About — mydiio" },
       { property: "og:description", content: "Ads on the move. Built in Colombo, for Colombo." },
+      { property: "og:image", content: "/illustrations/tuk-screen.png" },
       { property: "og:url", content: "https://mydiio.com/about" },
     ],
     links: [{ rel: "canonical", href: "https://mydiio.com/about" }],
