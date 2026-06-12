@@ -194,6 +194,14 @@ function Hero() {
         />
         Founding fleet · launching now
       </div>
+
+      {/* Illustrated tuk overlay — bleeds below hero edge */}
+      <img
+        src={TUK_SCREEN.url}
+        alt="illustrated tuk-tuk with screen"
+        className="hero-tuk-overlay"
+      />
+
       <style>{`
         @keyframes hero-live-pulse {
           0%, 100% { opacity: 1; }
@@ -210,9 +218,21 @@ function Hero() {
         .hero-headline {
           font-size: 18px;
         }
+        .hero-tuk-overlay {
+          position: absolute;
+          bottom: -20px;
+          right: 0px;
+          width: 220px;
+          z-index: 10;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+          border: none;
+          box-shadow: none;
+        }
         @media (min-width: 768px) {
           .hero-brand { font-size: 40px; }
           .hero-headline { font-size: 22px; }
+          .hero-tuk-overlay { width: 380px; right: 40px; }
         }
         @media (min-width: 1025px) {
           .hero-brand { font-size: 56px; }
