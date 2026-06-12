@@ -19,13 +19,14 @@ export const Route = createFileRoute("/advertise")({
   component: AdvertisePage,
   head: () => ({
     meta: [
-      { title: "Advertise on mydiio — Reach Colombo's Tuk-Tuk Passengers" },
-      { name: "description", content: "Up to 20 minutes per ride. No skip button. GPS-verified weekly reports. From LKR 25,000/month with 7 days free." },
-      { property: "og:title", content: "Advertise on mydiio — Reach Colombo's Tuk-Tuk Passengers" },
+      { title: "Advertise in Tuk-Tuks — Colombo Digital Advertising | mydiio" },
+      { name: "description", content: "Put your brand in front of Colombo passengers every day. GPS-verified plays, weekly reports, no black box. Campaigns from LKR 25,000. 10 Pioneer spots available." },
+      { property: "og:title", content: "Advertise in Colombo Tuk-Tuks | mydiio" },
       { property: "og:description", content: "Up to 20 minutes per ride. GPS-verified. From LKR 25,000/month with 7 days free." },
+      { property: "og:image", content: "/illustrations/nishara.png" },
       { property: "og:url", content: "https://mydiio.com/advertise" },
     ],
-    links: [{ rel: "canonical", href: "https://mydiio.com/advertise" }],
+    links: [{ rel: "canonical", href: "https://mydiio.com/advertisers" }],
     scripts: [
       {
         type: "application/ld+json",
