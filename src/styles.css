@@ -395,6 +395,17 @@
     transform: translateY(0);
   }
 
+  .brutal-card {
+    border: 2px solid #1A1A18;
+    border-radius: 2px !important;
+    box-shadow: #1A1A18 -4px 4px 0px 0px;
+    transition: transform 120ms ease-out, box-shadow 120ms ease-out;
+  }
+  .brutal-card:hover {
+    transform: translate(4px, -4px);
+    box-shadow: #1A1A18 -8px 8px 0px 0px;
+  }
+
   /* Reveal-up: prevent transform from creating layout gaps */
   .reveal-up {
     will-change: transform, opacity;
