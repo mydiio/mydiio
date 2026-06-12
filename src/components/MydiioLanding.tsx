@@ -16,6 +16,7 @@ import HOW_STEP3 from "@/assets/illustration-nishara-boutique.png.asset.json";
 import COVERAGE_AERIAL from "@/assets/aerial-colombo-tuk-tuks-overhead.png.asset.json";
 import ROAD_FORT from "@/assets/tuk-tuk-colombo-fort-landmark.png.asset.json";
 import ROAD_NIGHT from "@/assets/colombo-night-light-trails.png.asset.json";
+import DILINI_DRIVER from "@/assets/illustration-dilini-driver.png.asset.json";
 
 import { useI18n } from "@/lib/i18n";
 import { SiteShell } from "@/components/site/SiteShell";
@@ -1168,6 +1169,31 @@ export default function MydiioLanding() {
       <Hero />
       <StatsStrip />
       <Marquee />
+      <div style={{ padding: "24px clamp(16px, 3vw, 24px)", background: "#FDFAF3" }}>
+        <div
+          style={{
+            maxWidth: 1180,
+            margin: "0 auto",
+            border: "2px solid #1A1A18",
+            boxShadow: "#1A1A18 -6px 6px 0px 0px",
+            borderRadius: 4,
+            overflow: "hidden",
+            background: "#FDFAF3",
+          }}
+        >
+          <img
+            src={DILINI_DRIVER.url}
+            alt="Dilini driver illustration"
+            style={{
+              display: "block",
+              width: "100%",
+              maxHeight: 400,
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+          />
+        </div>
+      </div>
       <WhyItWorks />
 
       <HowItWorks />
