@@ -277,11 +277,11 @@ function DriverEarnings() {
       <div className="earnings-grid">
         <div className="reveal earnings-photo-wrap">
           <img
-            src={DRIVER_PAYMENT}
+            src={KAMAL.url}
             alt="mydiio driver smiling with a payment confirmation on his phone"
             style={{
-              width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 20%",
-              borderRadius: 18, border: `3px solid ${C.ink}`, boxShadow: `8px 8px 0 ${C.ink}`,
+              width: "100%", height: 320, objectFit: "cover", objectPosition: "center top",
+              borderRadius: 4, border: "2px solid #1A1A18", boxShadow: "#1A1A18 -5px 5px 0px 0px",
               display: "block",
             }}
           />
