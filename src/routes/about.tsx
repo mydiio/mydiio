@@ -342,16 +342,31 @@ function AboutPage() {
       {/* SECTION 2 — THE PROBLEM */}
       <section style={{ background: "var(--bg2)", padding: "var(--section-py) clamp(20px, 5vw, 72px)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 52 }}>
-            <span className="about-eyebrow reveal-up">The problem we solve</span>
-            <h2 className="about-h2 reveal-up delay-1">Two groups were being left behind.</h2>
-            <p className="about-lead reveal-up delay-2" style={{ maxWidth: "52ch", margin: "16px auto 0" }}>
-              Small businesses couldn't afford to advertise. Tuk-tuk drivers had no way to earn extra income. mydiio fixes both at once.
-            </p>
+          <div className="mission-intro reveal-up" style={{ display: "flex", gap: "clamp(20px, 4vw, 48px)", alignItems: "center", marginBottom: 52, flexWrap: "wrap" }}>
+            <div style={{ flex: "1 1 320px", textAlign: "left" }}>
+              <span className="about-eyebrow">The problem we solve</span>
+              <h2 className="about-h2" style={{ marginTop: 10 }}>Two groups were being left behind.</h2>
+              <p className="about-lead" style={{ maxWidth: "52ch", marginTop: 16 }}>
+                Small businesses couldn't afford to advertise. Tuk-tuk drivers had no way to earn extra income. mydiio fixes both at once.
+              </p>
+            </div>
+            <img
+              src={TUK_SCREEN.url}
+              alt="Tuk-tuk screen illustration"
+              className="mission-tuk-screen"
+              style={{
+                width: 300,
+                flexShrink: 0,
+                border: "2px solid #1A1A18",
+                borderRadius: 4,
+                boxShadow: "#1A1A18 -5px 5px 0px 0px",
+                mixBlendMode: "multiply",
+              }}
+            />
           </div>
-          <div className="reveal-up delay-2" style={{ position: "relative", width: "100%", height: "clamp(280px, 35vw, 400px)", overflow: "hidden", borderRadius: 18, marginBottom: 52 }}>
-            <img src={COLOMBO_TUK_DAYTIME.url} alt="Colombo tuk-tuks on a busy daytime street" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
-            <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+          <style>{`@media (max-width: 768px) { .mission-tuk-screen { width: 100% !important; } }`}</style>
+          <div className="reveal-up delay-2" style={{ position: "relative", width: "100%", height: 280, overflow: "hidden", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -5px 5px 0px 0px", marginBottom: 52 }}>
+            <img src={ROAD_LEFT.url} alt="Tuk-tuks on the road" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
           </div>
           <div className="problem-grid reveal-up delay-3">
             <BeforeAfterCard variant="advertiser">
