@@ -452,7 +452,7 @@ function WhyItWorks() {
         }
         @media (max-width: 599px) {
           .why-grid { grid-template-columns: 1fr; gap: 12px; }
-          .why-grid > .feature-card { padding: 18px !important; }
+          .why-grid > .brutal-card { padding: 18px !important; }
         }
       `}</style>
     </Section>
