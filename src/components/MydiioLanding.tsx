@@ -525,7 +525,7 @@ function HowItWorks() {
                 lineHeight: 1,
                 color: "var(--accent-deep)",
               }}>{s.n}</div>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", marginTop: 6, letterSpacing: "-0.4px", lineHeight: 1.2 }}>{s.t}</div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 23, fontWeight: 600, color: "var(--ink)", margin: "6px 0 0", letterSpacing: "-0.4px", lineHeight: 1.2 }}>{s.t}</h3>
               <div style={{ fontSize: 14.5, color: "var(--ink-soft)", lineHeight: 1.55, marginTop: 4, fontWeight: 500 }}>{s.b}</div>
             </div>
           </div>
@@ -544,7 +544,7 @@ function TukInterior() {
       <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 32, alignItems: "center" }}>
         <div className="reveal tuk-text" style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <span className="eyebrow">{t("tuk_kicker")}</span>
-          <h3 style={{
+          <h2 style={{
             fontFamily: "'Space Grotesk', system-ui, sans-serif",
             fontWeight: 700,
             color: "var(--ink)",
@@ -554,7 +554,7 @@ function TukInterior() {
             marginTop: 18,
           }}>
             {t("tuk_title")}
-          </h3>
+          </h2>
           <p style={{
             fontSize: "clamp(16px, 1.5vw, 19px)",
             color: "var(--ink-soft)",
@@ -945,7 +945,7 @@ function ScaleStory() {
             boxShadow: "var(--sticker)",
           }}>
             <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, letterSpacing: "0.18em", color: "var(--accent-deep)", textTransform: "uppercase" }}>{c.n}</div>
-            <div className="font-display" style={{ fontSize: 23, color: "var(--ink)", lineHeight: 1.2, marginTop: 12, letterSpacing: "-0.01em", fontWeight: 600 }}>{c.t}</div>
+            <h3 className="font-display" style={{ fontSize: 23, color: "var(--ink)", lineHeight: 1.2, margin: "12px 0 0", letterSpacing: "-0.01em", fontWeight: 600 }}>{c.t}</h3>
             <div style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.6, marginTop: 12, fontWeight: 500 }}>{c.b}</div>
           </div>
         ))}
@@ -1077,7 +1077,7 @@ function FAQ() {
                     color: "var(--ink)", letterSpacing: "-0.01em",
                   }}
                 >
-                  <span>{it.q}</span>
+                  <h3 style={{ margin: 0, fontFamily: "inherit", fontSize: "inherit", fontWeight: "inherit", color: "inherit", letterSpacing: "inherit" }}>{it.q}</h3>
                   <span style={{
                     fontFamily: "'Space Mono', monospace",
                     color: "#F5A623",
