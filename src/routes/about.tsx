@@ -138,7 +138,7 @@ const PILLAR_PANELS: Record<string, { rows: string[]; chip?: string }> = {
 };
 
 
-function PillarCard({ n, h, b, i, openId, setOpenId }: { n: string; h: string; b: string; i: number; openId: string | null; setOpenId: (v: string | null) => void }) {
+function PillarCard({ n, h, b, i, openId, setOpenId, img }: { n: string; h: string; b: string; i: number; openId: string | null; setOpenId: (v: string | null) => void; img?: { url: string; alt: string; fit?: "cover" | "contain"; blend?: boolean } }) {
   const open = openId === n;
   const panel = PILLAR_PANELS[n];
   return (
@@ -150,8 +150,26 @@ function PillarCard({ n, h, b, i, openId, setOpenId }: { n: string; h: string; b
         background: open ? "rgba(255,255,255,0.11)" : undefined,
         borderColor: open ? "var(--accent)" : undefined,
         transition: "all 0.2s ease",
+        padding: img ? 0 : undefined,
+        overflow: "hidden",
       }}
     >
+      {img && (
+        <img
+          src={img.url}
+          alt={img.alt}
+          style={{
+            display: "block",
+            width: "100%",
+            height: 160,
+            objectFit: img.fit ?? "cover",
+            objectPosition: img.fit === "contain" ? "center" : "center top",
+            borderRadius: "4px 4px 0 0",
+            mixBlendMode: img.blend ? "multiply" : undefined,
+          }}
+        />
+      )}
+      <div style={{ padding: img ? "28px 24px" : 0 }}>
       <div style={{ fontFamily: "'Space Mono', monospace", fontWeight: 700, color: "var(--accent)", fontSize: "clamp(32px,4vw,48px)", lineHeight: 1 }}>{n}</div>
       <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 20, color: "var(--on-dark)", margin: "12px 0 8px" }}>{h}</h3>
       <p style={{ color: "var(--on-dark)", opacity: 0.65, fontSize: 14, lineHeight: 1.65, margin: 0, fontFamily: "'Space Grotesk', sans-serif", overflow: open ? "visible" : "hidden", display: open ? "block" : "-webkit-box", WebkitLineClamp: open ? "unset" : 2, WebkitBoxOrient: "vertical" as const }}>
