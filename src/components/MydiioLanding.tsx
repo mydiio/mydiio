@@ -418,15 +418,14 @@ function WhyItWorks() {
           </h2>
           <div className="why-grid">
             {cards.map((c, i) => (
-              <div key={c.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
+              <div key={c.n} className="brutal-card fade-up" style={{
                 background: "var(--paper)",
-                border: "2px solid var(--ink)",
-                borderRadius: "var(--radius-card)",
                 padding: "22px",
                 display: "flex",
                 flexDirection: "column",
                 gap: 10,
                 height: "100%",
+                transitionDelay: `${i * 80}ms`,
               }}>
                 <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", color: "var(--accent-deep)" }}>{c.n}</div>
                 <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 19, fontWeight: 600, color: "var(--ink)", lineHeight: 1.2, letterSpacing: "-0.3px" }}>{c.t}</div>
@@ -488,16 +487,15 @@ function HowItWorks() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 24 }}>
 
         {steps.map((s, i) => (
-          <div key={s.n} className={`reveal feature-card reveal-up delay-${i + 1}`} style={{
+          <div key={s.n} className="brutal-card fade-up" style={{
             background: "var(--paper)",
-            border: "2px solid var(--ink)",
-            borderRadius: "var(--radius-card)",
             padding: 0,
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
+            transitionDelay: `${i * 80}ms`,
           }}>
-            <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 160, objectFit: "cover", objectPosition: "center", display: "block", borderRadius: "10px 10px 0 0" }} />
+            <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 160, objectFit: "cover", objectPosition: "center", display: "block", borderRadius: 0 }} />
             <div style={{ padding: "28px 28px 32px", display: "flex", flexDirection: "column", gap: 12 }}>
               <div style={{
                 fontFamily: "'Space Mono', monospace",
