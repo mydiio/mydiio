@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { externalSupabase } from "@/integrations/external-supabase/client";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
+import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -213,6 +214,19 @@ function ContactPage() {
               Raising a pre-seed round. Strong early traction. Full investor brief available on request.
             </p>
 
+            <img
+              src={PIONEER_TUK.url}
+              alt=""
+              aria-hidden="true"
+              className="contact-pioneer-tuk"
+              style={{
+                display: "block",
+                margin: "0 auto 16px",
+                mixBlendMode: "multiply",
+                pointerEvents: "none",
+              }}
+            />
+
             {submitted ? (
               <p
                 style={{
@@ -372,6 +386,10 @@ function ContactPage() {
           50% { opacity: 0.5; transform: scale(1.3); }
         }
         .status-dot-pulse { animation: status-pulse 2s ease infinite; }
+        .contact-pioneer-tuk { width: 220px; }
+        @media (max-width: 900px) {
+          .contact-pioneer-tuk { width: 180px; }
+        }
       `}</style>
     </SiteShell>
   );
