@@ -119,6 +119,14 @@
   --sky: #A8D8EA;
   --cream: var(--bg);
 
+  /* Brutal shadow / button tokens */
+  --shadow-brutal: #1A1A18 -5px 5px 0px 0px;
+  --shadow-brutal-sm: #1A1A18 -3px 3px 0px 0px;
+  --radius-brutal: 2px;
+  --border-brutal: 2px solid #1A1A18;
+  --transition-press: transform 120ms ease-out, box-shadow 120ms ease-out;
+
+
   --background: var(--bg);
   --foreground: var(--ink);
   --card: var(--paper);
@@ -356,12 +364,39 @@
     padding-bottom: var(--section-py);
   }
 
+  /* Brutal press button */
+  .btn-brutal {
+    box-shadow: var(--shadow-brutal);
+    border-radius: var(--radius-brutal);
+    border: var(--border-brutal);
+    transition: var(--transition-press);
+  }
+  .btn-brutal:hover {
+    transform: translate(5px, -5px);
+    box-shadow: #1A1A18 -10px 10px 0px 0px;
+  }
+  .btn-brutal:active {
+    transform: translate(0px, 0px);
+    box-shadow: none;
+  }
+
+  /* Fade-up scroll reveal */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* Reveal-up: prevent transform from creating layout gaps */
   .reveal-up {
     will-change: transform, opacity;
     backface-visibility: hidden;
+    margin-top: 0 !important;
   }
-  .reveal-up { margin-top: 0 !important; }
 
   /* Hero: no trailing margin on last child */
   .hero-section > *:last-child,

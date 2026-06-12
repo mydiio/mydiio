@@ -144,14 +144,27 @@ function RootComponent() {
       },
       { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
+    const fadeUpObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            fadeUpObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
     const run = () => {
       document.querySelectorAll(".reveal-up:not(.visible), .reveal:not(.in)").forEach((el) => observer.observe(el));
+      document.querySelectorAll(".fade-up:not(.visible)").forEach((el) => fadeUpObserver.observe(el));
     };
     run();
     const t = setTimeout(run, 100);
     return () => {
       clearTimeout(t);
       observer.disconnect();
+      fadeUpObserver.disconnect();
     };
   }, [location]);
 
