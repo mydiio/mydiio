@@ -119,6 +119,14 @@
   --sky: #A8D8EA;
   --cream: var(--bg);
 
+  /* Brutal shadow / button tokens */
+  --shadow-brutal: #1A1A18 -5px 5px 0px 0px;
+  --shadow-brutal-sm: #1A1A18 -3px 3px 0px 0px;
+  --radius-brutal: 2px;
+  --border-brutal: 2px solid #1A1A18;
+  --transition-press: transform 120ms ease-out, box-shadow 120ms ease-out;
+
+
   --background: var(--bg);
   --foreground: var(--ink);
   --card: var(--paper);
