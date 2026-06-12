@@ -8,9 +8,9 @@ import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.ass
 
 import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
 
-import HOW_STEP1 from "@/assets/interior-pharmacy-ad-daytime.png.asset.json";
-import HOW_STEP2 from "@/assets/interior-mobile-network-ad-evening.png.asset.json";
-import HOW_STEP3 from "@/assets/advertiser-woman-laptop-dashboard.png.asset.json";
+import HOW_STEP1 from "@/assets/illustration-perera-pharmacy.png.asset.json";
+import HOW_STEP2 from "@/assets/illustration-ayasha-passenger.png.asset.json";
+import HOW_STEP3 from "@/assets/illustration-nishara-boutique.png.asset.json";
 import COVERAGE_AERIAL from "@/assets/aerial-colombo-tuk-tuks-overhead.png.asset.json";
 import ROAD_FORT from "@/assets/tuk-tuk-colombo-fort-landmark.png.asset.json";
 import ROAD_NIGHT from "@/assets/colombo-night-light-trails.png.asset.json";
@@ -463,9 +463,9 @@ function WhyItWorks() {
 function HowItWorks() {
   const { t, lang } = useI18n();
   const steps = [
-    { n: "01", t: t("how_s1_t"), b: t("how_s1_b"), img: HOW_STEP1.url, alt: "tuk-tuk interior screen showing a pharmacy ad in daytime" },
-    { n: "02", t: t("how_s2_t"), b: t("how_s2_b"), img: HOW_STEP2.url, alt: "tuk-tuk interior screen showing a mobile network ad in the evening" },
-    { n: "03", t: t("how_s3_t"), b: t("how_s3_b"), img: HOW_STEP3.url, alt: "advertiser reviewing campaign dashboard on a laptop" },
+    { n: "01", t: t("how_s1_t"), b: t("how_s1_b"), img: HOW_STEP1.url, alt: "pharmacy owner creating a campaign", pos: "center top" },
+    { n: "02", t: t("how_s2_t"), b: t("how_s2_b"), img: HOW_STEP2.url, alt: "passenger riding in a tuk-tuk with a screen ad", pos: "center" },
+    { n: "03", t: t("how_s3_t"), b: t("how_s3_b"), img: HOW_STEP3.url, alt: "boutique owner reviewing proof of play", pos: "center" },
   ];
   return (
     <Section bg="var(--bg)">
@@ -495,7 +495,7 @@ function HowItWorks() {
             overflow: "hidden",
             transitionDelay: `${i * 80}ms`,
           }}>
-            <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 160, objectFit: "cover", objectPosition: "center", display: "block", borderRadius: 0 }} />
+            <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: s.pos, display: "block", borderRadius: 0 }} />
             <div style={{ padding: "28px 28px 32px", display: "flex", flexDirection: "column", gap: 12 }}>
               <div style={{
                 fontFamily: "'Space Mono', monospace",
