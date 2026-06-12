@@ -295,7 +295,7 @@ function Problem() {
 function OpportunityBridge() {
   return (
     <div style={{ position: "relative", width: "100%", height: 320, overflow: "hidden" }}>
-      <img src={COLOMBO_STREET} alt="Colombo street" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.85 }} />
+      <img src="/illustrations/coverage-fleet.png" alt="mydiio fleet coverage" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -6px 6px 0px 0px" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(30,26,21,0.75) 0%, rgba(30,26,21,0.2) 100%)" }} />
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", padding: "clamp(20px, 4vw, 32px)", maxWidth: 1140, marginInline: "auto" }}>
         <span className="reveal-up" style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--accent)", textTransform: "uppercase", letterSpacing: 3, fontWeight: 700, marginBottom: 8 }}>
