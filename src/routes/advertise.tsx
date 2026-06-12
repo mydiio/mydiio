@@ -638,7 +638,7 @@ function TukInterior() {
           border: "2px solid var(--ink)", borderRadius: 22,
           boxShadow: "var(--shadow-card-lg)", overflow: "hidden",
         }}>
-          <img src={TUKTUK_INTERIOR} alt="Tuk-tuk interior screen playing an advertisement" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet across Colombo" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
         </div>
         <div>
           <span className="eyebrow reveal reveal-up">Every ride</span>
