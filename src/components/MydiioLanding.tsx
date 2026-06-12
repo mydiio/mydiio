@@ -576,13 +576,14 @@ function TukInterior() {
             padding: "6px 14px",
             background: C.paper,
             color: C.ink,
-            border: `2px solid ${C.ink}`,
-            borderRadius: 9999,
+            border: `1.5px solid ${C.ink}`,
+            borderRadius: 2,
             boxShadow: "var(--sticker-press)",
             fontFamily: "'Space Mono', monospace",
-            fontSize: 12,
+            fontSize: 11,
             fontWeight: 700,
-            letterSpacing: "0.04em",
+            letterSpacing: "0.05em",
+            textTransform: "uppercase",
           }}>
             <span aria-hidden style={{
               width: 8,
