@@ -14,8 +14,6 @@ import HOW_STEP1 from "@/assets/illustration-perera-pharmacy.png.asset.json";
 import HOW_STEP2 from "@/assets/illustration-ayasha-passenger.png.asset.json";
 import HOW_STEP3 from "@/assets/illustration-nishara-boutique.png.asset.json";
 
-import ROAD_FORT from "@/assets/tuk-tuk-colombo-fort-landmark.png.asset.json";
-import ROAD_NIGHT from "@/assets/colombo-night-light-trails.png.asset.json";
 import DILINI_DRIVER from "@/assets/illustration-dilini-driver.png.asset.json";
 
 import { useI18n } from "@/lib/i18n";
@@ -926,8 +924,8 @@ function ScaleStory() {
         </h2>
       </div>
       <div className="reveal reveal-up delay-2 road-pair" style={{ marginBottom: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src={ROAD_FORT.url} alt="Colombo tuk-tuk passing the Old Lighthouse clock tower landmark" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
-        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src={ROAD_NIGHT.url} alt="Colombo city night scene with traffic light trails" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-left.png" alt="Sri Lankan city street illustration" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-right.png" alt="Sri Lankan city night illustration" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
       </div>
       <style>{`
         @media (max-width: 599px) {
