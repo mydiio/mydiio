@@ -122,9 +122,15 @@
   /* Brutal shadow / button tokens */
   --shadow-brutal: #1A1A18 -5px 5px 0px 0px;
   --shadow-brutal-sm: #1A1A18 -3px 3px 0px 0px;
-  --radius-brutal: 2px;
+  --shadow-brutal-hover: #1A1A18 -10px 10px 0px 0px;
+  --radius-brutal: 4px;
   --border-brutal: 2px solid #1A1A18;
   --transition-press: transform 120ms ease-out, box-shadow 120ms ease-out;
+  --color-amber: #F5A623;
+  --color-amber-deep: #E8920A;
+  --color-ink: #1A1A18;
+  --color-cream: #FDFAF3;
+  --color-green: #3D6B4F;
 
 
   --background: var(--bg);
