@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /investors
+Disallow: /admin
 
 Sitemap: https://mydiio.com/sitemap.xml
