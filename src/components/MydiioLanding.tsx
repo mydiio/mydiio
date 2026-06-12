@@ -1151,7 +1151,7 @@ export default function MydiioLanding() {
           position: absolute;
           right: -20px;
           bottom: -20px;
-          width: 100px;
+          width: 90px;
           opacity: 0.85;
           z-index: 0;
           mix-blend-mode: multiply;
@@ -1160,7 +1160,7 @@ export default function MydiioLanding() {
           box-shadow: none;
         }
         @media (min-width: 768px) {
-          .founding-tuk-accent { width: 160px; }
+          .founding-tuk-accent { width: 150px; }
         }
       `}</style>
 
