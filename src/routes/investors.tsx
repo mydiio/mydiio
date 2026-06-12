@@ -214,7 +214,7 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
   ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed">
-      <img src={COLOMBO_FLEET_GOLDEN.url} alt="Colombo tuk-tuk fleet at golden hour" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
+      <img src="/illustrations/dilini.png" alt="mydiio driver Dilini" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center", borderBottom: "2px solid #1A1A18" }} />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
         <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
