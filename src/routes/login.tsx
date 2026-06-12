@@ -1,5 +1,5 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { eagleEyeSupabase } from "@/lib/eagleEyeClient";
 
 export const Route = createFileRoute("/login")({
