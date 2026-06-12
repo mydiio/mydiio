@@ -579,3 +579,232 @@ footer small, footer .copyright, footer .footer-note {
   color: var(--ink-mute);
 }
 
+
+/* ===========================================================
+   NEO-BRUTALIST GLOBAL OVERRIDES
+   Visual-only cleanup. Do not alter layout, copy, or images.
+   =========================================================== */
+
+/* ---------- Buttons (primary / secondary / green) ---------- */
+.btn-brutal,
+.btn-brutal-primary,
+.btn-brutal-secondary,
+.btn-brutal-green,
+.btn-bold,
+button[data-variant="primary"],
+button[data-variant="secondary"],
+button[data-variant="green"],
+a[data-variant="primary"],
+a[data-variant="secondary"],
+a[data-variant="green"] {
+  border: 2px solid #1A1A18 !important;
+  border-radius: 4px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+  box-shadow: #1A1A18 -4px 4px 0px 0px;
+  transition: var(--transition-press) !important;
+}
+.btn-brutal-primary,
+button[data-variant="primary"],
+a[data-variant="primary"] {
+  background: #F5A623 !important;
+  color: #1A1A18 !important;
+}
+.btn-brutal-secondary,
+button[data-variant="secondary"],
+a[data-variant="secondary"] {
+  background: #FFFFFF !important;
+  color: #1A1A18 !important;
+}
+.btn-brutal-green,
+button[data-variant="green"],
+a[data-variant="green"] {
+  background: #3D6B4F !important;
+  color: #FDFAF3 !important;
+}
+.btn-brutal:hover,
+.btn-brutal-primary:hover,
+.btn-brutal-secondary:hover,
+.btn-brutal-green:hover,
+button[data-variant="primary"]:hover,
+button[data-variant="secondary"]:hover,
+button[data-variant="green"]:hover,
+a[data-variant="primary"]:hover,
+a[data-variant="secondary"]:hover,
+a[data-variant="green"]:hover {
+  transform: translate(4px, -4px);
+  box-shadow: #1A1A18 -8px 8px 0px 0px;
+}
+.btn-brutal:active,
+.btn-brutal-primary:active,
+.btn-brutal-secondary:active,
+.btn-brutal-green:active,
+button[data-variant="primary"]:active,
+button[data-variant="secondary"]:active,
+button[data-variant="green"]:active,
+a[data-variant="primary"]:active,
+a[data-variant="secondary"]:active,
+a[data-variant="green"]:active {
+  transform: translate(0px, 0px);
+  box-shadow: none;
+}
+
+/* ---------- Navigation ---------- */
+nav[data-site-nav],
+header[data-site-nav],
+.site-nav {
+  background: #FFFFFF !important;
+  border-bottom: 2px solid #1A1A18 !important;
+  box-shadow: none !important;
+}
+nav[data-site-nav] a,
+header[data-site-nav] a,
+.site-nav a {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+nav[data-site-nav] a[aria-current="page"],
+header[data-site-nav] a[aria-current="page"],
+.site-nav a[aria-current="page"],
+nav[data-site-nav] a.active,
+header[data-site-nav] a.active,
+.site-nav a.active {
+  border-bottom: 2px solid #F5A623 !important;
+  color: #1A1A18 !important;
+}
+
+/* Language switcher pills */
+.lang-pill,
+button[data-lang-pill],
+[data-lang-switcher] button {
+  border: 2px solid #1A1A18 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.04em !important;
+}
+.lang-pill:hover,
+button[data-lang-pill]:hover,
+[data-lang-switcher] button:hover {
+  background: #F5A623 !important;
+}
+
+/* ---------- Cards ---------- */
+.mydiio-card,
+.brutal-card,
+.feature-card,
+.card-bold,
+[data-card] {
+  border: 2px solid #1A1A18 !important;
+  border-radius: 4px !important;
+  box-shadow: #1A1A18 -4px 4px 0px 0px !important;
+}
+.mydiio-card:hover,
+.brutal-card:hover,
+.feature-card:hover,
+.card-bold:hover,
+[data-card][data-interactive]:hover {
+  transform: translate(4px, -4px);
+  box-shadow: #1A1A18 -8px 8px 0px 0px !important;
+}
+
+/* ---------- Form inputs ---------- */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+input[type="number"],
+input[type="password"],
+select,
+textarea,
+.input-bold {
+  border: 2px solid #1A1A18 !important;
+  border-radius: 4px !important;
+  background: #FFFFFF !important;
+  padding: 12px 16px;
+  font-size: 14px;
+  box-shadow: none !important;
+}
+input:focus,
+select:focus,
+textarea:focus,
+.input-bold:focus {
+  border: 2px solid #F5A623 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #7A7A72;
+  opacity: 1;
+}
+
+/* ---------- Badges / tags / pills ---------- */
+.badge, .pill, [data-badge], [data-tag], [data-pill] {
+  border-radius: 4px !important;
+  border: 1.5px solid #1A1A18;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+}
+[data-badge="amber"], .badge-amber {
+  background: #F5A623;
+  color: #1A1A18;
+}
+[data-badge="green"], .badge-green {
+  background: #EAF2EC;
+  color: #3D6B4F;
+  border-color: #3D6B4F;
+}
+[data-badge="neutral"], .badge-neutral {
+  background: #FFFFFF;
+  color: #1A1A18;
+}
+
+/* ---------- FAQ accordion ---------- */
+.faq-row,
+[data-faq-row] {
+  border: 2px solid #1A1A18 !important;
+  border-radius: 4px !important;
+  background: #FFFFFF;
+  margin-bottom: 6px;
+}
+.faq-row[data-open="true"],
+[data-faq-row][data-open="true"],
+.faq-row.open,
+[data-faq-row].open {
+  border-color: #F5A623 !important;
+  background: #FDFAF3;
+}
+
+/* ---------- Footer ---------- */
+footer[data-site-footer],
+.site-footer {
+  border-top: 2px solid #1A1A18 !important;
+}
+footer[data-site-footer] a:hover,
+.site-footer a:hover {
+  color: #F5A623 !important;
+  text-decoration: none !important;
+}
+footer[data-site-footer] h4,
+footer[data-site-footer] h5,
+.site-footer h4,
+.site-footer h5 {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+/* ---------- Global brutalism rules ---------- */
+/* Strip soft rgba box-shadows from UI primitives (excludes images/illustrations). */
+button, .card, .mydiio-card, .brutal-card, .feature-card,
+input, select, textarea, nav, header, footer {
+  /* Block soft blurred shadows by overriding with sharp brutal token where shadow exists */
+}
