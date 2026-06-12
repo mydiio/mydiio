@@ -385,11 +385,13 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
         .site-nav-links { display: none !important; }
         .site-nav-cta { display: none !important; }
         .site-nav-lang { display: none !important; }
+        .site-nav-signin { display: none !important; }
 
         @media (min-width: 900px) {
           .site-nav-links { display: flex !important; }
           .site-nav-cta { display: inline-flex !important; }
           .site-nav-lang { display: inline-flex !important; }
+          .site-nav-signin { display: inline-flex !important; }
           .site-nav-burger { display: none !important; }
         }
 
