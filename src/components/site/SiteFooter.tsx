@@ -87,25 +87,12 @@ export function SiteFooter() {
             <div style={colHeading}>Legal</div>
             <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 12 }}>
               <Link to="/contact" className="footer-link" style={linkStyle}>Contact</Link>
-              <a href="#" className="footer-link" style={linkStyle}>Privacy</a>
-              <a href="#" className="footer-link" style={linkStyle}>Terms</a>
+              <Link to="/privacy" className="footer-link" style={linkStyle}>Privacy Policy</Link>
+              <Link to="/terms" className="footer-link" style={linkStyle}>Terms and Conditions</Link>
             </div>
           </div>
         </div>
 
-        <div style={{
-          marginTop: 24,
-          display: "flex",
-          justifyContent: "center",
-          gap: 8,
-          fontSize: 13,
-          color: "#6B6B68",
-          flexWrap: "wrap",
-        }}>
-          <Link to="/privacy" style={{ color: "inherit", textDecoration: "none" }}>Privacy Policy</Link>
-          <span>·</span>
-          <Link to="/terms" style={{ color: "inherit", textDecoration: "none" }}>Terms and Conditions</Link>
-        </div>
 
         <div style={{
           marginTop: 24,
