@@ -49,7 +49,6 @@ function redirectToCallback(accessToken: string, refreshToken: string) {
 }
 
 function LoginPage() {
-  const navigate = useNavigate();
   const [tab, setTab] = useState<Tab>("advertiser");
   const [checking, setChecking] = useState(true);
 
