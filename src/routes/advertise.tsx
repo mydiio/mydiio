@@ -172,15 +172,18 @@ function HowItWorks() {
       <div className="how-flow">
         {steps.map((s, i) => (
           <div key={s.n} className={`reveal reveal-up delay-${i + 1} step-item`} style={{ display: "contents" }}>
-            <div className="step-card mydiio-card">
-              <div className="step-circle font-display">{s.n}</div>
-              <div className="font-display" style={{ fontSize: 18, color: C.ink, marginTop: 16 }}>{s.title}</div>
-              <p style={{
-                fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
-                fontSize: 14, color: C.inkSoft, marginTop: 8, lineHeight: 1.5,
-              }}>
-                {s.body}
-              </p>
+            <div className="step-card mydiio-card" style={{ padding: 0, overflow: "hidden" }}>
+              <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center top", display: "block", borderBottom: `2px solid ${C.ink}` }} />
+              <div style={{ padding: 26 }}>
+                <div className="step-circle font-display">{s.n}</div>
+                <div className="font-display" style={{ fontSize: 18, color: C.ink, marginTop: 16 }}>{s.title}</div>
+                <p style={{
+                  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
+                  fontSize: 14, color: C.inkSoft, marginTop: 8, lineHeight: 1.5,
+                }}>
+                  {s.body}
+                </p>
+              </div>
             </div>
             {i < steps.length - 1 && <div className="step-line" aria-hidden />}
           </div>
