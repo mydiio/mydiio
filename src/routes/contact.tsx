@@ -386,6 +386,10 @@ function ContactPage() {
           50% { opacity: 0.5; transform: scale(1.3); }
         }
         .status-dot-pulse { animation: status-pulse 2s ease infinite; }
+        .contact-pioneer-tuk { width: 220px; }
+        @media (max-width: 900px) {
+          .contact-pioneer-tuk { width: 180px; }
+        }
       `}</style>
     </SiteShell>
   );
