@@ -495,7 +495,7 @@ function HowItWorks() {
             overflow: "hidden",
             transitionDelay: `${i * 80}ms`,
           }}>
-            <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 160, objectFit: "cover", objectPosition: "center", display: "block", borderRadius: 0 }} />
+            <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: s.pos, display: "block", borderRadius: 0 }} />
             <div style={{ padding: "28px 28px 32px", display: "flex", flexDirection: "column", gap: 12 }}>
               <div style={{
                 fontFamily: "'Space Mono', monospace",
