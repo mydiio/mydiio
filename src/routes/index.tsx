@@ -6,10 +6,12 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "mydiio — Tuk-Tuk Advertising in Colombo | Ads on the Move" },
-      { name: "description", content: "mydiio puts your ad on a screen inside Colombo tuk-tuks. Passengers watch for 14 minutes with no skip button. From LKR 25,000/month with 7 days free. 10 Pioneer spots available. Join the waitlist today." },
+      { name: "description", content: "Put your ad on screens inside Colombo tuk-tuks. Up to 14 minutes captive viewing. From LKR 25,000/month with 7 days free." },
       { property: "og:title", content: "mydiio — Tuk-Tuk Advertising in Colombo | Ads on the Move" },
-      { property: "og:description", content: "mydiio puts your ad on a screen inside Colombo tuk-tuks. Passengers watch for 14 minutes with no skip button. From LKR 25,000/month with 7 days free." },
+      { property: "og:description", content: "Put your ad on screens inside Colombo tuk-tuks. Up to 14 minutes captive viewing. From LKR 25,000/month with 7 days free." },
+      { property: "og:url", content: "https://mydiio.com/" },
     ],
+    links: [{ rel: "canonical", href: "https://mydiio.com/" }],
   }),
 });
 
