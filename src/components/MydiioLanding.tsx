@@ -561,12 +561,7 @@ function TukInterior() {
           </Link>
         </div>
         <div className="reveal reveal-up delay-1 tuk-image" style={{ position: "relative" }}>
-          <div style={{
-            border: "2px solid var(--ink)",
-            borderRadius: 20,
-            boxShadow: "var(--sticker-lg)",
-            overflow: "hidden",
-          }}>
+          <div className="brutal-frame">
             <img src={INSIDE_RIDE.url} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" loading="lazy" className="inside-ride-img" style={{ width: "100%", display: "block", height: 400, objectFit: "cover", objectPosition: "center top" }} />
           </div>
           <div style={{
@@ -581,13 +576,14 @@ function TukInterior() {
             padding: "6px 14px",
             background: C.paper,
             color: C.ink,
-            border: `2px solid ${C.ink}`,
-            borderRadius: 9999,
+            border: `1.5px solid ${C.ink}`,
+            borderRadius: 2,
             boxShadow: "var(--sticker-press)",
             fontFamily: "'Space Mono', monospace",
-            fontSize: 12,
+            fontSize: 11,
             fontWeight: 700,
-            letterSpacing: "0.04em",
+            letterSpacing: "0.05em",
+            textTransform: "uppercase",
           }}>
             <span aria-hidden style={{
               width: 8,
@@ -681,7 +677,9 @@ function TwoAudiences() {
           overflow: "hidden",
           padding: 0,
         }}>
-          <img src={ADVERTISER_DASHBOARD.url} alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand" loading="lazy" className="audience-img" style={{ width: "100%", height: 200, objectFit: "cover", objectPosition: "center 25%", display: "block", borderRadius: "10px 10px 0 0", borderBottom: "2px solid var(--ink)" }} />
+          <div className="brutal-frame">
+            <img src={ADVERTISER_DASHBOARD.url} alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand" loading="lazy" className="audience-img" style={{ width: "100%", height: 200, objectFit: "cover", objectPosition: "center 25%", display: "block", borderRadius: 0 }} />
+          </div>
           <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
             <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
             <h3 style={{
@@ -723,7 +721,9 @@ function TwoAudiences() {
           overflow: "hidden",
           padding: 0,
         }}>
-          <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" loading="lazy" className="audience-img" style={{ width: "100%", height: 200, objectFit: "cover", objectPosition: "center 25%", display: "block", borderRadius: "10px 10px 0 0", borderBottom: "2px solid var(--ink)" }} />
+          <div className="brutal-frame">
+            <img src={DRIVER_PAYMENT} alt="Colombo tuk-tuk driver receiving monthly payment" loading="lazy" className="audience-img" style={{ width: "100%", height: 200, objectFit: "cover", objectPosition: "center 25%", display: "block", borderRadius: 0 }} />
+          </div>
           <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
             <span className="eyebrow" style={{ color: "var(--green-ink)" }}>{t("dr_kicker")}</span>
             <h3 style={{
@@ -903,8 +903,8 @@ function ScaleStory() {
         </h2>
       </div>
       <div className="reveal reveal-up delay-2 road-pair" style={{ marginBottom: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-        <img src={ROAD_FORT.url} alt="Colombo tuk-tuk passing the Old Lighthouse clock tower landmark" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 14, objectFit: "cover", objectPosition: "center" }} />
-        <img src={ROAD_NIGHT.url} alt="Colombo city night scene with traffic light trails" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 14, objectFit: "cover", objectPosition: "center" }} />
+        <div className="brutal-frame"><img src={ROAD_FORT.url} alt="Colombo tuk-tuk passing the Old Lighthouse clock tower landmark" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+        <div className="brutal-frame"><img src={ROAD_NIGHT.url} alt="Colombo city night scene with traffic light trails" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
       </div>
       <style>{`
         @media (max-width: 599px) {
