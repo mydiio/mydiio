@@ -330,6 +330,10 @@
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
   .street-track       { animation: street-loop 28s linear infinite; will-change: transform; }
   .street-track-slow  { animation: street-loop 90s linear infinite; will-change: transform; }
   .street-track-mid   { animation: street-loop 38s linear infinite; will-change: transform; }
@@ -409,6 +413,7 @@
     .reveal-up,
     .reveal-up.in,
     .reveal { transform: none !important; transition: opacity 0.2s ease !important; }
+    .marquee-track,
     .street-track,
     .street-track-slow,
     .street-track-mid,

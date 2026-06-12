@@ -302,8 +302,55 @@ function StatsStrip() {
   );
 }
 
-
-
+function Marquee() {
+  const phrases = [
+    "GPS VERIFIED",
+    "REAL IMPRESSIONS",
+    "ADS ON THE MOVE",
+    "320,000 TUKS IN COLOMBO",
+    "RADICAL TRANSPARENCY",
+    "DRIVER DIGNITY",
+    "PAID ON THE 5TH",
+  ];
+  const track = (
+    <>
+      {phrases.map((p, i) => (
+        <span key={i}>
+          {p}
+          <span style={{ color: "#F5A623", margin: "0 12px" }}>◆</span>
+        </span>
+      ))}
+    </>
+  );
+  return (
+    <section
+      style={{
+        background: "#3D6B4F",
+        borderTop: "2px solid #1A1A18",
+        borderBottom: "2px solid #1A1A18",
+        overflow: "hidden",
+        padding: "14px 0",
+        whiteSpace: "nowrap",
+      }}
+    >
+      <div
+        className="marquee-track"
+        style={{
+          display: "inline-block",
+          animation: "marquee-scroll 22s linear infinite",
+          fontFamily: "'Space Mono', monospace",
+          fontSize: 16,
+          fontWeight: 700,
+          letterSpacing: "0.06em",
+          textTransform: "uppercase",
+          color: "#FDFAF3",
+        }}
+      >
+        {track}{track}
+      </div>
+    </section>
+  );
+}
 
 function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -1057,7 +1104,7 @@ export default function MydiioLanding() {
 
       <Hero />
       <StatsStrip />
-
+      <Marquee />
       <WhyItWorks />
 
       <HowItWorks />
