@@ -1,0 +1,17 @@
+# mydiio
+
+> Tuk-tuk advertising network in Colombo. Digital screens inside tuk-tuks deliver GPS-verified, in-ride ads to passengers across the city.
+
+## Pages
+
+- [Home](/): What mydiio is and how it works.
+- [Advertise](/advertise): Plans, pricing, and how to launch a campaign.
+- [Drive](/drive): How drivers earn LKR 6,000–8,000/month with a free in-tuk screen.
+- [Investors](/investors): Market, model, and traction for mydiio's pre-seed round.
+- [About](/about): Mission, ethical pillars, and the team behind mydiio.
+- [Contact](/contact): Reach out for campaigns, applications, or press.
+
+## Optional
+
+- [Privacy](/privacy): Privacy policy.
+- [Terms](/terms): Terms and conditions.

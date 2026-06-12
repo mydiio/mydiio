@@ -76,14 +76,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "mydiio — Tuk-Tuk Advertising in Colombo | Ads on the Move" },
-      { name: "description", content: "mydiio puts your ad on a screen inside Colombo tuk-tuks. From LKR 25,000/month with 7 days free. 10 Pioneer spots available. Join the waitlist today." },
+      { name: "description", content: "Tuk-tuk advertising in Colombo. Screens inside tuks reach passengers with GPS-verified plays. From LKR 25,000/month with 7 days free." },
       { name: "author", content: "mydiio" },
+      { property: "og:site_name", content: "mydiio" },
       { property: "og:title", content: "mydiio — Tuk-Tuk Advertising in Colombo | Ads on the Move" },
-      { property: "og:description", content: "mydiio puts your ad on a screen inside Colombo tuk-tuks. From LKR 25,000/month with 7 days free. 10 Pioneer spots available. Join the waitlist today." },
+      { property: "og:description", content: "Tuk-tuk advertising in Colombo. Screens inside tuks reach passengers with GPS-verified plays. From LKR 25,000/month with 7 days free." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "mydiio — Tuk-Tuk Advertising in Colombo | Ads on the Move" },
-      { name: "twitter:description", content: "mydiio puts your ad on a screen inside Colombo tuk-tuks. From LKR 25,000/month with 7 days free. 10 Pioneer spots available. Join the waitlist today." },
+      { name: "twitter:description", content: "Tuk-tuk advertising in Colombo. Screens inside tuks reach passengers with GPS-verified plays. From LKR 25,000/month with 7 days free." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9a28c7aa-be3d-4216-b0c6-2481ea12a19e" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9a28c7aa-be3d-4216-b0c6-2481ea12a19e" },
     ],
@@ -105,7 +106,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "alternate", hrefLang: "ta", href: "https://mydiio.com/?lang=ta" },
       { rel: "alternate", hrefLang: "x-default", href: "https://mydiio.com/" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "mydiio",
+              url: "https://mydiio.com",
+              logo: "https://mydiio.com/tuk.png",
+            },
+            {
+              "@type": "WebSite",
+              name: "mydiio",
+              url: "https://mydiio.com",
+            },
+          ],
+        }),
+      },
+    ],
   }),
+
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

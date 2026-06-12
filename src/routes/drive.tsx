@@ -23,8 +23,11 @@ export const Route = createFileRoute("/drive")({
       { name: "description", content: "Free installation. LKR 6,000–8,000 monthly. You change nothing about how you drive. Paid on the 5th of every month." },
       { property: "og:title", content: "Drive & Earn with mydiio — LKR 6,000–8,000 Every Month" },
       { property: "og:description", content: "Free installation. LKR 6,000–8,000 monthly. Paid on the 5th." },
+      { property: "og:url", content: "https://mydiio.com/drive" },
     ],
+    links: [{ rel: "canonical", href: "https://mydiio.com/drive" }],
   }),
+
 });
 
 const DRIVER_CONTACT = "/contact";
@@ -222,9 +225,11 @@ function EarningsCalculator() {
             </div>
             <input
               type="range" min={4} max={14} step={1} value={hours}
+              aria-label="Hours driven per day"
               onChange={(e) => setHours(parseInt(e.target.value))}
               style={{ width: "100%", marginTop: 10, accentColor: C.amber }}
             />
+
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.inkSoft }}>4h</span>
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.inkSoft }}>14h</span>

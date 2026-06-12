@@ -208,11 +208,14 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — mydiio | Ads on the move" },
-      { name: "description", content: "mydiio puts digital advertising screens inside tuk-tuks across Colombo. Every ride is an audience. Every driver earns more. Every impression is verified." },
+      { name: "description", content: "mydiio puts digital advertising screens inside tuk-tuks across Colombo. Every ride an audience. Every driver earns more. Every impression verified." },
       { property: "og:title", content: "About — mydiio" },
       { property: "og:description", content: "Ads on the move. Built in Colombo, for Colombo." },
+      { property: "og:url", content: "https://mydiio.com/about" },
     ],
+    links: [{ rel: "canonical", href: "https://mydiio.com/about" }],
   }),
+
 });
 
 const primaryBtn: React.CSSProperties = {

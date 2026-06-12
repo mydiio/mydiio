@@ -12,8 +12,11 @@ export const Route = createFileRoute("/advertise/apply")({
       { name: "description", content: "Apply to advertise on Colombo's tuk-tuk screens. Takes 2 minutes. We'll contact you on WhatsApp within 24 hours." },
       { property: "og:title", content: "Advertiser Application — mydiio" },
       { property: "og:description", content: "Apply to advertise on Colombo's tuk-tuk screens." },
+      { property: "og:url", content: "https://mydiio.com/advertise/apply" },
     ],
+    links: [{ rel: "canonical", href: "https://mydiio.com/advertise/apply" }],
   }),
+
 });
 
 const DRAFT_KEY = "mydiio_adv_app";
