@@ -164,6 +164,24 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
               <LanguageSwitcher />
             </div>
             <Link
+              to="/login"
+              className="site-nav-signin"
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 14,
+                fontWeight: 500,
+                color: C.ink,
+                textDecoration: "none",
+                padding: "8px 14px",
+                border: `1.5px solid ${C.ink}`,
+                borderRadius: 6,
+                background: "transparent",
+                lineHeight: 1,
+              }}
+            >
+              Sign in
+            </Link>
+            <Link
               to="/advertise"
               className="nav-cta-brutal site-nav-cta"
               style={{
