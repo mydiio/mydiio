@@ -16,6 +16,7 @@ import HOW_STEP3 from "@/assets/illustration-nishara-boutique.png.asset.json";
 import COVERAGE_AERIAL from "@/assets/aerial-colombo-tuk-tuks-overhead.png.asset.json";
 import ROAD_FORT from "@/assets/tuk-tuk-colombo-fort-landmark.png.asset.json";
 import ROAD_NIGHT from "@/assets/colombo-night-light-trails.png.asset.json";
+import DILINI_DRIVER from "@/assets/illustration-dilini-driver.png.asset.json";
 
 import { useI18n } from "@/lib/i18n";
 import { SiteShell } from "@/components/site/SiteShell";
