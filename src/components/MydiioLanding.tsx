@@ -221,8 +221,8 @@ function Hero() {
         .hero-tuk-overlay {
           position: absolute;
           bottom: -20px;
-          right: 0px;
-          width: 220px;
+          right: 40px;
+          width: 200px;
           z-index: 10;
           mix-blend-mode: multiply;
           pointer-events: none;
@@ -232,7 +232,7 @@ function Hero() {
         @media (min-width: 768px) {
           .hero-brand { font-size: 40px; }
           .hero-headline { font-size: 22px; }
-          .hero-tuk-overlay { width: 380px; right: 40px; }
+          .hero-tuk-overlay { width: 360px; right: 40px; }
         }
         @media (min-width: 1025px) {
           .hero-brand { font-size: 56px; }
@@ -1151,7 +1151,7 @@ export default function MydiioLanding() {
           position: absolute;
           right: -20px;
           bottom: -20px;
-          width: 100px;
+          width: 90px;
           opacity: 0.85;
           z-index: 0;
           mix-blend-mode: multiply;
@@ -1160,7 +1160,7 @@ export default function MydiioLanding() {
           box-shadow: none;
         }
         @media (min-width: 768px) {
-          .founding-tuk-accent { width: 160px; }
+          .founding-tuk-accent { width: 150px; }
         }
       `}</style>
 
