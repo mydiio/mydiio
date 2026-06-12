@@ -441,7 +441,6 @@ function AboutPage() {
             Three commitments that make us better to work with — and harder for anyone else to copy.
           </p>
           <div className="pillars-row">
-            {[
             {([
               { n: "01", h: "Radical transparency", b: "Every advertiser sees exactly which vehicles showed their ad, when, and where — GPS-verified and time-stamped. Most advertising in Sri Lanka offers zero proof of delivery. mydiio offers complete verification. No black box. No estimates.", img: { url: AYASHA.url, alt: "Passenger viewing tuk-tuk screen", fit: "cover" as const } },
               { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer — without exception or delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors.", img: { url: KAMAL.url, alt: "Kamal, mydiio driver", fit: "cover" as const } },
