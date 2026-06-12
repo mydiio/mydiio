@@ -2,9 +2,13 @@ import { Fragment, useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import HERO_NIGHT from "@/assets/hero-tuk-tuk-night-screen.png.asset.json";
-import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.asset.json";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
+import TUK_SCREEN from "@/assets/illustration-tuk-screen.png.asset.json";
+import AYASHA from "@/assets/illustration-ayasha-passenger.png.asset.json";
+import KAMAL from "@/assets/illustration-kamal-driver.png.asset.json";
+import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
+import ROAD_LEFT from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
 
 type Variant = "advertiser" | "driver";
 
