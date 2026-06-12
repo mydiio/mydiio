@@ -925,8 +925,8 @@ function ScaleStory() {
         </h2>
       </div>
       <div className="reveal reveal-up delay-2 road-pair" style={{ marginBottom: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-        <div className="brutal-frame"><img src={ROAD_FORT.url} alt="Colombo tuk-tuk passing the Old Lighthouse clock tower landmark" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
-        <div className="brutal-frame"><img src={ROAD_NIGHT.url} alt="Colombo city night scene with traffic light trails" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src={ROAD_FORT.url} alt="Colombo tuk-tuk passing the Old Lighthouse clock tower landmark" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src={ROAD_NIGHT.url} alt="Colombo city night scene with traffic light trails" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 260, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
       </div>
       <style>{`
         @media (max-width: 599px) {
