@@ -769,15 +769,18 @@ function DrivePage() {
       <DriverEarnings />
       <section className="relative w-full overflow-hidden drive-supporting-band">
         <img
-          src={COLOMBO_TUK_DAYTIME.url}
+          src="/illustrations/coverage-fleet.png"
           alt="mydiio tuk-tuks on a Colombo street in daytime"
           className="absolute inset-0 w-full h-full"
-          style={{ objectFit: "cover", objectPosition: "center" }}
+          style={{
+            objectFit: "cover", objectPosition: "center",
+            border: "2px solid #1A1A18", borderRadius: 4,
+            boxShadow: "#1A1A18 -5px 5px 0px 0px",
+          }}
         />
         <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.4)" }} />
         <style>{`
-          .drive-supporting-band { height: 400px; }
-          @media (max-width: 767px) { .drive-supporting-band { height: 280px; } }
+          .drive-supporting-band { height: 280px; }
         `}</style>
       </section>
       <HowItWorks />
