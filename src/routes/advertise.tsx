@@ -32,6 +32,29 @@ export const Route = createFileRoute("/advertise")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "Service",
+          name: "mydiio Tuk-Tuk Advertising",
+          provider: {
+            "@type": "Organization",
+            name: "mydiio",
+          },
+          description: "GPS-verified digital advertising on screens inside Colombo tuk-tuks. Campaigns live in 72 hours with weekly verified impression reports.",
+          areaServed: {
+            "@type": "City",
+            name: "Colombo",
+          },
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "LKR",
+            price: "25000",
+            description: "Roamer — entry campaign tier, up to 5 tuk-tuks, 3-month minimum",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "FAQPage",
           mainEntity: [
             {
