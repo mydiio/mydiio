@@ -111,19 +111,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Organization",
-              name: "mydiio",
-              url: "https://mydiio.com",
-              logo: "https://mydiio.com/tuk.png",
-            },
-            {
-              "@type": "WebSite",
-              name: "mydiio",
-              url: "https://mydiio.com",
-            },
-          ],
+          "@type": "Organization",
+          name: "mydiio",
+          url: "https://mydiio.com",
+          logo: "https://mydiio.com/logo.png",
+          description: "Sri Lanka's first cloud-managed tuk-tuk in-vehicle advertising platform. GPS-verified impressions across Colombo.",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Colombo",
+            addressCountry: "LK",
+          },
+          contactPoint: {
+            "@type": "ContactPoint",
+            email: "mydiiomedia@gmail.com",
+            contactType: "customer service",
+          },
+          sameAs: [],
         }),
       },
     ],
