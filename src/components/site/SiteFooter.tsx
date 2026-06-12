@@ -94,7 +94,21 @@ export function SiteFooter() {
         </div>
 
         <div style={{
-          marginTop: 56,
+          marginTop: 24,
+          display: "flex",
+          justifyContent: "center",
+          gap: 8,
+          fontSize: 13,
+          color: "#6B6B68",
+          flexWrap: "wrap",
+        }}>
+          <Link to="/privacy" style={{ color: "inherit", textDecoration: "none" }}>Privacy Policy</Link>
+          <span>·</span>
+          <Link to="/terms" style={{ color: "inherit", textDecoration: "none" }}>Terms and Conditions</Link>
+        </div>
+
+        <div style={{
+          marginTop: 24,
           paddingTop: 24,
           borderTop: "1px solid rgba(244,239,227,0.12)",
           display: "flex",
