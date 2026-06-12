@@ -5,6 +5,10 @@ import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import INSIDE_RIDE from "@/assets/inside-ride-passenger-pov-screen.png.asset.json";
 import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.asset.json";
+import PERERA from "@/assets/illustration-perera-pharmacy.png.asset.json";
+import AYASHA from "@/assets/illustration-ayasha-passenger.png.asset.json";
+import NISHARA from "@/assets/illustration-nishara-boutique.png.asset.json";
+import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { AdvertiserApplication } from "@/components/site/AdvertiserApplication";
@@ -65,7 +69,7 @@ function Hero() {
   ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed">
-      <img src={INSIDE_RIDE.url} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "top center" }} />
+      <img src={NISHARA.url} alt="Boutique owner reviewing her mydiio campaign" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top", borderBottom: "2px solid #1A1A18" }} />
       <div className="absolute inset-0" style={{
         background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
       }} />
@@ -150,9 +154,9 @@ function StatPill({ value, label }: { value: string; label: string }) {
 /* ---------- How it works ---------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Send us your ad", body: "Share your video or image creative — 15 or 30 seconds long. No production house needed. We'll make your first one for free to get you started." },
-    { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen across the fleet in your chosen zones. Campaigns go live within 72 hours of approval." },
-    { n: 3, title: "Weekly GPS report", body: "Every Monday you receive a verified report: every vehicle, every GPS location, every play count. Proof your ad ran — every single time." },
+    { n: 1, title: "Send us your ad", body: "Share your video or image creative — 15 or 30 seconds long. No production house needed. We'll make your first one for free to get you started.", img: PERERA.url, alt: "Pharmacy owner creating a campaign" },
+    { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen across the fleet in your chosen zones. Campaigns go live within 72 hours of approval.", img: AYASHA.url, alt: "Passenger riding in a tuk-tuk with a screen ad" },
+    { n: 3, title: "Weekly GPS report", body: "Every Monday you receive a verified report: every vehicle, every GPS location, every play count. Proof your ad ran — every single time.", img: NISHARA.url, alt: "Boutique owner reviewing proof of play" },
   ];
   return (
     <div id="how-it-works" style={{ scrollMarginTop: 96 }}>
@@ -168,15 +172,18 @@ function HowItWorks() {
       <div className="how-flow">
         {steps.map((s, i) => (
           <div key={s.n} className={`reveal reveal-up delay-${i + 1} step-item`} style={{ display: "contents" }}>
-            <div className="step-card mydiio-card">
-              <div className="step-circle font-display">{s.n}</div>
-              <div className="font-display" style={{ fontSize: 18, color: C.ink, marginTop: 16 }}>{s.title}</div>
-              <p style={{
-                fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
-                fontSize: 14, color: C.inkSoft, marginTop: 8, lineHeight: 1.5,
-              }}>
-                {s.body}
-              </p>
+            <div className="step-card mydiio-card" style={{ padding: 0, overflow: "hidden" }}>
+              <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center top", display: "block", borderBottom: `2px solid ${C.ink}` }} />
+              <div style={{ padding: 26 }}>
+                <div className="step-circle font-display">{s.n}</div>
+                <div className="font-display" style={{ fontSize: 18, color: C.ink, marginTop: 16 }}>{s.title}</div>
+                <p style={{
+                  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
+                  fontSize: 14, color: C.inkSoft, marginTop: 8, lineHeight: 1.5,
+                }}>
+                  {s.body}
+                </p>
+              </div>
             </div>
             {i < steps.length - 1 && <div className="step-line" aria-hidden />}
           </div>
@@ -258,8 +265,21 @@ function Pricing() {
             border: `${p.highlight ? 3 : 2}px solid ${p.highlight ? C.amber : C.ink}`,
             boxShadow: `${p.highlight ? 8 : 6}px ${p.highlight ? 8 : 6}px 0 ${C.ink}`,
             borderRadius: 16, padding: "clamp(24px, 3vw, 32px)", position: "relative",
+            overflow: p.highlight ? "visible" : undefined,
             display: "flex", flexDirection: "column", height: "100%",
           }}>
+            {p.highlight && (
+              <img
+                src={PIONEER_TUK.url}
+                alt=""
+                aria-hidden
+                style={{
+                  position: "absolute", right: -16, bottom: -16, width: 130,
+                  opacity: 0.85, mixBlendMode: "multiply",
+                  zIndex: 0, pointerEvents: "none",
+                }}
+              />
+            )}
 
             {p.badge && (
               <div style={{
@@ -618,7 +638,7 @@ function TukInterior() {
           border: "2px solid var(--ink)", borderRadius: 22,
           boxShadow: "var(--shadow-card-lg)", overflow: "hidden",
         }}>
-          <img src={TUKTUK_INTERIOR} alt="Tuk-tuk interior screen playing an advertisement" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet across Colombo" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
         </div>
         <div>
           <span className="eyebrow reveal reveal-up">Every ride</span>
