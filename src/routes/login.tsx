@@ -551,11 +551,7 @@ function AdvertiserSignUp({ onSwitchToSignIn }: { onSwitchToSignIn: () => void }
               {" "}
               <button
                 type="button"
-                onClick={() => {
-                  // Find parent pane and switch - simplest: reload tab via event
-                  const ev = new CustomEvent("login-switch-signin");
-                  window.dispatchEvent(ev);
-                }}
+                onClick={onSwitchToSignIn}
                 style={{ color: "#991B1B", background: "none", border: "none", padding: 0, textDecoration: "underline", cursor: "pointer", fontSize: 14 }}
               >
                 Sign in instead
