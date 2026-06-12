@@ -150,6 +150,7 @@ export function SiteShell({
           }
         }
       `}</style>
+      <AnnouncementBar />
       <SiteNav accent={accent} />
       {children}
       <SiteFooter />
