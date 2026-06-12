@@ -319,6 +319,30 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
         .site-nav-link:hover .site-nav-underline,
         .site-nav-link.is-active .site-nav-underline { transform: scaleX(1); }
 
+        .nav-cta-brutal {
+          font-family: 'Space Grotesk', sans-serif;
+          border: 2px solid #1A1A18;
+          border-radius: 2px;
+          background: #F5A623;
+          color: #1A1A18;
+          font-weight: 700;
+          box-shadow: #1A1A18 -3px 3px 0px 0px;
+          transition: transform 120ms ease-out, box-shadow 120ms ease-out;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          line-height: 1;
+          cursor: pointer;
+        }
+        .nav-cta-brutal:hover {
+          transform: translate(3px, -3px);
+          box-shadow: #1A1A18 -6px 6px 0px 0px;
+        }
+        .nav-cta-brutal:active {
+          transform: translate(0px, 0px);
+          box-shadow: none;
+        }
+
         .site-nav-burger { display: inline-flex; }
         .site-nav-links { display: none !important; }
         .site-nav-cta { display: none !important; }
