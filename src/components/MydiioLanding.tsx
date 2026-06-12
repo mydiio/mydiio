@@ -8,7 +8,7 @@ import DRIVER_CARD from "@/assets/illustration-kamal-driver.png.asset.json";
 import TUK_SCREEN from "@/assets/illustration-tuk-screen.png.asset.json";
 import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
 
-import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
+
 
 import HOW_STEP1 from "@/assets/illustration-perera-pharmacy.png.asset.json";
 import HOW_STEP2 from "@/assets/illustration-ayasha-passenger.png.asset.json";
@@ -458,7 +458,7 @@ function WhyItWorks() {
           </div>
         </div>
         <div className="why-image reveal reveal-up delay-1">
-          <img src={COLOMBO_FLEET_GOLDEN.url} alt="mydiio tuk-tuk fleet in Colombo at golden hour" loading="lazy" style={{ width: "100%", height: 380, display: "block", borderRadius: 16, objectFit: "cover", objectPosition: "center" }} />
+          <img src={DILINI_DRIVER.url} alt="mydiio driver illustration" loading="lazy" style={{ width: "100%", height: 380, display: "block", borderRadius: 16, objectFit: "cover", objectPosition: "center" }} />
         </div>
       </div>
       <style>{`
@@ -1169,31 +1169,6 @@ export default function MydiioLanding() {
       <Hero />
       <StatsStrip />
       <Marquee />
-      <div style={{ padding: "24px clamp(16px, 3vw, 24px)", background: "#FDFAF3" }}>
-        <div
-          style={{
-            maxWidth: 1180,
-            margin: "0 auto",
-            border: "2px solid #1A1A18",
-            boxShadow: "#1A1A18 -6px 6px 0px 0px",
-            borderRadius: 4,
-            overflow: "hidden",
-            background: "#FDFAF3",
-          }}
-        >
-          <img
-            src={DILINI_DRIVER.url}
-            alt="Dilini driver illustration"
-            style={{
-              display: "block",
-              width: "100%",
-              maxHeight: 400,
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
-          />
-        </div>
-      </div>
       <WhyItWorks />
 
       <HowItWorks />
