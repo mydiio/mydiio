@@ -265,7 +265,11 @@ function AdvertiserPane() {
   const [view, setView] = useState<AdvView>("signin");
   return (
     <div>
-      {view === "signin" ? <AdvertiserSignIn /> : <AdvertiserSignUp />}
+      {view === "signin" ? (
+        <AdvertiserSignIn />
+      ) : (
+        <AdvertiserSignUp onSwitchToSignIn={() => setView("signin")} />
+      )}
       <div style={{ marginTop: 20, textAlign: "center" }}>
         {view === "signin" ? (
           <button
@@ -289,8 +293,8 @@ function AdvertiserPane() {
   );
 }
 
-function AdvertiserSignIn({ initialEmail }: { initialEmail?: string } = {}) {
-  const [email, setEmail] = useState(initialEmail ?? "");
+function AdvertiserSignIn() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
