@@ -463,9 +463,9 @@ function WhyItWorks() {
 function HowItWorks() {
   const { t, lang } = useI18n();
   const steps = [
-    { n: "01", t: t("how_s1_t"), b: t("how_s1_b"), img: HOW_STEP1.url, alt: "tuk-tuk interior screen showing a pharmacy ad in daytime" },
-    { n: "02", t: t("how_s2_t"), b: t("how_s2_b"), img: HOW_STEP2.url, alt: "tuk-tuk interior screen showing a mobile network ad in the evening" },
-    { n: "03", t: t("how_s3_t"), b: t("how_s3_b"), img: HOW_STEP3.url, alt: "advertiser reviewing campaign dashboard on a laptop" },
+    { n: "01", t: t("how_s1_t"), b: t("how_s1_b"), img: HOW_STEP1.url, alt: "pharmacy owner creating a campaign", pos: "center top" },
+    { n: "02", t: t("how_s2_t"), b: t("how_s2_b"), img: HOW_STEP2.url, alt: "passenger riding in a tuk-tuk with a screen ad", pos: "center" },
+    { n: "03", t: t("how_s3_t"), b: t("how_s3_b"), img: HOW_STEP3.url, alt: "boutique owner reviewing proof of play", pos: "center" },
   ];
   return (
     <Section bg="var(--bg)">
