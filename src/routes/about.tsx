@@ -2,9 +2,13 @@ import { Fragment, useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import HERO_NIGHT from "@/assets/hero-tuk-tuk-night-screen.png.asset.json";
-import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.asset.json";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
+import TUK_SCREEN from "@/assets/illustration-tuk-screen.png.asset.json";
+import AYASHA from "@/assets/illustration-ayasha-passenger.png.asset.json";
+import KAMAL from "@/assets/illustration-kamal-driver.png.asset.json";
+import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
+import ROAD_LEFT from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
 
 type Variant = "advertiser" | "driver";
 
@@ -134,7 +138,7 @@ const PILLAR_PANELS: Record<string, { rows: string[]; chip?: string }> = {
 };
 
 
-function PillarCard({ n, h, b, i, openId, setOpenId }: { n: string; h: string; b: string; i: number; openId: string | null; setOpenId: (v: string | null) => void }) {
+function PillarCard({ n, h, b, i, openId, setOpenId, img }: { n: string; h: string; b: string; i: number; openId: string | null; setOpenId: (v: string | null) => void; img?: { url: string; alt: string; fit?: "cover" | "contain"; blend?: boolean } }) {
   const open = openId === n;
   const panel = PILLAR_PANELS[n];
   return (
@@ -146,8 +150,26 @@ function PillarCard({ n, h, b, i, openId, setOpenId }: { n: string; h: string; b
         background: open ? "rgba(255,255,255,0.11)" : undefined,
         borderColor: open ? "var(--accent)" : undefined,
         transition: "all 0.2s ease",
+        padding: img ? 0 : undefined,
+        overflow: "hidden",
       }}
     >
+      {img && (
+        <img
+          src={img.url}
+          alt={img.alt}
+          style={{
+            display: "block",
+            width: "100%",
+            height: 160,
+            objectFit: img.fit ?? "cover",
+            objectPosition: img.fit === "contain" ? "center" : "center top",
+            borderRadius: "4px 4px 0 0",
+            mixBlendMode: img.blend ? "multiply" : undefined,
+          }}
+        />
+      )}
+      <div style={{ padding: img ? "28px 24px" : 0 }}>
       <div style={{ fontFamily: "'Space Mono', monospace", fontWeight: 700, color: "var(--accent)", fontSize: "clamp(32px,4vw,48px)", lineHeight: 1 }}>{n}</div>
       <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 20, color: "var(--on-dark)", margin: "12px 0 8px" }}>{h}</h3>
       <p style={{ color: "var(--on-dark)", opacity: 0.65, fontSize: 14, lineHeight: 1.65, margin: 0, fontFamily: "'Space Grotesk', sans-serif", overflow: open ? "visible" : "hidden", display: open ? "block" : "-webkit-box", WebkitLineClamp: open ? "unset" : 2, WebkitBoxOrient: "vertical" as const }}>
@@ -175,6 +197,7 @@ function PillarCard({ n, h, b, i, openId, setOpenId }: { n: string; h: string; b
             </div>
           )}
         </div>
+      </div>
       </div>
     </div>
   );
@@ -338,16 +361,31 @@ function AboutPage() {
       {/* SECTION 2 — THE PROBLEM */}
       <section style={{ background: "var(--bg2)", padding: "var(--section-py) clamp(20px, 5vw, 72px)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 52 }}>
-            <span className="about-eyebrow reveal-up">The problem we solve</span>
-            <h2 className="about-h2 reveal-up delay-1">Two groups were being left behind.</h2>
-            <p className="about-lead reveal-up delay-2" style={{ maxWidth: "52ch", margin: "16px auto 0" }}>
-              Small businesses couldn't afford to advertise. Tuk-tuk drivers had no way to earn extra income. mydiio fixes both at once.
-            </p>
+          <div className="mission-intro reveal-up" style={{ display: "flex", gap: "clamp(20px, 4vw, 48px)", alignItems: "center", marginBottom: 52, flexWrap: "wrap" }}>
+            <div style={{ flex: "1 1 320px", textAlign: "left" }}>
+              <span className="about-eyebrow">The problem we solve</span>
+              <h2 className="about-h2" style={{ marginTop: 10 }}>Two groups were being left behind.</h2>
+              <p className="about-lead" style={{ maxWidth: "52ch", marginTop: 16 }}>
+                Small businesses couldn't afford to advertise. Tuk-tuk drivers had no way to earn extra income. mydiio fixes both at once.
+              </p>
+            </div>
+            <img
+              src={TUK_SCREEN.url}
+              alt="Tuk-tuk screen illustration"
+              className="mission-tuk-screen"
+              style={{
+                width: 300,
+                flexShrink: 0,
+                border: "2px solid #1A1A18",
+                borderRadius: 4,
+                boxShadow: "#1A1A18 -5px 5px 0px 0px",
+                mixBlendMode: "multiply",
+              }}
+            />
           </div>
-          <div className="reveal-up delay-2" style={{ position: "relative", width: "100%", height: "clamp(280px, 35vw, 400px)", overflow: "hidden", borderRadius: 18, marginBottom: 52 }}>
-            <img src={COLOMBO_TUK_DAYTIME.url} alt="Colombo tuk-tuks on a busy daytime street" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
-            <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+          <style>{`@media (max-width: 768px) { .mission-tuk-screen { width: 100% !important; } }`}</style>
+          <div className="reveal-up delay-2" style={{ position: "relative", width: "100%", height: 280, overflow: "hidden", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -5px 5px 0px 0px", marginBottom: 52 }}>
+            <img src={ROAD_LEFT.url} alt="Tuk-tuks on the road" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
           </div>
           <div className="problem-grid reveal-up delay-3">
             <BeforeAfterCard variant="advertiser">
@@ -403,13 +441,12 @@ function AboutPage() {
             Three commitments that make us better to work with — and harder for anyone else to copy.
           </p>
           <div className="pillars-row">
-            {[
-              { n: "01", h: "Radical transparency", b: "Every advertiser sees exactly which vehicles showed their ad, when, and where — GPS-verified and time-stamped. Most advertising in Sri Lanka offers zero proof of delivery. mydiio offers complete verification. No black box. No estimates." },
-              { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer — without exception or delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors." },
-              { n: "03", h: "Community reinvestment", b: "A share of mydiio's revenue goes back into the communities our drivers serve. Not as a PR exercise — as a founding commitment built into the business from day one." },
-
-            ].map((p, i) => (
-              <PillarCard key={p.n} n={p.n} h={p.h} b={p.b} i={i} openId={openPillar} setOpenId={setOpenPillar} />
+            {([
+              { n: "01", h: "Radical transparency", b: "Every advertiser sees exactly which vehicles showed their ad, when, and where — GPS-verified and time-stamped. Most advertising in Sri Lanka offers zero proof of delivery. mydiio offers complete verification. No black box. No estimates.", img: { url: AYASHA.url, alt: "Passenger viewing tuk-tuk screen", fit: "cover" as const } },
+              { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer — without exception or delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors.", img: { url: KAMAL.url, alt: "Kamal, mydiio driver", fit: "cover" as const } },
+              { n: "03", h: "Community reinvestment", b: "A share of mydiio's revenue goes back into the communities our drivers serve. Not as a PR exercise — as a founding commitment built into the business from day one.", img: { url: PIONEER_TUK.url, alt: "Pioneer tuk-tuk", fit: "contain" as const, blend: true } },
+            ]).map((p, i) => (
+              <PillarCard key={p.n} n={p.n} h={p.h} b={p.b} i={i} openId={openPillar} setOpenId={setOpenPillar} img={p.img} />
             ))}
           </div>
         </div>
