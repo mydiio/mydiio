@@ -938,13 +938,13 @@ function FoundingOffer() {
   const benefits = [t("fo_b1"), t("fo_b2"), t("fo_b3"), t("fo_b4")];
   return (
     <Section bg={"var(--bg2)"}>
-      <div className="reveal reveal-up" style={{
+      <div className="reveal reveal-up fade-up" style={{
         position: "relative",
         background: "var(--paper)",
-        border: "2px solid var(--ink)",
-        borderRadius: 26,
+        border: "2px solid #1A1A18",
+        borderRadius: 4,
         padding: "clamp(36px, 5vw, 64px)",
-        boxShadow: "var(--sticker-lg)",
+        boxShadow: "#1A1A18 -6px 6px 0px 0px",
         overflow: "hidden",
       }}>
         <div aria-hidden style={{
@@ -959,7 +959,15 @@ function FoundingOffer() {
           pointerEvents: "none",
         }} />
         <div style={{ position: "relative", zIndex: 1 }}>
-          <span className="eyebrow" style={{ display: "inline-block" }}>{t("fo_kicker")}</span>
+          <span style={{
+            display: "inline-block",
+            fontFamily: "'Space Mono', monospace",
+            fontWeight: 700,
+            color: "#F5A623",
+            textTransform: "uppercase",
+            letterSpacing: "0.04em",
+            fontSize: "clamp(24px, 3vw, 32px)",
+          }}>{t("fo_kicker")}</span>
           <h2 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
             {t("fo_title")}
           </h2>
@@ -974,7 +982,7 @@ function FoundingOffer() {
                   width: 22, height: 22, borderRadius: "50%",
                   background: "var(--accent)", border: "2px solid var(--ink)", flexShrink: 0,
                 }}>
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--ink)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#F5A623" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="4 12 10 18 20 6" />
                   </svg>
                 </span>
@@ -982,7 +990,7 @@ function FoundingOffer() {
               </li>
             ))}
           </ul>
-          <Link to="/advertise" className="btn-bold font-display cta-primary" style={{ display: "inline-block", marginTop: 32, padding: "14px 24px", fontSize: 15, textDecoration: "none" }}>
+          <Link to="/advertise" className="btn-brutal" style={{ display: "inline-block", marginTop: 32, padding: "14px 24px", fontSize: 15, textDecoration: "none", background: "#F5A623", color: "#1A1A18" }}>
             Claim a pilot slot →
           </Link>
         </div>
@@ -1003,57 +1011,70 @@ function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   return (
     <Section bg={"var(--bg)"}>
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
-        <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("faq_kicker")}</span>
-        <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
-          <EmTail text={t("faq_title")} tail="asked." lang={lang} />
-        </h2>
-      </div>
-      <div style={{ maxWidth: 880, margin: "0 auto", display: "flex", flexDirection: "column", gap: 16 }}>
-        {items.map((it, i) => {
-          const open = openIdx === i;
-          return (
-            <div key={i} className={`reveal reveal-up${i < 4 ? ` delay-${i + 1}` : ""}`} style={{
-              background: "var(--paper)",
-              border: "2px solid var(--ink)",
-              borderRadius: 14,
-              boxShadow: open ? "var(--sticker)" : "var(--sticker-press)",
-              transition: "box-shadow 0.25s ease",
-              overflow: "hidden",
-            }}>
-              <button
-                type="button"
-                onClick={() => setOpenIdx(open ? null : i)}
-                aria-expanded={open}
-                style={{
-                  width: "100%", background: "transparent", border: 0, cursor: "pointer",
-                  padding: "20px 24px", display: "flex", justifyContent: "space-between",
-                  alignItems: "center", gap: 16, textAlign: "left",
-                  fontFamily: "'Space Grotesk', sans-serif", fontSize: 19, fontWeight: 600,
-                  color: "var(--ink)", letterSpacing: "-0.01em",
-                }}
-              >
-                <span>{it.q}</span>
-                <span style={{
-                  fontFamily: "'Space Mono', monospace",
-                  color: "var(--accent-deep)",
-                  fontSize: 22, lineHeight: 1, flexShrink: 0,
-                  transform: open ? "rotate(45deg)" : "rotate(0deg)",
-                  transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)",
-                }}>+</span>
-              </button>
-              <div style={{
-                maxHeight: open ? 600 : 0,
+      <div className="fade-up">
+        <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+          <span className="reveal-up" style={{
+            display: "inline-block",
+            fontFamily: "'Space Mono', monospace",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.04em",
+            color: "#F5A623",
+            fontSize: "clamp(24px, 3vw, 32px)",
+          }}>{t("faq_kicker")}</span>
+          <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
+            <EmTail text={t("faq_title")} tail="asked." lang={lang} />
+          </h2>
+        </div>
+        <div style={{ maxWidth: 880, margin: "0 auto", display: "flex", flexDirection: "column", gap: 16 }}>
+          {items.map((it, i) => {
+            const open = openIdx === i;
+            return (
+              <div key={i} className={`faq-row reveal reveal-up${i < 4 ? ` delay-${i + 1}` : ""}`} style={{
+                background: "#FFFFFF",
+                border: "2px solid #1A1A18",
+                borderRadius: 2,
+                boxShadow: open ? "var(--sticker)" : "var(--sticker-press)",
+                transition: "box-shadow 0.25s ease",
                 overflow: "hidden",
-                transition: "max-height 0.4s cubic-bezier(0.16,1,0.3,1)",
               }}>
-                <p style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.65, padding: "0 24px 22px", margin: 0, fontWeight: 500 }}>
-                  {it.a}
-                </p>
+                <button
+                  type="button"
+                  onClick={() => setOpenIdx(open ? null : i)}
+                  aria-expanded={open}
+                  style={{
+                    width: "100%", background: "transparent", border: 0, cursor: "pointer",
+                    padding: "20px 24px", display: "flex", justifyContent: "space-between",
+                    alignItems: "center", gap: 16, textAlign: "left",
+                    fontFamily: "'Space Grotesk', sans-serif", fontSize: 19, fontWeight: 600,
+                    color: "var(--ink)", letterSpacing: "-0.01em",
+                  }}
+                >
+                  <span>{it.q}</span>
+                  <span style={{
+                    fontFamily: "'Space Mono', monospace",
+                    color: "#F5A623",
+                    fontSize: 22,
+                    fontWeight: 700,
+                    lineHeight: 1,
+                    flexShrink: 0,
+                    transform: open ? "rotate(45deg)" : "rotate(0deg)",
+                    transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)",
+                  }}>+</span>
+                </button>
+                <div style={{
+                  maxHeight: open ? 600 : 0,
+                  overflow: "hidden",
+                  transition: "max-height 0.4s cubic-bezier(0.16,1,0.3,1)",
+                }}>
+                  <p style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.65, padding: "0 24px 22px", margin: 0, fontWeight: 500 }}>
+                    {it.a}
+                  </p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </Section>
   );

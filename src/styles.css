@@ -418,6 +418,14 @@
     box-shadow: #1A1A18 -10px 10px 0px 0px;
   }
 
+  .faq-row {
+    background: #FFFFFF;
+    transition: background 150ms ease-out;
+  }
+  .faq-row:hover {
+    background: #FDFAF3;
+  }
+
   /* Reveal-up: prevent transform from creating layout gaps */
   .reveal-up {
     will-change: transform, opacity;
