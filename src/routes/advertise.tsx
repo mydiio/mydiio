@@ -928,10 +928,10 @@ function PioneerProgramme() {
                 fontFamily: "'Space Mono', monospace", fontWeight: 700,
                 fontSize: "clamp(36px, 4vw, 48px)", color: "var(--accent)", lineHeight: 1,
               }}>{it.n}</div>
-              <h4 style={{
+              <h3 style={{
                 fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 20,
                 color: "var(--on-dark)", margin: "10px 0 8px",
-              }}>{it.h}</h4>
+              }}>{it.h}</h3>
               <p style={{
                 fontFamily: "'Space Grotesk', sans-serif", fontSize: 14,
                 color: "var(--on-dark)", opacity: 0.65, lineHeight: 1.65, margin: 0,
