@@ -222,6 +222,88 @@ function Hero() {
   );
 }
 
+function StatsStrip() {
+  const ref = useRef<HTMLElement>(null);
+  const [started, setStarted] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { setStarted(true); io.disconnect(); } });
+    }, { threshold: 0.3 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const v1 = useCountUp(10, 1200, 0, started);
+  const v2 = useCountUp(20, 1200, 0, started);
+  const v3 = useCountUp(72, 1200, 0, started);
+  const v4 = useCountUp(10, 1200, 0, started);
+  const items = [
+    { v: v1, suffix: "", label: "Pilot Vehicles" },
+    { v: v2, suffix: " min", label: "Avg Ride" },
+    { v: v3, suffix: " hrs", label: "Campaign" },
+    { v: v4, suffix: "", label: "Pioneer Spots" },
+  ];
+  return (
+    <section
+      ref={ref}
+      className="fade-up stats-strip"
+      style={{
+        background: "#F5A623",
+        borderTop: "2px solid #1A1A18",
+        borderBottom: "2px solid #1A1A18",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "stretch",
+        flexWrap: "wrap",
+        borderRadius: 0,
+      }}
+    >
+      {items.map((it, i) => (
+        <div
+          key={it.label}
+          className="stats-strip-item"
+          style={{
+            padding: "28px 40px",
+            borderRight: i < items.length - 1 ? "2px solid #1A1A18" : "none",
+            textAlign: "center",
+          }}
+        >
+          <div style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 32,
+            fontWeight: 700,
+            color: "#1A1A18",
+            lineHeight: 1.1,
+          }}>
+            {it.v}{it.suffix}
+          </div>
+          <div style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 10,
+            fontWeight: 700,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "#1A1A18",
+            opacity: 0.65,
+            marginTop: 8,
+          }}>
+            {it.label}
+          </div>
+        </div>
+      ))}
+      <style>{`
+        @media (max-width: 640px) {
+          .stats-strip-item { flex: 1 1 50%; border-right: none !important; border-bottom: 2px solid #1A1A18; }
+          .stats-strip-item:nth-child(odd) { border-right: 2px solid #1A1A18 !important; }
+          .stats-strip-item:nth-last-child(-n+2) { border-bottom: none; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+
+
 
 function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
