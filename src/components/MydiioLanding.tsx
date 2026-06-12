@@ -1056,6 +1056,8 @@ export default function MydiioLanding() {
       `}</style>
 
       <Hero />
+      <StatsStrip />
+
       <WhyItWorks />
 
       <HowItWorks />
