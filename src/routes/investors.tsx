@@ -218,7 +218,7 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
   ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed">
-      <img src="/illustrations/dilini.png" alt="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center", borderBottom: "2px solid #1A1A18" }} />
+      <img src="/illustrations/dilini.png" alt="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets" loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center", borderBottom: "2px solid #1A1A18" }} />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
         <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
@@ -299,7 +299,7 @@ function Problem() {
 function OpportunityBridge() {
   return (
     <div style={{ position: "relative", width: "100%", height: 320, overflow: "hidden" }}>
-      <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -6px 6px 0px 0px" }} />
+      <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs" loading="lazy" width={1200} height={500} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -6px 6px 0px 0px" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(30,26,21,0.75) 0%, rgba(30,26,21,0.2) 100%)" }} />
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", padding: "clamp(20px, 4vw, 32px)", maxWidth: 1140, marginInline: "auto" }}>
         <span className="reveal-up" style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--accent)", textTransform: "uppercase", letterSpacing: 3, fontWeight: 700, marginBottom: 8 }}>
@@ -325,7 +325,7 @@ function Solution() {
           </p>
         </div>
         <div className="reveal-up" style={{ borderRadius: "var(--card-radius)", overflow: "hidden", border: "var(--card-border)", boxShadow: "var(--shadow-card-lg)" }}>
-          <img src={TUKTUK_INTERIOR} alt="In-tuk-tuk digital screen" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src={TUKTUK_INTERIOR} alt="In-tuk-tuk digital screen" loading="lazy" width={600} height={400} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </div>
       </div>
       <div style={{ marginTop: 56, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 18 }}>
@@ -553,7 +553,7 @@ function Team() {
     <SectionWrap>
       <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 48, alignItems: "center" }} className="solution-grid">
         <div className="reveal-up" style={{ borderRadius: "var(--card-radius)", overflow: "hidden", border: "var(--card-border)", boxShadow: "var(--shadow-card-lg)" }}>
-          <img src={DRIVER_PAYMENT} alt="mydiio team and driver in Colombo" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src={DRIVER_PAYMENT} alt="mydiio team and driver in Colombo" loading="lazy" width={800} height={450} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </div>
         <div>
           <Eyebrow className="reveal-up">Team</Eyebrow>
@@ -610,7 +610,7 @@ function Fundraise({ onRequestDeck }: { onRequestDeck: () => void }) {
 function FinalCTA({ onRequestDeck }: { onRequestDeck: () => void }) {
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: 480 }}>
-      <img src={FLEET_SUNSET} alt="mydiio tuk-tuks at sunset" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={FLEET_SUNSET} alt="mydiio tuk-tuks at sunset" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "radial-gradient(110% 80% at 50% 30%, rgba(26,26,24,0.5) 0%, rgba(26,26,24,0.82) 60%, rgba(26,26,24,0.96) 100%)" }} />
       <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(80px, 12vw, 130px) clamp(20px, 4vw, 32px)", textAlign: "center" }}>
         <Eyebrow>Get involved</Eyebrow>

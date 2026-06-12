@@ -85,7 +85,7 @@ function Hero() {
   ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed" style={{ borderBottom: "2px solid #1A1A18" }}>
-      <img src={DILINI.url} alt="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top" }} />
+      <img src={DILINI.url} alt="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets" loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top" }} />
       <div className="absolute inset-0" style={{
         background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
       }} />
@@ -285,6 +285,9 @@ function DriverEarnings() {
           <img
             src={KAMAL.url}
             alt="mydiio driver smiling with a payment confirmation on his phone"
+            loading="lazy"
+            width={800}
+            height={450}
             style={{
               width: "100%", height: 320, objectFit: "cover", objectPosition: "center top",
               borderRadius: 4, border: "2px solid #1A1A18", boxShadow: "#1A1A18 -5px 5px 0px 0px",
@@ -411,12 +414,18 @@ function Installation() {
           <img
             src={INSTALL_HANDS.url}
             alt="Hands fitting a tablet screen into the roof frame of a tuk-tuk on a Colombo street"
+            loading="lazy"
+            width={800}
+            height={450}
             className="install-photo install-photo-top"
             style={{ width: "100%", height: 260, objectFit: "cover", objectPosition: "center", borderRadius: 12, display: "block" }}
           />
           <img
             src={INSTALL_LIVE.url}
             alt="Installed tuk-tuk screen displaying an amber and cream advertisement on a Colombo street"
+            loading="lazy"
+            width={800}
+            height={450}
             className="install-photo install-photo-bottom"
             style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center", borderRadius: 12, display: "block" }}
           />
@@ -482,6 +491,9 @@ function FoundingGroup() {
         <img
           src={PIONEER_TUK.url}
           alt=""
+          loading="lazy"
+          width={400}
+          height={300}
           style={{
             position: "absolute", right: -16, bottom: -16,
             width: 130, opacity: 0.9, mixBlendMode: "multiply",
@@ -648,6 +660,9 @@ function FinalCTA() {
       <img
         src={FLEET_SUNSET}
         alt="A line of mydiio tuk-tuks at sunset in Colombo"
+        loading="lazy"
+        width={1920}
+        height={1080}
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div
@@ -786,6 +801,9 @@ function DrivePage() {
         <img
           src="/illustrations/coverage-fleet.png"
           alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs"
+          loading="lazy"
+          width={1200}
+          height={500}
           className="absolute inset-0 w-full h-full"
           style={{
             objectFit: "cover", objectPosition: "center",

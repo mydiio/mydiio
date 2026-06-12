@@ -158,6 +158,9 @@ function PillarCard({ n, h, b, i, openId, setOpenId, img }: { n: string; h: stri
         <img
           src={img.url}
           alt={img.alt}
+          loading="lazy"
+          width={800}
+          height={450}
           style={{
             display: "block",
             width: "100%",
@@ -288,7 +291,7 @@ function AboutPage() {
 
       {/* SECTION 1 — HERO */}
       <section className="page-hero-fixed" style={{ position: "relative", overflow: "hidden", paddingBottom: "clamp(48px, 6vh, 80px)" }}>
-        <img src={HERO_NIGHT.url} alt="Tuk-tuks moving through Colombo at night" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
+        <img src={HERO_NIGHT.url} alt="Tuk-tuks moving through Colombo at night" loading="eager" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
         {/* Amber arcs decoration */}
         <svg
@@ -376,6 +379,9 @@ function AboutPage() {
             <img
               src={TUK_SCREEN.url}
               alt="Tuk-tuk with digital advertising screen mounted inside cab, Colombo Sri Lanka"
+              loading="lazy"
+              width={600}
+              height={400}
               className="mission-tuk-screen"
               style={{
                 width: 300,
@@ -389,7 +395,7 @@ function AboutPage() {
           </div>
           <style>{`@media (max-width: 768px) { .mission-tuk-screen { width: 100% !important; } }`}</style>
           <div className="reveal-up delay-2" style={{ position: "relative", width: "100%", height: 280, overflow: "hidden", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -5px 5px 0px 0px", marginBottom: 52 }}>
-            <img src={ROAD_LEFT.url} alt="Tuk-tuks on the road" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+            <img src={ROAD_LEFT.url} alt="Tuk-tuks on the road" loading="lazy" width={600} height={400} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
           </div>
           <div className="problem-grid reveal-up delay-3">
             <BeforeAfterCard variant="advertiser">
@@ -460,7 +466,7 @@ function AboutPage() {
       <section style={{ background: "var(--bg2)", padding: "var(--section-py) clamp(20px, 5vw, 72px)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(24px, 4vw, 56px)", alignItems: "center" }} className="dignity-grid">
           <div className="reveal-up" style={{ background: "var(--bg)", border: "2px dashed rgba(30,26,21,0.2)", borderRadius: 18, aspectRatio: "16 / 9", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-            <img src={DRIVER_PAYMENT} alt="Driver payment confirmation" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+            <img src={DRIVER_PAYMENT} alt="Driver payment confirmation" loading="lazy" width={800} height={450} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
           </div>
           <div className="reveal-up delay-1">
             <span className="eyebrow" style={{ color: "var(--green-ink)" }}>Driver Dignity</span>
@@ -480,7 +486,7 @@ function AboutPage() {
 
       {/* SECTION 5 — CTA */}
       <section style={{ background: "var(--bg2)", padding: "var(--section-py) clamp(20px, 5vw, 72px)", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <img src={COLOMBO_STREET} alt="" aria-hidden="true" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.06, zIndex: 0, pointerEvents: "none" }} />
+        <img src={COLOMBO_STREET} alt="" aria-hidden="true" loading="lazy" width={1200} height={500} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.06, zIndex: 0, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1080, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <span className="about-eyebrow reveal-up">Get involved</span>
           <h2 className="about-h2 reveal-up delay-1" style={{ fontSize: "clamp(30px, 4.4vw, 60px)" }}>There's a place for you in the network.</h2>

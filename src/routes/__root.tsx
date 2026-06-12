@@ -74,7 +74,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1.0" },
       { title: "mydiio — Tuk-Tuk Advertising in Colombo | Ads on the Move" },
       { name: "description", content: "Tuk-tuk advertising in Colombo. Screens inside tuks reach passengers with GPS-verified plays. From LKR 25,000/month with 7 days free." },
       { name: "author", content: "mydiio" },
