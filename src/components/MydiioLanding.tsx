@@ -70,10 +70,8 @@ function HeroWords({ text }: { text: string }) {
 
 function Hero() {
   const { t } = useI18n();
-  const v1 = useCountUp(10, 1400, 0);
-  const v2 = useCountUp(20, 1400, 100);
-  const v3 = useCountUp(72, 1400, 200);
-  const v4 = useCountUp(10, 1400, 300);
+
+
 
   // Split trailing period off the headline so we can color it.
   const rawTitle = t("hero_title");
@@ -156,43 +154,7 @@ function Hero() {
             </Link>
           </div>
 
-          <div
-            className="hero-trust"
-            style={{
-              marginTop: 52,
-              paddingTop: 28,
-              borderTop: "1px solid rgba(244,239,227,0.18)",
-            }}
-          >
-            {[
-              { v: `${v1}`, suffix: "", k: "metric_vehicles" as const },
-              { v: `${v2}`, suffix: ` ${t("metric_min")}`, k: "metric_zones" as const },
-              { v: `${v3}`, suffix: ` ${t("metric_hr")}`, k: "metric_attention" as const },
-              { v: `${v4}`, suffix: "", k: "metric_launch" as const },
-            ].map((m, i) => (
-              <div key={m.k} className="hero-enter hero-stat" style={{ display: "flex", flexDirection: "column", gap: 6, animationDelay: `${900 + i * 100}ms` }}>
-                <span style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontWeight: 700,
-                  color: "#fff",
-                  fontSize: "clamp(28px, 3.5vw, 42px)",
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1,
-                }}>
-                  {m.v}{m.suffix && <span style={{ color: C.accent }}>{m.suffix}</span>}
-                </span>
-                <span style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: 11,
-                  letterSpacing: "0.18em",
-                  color: ON_DARK_MUTE,
-                  textTransform: "uppercase",
-                }}>
-                  {t(m.k)}
-                </span>
-              </div>
-            ))}
-          </div>
+
         </div>
       </div>
 
@@ -259,6 +221,88 @@ function Hero() {
     </section>
   );
 }
+
+function StatsStrip() {
+  const ref = useRef<HTMLElement>(null);
+  const [started, setStarted] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { setStarted(true); io.disconnect(); } });
+    }, { threshold: 0.3 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const v1 = useCountUp(10, 1200, 0, started);
+  const v2 = useCountUp(20, 1200, 0, started);
+  const v3 = useCountUp(72, 1200, 0, started);
+  const v4 = useCountUp(10, 1200, 0, started);
+  const items = [
+    { v: v1, suffix: "", label: "Pilot Vehicles" },
+    { v: v2, suffix: " min", label: "Avg Ride" },
+    { v: v3, suffix: " hrs", label: "Campaign" },
+    { v: v4, suffix: "", label: "Pioneer Spots" },
+  ];
+  return (
+    <section
+      ref={ref}
+      className="fade-up stats-strip"
+      style={{
+        background: "#F5A623",
+        borderTop: "2px solid #1A1A18",
+        borderBottom: "2px solid #1A1A18",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "stretch",
+        flexWrap: "wrap",
+        borderRadius: 0,
+      }}
+    >
+      {items.map((it, i) => (
+        <div
+          key={it.label}
+          className="stats-strip-item"
+          style={{
+            padding: "28px 40px",
+            borderRight: i < items.length - 1 ? "2px solid #1A1A18" : "none",
+            textAlign: "center",
+          }}
+        >
+          <div style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 32,
+            fontWeight: 700,
+            color: "#1A1A18",
+            lineHeight: 1.1,
+          }}>
+            {it.v}{it.suffix}
+          </div>
+          <div style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 10,
+            fontWeight: 700,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "#1A1A18",
+            opacity: 0.65,
+            marginTop: 8,
+          }}>
+            {it.label}
+          </div>
+        </div>
+      ))}
+      <style>{`
+        @media (max-width: 640px) {
+          .stats-strip-item { flex: 1 1 50%; border-right: none !important; border-bottom: 2px solid #1A1A18; }
+          .stats-strip-item:nth-child(odd) { border-right: 2px solid #1A1A18 !important; }
+          .stats-strip-item:nth-last-child(-n+2) { border-bottom: none; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+
 
 
 function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
@@ -1012,6 +1056,8 @@ export default function MydiioLanding() {
       `}</style>
 
       <Hero />
+      <StatsStrip />
+
       <WhyItWorks />
 
       <HowItWorks />
