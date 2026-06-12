@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { useI18n } from "@/lib/i18n";
-import COLOMBO_STREET from "@/assets/colombo-street.jpg";
+
 import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
@@ -214,7 +214,7 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
   ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed">
-      <img src={COLOMBO_FLEET_GOLDEN.url} alt="Colombo tuk-tuk fleet at golden hour" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
+      <img src="/illustrations/dilini.png" alt="mydiio driver Dilini" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center", borderBottom: "2px solid #1A1A18" }} />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
         <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
@@ -295,7 +295,7 @@ function Problem() {
 function OpportunityBridge() {
   return (
     <div style={{ position: "relative", width: "100%", height: 320, overflow: "hidden" }}>
-      <img src={COLOMBO_STREET} alt="Colombo street" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.85 }} />
+      <img src="/illustrations/coverage-fleet.png" alt="mydiio fleet coverage" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -6px 6px 0px 0px" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(30,26,21,0.75) 0%, rgba(30,26,21,0.2) 100%)" }} />
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", padding: "clamp(20px, 4vw, 32px)", maxWidth: 1140, marginInline: "auto" }}>
         <span className="reveal-up" style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--accent)", textTransform: "uppercase", letterSpacing: 3, fontWeight: 700, marginBottom: 8 }}>
