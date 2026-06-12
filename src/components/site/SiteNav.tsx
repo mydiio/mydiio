@@ -164,6 +164,24 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
               <LanguageSwitcher />
             </div>
             <Link
+              to="/login"
+              className="site-nav-signin"
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 14,
+                fontWeight: 500,
+                color: C.ink,
+                textDecoration: "none",
+                padding: "8px 14px",
+                border: `1.5px solid ${C.ink}`,
+                borderRadius: 6,
+                background: "transparent",
+                lineHeight: 1,
+              }}
+            >
+              Sign in
+            </Link>
+            <Link
               to="/advertise"
               className="nav-cta-brutal site-nav-cta"
               style={{
@@ -272,6 +290,26 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
             <LanguageSwitcher />
           </div>
           <Link
+            to="/login"
+            onClick={() => setOpen(false)}
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 15,
+              fontWeight: 500,
+              color: C.ink,
+              textDecoration: "none",
+              padding: "12px 20px",
+              textAlign: "center",
+              border: `1.5px solid ${C.ink}`,
+              borderRadius: 6,
+              display: "block",
+              width: "100%",
+              boxSizing: "border-box",
+            }}
+          >
+            Sign in
+          </Link>
+          <Link
             to="/advertise"
             onClick={() => setOpen(false)}
             className="nav-cta-brutal"
@@ -347,11 +385,13 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
         .site-nav-links { display: none !important; }
         .site-nav-cta { display: none !important; }
         .site-nav-lang { display: none !important; }
+        .site-nav-signin { display: none !important; }
 
         @media (min-width: 900px) {
           .site-nav-links { display: flex !important; }
           .site-nav-cta { display: inline-flex !important; }
           .site-nav-lang { display: inline-flex !important; }
+          .site-nav-signin { display: inline-flex !important; }
           .site-nav-burger { display: none !important; }
         }
 
