@@ -1169,6 +1169,31 @@ export default function MydiioLanding() {
       <Hero />
       <StatsStrip />
       <Marquee />
+      <div style={{ padding: "24px clamp(16px, 3vw, 24px)", background: "#FDFAF3" }}>
+        <div
+          style={{
+            maxWidth: 1180,
+            margin: "0 auto",
+            border: "2px solid #1A1A18",
+            boxShadow: "#1A1A18 -6px 6px 0px 0px",
+            borderRadius: 4,
+            overflow: "hidden",
+            background: "#FDFAF3",
+          }}
+        >
+          <img
+            src={DILINI_DRIVER.url}
+            alt="Dilini driver illustration"
+            style={{
+              display: "block",
+              width: "100%",
+              maxHeight: 400,
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+          />
+        </div>
+      </div>
       <WhyItWorks />
 
       <HowItWorks />
