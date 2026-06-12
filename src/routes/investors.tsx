@@ -14,12 +14,13 @@ export const Route = createFileRoute("/investors")({
   component: InvestorsPage,
   head: () => ({
     meta: [
-      { title: "Investors — mydiio | Sri Lanka's First Tuk-Tuk Media Network" },
-      { name: "description", content: "mydiio turns thousands of daily tuk-tuk rides into measurable advertising inventory and recurring revenue. Currently raising." },
+      { title: "Investor Information — mydiio | Sri Lanka's Tuk-Tuk Ad Network" },
+      { name: "description", content: "mydiio is building Sri Lanka's first cloud-managed in-vehicle advertising network. 320,000 tuk-tuks in Colombo. Pre-seed stage. Investor conversations welcome." },
       { property: "og:title", content: "Investors — mydiio" },
       { property: "og:description", content: "Building Sri Lanka's first tuk-tuk media network. Recurring revenue. Asset-light. Regional potential." },
       { property: "og:image", content: COLOMBO_FLEET_GOLDEN.url },
       { property: "og:url", content: "https://mydiio.com/investors" },
+      { name: "robots", content: "noindex, nofollow" },
     ],
     links: [{ rel: "canonical", href: "https://mydiio.com/investors" }],
   }),

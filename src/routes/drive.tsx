@@ -19,13 +19,14 @@ export const Route = createFileRoute("/drive")({
   component: DrivePage,
   head: () => ({
     meta: [
-      { title: "Drive & Earn with mydiio — LKR 6,000–8,000 Every Month" },
-      { name: "description", content: "Free installation. LKR 6,000–8,000 monthly. You change nothing about how you drive. Paid on the 5th of every month." },
-      { property: "og:title", content: "Drive & Earn with mydiio — LKR 6,000–8,000 Every Month" },
+      { title: "Earn LKR 6,000 a Month — mydiio Tuk-Tuk Driver Programme" },
+      { name: "description", content: "Join mydiio and earn passive income from your tuk-tuk. We install a screen, you drive as normal. Paid on the 5th of every month. Based in Colombo, Sri Lanka." },
+      { property: "og:title", content: "Earn More From Your Tuk-Tuk | mydiio Driver Programme" },
       { property: "og:description", content: "Free installation. LKR 6,000–8,000 monthly. Paid on the 5th." },
+      { property: "og:image", content: "/illustrations/dilini.png" },
       { property: "og:url", content: "https://mydiio.com/drive" },
     ],
-    links: [{ rel: "canonical", href: "https://mydiio.com/drive" }],
+    links: [{ rel: "canonical", href: "https://mydiio.com/drivers" }],
   }),
 
 });

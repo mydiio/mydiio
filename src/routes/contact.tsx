@@ -9,8 +9,8 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact — mydiio | Let's talk" },
-      { name: "description", content: "Campaign bookings, driver applications, investor questions — find your path. Based in Colombo." },
+      { title: "Contact mydiio — Launch a Campaign or Join the Network" },
+      { name: "description", content: "Get in touch with the mydiio team. Book a demo, launch a campaign, or apply to become a driver partner. Based in Colombo, Sri Lanka. mydiiomedia@gmail.com" },
       { property: "og:title", content: "Contact — mydiio" },
       { property: "og:description", content: "Campaign bookings, driver applications, investor questions." },
       { property: "og:url", content: "https://mydiio.com/contact" },
