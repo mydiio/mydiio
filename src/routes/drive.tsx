@@ -80,8 +80,8 @@ function Hero() {
     { v: "0", suffix: "", label: "cost to join" },
   ];
   return (
-    <section className="relative w-full overflow-hidden page-hero-fixed">
-      <img src={DRIVER_PORTRAIT.url} alt="Sri Lankan tuk-tuk driver at golden hour in Colombo" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
+    <section className="relative w-full overflow-hidden page-hero-fixed" style={{ borderBottom: "2px solid #1A1A18" }}>
+      <img src={DILINI.url} alt="Sri Lankan tuk-tuk driver at golden hour in Colombo" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top" }} />
       <div className="absolute inset-0" style={{
         background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
       }} />
@@ -133,12 +133,12 @@ function Hero() {
       </div>
       <div className="absolute bottom-0 left-0 right-0" style={{ height: 6, background: C.green }} />
       <style>{`
-        .page-hero-fixed { min-height: 560px; }
-        .page-hero-inner { min-height: 560px; }
+        .page-hero-fixed { min-height: 400px; }
+        .page-hero-inner { min-height: 400px; }
         .page-hero-headline { font-size: 28px; }
         @media (max-width: 767px) {
-          .page-hero-fixed { min-height: 380px; }
-          .page-hero-inner { min-height: 380px; }
+          .page-hero-fixed { min-height: 250px; }
+          .page-hero-inner { min-height: 250px; }
           .page-hero-headline { font-size: 22px; }
           .page-hero-textblock { max-width: 100% !important; }
           .page-hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
