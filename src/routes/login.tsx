@@ -564,7 +564,7 @@ function AdvertiserSignUp({ onSwitchToSignIn }: { onSwitchToSignIn: () => void }
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div style={{ marginBottom: 14 }}>
       <label className="login-label">{label}</label>
