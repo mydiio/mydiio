@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { externalSupabase } from "@/integrations/external-supabase/client";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
+import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
