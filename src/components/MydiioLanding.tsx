@@ -5,6 +5,7 @@ import INSIDE_RIDE from "@/assets/inside-ride-passenger-pov-screen.png.asset.jso
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import DRIVER_CARD from "@/assets/illustration-kamal-driver.png.asset.json";
+import TUK_SCREEN from "@/assets/illustration-tuk-screen.png.asset.json";
 
 import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
 
@@ -193,6 +194,14 @@ function Hero() {
         />
         Founding fleet · launching now
       </div>
+
+      {/* Illustrated tuk overlay — bleeds below hero edge */}
+      <img
+        src={TUK_SCREEN.url}
+        alt="illustrated tuk-tuk with screen"
+        className="hero-tuk-overlay"
+      />
+
       <style>{`
         @keyframes hero-live-pulse {
           0%, 100% { opacity: 1; }
@@ -209,9 +218,21 @@ function Hero() {
         .hero-headline {
           font-size: 18px;
         }
+        .hero-tuk-overlay {
+          position: absolute;
+          bottom: -20px;
+          right: 0px;
+          width: 220px;
+          z-index: 10;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+          border: none;
+          box-shadow: none;
+        }
         @media (min-width: 768px) {
           .hero-brand { font-size: 40px; }
           .hero-headline { font-size: 22px; }
+          .hero-tuk-overlay { width: 380px; right: 40px; }
         }
         @media (min-width: 1025px) {
           .hero-brand { font-size: 56px; }
