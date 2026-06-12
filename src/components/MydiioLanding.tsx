@@ -6,6 +6,7 @@ import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import DRIVER_CARD from "@/assets/illustration-kamal-driver.png.asset.json";
 import TUK_SCREEN from "@/assets/illustration-tuk-screen.png.asset.json";
+import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
 
 import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
 
@@ -979,6 +980,12 @@ function FoundingOffer() {
           opacity: 0.6,
           pointerEvents: "none",
         }} />
+        <img
+          src={PIONEER_TUK.url}
+          alt="decorative tuk-tuk illustration"
+          className="founding-tuk-accent"
+          aria-hidden
+        />
         <div style={{ position: "relative", zIndex: 1 }}>
           <span style={{
             display: "inline-block",
@@ -1140,6 +1147,22 @@ export default function MydiioLanding() {
           transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
         }
         .path-card:hover { transform: translateY(-4px); box-shadow: var(--sticker-lg); }
+
+        .founding-tuk-accent {
+          position: absolute;
+          right: -20px;
+          bottom: -20px;
+          width: 100px;
+          opacity: 0.85;
+          z-index: 0;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+          border: none;
+          box-shadow: none;
+        }
+        @media (min-width: 768px) {
+          .founding-tuk-accent { width: 160px; }
+        }
       `}</style>
 
       <Hero />
