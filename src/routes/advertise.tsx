@@ -132,7 +132,7 @@ function Hero() {
   ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed">
-      <img src={NISHARA.url} alt="Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top", borderBottom: "2px solid #1A1A18" }} />
+      <img src={NISHARA.url} alt="Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign" loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top", borderBottom: "2px solid #1A1A18" }} />
       <div className="absolute inset-0" style={{
         background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
       }} />
@@ -236,7 +236,7 @@ function HowItWorks() {
         {steps.map((s, i) => (
           <div key={s.n} className={`reveal reveal-up delay-${i + 1} step-item`} style={{ display: "contents" }}>
             <div className="step-card mydiio-card" style={{ padding: 0, overflow: "hidden" }}>
-              <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center top", display: "block", borderBottom: `2px solid ${C.ink}` }} />
+              <img src={s.img} alt={s.alt} loading="lazy" width={800} height={450} style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "center top", display: "block", borderBottom: `2px solid ${C.ink}` }} />
               <div style={{ padding: 26 }}>
                 <div className="step-circle font-display">{s.n}</div>
                 <div className="font-display" style={{ fontSize: 18, color: C.ink, marginTop: 16 }}>{s.title}</div>
@@ -336,6 +336,9 @@ function Pricing() {
                 src={PIONEER_TUK.url}
                 alt=""
                 aria-hidden
+                loading="lazy"
+                width={400}
+                height={300}
                 style={{
                   position: "absolute", right: -16, bottom: -16, width: 130,
                   opacity: 0.85, mixBlendMode: "multiply",
@@ -701,7 +704,7 @@ function TukInterior() {
           border: "2px solid var(--ink)", borderRadius: 22,
           boxShadow: "var(--shadow-card-lg)", overflow: "hidden",
         }}>
-          <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+          <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs" loading="lazy" width={1200} height={500} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
         </div>
         <div>
           <span className="eyebrow reveal reveal-up">Every ride</span>
@@ -823,6 +826,9 @@ function DashboardPreview() {
         <img
           src={ADVERTISER_DASHBOARD.url}
           alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand"
+          loading="lazy"
+          width={1200}
+          height={675}
           style={{
             width: "100%", aspectRatio: "16 / 9", objectFit: "cover", objectPosition: "center",
             display: "block", borderRadius: 16, border: `2px solid ${C.ink}`, boxShadow: `6px 6px 0 ${C.ink}`,
@@ -1078,6 +1084,9 @@ function FinalCTA() {
       <img
         src={FLEET_SUNSET}
         alt="A line of mydiio tuk-tuks at sunset in Colombo, ready to drive brand campaigns"
+        loading="lazy"
+        width={1920}
+        height={1080}
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div

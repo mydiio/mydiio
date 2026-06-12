@@ -87,7 +87,7 @@ function Hero() {
 
   return (
     <section data-nav-section="home" className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
-      <img src={HERO_NIGHT.url} alt="tuk-tuks moving through Colombo at golden hour" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={HERO_NIGHT.url} alt="tuk-tuks moving through Colombo at golden hour" loading="eager" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.45) 40%, rgba(20,16,12,0.88) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(120px, 16vh, 180px) clamp(22px, 6vw, 80px) clamp(72px, 10vh, 110px)" }}>
         <div style={{ maxWidth: 980 }}>
@@ -199,6 +199,9 @@ function Hero() {
       <img
         src={TUK_SCREEN.url}
         alt="Tuk-tuk with digital advertising screen mounted inside cab, Colombo Sri Lanka"
+        loading="eager"
+        width={600}
+        height={400}
         className="hero-tuk-overlay"
       />
 
@@ -456,7 +459,7 @@ function WhyItWorks() {
           </div>
         </div>
         <div className="why-image reveal reveal-up delay-1">
-          <img src={DILINI_DRIVER.url} alt="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets" loading="lazy" style={{ width: "100%", height: 380, display: "block", borderRadius: 16, objectFit: "cover", objectPosition: "center" }} />
+          <img src={DILINI_DRIVER.url} alt="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets" loading="lazy" width={800} height={450} style={{ width: "100%", height: 380, display: "block", borderRadius: 16, objectFit: "cover", objectPosition: "center" }} />
         </div>
       </div>
       <style>{`
@@ -516,7 +519,7 @@ function HowItWorks() {
             overflow: "hidden",
             transitionDelay: `${i * 80}ms`,
           }}>
-            <img src={s.img} alt={s.alt} loading="lazy" style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: s.pos, display: "block", borderRadius: 0 }} />
+            <img src={s.img} alt={s.alt} loading="lazy" width={800} height={450} style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: s.pos, display: "block", borderRadius: 0 }} />
             <div style={{ padding: "28px 28px 32px", display: "flex", flexDirection: "column", gap: 12 }}>
               <div style={{
                 fontFamily: "'Space Mono', monospace",
@@ -583,7 +586,7 @@ function TukInterior() {
         </div>
         <div className="reveal reveal-up delay-1 tuk-image" style={{ position: "relative" }}>
           <div className="brutal-frame" style={{ borderRadius: 4 }}>
-            <img src={INSIDE_RIDE.url} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" loading="lazy" className="inside-ride-img" style={{ width: "100%", display: "block", height: 400, objectFit: "cover", objectPosition: "center top" }} />
+            <img src={INSIDE_RIDE.url} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" loading="lazy" width={800} height={450} className="inside-ride-img" style={{ width: "100%", display: "block", height: 400, objectFit: "cover", objectPosition: "center top" }} />
           </div>
           <div style={{
             position: "absolute",
@@ -667,7 +670,7 @@ function Coverage() {
         </p>
       </div>
       <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
-        <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs" loading="lazy" className="coverage-strip" style={{ width: "100%", display: "block", height: 380, borderRadius: 4, objectFit: "cover", objectPosition: "center", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -6px 6px 0px 0px" }} />
+        <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs" loading="lazy" width={1200} height={500} className="coverage-strip" style={{ width: "100%", display: "block", height: 380, borderRadius: 4, objectFit: "cover", objectPosition: "center", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -6px 6px 0px 0px" }} />
       </div>
 
       <div className="reveal reveal-up delay-2">
@@ -699,7 +702,7 @@ function TwoAudiences() {
           padding: 0,
         }}>
           <div className="brutal-frame">
-            <img src={HOW_STEP3.url} alt="Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign" loading="lazy" className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
+            <img src={HOW_STEP3.url} alt="Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign" loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
           </div>
           <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
             <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
@@ -743,7 +746,7 @@ function TwoAudiences() {
           padding: 0,
         }}>
           <div className="brutal-frame">
-            <img src={DRIVER_CARD.url} alt="Tuk-tuk driver earning passive income with mydiio advertising platform" loading="lazy" className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
+            <img src={DRIVER_CARD.url} alt="Tuk-tuk driver earning passive income with mydiio advertising platform" loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
           </div>
           <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
             <span className="eyebrow" style={{ color: "var(--green-ink)" }}>{t("dr_kicker")}</span>
@@ -924,8 +927,8 @@ function ScaleStory() {
         </h2>
       </div>
       <div className="reveal reveal-up delay-2 road-pair" style={{ marginBottom: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-left.png" alt="mydiio tuk-tuk driving past Colombo clock tower on tree-lined boulevard" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
-        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-right.png" alt="mydiio tuk-tuks with glowing ad screens in Colombo evening traffic" loading="lazy" className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-left.png" alt="mydiio tuk-tuk driving past Colombo clock tower on tree-lined boulevard" loading="lazy" width={600} height={400} className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+        <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-right.png" alt="mydiio tuk-tuks with glowing ad screens in Colombo evening traffic" loading="lazy" width={600} height={400} className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
       </div>
       <style>{`
         @media (max-width: 599px) {
@@ -982,6 +985,9 @@ function FoundingOffer() {
         <img
           src={PIONEER_TUK.url}
           alt="mydiio pioneer tuk-tuk with amber flag — founding advertiser programme"
+          loading="lazy"
+          width={400}
+          height={300}
           className="founding-tuk-accent"
           aria-hidden
         />
@@ -1112,7 +1118,7 @@ function FinalCTA() {
   return (
     <section id="waitlist" className="relative w-full overflow-hidden" style={{ minHeight: 520, scrollMarginTop: 96 }}>
       <span id="signup-section" style={{ position: "absolute", top: -96 }} aria-hidden />
-      <img src={FLEET_SUNSET} alt="A line of mydiio tuk-tuks parked at sunset in Colombo" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={FLEET_SUNSET} alt="A line of mydiio tuk-tuks parked at sunset in Colombo" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(30,26,21,0.3), rgba(30,26,21,0.7))" }} />
       <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(80px, 12vw, 140px) clamp(20px, 4vw, 32px)", textAlign: "center" }}>
         <span className="eyebrow" style={{ color: "var(--accent)", display: "inline-block" }}>{t("fcta_kicker")}</span>

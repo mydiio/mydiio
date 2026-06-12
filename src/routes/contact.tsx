@@ -86,6 +86,9 @@ function ContactPage() {
           src={COLOMBO_STREET}
           alt=""
           aria-hidden="true"
+          loading="eager"
+          width={1200}
+          height={500}
           style={{
             position: "absolute",
             inset: 0,
@@ -220,6 +223,9 @@ function ContactPage() {
             <img
               src={PIONEER_TUK.url}
               alt="mydiio pioneer tuk-tuk with amber flag — founding advertiser programme"
+              loading="lazy"
+              width={400}
+              height={300}
               className="contact-pioneer-tuk"
               style={{
                 display: "block",
