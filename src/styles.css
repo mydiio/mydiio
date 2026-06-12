@@ -406,6 +406,18 @@
     box-shadow: #1A1A18 -8px 8px 0px 0px;
   }
 
+  .brutal-frame {
+    border: 2px solid #1A1A18;
+    border-radius: 2px;
+    box-shadow: #1A1A18 -6px 6px 0px 0px;
+    transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+    overflow: hidden;
+  }
+  .brutal-frame:hover {
+    transform: translate(4px, -4px);
+    box-shadow: #1A1A18 -10px 10px 0px 0px;
+  }
+
   /* Reveal-up: prevent transform from creating layout gaps */
   .reveal-up {
     will-change: transform, opacity;
