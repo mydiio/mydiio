@@ -980,6 +980,12 @@ function FoundingOffer() {
           opacity: 0.6,
           pointerEvents: "none",
         }} />
+        <img
+          src={PIONEER_TUK.url}
+          alt="decorative tuk-tuk illustration"
+          className="founding-tuk-accent"
+          aria-hidden
+        />
         <div style={{ position: "relative", zIndex: 1 }}>
           <span style={{
             display: "inline-block",
