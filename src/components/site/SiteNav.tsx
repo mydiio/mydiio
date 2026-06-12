@@ -165,17 +165,10 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
             </div>
             <Link
               to="/advertise"
-              className="btn-bold site-nav-cta"
+              className="nav-cta-brutal site-nav-cta"
               style={{
-                background: a.bg,
-                color: a.fg,
                 padding: "10px 20px",
                 fontSize: 14,
-                fontWeight: 600,
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                lineHeight: 1,
               }}
             >
               {t("cta_launch")}
