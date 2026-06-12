@@ -13,7 +13,7 @@ import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
 import HOW_STEP1 from "@/assets/illustration-perera-pharmacy.png.asset.json";
 import HOW_STEP2 from "@/assets/illustration-ayasha-passenger.png.asset.json";
 import HOW_STEP3 from "@/assets/illustration-nishara-boutique.png.asset.json";
-import COVERAGE_AERIAL from "@/assets/aerial-colombo-tuk-tuks-overhead.png.asset.json";
+
 import ROAD_FORT from "@/assets/tuk-tuk-colombo-fort-landmark.png.asset.json";
 import ROAD_NIGHT from "@/assets/colombo-night-light-trails.png.asset.json";
 import DILINI_DRIVER from "@/assets/illustration-dilini-driver.png.asset.json";
@@ -669,7 +669,7 @@ function Coverage() {
         </p>
       </div>
       <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
-        <img src={COVERAGE_AERIAL.url} alt="Aerial view of Colombo tuk-tuks moving through the city" loading="lazy" className="coverage-strip" style={{ width: "100%", display: "block", height: 220, borderRadius: 12, objectFit: "cover", objectPosition: "center" }} />
+        <img src="/illustrations/coverage-fleet.png" alt="Aerial view of Colombo tuk-tuks moving through the city" loading="lazy" className="coverage-strip" style={{ width: "100%", display: "block", height: 380, borderRadius: 4, objectFit: "cover", objectPosition: "center", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -6px 6px 0px 0px" }} />
       </div>
 
       <div className="reveal reveal-up delay-2">
@@ -677,7 +677,7 @@ function Coverage() {
       </div>
       <style>{`
         @media (max-width: 599px) {
-          .coverage-strip { height: 160px !important; }
+          .coverage-strip { height: 260px !important; }
         }
       `}</style>
 
