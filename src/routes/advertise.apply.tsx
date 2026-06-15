@@ -136,7 +136,7 @@ function AdvertiseApplyPage() {
     setSubmitting(true);
     try {
       const response = await fetch(
-        "https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-application",
+        "https://rmqexobhpasitrexvaig.supabase.co/functions/v1/submit-application",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

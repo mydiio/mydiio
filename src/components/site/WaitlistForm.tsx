@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { z } from "zod";
 
-const ENQUIRY_ENDPOINT = "https://rxdvlevzsxemanlfyqin.supabase.co/functions/v1/submit-enquiry";
+const ENQUIRY_ENDPOINT = "https://rmqexobhpasitrexvaig.supabase.co/functions/v1/submit-enquiry";
 
 const schema = z.object({
   businessName: z.string().trim().min(1, "Business name is required").max(120),
