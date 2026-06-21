@@ -19,8 +19,8 @@ function Logo() {
       <img
         src={logoAsset.url}
         alt="mydiio logo — Sri Lanka tuk-tuk advertising platform"
-        height={48}
-        style={{ height: 48, width: "auto", display: "block" }}
+        height={56}
+        style={{ height: 56, width: "auto", display: "block" }}
       />
     </Link>
   );
