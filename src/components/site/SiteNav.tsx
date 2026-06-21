@@ -2,32 +2,26 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { LanguageSwitcher, useI18n } from "@/lib/i18n";
 import { C, accentColor, type Accent } from "./theme";
+import logoAsset from "@/assets/mydiio_lockup_transparent.png.asset.json";
 
 function Logo() {
   return (
     <Link
       to="/"
       aria-label="mydiio logo — Sri Lanka tuk-tuk advertising platform"
-      className="font-display inline-flex items-center justify-center site-logo-lock"
       style={{
-        background: C.paper,
-        border: `2px solid ${C.ink}`,
-        borderRadius: 9999,
-        boxShadow: "var(--sticker-press)",
-        padding: "8px 20px",
+        display: "inline-flex",
+        alignItems: "center",
         textDecoration: "none",
-        fontFamily: "'Space Grotesk', system-ui, sans-serif",
-        fontWeight: 700,
-        fontSize: 18,
-        lineHeight: 1,
-        letterSpacing: "-0.01em",
-        color: C.ink,
-        height: 42,
+        lineHeight: 0,
       }}
     >
-      <span style={{ color: C.ink }}>my</span>
-      <span style={{ color: C.accent }}>di</span>
-      <span style={{ color: C.ink }}>io</span>
+      <img
+        src={logoAsset.url}
+        alt="mydiio logo — Sri Lanka tuk-tuk advertising platform"
+        height={48}
+        style={{ height: 48, width: "auto", display: "block" }}
+      />
     </Link>
   );
 }
