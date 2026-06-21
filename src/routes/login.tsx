@@ -16,7 +16,7 @@ export const Route = createFileRoute("/login")({
   component: LoginPage,
 });
 
-const PORTAL = "https://mydiiocommand.mydiiomedia.workers.dev";
+const PORTAL = "https://admin.mydiio.com";
 
 type Tab = "advertiser" | "driver";
 type AdvView = "signin" | "signup";
