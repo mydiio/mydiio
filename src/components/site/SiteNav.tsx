@@ -94,7 +94,7 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
     { to: "/contact", key: "nav_contact" as const, section: "contact" },
   ];
 
-  const navHeight = scrolled ? 64 : 76;
+  const navHeight = 80;
 
   return (
     <>
@@ -102,7 +102,6 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
         className="sticky top-0 left-0 right-0 z-50 site-nav-enter"
         style={{
           height: navHeight,
-          padding: "0 22px",
           boxSizing: "border-box",
           background: "rgba(247,241,229,0.78)",
           backdropFilter: "blur(14px) saturate(140%)",
@@ -130,7 +129,7 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
             className="site-nav-links"
             style={{
               display: "none",
-              gap: 22,
+              gap: 32,
               flex: "1 1 auto",
               justifyContent: "center",
               minWidth: 0,
@@ -153,7 +152,7 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
             })}
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div className="site-nav-lang">
               <LanguageSwitcher />
             </div>
