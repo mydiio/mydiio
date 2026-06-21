@@ -320,7 +320,11 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
       </aside>
 
       <style>{`
-        :root { --site-nav-height: 76px; }
+        :root { --site-nav-height: 80px; }
+        .site-nav-enter { padding: 0 22px; }
+        @media (min-width: 900px) {
+          .site-nav-enter { padding: 0 40px; }
+        }
         .site-nav-link {
           position: relative;
           font-family: 'Space Grotesk', sans-serif;
