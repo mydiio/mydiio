@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
-import { externalSupabase } from "@/integrations/external-supabase/client";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
 
@@ -10,14 +9,17 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact mydiio — Launch a Campaign or Join the Network" },
-      { name: "description", content: "Get in touch with the mydiio team. Book a demo, launch a campaign, or apply to become a driver partner. Based in Colombo, Sri Lanka. mydiiomedia@gmail.com" },
+      {
+        name: "description",
+        content:
+          "Get in touch with the mydiio team. Book a demo, launch a campaign, or apply to become a driver partner. Based in Colombo, Sri Lanka. mydiiomedia@gmail.com",
+      },
       { property: "og:title", content: "Contact — mydiio" },
       { property: "og:description", content: "Campaign bookings, driver applications, investor questions." },
       { property: "og:url", content: "https://mydiio.com/contact" },
     ],
     links: [{ rel: "canonical", href: "https://mydiio.com/contact" }],
   }),
-
 });
 
 const inputStyle: React.CSSProperties = {
@@ -52,26 +54,43 @@ function ContactPage() {
     e.preventDefault();
     setError(null);
     const fd = new FormData(e.currentTarget);
-    const name = String(fd.get("name") || "").trim().slice(0, 200);
-    const email = String(fd.get("email") || "").trim().slice(0, 255);
-    const phone = String(fd.get("phone") || "").trim().slice(0, 50);
-    const message = String(fd.get("message") || "").trim().slice(0, 4000);
+    const name = String(fd.get("name") || "")
+      .trim()
+      .slice(0, 200);
+    const email = String(fd.get("email") || "")
+      .trim()
+      .slice(0, 255);
+    const phone = String(fd.get("phone") || "")
+      .trim()
+      .slice(0, 50);
+    const message = String(fd.get("message") || "")
+      .trim()
+      .slice(0, 4000);
     if (!name || !email || !phone || !message) return;
     setSubmitting(true);
-    const { error: dbError } = await externalSupabase
-      .from("general_enquiries")
-      .insert({ name, email, phone, message });
-    setSubmitting(false);
-    if (dbError) {
+    try {
+      const res = await fetch("https://rmqexobhpasitrexvaig.supabase.co/functions/v1/submit-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sender_name: name,
+          sender_contact: email + (phone ? " / " + phone : ""),
+          subject: message.slice(0, 80),
+          message,
+          source: "website",
+          sender_type: "prospect",
+        }),
+      });
+      if (!res.ok) throw new Error("failed");
+      setSubmitted(true);
+    } catch {
       setError("Something went wrong — please try again.");
-      return;
     }
-    setSubmitted(true);
+    setSubmitting(false);
   }
 
   return (
     <SiteShell accent="amber">
-      {/* Section 1 — Header */}
       <section
         className="contact-hero"
         style={{
@@ -115,7 +134,6 @@ function ContactPage() {
           >
             Let's talk.
           </h1>
-
           <p
             className="reveal-up delay-1"
             style={{
@@ -131,20 +149,37 @@ function ContactPage() {
         </div>
       </section>
 
-      {/* Section 2 — Three path cards */}
       <section style={{ padding: "0 var(--section-px) var(--section-py)" }}>
         <div className="contact-grid">
-          {/* Card 1 — Advertisers */}
-          <div className="mydiio-card contact-card contact-card-amber reveal-up delay-1" style={{ padding: 24, display: "flex", flexDirection: "column" }}>
-            <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>For businesses</span>
-            <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 22, color: "var(--ink)", margin: "8px 0 10px" }}>
+          <div
+            className="mydiio-card contact-card contact-card-amber reveal-up delay-1"
+            style={{ padding: 24, display: "flex", flexDirection: "column" }}
+          >
+            <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>
+              For businesses
+            </span>
+            <h3
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700,
+                fontSize: 22,
+                color: "var(--ink)",
+                margin: "8px 0 10px",
+              }}
+            >
               Launch a campaign.
             </h3>
             <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65 }}>
               From LKR 25,000 a month. First 7 days free. GPS-verified proof every Monday. No agency needed.
             </p>
-
-            <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", margin: "14px 0 20px" }}>
+            <p
+              style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 11,
+                color: "var(--ink-mute)",
+                margin: "14px 0 20px",
+              }}
+            >
               Takes 2 minutes · No payment now
             </p>
             <Link
@@ -172,17 +207,36 @@ function ContactPage() {
             </Link>
           </div>
 
-          {/* Card 2 — Drivers */}
-          <div className="mydiio-card contact-card contact-card-green reveal-up delay-2" style={{ padding: 24, display: "flex", flexDirection: "column" }}>
-            <span className="eyebrow" style={{ color: "var(--green-ink)" }}>For tuk-tuk drivers</span>
-            <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 22, color: "var(--ink)", margin: "8px 0 10px" }}>
+          <div
+            className="mydiio-card contact-card contact-card-green reveal-up delay-2"
+            style={{ padding: 24, display: "flex", flexDirection: "column" }}
+          >
+            <span className="eyebrow" style={{ color: "var(--green-ink)" }}>
+              For tuk-tuk drivers
+            </span>
+            <h3
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700,
+                fontSize: 22,
+                color: "var(--ink)",
+                margin: "8px 0 10px",
+              }}
+            >
               Join the network.
             </h3>
             <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65 }}>
-              LKR 6,000 base pay every month. Screen installed free. Keep your routes. Payment on the 5th, every month, without fail.
+              LKR 6,000 base pay every month. Screen installed free. Keep your routes. Payment on the 5th, every month,
+              without fail.
             </p>
-
-            <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", margin: "14px 0 20px" }}>
+            <p
+              style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 11,
+                color: "var(--ink-mute)",
+                margin: "14px 0 20px",
+              }}
+            >
               Takes 5 minutes · No deposit now
             </p>
             <Link
@@ -210,16 +264,25 @@ function ContactPage() {
             </Link>
           </div>
 
-          {/* Card 3 — Investors & general */}
-          <div className="mydiio-card reveal-up delay-3" style={{ padding: 24, display: "flex", flexDirection: "column" }}>
+          <div
+            className="mydiio-card reveal-up delay-3"
+            style={{ padding: 24, display: "flex", flexDirection: "column" }}
+          >
             <span className="eyebrow">Investors and press</span>
-            <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 22, color: "var(--ink)", margin: "8px 0 10px" }}>
+            <h3
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700,
+                fontSize: 22,
+                color: "var(--ink)",
+                margin: "8px 0 10px",
+              }}
+            >
               Get in touch.
             </h3>
             <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65, marginBottom: 20 }}>
               Raising a pre-seed round. Strong early traction. Full investor brief available on request.
             </p>
-
             <img
               src={PIONEER_TUK.url}
               alt="mydiio pioneer tuk-tuk with amber flag — founding advertiser programme"
@@ -234,7 +297,6 @@ function ContactPage() {
                 pointerEvents: "none",
               }}
             />
-
             {submitted ? (
               <p
                 style={{
@@ -249,24 +311,101 @@ function ContactPage() {
                 Message sent. We'll be in touch within 24 hours.
               </p>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: "auto" }}>
+              <form
+                onSubmit={handleSubmit}
+                style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: "auto" }}
+              >
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>Your name</span>
-                  <input name="name" aria-label="Your name" required maxLength={200} placeholder="Full name" style={inputStyle} className="contact-input" />
+                  <span
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 11,
+                      color: "var(--ink-mute)",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    Your name
+                  </span>
+                  <input
+                    name="name"
+                    aria-label="Your name"
+                    required
+                    maxLength={200}
+                    placeholder="Full name"
+                    style={inputStyle}
+                    className="contact-input"
+                  />
                 </label>
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>Your email</span>
-                  <input name="email" aria-label="Your email" type="email" required maxLength={255} placeholder="hello@company.com" style={inputStyle} className="contact-input" />
+                  <span
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 11,
+                      color: "var(--ink-mute)",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    Your email
+                  </span>
+                  <input
+                    name="email"
+                    aria-label="Your email"
+                    type="email"
+                    required
+                    maxLength={255}
+                    placeholder="hello@company.com"
+                    style={inputStyle}
+                    className="contact-input"
+                  />
                 </label>
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>WhatsApp / Phone</span>
-                  <input name="phone" aria-label="WhatsApp or phone number" type="tel" required maxLength={50} placeholder="+94 77 000 0000" style={inputStyle} className="contact-input" />
+                  <span
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 11,
+                      color: "var(--ink-mute)",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    WhatsApp / Phone
+                  </span>
+                  <input
+                    name="phone"
+                    aria-label="WhatsApp or phone number"
+                    type="tel"
+                    required
+                    maxLength={50}
+                    placeholder="+94 77 000 0000"
+                    style={inputStyle}
+                    className="contact-input"
+                  />
                 </label>
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: 1 }}>Your message</span>
-                  <textarea name="message" aria-label="Your message" required maxLength={4000} rows={3} placeholder="Tell us what you're working on." style={{ ...inputStyle, resize: "vertical" }} className="contact-input" />
+                  <span
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 11,
+                      color: "var(--ink-mute)",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    Your message
+                  </span>
+                  <textarea
+                    name="message"
+                    aria-label="Your message"
+                    required
+                    maxLength={4000}
+                    rows={3}
+                    placeholder="Tell us what you're working on."
+                    style={{ ...inputStyle, resize: "vertical" }}
+                    className="contact-input"
+                  />
                 </label>
-
                 <button
                   type="submit"
                   disabled={submitting}
@@ -289,7 +428,14 @@ function ContactPage() {
                   {submitting ? "Sending…" : "Send message →"}
                 </button>
                 {error && (
-                  <p style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: "var(--accent-deep)", textAlign: "center" }}>
+                  <p
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 12,
+                      color: "var(--accent-deep)",
+                      textAlign: "center",
+                    }}
+                  >
                     {error}
                   </p>
                 )}
@@ -299,7 +445,6 @@ function ContactPage() {
         </div>
       </section>
 
-      {/* Section 3 — Response strip */}
       <div
         className="reveal-up"
         style={{
@@ -333,7 +478,6 @@ function ContactPage() {
         </div>
       </div>
 
-      {/* Section 4 — Footer note */}
       <p
         style={{
           textAlign: "center",
