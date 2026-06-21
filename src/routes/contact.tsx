@@ -22,6 +22,8 @@ export const Route = createFileRoute("/contact")({
   }),
 });
 
+const EDGE = "https://rmqexobhpasitrexvaig.supabase.co/functions/v1";
+
 const inputStyle: React.CSSProperties = {
   width: "100%",
   background: "var(--bg)",
@@ -36,9 +38,14 @@ const inputStyle: React.CSSProperties = {
 };
 
 function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [investorSubmitted, setInvestorSubmitted] = useState(false);
+  const [investorSubmitting, setInvestorSubmitting] = useState(false);
+  const [investorError, setInvestorError] = useState<string | null>(null);
+
+  const [generalSubmitted, setGeneralSubmitted] = useState(false);
+  const [generalSubmitting, setGeneralSubmitting] = useState(false);
+  const [generalError, setGeneralError] = useState<string | null>(null);
+
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -50,9 +57,44 @@ function ContactPage() {
     setIsOpen(hour >= 8 && hour < 20);
   }, []);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleInvestorSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setError(null);
+    setInvestorError(null);
+    const fd = new FormData(e.currentTarget);
+    const name = String(fd.get("name") || "")
+      .trim()
+      .slice(0, 200);
+    const email = String(fd.get("email") || "")
+      .trim()
+      .slice(0, 255);
+    const whatsapp = String(fd.get("whatsapp") || "")
+      .trim()
+      .slice(0, 50);
+    const fund_firm = String(fd.get("fund_firm") || "")
+      .trim()
+      .slice(0, 200);
+    const message = String(fd.get("message") || "")
+      .trim()
+      .slice(0, 4000);
+    if (!name || !email || !message) return;
+    setInvestorSubmitting(true);
+    try {
+      const res = await fetch(`${EDGE}/submit-investor-enquiry`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, whatsapp, fund_firm, message }),
+      });
+      if (!res.ok) throw new Error("failed");
+      setInvestorSubmitted(true);
+    } catch {
+      setInvestorError("Something went wrong — please try again.");
+    }
+    setInvestorSubmitting(false);
+  }
+
+  async function handleGeneralSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setGeneralError(null);
     const fd = new FormData(e.currentTarget);
     const name = String(fd.get("name") || "")
       .trim()
@@ -66,27 +108,20 @@ function ContactPage() {
     const message = String(fd.get("message") || "")
       .trim()
       .slice(0, 4000);
-    if (!name || !email || !phone || !message) return;
-    setSubmitting(true);
+    if (!name || !email || !message) return;
+    setGeneralSubmitting(true);
     try {
-      const res = await fetch("https://rmqexobhpasitrexvaig.supabase.co/functions/v1/submit-enquiry", {
+      const res = await fetch(`${EDGE}/submit-general-enquiry`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sender_name: name,
-          sender_contact: email + (phone ? " / " + phone : ""),
-          subject: message.slice(0, 80),
-          message,
-          source: "website",
-          sender_type: "prospect",
-        }),
+        body: JSON.stringify({ name, email, phone, message }),
       });
       if (!res.ok) throw new Error("failed");
-      setSubmitted(true);
+      setGeneralSubmitted(true);
     } catch {
-      setError("Something went wrong — please try again.");
+      setGeneralError("Something went wrong — please try again.");
     }
-    setSubmitting(false);
+    setGeneralSubmitting(false);
   }
 
   return (
@@ -151,6 +186,7 @@ function ContactPage() {
 
       <section style={{ padding: "0 var(--section-px) var(--section-py)" }}>
         <div className="contact-grid">
+          {/* Card 1 — Advertisers */}
           <div
             className="mydiio-card contact-card contact-card-amber reveal-up delay-1"
             style={{ padding: 24, display: "flex", flexDirection: "column" }}
@@ -207,6 +243,7 @@ function ContactPage() {
             </Link>
           </div>
 
+          {/* Card 2 — Drivers */}
           <div
             className="mydiio-card contact-card contact-card-green reveal-up delay-2"
             style={{ padding: 24, display: "flex", flexDirection: "column" }}
@@ -264,6 +301,7 @@ function ContactPage() {
             </Link>
           </div>
 
+          {/* Card 3 — Investors */}
           <div
             className="mydiio-card reveal-up delay-3"
             style={{ padding: 24, display: "flex", flexDirection: "column" }}
@@ -285,19 +323,14 @@ function ContactPage() {
             </p>
             <img
               src={PIONEER_TUK.url}
-              alt="mydiio pioneer tuk-tuk with amber flag — founding advertiser programme"
+              alt="mydiio pioneer tuk-tuk with amber flag"
               loading="lazy"
               width={400}
               height={300}
               className="contact-pioneer-tuk"
-              style={{
-                display: "block",
-                margin: "0 auto 16px",
-                mixBlendMode: "multiply",
-                pointerEvents: "none",
-              }}
+              style={{ display: "block", margin: "0 auto 16px", mixBlendMode: "multiply", pointerEvents: "none" }}
             />
-            {submitted ? (
+            {investorSubmitted ? (
               <p
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
@@ -312,7 +345,7 @@ function ContactPage() {
               </p>
             ) : (
               <form
-                onSubmit={handleSubmit}
+                onSubmit={handleInvestorSubmit}
                 style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: "auto" }}
               >
                 <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -329,7 +362,6 @@ function ContactPage() {
                   </span>
                   <input
                     name="name"
-                    aria-label="Your name"
                     required
                     maxLength={200}
                     placeholder="Full name"
@@ -347,11 +379,191 @@ function ContactPage() {
                       letterSpacing: 1,
                     }}
                   >
-                    Your email
+                    Email
                   </span>
                   <input
                     name="email"
-                    aria-label="Your email"
+                    type="email"
+                    required
+                    maxLength={255}
+                    placeholder="hello@fund.com"
+                    style={inputStyle}
+                    className="contact-input"
+                  />
+                </label>
+                <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  <span
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 11,
+                      color: "var(--ink-mute)",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    Fund / Firm
+                  </span>
+                  <input
+                    name="fund_firm"
+                    maxLength={200}
+                    placeholder="Optional"
+                    style={inputStyle}
+                    className="contact-input"
+                  />
+                </label>
+                <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  <span
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 11,
+                      color: "var(--ink-mute)",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    WhatsApp
+                  </span>
+                  <input
+                    name="whatsapp"
+                    type="tel"
+                    maxLength={50}
+                    placeholder="+94 77 000 0000"
+                    style={inputStyle}
+                    className="contact-input"
+                  />
+                </label>
+                <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  <span
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 11,
+                      color: "var(--ink-mute)",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    Message
+                  </span>
+                  <textarea
+                    name="message"
+                    required
+                    maxLength={4000}
+                    rows={3}
+                    placeholder="Tell us what you're working on."
+                    style={{ ...inputStyle, resize: "vertical" }}
+                    className="contact-input"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  disabled={investorSubmitting}
+                  className="contact-submit"
+                  style={{
+                    background: "transparent",
+                    border: "var(--card-border)",
+                    borderRadius: 12,
+                    boxShadow: "var(--shadow-card)",
+                    color: "var(--ink)",
+                    padding: "12px 16px",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: 14,
+                    cursor: investorSubmitting ? "wait" : "pointer",
+                    opacity: investorSubmitting ? 0.7 : 1,
+                    transition: "all 0.15s",
+                  }}
+                >
+                  {investorSubmitting ? "Sending…" : "Send message →"}
+                </button>
+                {investorError && (
+                  <p
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 12,
+                      color: "var(--accent-deep)",
+                      textAlign: "center",
+                    }}
+                  >
+                    {investorError}
+                  </p>
+                )}
+              </form>
+            )}
+          </div>
+
+          {/* Card 4 — General */}
+          <div
+            className="mydiio-card reveal-up delay-4"
+            style={{ padding: 24, display: "flex", flexDirection: "column" }}
+          >
+            <span className="eyebrow">General enquiries</span>
+            <h3
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700,
+                fontSize: 22,
+                color: "var(--ink)",
+                margin: "8px 0 10px",
+              }}
+            >
+              Everything else.
+            </h3>
+            <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65, marginBottom: 20 }}>
+              Partnerships, press, community, or just a question — drop us a message and we'll get back to you.
+            </p>
+            {generalSubmitted ? (
+              <p
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: 15,
+                  color: "var(--ink)",
+                  textAlign: "center",
+                  margin: "auto 0",
+                  padding: "24px 0",
+                }}
+              >
+                Message sent. We'll be in touch within 24 hours.
+              </p>
+            ) : (
+              <form
+                onSubmit={handleGeneralSubmit}
+                style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: "auto" }}
+              >
+                <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  <span
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 11,
+                      color: "var(--ink-mute)",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    Your name
+                  </span>
+                  <input
+                    name="name"
+                    required
+                    maxLength={200}
+                    placeholder="Full name"
+                    style={inputStyle}
+                    className="contact-input"
+                  />
+                </label>
+                <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  <span
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 11,
+                      color: "var(--ink-mute)",
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    Email
+                  </span>
+                  <input
+                    name="email"
                     type="email"
                     required
                     maxLength={255}
@@ -370,13 +582,11 @@ function ContactPage() {
                       letterSpacing: 1,
                     }}
                   >
-                    WhatsApp / Phone
+                    Phone
                   </span>
                   <input
                     name="phone"
-                    aria-label="WhatsApp or phone number"
                     type="tel"
-                    required
                     maxLength={50}
                     placeholder="+94 77 000 0000"
                     style={inputStyle}
@@ -393,22 +603,21 @@ function ContactPage() {
                       letterSpacing: 1,
                     }}
                   >
-                    Your message
+                    Message
                   </span>
                   <textarea
                     name="message"
-                    aria-label="Your message"
                     required
                     maxLength={4000}
                     rows={3}
-                    placeholder="Tell us what you're working on."
+                    placeholder="What can we help with?"
                     style={{ ...inputStyle, resize: "vertical" }}
                     className="contact-input"
                   />
                 </label>
                 <button
                   type="submit"
-                  disabled={submitting}
+                  disabled={generalSubmitting}
                   className="contact-submit"
                   style={{
                     background: "transparent",
@@ -420,14 +629,14 @@ function ContactPage() {
                     fontFamily: "'Space Grotesk', sans-serif",
                     fontWeight: 700,
                     fontSize: 14,
-                    cursor: submitting ? "wait" : "pointer",
-                    opacity: submitting ? 0.7 : 1,
+                    cursor: generalSubmitting ? "wait" : "pointer",
+                    opacity: generalSubmitting ? 0.7 : 1,
                     transition: "all 0.15s",
                   }}
                 >
-                  {submitting ? "Sending…" : "Send message →"}
+                  {generalSubmitting ? "Sending…" : "Send message →"}
                 </button>
-                {error && (
+                {generalError && (
                   <p
                     style={{
                       fontFamily: "'Space Mono', monospace",
@@ -436,7 +645,7 @@ function ContactPage() {
                       textAlign: "center",
                     }}
                   >
-                    {error}
+                    {generalError}
                   </p>
                 )}
               </form>
@@ -502,7 +711,7 @@ function ContactPage() {
         }
         .contact-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
           gap: 16px;
           margin-top: 40px;
         }
@@ -520,10 +729,7 @@ function ContactPage() {
           box-shadow: 2px 2px 0 var(--accent);
           transform: translate(-1px,-1px);
         }
-        .contact-submit:hover {
-          background: var(--ink);
-          color: var(--on-dark);
-        }
+        .contact-submit:hover { background: var(--ink); color: var(--on-dark); }
         .response-strip {
           display: flex;
           align-items: center;
@@ -539,9 +745,9 @@ function ContactPage() {
           50% { opacity: 0.5; transform: scale(1.3); }
         }
         .status-dot-pulse { animation: status-pulse 2s ease infinite; }
-        .contact-pioneer-tuk { width: 220px; }
+        .contact-pioneer-tuk { width: 180px; }
         @media (max-width: 900px) {
-          .contact-pioneer-tuk { width: 180px; }
+          .contact-pioneer-tuk { width: 140px; }
         }
       `}</style>
     </SiteShell>
