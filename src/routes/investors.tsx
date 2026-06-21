@@ -218,7 +218,17 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
   ];
   return (
     <section className="relative w-full overflow-hidden page-hero-fixed">
-      <img src="/illustrations/dilini.png" alt="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets" loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center", borderBottom: "2px solid #1A1A18" }} />
+      <div
+        aria-label="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets"
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: "url('/illustrations/dilini.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          borderBottom: "2px solid #1A1A18",
+        }}
+      />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
       <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "clamp(110px, 14vh, 160px) clamp(20px, 6vw, 80px) clamp(70px, 10vh, 110px)" }}>
         <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
