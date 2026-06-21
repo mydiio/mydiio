@@ -156,8 +156,8 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
             <div className="site-nav-lang">
               <LanguageSwitcher />
             </div>
-            <Link
-              to="/login"
+            <a
+              href="https://app.mydiio.com/login"
               className="site-nav-signin"
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
@@ -173,7 +173,7 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
               }}
             >
               Sign in
-            </Link>
+            </a>
             <Link
               to="/advertise"
               className="nav-cta-brutal site-nav-cta"
@@ -282,8 +282,8 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
           <div style={{ display: "flex", justifyContent: "center" }}>
             <LanguageSwitcher />
           </div>
-          <Link
-            to="/login"
+          <a
+            href="https://app.mydiio.com/login"
             onClick={() => setOpen(false)}
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
@@ -301,7 +301,7 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
             }}
           >
             Sign in
-          </Link>
+          </a>
           <Link
             to="/advertise"
             onClick={() => setOpen(false)}
