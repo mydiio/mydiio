@@ -988,7 +988,7 @@ function FAQ() {
   const items = [
     { q: "What kind of ads can I run?", a: "15-second or 30-second video ads, or static image ads. We can produce your first creative for free from your existing branding — just share your logo, colours, and a short brief." },
     { q: "How do I know my ad actually played?", a: "Every Monday you receive a GPS-verified report showing each vehicle that ran your ad, the GPS location at the time of each play, and the total play count. There is no guessing — every impression is logged." },
-    { q: "What is Pioneer category exclusivity?", a: "Pioneer advertisers are the only business in their category allowed to advertise in their active zones. For example, a Pioneer pharmacy in Fort means no other pharmacy can run on the mydiio fleet in Fort while your campaign is active." },
+    { q: "What is Pioneer corridor exclusivity?", a: "Pioneer advertisers get twelve months of exclusivity on a defined corridor for their category. The corridor is agreed at sign-up, so no other business in your category can run ads on that route during your first twelve months. Your per-minute subscription rate is fixed for the life of your subscription." },
     { q: "Can I cancel?", a: "Subscription plans have minimum terms: 3 months for Roamer, 6 months for Voyager and Pioneer. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
     { q: "What does the LKR 5,000 Pioneer deposit cover?", a: "The LKR 5,000 deposit secures your spot on the waiting list. It is fully refundable — credited against your first invoice when you proceed, or returned in full if you decide not to. No risk. No commitment." },
   ];
