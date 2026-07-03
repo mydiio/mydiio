@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/lib/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
@@ -38,6 +39,7 @@ const inputStyle: React.CSSProperties = {
 };
 
 function ContactPage() {
+    usePageMeta({ titleKey: "meta_contact_title", descKey: "meta_contact_desc" });
  const [investorSubmitted, setInvestorSubmitted] = useState(false);
  const [investorSubmitting, setInvestorSubmitting] = useState(false);
  const [investorError, setInvestorError] = useState<string | null>(null);

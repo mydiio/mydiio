@@ -172,7 +172,7 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
  lineHeight: 1,
  }}
  >
- Sign in
+                            {t("nav_signin")}
  </a>
  <Link
  to="/advertise"
@@ -184,46 +184,46 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
  >
  {t("cta_launch")}
  </Link>
- <button
- onClick={() => setOpen((v) => !v)}
- aria-label="Toggle menu"
- aria-expanded={open}
- className="btn-bold site-nav-burger"
- style={{
- display: "inline-flex",
- alignItems: "center",
- gap: 8,
- padding: "10px 16px",
- fontSize: 14,
- fontWeight: 600,
- background: C.paper,
- color: C.ink,
- }}
- >
- <svg
- width="16"
- height="16"
- viewBox="0 0 24 24"
- fill="none"
- stroke={C.ink}
- strokeWidth="2.4"
- strokeLinecap="round"
- >
- {open ? (
- <>
- <path d="M6 6l12 12" />
- <path d="M18 6L6 18" />
- </>
- ) : (
- <>
- <path d="M4 7h16" />
- <path d="M4 12h16" />
- <path d="M4 17h16" />
- </>
- )}
- </svg>
- Menu
- </button>
+                        <button
+                            onClick={() => setOpen((v) => !v)}
+                            aria-label={t("nav_menu")}
+                            aria-expanded={open}
+                            className="btn-bold site-nav-burger"
+                            style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 8,
+                                padding: "10px 16px",
+                                fontSize: 14,
+                                fontWeight: 600,
+                                background: C.paper,
+                                color: C.ink,
+                            }}
+                        >
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke={C.ink}
+                                strokeWidth="2.4"
+                                strokeLinecap="round"
+                            >
+                                {open ? (
+                                    <>
+                                        <path d="M6 6l12 12" />
+                                        <path d="M18 6L6 18" />
+                                    </>
+                                ) : (
+                                    <>
+                                        <path d="M4 7h16" />
+                                        <path d="M4 12h16" />
+                                        <path d="M4 17h16" />
+                                    </>
+                                )}
+                            </svg>
+                            {t("nav_menu")}
+                        </button>
  </div>
  </div>
  </nav>
@@ -241,7 +241,7 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
  <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 14 }}>
  <button
  onClick={() => setOpen(false)}
- aria-label="Close menu"
+ aria-label={t("nav_close")}
  className="btn-bold"
  style={{
  padding: 10,
@@ -300,7 +300,7 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
  boxSizing: "border-box",
  }}
  >
- Sign in
+ {t("nav_signin")}
  </a>
  <Link
  to="/advertise"

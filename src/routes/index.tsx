@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import MydiioLanding from "@/components/MydiioLanding";
+import { usePageMeta } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
  component: Index,
@@ -90,5 +91,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
- return <MydiioLanding />;
+    usePageMeta({ titleKey: "meta_home_title", descKey: "meta_home_desc" });
+    return <MydiioLanding />;
 }

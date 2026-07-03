@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 
@@ -126,6 +127,7 @@ function SubHeading({ children }: { children: React.ReactNode }) {
 }
 
 export default function PrivacyPage() {
+    usePageMeta({ titleKey: "meta_privacy_title", descKey: "meta_privacy_desc" });
  return (
  <SiteShell accent="amber">
  <main
