@@ -327,7 +327,7 @@ export default function PrivacyPage() {
  "To track your route bonus eligibility based on active screen hours",
  "To monitor tablet uptime and identify technical faults",
  "To send you daily WhatsApp updates about your screen status and earnings",
- "To manage the driver compliance programme and apply the graduated consequence system where applicable",
+ "To manage a graduated process for addressing device or screen issues, with escalating steps and human review before any significant action is taken",
  "To track referral bonuses",
  ]}
  />
