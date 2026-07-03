@@ -14,10 +14,10 @@ export const Route = createFileRoute("/investors")({
  component: InvestorsPage,
  head: () => ({
  meta: [
- { title: "Investor Information, mydiio | Sri Lanka's Tuk-Tuk Ad Network" },
- { name: "description", content: "mydiio is building Sri Lanka's first cloud-managed in-vehicle advertising network. 320,000 tuk-tuks in Colombo. Pre-seed stage. Investor conversations welcome." },
+ { title: "Investor Information, mydiio | Sri Lanka's first connected passenger information network" },
+ { name: "description", content: "mydiio is building Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people." },
  { property: "og:title", content: "Investors, mydiio" },
- { property: "og:description", content: "Building Sri Lanka's first tuk-tuk media network. Recurring revenue. Asset-light. Regional potential." },
+ { property: "og:description", content: "Sri Lanka's first connected passenger information network. Recurring revenue. Asset-light. Regional potential." },
  { property: "og:image", content: COLOMBO_FLEET_GOLDEN.url },
  { property: "og:url", content: "https://mydiio.com/investors" },
  { name: "robots", content: "noindex, nofollow" },
@@ -242,7 +242,7 @@ function Hero({ onRequestDeck }: { onRequestDeck: () => void }) {
  lineHeight: 1.4,
  marginTop: 14,
  }}>
- Building Sri Lanka's first tuk-tuk media network.
+ Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.
  </h1>
  <p style={{
  fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 400,

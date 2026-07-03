@@ -23,11 +23,11 @@ export const dict: Dict = {
 
  // --- Hero ---
  hero_kicker: { en: "mydiio", si: "mydiio", ta: "mydiio" },
- hero_title: {
- en: "The digital advertising network inside Sri Lanka's tuk-tuks",
- si: "The digital advertising network inside Sri Lanka's tuk-tuks",
- ta: "The digital advertising network inside Sri Lanka's tuk-tuks",
- },
+  hero_title: {
+    en: "Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.",
+    si: "Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.",
+    ta: "Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.",
+  },
  hero_sub: {
  en: "mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
  si: "mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
@@ -73,11 +73,11 @@ export const dict: Dict = {
  // --- Tuk Interior ---
  tuk_kicker: { en: "Inside the ride", si: "ගමන තුළ", ta: "பயணத்தின் உள்ளே" },
  tuk_title: { en: "The screen they can't look away from.", si: "ඔවුන් ඉවත බලා ගත නොහැකි තිරය.", ta: "அவர்கள் கண்களை அகற்ற முடியாத திரை." },
- tuk_body: {
- en: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first tuk-tuk media network, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
- si: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first tuk-tuk media network, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
- ta: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first tuk-tuk media network, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
- },
+  tuk_body: {
+    en: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
+    si: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
+    ta: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
+  },
  tuk_cta: { en: "See it in a pilot →", si: "පයිලට් එකකින් බලන්න →", ta: "பைலட்டில் பாருங்கள் →" },
 
  // --- Two Audiences ---
@@ -156,7 +156,7 @@ export const dict: Dict = {
  about_kicker: { en: "About mydiio", si: "mydiio ගැන", ta: "mydiio பற்றி" },
  about_title: { en: "Built in Sri Lanka, for Sri Lanka.", si: "ශ්‍රී ලංකාව සඳහා, ශ්‍රී ලංකාවේ ගොඩනගා ඇත.", ta: "இலங்கைக்காக, இலங்கையில் கட்டப்பட்டது." },
  about_p1: { en: "mydiio was created to unlock one of the country's most overlooked assets: commuter attention.", si: "mydiio නිර්මාණය කරන ලද්දේ රටේ බොහෝ දුරට නොසලකා හරින ලද වත්කමක් වන මගී අවධානය විවෘත කිරීමටයි.", ta: "mydiio உருவாக்கப்பட்டது நாட்டின் மிகவும் கவனிக்கப்படாத சொத்துக்களில் ஒன்றை திறக்க: பயணிகளின் கவனம்." },
- about_p2: { en: "We combine local execution with scalable technology, turning Colombo's tuk-tuks into the country's first true mobility media network.", si: "අපි දේශීය ක්‍රියාත්මක කිරීම පරිමාණය කළ හැකි තාක්ෂණය සමඟ ඒකාබද්ධ කරමු, කොළඹේ ත්‍රිරෝද රථ රටේ පළමු සැබෑ ජංගම මාධ්‍ය ජාලය බවට පත් කරමින්.", ta: "உள்ளூர் செயல்படுத்தலை அளவிடக்கூடிய தொழில்நுட்பத்துடன் இணைக்கிறோம், கொழும்பு டுக்-டுக்குகளை நாட்டின் முதல் உண்மையான இயக்க ஊடக வலைப்பின்னலாக மாற்றுகிறோம்." },
+ about_p2: { en: "We combine local execution with scalable technology, turning Colombo's tuk-tuks into Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.", si: "We combine local execution with scalable technology, turning Colombo's tuk-tuks into Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.", ta: "We combine local execution with scalable technology, turning Colombo's tuk-tuks into Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people." },
  about_for_inv: { en: "For Investors →", si: "ආයෝජකයින් සඳහා →", ta: "முதலீட்டாளர்களுக்கு →" },
 
  // --- Contact ---
@@ -176,7 +176,7 @@ export const dict: Dict = {
 
  // --- Investors ---
  inv_kicker: { en: "For investors", si: "ආයෝජකයින් සඳහා", ta: "முதலீட்டாளர்களுக்கு" },
- inv_title: { en: "Building Sri Lanka's First Mobility Media Network.", si: "ශ්‍රී ලංකාවේ පළමු ජංගම මාධ්‍ය ජාලය ගොඩනැගීම.", ta: "இலங்கையின் முதல் இயக்க ஊடக வலைப்பின்னலை உருவாக்குதல்." },
+ inv_title: { en: "Sri Lanka's first connected passenger information network.", si: "Sri Lanka's first connected passenger information network.", ta: "Sri Lanka's first connected passenger information network." },
  inv_sub: { en: "Recurring revenue. Asset-light. Regional potential.", si: "පුනරාවර්තන ආදායම. වත්කම්-සැහැල්ලු. ප්‍රාදේශීය විභවය.", ta: "தொடர் வருவாய். சொத்து-இலகுவான. பிராந்திய ஆற்றல்." },
  inv_request_deck: { en: "Request investor deck", si: "ආයෝජක ඩෙක් ඉල්ලන්න", ta: "முதலீட்டாளர் டெக் கோரிக்கை" },
 };

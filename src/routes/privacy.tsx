@@ -210,7 +210,7 @@ export default function PrivacyPage() {
  <SectionNumber n="01" />
  <SectionHeading>Who We Are</SectionHeading>
  <BodyText>
- Start Smart Technologies Private Limited, trading as mydiio, operates Sri Lanka's first cloud-managed in-vehicle advertising platform. We place Android tablet screens inside Colombo tuk-tuks. Passengers see advertisements from local businesses. Drivers earn passive income. Advertisers receive GPS-verified proof that their ad was displayed.
+ Start Smart Technologies Private Limited, trading as mydiio, operates Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people. We place Android tablet screens inside Colombo tuk-tuks. Passengers see advertisements from local businesses. Drivers earn passive income. Advertisers receive GPS-verified proof that their ad was displayed.
  </BodyText>
  <BodyText>
  Our registered business operates in Colombo, Sri Lanka. Our contact email is{" "}

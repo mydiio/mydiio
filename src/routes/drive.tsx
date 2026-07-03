@@ -692,7 +692,7 @@ function FinalCTA() {
  lineHeight: 1.5, marginTop: 0, letterSpacing: 0,
  maxWidth: 880, marginInline: "auto",
  }}>
- Join Colombo's first in-tuk advertising network.
+ Join Sri Lanka's first connected passenger information network.
  </h2>
  <p className="reveal" style={{
  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,

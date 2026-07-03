@@ -245,7 +245,7 @@ export default function TermsPage() {
  <SectionNumber n="03" />
  <SectionHeading>The mydiio Service</SectionHeading>
  <BodyText>
- mydiio provides a cloud-managed in-vehicle advertising network. Advertisers pay to display video or image advertisements on Android tablet screens installed in partner tuk-tuks operating in Colombo. Advertisers receive GPS-verified impression data. Driver partners receive monthly payments in exchange for hosting and maintaining the tablet screen in their vehicle.
+ mydiio provides Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people. Advertisers pay to display video or image advertisements on Android tablet screens installed in partner tuk-tuks operating in Colombo. Advertisers receive GPS-verified impression data. Driver partners receive monthly payments in exchange for hosting and maintaining the tablet screen in their vehicle.
  </BodyText>
 
  <SubHeading>Current platform status</SubHeading>

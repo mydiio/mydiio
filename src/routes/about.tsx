@@ -211,7 +211,7 @@ export const Route = createFileRoute("/about")({
  head: () => ({
  meta: [
  { title: "About mydiio, Built in Colombo, for Colombo" },
- { name: "description", content: "mydiio is Sri Lanka's first tuk-tuk advertising network. Built on three pillars: radical transparency, driver dignity, and community reinvestment. Every Journey, Connected." },
+ { name: "description", content: "mydiio is Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people. Every Journey, Connected." },
  { property: "og:title", content: "About, mydiio" },
  { property: "og:description", content: "Every Journey, Connected. Built in Colombo, for Colombo." },
  { property: "og:image", content: "/illustrations/tuk-screen.png" },
@@ -453,7 +453,7 @@ function AboutPage() {
  <div className="pillars-row">
  {([
  { n: "01", h: "Radical transparency", b: "Every advertiser sees exactly which vehicles showed their ad, when, and where, GPS-verified and time-stamped. Most advertising in Sri Lanka offers zero proof of delivery. mydiio offers complete verification. No black box. No estimates.", img: { url: AYASHA.url, alt: "Passenger watching tuk-tuk advertising screen inside a Colombo tuk-tuk", fit: "cover" as const } },
- { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer, without exception or delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors.", img: { url: KAMAL.url, alt: "Tuk-tuk driver earning passive income with mydiio advertising platform", fit: "cover" as const } },
+ { n: "02", h: "Driver dignity", b: "Paid on the 5th of every month by bank transfer, without exception or delay. Clear written agreements before any screen is installed. Never penalised for things outside their control. Treated as partners, not vendors.", img: { url: KAMAL.url, alt: "Tuk-tuk driver earning passive income with mydiio, Sri Lanka's first connected passenger information network", fit: "cover" as const } },
  { n: "03", h: "Community reinvestment", b: "A share of mydiio's revenue goes back into the communities our drivers serve. Not as a PR exercise, as a founding commitment built into the business from day one.", img: { url: PIONEER_TUK.url, alt: "mydiio pioneer tuk-tuk with amber flag, founding advertiser programme", fit: "contain" as const, blend: true } },
  ]).map((p, i) => (
  <PillarCard key={p.n} n={p.n} h={p.h} b={p.b} i={i} openId={openPillar} setOpenId={setOpenPillar} img={p.img} />
