@@ -370,7 +370,7 @@ export default function PrivacyPage() {
  fontStyle: "italic",
  }}
  >
- "Our platform records the GPS coordinates of every tablet device in our fleet every five minutes during operating hours. This data is tied to the vehicle and device identifier, not to your personal identity as an individual."
+ "Our platform records the GPS coordinates of tablet devices in our fleet during operating hours. This data is tied to the vehicle and device identifier, not to your personal identity as an individual."
  </p>
  </div>
 
