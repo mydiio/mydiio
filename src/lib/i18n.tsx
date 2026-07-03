@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { t as tPublic, type Language as PublicLang } from "@/lib/public-site-translations";
 
 export type Lang = "en" | "si" | "ta";
 export const LANGS: { code: Lang; label: string; native: string; htmlLang: string }[] = [
