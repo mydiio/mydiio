@@ -181,6 +181,8 @@ export const dict: Dict = {
   cov_colombo_wide: tr({ en: "Colombo-wide reach", si: "කොළඹ පුරා ප්‍රවේශය", ta: "கொழும்பு முழுவதும் அடையாளம்" }),
   cov_tuks_value: tr({ en: "50+ tuks", si: "ත්‍රී රෝද රථ 50කට වඩා", ta: "50+ மூன்று சக்கர வாகனங்கள்" }),
   cov_fleet_expands: tr({ en: "Fleet expands at launch", si: "දියත් කිරීමේදී රථ පිරිස පුළුල් වේ", ta: "துவக்கத்தில் வாகனத் தொகுதி விரிவடையும்" }),
+  cov_map_heading: tr({ en: "10 coverage areas across Greater Colombo", si: "මහ කොළඹ පුරා ප්‍රවේශ ප්‍රදේශ 10ක්", ta: "பெரும் கொழும்பு முழுவதும் 10 அடையாள பகுதிகள்" }),
+  cov_map_explore: tr({ en: "Explore the map to see where the fleet operates, how dense the coverage is, and what kind of audiences your ad will reach.", si: "රථ පිරිස ක්‍රියාත්මක වන ස්ථාන, ප්‍රවේශයේ ඝනත්වය සහ ඔබේ දැන්වීම ළඟා වන ප්‍රේක්ෂක වර්ග බැලීමට සිතියම ගවේෂණය කරන්න.", ta: "தொகுதி இயங்கும் இடங்கள், அடையாள அடர்த்தி, மற்றும் உங்கள் விளம்பரம் சென்றடையும் பார்வையாளர்களின் வகை ஆகியவற்றைக் காண வரைபடத்தை ஆராயுங்கள்." }),
 
 
   // ============================================================
