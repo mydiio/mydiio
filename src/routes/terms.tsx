@@ -432,10 +432,10 @@ export default function TermsPage() {
  The LKR 5,000 advertiser deposit is fully refundable if mydiio cannot fulfil your booking. Monthly campaign fees are non-refundable once a campaign has gone live, except in cases where mydiio fails to deliver the agreed service. In such cases, a credit or partial refund proportional to the shortfall will be applied.
  </BodyText>
 
- <SubHeading>Price changes</SubHeading>
- <BodyText>
- Pioneer tier advertisers hold their contracted rate for the lifetime of their Pioneer designation as long as they renew without a gap exceeding 30 days. Any price change will be communicated at least 30 days before it takes effect for existing customers.
- </BodyText>
+  <SubHeading>Price changes</SubHeading>
+  <BodyText>
+  Pioneer tier advertisers hold a fixed per-minute rate for the life of their active subscription as long as they renew without a gap exceeding 30 days. Any price change for other tiers will be communicated at least 30 days before it takes effect for existing customers.
+  </BodyText>
  </section>
 
  {/* SECTION 09 */}
