@@ -237,8 +237,6 @@ export function AdvertiserApplication() {
 
   const set = <K extends keyof FormState>(k: K, v: FormState[K]) => setState((s) => ({ ...s, [k]: v }));
 
-  const toggleZone = (z: string) => set("zones_selected",
-    state.zones_selected.includes(z) ? state.zones_selected.filter((x) => x !== z) : [...state.zones_selected, z]);
   const toggleGoal = (g: string) => set("campaign_goals",
     state.campaign_goals.includes(g) ? state.campaign_goals.filter((x) => x !== g) : [...state.campaign_goals, g]);
 
@@ -246,8 +244,7 @@ export function AdvertiserApplication() {
     state.business_name.trim().length > 0 &&
     state.contact_name.trim().length > 0 &&
     state.whatsapp_number.trim().length >= 4 &&
-    state.business_type.length > 0 &&
-    state.zones_selected.length >= 1
+    state.business_type.length > 0
   ), [state]);
 
   const step2Valid = useMemo(() => (
