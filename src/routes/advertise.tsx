@@ -218,7 +218,7 @@ function StatPill({ value, label }: { value: string; label: string }) {
 function HowItWorks() {
   const steps = [
     { n: 1, title: "Send us your ad", body: "Share your video or image creative — 15 or 30 seconds long. No production house needed. We'll make your first one for free to get you started.", img: PERERA.url, alt: "Colombo business owner launching a tuk-tuk advertising campaign on tablet" },
-    { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen across the fleet in your chosen zones. Campaigns go live within 72 hours of approval.", img: AYASHA.url, alt: "Passenger watching tuk-tuk advertising screen inside a Colombo tuk-tuk" },
+    { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen across the vehicles in your plan. Campaigns go live within 72 hours of approval.", img: AYASHA.url, alt: "Passenger watching tuk-tuk advertising screen inside a Colombo tuk-tuk" },
     { n: 3, title: "Weekly GPS report", body: "Every Monday you receive a verified report: every vehicle, every GPS location, every play count. Proof your ad ran — every single time.", img: NISHARA.url, alt: "Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign" },
   ];
   return (
