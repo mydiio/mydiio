@@ -603,6 +603,7 @@ export function useI18n() {
       lang: "en" as Lang,
       setLang: () => {},
       t: (k: string) => dict[k as keyof typeof dict]?.en ?? String(k),
+      tt: (namespacedKey: string) => tPublic(namespacedKey, "en"),
       setPageMeta: () => {},
     };
   }
