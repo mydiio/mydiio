@@ -286,18 +286,18 @@ export default function PrivacyPage() {
 
  <SubHeading>Automatically from devices and tablets</SubHeading>
  <BodyText>Our tablet devices in the field generate operational data including:</BodyText>
- <BulletList
- items={[
- "GPS coordinates of the device, transmitted every five minutes during operating hours",
- "Ad play logs recording which advertisement was displayed, at what time, for how long, and at which GPS coordinates",
- "Device online and offline status updated continuously",
- "Remote screenshots of the tablet screen captured automatically every thirty minutes during operating hours",
- "Device health signals including screen status and data connectivity",
- ]}
- />
- <BodyText>
- This operational data is tied to the vehicle and device, not to individual passengers. Screenshots capture the advertisement content being displayed, not the interior of the vehicle or its passengers.
- </BodyText>
+  <BulletList
+    items={[
+      "GPS coordinates of the device during operating hours",
+      "Ad play logs recording which advertisement was displayed, at what time, for how long, and at which GPS coordinates",
+      "Device online and offline status",
+      "Periodic screenshots of the tablet screen during operating hours",
+      "Device health signals including screen status and data connectivity",
+    ]}
+  />
+  <BodyText>
+  This data is collected for verifying ad delivery, device compliance, and driver safety. It is tied to the vehicle and device, not to individual passengers. Screenshots capture the advertisement content being displayed, not the interior of the vehicle or its passengers.
+  </BodyText>
  </section>
 
  {/* SECTION 04 */}
@@ -327,7 +327,7 @@ export default function PrivacyPage() {
  "To track your route bonus eligibility based on active screen hours",
  "To monitor tablet uptime and identify technical faults",
  "To send you daily WhatsApp updates about your screen status and earnings",
- "To manage the driver compliance programme and apply the graduated consequence system where applicable",
+ "To manage a graduated process for addressing device or screen issues, with escalating steps and human review before any significant action is taken",
  "To track referral bonuses",
  ]}
  />
@@ -370,7 +370,7 @@ export default function PrivacyPage() {
  fontStyle: "italic",
  }}
  >
- "Our platform records the GPS coordinates of every tablet device in our fleet every five minutes during operating hours. This data is tied to the vehicle and device identifier, not to your personal identity as an individual."
+ "Our platform records the GPS coordinates of tablet devices in our fleet during operating hours. This data is tied to the vehicle and device identifier, not to your personal identity as an individual."
  </p>
  </div>
 
