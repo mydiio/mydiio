@@ -210,7 +210,7 @@ export function ColomboMap() {
               marginTop: 20, background: C.amber, color: C.ink, padding: "13px 18px",
               borderRadius: 11, fontSize: 14.5, border: `2.5px solid ${C.ink}`, cursor: "pointer",
             }}>
-              Get coverage here →
+              View plans →
             </button>
           </>
         )}
