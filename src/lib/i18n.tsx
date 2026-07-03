@@ -576,9 +576,14 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     [lang],
   );
 
+  const tt = useCallback(
+    (namespacedKey: string) => tPublic(namespacedKey, lang as PublicLang),
+    [lang],
+  );
+
   const value = useMemo(
-    () => ({ lang, setLang, t, setPageMeta }),
-    [lang, setLang, t],
+    () => ({ lang, setLang, t, tt, setPageMeta }),
+    [lang, setLang, t, tt],
   );
 
   return (
