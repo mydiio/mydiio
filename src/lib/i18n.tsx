@@ -157,20 +157,31 @@ export const dict: Dict = {
     si: "ඔවුන් ඉවත බලා ගත නොහැකි තිරය.",
     ta: "அவர்கள் கண்களை அகற்ற முடியாத திரை.",
   }),
-  tuk_body: en(
-    "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
-  ),
+  tuk_body: tr({
+    en: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
+    si: "සෑම mydiio තිරයක්ම මගී ඇස් මට්ටමින් සවි කර ඇත, ගමන පුරාම ඔබේ පණිවිඩය ලබා දෙයි.\n\nත්‍රී රෝද රථ සෑම දිනකම මිලියන ගණනක් ජනතාව ශ්‍රී ලංකාව පුරා ගමන් කරවනවා, නමුත් ඒවා තුළ ඩිජිටල් දැන්වීම් තවමත් සැබවින්ම භාවිතා කර නෑ.\n\nmydiio ත්‍රී රෝද රථ තුළ සවි කරන, දැන්වීම් මගින් පවත්වාගෙන යන, මිනිසුන් වෙනුවෙන් නිර්මාණය කළ, ව්‍යාපාරවලට ගනුදෙනුකරුවන් වෙත ළඟා වීමට උදව් කරන අතරම රියදුරන්ට නව ආදායම් අවස්ථා නිර්මාණය කරන, ශ්‍රී ලංකාවේ පළමු සම්බන්ධිත මගී තොරතුරු ජාලය mydiio ගොඩනගමින් සිටිනවා.\n\nනගරය සමඟ ගමන් කරන දැන්වීම්.",
+    ta: "ஒவ்வொரு mydiio திரையும் பயணி கண் மட்டத்தில் பொருத்தப்பட்டுள்ளது, பயணம் முழுவதும் உங்கள் செய்தியை வழங்குகிறது.\n\nமூன்று சக்கர வாகனங்கள் ஒவ்வொரு நாளும் இலங்கை முழுவதும் மில்லியன் கணக்கான மக்களை நகர்த்துகின்றன, ஆனாலும் அவற்றுக்குள் டிஜிட்டல் விளம்பரம் இன்னும் கிட்டத்தட்ட பயன்படுத்தப்படவில்லை.\n\nமூன்று சக்கர வாகனங்களுக்குள் பொருத்தப்பட்ட, விளம்பரங்களால் இயங்கும், மக்களுக்காக உருவாக்கப்பட்ட, வணிகங்கள் வாடிக்கையாளர்களை சென்றடைய உதவும் அதே வேளையில் ஓட்டுநர்களுக்கு புதிய வருமான வாய்ப்புகளை உருவாக்கும், இலங்கையின் முதல் இணைக்கப்பட்ட பயணிகள் தகவல் வலையமைப்பை mydiio கட்டியெழுப்புகிறது.\n\nநகரத்துடன் நகரும் விளம்பரம்.",
+  }),
   tuk_cta: tr({ en: "See it in a pilot →", si: "පයිලට් එකකින් බලන්න →", ta: "பைலட்டில் பாருங்கள் →" }),
-  tuk_live_campaign: en("LIVE CAMPAIGN"),
+  tuk_live_campaign: tr({ en: "LIVE CAMPAIGN", si: "සජීවී ප්‍රචාරණය", ta: "நேரலை பிரச்சாரம்" }),
 
   // ============================================================
   // HOME · COVERAGE
   // ============================================================
-  cov_kicker: en("Coverage"),
-  cov_title: en("Your campaign, across Colombo."),
-  cov_body: en(
-    "Reach passengers in the neighbourhoods where your customers already are. Explore where the fleet operates every day.",
-  ),
+  cov_kicker: tr({ en: "COVERAGE", si: "ප්‍රවේශය", ta: "அடையாளம்" }),
+  cov_title: tr({ en: "Your campaign, across Colombo.", si: "ඔබේ ප්‍රචාරණය, කොළඹ පුරා.", ta: "உங்கள் பிரச்சாரம், கொழும்பு முழுவதும்." }),
+  cov_body: tr({
+    en: "Reach passengers in the neighbourhoods where your customers already are. Explore where the fleet operates every day.",
+    si: "ඔබේ ගනුදෙනුකරුවන් දැනටමත් සිටින ප්‍රදේශවල මගීන් වෙත ළඟා වන්න. රථ පිරිස සෑම දිනකම ක්‍රියාත්මක වන ස්ථාන ගවේෂණය කරන්න.",
+    ta: "உங்கள் வாடிக்கையாளர்கள் ஏற்கனவே இருக்கும் பகுதிகளில் பயணிகளை சென்றடையுங்கள். தொகுதி ஒவ்வொரு நாளும் இயங்கும் இடங்களை ஆராயுங்கள்.",
+  }),
+  cov_areas_label: tr({ en: "COVERAGE AREAS", si: "ප්‍රවේශ ප්‍රදේශ", ta: "அடையாள பகுதிகள்" }),
+  cov_areas_value: tr({ en: "10 areas", si: "ප්‍රදේශ 10", ta: "10 பகுதிகள்" }),
+  cov_launching_label: tr({ en: "LAUNCHING Q3 2026", si: "3 වන කාර්තුව 2026 දියත් වේ", ta: "Q3 2026 துவக்கம்" }),
+  cov_colombo_wide: tr({ en: "Colombo-wide reach", si: "කොළඹ පුරා ප්‍රවේශය", ta: "கொழும்பு முழுவதும் அடையாளம்" }),
+  cov_tuks_value: tr({ en: "50+ tuks", si: "ත්‍රී රෝද රථ 50කට වඩා", ta: "50+ மூன்று சக்கர வாகனங்கள்" }),
+  cov_fleet_expands: tr({ en: "Fleet expands at launch", si: "දියත් කිරීමේදී රථ පිරිස පුළුල් වේ", ta: "துவக்கத்தில் வாகனத் தொகுதி விரிவடையும்" }),
+
 
   // ============================================================
   // HOME · TWO AUDIENCES
