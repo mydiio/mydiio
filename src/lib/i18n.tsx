@@ -176,7 +176,7 @@ export const dict: Dict = {
 
  // --- Investors ---
  inv_kicker: { en: "For investors", si: "ආයෝජකයින් සඳහා", ta: "முதலீட்டாளர்களுக்கு" },
- inv_title: { en: "Building Sri Lanka's First Mobility Media Network.", si: "ශ්‍රී ලංකාවේ පළමු ජංගම මාධ්‍ය ජාලය ගොඩනැගීම.", ta: "இலங்கையின் முதல் இயக்க ஊடக வலைப்பின்னலை உருவாக்குதல்." },
+ inv_title: { en: "Sri Lanka's first connected passenger information network.", si: "Sri Lanka's first connected passenger information network.", ta: "Sri Lanka's first connected passenger information network." },
  inv_sub: { en: "Recurring revenue. Asset-light. Regional potential.", si: "පුනරාවර්තන ආදායම. වත්කම්-සැහැල්ලු. ප්‍රාදේශීය විභවය.", ta: "தொடர் வருவாய். சொத்து-இலகுவான. பிராந்திய ஆற்றல்." },
  inv_request_deck: { en: "Request investor deck", si: "ආයෝජක ඩෙක් ඉල්ලන්න", ta: "முதலீட்டாளர் டெக் கோரிக்கை" },
 };
