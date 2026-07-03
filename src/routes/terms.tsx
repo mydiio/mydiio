@@ -169,7 +169,7 @@ export default function TermsPage() {
  marginTop: 10,
  }}
  >
- Effective date: 12 June 2026 · Version 1.0 · mydiio (Private) Limited · Colombo, Sri Lanka
+ Effective date: 12 June 2026 · Version 1.0 · Start Smart Technologies Private Limited, trading as mydiio · Colombo, Sri Lanka
  </p>
  </div>
 
@@ -207,7 +207,7 @@ export default function TermsPage() {
  <BodyText>Throughout these terms, the following words have the following meanings:</BodyText>
  <BulletList
  items={[
- '"mydiio", mydiio (Private) Limited, the company that operates the platform.',
+ '"mydiio", Start Smart Technologies Private Limited, trading as mydiio, the company that operates the platform.',
  '"Platform", all five portals: the Eagle Eye admin dashboard, the Advertiser Portal, the Driver Portal, the Tablet Player, and the public website at mydiio.com.',
  '"Advertiser", any business or individual who registers to display advertising on the mydiio network.',
  '"Driver partner", any tuk-tuk driver who joins the mydiio programme and hosts a tablet screen in their vehicle.',
@@ -408,7 +408,7 @@ export default function TermsPage() {
 
  <SubHeading>mydiio's intellectual property</SubHeading>
  <BodyText>
- The mydiio name, logo, brand identity, platform design, software, and all content we produce are owned by mydiio (Private) Limited. You may not use our name, logo, or branding for any commercial purpose without our written permission.
+ The mydiio name, logo, brand identity, platform design, software, and all content we produce are owned by mydiio. You may not use our name, logo, or branding for any commercial purpose without our written permission.
  </BodyText>
 
  <SubHeading>Platform content</SubHeading>
@@ -583,7 +583,7 @@ export default function TermsPage() {
  <p style={{ margin: "8px 0 0" }}>Email: mydiiomedia@gmail.com</p>
  <p style={{ margin: "4px 0 0" }}>Phone / WhatsApp: 070 747 1002</p>
  <p style={{ margin: "4px 0 0" }}>Website: mydiio.com</p>
- <p style={{ margin: "4px 0 0" }}>mydiio (Private) Limited · Colombo, Sri Lanka</p>
+ <p style={{ margin: "4px 0 0" }}>Start Smart Technologies Private Limited, trading as mydiio · Colombo, Sri Lanka</p>
  <p style={{ margin: "4px 0 0" }}>Registered under the Companies Act No. 7 of 2007 of Sri Lanka</p>
  </div>
  </div>
