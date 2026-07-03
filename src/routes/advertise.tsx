@@ -280,7 +280,7 @@ function Pricing() {
     },
     {
       name: "VOYAGER", price: "LKR 38,000", per: "/mo · 6-month min",
-      features: ["Priority rotation", "Up to 15 tuk-tuks across Colombo", "Better loyalty points rate", "Full dashboard access"],
+      features: ["Priority rotation", "Up to 15 tuk-tuks across Colombo", "Full dashboard access"],
       tierSlug: "voyager", ctaLabel: "Apply for Voyager →", btnStyle: "ink",
     },
     {
@@ -428,17 +428,6 @@ function Pricing() {
         ))}
       </div>
 
-      <p className="reveal reveal-up pricing-footnote" style={{
-        fontSize: 13,
-        color: "#7A7A72",
-        textAlign: "center",
-        lineHeight: 1.7,
-        maxWidth: 640,
-        margin: "0 auto",
-        borderTop: "1px solid rgba(26,26,24,0.1)",
-      }}>
-        Every ad minute earns loyalty points — redeemable for free screen time. Founding Pioneer partners earn points at the highest rate, permanently. Points start accumulating from Day 8.
-      </p>
 
     </Section>
   );
@@ -1297,7 +1286,7 @@ function BurstPackages() {
           fontFamily: "'Space Mono', monospace", fontSize: 12, color: "var(--accent-deep)",
           textAlign: "center", marginTop: 10,
         }}>
-          Want consistent visibility? Monthly plans start from LKR 25,000 — with loyalty points, priority rotation, and no expiry date on your campaign.
+          Want consistent visibility? Monthly plans start from LKR 25,000 — with priority rotation and no expiry date on your campaign.
         </p>
       </div>
     </section>
