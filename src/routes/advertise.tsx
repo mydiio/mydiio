@@ -808,7 +808,7 @@ function PioneerProgramme() {
   const items = [
     { n: "01", h: "Corridor exclusivity", b: "For the first twelve months of your subscription, you are the only business in your category advertising on your defined corridor. The route is agreed at sign-up and locked for the exclusivity period." },
     { n: "02", h: "Rate locked for life", b: "Your monthly rate never increases — regardless of how the network grows, how many advertisers join, or how many vehicles are added. The rate you start with is yours permanently." },
-    { n: "03", h: "Priority rotation", b: "Your campaign always runs first in the ad rotation on every vehicle in your active zones. You are never bumped, delayed, or deprioritised by a higher-spending advertiser." },
+    { n: "03", h: "Priority rotation", b: "Your campaign always runs first in the ad rotation on every vehicle in your plan. You are never bumped, delayed, or deprioritised by a higher-spending advertiser." },
     { n: "04", h: "Free creative production", b: "We produce your first campaign creative at no charge — a 15 or 30-second video ad or a static image, built from your existing branding. No agency needed to get started." },
   ];
 
