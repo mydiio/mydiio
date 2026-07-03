@@ -495,6 +495,39 @@ export const dict: Dict = {
   ),
 };
 
+/**
+ * Maps legacy dict keys → namespaced keys in public-site-translations.ts.
+ * When a legacy key has an alias here, t() returns the Phase-1 translation
+ * (real Sinhala/Tamil) instead of the placeholder in `dict`.
+ */
+const LEGACY_ALIAS: Record<string, string> = {
+  // Nav
+  nav_home: "nav.home",
+  nav_advertisers: "nav.advertise",
+  nav_drivers: "nav.drive",
+  nav_investors: "nav.investors",
+  nav_about: "nav.about",
+  nav_contact: "nav.contact",
+  // Hero / home
+  hero_title: "home.hero.subheadline",
+  hero_sub: "home.hero.subheadline",
+  ann_pilot: "home.hero.pioneerBanner",
+  mq_every: "home.marquee",
+  // Value props
+  ad_kicker: "home.valueProps.forAdvertisers.title",
+  ad_body: "home.valueProps.forAdvertisers.body",
+  dr_kicker: "home.valueProps.forDrivers.title",
+  dr_body: "home.valueProps.forDrivers.body",
+  // FAQ
+  faq_q4: "home.faq.expansionCities.question",
+  faq_a4: "home.faq.expansionCities.answer",
+  // Footer / tagline
+  ft_tagline: "global.tagline",
+  ft_description: "footer.description",
+  // Scale / About
+  about_title: "about.hero.headline",
+};
+
 interface Ctx {
   lang: Lang;
   setLang: (l: Lang) => void;
