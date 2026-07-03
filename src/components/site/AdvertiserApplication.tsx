@@ -10,15 +10,11 @@ const BUSINESS_TYPES = [
   "Beauty / Salon", "Hotel / Hospitality", "Event / Entertainment", "Other",
 ] as const;
 
-const ZONES = [
-  "Fort", "Pettah", "Kollupitiya", "Bambalapitiya", "Wellawatte",
-  "Dehiwala", "Borella", "Nugegoda", "Rajagiriya", "Maharagama",
-] as const;
 
 const TIERS = [
-  { id: "PIONEER", price: "LKR 25–35k/mo", desc: "Founding partner — full fleet, exclusive to your category", term: "6-month min" },
+  { id: "PIONEER", price: "LKR 25–35k/mo", desc: "Founding partner — full fleet, exclusive to your category", term: "3-month min" },
   { id: "ROAMER", price: "LKR 25k/mo", desc: "Up to 5 tuk-tuks in your area", term: "3-month min" },
-  { id: "VOYAGER", price: "LKR 38k/mo", desc: "Up to 15 tuk-tuks across Colombo", term: "6-month min" },
+  { id: "VOYAGER", price: "LKR 38k/mo", desc: "Up to 15 tuk-tuks across Colombo", term: "3-month min" },
   { id: "HORIZON", price: "LKR 65k+/mo", desc: "15 to 100+ tuk-tuks, enterprise terms", term: "Negotiated" },
 ] as const;
 
@@ -48,7 +44,6 @@ const submitSchema = z.object({
   contact_name: z.string().trim().min(1).max(200),
   whatsapp_number: z.string().trim().min(4).max(40),
   business_type: z.string().min(1).max(80),
-  zones_selected: z.array(z.string()).min(1).max(20),
   tier_interest: z.string().max(40).nullable(),
   has_creative: z.boolean().nullable(),
   campaign_goals: z.array(z.string()).max(10),
