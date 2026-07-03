@@ -1002,7 +1002,7 @@ function Coverage() {
         fontSize: 16, color: C.inkSoft, textAlign: "center", marginTop: 14,
         maxWidth: 560, marginInline: "auto",
       }}>
-        mydiio tuk-tuks operate across 10 key zones in Greater Colombo. Every advertiser chooses which zones they want to be active in. Pioneer advertisers can access all 10 zones simultaneously.
+        mydiio tuk-tuks operate across Greater Colombo every day. Your campaign travels with the fleet — and your weekly GPS report shows exactly where your ad was seen.
       </p>
 
       <div className="reveal" style={{ marginTop: 40 }}>
