@@ -63,7 +63,8 @@ function densityDots(density: string) {
 }
 
 export function ColomboMap() {
- const [activeId, setActiveId] = useState<number | null>(null);
+  const { tt } = useI18n();
+  const [activeId, setActiveId] = useState<number | null>(null);
  const mapRef = useRef<L.Map | null>(null);
  const wrapRef = useRef<HTMLDivElement | null>(null);
  const active = useMemo(() => AREAS.find((a) => a.id === activeId) || null, [activeId]);
