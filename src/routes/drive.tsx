@@ -599,7 +599,7 @@ function DriverPortal() {
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   const items = [
-    { q: "How long is the commitment?", a: "We ask for a minimum 12-month agreement. Your deposit is returned in full after 6 months of continuous participation. Founding drivers receive a loyalty bonus at Month 3 that puts them ahead of what they paid to join." },
+    { q: "How long is the commitment?", a: "We ask for a minimum 12-month agreement. If you exit before 6 months, your deposit is forfeited. If you exit between 6 and 12 months, 50% of your deposit is returned. The full deposit is returned only after 12 months of continuous participation. Founding drivers receive a loyalty bonus at Month 3 that puts them ahead of what they paid to join." },
     { q: "What if I want to stop early?", a: "If you leave before 6 months, your deposit is forfeited. If you leave between 6 and 12 months, half the deposit is returned. After 12 months, you are free to leave with your full deposit returned." },
     { q: "What powers the screen?", a: "The screen runs off your vehicle's existing power supply. An auto-electrician installs it in about an hour. There are no batteries to charge and nothing extra to do." },
     { q: "What if the screen breaks or is damaged?", a: "Normal wear is covered. We handle repairs and replacements at no cost to you. The screen belongs to mydiio — you are hosting it, not responsible for it." },
