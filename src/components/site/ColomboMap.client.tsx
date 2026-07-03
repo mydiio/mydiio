@@ -4,7 +4,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { C } from "./theme";
 
-type Zone = {
+type Area = {
   id: number;
   name: string;
   center: [number, number];
@@ -13,16 +13,16 @@ type Zone = {
   tuk_density: string;
 };
 
-const ZONES: Zone[] = [
+const AREAS: Area[] = [
   { id: 1, name: "Fort / Pettah", center: [6.9344, 79.8428], radius: 900, description: "The commercial heartbeat of Colombo. Highest footfall, highest ad value.", tuk_density: "High" },
   { id: 2, name: "Kollupitiya / Slave Island", center: [6.9147, 79.849], radius: 800, description: "Hotels, embassies, finance district. Premium audience, high dwell time.", tuk_density: "High" },
   { id: 3, name: "Bambalapitiya", center: [6.896, 79.853], radius: 750, description: "Busy retail corridor. Restaurants, boutiques, daily commuter traffic.", tuk_density: "High" },
   { id: 4, name: "Wellawatte / Pamankada", center: [6.8756, 79.8579], radius: 800, description: "Dense residential and commercial mix. Strong repeat audience.", tuk_density: "Medium" },
   { id: 5, name: "Dehiwala", center: [6.8535, 79.865], radius: 900, description: "Major suburban hub south of the city. Growing retail base.", tuk_density: "Medium" },
   { id: 6, name: "Borella / Cinnamon Gardens", center: [6.9147, 79.865], radius: 850, description: "Upmarket residential. Hospitals, schools, professional services.", tuk_density: "Medium" },
-  { id: 7, name: "Maradana / Dematagoda", center: [6.93, 79.87], radius: 800, description: "Transport hub zone. High tuk-tuk concentration at rail and bus interchanges.", tuk_density: "High" },
+  { id: 7, name: "Maradana / Dematagoda", center: [6.93, 79.87], radius: 800, description: "Transport hub area. High tuk-tuk concentration at rail and bus interchanges.", tuk_density: "High" },
   { id: 8, name: "Rajagiriya / Kotte", center: [6.909, 79.89], radius: 900, description: "Government and business district east of the city. Weekday commuter audience.", tuk_density: "Medium" },
-  { id: 9, name: "Nugegoda", center: [6.871, 79.887], radius: 1000, description: "The pilot launch corridor. Highest mydiio concentration. Dense suburban commercial.", tuk_density: "High — Pilot zone" },
+  { id: 9, name: "Nugegoda", center: [6.871, 79.887], radius: 1000, description: "The pilot launch corridor. Highest mydiio concentration. Dense suburban commercial.", tuk_density: "High — Pilot area" },
   { id: 10, name: "Maharagama", center: [6.8467, 79.927], radius: 1100, description: "Fast-growing outer suburb. Lower competition, high local business density.", tuk_density: "Medium" },
 ];
 
