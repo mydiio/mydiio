@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { t as tPublic, type Language as PublicLang } from "@/lib/public-site-translations";
 
 export type Lang = "en" | "si" | "ta";
 export const LANGS: { code: Lang; label: string; native: string; htmlLang: string }[] = [
@@ -494,10 +495,45 @@ export const dict: Dict = {
   ),
 };
 
+/**
+ * Maps legacy dict keys → namespaced keys in public-site-translations.ts.
+ * When a legacy key has an alias here, t() returns the Phase-1 translation
+ * (real Sinhala/Tamil) instead of the placeholder in `dict`.
+ */
+const LEGACY_ALIAS: Record<string, string> = {
+  // Nav
+  nav_home: "nav.home",
+  nav_advertisers: "nav.advertise",
+  nav_drivers: "nav.drive",
+  nav_investors: "nav.investors",
+  nav_about: "nav.about",
+  nav_contact: "nav.contact",
+  // Hero / home
+  hero_title: "home.hero.subheadline",
+  hero_sub: "home.hero.subheadline",
+  ann_pilot: "home.hero.pioneerBanner",
+  mq_every: "home.marquee",
+  // Value props
+  ad_kicker: "home.valueProps.forAdvertisers.title",
+  ad_body: "home.valueProps.forAdvertisers.body",
+  dr_kicker: "home.valueProps.forDrivers.title",
+  dr_body: "home.valueProps.forDrivers.body",
+  // FAQ
+  faq_q4: "home.faq.expansionCities.question",
+  faq_a4: "home.faq.expansionCities.answer",
+  // Footer / tagline
+  ft_tagline: "global.tagline",
+  ft_description: "footer.description",
+  // Scale / About
+  about_title: "about.hero.headline",
+};
+
 interface Ctx {
   lang: Lang;
   setLang: (l: Lang) => void;
   t: (k: keyof typeof dict) => string;
+  /** Namespaced translation lookup against public-site-translations.ts (e.g. "home.hero.headline"). */
+  tt: (namespacedKey: string) => string;
   /** Register per-page meta so <MetaSync/> can update <head> on lang change. */
   setPageMeta: (meta: PageMeta | null) => void;
 }
@@ -563,6 +599,13 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   const t = useCallback(
     (k: keyof typeof dict) => {
+      // Prefer real translations from public-site-translations.ts when a
+      // matching Phase-1 key exists for this legacy dict key.
+      const alias = LEGACY_ALIAS[k as string];
+      if (alias) {
+        const v = tPublic(alias, lang as PublicLang);
+        if (v && v !== alias) return v;
+      }
       const entry = dict[k];
       if (!entry) {
         if (typeof console !== "undefined") console.warn(`[i18n] missing key: ${String(k)}`);
@@ -573,9 +616,14 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     [lang],
   );
 
+  const tt = useCallback(
+    (namespacedKey: string) => tPublic(namespacedKey, lang as PublicLang),
+    [lang],
+  );
+
   const value = useMemo(
-    () => ({ lang, setLang, t, setPageMeta }),
-    [lang, setLang, t],
+    () => ({ lang, setLang, t, tt, setPageMeta }),
+    [lang, setLang, t, tt],
   );
 
   return (
@@ -595,6 +643,7 @@ export function useI18n() {
       lang: "en" as Lang,
       setLang: () => {},
       t: (k: string) => dict[k as keyof typeof dict]?.en ?? String(k),
+      tt: (namespacedKey: string) => tPublic(namespacedKey, "en"),
       setPageMeta: () => {},
     };
   }
@@ -664,6 +713,11 @@ export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }
   const accentInk = "#3A2C10";
   const inkSoft = "#5B5347";
   const isDark = tone === "dark";
+  // Hide switcher on legal pages (Terms/Privacy remain English-only).
+  if (typeof window !== "undefined") {
+    const p = window.location.pathname;
+    if (p.startsWith("/privacy") || p.startsWith("/terms")) return null;
+  }
   return (
     <div
       role="group"
