@@ -499,6 +499,8 @@ interface Ctx {
   lang: Lang;
   setLang: (l: Lang) => void;
   t: (k: keyof typeof dict) => string;
+  /** Namespaced translation lookup against public-site-translations.ts (e.g. "home.hero.headline"). */
+  tt: (namespacedKey: string) => string;
   /** Register per-page meta so <MetaSync/> can update <head> on lang change. */
   setPageMeta: (meta: PageMeta | null) => void;
 }
