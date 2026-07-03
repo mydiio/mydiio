@@ -284,12 +284,7 @@ export default function TermsPage() {
                 ]}
               />
               <BodyText>
-                Burst packages do not accrue loyalty points and do not carry category exclusivity. They are rotated into the playlist to fill unused screen time and are not guaranteed fixed scheduling.
-              </BodyText>
-
-              <SubHeading>Loyalty points</SubHeading>
-              <BodyText>
-                Subscription tier advertisers (Roamer, Voyager, Pioneer, Horizon) accrue loyalty points from Day 8 of their first campaign at the rate specified in your agreement. Points can be redeemed for additional impression time. Points are non-transferable, cannot be sold, and carry no cash value.
+                Burst packages do not carry category exclusivity. They are rotated into the playlist to fill unused screen time and are not guaranteed fixed scheduling.
               </BodyText>
 
               <SubHeading>Pioneer category exclusivity</SubHeading>
@@ -315,7 +310,7 @@ export default function TermsPage() {
 
               <SubHeading>Free trial</SubHeading>
               <BodyText>
-                Where a free trial is offered, it is available to subscription tier advertisers for the first 7 days of their first campaign. Loyalty points do not accrue during the trial period.
+                Where a free trial is offered, it is available to subscription tier advertisers for the first 7 days of their first campaign.
               </BodyText>
             </section>
 

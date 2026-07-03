@@ -314,7 +314,7 @@ export default function PrivacyPage() {
                   "To provide you with verified impression reports showing where, when, and how often your ad was displayed",
                   "To process payments and manage billing",
                   "To send you weekly performance reports and account communications",
-                  "To manage your loyalty points balance and category exclusivity status",
+                  "To manage your category exclusivity status",
                   "To contact you about your campaigns and any content review decisions",
                 ]}
               />
