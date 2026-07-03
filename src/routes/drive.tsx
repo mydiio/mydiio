@@ -484,7 +484,7 @@ function FoundingGroup() {
           padding: "5px 10px", borderRadius: 999, fontWeight: 700,
           border: `2px solid ${C.ink}`,
         }}>
-          {SPOTS_REMAINING} SPOTS REMAINING
+          {groupARemaining} OF {GROUP_A_TOTAL} SPOTS REMAINING
         </div>
         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
           {items.map((t) => (
