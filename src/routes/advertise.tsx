@@ -75,7 +75,7 @@ export const Route = createFileRoute("/advertise")({
             {
               "@type": "Question",
               name: "Can I cancel?",
-              acceptedAnswer: { "@type": "Answer", text: "Subscription plans have minimum terms: 3 months for Roamer, 6 months for Voyager and Pioneer. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
+              acceptedAnswer: { "@type": "Answer", text: "All subscription plans have a 3-month minimum term. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
             },
             {
               "@type": "Question",
@@ -267,25 +267,25 @@ function Pricing() {
     btnStyle: "primary" | "ink" | "ghost";
   }> = [
     {
-      name: "PIONEER", price: "LKR 25–35k", per: "/mo · 6-month min",
-      features: ["Twelve-month corridor exclusivity — no competitor in your category on your defined route while you are a Pioneer subscriber", "Rate locked for life — your subscription rate never increases", "Priority placement across the full fleet", "Free ad creative production"],
+      name: "PIONEER", price: "LKR 25–35k", per: "/mo · 3-month min",
+      features: ["7-day free trial", "Twelve-month corridor exclusivity — no competitor in your category on your defined route while you are a Pioneer subscriber", "Rate locked for life — your subscription rate never increases", "Priority placement across the full fleet", "Free ad creative production"],
       badge: "Founding — 10 spots only",
       highlight: true,
       tierSlug: "pioneer", ctaLabel: "Apply for Pioneer →", btnStyle: "primary",
     },
     {
       name: "ROAMER", price: "LKR 25,000", per: "/mo · 3-month min",
-      features: ["Standard rotation", "Up to 5 tuk-tuks in your area", "Full dashboard access", "Weekly GPS reports"],
+      features: ["7-day free trial", "Standard rotation", "Up to 5 tuk-tuks in your area", "Full dashboard access", "Weekly GPS reports"],
       tierSlug: "roamer", ctaLabel: "Apply for Roamer →", btnStyle: "ink",
     },
     {
-      name: "VOYAGER", price: "LKR 38,000", per: "/mo · 6-month min",
-      features: ["Priority rotation", "Up to 15 tuk-tuks across Colombo", "Full dashboard access"],
+      name: "VOYAGER", price: "LKR 38,000", per: "/mo · 3-month min",
+      features: ["7-day free trial", "Priority rotation", "Up to 15 tuk-tuks across Colombo", "Full dashboard access"],
       tierSlug: "voyager", ctaLabel: "Apply for Voyager →", btnStyle: "ink",
     },
     {
       name: "HORIZON", price: "LKR 65,000+", per: "/mo · Custom",
-      features: ["15 to 100+ tuk-tuks — your choice", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
+      features: ["7-day free trial", "15 to 100+ tuk-tuks — your choice", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
       tierSlug: "horizon", ctaLabel: "Contact us about Horizon →", btnStyle: "ghost",
     },
   ];
@@ -989,7 +989,7 @@ function FAQ() {
     { q: "What kind of ads can I run?", a: "15-second or 30-second video ads, or static image ads. We can produce your first creative for free from your existing branding — just share your logo, colours, and a short brief." },
     { q: "How do I know my ad actually played?", a: "Every Monday you receive a GPS-verified report showing each vehicle that ran your ad, the GPS location at the time of each play, and the total play count. There is no guessing — every impression is logged." },
     { q: "What is Pioneer corridor exclusivity?", a: "Pioneer advertisers get twelve months of exclusivity on a defined corridor for their category. The corridor is agreed at sign-up, so no other business in your category can run ads on that route during your first twelve months. Your per-minute subscription rate is fixed for the life of your subscription." },
-    { q: "Can I cancel?", a: "Subscription plans have minimum terms: 3 months for Roamer, 6 months for Voyager and Pioneer. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
+    { q: "Can I cancel?", a: "All subscription plans have a 3-month minimum term. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
     { q: "What does the LKR 5,000 Pioneer deposit cover?", a: "The LKR 5,000 deposit secures your spot on the waiting list. It is fully refundable — credited against your first invoice when you proceed, or returned in full if you decide not to. No risk. No commitment." },
   ];
   return (
