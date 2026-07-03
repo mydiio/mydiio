@@ -24,9 +24,10 @@ export const translations = {
     hero: {
       headline: { en: "Every Journey, Connected.", si: "සෑම ගමනක්ම, සම්බන්ධයි.", ta: "ஒவ்வொரு பயணமும், இணைந்தது." },
       subheadline: { en: "Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.", si: "ත්‍රී රෝද රථ තුළ සවි කරන ලද, දැන්වීම් මගින් පවත්වාගෙන යන, මිනිසුන් වෙනුවෙන් නිර්මාණය කළ, ශ්‍රී ලංකාවේ පළමු සම්බන්ධිත මගී තොරතුරු ජාලය මෙයයි.", ta: "மூன்று சக்கர வாகனங்களுக்குள் பொருத்தப்பட்ட, விளம்பரங்களால் இயங்கும், மக்களுக்காக உருவாக்கப்பட்ட, இலங்கையின் முதல் இணைக்கப்பட்ட பயணிகள் தகவல் வலையமைப்பு இதுவே." },
-      ctaAdvertise: { en: "Advertise with us", si: "අප සමඟ දැන්වීම් කරන්න", ta: "எங்களுடன் விளம்பரம் செய்யுங்கள்" },
+      ctaAdvertise: { en: "Launch a campaign →", si: "ප්‍රචාරණයක් ආරම්භ කරන්න →", ta: "பிரச்சாரத்தைத் தொடங்குங்கள் →" },
       ctaDrive: { en: "Drive with us", si: "අප සමඟ ධාවනය කරන්න", ta: "எங்களுடன் ஓட்டுங்கள்" },
-      pioneerBanner: { en: "Pilot launch open in Colombo — Pioneer spots available", si: "කොළඹ ආරම්භක වැඩසටහන දැන් විවෘතයි — පුරෝගාමී ස්ථාන තිබේ", ta: "கொழும்பில் முன்னோடி திட்டம் தொடங்கியுள்ளது — பயனியர் இடங்கள் உள்ளன" },
+      ctaDriver: { en: "Become a driver →", si: "රියදුරෙකු වන්න →", ta: "ஓட்டுநராக மாறுங்கள் →" },
+      pioneerBanner: { en: "Founding fleet · launching now", si: "ආරම්භක රථ පිරිස · දැන් දියත් වෙමින්", ta: "நிறுவனர் வாகனத் தொகுதி · இப்போது துவங்குகிறது" },
       heroImg: {
         alt: { en: "tuk-tuks moving through Colombo at golden hour", si: "රන්වන් හිරු එළියේ කොළඹ හරහා ධාවනය වන ත්‍රී රෝද රථ", ta: "பொன்னிற வெளிச்சத்தில் கொழும்பு வழியாக ஓடும் மூன்று சக்கர வாகனங்கள்" },
       },
@@ -35,6 +36,28 @@ export const translations = {
       },
     },
     marquee: { en: "EVERY JOURNEY, CONNECTED", si: "සෑම ගමනක්ම, සම්බන්ධයි", ta: "ஒவ்வொரு பயணமும், இணைந்தது" },
+    statsStrip: {
+      pilotVehicles: { value: { en: "10", si: "10", ta: "10" }, label: { en: "PILOT VEHICLES", si: "නියමු රථ", ta: "முன்னோடி வாகனங்கள்" } },
+      avgRide: {
+        value: { en: "20", si: "20", ta: "20" },
+        unit: { en: "min", si: "මිනි.", ta: "நிமி." },
+        label: { en: "AVG RIDE", si: "සාමාන්‍ය ගමන", ta: "சராசரி பயணம்" },
+      },
+      campaign: {
+        value: { en: "72", si: "72", ta: "72" },
+        unit: { en: "hrs", si: "පැය", ta: "மணி" },
+        label: { en: "CAMPAIGN", si: "ප්‍රචාරණය", ta: "பிரச்சாரம்" },
+      },
+      pioneerSpots: { value: { en: "10", si: "10", ta: "10" }, label: { en: "PIONEER SPOTS", si: "පුරෝගාමී ස්ථාන", ta: "பயனியர் இடங்கள்" } },
+    },
+    marqueeItems: {
+      transparency: { en: "RADICAL TRANSPARENCY", si: "පූර්ණ විනිවිදභාවය", ta: "முழுமையான வெளிப்படைத்தன்மை" },
+      driverDignity: { en: "DRIVER DIGNITY", si: "රියදුරුගේ ගෞරවය", ta: "ஓட்டுநர் மரியாதை" },
+      paidOnThe5th: { en: "PAID ON THE 5TH", si: "5 වන දින ගෙවීම", ta: "5ஆம் தேதி கட்டணம்" },
+      gpsVerified: { en: "GPS VERIFIED", si: "GPS සනාථයි", ta: "GPS உறுதிசெய்யப்பட்டது" },
+      realImpressions: { en: "REAL IMPRESSIONS", si: "සැබෑ දර්ශන", ta: "உண்மையான காட்சிகள்" },
+      tukCount: { en: "320,000 TUKS", si: "ත්‍රී රෝද රථ 320,000", ta: "320,000 மூன்று சக்கர வாகனங்கள்" },
+    },
     valueProps: {
       forAdvertisers: {
         title: { en: "For advertisers", si: "දැන්වීම්කරුවන් සඳහා", ta: "விளம்பரதாரர்களுக்கு" },
@@ -59,18 +82,70 @@ export const translations = {
       },
     },
     whyItWorks: {
+      heading: { en: "Turn travel time into advertising time", si: "ගමන් කාලය දැන්වීම් කාලයක් බවට පත් කරන්න", ta: "பயண நேரத்தை விளம்பர நேரமாக மாற்றுங்கள்" },
+      card1: {
+        title: { en: "Advertising people actually see.", si: "මිනිසුන් සැබවින්ම දකින දැන්වීම්.", ta: "மக்கள் உண்மையில் பார்க்கும் விளம்பரம்." },
+        body: {
+          en: "Unlike social media ads that are skipped in seconds, mydiio places your message directly in front of engaged passengers during their daily journeys. No scroll button. No skip.",
+          si: "තත්පර කිහිපයකින් මඟ හරින සමාජ මාධ්‍ය දැන්වීම් මෙන් නොව, mydiio ඔබේ පණිවිඩය දෛනික ගමන්වලදී අවධානයෙන් සිටින මගීන් ඉදිරියෙන්ම තබනවා. ස්ක්‍රෝල් බොත්තමක් නෑ. මඟ හැරීමක් නෑ.",
+          ta: "வினாடிகளில் தவிர்க்கப்படும் சமூக ஊடக விளம்பரங்களைப் போலல்லாமல், mydiio உங்கள் செய்தியை தினசரி பயணங்களில் கவனத்துடன் இருக்கும் பயணிகளுக்கு நேரடியாக முன்வைக்கிறது. ஸ்க்ரோல் பொத்தான் இல்லை. தவிர்க்க முடியாது.",
+        },
+      },
+      card2: {
+        title: { en: "Verified campaign reporting.", si: "සනාථ කළ ප්‍රචාරණ වාර්තාකරණය.", ta: "உறுதிசெய்யப்பட்ட பிரச்சார அறிக்கையிடல்." },
+        body: {
+          en: "Every ad play is automatically logged with location and time data. Advertisers receive regular reports showing where their campaign was displayed, how often it was played, and which areas of the city it reached.",
+          si: "සෑම දැන්වීම් ධාවනයක්ම ස්ථානය සහ වේලා දත්ත සමඟ ස්වයංක්‍රීයව වාර්තා වේ. දැන්වීම්කරුවන්ට ඔවුන්ගේ ප්‍රචාරණය පෙන්වූ ස්ථානය, කී වතාවක් ධාවනය වූවාද, සහ නගරයේ කුමන ප්‍රදේශවලට ළඟා වූවාද යන්න පෙන්වන නිතිපතා වාර්තා ලැබේ.",
+          ta: "ஒவ்வொரு விளம்பர ஓட்டமும் இடம் மற்றும் நேர தரவுடன் தானாகவே பதிவு செய்யப்படுகிறது. விளம்பரதாரர்களுக்கு அவர்களின் பிரச்சாரம் எங்கு காட்டப்பட்டது, எத்தனை முறை ஓடியது, நகரத்தின் எந்தப் பகுதிகளை சென்றடைந்தது என்பதைக் காட்டும் வழக்கமான அறிக்கைகள் கிடைக்கும்.",
+        },
+      },
+      card3: {
+        title: { en: "Transparent Performance.", si: "විනිවිද පෙනෙන කාර්යසාධනය.", ta: "வெளிப்படையான செயல்திறன்." },
+        body: {
+          en: "Know exactly where your advertising budget is being spent. Our reporting provides clear visibility of campaign delivery across the mydiio network.",
+          si: "ඔබේ දැන්වීම් අයවැය වියදම් වන්නේ කොහෙද කියලා හරියටම දැනගන්න. අපගේ වාර්තාකරණය mydiio ජාලය පුරා ප්‍රචාරණ බෙදාහැරීම පිළිබඳ පැහැදිලි දෘශ්‍යතාවක් සපයනවා.",
+          ta: "உங்கள் விளம்பர பட்ஜெட் எங்கு செலவிடப்படுகிறது என்பதை சரியாக அறியுங்கள். எங்கள் அறிக்கையிடல் mydiio வலையமைப்பு முழுவதும் பிரச்சார விநியோகத்தின் தெளிவான காட்சிப்படுத்தலை வழங்குகிறது.",
+        },
+      },
+      card4: {
+        title: { en: "Quick campaign launch.", si: "ඉක්මන් ප්‍රචාරණ දියත් කිරීම.", ta: "விரைவான பிரச்சார துவக்கம்." },
+        body: {
+          en: "From approval to launch, most mydiio campaigns are live within 72 hours, helping businesses get in front of customers faster.",
+          si: "අනුමැතියේ සිට දියත් කිරීම දක්වා, බොහෝ mydiio ප්‍රචාරණ පැය 72ක් ඇතුළත සජීවී වේ, ව්‍යාපාරවලට ගනුදෙනුකරුවන් ඉදිරියට වේගවත්ව යාමට උදව් වේ.",
+          ta: "ஒப்புதலிலிருந்து துவக்கம் வரை, பெரும்பாலான mydiio பிரச்சாரங்கள் 72 மணி நேரத்திற்குள் நேரலைக்கு வரும், வணிகங்கள் வேகமாக வாடிக்கையாளர்களை சென்றடைய உதவும்.",
+        },
+      },
       driverImg: {
         alt: { en: "mydiio tuk-tuk driver in green polo shirt driving through Colombo streets", si: "කොළඹ වීදි හරහා ධාවනය කරන කොළ පැහැති පොලෝ කමිසය ඇති mydiio ත්‍රී රෝද රථ රියදුරු", ta: "கொழும்பு தெருக்கள் வழியாக ஓட்டும் பச்சை போலோ சட்டை அணிந்த mydiio மூன்று சக்கர வாகன ஓட்டுநர்" },
       },
     },
     howItWorks: {
+      heading: { en: "Simple. Fast. Verified.", si: "සරලයි. වේගවත්. සනාථයි.", ta: "எளிது. வேகமானது. உறுதிசெய்யப்பட்டது." },
       step1: {
+        title: { en: "Submit your ad.", si: "ඔබේ දැන්වීම එවන්න.", ta: "உங்கள் விளம்பரத்தை சமர்ப்பியுங்கள்." },
+        body: {
+          en: "Send us your 15 or 30-second video or image. Don't have creative ready? Our team can help you get started.",
+          si: "තත්පර 15ක් හෝ 30ක් ඔබේ වීඩියෝව හෝ රූපය අපට එවන්න. නිර්මාණයක් සූදානම් නැද්ද? අපගේ කණ්ඩායමට ඔබට ආරම්භ කිරීමට උදව් කළ හැක.",
+          ta: "15 அல்லது 30 வினாடி உங்கள் வீடியோ அல்லது படத்தை எங்களுக்கு அனுப்புங்கள். உருவாக்கம் தயாராக இல்லையா? எங்கள் குழு உங்களை தொடங்க உதவும்.",
+        },
         imgAlt: { en: "Colombo business owner launching a tuk-tuk advertising campaign on tablet", si: "ටැබ්ලට් එකෙන් ත්‍රී රෝද රථ දැන්වීම් ප්‍රචාරණයක් ආරම්භ කරන කොළඹ ව්‍යාපාරිකයෙක්", ta: "டேப்லெட்டில் மூன்று சக்கர வாகன விளம்பரப் பிரச்சாரத்தைத் தொடங்கும் கொழும்பு வணிக உரிமையாளர்" },
       },
       step2: {
+        title: { en: "Go live in as little as 72 hours.", si: "පැය 72ක් තරම් ඉක්මනින් සජීවී වන්න.", ta: "72 மணி நேரத்திற்குள் நேரலைக்கு வாருங்கள்." },
+        body: {
+          en: "Once approved, your campaign can be live across the mydiio network in as little as 72 hours.",
+          si: "අනුමත වූ පසු, ඔබේ ප්‍රචාරණය පැය 72ක් තරම් ඉක්මනින් mydiio ජාලය පුරා සජීවී විය හැක.",
+          ta: "ஒப்புதல் அளிக்கப்பட்டதும், உங்கள் பிரச்சாரம் 72 மணி நேரத்திற்குள் mydiio வலையமைப்பு முழுவதும் நேரலைக்கு வரலாம்.",
+        },
         imgAlt: { en: "Passenger watching tuk-tuk advertising screen inside a Colombo tuk-tuk", si: "කොළඹ ත්‍රී රෝද රථයක් තුළ දැන්වීම් තිරය නරඹන මගියෙක්", ta: "கொழும்பு மூன்று சக்கர வாகனத்திற்குள் விளம்பரத் திரையைப் பார்க்கும் பயணி" },
       },
       step3: {
+        title: { en: "You get the proof.", si: "ඔබට සාක්ෂිය ලැබෙනවා.", ta: "உங்களுக்கு ஆதாரம் கிடைக்கும்." },
+        body: {
+          en: "Every ad play is logged and verified. Receive regular reports showing campaign activity, locations reached and delivery performance.",
+          si: "සෑම දැන්වීම් ධාවනයක්ම වාර්තා කර සනාථ කෙරේ. ප්‍රචාරණ ක්‍රියාකාරකම්, ළඟා වූ ස්ථාන, සහ බෙදාහැරීමේ කාර්යසාධනය පෙන්වන නිතිපතා වාර්තා ලබාගන්න.",
+          ta: "ஒவ்வொரு விளம்பர ஓட்டமும் பதிவு செய்யப்பட்டு உறுதிசெய்யப்படுகிறது. பிரச்சார செயல்பாடு, சென்றடைந்த இடங்கள் மற்றும் விநியோக செயல்திறனைக் காட்டும் வழக்கமான அறிக்கைகளைப் பெறுங்கள்.",
+        },
         imgAlt: { en: "Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign", si: "mydiio ත්‍රී රෝද රථ දැන්වීම් ප්‍රචාරණයේ ප්‍රතිඵල දකින ශ්‍රී ලාංකික බුටික් හිමිකරු", ta: "mydiio மூன்று சக்கர வாகன விளம்பரப் பிரச்சாரத்தின் முடிவுகளைப் பார்க்கும் இலங்கை பொட்டிக் உரிமையாளர்" },
       },
     },
