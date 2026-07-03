@@ -90,7 +90,7 @@ function ContactPage() {
  if (!res.ok) throw new Error("failed");
  setInvestorSubmitted(true);
  } catch {
- setInvestorError("tt("contact.investorForm.errortt("contact.investorForm.fieldMessage.label")")");
+ setInvestorError(tt('contact.investorForm.errorMessage'));
  }
  setInvestorSubmitting(false);
  }
@@ -122,7 +122,7 @@ function ContactPage() {
  if (!res.ok) throw new Error("failed");
  setGeneralSubmitted(true);
  } catch {
- setGeneralError("tt("contact.investorForm.errortt("contact.investorForm.fieldMessage.label")")");
+ setGeneralError(tt('contact.investorForm.errorMessage'));
  }
  setGeneralSubmitting(false);
  }
@@ -170,7 +170,7 @@ function ContactPage() {
  marginTop: 12,
  }}
  >
- tt("contact.hero.headline")
+ {tt("contact.hero.headline")}
  </h1>
  <p
  className="reveal-up delay-1"
@@ -182,7 +182,7 @@ function ContactPage() {
  lineHeight: 1.55,
  }}
  >
- tt("contact.hero.subheadline")
+ {tt("contact.hero.subheadline")}
  </p>
  </div>
  </section>
@@ -195,7 +195,7 @@ function ContactPage() {
  style={{ padding: 24, display: "flex", flexDirection: "column" }}
  >
  <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>
- tt("contact.advertiserCard.eyebrow")
+ {tt("contact.advertiserCard.eyebrow")}
  </span>
  <h3
  style={{
@@ -206,10 +206,10 @@ function ContactPage() {
  margin: "8px 0 10px",
  }}
  >
- tt("contact.advertiserCard.heading")
+ {tt("contact.advertiserCard.heading")}
  </h3>
  <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65 }}>
- tt("contact.advertiserCard.body")
+ {tt("contact.advertiserCard.body")}
  </p>
  <p
  style={{
@@ -219,7 +219,7 @@ function ContactPage() {
  margin: "14px 0 20px",
  }}
  >
- tt("contact.advertiserCard.meta")
+ {tt("contact.advertiserCard.meta")}
  </p>
  <Link
  to="/advertise/apply"
@@ -242,7 +242,7 @@ function ContactPage() {
  transition: "all 0.15s",
  }}
  >
- tt("contact.advertiserCard.cta")
+ {tt("contact.advertiserCard.cta")}
  </Link>
  </div>
 
@@ -252,7 +252,7 @@ function ContactPage() {
  style={{ padding: 24, display: "flex", flexDirection: "column" }}
  >
  <span className="eyebrow" style={{ color: "var(--green-ink)" }}>
- tt("contact.driverCard.eyebrow")
+ {tt("contact.driverCard.eyebrow")}
  </span>
  <h3
  style={{
@@ -263,7 +263,7 @@ function ContactPage() {
  margin: "8px 0 10px",
  }}
  >
- tt("contact.driverCard.heading")
+ {tt("contact.driverCard.heading")}
  </h3>
  <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65 }}>
  LKR 6,000 base pay every month. Screen installed free. Keep your routes. Payment on the 5th, every month,
@@ -277,7 +277,7 @@ function ContactPage() {
  margin: "14px 0 20px",
  }}
  >
- tt("contact.driverCard.meta")
+ {tt("contact.driverCard.meta")}
  </p>
  <Link
  to="/drivers/apply"
@@ -300,7 +300,7 @@ function ContactPage() {
  transition: "all 0.15s",
  }}
  >
- tt("contact.driverCard.cta")
+ {tt("contact.driverCard.cta")}
  </Link>
  </div>
 
@@ -319,14 +319,14 @@ function ContactPage() {
  margin: "8px 0 10px",
  }}
  >
- tt("contact.investorCard.heading")
+ {tt("contact.investorCard.heading")}
  </h3>
  <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65, marginBottom: 20 }}>
- tt("contact.investorCard.body")
+ {tt("contact.investorCard.body")}
  </p>
  <img
  src={PIONEER_TUK.url}
- alt="tt("contact.investorCard.pioneerTukAlt")"
+ alt={tt('contact.investorCard.pioneerTukAlt')}
  loading="lazy"
  width={400}
  height={300}
@@ -344,7 +344,7 @@ function ContactPage() {
  padding: "24px 0",
  }}
  >
- tt("contact.investorForm.successtt("contact.investorForm.fieldMessage.label")")
+ {tt('contact.investorForm.successMessage')}
  </p>
  ) : (
  <form
@@ -361,7 +361,7 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- tt("contact.form.name")
+ {tt("contact.form.name")}
  </span>
  <input
  name="name"
@@ -382,7 +382,7 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- tt("contact.investorForm.fieldEmail.label")
+ {tt("contact.investorForm.fieldEmail.label")}
  </span>
  <input
  name="email"
@@ -404,7 +404,7 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- tt("contact.investorForm.fieldFundFirm.label")
+ {tt("contact.investorForm.fieldFundFirm.label")}
  </span>
  <input
  name="fund_firm"
@@ -424,7 +424,7 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- tt("contact.investorForm.fieldWhatsapp.label")
+ {tt("contact.investorForm.fieldWhatsapp.label")}
  </span>
  <input
  name="whatsapp"
@@ -445,7 +445,7 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- tt("contact.investorForm.fieldMessage.label")
+ {tt("contact.investorForm.fieldMessage.label")}
  </span>
  <textarea
  name="message"
@@ -476,7 +476,7 @@ function ContactPage() {
  transition: "all 0.15s",
  }}
  >
- {investorSubmitting ? "tt("contact.investorForm.submitSending")" : "tt("contact.investorForm.submitIdle")"}
+ {investorSubmitting ? tt('contact.investorForm.submitSending') : tt('contact.investorForm.submitIdle')}
  </button>
  {investorError && (
  <p
@@ -509,10 +509,10 @@ function ContactPage() {
  margin: "8px 0 10px",
  }}
  >
- tt("contact.generalCard.heading")
+ {tt("contact.generalCard.heading")}
  </h3>
  <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65, marginBottom: 20 }}>
- tt("contact.generalCard.body")
+ {tt("contact.generalCard.body")}
  </p>
  {generalSubmitted ? (
  <p
@@ -525,7 +525,7 @@ function ContactPage() {
  padding: "24px 0",
  }}
  >
- tt("contact.investorForm.successtt("contact.investorForm.fieldMessage.label")")
+ {tt('contact.generalForm.successMessage')}
  </p>
  ) : (
  <form
@@ -542,7 +542,7 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- tt("contact.form.name")
+ {tt("contact.form.name")}
  </span>
  <input
  name="name"
@@ -563,7 +563,7 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- tt("contact.investorForm.fieldEmail.label")
+ {tt("contact.investorForm.fieldEmail.label")}
  </span>
  <input
  name="email"
@@ -585,7 +585,7 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- tt("contact.generalForm.fieldPhone.label")
+ {tt("contact.generalForm.fieldPhone.label")}
  </span>
  <input
  name="phone"
@@ -606,7 +606,7 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- tt("contact.investorForm.fieldMessage.label")
+ {tt("contact.investorForm.fieldMessage.label")}
  </span>
  <textarea
  name="message"
@@ -637,7 +637,7 @@ function ContactPage() {
  transition: "all 0.15s",
  }}
  >
- {generalSubmitting ? "tt("contact.investorForm.submitSending")" : "tt("contact.investorForm.submitIdle")"}
+ {generalSubmitting ? tt('contact.investorForm.submitSending') : tt('contact.investorForm.submitIdle')}
  </button>
  {generalError && (
  <p
@@ -680,12 +680,12 @@ function ContactPage() {
  />
  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.7)" }}>
  {isOpen
- ? "tt("contact.statusStrip.openText")"
- : "tt("contact.statusStrip.closedText")"}
+ ? tt('contact.statusStrip.openText')
+ : tt('contact.statusStrip.closedText')}
  </span>
  </div>
  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.5)" }}>
- tt("contact.statusStrip.humanNote")
+ {tt("contact.statusStrip.humanNote")}
  </span>
  </div>
  </div>
@@ -700,7 +700,7 @@ function ContactPage() {
  margin: 0,
  }}
  >
- tt("contact.legalFootnote")
+ {tt("contact.legalFootnote")}
  </p>
 
  <style>{`
