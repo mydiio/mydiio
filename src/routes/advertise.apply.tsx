@@ -348,14 +348,6 @@ function AdvertiseApplyPage() {
                       <SummaryRow label="CONTACT" value={contactName} />
                       <SummaryRow label="WHATSAPP" value={whatsappNumber} />
                       <SummaryRow label="TIER INTEREST" value={tierInterest} />
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", padding: "8px 0", gap: 12, flexWrap: "wrap" }}>
-                        <span style={{ fontFamily: "Space Mono, monospace", fontSize: 10, color: C.inkMute, textTransform: "uppercase", letterSpacing: "0.08em" }}>ZONES</span>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: 5, justifyContent: "flex-end" }}>
-                          {zonesSelected.map((z) => (
-                            <span key={z} style={{ background: C.accentSoft, border: `1px solid ${C.accent}`, borderRadius: 20, padding: "2px 8px", fontFamily: "Space Mono, monospace", fontSize: 10, color: C.accentInk }}>{z}</span>
-                          ))}
-                        </div>
-                      </div>
                     </div>
 
                     <p style={{ fontFamily: "Space Mono, monospace", fontSize: 11, color: C.inkMute, textAlign: "center", margin: "14px 0" }}>
