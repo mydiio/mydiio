@@ -350,16 +350,15 @@ export default function TermsPage() {
  Base pay of LKR 6,000 per month is unconditional and paid by bank transfer on the 5th of each calendar month without exception. Route bonus and referral bonus payments are made at the same time once eligibility is confirmed. If the 5th falls on a bank holiday, payment will be made on the preceding banking day.
  </BodyText>
 
- <SubHeading>Driver deposit and exit terms</SubHeading>
- <BulletList
- items={[
- "Exit before 6 months of continuous participation, deposit forfeited in full",
- "Exit between 6 and 12 months, 50% of deposit returned within 30 days of exit date",
- "Exit after 12 months of continuous participation, full deposit returned within 30 days",
- "Founding Group A drivers completing Month 3 receive LKR 5,000 loyalty bonus; Group B receive LKR 3,000, net positive position from Day 1",
- "Permanent removal under Stage 4 of the compliance system, deposit forfeited",
- ]}
- />
+  <SubHeading>Driver deposit and exit terms</SubHeading>
+  <BulletList
+    items={[
+      "Exit before 6 months of continuous participation, deposit forfeited in full",
+      "Exit between 6 and 12 months, 50% of deposit returned within 30 days of exit date",
+      "Exit after 12 months of continuous participation, full deposit returned within 30 days",
+      "Permanent removal under Stage 4 of the compliance system, deposit forfeited",
+    ]}
+  />
 
  <SubHeading>Referral programme</SubHeading>
  <BodyText>
