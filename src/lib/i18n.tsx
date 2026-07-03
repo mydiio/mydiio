@@ -566,6 +566,13 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   const t = useCallback(
     (k: keyof typeof dict) => {
+      // Prefer real translations from public-site-translations.ts when a
+      // matching Phase-1 key exists for this legacy dict key.
+      const alias = LEGACY_ALIAS[k as string];
+      if (alias) {
+        const v = tPublic(alias, lang as PublicLang);
+        if (v && v !== alias) return v;
+      }
       const entry = dict[k];
       if (!entry) {
         if (typeof console !== "undefined") console.warn(`[i18n] missing key: ${String(k)}`);
