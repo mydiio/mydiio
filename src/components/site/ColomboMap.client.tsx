@@ -218,13 +218,13 @@ export function ColomboMap() {
 
       {/* Mobile pill row */}
       <div className="coverage-pills">
-        {ZONES.map((z) => {
-          const isActive = z.id === activeId;
+        {AREAS.map((a) => {
+          const isActive = a.id === activeId;
           return (
             <button
-              key={z.id}
+              key={a.id}
               type="button"
-              onClick={() => selectZone(z)}
+              onClick={() => selectArea(a)}
               style={{
                 background: isActive ? C.amber : "#FEF3D7",
                 color: isActive ? C.ink : "#854F0B",
@@ -232,7 +232,7 @@ export function ColomboMap() {
                 border: "none", cursor: "pointer", whiteSpace: "nowrap", fontWeight: 700,
               }}
             >
-              {z.name}
+              {a.name}
             </button>
           );
         })}
