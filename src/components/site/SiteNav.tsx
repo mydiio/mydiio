@@ -8,7 +8,7 @@ function Logo() {
  return (
  <Link
  to="/"
- aria-label="mydiio logo, Sri Lanka tuk-tuk advertising platform"
+ aria-label="mydiio logo, Sri Lanka's first connected passenger information network"
  style={{
  display: "inline-flex",
  alignItems: "center",
@@ -18,7 +18,7 @@ function Logo() {
  >
  <img
  src={logoAsset.url}
- alt="mydiio logo, Sri Lanka tuk-tuk advertising platform"
+ alt="mydiio logo, Sri Lanka's first connected passenger information network"
  height={56}
  style={{ height: 56, width: "auto", display: "block" }}
  />
