@@ -330,7 +330,7 @@ function Marquee() {
   const phrases = [
     "GPS VERIFIED",
     "REAL IMPRESSIONS",
-    "ADS ON THE MOVE",
+    "EVERY JOURNEY, CONNECTED",
     "320,000 TUKS IN COLOMBO",
     "RADICAL TRANSPARENCY",
     "DRIVER DIGNITY",
