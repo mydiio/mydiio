@@ -19,9 +19,9 @@ export const Route = createFileRoute("/advertise")({
  component: AdvertisePage,
  head: () => ({
  meta: [
- { title: "Advertise in Tuk-Tuks, Colombo Digital Advertising | mydiio" },
+ { title: "Advertise in Sri Lanka's first connected passenger information network | mydiio" },
  { name: "description", content: "Put your brand in front of Colombo passengers every day. GPS-verified plays, weekly reports, no black box. Campaigns from LKR 25,000. 10 Pioneer spots available." },
- { property: "og:title", content: "Advertise in Colombo Tuk-Tuks | mydiio" },
+ { property: "og:title", content: "Advertise in Sri Lanka's first connected passenger information network | mydiio" },
  { property: "og:description", content: "Up to 20 minutes per ride. GPS-verified. From LKR 25,000/month with 7 days free." },
  { property: "og:image", content: "/illustrations/nishara.png" },
  { property: "og:url", content: "https://mydiio.com/advertise" },
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/advertise")({
  children: JSON.stringify({
  "@context": "https://schema.org",
  "@type": "Service",
- name: "mydiio Tuk-Tuk Advertising",
+ name: "mydiio Connected Passenger Information Network",
  provider: {
  "@type": "Organization",
  name: "mydiio",
@@ -1043,7 +1043,7 @@ function FinalCTA() {
  lineHeight: 1.05, marginTop: 16, letterSpacing: "-1px",
  maxWidth: 880, marginInline: "auto",
  }}>
- The first ad network built inside Colombo's tuk-tuks.
+ Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.
  </h2>
  <p className="reveal" style={{
  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
