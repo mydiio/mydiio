@@ -1,4 +1,4 @@
-import { usePageMeta } from "@/lib/i18n";
+import { usePageMeta, useI18n } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
@@ -125,15 +125,16 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
 
 /* ---------- Hero ---------- */
 function Hero() {
+  const { tt } = useI18n();
  const stats = [
- { v: "10 to 20", suffix: " mins", label: "avg. ride time" },
- { v: "LKR 25,000", suffix: "", label: "starting per month" },
- { v: "72", suffix: " hrs", label: "campaign live" },
- { v: "7", suffix: " days", label: "free trial" },
+ { v: "10 to 20", suffix: " mins", label: tt("advertise.hero.statLabel.avgRideTime") },
+ { v: "LKR 25,000", suffix: "", label: tt("advertise.hero.statLabel.startingPerMonth") },
+ { v: "72", suffix: " hrs", label: tt("advertise.hero.statLabel.campaignLive") },
+ { v: "7", suffix: " days", label: tt("advertise.hero.statLabel.freeTrial") },
  ];
  return (
  <section className="relative w-full overflow-hidden page-hero-fixed">
- <img src={NISHARA.url} alt="Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign" loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top", borderBottom: "2px solid #1A1A18" }} />
+ <img src={NISHARA.url} alt={tt("advertise.hero.imgAlt")} loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top", borderBottom: "2px solid #1A1A18" }} />
  <div className="absolute inset-0" style={{
  background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
  }} />
@@ -149,14 +150,14 @@ function Hero() {
  lineHeight: 1.4,
  marginTop: 14,
  }}>
- Your customers are already in Colombo's tuk-tuks.
+ {tt("advertise.hero.headline")}
  </h1>
  <p style={{
  fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 400,
  fontSize: 16,
  color: "rgba(253,250,243,0.85)", marginTop: 18, maxWidth: 600, lineHeight: 1.7,
  }}>
- mydiio puts your ad on a screen inside every tuk-tuk ride. Passengers sit facing it for 10 to 20 minutes, with nothing else to look at. Your first 7 days are completely free.
+ {tt("advertise.hero.body")}
  </p>
  <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
  <a href="/advertise/apply"
@@ -166,7 +167,7 @@ function Hero() {
  padding: "16px 22px", borderRadius: 13, fontSize: 17,
  textDecoration: "none", display: "inline-block",
  }}>
- Apply for a campaign spot →
+ {tt("advertise.hero.cta")}
  </a>
  </div>
  <div className="page-hero-stats" style={{ marginTop: 44, paddingTop: 24, borderTop: "1px solid rgba(253,250,243,0.18)", display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 16 }}>
@@ -217,20 +218,21 @@ function StatPill({ value, label }: { value: string; label: string }) {
 
 /* ---------- How it works ---------- */
 function HowItWorks() {
+  const { tt } = useI18n();
  const steps = [
- { n: 1, title: "Send us your ad", body: "Share your video or image creative, 15 or 30 seconds long. No production house needed. We'll make your first one for free to get you started.", img: PERERA.url, alt: "Colombo business owner launching a tuk-tuk advertising campaign on tablet" },
- { n: 2, title: "We go live overnight", body: "Your ad loads to every active screen across the vehicles in your plan. Campaigns go live within 72 hours of approval.", img: AYASHA.url, alt: "Passenger watching tuk-tuk advertising screen inside a Colombo tuk-tuk" },
- { n: 3, title: "Weekly GPS report", body: "Every Monday you receive a verified report: every vehicle, every GPS location, every play count. Proof your ad ran, every single time.", img: NISHARA.url, alt: "Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign" },
+ { n: 1, title: tt("advertise.howItWorks.step1.title"), body: tt("advertise.howItWorks.step1.body"), img: PERERA.url, alt: tt("advertise.howItWorks.step1.imgAlt") },
+ { n: 2, title: tt("advertise.howItWorks.step2.title"), body: tt("advertise.howItWorks.step2.body"), img: AYASHA.url, alt: tt("advertise.howItWorks.step2.imgAlt") },
+ { n: 3, title: tt("advertise.howItWorks.step3.title"), body: tt("advertise.howItWorks.step3.body"), img: NISHARA.url, alt: tt("advertise.howItWorks.step3.imgAlt") },
  ];
  return (
  <div id="how-it-works" style={{ scrollMarginTop: 96 }}>
  <Section bg={C.cream}>
  <div style={{ maxWidth: 880, margin: "0 auto" }}>
  <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
- <span className="eyebrow" style={{ textAlign: "center" }}>How it works</span>
+ <span className="eyebrow" style={{ textAlign: "center" }}>{tt("advertise.howItWorks.eyebrow")}</span>
  </div>
  <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
- Three steps. That's the whole thing.
+ {tt("advertise.howItWorks.sectionHeading")}
  </h2>
  </div>
  <div className="how-flow">
@@ -260,6 +262,7 @@ function HowItWorks() {
 
 /* ---------- Pricing ---------- */
 function Pricing() {
+  const { tt } = useI18n();
  const plans: Array<{
  name: string; price: string; per: string; features: string[];
  badge?: string; highlight?: boolean;
@@ -269,25 +272,25 @@ function Pricing() {
  }> = [
  {
  name: "PIONEER", price: "LKR 25 to 35k", per: "/mo · 3-month min",
- features: ["7-day free trial", "Twelve-month corridor exclusivity, no competitor in your category on your defined route while you are a Pioneer subscriber", "Rate locked for life, your subscription rate never increases", "Priority placement across the full fleet", "Free ad creative production"],
- badge: "Founding, 10 spots only",
+ features: [tt("advertise.pricing.pioneer.feature.freeTrial"), tt("advertise.pricing.pioneer.feature.exclusivity"), tt("advertise.pricing.pioneer.feature.rateLocked"), tt("advertise.pricing.pioneer.feature.priorityPlacement"), tt("advertise.pricing.pioneer.feature.freeCreative")],
+ badge: tt("advertise.pricing.pioneer.badge"),
  highlight: true,
- tierSlug: "pioneer", ctaLabel: "Apply for Pioneer →", btnStyle: "primary",
+ tierSlug: "pioneer", ctaLabel: tt("advertise.pricing.pioneer.cta"), btnStyle: "primary",
  },
  {
  name: "ROAMER", price: "LKR 25,000", per: "/mo · 3-month min",
- features: ["7-day free trial", "Standard rotation", "Up to 5 tuk-tuks in your area", "Full dashboard access", "Weekly GPS reports"],
- tierSlug: "roamer", ctaLabel: "Apply for Roamer →", btnStyle: "ink",
+ features: [tt("advertise.pricing.pioneer.feature.freeTrial"), tt("advertise.pricing.roamer.feature.standardRotation"), tt("advertise.pricing.roamer.feature.vehicles"), tt("advertise.pricing.roamer.feature.dashboard"), tt("advertise.pricing.roamer.feature.gpsReports")],
+ tierSlug: "roamer", ctaLabel: tt("advertise.pricing.roamer.cta"), btnStyle: "ink",
  },
  {
  name: "VOYAGER", price: "LKR 38,000", per: "/mo · 3-month min",
- features: ["7-day free trial", "Priority rotation", "Up to 15 tuk-tuks across Colombo", "Full dashboard access"],
- tierSlug: "voyager", ctaLabel: "Apply for Voyager →", btnStyle: "ink",
+ features: [tt("advertise.pricing.pioneer.feature.freeTrial"), tt("advertise.pricing.voyager.feature.priorityRotation"), tt("advertise.pricing.voyager.feature.vehicles"), tt("advertise.pricing.roamer.feature.dashboard")],
+ tierSlug: "voyager", ctaLabel: tt("advertise.pricing.voyager.cta"), btnStyle: "ink",
  },
  {
  name: "HORIZON", price: "LKR 65,000+", per: "/mo · Custom",
- features: ["7-day free trial", "15 to 100+ tuk-tuks, your choice", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
- tierSlug: "horizon", ctaLabel: "Contact us about Horizon →", btnStyle: "ghost",
+ features: [tt("advertise.pricing.pioneer.feature.freeTrial"), tt("advertise.pricing.horizon.feature.vehicles"), tt("advertise.pricing.horizon.feature.enterpriseSupport"), tt("advertise.pricing.horizon.feature.multiVehicle"), tt("advertise.pricing.horizon.feature.dedicatedAccount")],
+ tierSlug: "horizon", ctaLabel: tt("advertise.pricing.horizon.cta"), btnStyle: "ghost",
  },
  ];
  const [pioneerCount, setPioneerCount] = useState(3);
@@ -310,16 +313,16 @@ function Pricing() {
  return (
  <Section bg={C.cream}>
  <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
- <span className="eyebrow">Pricing</span>
+ <span className="eyebrow">{tt("advertise.pricing.eyebrow")}</span>
  </div>
  <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(30px, 4vw, 44px)", color: C.ink, textAlign: "center", lineHeight: 1.05 }}>
- Simple plans. No hidden costs.
+ {tt("advertise.pricing.sectionHeading")}
  </h2>
  <p className="reveal reveal-up" style={{
  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
  fontSize: 16, color: C.inkSoft, textAlign: "center", marginTop: 14, maxWidth: 560, marginInline: "auto",
  }}>
- All plans include your first 7 days completely free. GPS-verified weekly reports included.
+ {tt("advertise.pricing.subheading")}
  </p>
 
  <div className="pricing-grid">
@@ -388,7 +391,7 @@ function Pricing() {
  fontFamily: "'Space Mono', monospace", fontSize: 11,
  color: "var(--accent-deep)", fontWeight: 700, marginBottom: 6,
  }}>
- {remaining} of 10 Pioneer spots remaining
+ {tt("advertise.pricing.pioneer.spotsRemaining").replace("{remaining}", String(remaining))}
  </div>
  <div style={{
  width: "100%", height: 3, background: "var(--accent-soft)",
@@ -436,6 +439,7 @@ function Pricing() {
 
 /* ---------- Fleet Reach ---------- */
 function FleetReach() {
+  const { tt } = useI18n();
  const ref = useRef<HTMLDivElement>(null);
  useEffect(() => {
  const el = ref.current;
@@ -455,16 +459,16 @@ function FleetReach() {
  }, []);
 
  const tiers = [
- { name: "PIONEER", vehicles: "Full fleet", accent: true },
- { name: "ROAMER", vehicles: "Up to 5 tuk-tuks", accent: false },
- { name: "VOYAGER", vehicles: "Up to 15 tuk-tuks", accent: false },
- { name: "HORIZON", vehicles: "15 to 100+ tuk-tuks", accent: false },
+ { name: "PIONEER", vehicles: tt("advertise.fleetReach.pioneer.vehicles"), accent: true },
+ { name: "ROAMER", vehicles: tt("advertise.fleetReach.roamer.vehicles"), accent: false },
+ { name: "VOYAGER", vehicles: tt("advertise.fleetReach.voyager.vehicles"), accent: false },
+ { name: "HORIZON", vehicles: tt("advertise.fleetReach.horizon.vehicles"), accent: false },
  ];
 
  const bursts = [
- { name: "SPARK", vehicles: "Up to 5 tuk-tuks" },
- { name: "BLAST", vehicles: "Up to 10 tuk-tuks" },
- { name: "SURGE", vehicles: "Full fleet" },
+ { name: "SPARK", vehicles: tt("advertise.fleetReach.spark.vehicles") },
+ { name: "BLAST", vehicles: tt("advertise.fleetReach.blast.vehicles") },
+ { name: "SURGE", vehicles: tt("advertise.fleetReach.surge.vehicles") },
  ];
 
  return (
@@ -472,21 +476,21 @@ function FleetReach() {
  <div style={{ maxWidth: 1240, margin: "0 auto" }}>
  <div className="reveal reveal-up" style={{ textAlign: "center" }}>
  <span className="eyebrow" style={{ textAlign: "center" }}>
- Fleet reach
+ {tt("advertise.fleetReach.eyebrow")}
  </span>
  </div>
  <h2 className="reveal reveal-up font-display" style={{
  fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, letterSpacing: 0,
  color: "var(--ink)", textAlign: "center", marginTop: 0, lineHeight: 1.5,
  }}>
- Your ad moves with Colombo.
+ {tt("advertise.fleetReach.heading")}
  </h2>
  <p className="reveal reveal-up" style={{
  fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(15px, 1.4vw, 17px)",
  fontWeight: 400, color: "var(--ink-soft)", textAlign: "center",
  maxWidth: "50ch", margin: "12px auto 48px", lineHeight: 1.5,
  }}>
- mydiio tuk-tuks drive through every part of Colombo every day. Your weekly report shows exactly which neighbourhoods your ad reached, verified by GPS on every vehicle.
+ {tt("advertise.fleetReach.body")}
  </p>
 
  <div className="reach-tier-wrap">
@@ -495,13 +499,13 @@ function FleetReach() {
  fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
  fontSize: 17, color: "var(--ink)", marginBottom: 4,
  }}>
- Vehicles by plan
+ {tt("advertise.fleetReach.vehiclesByPlan.title")}
  </div>
  <div style={{
  fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
  color: "var(--ink-soft)", marginBottom: 20,
  }}>
- The number of tuk-tuks carrying your ad at the same time depends on your plan.
+ {tt("advertise.fleetReach.vehiclesByPlan.description")}
  </div>
 
  {tiers.map((t, i) => (
@@ -533,7 +537,7 @@ function FleetReach() {
  color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: "0.1em",
  margin: "16px 0 10px",
  }}>
- BURST PACKAGES
+ {tt("advertise.fleetReach.burstPackagesLabel")}
  </div>
 
  {bursts.map((b, i) => (
@@ -564,7 +568,7 @@ function FleetReach() {
  fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
  color: "var(--ink-soft)", marginTop: 14, lineHeight: 1.6, textAlign: "left",
  }}>
- Vehicle count is based on your plan. Your weekly GPS report shows which neighbourhoods your campaign reached across the fleet.
+ {tt("advertise.fleetReach.footnote")}
  </p>
 
  <p style={{
@@ -572,7 +576,7 @@ function FleetReach() {
  color: "var(--accent-deep)", fontWeight: 700,
  textAlign: "center", marginTop: 32,
  }}>
- Coverage expands as more drivers join the fleet.
+ {tt("advertise.fleetReach.expansionNote")}
  </p>
  </div>
 
@@ -602,7 +606,8 @@ function FleetReach() {
 
 /* ---------- Social proof strip ---------- */
 function SocialProofStrip() {
- const chips = ["Green Bakery · Nugegoda", "City Pharma · Colombo 03", "Style House · Fort"];
+  const { tt } = useI18n();
+ const chips = [tt("advertise.socialProof.chip1"), tt("advertise.socialProof.chip2"), tt("advertise.socialProof.chip3")];
  return (
  <section className="reveal reveal-up sp-strip" style={{
  background: "var(--ink)",
@@ -614,7 +619,7 @@ function SocialProofStrip() {
  fontFamily: "'Space Mono', monospace", fontSize: 10,
  color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.12em",
  }}>
- Businesses already interested
+ {tt("advertise.socialProof.label")}
  </div>
  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
  {chips.map((c) => (
@@ -633,6 +638,7 @@ function SocialProofStrip() {
 
 /* ---------- Tuk interior feature ---------- */
 function TukInterior() {
+  const { tt } = useI18n();
  return (
  <section className="section-wrap" style={{ background: C.cream, maxWidth: "none" }}>
  <div className="tuk-interior-grid" style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -640,21 +646,21 @@ function TukInterior() {
  border: "2px solid var(--ink)", borderRadius: 22,
  boxShadow: "var(--shadow-card-lg)", overflow: "hidden",
  }}>
- <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs" loading="lazy" width={1200} height={500} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+ <img src="/illustrations/coverage-fleet.png" alt={tt("advertise.tukInterior.imgAlt")} loading="lazy" width={1200} height={500} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
  </div>
  <div>
- <span className="eyebrow reveal reveal-up">Every ride</span>
+ <span className="eyebrow reveal reveal-up">{tt("advertise.tukInterior.eyebrow")}</span>
  <h3 className="reveal reveal-up font-display" style={{ fontSize: "clamp(24px, 3vw, 36px)", color: C.ink, lineHeight: 1.1, marginTop: 8 }}>
- Your ad plays for the full ride.
+ {tt("advertise.tukInterior.heading")}
  </h3>
  <p className="reveal reveal-up" style={{ color: "var(--ink-soft)", fontSize: 15, marginTop: 14, lineHeight: 1.6 }}>
- Passengers face the screen for 10 to 20 minutes with nothing else to look at. No scroll button. No skip. No competition.
+ {tt("advertise.tukInterior.body")}
  </p>
  <div className="reveal reveal-up" style={{
  fontFamily: "'Space Mono', monospace", fontSize: 13,
  color: "var(--accent-deep)", fontWeight: 700, marginTop: 16,
  }}>
- 14 minutes avg. passenger attention
+ {tt("advertise.tukInterior.attentionStat")}
  </div>
  </div>
  </div>
@@ -664,6 +670,7 @@ function TukInterior() {
 
 /* ---------- Dashboard preview ---------- */
 function DashboardPreview() {
+  const { tt } = useI18n();
  const statSets = [
  { impressions: "6,841", vehicles: "8 / 10", dwell: "14.3m", reach: "Plan reach" },
  { impressions: "7,204", vehicles: "9 / 10", dwell: "15.1m", reach: "Plan reach" },
@@ -683,15 +690,15 @@ function DashboardPreview() {
  }, []);
  const current = statSets[statIndex];
  const cells: Array<[string, string]> = [
- [current.impressions, "Total impressions"],
- [current.vehicles, "Vehicles active"],
- [current.dwell, "Avg. dwell time"],
- [current.reach, "Coverage label"],
+ [current.impressions, tt("advertise.dashboard.cell.totalImpressions")],
+ [current.vehicles, tt("advertise.dashboard.cell.vehiclesActive")],
+ [current.dwell, tt("advertise.dashboard.cell.avgDwellTime")],
+ [current.reach, tt("advertise.dashboard.cell.coverageLabel")],
  ];
  return (
  <Section bg={C.cream}>
  <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
- See exactly what's running.
+ {tt("advertise.dashboard.heading")}
  </h2>
  <div className="reveal reveal-up" style={{ marginTop: 36, maxWidth: 560, marginInline: "auto" }}>
  <div style={{
@@ -707,13 +714,13 @@ function DashboardPreview() {
  fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 2,
  padding: "4px 10px", borderRadius: 999, fontWeight: 700,
  }}>
- PREVIEW, WHAT YOU'LL SEE
+ {tt("advertise.dashboard.previewBadge")}
  </div>
  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.amber, letterSpacing: 2 }}>
- CAMPAIGN DASHBOARD
+ {tt("advertise.dashboard.label")}
  </div>
  <div className="font-display" style={{ fontSize: 16, color: "#fff", marginTop: 14 }}>
- Your Campaign Dashboard
+ {tt("advertise.dashboard.title")}
  </div>
  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 14 }}>
  {cells.map(([value, label]) => (
@@ -740,7 +747,7 @@ function DashboardPreview() {
  fontFamily: "'Space Mono', monospace", fontSize: 10,
  color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em",
  }}>
- LIVE DATA · UPDATES IN REAL TIME
+ {tt("advertise.dashboard.liveStatus")}
  </span>
  </div>
  <div style={{
@@ -750,10 +757,10 @@ function DashboardPreview() {
  borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center",
  }}>
  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.55)", letterSpacing: 1.5 }}>
- NEXT WEEKLY REPORT
+ {tt("advertise.dashboard.nextReport.label")}
  </span>
  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.amber }}>
- MONDAY · 9:00 AM
+ {tt("advertise.dashboard.nextReport.time")}
  </span>
  </div>
  </div>
@@ -761,7 +768,7 @@ function DashboardPreview() {
  <div className="reveal reveal-up dashboard-image-wrap" style={{ maxWidth: 600, marginInline: "auto", width: "100%" }}>
  <img
  src={ADVERTISER_DASHBOARD.url}
- alt="mydiio advertiser dashboard showing campaign analytics for a pharmacy brand"
+ alt={tt("advertise.dashboard.imgAlt")}
  loading="lazy"
  width={1200}
  height={675}
@@ -781,7 +788,7 @@ function DashboardPreview() {
  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
  fontSize: 14, color: C.inkSoft, textAlign: "center", marginTop: 22, maxWidth: 520, marginInline: "auto",
  }}>
- Every advertiser receives full dashboard access when their campaign goes live.
+ {tt("advertise.dashboard.footnote")}
  </p>
  </Section>
  );
@@ -789,6 +796,7 @@ function DashboardPreview() {
 
 /* ---------- Pioneer Programme ---------- */
 function PioneerProgramme() {
+  const { tt } = useI18n();
  const ref = useRef<HTMLDivElement>(null);
  useEffect(() => {
  const el = ref.current; if (!el) return;
@@ -807,10 +815,10 @@ function PioneerProgramme() {
  }, []);
 
  const items = [
- { n: "01", h: "Corridor exclusivity", b: "For the first twelve months of your subscription, you are the only business in your category advertising on your defined corridor. The route is agreed at sign-up and locked for the exclusivity period." },
- { n: "02", h: "Rate locked for life", b: "Your monthly rate never increases, regardless of how the network grows, how many advertisers join, or how many vehicles are added. The rate you start with is yours permanently." },
- { n: "03", h: "Priority rotation", b: "Your campaign always runs first in the ad rotation on every vehicle in your plan. You are never bumped, delayed, or deprioritised by a higher-spending advertiser." },
- { n: "04", h: "Free creative production", b: "We produce your first campaign creative at no charge, a 15 or 30-second video ad or a static image, built from your existing branding. No agency needed to get started." },
+ { n: "01", h: tt("advertise.pioneer.item1.heading"), b: tt("advertise.pioneer.item1.body") },
+ { n: "02", h: tt("advertise.pioneer.item2.heading"), b: tt("advertise.pioneer.item2.body") },
+ { n: "03", h: tt("advertise.pioneer.item3.heading"), b: tt("advertise.pioneer.item3.body") },
+ { n: "04", h: tt("advertise.pioneer.item4.heading"), b: tt("advertise.pioneer.item4.body") },
  ];
 
  return (
@@ -821,21 +829,21 @@ function PioneerProgramme() {
  fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: "0.2em",
  color: "var(--accent)", textTransform: "uppercase", display: "inline-block",
  }}>
- Pioneer programme
+ {tt("advertise.pioneer.eyebrow")}
  </span>
  </div>
  <h2 className="reveal reveal-up font-display" style={{
  fontSize: "clamp(32px, 5vw, 64px)", fontWeight: 700, letterSpacing: "-0.03em",
  color: "var(--on-dark)", textAlign: "center", marginTop: 12, lineHeight: 1.1,
  }}>
- Only 10 founding advertisers. Ever.
+ {tt("advertise.pioneer.heading")}
  </h2>
  <p className="reveal reveal-up" style={{
  fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(15px, 1.4vw, 18px)",
  fontWeight: 400, color: "var(--on-dark)", opacity: 0.65, textAlign: "center",
  maxWidth: "52ch", margin: "16px auto 56px", lineHeight: 1.65,
  }}>
- Pioneer spots are a founding partnership. Your subscription rate is locked in for life. Your corridor exclusivity lasts twelve months from sign-up and covers the defined route we agree with you, not every street in Colombo. When Pioneer is full, it is full. There will only ever be 10.
+ {tt("advertise.pioneer.body")}
  </p>
 
  <div className="reveal reveal-up" style={{ maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
@@ -887,7 +895,7 @@ function PioneerProgramme() {
  fontFamily: "'Space Grotesk', sans-serif", fontSize: 15,
  color: "var(--on-dark)", opacity: 0.55, marginBottom: 20,
  }}>
- 10 spots total. First come, first served. Colombo launch.
+ {tt("advertise.pioneer.spotsNote")}
  </div>
  <a href="/advertise/apply?tier=pioneer" className="pioneer-cta" style={{
  display: "inline-block", maxWidth: 280, width: "100%",
@@ -897,13 +905,13 @@ function PioneerProgramme() {
  fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 15,
  padding: "14px 28px", textDecoration: "none", transition: "all 0.2s ease",
  }}>
- Claim a Pioneer spot →
+ {tt("advertise.pioneer.cta")}
  </a>
  <div style={{
  fontFamily: "'Space Mono', monospace", fontSize: 11,
  color: "var(--on-dark)", opacity: 0.4, marginTop: 12,
  }}>
- No payment now · We'll contact you within 24 hours
+ {tt("advertise.pioneer.ctaNote")}
  </div>
  </div>
  </div>
@@ -931,18 +939,19 @@ function PioneerProgramme() {
 
 /* ---------- FAQ ---------- */
 function FAQ() {
+  const { tt } = useI18n();
  const [open, setOpen] = useState<number | null>(0);
  const items = [
- { q: "What kind of ads can I run?", a: "15-second or 30-second video ads, or static image ads. We can produce your first creative for free from your existing branding, just share your logo, colours, and a short brief." },
- { q: "How do I know my ad actually played?", a: "Every Monday you receive a GPS-verified report showing each vehicle that ran your ad, the GPS location at the time of each play, and the total play count. There is no guessing, every impression is logged." },
- { q: "What is Pioneer corridor exclusivity?", a: "Pioneer advertisers get twelve months of exclusivity on a defined corridor for their category. The corridor is agreed at sign-up, so no other business in your category can run ads on that route during your first twelve months. Your per-minute subscription rate is fixed for the life of your subscription." },
- { q: "Can I cancel?", a: "All subscription plans have a 3-month minimum term. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract, they run until your minutes or validity period are used up." },
- { q: "What does the LKR 5,000 Pioneer deposit cover?", a: "The LKR 5,000 deposit secures your spot on the waiting list. It is fully refundable, credited against your first invoice when you proceed, or returned in full if you decide not to. No risk. No commitment." },
+ { q: tt("advertise.faq.q1.question"), a: tt("advertise.faq.q1.answer") },
+ { q: tt("advertise.faq.q2.question"), a: tt("advertise.faq.q2.answer") },
+ { q: tt("advertise.faq.q3.question"), a: tt("advertise.faq.q3.answer") },
+ { q: tt("advertise.faq.q4.question"), a: tt("advertise.faq.q4.answer") },
+ { q: tt("advertise.faq.q5.question"), a: tt("advertise.faq.q5.answer") },
  ];
  return (
  <Section bg={C.cream}>
  <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
- Common questions
+ {tt("advertise.faq.heading")}
  </h2>
  <div style={{ maxWidth: 720, margin: "32px auto 0" }}>
  {items.map((it, i) => {
@@ -988,22 +997,23 @@ function FAQ() {
 
 /* ---------- Coverage ---------- */
 function Coverage() {
+  const { tt } = useI18n();
  return (
  <Section bg={C.cream}>
  <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
- Colombo coverage
+ {tt("advertise.coverage.eyebrow")}
  </span>
  </div>
  <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
- Where your ad travels.
+ {tt("advertise.coverage.heading")}
  </h2>
  <p className="reveal" style={{
  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
  fontSize: 16, color: C.inkSoft, textAlign: "center", marginTop: 14,
  maxWidth: 560, marginInline: "auto",
  }}>
- mydiio tuk-tuks operate across Greater Colombo every day. Your campaign travels with the fleet, and your weekly GPS report shows exactly where your ad was seen.
+ {tt("advertise.coverage.body")}
  </p>
 
  <div className="reveal" style={{ marginTop: 40 }}>
@@ -1015,11 +1025,12 @@ function Coverage() {
 
 /* ---------- Final CTA ---------- */
 function FinalCTA() {
+  const { tt } = useI18n();
  return (
  <section className="relative w-full overflow-hidden" style={{ minHeight: 520 }}>
  <img
  src={FLEET_SUNSET}
- alt="A line of mydiio tuk-tuks at sunset in Colombo, ready to drive brand campaigns"
+ alt={tt("advertise.finalCta.imgAlt")}
  loading="lazy"
  width={1920}
  height={1080}
@@ -1037,7 +1048,7 @@ function FinalCTA() {
  fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3,
  color: C.amber, textTransform: "uppercase",
  }}>
- Colombo · Pilot launch · 2026
+ {tt("advertise.finalCta.badge")}
  </span>
  <h2 className="reveal font-display" style={{
  fontSize: "clamp(32px, 5.2vw, 56px)", color: "#fff",
@@ -1051,7 +1062,7 @@ function FinalCTA() {
  fontSize: "clamp(15px, 1.8vw, 18px)", color: "rgba(255,255,255,0.78)",
  marginTop: 18, maxWidth: 620, marginInline: "auto", lineHeight: 1.5,
  }}>
- mydiio puts your brand on a screen that passengers face for up to 20 minutes per ride. GPS-verified. Reported every Monday. First 7 days free.
+ {tt("advertise.finalCta.body")}
  </p>
  <div className="reveal" style={{
  marginTop: 36, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center",
@@ -1065,7 +1076,7 @@ function FinalCTA() {
  textDecoration: "none", display: "inline-block",
  }}
  >
- Apply for a campaign spot →
+ {tt("advertise.finalCta.primaryCta")}
  </a>
  <a
  href="#how-it-works"
@@ -1081,7 +1092,7 @@ function FinalCTA() {
  textDecoration: "none", display: "inline-block",
  }}
  >
- See how it works →
+ {tt("advertise.finalCta.secondaryCta")}
  </a>
  </div>
  </div>
@@ -1091,6 +1102,7 @@ function FinalCTA() {
 
 /* ---------- Burst Packages ---------- */
 function BurstPackages() {
+  const { tt } = useI18n();
  const ref = useRef<HTMLDivElement>(null);
  useEffect(() => {
  const el = ref.current; if (!el) return;
@@ -1111,24 +1123,24 @@ function BurstPackages() {
  {
  tier: "SPARK",
  price: "LKR 5,000",
- features: ["500 screen minutes", "Up to 5 vehicles", "Valid for 7 days"],
- bestFor: "A weekend event or a quick test",
+ features: [tt("advertise.burst.spark.feature1"), tt("advertise.burst.spark.feature2"), tt("advertise.burst.spark.feature3")],
+ bestFor: tt("advertise.burst.spark.bestFor"),
  href: "/advertise/apply?tier=burst-spark",
  popular: false,
  },
  {
  tier: "BLAST",
  price: "LKR 18,000",
- features: ["2,000 screen minutes", "Up to 10 vehicles", "Valid for 14 days"],
- bestFor: "A week-long campaign or product launch",
+ features: [tt("advertise.burst.blast.feature1"), tt("advertise.burst.blast.feature2"), tt("advertise.burst.blast.feature3")],
+ bestFor: tt("advertise.burst.blast.bestFor"),
  href: "/advertise/apply?tier=burst-blast",
  popular: true,
  },
  {
  tier: "SURGE",
  price: "LKR 40,000",
- features: ["5,000 screen minutes", "Full fleet", "Valid for 30 days"],
- bestFor: "A major event, full citywide reach",
+ features: [tt("advertise.burst.surge.feature1"), tt("advertise.burst.surge.feature2"), tt("advertise.burst.surge.feature3")],
+ bestFor: tt("advertise.burst.surge.bestFor"),
  href: "/advertise/apply?tier=burst-surge",
  popular: false,
  },
@@ -1139,21 +1151,21 @@ function BurstPackages() {
  <div style={{ maxWidth: 1240, margin: "0 auto" }}>
  <div className="reveal reveal-up" style={{ textAlign: "center" }}>
  <span className="eyebrow" style={{ textAlign: "center" }}>
- Burst packages
+ {tt("advertise.burst.eyebrow")}
  </span>
  </div>
  <h2 className="reveal reveal-up font-display" style={{
  fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, letterSpacing: 0,
  color: "var(--ink)", textAlign: "center", marginTop: 0, lineHeight: 1.5,
  }}>
- Need advertising without a monthly plan?
+ {tt("advertise.burst.heading")}
  </h2>
  <p className="reveal reveal-up" style={{
  fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(15px, 1.4vw, 17px)",
  fontWeight: 400, color: "var(--ink-soft)", textAlign: "center",
  maxWidth: "52ch", margin: "12px auto 48px", lineHeight: 1.5,
  }}>
- Burst packages let you buy a block of screen time with no contract. Perfect for events, product launches, and seasonal campaigns.
+ {tt("advertise.burst.body")}
  </p>
 
  <div className="burst-grid">
@@ -1166,7 +1178,7 @@ function BurstPackages() {
  fontFamily: "'Space Mono', monospace", fontSize: 10, fontWeight: 700,
  textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12,
  }}>
- MOST POPULAR
+ {tt("advertise.burst.popularBadge")}
  </div>
  )}
  <div style={{
@@ -1203,7 +1215,7 @@ function BurstPackages() {
  fontFamily: "'Space Mono', monospace", fontSize: 10,
  color: "var(--ink-mute)", textTransform: "uppercase", letterSpacing: "0.08em",
  }}>
- BEST FOR
+ {tt("advertise.burst.bestForLabel")}
  </div>
  <div style={{
  fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
@@ -1217,7 +1229,7 @@ function BurstPackages() {
  padding: "12px 20px", borderRadius: 12, fontFamily: "'Space Grotesk', sans-serif",
  fontWeight: 600, fontSize: 14,
  }}>
- Get started →
+ {tt("advertise.burst.cardCta")}
  </a>
  </div>
  ))}
@@ -1227,13 +1239,13 @@ function BurstPackages() {
  fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, color: "var(--ink-soft)",
  textAlign: "center", maxWidth: "60ch", margin: "32px auto 0", lineHeight: 1.6,
  }}>
- Burst packages are one-off purchases with no ongoing commitment. Your campaign runs on the number of tuk-tuks shown until your minutes are used or your validity period ends, whichever comes first. Subscribed advertisers always have priority in the rotation.
+ {tt("advertise.burst.footnote")}
  </p>
  <p style={{
  fontFamily: "'Space Mono', monospace", fontSize: 12, color: "var(--accent-deep)",
  textAlign: "center", marginTop: 10,
  }}>
- Want consistent visibility? Monthly plans start from LKR 25,000, with priority rotation and no expiry date on your campaign.
+ {tt("advertise.burst.upsellNote")}
  </p>
  </div>
  </section>
@@ -1242,6 +1254,7 @@ function BurstPackages() {
 
 /* ============== MAIN ============== */
 function AdvertisePage() {
+  const { tt } = useI18n();
     usePageMeta({ titleKey: "meta_advertise_title", descKey: "meta_advertise_desc" });
  return (
  <SiteShell accent="amber">
@@ -1351,10 +1364,10 @@ function AdvertisePage() {
  Apply now
  </span>
  <h2 className="font-display" style={{ fontSize: "clamp(28px, 4.4vw, 48px)", color: C.ink, lineHeight: 1.06, letterSpacing: "-1px", marginTop: 14 }}>
- Reserve your Pioneer spot.
+ {tt("advertise.applySection.heading")}
  </h2>
  <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 14 }}>
- Tell us about your business. We'll confirm your spot within 24 hours.
+ {tt("advertise.applySection.body")}
  </p>
  <div style={{ marginTop: 32 }}>
  <AdvertiserApplication />
