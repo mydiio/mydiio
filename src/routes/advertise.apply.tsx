@@ -266,14 +266,6 @@ function AdvertiseApplyPage() {
                       </select>
                     </Field>
 
-                    <Field label="Which areas matter to you?">
-                      <div className="pill-group">
-                        {ZONES.map((z) => (
-                          <button key={z} type="button" className={`pill ${zonesSelected.includes(z) ? "sel" : ""}`} onClick={() => toggleZone(z)}>{z}</button>
-                        ))}
-                      </div>
-                    </Field>
-
                     <button type="button" className="btn-amber" disabled={!step1Valid} onClick={() => setCurrentStep(2)} style={{ marginTop: 8 }}>
                       Next →
                     </button>
