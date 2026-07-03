@@ -499,7 +499,7 @@ function ContactPage() {
  className="mydiio-card reveal-up delay-4"
  style={{ padding: 24, display: "flex", flexDirection: "column" }}
  >
- <span className="eyebrow">tt("contact.generalCard.eyebrow")</span>
+ <span className="eyebrow">{tt("contact.generalCard.eyebrow")}</span>
  <h3
  style={{
  fontFamily: "'Space Grotesk', sans-serif",
