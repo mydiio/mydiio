@@ -34,7 +34,7 @@ export const dict: Dict = {
     ta: "mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
   },
   metric_vehicles: { en: "Pilot vehicles", si: "පයිලට් වාහන", ta: "பைலட் வாகனங்கள்" },
-  metric_zones: { en: "Avg. ride attention", si: "සාමාන්‍ය ගමන් අවධානය", ta: "சராசரி பயண கவனம்" },
+  
   metric_attention: { en: "Campaign launch", si: "ව්‍යාපාර දියත් කිරීම", ta: "பிரச்சார தொடக்கம்" },
   metric_launch: { en: "Pioneer spots", si: "පුරෝගාමී ස්ථාන", ta: "முன்னோடி இடங்கள்" },
   metric_min: { en: "min", si: "මිනි", ta: "நிமி" },
