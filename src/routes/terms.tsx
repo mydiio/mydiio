@@ -287,10 +287,10 @@ export default function TermsPage() {
  Burst packages do not carry category exclusivity. They are rotated into the playlist to fill unused screen time and are not guaranteed fixed scheduling.
  </BodyText>
 
- <SubHeading>Pioneer category exclusivity</SubHeading>
- <BodyText>
- Pioneer advertisers receive city-wide category exclusivity across the full mydiio Colombo network for the duration of their active contract. mydiio will not accept a new advertiser from the same business category while your Pioneer contract is active and renewing. If your contract lapses for more than 30 days without renewal, the category becomes open for new applications. Exclusivity is city-wide across the Colombo network as a whole.
- </BodyText>
+  <SubHeading>Pioneer category exclusivity</SubHeading>
+  <BodyText>
+  Pioneer advertisers receive twelve-month neighbourhood category exclusivity within a corridor defined at the point of signing. The per-minute rate is fixed for the life of the subscription, but the exclusivity period itself is twelve months from the contract start date, not indefinite, and it is corridor-based, not city-wide. After the twelve-month exclusivity period, mydiio may accept new advertisers from the same category within the same corridor. If your contract lapses for more than 30 days without renewal, the category becomes open for new applications in that corridor.
+  </BodyText>
 
  <SubHeading>Creative submission and review</SubHeading>
  <BodyText>
