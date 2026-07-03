@@ -192,7 +192,7 @@ function Hero() {
  animation: "hero-live-pulse 1.8s ease-in-out infinite",
  }}
  />
- Founding fleet · launching now
+ {t("hero_live_badge")}
  </div>
 
  {/* Illustrated tuk overlay, bleeds below hero edge */}
@@ -247,26 +247,27 @@ function Hero() {
 }
 
 function StatsStrip() {
- const ref = useRef<HTMLElement>(null);
- const [started, setStarted] = useState(false);
- useEffect(() => {
- const el = ref.current; if (!el) return;
- const io = new IntersectionObserver((entries) => {
- entries.forEach((e) => { if (e.isIntersecting) { setStarted(true); io.disconnect(); } });
- }, { threshold: 0.3 });
- io.observe(el);
- return () => io.disconnect();
- }, []);
- const v1 = useCountUp(10, 1200, 0, started);
- const v2 = useCountUp(20, 1200, 0, started);
- const v3 = useCountUp(72, 1200, 0, started);
- const v4 = useCountUp(10, 1200, 0, started);
- const items = [
- { v: v1, suffix: "", label: "Pilot Vehicles" },
- { v: v2, suffix: " min", label: "Avg Ride" },
- { v: v3, suffix: " hrs", label: "Campaign" },
- { v: v4, suffix: "", label: "Pioneer Spots" },
- ];
+    const { t } = useI18n();
+    const ref = useRef<HTMLElement>(null);
+    const [started, setStarted] = useState(false);
+    useEffect(() => {
+        const el = ref.current; if (!el) return;
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((e) => { if (e.isIntersecting) { setStarted(true); io.disconnect(); } });
+        }, { threshold: 0.3 });
+        io.observe(el);
+        return () => io.disconnect();
+    }, []);
+    const v1 = useCountUp(10, 1200, 0, started);
+    const v2 = useCountUp(20, 1200, 0, started);
+    const v3 = useCountUp(72, 1200, 0, started);
+    const v4 = useCountUp(10, 1200, 0, started);
+    const items = [
+        { v: v1, suffix: "", label: t("stats_pilot_vehicles") },
+        { v: v2, suffix: ` ${t("stats_min")}`, label: t("stats_avg_ride") },
+        { v: v3, suffix: ` ${t("stats_hrs")}`, label: t("stats_campaign") },
+        { v: v4, suffix: "", label: t("stats_pioneer_spots") },
+    ];
  return (
  <section
  ref={ref}
@@ -327,15 +328,16 @@ function StatsStrip() {
 }
 
 function Marquee() {
- const phrases = [
- "GPS VERIFIED",
- "REAL IMPRESSIONS",
- "EVERY JOURNEY, CONNECTED",
- "320,000 TUKS IN COLOMBO",
- "RADICAL TRANSPARENCY",
- "DRIVER DIGNITY",
- "PAID ON THE 5TH",
- ];
+    const { t } = useI18n();
+    const phrases = [
+        t("mq_gps"),
+        t("mq_real"),
+        t("mq_every"),
+        t("mq_320k"),
+        t("mq_trans"),
+        t("mq_dignity"),
+        t("mq_paid"),
+    ];
  const track = (
  <>
  {phrases.map((p, i) => (
@@ -616,7 +618,7 @@ function TukInterior() {
  background: "#E74C3C",
  animation: "hero-live-pulse 1.8s ease-in-out infinite",
  }} />
- LIVE CAMPAIGN
+ {t("tuk_live_campaign")}
  </div>
  </div>
  </div>
@@ -656,19 +658,20 @@ function TukInterior() {
 }
 
 function Coverage() {
- return (
- <Section bg="var(--bg)">
- <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
- <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>
- Coverage
- </span>
- <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: C.ink, lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
- Your campaign, across Colombo.
- </h2>
- <p className="reveal-up delay-2" style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 16, fontWeight: 500 }}>
- Reach passengers in the neighbourhoods where your customers already are. Explore where the fleet operates every day.
- </p>
- </div>
+    const { t } = useI18n();
+    return (
+        <Section bg="var(--bg)">
+            <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+                <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>
+                    {t("cov_kicker")}
+                </span>
+                <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: C.ink, lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
+                    {t("cov_title")}
+                </h2>
+                <p className="reveal-up delay-2" style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 16, fontWeight: 500 }}>
+                    {t("cov_body")}
+                </p>
+            </div>
  <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
  <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs" loading="lazy" width={1200} height={500} className="coverage-strip" style={{ width: "100%", display: "block", height: 380, borderRadius: 4, objectFit: "cover", objectPosition: "center", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -6px 6px 0px 0px" }} />
  </div>
@@ -884,10 +887,10 @@ function Reporting() {
  gap: 24,
  }}>
 
- <MetricCard label="Active vehicles" value={48} />
- <MetricCard label="Est. daily impressions" value={412} format={(n) => `${n}k`} />
- <MetricCard label="Avg screen uptime" value={98} suffix="%" />
- <MetricCard label="Routes covered" value={34} />
+                    <MetricCard label={t("rep_m1")} value={48} />
+                    <MetricCard label={t("rep_m2")} value={412} format={(n) => `${n}k`} />
+                    <MetricCard label={t("rep_m3")} value={98} suffix="%" />
+                    <MetricCard label={t("rep_m4")} value={34} />
  </div>
  </Section>
  );

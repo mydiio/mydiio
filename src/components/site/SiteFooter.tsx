@@ -76,31 +76,31 @@ export function SiteFooter() {
  color: "var(--accent)",
  textTransform: "uppercase",
  }}>
- Available in English · Sinhala · Tamil
+ {t("ft_avail")}
  </span>
  </div>
  </div>
 
  {/* Column 2, Explore */}
  <div>
- <div style={colHeading}>Explore</div>
- <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 12 }}>
- <Link to="/advertise" className="footer-link" style={linkStyle}>Advertisers</Link>
- <Link to="/drive" className="footer-link" style={linkStyle}>Drivers</Link>
- <Link to="/investors" className="footer-link" style={linkStyle}>Network</Link>
- <Link to="/about" className="footer-link" style={linkStyle}>About</Link>
- </div>
- </div>
+                        <div style={colHeading}>{t("ft_explore")}</div>
+                        <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 12 }}>
+                            <Link to="/advertise" className="footer-link" style={linkStyle}>{t("nav_advertisers")}</Link>
+                            <Link to="/drive" className="footer-link" style={linkStyle}>{t("nav_drivers")}</Link>
+                            <Link to="/investors" className="footer-link" style={linkStyle}>{t("ft_network")}</Link>
+                            <Link to="/about" className="footer-link" style={linkStyle}>{t("nav_about")}</Link>
+                        </div>
+                    </div>
 
- {/* Column 3, Legal */}
- <div>
- <div style={colHeading}>Legal</div>
- <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 12 }}>
- <Link to="/contact" className="footer-link" style={linkStyle}>Contact</Link>
- <Link to="/privacy" className="footer-link" style={linkStyle}>Privacy Policy</Link>
- <Link to="/terms" className="footer-link" style={linkStyle}>Terms and Conditions</Link>
- </div>
- </div>
+                    {/* Column 3, Legal */}
+                    <div>
+                        <div style={colHeading}>{t("ft_legal")}</div>
+                        <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 12 }}>
+                            <Link to="/contact" className="footer-link" style={linkStyle}>{t("nav_contact")}</Link>
+                            <Link to="/privacy" className="footer-link" style={linkStyle}>{t("ft_privacy")}</Link>
+                            <Link to="/terms" className="footer-link" style={linkStyle}>{t("ft_terms")}</Link>
+                        </div>
+                    </div>
  </div>
 
 
@@ -117,8 +117,8 @@ export function SiteFooter() {
  color: "var(--ink-mute)",
  letterSpacing: "0.08em",
  }}>
- <span>© 2026 mydiio · Colombo · Sri Lanka</span>
- <span>Built in Colombo, for Colombo</span>
+                    <span>{t("ft_copyright")}</span>
+                    <span>{t("ft_built")}</span>
  </div>
  </div>
  <style>{`

@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
@@ -735,6 +736,7 @@ function FinalCTA() {
 
 /* ============== MAIN ============== */
 function DrivePage() {
+    usePageMeta({ titleKey: "meta_drive_title", descKey: "meta_drive_desc" });
  useEffect(() => {
  const handleScroll = () => {
  const sticky = document.getElementById("driver-sticky-cta");

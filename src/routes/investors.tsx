@@ -1,6 +1,8 @@
+import { usePageMeta as __usePageMeta } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
-import { useI18n } from "@/lib/i18n";
+import { useI18n } /* pageMeta added below */
+from "@/lib/i18n";
 
 import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
@@ -641,6 +643,7 @@ function FinalCTA({ onRequestDeck }: { onRequestDeck: () => void }) {
 }
 
 function InvestorsPage() {
+    __usePageMeta({ titleKey: "meta_investors_title", descKey: "meta_investors_desc" });
  const [deckOpen, setDeckOpen] = useState(false);
 
  return (

@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/lib/i18n";
 import { Fragment, useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
@@ -247,6 +248,7 @@ const greenBtn: React.CSSProperties = {
 const tickerText = "Every Journey, Connected · GPS Verified · Built in Colombo · For Colombo · Every Ride · Every Screen · Every Business · ";
 
 function AboutPage() {
+    usePageMeta({ titleKey: "meta_about_title", descKey: "meta_about_desc" });
  const [openPillar, setOpenPillar] = useState<string | null>(null);
  return (
  <SiteShell accent="amber">

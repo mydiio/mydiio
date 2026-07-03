@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
@@ -1241,6 +1242,7 @@ function BurstPackages() {
 
 /* ============== MAIN ============== */
 function AdvertisePage() {
+    usePageMeta({ titleKey: "meta_advertise_title", descKey: "meta_advertise_desc" });
  return (
  <SiteShell accent="amber">
  <style>{`
