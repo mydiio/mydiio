@@ -61,7 +61,6 @@ function AdvertiseApplyPage() {
   const [contactName, setContactName] = useState("");
   const [whatsappNumber, setWhatsappNumber] = useState("");
   const [businessType, setBusinessType] = useState("");
-  const [zonesSelected, setZonesSelected] = useState<string[]>([]);
 
   // Step 2
   const [budgetRange, setBudgetRange] = useState("");
