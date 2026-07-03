@@ -75,7 +75,7 @@ export const Route = createFileRoute("/advertise")({
             {
               "@type": "Question",
               name: "Can I cancel?",
-              acceptedAnswer: { "@type": "Answer", text: "Subscription plans have minimum terms: 3 months for Roamer, 6 months for Voyager and Pioneer. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
+              acceptedAnswer: { "@type": "Answer", text: "All subscription plans have a 3-month minimum term. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
             },
             {
               "@type": "Question",
