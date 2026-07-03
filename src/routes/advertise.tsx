@@ -664,9 +664,9 @@ function TukInterior() {
 /* ---------- Dashboard preview ---------- */
 function DashboardPreview() {
   const statSets = [
-    { impressions: "6,841", vehicles: "8 / 10", dwell: "14.3m", coverage: "7 zones" },
-    { impressions: "7,204", vehicles: "9 / 10", dwell: "15.1m", coverage: "7 zones" },
-    { impressions: "8,011", vehicles: "10 / 10", dwell: "13.8m", coverage: "7 zones" },
+    { impressions: "6,841", vehicles: "8 / 10", dwell: "14.3m", reach: "Plan reach" },
+    { impressions: "7,204", vehicles: "9 / 10", dwell: "15.1m", reach: "Plan reach" },
+    { impressions: "8,011", vehicles: "10 / 10", dwell: "13.8m", reach: "Plan reach" },
   ];
   const [statIndex, setStatIndex] = useState(0);
   const [fade, setFade] = useState(false);
@@ -685,7 +685,7 @@ function DashboardPreview() {
     [current.impressions, "Total impressions"],
     [current.vehicles, "Vehicles active"],
     [current.dwell, "Avg. dwell time"],
-    [current.coverage, "Colombo coverage"],
+    [current.reach, "Coverage label"],
   ];
   return (
     <Section bg={C.cream}>
