@@ -214,7 +214,7 @@ export default function TermsPage() {
  '"Creative", any video or image file uploaded by an advertiser for display on mydiio screens.',
  '"Campaign", an active or scheduled advertising run with defined start and end dates, assigned vehicles, and one or more creatives.',
  '"Impression", a single verified play of a creative on a mydiio screen, logged with a GPS location, timestamp, and play duration.',
- '"Pioneer tier", the founding advertiser package offering city-wide category exclusivity on the mydiio Colombo network, limited to ten advertisers in total.',
+ '"Pioneer tier", the founding advertiser package offering twelve-month neighbourhood category exclusivity within a corridor defined at the point of signing, a fixed per-minute rate for the life of the subscription, and limited to ten advertisers in total.',
  '"Deposit", the refundable security deposit paid by advertisers or driver partners at the commencement of their relationship with mydiio.',
  '"Agreement", any written contract signed separately between mydiio and an advertiser or driver partner, which supplements and incorporates these terms.',
  ]}
@@ -276,7 +276,7 @@ export default function TermsPage() {
  items={[
  "Roamer, LKR 25,000 per month, minimum 3-month commitment, up to 5 vehicles",
  "Voyager, LKR 38,000 per month, minimum 6-month commitment, up to 15 vehicles",
- "Pioneer, LKR 25,000 to LKR 35,000 per month, minimum 6-month commitment, full fleet, city-wide category exclusivity, lifetime Pioneer rate, limited to 10 spots ever",
+ "Pioneer, LKR 25,000 to LKR 35,000 per month, minimum 3-month commitment, full fleet, twelve-month neighbourhood corridor category exclusivity, fixed per-minute rate for the subscription lifetime, limited to 10 spots ever",
  "Horizon, LKR 65,000 and above, custom terms, 15 to 100+ vehicles",
  "Burst Spark, LKR 5,000 for 500 impression minutes, up to 5 vehicles, 7-day validity",
  "Burst Blast, LKR 18,000 for 2,000 impression minutes, up to 10 vehicles, 14-day validity",
@@ -287,10 +287,10 @@ export default function TermsPage() {
  Burst packages do not carry category exclusivity. They are rotated into the playlist to fill unused screen time and are not guaranteed fixed scheduling.
  </BodyText>
 
- <SubHeading>Pioneer category exclusivity</SubHeading>
- <BodyText>
- Pioneer advertisers receive city-wide category exclusivity across the full mydiio Colombo network for the duration of their active contract. mydiio will not accept a new advertiser from the same business category while your Pioneer contract is active and renewing. If your contract lapses for more than 30 days without renewal, the category becomes open for new applications. Exclusivity is city-wide across the Colombo network as a whole.
- </BodyText>
+  <SubHeading>Pioneer category exclusivity</SubHeading>
+  <BodyText>
+  Pioneer advertisers receive twelve-month neighbourhood category exclusivity within a corridor defined at the point of signing. The per-minute rate is fixed for the life of the subscription, but the exclusivity period itself is twelve months from the contract start date, not indefinite, and it is corridor-based, not city-wide. After the twelve-month exclusivity period, mydiio may accept new advertisers from the same category within the same corridor. If your contract lapses for more than 30 days without renewal, the category becomes open for new applications in that corridor.
+  </BodyText>
 
  <SubHeading>Creative submission and review</SubHeading>
  <BodyText>
@@ -432,10 +432,10 @@ export default function TermsPage() {
  The LKR 5,000 advertiser deposit is fully refundable if mydiio cannot fulfil your booking. Monthly campaign fees are non-refundable once a campaign has gone live, except in cases where mydiio fails to deliver the agreed service. In such cases, a credit or partial refund proportional to the shortfall will be applied.
  </BodyText>
 
- <SubHeading>Price changes</SubHeading>
- <BodyText>
- Pioneer tier advertisers hold their contracted rate for the lifetime of their Pioneer designation as long as they renew without a gap exceeding 30 days. Any price change will be communicated at least 30 days before it takes effect for existing customers.
- </BodyText>
+  <SubHeading>Price changes</SubHeading>
+  <BodyText>
+  Pioneer tier advertisers hold a fixed per-minute rate for the life of their active subscription as long as they renew without a gap exceeding 30 days. Any price change for other tiers will be communicated at least 30 days before it takes effect for existing customers.
+  </BodyText>
  </section>
 
  {/* SECTION 09 */}
