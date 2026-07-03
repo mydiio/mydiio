@@ -601,7 +601,7 @@ export default function PrivacyPage() {
  </a>
  </p>
  <p style={{ margin: "10px 0 0", fontSize: 14, opacity: 0.8 }}>
- mydiio (Private) Limited · Colombo, Sri Lanka
+ Start Smart Technologies Private Limited, trading as mydiio · Colombo, Sri Lanka
  </p>
  </div>
  </div>
