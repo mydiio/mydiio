@@ -65,7 +65,7 @@ export function ColomboMap() {
   const [activeId, setActiveId] = useState<number | null>(null);
   const mapRef = useRef<L.Map | null>(null);
   const wrapRef = useRef<HTMLDivElement | null>(null);
-  const active = useMemo(() => ZONES.find((z) => z.id === activeId) || null, [activeId]);
+  const active = useMemo(() => AREAS.find((a) => a.id === activeId) || null, [activeId]);
 
   // Leaflet renders before the animated container has its final size; trigger
   // invalidateSize() once the map scrolls into view so tiles align correctly.
