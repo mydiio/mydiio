@@ -452,6 +452,8 @@ function Installation() {
 
 /* ---------- Founding Group ---------- */
 function FoundingGroup() {
+  const groupARemaining = useGroupARemaining();
+
   const items = [
     "Group A (drivers 1–10) — LKR 5,000 loyalty bonus at Month 3, putting you ahead of what you paid to join",
     "Group B (drivers 11–20) — LKR 3,000 loyalty bonus at Month 3",
