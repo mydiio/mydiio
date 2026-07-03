@@ -7,7 +7,7 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "mydiio — Tuk-Tuk Advertising in Colombo, Sri Lanka" },
       { name: "description", content: "Reach passengers inside Colombo's tuk-tuks with GPS-verified digital advertising. Verified impressions, weekly reports, campaigns live in 72 hours. Starting from LKR 25,000." },
-      { property: "og:title", content: "mydiio — Ads on the Move. Tuk-Tuk Advertising, Colombo." },
+      { property: "og:title", content: "mydiio — Every Journey, Connected. Tuk-Tuk Advertising, Colombo." },
       { property: "og:description", content: "Reach passengers inside Colombo's tuk-tuks with GPS-verified digital advertising. Starting from LKR 25,000." },
       { property: "og:image", content: "/illustrations/coverage-fleet.png" },
       { property: "og:url", content: "https://mydiio.com/" },

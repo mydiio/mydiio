@@ -211,9 +211,9 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About mydiio — Built in Colombo, for Colombo" },
-      { name: "description", content: "mydiio is Sri Lanka's first tuk-tuk advertising network. Built on three pillars: radical transparency, driver dignity, and community reinvestment. Ads on the Move." },
+      { name: "description", content: "mydiio is Sri Lanka's first tuk-tuk advertising network. Built on three pillars: radical transparency, driver dignity, and community reinvestment. Every Journey, Connected." },
       { property: "og:title", content: "About — mydiio" },
-      { property: "og:description", content: "Ads on the move. Built in Colombo, for Colombo." },
+      { property: "og:description", content: "Every Journey, Connected. Built in Colombo, for Colombo." },
       { property: "og:image", content: "/illustrations/tuk-screen.png" },
       { property: "og:url", content: "https://mydiio.com/about" },
     ],
@@ -244,7 +244,7 @@ const greenBtn: React.CSSProperties = {
   color: "var(--on-dark)",
 };
 
-const tickerText = "Ads on the Move · GPS Verified · Built in Colombo · For Colombo · Every Ride · Every Screen · Every Business · ";
+const tickerText = "Every Journey, Connected · GPS Verified · Built in Colombo · For Colombo · Every Ride · Every Screen · Every Business · ";
 
 function AboutPage() {
   const [openPillar, setOpenPillar] = useState<string | null>(null);
@@ -319,7 +319,7 @@ function AboutPage() {
               lineHeight: 1.4,
               marginTop: 14,
             }}>
-              Ads on the move.
+              Every Journey, Connected.
             </h1>
             <p style={{
               fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 400,
