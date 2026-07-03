@@ -142,7 +142,6 @@ function AdvertiseApplyPage() {
             contact_name: contactName,
             phone: whatsappNumber,
             business_type: businessType,
-            zones: zonesSelected,
             budget_range: budgetRange,
             tier_interest: tierInterest,
             campaign_goal: campaignGoal,
