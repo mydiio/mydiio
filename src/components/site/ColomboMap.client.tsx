@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Circle, Marker, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { C } from "./theme";
+import { useI18n } from "@/lib/i18n";
 
 type Area = {
  id: number;
@@ -62,7 +63,8 @@ function densityDots(density: string) {
 }
 
 export function ColomboMap() {
- const [activeId, setActiveId] = useState<number | null>(null);
+  const { t } = useI18n();
+  const [activeId, setActiveId] = useState<number | null>(null);
  const mapRef = useRef<L.Map | null>(null);
  const wrapRef = useRef<HTMLDivElement | null>(null);
  const active = useMemo(() => AREAS.find((a) => a.id === activeId) || null, [activeId]);
@@ -160,23 +162,24 @@ export function ColomboMap() {
  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
  <span className="coverage-pulse" />
  <span className="font-display" style={{ fontSize: 16, color: C.ink, letterSpacing: "-0.2px" }}>
- 10 coverage areas across Greater Colombo
+ {t("cov_map_heading")}
  </span>
  </div>
  <p style={{ marginTop: 14, fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, fontWeight: 500 }}>
- Explore the map to see where the fleet operates, how dense the coverage is, and what kind of audiences your ad will reach.
+ {t("cov_map_explore")}
  </p>
  <div style={{ height: 1, background: "rgba(26,26,24,0.12)", margin: "20px 0" }} />
  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
  <div>
- <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amberDeep, textTransform: "uppercase" }}>Coverage areas</div>
- <div className="font-display" style={{ fontSize: 20, color: C.ink, marginTop: 6 }}>10 areas</div>
- <div className="font-display" style={{ fontSize: 20, color: C.ink, marginTop: 6 }}>50+ tuks</div>
+ <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amberDeep, textTransform: "uppercase" }}>{t("cov_areas_label")}</div>
+ <div className="font-display" style={{ fontSize: 20, color: C.ink, marginTop: 6 }}>{t("cov_areas_value")}</div>
+ <div className="font-display" style={{ fontSize: 20, color: C.ink, marginTop: 6 }}>{t("cov_tuks_value")}</div>
  </div>
  <div>
- <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amberDeep, textTransform: "uppercase" }}>Launching Q3 2026</div>
- <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>Colombo-wide reach</div>
- <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>Fleet expands at launch</div>
+ <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amberDeep, textTransform: "uppercase" }}>{t("cov_launching_label")}</div>
+ <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>{t("cov_colombo_wide")}</div>
+ <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>{t("cov_fleet_expands")}</div>
+
  </div>
  </div>
  </>

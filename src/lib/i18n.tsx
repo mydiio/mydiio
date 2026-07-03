@@ -127,7 +127,7 @@ export const dict: Dict = {
   // ============================================================
   // HOME · HOW IT WORKS
   // ============================================================
-  how_kicker: en("how it works"),
+  how_kicker: tr({ en: "HOW IT WORKS", si: "එය ක්‍රියා කරන ආකාරය", ta: "இது எப்படி வேலை செய்கிறது" }),
   how_title: tr({ en: "Simple. Fast. Verified.", si: "සරලයි. වේගවත්. සනාථයි.", ta: "எளிது. வேகமானது. உறுதிசெய்யப்பட்டது." }),
   how_s1_t: tr({ en: "Submit your ad.", si: "ඔබේ දැන්වීම එවන්න.", ta: "உங்கள் விளம்பரத்தை சமர்ப்பியுங்கள்." }),
   how_s1_b: tr({
@@ -157,20 +157,33 @@ export const dict: Dict = {
     si: "ඔවුන් ඉවත බලා ගත නොහැකි තිරය.",
     ta: "அவர்கள் கண்களை அகற்ற முடியாத திரை.",
   }),
-  tuk_body: en(
-    "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
-  ),
+  tuk_body: tr({
+    en: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
+    si: "සෑම mydiio තිරයක්ම මගී ඇස් මට්ටමින් සවි කර ඇත, ගමන පුරාම ඔබේ පණිවිඩය ලබා දෙයි.\n\nත්‍රී රෝද රථ සෑම දිනකම මිලියන ගණනක් ජනතාව ශ්‍රී ලංකාව පුරා ගමන් කරවනවා, නමුත් ඒවා තුළ ඩිජිටල් දැන්වීම් තවමත් සැබවින්ම භාවිතා කර නෑ.\n\nmydiio ත්‍රී රෝද රථ තුළ සවි කරන, දැන්වීම් මගින් පවත්වාගෙන යන, මිනිසුන් වෙනුවෙන් නිර්මාණය කළ, ව්‍යාපාරවලට ගනුදෙනුකරුවන් වෙත ළඟා වීමට උදව් කරන අතරම රියදුරන්ට නව ආදායම් අවස්ථා නිර්මාණය කරන, ශ්‍රී ලංකාවේ පළමු සම්බන්ධිත මගී තොරතුරු ජාලය mydiio ගොඩනගමින් සිටිනවා.\n\nනගරය සමඟ ගමන් කරන දැන්වීම්.",
+    ta: "ஒவ்வொரு mydiio திரையும் பயணி கண் மட்டத்தில் பொருத்தப்பட்டுள்ளது, பயணம் முழுவதும் உங்கள் செய்தியை வழங்குகிறது.\n\nமூன்று சக்கர வாகனங்கள் ஒவ்வொரு நாளும் இலங்கை முழுவதும் மில்லியன் கணக்கான மக்களை நகர்த்துகின்றன, ஆனாலும் அவற்றுக்குள் டிஜிட்டல் விளம்பரம் இன்னும் கிட்டத்தட்ட பயன்படுத்தப்படவில்லை.\n\nமூன்று சக்கர வாகனங்களுக்குள் பொருத்தப்பட்ட, விளம்பரங்களால் இயங்கும், மக்களுக்காக உருவாக்கப்பட்ட, வணிகங்கள் வாடிக்கையாளர்களை சென்றடைய உதவும் அதே வேளையில் ஓட்டுநர்களுக்கு புதிய வருமான வாய்ப்புகளை உருவாக்கும், இலங்கையின் முதல் இணைக்கப்பட்ட பயணிகள் தகவல் வலையமைப்பை mydiio கட்டியெழுப்புகிறது.\n\nநகரத்துடன் நகரும் விளம்பரம்.",
+  }),
   tuk_cta: tr({ en: "See it in a pilot →", si: "පයිලට් එකකින් බලන්න →", ta: "பைலட்டில் பாருங்கள் →" }),
-  tuk_live_campaign: en("LIVE CAMPAIGN"),
+  tuk_live_campaign: tr({ en: "LIVE CAMPAIGN", si: "සජීවී ප්‍රචාරණය", ta: "நேரலை பிரச்சாரம்" }),
 
   // ============================================================
   // HOME · COVERAGE
   // ============================================================
-  cov_kicker: en("Coverage"),
-  cov_title: en("Your campaign, across Colombo."),
-  cov_body: en(
-    "Reach passengers in the neighbourhoods where your customers already are. Explore where the fleet operates every day.",
-  ),
+  cov_kicker: tr({ en: "COVERAGE", si: "ප්‍රවේශය", ta: "அடையாளம்" }),
+  cov_title: tr({ en: "Your campaign, across Colombo.", si: "ඔබේ ප්‍රචාරණය, කොළඹ පුරා.", ta: "உங்கள் பிரச்சாரம், கொழும்பு முழுவதும்." }),
+  cov_body: tr({
+    en: "Reach passengers in the neighbourhoods where your customers already are. Explore where the fleet operates every day.",
+    si: "ඔබේ ගනුදෙනුකරුවන් දැනටමත් සිටින ප්‍රදේශවල මගීන් වෙත ළඟා වන්න. රථ පිරිස සෑම දිනකම ක්‍රියාත්මක වන ස්ථාන ගවේෂණය කරන්න.",
+    ta: "உங்கள் வாடிக்கையாளர்கள் ஏற்கனவே இருக்கும் பகுதிகளில் பயணிகளை சென்றடையுங்கள். தொகுதி ஒவ்வொரு நாளும் இயங்கும் இடங்களை ஆராயுங்கள்.",
+  }),
+  cov_areas_label: tr({ en: "COVERAGE AREAS", si: "ප්‍රවේශ ප්‍රදේශ", ta: "அடையாள பகுதிகள்" }),
+  cov_areas_value: tr({ en: "10 areas", si: "ප්‍රදේශ 10", ta: "10 பகுதிகள்" }),
+  cov_launching_label: tr({ en: "LAUNCHING Q3 2026", si: "3 වන කාර්තුව 2026 දියත් වේ", ta: "Q3 2026 துவக்கம்" }),
+  cov_colombo_wide: tr({ en: "Colombo-wide reach", si: "කොළඹ පුරා ප්‍රවේශය", ta: "கொழும்பு முழுவதும் அடையாளம்" }),
+  cov_tuks_value: tr({ en: "50+ tuks", si: "ත්‍රී රෝද රථ 50කට වඩා", ta: "50+ மூன்று சக்கர வாகனங்கள்" }),
+  cov_fleet_expands: tr({ en: "Fleet expands at launch", si: "දියත් කිරීමේදී රථ පිරිස පුළුල් වේ", ta: "துவக்கத்தில் வாகனத் தொகுதி விரிவடையும்" }),
+  cov_map_heading: tr({ en: "10 coverage areas across Greater Colombo", si: "මහ කොළඹ පුරා ප්‍රවේශ ප්‍රදේශ 10ක්", ta: "பெரும் கொழும்பு முழுவதும் 10 அடையாள பகுதிகள்" }),
+  cov_map_explore: tr({ en: "Explore the map to see where the fleet operates, how dense the coverage is, and what kind of audiences your ad will reach.", si: "රථ පිරිස ක්‍රියාත්මක වන ස්ථාන, ප්‍රවේශයේ ඝනත්වය සහ ඔබේ දැන්වීම ළඟා වන ප්‍රේක්ෂක වර්ග බැලීමට සිතියම ගවේෂණය කරන්න.", ta: "தொகுதி இயங்கும் இடங்கள், அடையாள அடர்த்தி, மற்றும் உங்கள் விளம்பரம் சென்றடையும் பார்வையாளர்களின் வகை ஆகியவற்றைக் காண வரைபடத்தை ஆராயுங்கள்." }),
+
 
   // ============================================================
   // HOME · TWO AUDIENCES
@@ -234,20 +247,20 @@ export const dict: Dict = {
   // ============================================================
   // HOME · SCALE STORY / ROAD AHEAD
   // ============================================================
-  scale_kicker: en("The Road Ahead"),
+  scale_kicker: tr({ en: "THE ROAD AHEAD", si: "ඉදිරි මාර්ගය", ta: "முன்னோக்கிய பாதை" }),
   scale_title: tr({
     en: "Colombo first. Every city next.",
     si: "මුලින්ම කොළඹ. ඊළඟට සෑම නගරයක්ම.",
     ta: "முதலில் கொழும்பு. அடுத்து ஒவ்வொரு நகரமும்.",
   }),
-  scale_c1_t: en("More screens."),
-  scale_c1_b: en("As the network grows, your campaigns can reach more passengers across more areas."),
-  scale_c2_t: en("More locations."),
-  scale_c2_b: en("Expand into new areas and connect with audiences wherever they travel."),
-  scale_c3_t: en("More insights."),
-  scale_c3_b: en("Smarter campaigns backed by real data."),
-  scale_c4_t: en("More growth."),
-  scale_c4_b: en("More value for businesses, drivers and passengers."),
+  scale_c1_t: tr({ en: "More screens.", si: "වැඩි තිර.", ta: "மேலும் திரைகள்." }),
+  scale_c1_b: tr({ en: "As the network grows, your campaigns can reach more passengers across more areas.", si: "ජාලය වර්ධනය වන විට, ඔබේ ප්‍රචාරණවලට වැඩි ප්‍රදේශ පුරා වැඩි මගීන් වෙත ළඟා විය හැක.", ta: "வலையமைப்பு வளரும்போது, உங்கள் பிரச்சாரங்கள் அதிக பகுதிகளில் அதிக பயணிகளை சென்றடையலாம்." }),
+  scale_c2_t: tr({ en: "More locations.", si: "වැඩි ස්ථාන.", ta: "மேலும் இடங்கள்." }),
+  scale_c2_b: tr({ en: "Expand into new areas and connect with audiences wherever they travel.", si: "නව ප්‍රදේශවලට පුළුල් වී, ප්‍රේක්ෂකයන් ගමන් කරන ඕනෑම තැනක ඔවුන් සමඟ සම්බන්ධ වන්න.", ta: "புதிய பகுதிகளுக்கு விரிவடைந்து, பார்வையாளர்கள் பயணிக்கும் இடமெல்லாம் அவர்களுடன் இணையுங்கள்." }),
+  scale_c3_t: tr({ en: "More insights.", si: "වැඩි තීක්ෂණතා.", ta: "மேலும் நுண்ணறிவுகள்." }),
+  scale_c3_b: tr({ en: "Smarter campaigns backed by real data.", si: "සැබෑ දත්ත මගින් සහාය දක්වන බුද්ධිමත් ප්‍රචාරණ.", ta: "உண்மையான தரவால் ஆதரிக்கப்படும் புத்திசாலித்தனமான பிரச்சாரங்கள்." }),
+  scale_c4_t: tr({ en: "More growth.", si: "වැඩි වර්ධනය.", ta: "மேலும் வளர்ச்சி." }),
+  scale_c4_b: tr({ en: "More value for businesses, drivers and passengers.", si: "ව්‍යාපාර, රියදුරන් සහ මගීන් සඳහා වැඩි වටිනාකමක්.", ta: "வணிகங்கள், ஓட்டுநர்கள் மற்றும் பயணிகளுக்கு அதிக மதிப்பு." }),
 
   // ============================================================
   // HOME · FOUNDING OFFER
