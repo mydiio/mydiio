@@ -275,9 +275,9 @@ export default function TermsPage() {
  <BulletList
  items={[
  "Roamer, LKR 25,000 per month, minimum 3-month commitment, up to 5 vehicles",
- "Voyager, LKR 38,000 per month, minimum 6-month commitment, up to 15 vehicles",
- "Pioneer, LKR 25,000 to LKR 35,000 per month, minimum 3-month commitment, full fleet, twelve-month neighbourhood corridor category exclusivity, fixed per-minute rate for the subscription lifetime, limited to 10 spots ever",
- "Horizon, LKR 65,000 and above, custom terms, 15 to 100+ vehicles",
+  "Voyager, LKR 38,000 per month, minimum 3-month commitment, up to 15 vehicles",
+  "Pioneer, LKR 25,000 to LKR 35,000 per month, minimum 3-month commitment, full fleet, twelve-month neighbourhood corridor category exclusivity, fixed per-minute rate for the subscription lifetime, limited to 10 spots ever",
+  "Horizon, LKR 65,000 and above, minimum 3-month commitment, custom terms, 15 to 100+ vehicles",
  "Burst Spark, LKR 5,000 for 500 impression minutes, up to 5 vehicles, 7-day validity",
  "Burst Blast, LKR 18,000 for 2,000 impression minutes, up to 10 vehicles, 14-day validity",
  "Burst Surge, LKR 40,000 for 5,000 impression minutes, full fleet, 30-day validity",
