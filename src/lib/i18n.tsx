@@ -142,7 +142,8 @@ export const dict: Dict = {
  fcta_title: { en: "Ready to own Colombo's streets?", si: "කොළඹ වීදි අයිති කර ගැනීමට සූදානම්ද?", ta: "கொழும்பு தெருக்களை சொந்தமாக்க தயாரா?" },
 
  // --- Footer ---
- ft_tagline: { en: "Sri Lanka's Urban Attention Network", si: "ශ්‍රී ලංකාවේ නගර අවධාන ජාලය", ta: "இலங்கையின் நகர கவன ஈர்ப்பு வலைப்பின்னல்" },
+ ft_tagline: { en: "Every Journey, Connected.", si: "සෑම ගමනම, සම්බන්ධයි.", ta: "ஒவ்வொரு பயணமும் இணைக்கப்பட்டது." },
+ ft_description: { en: "Sri Lanka's connected passenger information network", si: "ශ්‍රී ලංකාවේ සම්බන්ධ මගී තොරතුරු ජාලය", ta: "இலங்கையின் இணைக்கப்பட்ட பயணிகள் தகவல் வலைப்பின்னல்" },
  ft_l1: { en: "Advertiser bookings open", si: "ප්‍රචාරක වෙන්කරවා ගැනීම් විවෘතයි", ta: "விளம்பரதாரர் முன்பதிவுகள் திறக்கப்பட்டுள்ளன" },
  ft_l2: { en: "Investor conversations welcome", si: "ආයෝජක සංවාද සාදරයෙන් පිළිගනිමු", ta: "முதலீட்டாளர் உரையாடல்கள் வரவேற்கப்படுகின்றன" },
  ft_l3: { en: "Based in Colombo, Sri Lanka", si: "කොළඹ, ශ්‍රී ලංකාවේ පිහිටා ඇත", ta: "கொழும்பு, இலங்கையில் அமைந்துள்ளது" },

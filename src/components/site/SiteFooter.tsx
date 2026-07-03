@@ -47,7 +47,17 @@ export function SiteFooter() {
  marginTop: 12,
  textTransform: "uppercase",
  }}>
- Sri Lanka's Urban Attention Network
+ {t("ft_tagline")}
+ </div>
+ <div style={{
+ fontFamily: "'Space Mono', monospace",
+ fontSize: 10,
+ color: "rgba(244,239,227,0.7)",
+ letterSpacing: "0.12em",
+ marginTop: 6,
+ textTransform: "uppercase",
+ }}>
+ {t("ft_description")}
  </div>
  <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 8, fontSize: 13, color: "rgba(244,239,227,0.6)", fontWeight: 500 }}>
  <span>· {t("ft_l1")}</span>
