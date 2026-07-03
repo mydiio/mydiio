@@ -126,7 +126,7 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
 function Hero() {
   const stats = [
     { v: "10–20", suffix: " mins", label: "avg. ride time" },
-    { v: "LKR 20k", suffix: "", label: "starting per month" },
+    { v: "LKR 25,000", suffix: "", label: "starting per month" },
     { v: "72", suffix: " hrs", label: "campaign live" },
     { v: "7", suffix: " days", label: "free trial" },
   ];
