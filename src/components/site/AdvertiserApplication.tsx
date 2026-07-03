@@ -173,7 +173,6 @@ type FormState = {
   contact_name: string;
   whatsapp_number: string;
   business_type: string;
-  zones_selected: string[];
   tier_interest: string | null; // null = undecided
   tier_undecided: boolean;
   has_creative: boolean | null;
@@ -187,7 +186,6 @@ const initialState: FormState = {
   contact_name: "",
   whatsapp_number: "",
   business_type: "",
-  zones_selected: [],
   tier_interest: null,
   tier_undecided: false,
   has_creative: null,
