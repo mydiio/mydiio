@@ -180,21 +180,8 @@ function EarningsCalculator() {
   const monthly = hours >= 8 ? 8000 : 6000;
   const annual = monthly * 12;
 
-  const [approvedCount, setApprovedCount] = useState(0);
-  useEffect(() => {
-    (async () => {
-      try {
-        const { count } = await (supabase as any)
-          .from("driver_applications")
-          .select("id", { count: "exact", head: true })
-          .eq("status", "approved");
-        if (typeof count === "number") setApprovedCount(count);
-      } catch {
-        /* table may not exist yet */
-      }
-    })();
-  }, []);
-  const groupARemaining = Math.max(0, 10 - approvedCount);
+  const groupARemaining = useGroupARemaining();
+
 
   return (
     <Section bg={C.cream}>
