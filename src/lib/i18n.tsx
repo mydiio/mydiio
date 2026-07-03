@@ -713,6 +713,11 @@ export function LanguageSwitcher({ tone = "light" }: { tone?: "light" | "dark" }
   const accentInk = "#3A2C10";
   const inkSoft = "#5B5347";
   const isDark = tone === "dark";
+  // Hide switcher on legal pages (Terms/Privacy remain English-only).
+  if (typeof window !== "undefined") {
+    const p = window.location.pathname;
+    if (p.startsWith("/privacy") || p.startsWith("/terms")) return null;
+  }
   return (
     <div
       role="group"
