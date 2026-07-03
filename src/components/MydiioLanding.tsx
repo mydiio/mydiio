@@ -70,7 +70,7 @@ function HeroWords({ text }: { text: string }) {
 }
 
 function Hero() {
- const { t } = useI18n();
+ const { t, tt } = useI18n();
 
 
 
@@ -87,7 +87,7 @@ function Hero() {
 
  return (
  <section data-nav-section="home" className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
- <img src={HERO_NIGHT.url} alt="tuk-tuks moving through Colombo at golden hour" loading="eager" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+ <img src={HERO_NIGHT.url} alt={tt("home.hero.heroImg.alt")} loading="eager" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.45) 40%, rgba(20,16,12,0.88) 100%)" }} />
  <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(120px, 16vh, 180px) clamp(22px, 6vw, 80px) clamp(72px, 10vh, 110px)" }}>
  <div style={{ maxWidth: 980 }}>
@@ -198,7 +198,7 @@ function Hero() {
  {/* Illustrated tuk overlay, bleeds below hero edge */}
  <img
  src={TUK_SCREEN.url}
- alt="Tuk-tuk with digital advertising screen mounted inside cab, Colombo Sri Lanka"
+ alt={tt("home.hero.tukOverlayImg.alt")}
  loading="eager"
  width={600}
  height={400}
@@ -247,7 +247,7 @@ function Hero() {
 }
 
 function StatsStrip() {
-    const { t } = useI18n();
+    const { t, tt } = useI18n();
     const ref = useRef<HTMLElement>(null);
     const [started, setStarted] = useState(false);
     useEffect(() => {
@@ -328,7 +328,7 @@ function StatsStrip() {
 }
 
 function Marquee() {
-    const { t } = useI18n();
+    const { t, tt } = useI18n();
     const phrases = [
         t("mq_gps"),
         t("mq_real"),
@@ -418,7 +418,7 @@ function SectionHeader({ kicker, title }: { kicker?: string; title: string }) {
 
 
 function WhyItWorks() {
- const { t, lang } = useI18n();
+ const { t, tt, lang } = useI18n();
  const cards = [
  { n: "01", t: t("why_c1_t"), b: t("why_c1_b") },
  { n: "02", t: t("why_c2_t"), b: t("why_c2_b") },
@@ -461,7 +461,7 @@ function WhyItWorks() {
  </div>
  </div>
  <div className="why-image reveal reveal-up delay-1">
- <img src={DILINI_DRIVER.url} alt="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets" loading="lazy" width={800} height={450} style={{ width: "100%", height: 380, display: "block", borderRadius: 16, objectFit: "cover", objectPosition: "center" }} />
+ <img src={DILINI_DRIVER.url} alt={tt("home.whyItWorks.driverImg.alt")} loading="lazy" width={800} height={450} style={{ width: "100%", height: 380, display: "block", borderRadius: 16, objectFit: "cover", objectPosition: "center" }} />
  </div>
  </div>
  <style>{`
@@ -487,11 +487,11 @@ function WhyItWorks() {
 
 
 function HowItWorks() {
- const { t, lang } = useI18n();
+ const { t, tt, lang } = useI18n();
  const steps = [
- { n: "01", t: t("how_s1_t"), b: t("how_s1_b"), img: HOW_STEP1.url, alt: "Colombo business owner launching a tuk-tuk advertising campaign on tablet", pos: "center top" },
- { n: "02", t: t("how_s2_t"), b: t("how_s2_b"), img: HOW_STEP2.url, alt: "Passenger watching tuk-tuk advertising screen inside a Colombo tuk-tuk", pos: "center" },
- { n: "03", t: t("how_s3_t"), b: t("how_s3_b"), img: HOW_STEP3.url, alt: "Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign", pos: "center" },
+ { n: "01", t: t("how_s1_t"), b: t("how_s1_b"), img: HOW_STEP1.url, alt: tt("home.howItWorks.step1.imgAlt"), pos: "center top" },
+ { n: "02", t: t("how_s2_t"), b: t("how_s2_b"), img: HOW_STEP2.url, alt: tt("home.howItWorks.step2.imgAlt"), pos: "center" },
+ { n: "03", t: t("how_s3_t"), b: t("how_s3_b"), img: HOW_STEP3.url, alt: tt("home.howItWorks.step3.imgAlt"), pos: "center" },
  ];
  return (
  <Section bg="var(--bg)">
@@ -543,7 +543,7 @@ function HowItWorks() {
 
 
 function TukInterior() {
- const { t } = useI18n();
+ const { t, tt } = useI18n();
  return (
  <Section bg="var(--bg2)">
  <div className="tuk-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 32, alignItems: "center" }}>
@@ -588,7 +588,7 @@ function TukInterior() {
  </div>
  <div className="reveal reveal-up delay-1 tuk-image" style={{ position: "relative" }}>
  <div className="brutal-frame" style={{ borderRadius: 4 }}>
- <img src={INSIDE_RIDE.url} alt="Passenger view of mydiio screen inside a Colombo tuk-tuk" loading="lazy" width={800} height={450} className="inside-ride-img" style={{ width: "100%", display: "block", height: 400, objectFit: "cover", objectPosition: "center top" }} />
+ <img src={INSIDE_RIDE.url} alt={tt("home.insideTheRide.img.alt")} loading="lazy" width={800} height={450} className="inside-ride-img" style={{ width: "100%", display: "block", height: 400, objectFit: "cover", objectPosition: "center top" }} />
  </div>
  <div style={{
  position: "absolute",
@@ -658,7 +658,7 @@ function TukInterior() {
 }
 
 function Coverage() {
-    const { t } = useI18n();
+    const { t, tt } = useI18n();
     return (
         <Section bg="var(--bg)">
             <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
@@ -673,7 +673,7 @@ function Coverage() {
                 </p>
             </div>
  <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>
- <img src="/illustrations/coverage-fleet.png" alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs" loading="lazy" width={1200} height={500} className="coverage-strip" style={{ width: "100%", display: "block", height: 380, borderRadius: 4, objectFit: "cover", objectPosition: "center", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -6px 6px 0px 0px" }} />
+ <img src="/illustrations/coverage-fleet.png" alt={tt("home.coverage.fleetImg.alt")} loading="lazy" width={1200} height={500} className="coverage-strip" style={{ width: "100%", display: "block", height: 380, borderRadius: 4, objectFit: "cover", objectPosition: "center", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -6px 6px 0px 0px" }} />
  </div>
 
  <div className="reveal reveal-up delay-2">
@@ -692,7 +692,7 @@ function Coverage() {
 
 
 function TwoAudiences() {
- const { t } = useI18n();
+ const { t, tt } = useI18n();
  return (
  <Section bg="var(--bg2)">
  <div className="paths-grid">
@@ -705,7 +705,7 @@ function TwoAudiences() {
  padding: 0,
  }}>
  <div className="brutal-frame">
- <img src={HOW_STEP3.url} alt="Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign" loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
+ <img src={HOW_STEP3.url} alt={tt("home.twoAudiences.advertiserImg.alt")} loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
  </div>
  <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
  <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
@@ -749,7 +749,7 @@ function TwoAudiences() {
  padding: 0,
  }}>
  <div className="brutal-frame">
- <img src={DRIVER_CARD.url} alt="Tuk-tuk driver earning passive income with mydiio, Sri Lanka's first connected passenger information network" loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
+ <img src={DRIVER_CARD.url} alt={tt("home.twoAudiences.driverImg.alt")} loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
  </div>
  <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
  <span className="eyebrow" style={{ color: "var(--green-ink)" }}>{t("dr_kicker")}</span>
@@ -869,13 +869,13 @@ function MetricCard({ label, value, suffix = "", format }: { label: string; valu
 }
 
 function Reporting() {
- const { t, lang } = useI18n();
+ const { t, tt, lang } = useI18n();
  return (
  <Section bg={"var(--bg)"}>
  <div className="reveal" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 32px" }}>
  <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("rep_kicker")}</span>
  <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
- <EmTail text={t("rep_title")} tail="not guessed." lang={lang} />
+ <EmTail text={t("rep_title")} tail={tt("home.reporting.title.emTail")} lang={lang} />
  </h2>
  <p className="reveal-up delay-2" style={{ fontSize: 16, color: "var(--ink-soft)", lineHeight: 1.6, marginTop: 18, fontWeight: 500 }}>
  {t("rep_body")}
@@ -897,13 +897,13 @@ function Reporting() {
 }
 
 function WhyNow() {
- const { t, lang } = useI18n();
+ const { t, tt, lang } = useI18n();
  return (
  <Section bg={"var(--bg2)"}>
  <div className="reveal" style={{ textAlign: "center", maxWidth: 760, margin: "0 auto" }}>
  <span className="eyebrow reveal-up" style={{ display: "inline-block" }}>{t("whyn_kicker")}</span>
  <h2 className="font-display reveal-up delay-1" style={{ fontSize: "clamp(34px, 5.4vw, 72px)", color: "var(--ink)", lineHeight: 1.04, letterSpacing: "-0.02em", marginTop: 14 }}>
- <EmTail text={t("whyn_title")} tail="hiding in plain sight." lang={lang} />
+ <EmTail text={t("whyn_title")} tail={tt("home.whyNow.title.emTail")} lang={lang} />
  </h2>
  <p className="reveal-up delay-2" style={{ fontSize: "clamp(15px, 1.7vw, 19px)", color: "var(--ink-soft)", lineHeight: 1.6, marginTop: 22, fontWeight: 500 }}>
  {t("whyn_body")}
@@ -914,7 +914,7 @@ function WhyNow() {
 }
 
 function ScaleStory() {
- const { t } = useI18n();
+ const { t, tt } = useI18n();
  const cards = [
  { n: "01", t: t("scale_c1_t"), b: t("scale_c1_b") },
  { n: "02", t: t("scale_c2_t"), b: t("scale_c2_b") },
@@ -930,8 +930,8 @@ function ScaleStory() {
  </h2>
  </div>
  <div className="reveal reveal-up delay-2 road-pair" style={{ marginBottom: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
- <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-left.png" alt="mydiio tuk-tuk driving past Colombo clock tower on tree-lined boulevard" loading="lazy" width={600} height={400} className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
- <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-right.png" alt="mydiio tuk-tuks with glowing ad screens in Colombo evening traffic" loading="lazy" width={600} height={400} className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+ <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-left.png" alt={tt("home.roadAhead.leftImg.alt")} loading="lazy" width={600} height={400} className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
+ <div className="brutal-frame" style={{ borderRadius: 4 }}><img src="/illustrations/road-right.png" alt={tt("home.roadAhead.rightImg.alt")} loading="lazy" width={600} height={400} className="road-pair-img" style={{ width: "100%", height: 320, display: "block", borderRadius: 0, objectFit: "cover", objectPosition: "center" }} /></div>
  </div>
  <style>{`
  @media (max-width: 599px) {
@@ -961,7 +961,7 @@ function ScaleStory() {
 }
 
 function FoundingOffer() {
- const { t } = useI18n();
+ const { t, tt } = useI18n();
  const benefits = [t("fo_b1"), t("fo_b2"), t("fo_b3"), t("fo_b4")];
  return (
  <Section bg={"var(--bg2)"}>
@@ -1027,7 +1027,7 @@ function FoundingOffer() {
  ))}
  </ul>
  <Link to="/advertise" className="btn-brutal" style={{ display: "inline-block", marginTop: 32, padding: "14px 24px", fontSize: 15, textDecoration: "none", background: "#F5A623", color: "#1A1A18" }}>
- Claim a pilot slot →
+ {tt("home.foundingOffer.cta")}
  </Link>
  </div>
  </div>
@@ -1036,7 +1036,7 @@ function FoundingOffer() {
 }
 
 function FAQ() {
- const { t, lang } = useI18n();
+ const { t, tt, lang } = useI18n();
  const items = [
  { q: t("faq_q1"), a: t("faq_a1") },
  { q: t("faq_q2"), a: t("faq_a2") },
@@ -1059,7 +1059,7 @@ function FAQ() {
  fontSize: "clamp(24px, 3vw, 32px)",
  }}>{t("faq_kicker")}</span>
  <h2 className="reveal-up delay-1" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--ink)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
- <EmTail text={t("faq_title")} tail="asked." lang={lang} />
+ <EmTail text={t("faq_title")} tail={tt("home.faq.title.emTail")} lang={lang} />
  </h2>
  </div>
  <div style={{ maxWidth: 880, margin: "0 auto", display: "flex", flexDirection: "column", gap: 16 }}>
@@ -1117,11 +1117,11 @@ function FAQ() {
 }
 
 function FinalCTA() {
- const { t } = useI18n();
+ const { t, tt } = useI18n();
  return (
  <section id="waitlist" className="relative w-full overflow-hidden" style={{ minHeight: 520, scrollMarginTop: 96 }}>
  <span id="signup-section" style={{ position: "absolute", top: -96 }} aria-hidden />
- <img src={FLEET_SUNSET} alt="A line of mydiio tuk-tuks parked at sunset in Colombo" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+ <img src={FLEET_SUNSET} alt={tt("home.finalCta.fleetImg.alt")} loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
  <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(30,26,21,0.3), rgba(30,26,21,0.7))" }} />
  <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(80px, 12vw, 140px) clamp(20px, 4vw, 32px)", textAlign: "center" }}>
  <span className="eyebrow" style={{ color: "var(--accent)", display: "inline-block" }}>{t("fcta_kicker")}</span>

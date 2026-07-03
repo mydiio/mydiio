@@ -1,4 +1,4 @@
-import { usePageMeta } from "@/lib/i18n";
+import { usePageMeta, useI18n } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
@@ -100,22 +100,23 @@ function StatPill({ value, label }: { value: string; label: string }) {
 }
 
 function Hero() {
+  const { tt } = useI18n();
  const stats = [
- { v: "LKR 8,000", suffix: "", label: "per month max" },
- { v: "LKR 96,000", suffix: "", label: "per year" },
- { v: "1", suffix: " hr", label: "installation time" },
- { v: "0", suffix: "", label: "cost to join" },
+ { v: "LKR 8,000", suffix: "", label: tt("drive.hero.stats.perMonthMax") },
+ { v: "LKR 96,000", suffix: "", label: tt("drive.hero.stats.perYear") },
+ { v: "1", suffix: " hr", label: tt("drive.hero.stats.installationTime") },
+ { v: "0", suffix: "", label: tt("drive.hero.stats.costToJoin") },
  ];
  return (
  <section className="relative w-full overflow-hidden page-hero-fixed" style={{ borderBottom: "2px solid #1A1A18" }}>
- <img src={DILINI.url} alt="mydiio tuk-tuk driver in green polo shirt driving through Colombo streets" loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top" }} />
+ <img src={DILINI.url} alt={tt("home.whyItWorks.driverImg.alt")} loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top" }} />
  <div className="absolute inset-0" style={{
  background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
  }} />
  <div className="relative z-10 flex flex-col items-start justify-end page-hero-inner" style={{ padding: "120px 6% 80px" }}>
  <div style={{ maxWidth: "55%", width: "100%" }} className="page-hero-textblock">
  <span className="page-hero-label">
- For drivers
+ {tt("drive.hero.label")}
  </span>
  <h1 className="page-hero-headline" style={{
  fontFamily: "'Space Grotesk', system-ui, sans-serif",
@@ -124,14 +125,14 @@ function Hero() {
  lineHeight: 1.4,
  marginTop: 14,
  }}>
- Drivers earn more every month.
+ {tt("drive.hero.headline")}
  </h1>
  <p style={{
  fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 400,
  fontSize: 16,
  color: "rgba(253,250,243,0.85)", marginTop: 18, maxWidth: 600, lineHeight: 1.7,
  }}>
- Join our network and get paid through ad revenue. Your tuk-tuk earns while you drive your normal routes.
+ {tt("drive.hero.body")}
  </p>
  <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
  <a href={DRIVER_CONTACT}
@@ -141,7 +142,7 @@ function Hero() {
  padding: "16px 22px", borderRadius: 13, fontSize: 17,
  textDecoration: "none", display: "inline-block",
  }}>
- Join as Driver →
+ {tt("drive.hero.ctaJoinDriver")}
  </a>
  </div>
  <div className="page-hero-stats" style={{ marginTop: 44, paddingTop: 24, borderTop: "1px solid rgba(253,250,243,0.18)", display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 16 }}>
@@ -177,6 +178,7 @@ function Hero() {
 
 /* ---------- Earnings Calculator ---------- */
 function EarningsCalculator() {
+  const { tt } = useI18n();
  const [hours, setHours] = useState(8);
  const monthly = hours >= 8 ? 8000 : 6000;
  const annual = monthly * 12;
@@ -187,7 +189,7 @@ function EarningsCalculator() {
  return (
  <Section bg={C.cream}>
  <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
- <span className="eyebrow">Earnings calculator</span>
+ <span className="eyebrow">{tt("drive.calculator.eyebrow")}</span>
  </div>
  <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
  See exactly what you could earn.
@@ -207,7 +209,7 @@ function EarningsCalculator() {
  color: "var(--accent)", textTransform: "uppercase", letterSpacing: "0.12em",
  fontWeight: 700,
  }}>
- Earnings calculator · based on your hours
+ {tt("drive.calculator.cardHeader")}
  </div>
  <div style={{ padding: "36px 28px" }}>
  <div style={{ textAlign: "center" }}>
@@ -218,25 +220,24 @@ function EarningsCalculator() {
  LKR {monthly.toLocaleString()}
  </div>
  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 2, marginTop: 8, textTransform: "uppercase" }}>
- per month
- </div>
+ {tt("drive.calculator.perMonth")}</div>
  <div className="font-display" style={{
  fontSize: 22, color: C.ink, marginTop: 18,
  fontVariantNumeric: "tabular-nums",
  }}>
  LKR {annual.toLocaleString()}
- <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 1.5, marginLeft: 8 }}>/ year</span>
+ <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft, letterSpacing: 1.5, marginLeft: 8 }}>{tt("drive.calculator.perYear")}</span>
  </div>
  </div>
 
  <div style={{ marginTop: 32 }}>
  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
- <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.inkSoft, letterSpacing: 1.5 }}>Hours per day</span>
+ <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: C.inkSoft, letterSpacing: 1.5 }}>{tt("drive.calculator.sliderLabel")}</span>
  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, color: C.amberDeep, fontVariantNumeric: "tabular-nums" }}>{hours}h</span>
  </div>
  <input
  type="range" min={4} max={14} step={1} value={hours}
- aria-label="Hours driven per day"
+ aria-label={tt("drive.calculator.sliderAriaLabel")}
  onChange={(e) => setHours(parseInt(e.target.value))}
  style={{ width: "100%", marginTop: 10, accentColor: C.amber }}
  />
@@ -251,7 +252,7 @@ function EarningsCalculator() {
  fontFamily: "'DM Mono', monospace", fontSize: 11, color: C.inkSoft,
  textAlign: "center", marginTop: 28, lineHeight: 1.6,
  }}>
- Base pay: LKR 6,000. Route bonus: LKR 2,000 (8+ hours/day).
+ {tt("drive.calculator.footnote")}
  </p>
  </div>
  </div>
@@ -266,7 +267,7 @@ function EarningsCalculator() {
  fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700,
  color: "var(--green-ink)", letterSpacing: "0.06em",
  }}>
- ✓ PAYMENT ON THE 5TH · EVERY MONTH · BANK TRANSFER · NO EXCEPTIONS
+ {tt("drive.calculator.paymentBadge")}
  </span>
  </div>
  </div>
@@ -278,7 +279,7 @@ function EarningsCalculator() {
  fontFamily: "'Space Mono', monospace", fontSize: 11,
  color: "var(--accent)", fontWeight: 700,
  }}>
- Group A Founding Partners: {groupARemaining} of 10 spots remaining
+ {tt("drive.calculator.spotsRemaining").replace("{groupARemaining}", String(groupARemaining))}
  </div>
  </div>
  </Section>
@@ -287,7 +288,8 @@ function EarningsCalculator() {
 
 /* ---------- Driver Earnings ---------- */
 function DriverEarnings() {
- const badges = ["Fast payments", "Verified drivers", "Monthly bonuses"];
+  const { tt } = useI18n();
+ const badges = [tt("drive.earnings.badges.fastPayments"), tt("drive.earnings.badges.verifiedDrivers"), tt("drive.earnings.badges.monthlyBonuses")];
  return (
  <Section bg={C.cream}>
  <div className="earnings-grid">
@@ -310,13 +312,13 @@ function DriverEarnings() {
  Driver earnings
  </span>
  <h2 className="font-display" style={{ fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: C.ink, lineHeight: 1.5, marginTop: 0, letterSpacing: 0 }}>
- Drivers earn more every month.
+ {tt("drive.hero.headline")}
  </h2>
  <p style={{
  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
  fontSize: 16, color: C.ink, lineHeight: 1.6, marginTop: 14, maxWidth: 520,
  }}>
- Join our network and get paid through ad revenue. Your tuk-tuk earns while you drive your normal routes.
+ {tt("drive.hero.body")}
  </p>
  <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 22 }}>
  {badges.map((b) => (
@@ -344,7 +346,7 @@ function DriverEarnings() {
  textDecoration: "none",
  }}
  >
- Join as Driver →
+ {tt("drive.hero.ctaJoinDriver")}
  </a>
  </div>
  </div>
@@ -361,16 +363,17 @@ function DriverEarnings() {
 
 /* ---------- How it works ---------- */
 function HowItWorks() {
+  const { tt } = useI18n();
  const steps = [
- { n: 1, title: "Get in touch", body: "Apply through our website or reach out directly. We reply within 24 hours." },
- { n: 2, title: "We install for free", body: "We fit a small screen in your tuk at no cost to you. It takes about an hour and is powered by your vehicle." },
- { n: 3, title: "You drive normally", body: "Same routes, same hours. The screen runs automatically. You do not need to do anything differently." },
- { n: 4, title: "Money arrives on the 5th", body: "Every month, your earnings are paid directly to your bank account on the 5th. Without exception." },
+ { n: 1, title: tt("drive.howItWorks.step1.title"), body: tt("drive.howItWorks.step1.body") },
+ { n: 2, title: tt("drive.howItWorks.step2.title"), body: tt("drive.howItWorks.step2.body") },
+ { n: 3, title: tt("drive.howItWorks.step3.title"), body: tt("drive.howItWorks.step3.body") },
+ { n: 4, title: tt("drive.howItWorks.step4.title"), body: tt("drive.howItWorks.step4.body") },
  ];
  return (
  <Section bg={C.white}>
  <div className="reveal reveal-up" style={{ textAlign: "center", marginBottom: 14 }}>
- <span className="eyebrow">How it works</span>
+ <span className="eyebrow">{tt("drive.howItWorks.eyebrow")}</span>
  </div>
  <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
  Four steps. That's the whole thing.
@@ -398,11 +401,12 @@ function HowItWorks() {
 
 /* ---------- Installation ---------- */
 function Installation() {
+  const { tt } = useI18n();
  return (
  <Section bg={C.cream}>
  <div className="install-grid">
  <div>
- <span className="eyebrow reveal reveal-up" style={{ color: "var(--green-ink)" }}>Installation</span>
+ <span className="eyebrow reveal reveal-up" style={{ color: "var(--green-ink)" }}>{tt("drive.installation.eyebrow")}</span>
  <h3 className="reveal reveal-up font-display" style={{ fontSize: "clamp(22px, 3vw, 32px)", color: C.ink, lineHeight: 1.1, marginTop: 10 }}>
  We install it. You drive.
  </h3>
@@ -410,7 +414,7 @@ function Installation() {
  One hour. No cost to you. Powered by your vehicle's existing electrics. You won't notice it's there, but your passengers will.
  </p>
  <ul className="reveal reveal-up" style={{ listStyle: "none", padding: 0, margin: "18px 0 0", display: "flex", flexDirection: "column", gap: 8 }}>
- {["✓ Installed at our cost", "✓ Replaced free if damaged", "✓ Removed free if you leave"].map((t) => (
+ {[tt("drive.installation.bullet1"), tt("drive.installation.bullet2"), tt("drive.installation.bullet3")].map((t) => (
  <li key={t} style={{
  fontFamily: "'Space Mono', monospace", fontSize: 12,
  color: "var(--green-ink)", fontWeight: 700,
@@ -423,7 +427,7 @@ function Installation() {
  }}>
  <img
  src={INSTALL_HANDS.url}
- alt="Hands fitting a tablet screen into the roof frame of a tuk-tuk on a Colombo street"
+ alt={tt("drive.installation.imgAlt1")}
  loading="lazy"
  width={800}
  height={450}
@@ -432,7 +436,7 @@ function Installation() {
  />
  <img
  src={INSTALL_LIVE.url}
- alt="Installed tuk-tuk screen displaying an amber and cream advertisement on a Colombo street"
+ alt={tt("drive.installation.imgAlt2")}
  loading="lazy"
  width={800}
  height={450}
@@ -453,24 +457,21 @@ function Installation() {
 
 /* ---------- Founding Group ---------- */
 function FoundingGroup() {
+  const { tt } = useI18n();
  const groupARemaining = useGroupARemaining();
 
  const items = [
- "Group A (drivers 1 to 10), LKR 5,000 loyalty bonus at Month 3, putting you ahead of what you paid to join",
- "Group B (drivers 11 to 20), LKR 3,000 loyalty bonus at Month 3",
- "Limited-edition amber founding partner shirt, only 10 will ever exist",
- "Branded merchandise every 6 months, polo shirt, umbrella, phone holder, fuel card",
+ tt("drive.foundingGroup.item1"),
+ tt("drive.foundingGroup.item2"),
+ tt("drive.foundingGroup.item3"),
+ tt("drive.foundingGroup.item4"),
  ];
  return (
  <Section bg={C.cream}>
  <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
- <span className="eyebrow" style={{ textAlign: "center" }}>
- First 20 drivers only
- </span>
+ <span className="eyebrow" style={{ textAlign: "center" }}>{tt("drive.foundingGroup.eyebrow")}</span>
  </div>
- <h2 className="reveal font-display" style={{ fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: C.ink, textAlign: "center", lineHeight: 1.5, marginTop: 0, letterSpacing: 0 }}>
- Be a founding driver.
- </h2>
+ <h2 className="reveal font-display" style={{ fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: C.ink, textAlign: "center", lineHeight: 1.5, marginTop: 0, letterSpacing: 0 }}>{tt("drive.foundingGroup.headline")}</h2>
 
  <div className="reveal" style={{
  maxWidth: 560, marginInline: "auto", marginTop: 40,
@@ -485,7 +486,7 @@ function FoundingGroup() {
  padding: "5px 10px", borderRadius: 999, fontWeight: 700,
  border: `2px solid ${C.ink}`,
  }}>
- {groupARemaining} OF {GROUP_A_TOTAL} SPOTS REMAINING
+ {tt("drive.foundingGroup.spotsRemainingBadge").replace("{groupARemaining}", String(groupARemaining)).replace("{GROUP_A_TOTAL}", String(GROUP_A_TOTAL))}
  </div>
  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
  {items.map((t) => (
@@ -519,7 +520,7 @@ function FoundingGroup() {
  color: C.inkSoft, textAlign: "center", marginTop: 28,
  maxWidth: 560, marginInline: "auto", lineHeight: 1.6,
  }}>
- Standard partners (after Group A closes): LKR 5,000 deposit, no loyalty bonus, standard rate.
+ {tt("drive.foundingGroup.standardNote")}
  </p>
  </Section>
  );
@@ -527,11 +528,10 @@ function FoundingGroup() {
 
 /* ---------- Driver Portal Preview ---------- */
 function DriverPortal() {
+  const { tt } = useI18n();
  return (
  <Section bg={C.white}>
- <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
- Your portal. Everything visible.
- </h2>
+ <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>{tt("drive.portal.headline")}</h2>
 
  <div className="reveal reveal-up" style={{ marginTop: 36, maxWidth: 520, marginInline: "auto" }}>
  <div style={{
@@ -546,12 +546,8 @@ function DriverPortal() {
  background: C.amber, color: C.ink,
  fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 2,
  padding: "4px 10px", borderRadius: 999, fontWeight: 700,
- }}>
- PREVIEW
- </div>
- <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.green, letterSpacing: 2 }}>
- DRIVER PORTAL
- </div>
+ }}>{tt("drive.portal.previewBadge")}</div>
+ <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: C.green, letterSpacing: 2 }}>{tt("drive.portal.portalLabel")}</div>
 
  <div className="font-display" style={{
  fontSize: 32, color: "rgba(255,255,255,0.25)", textAlign: "center",
@@ -559,13 +555,9 @@ function DriverPortal() {
  }}>
  LKR ---
  </div>
- <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: 4 }}>
- This month · Base + Route Bonus
- </div>
+ <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: 4 }}>{tt("drive.portal.thisMonthLabel")}</div>
 
- <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.45)", letterSpacing: 1.5, marginTop: 22 }}>
- PAYMENT HISTORY
- </div>
+ <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.45)", letterSpacing: 1.5, marginTop: 22 }}>{tt("drive.portal.paymentHistoryLabel")}</div>
  <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 6 }}>
  {["05 Jul 2026", "05 Jun 2026", "05 May 2026"].map((d) => (
  <div key={d} style={{
@@ -587,10 +579,10 @@ function DriverPortal() {
  border: "1px solid rgba(245,166,35,0.3)",
  borderRadius: 8,
  }}>
- <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: C.amber, letterSpacing: 1.5 }}>YOUR REFERRAL CODE</div>
+ <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: C.amber, letterSpacing: 1.5 }}>{tt("drive.portal.referralCodeLabel")}</div>
  <div className="font-display" style={{ fontSize: 14, color: "#fff", marginTop: 4, letterSpacing: 1 }}>MYD-XXX-REF</div>
  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: "rgba(255,255,255,0.4)", marginTop: 6 }}>
- Earn LKR 1,500 per driver who joins and stays 30 days.
+ {tt("drive.portal.referralBody")}
  </div>
  </div>
  </div>
@@ -601,7 +593,7 @@ function DriverPortal() {
  fontSize: 14, color: C.inkSoft, textAlign: "center", marginTop: 22,
  maxWidth: 520, marginInline: "auto",
  }}>
- You receive full portal access when installation is confirmed.
+ {tt("drive.portal.accessNote")}
  </p>
  </Section>
  );
@@ -609,20 +601,19 @@ function DriverPortal() {
 
 /* ---------- FAQ ---------- */
 function FAQ() {
+  const { tt } = useI18n();
  const [open, setOpen] = useState<number | null>(0);
  const items = [
- { q: "How long is the commitment?", a: "We ask for a minimum 12-month agreement. If you exit before 6 months, your deposit is forfeited. If you exit between 6 and 12 months, 50% of your deposit is returned. The full deposit is returned only after 12 months of continuous participation. Founding drivers receive a loyalty bonus at Month 3 that puts them ahead of what they paid to join." },
- { q: "What if I want to stop early?", a: "If you leave before 6 months, your deposit is forfeited. If you leave between 6 and 12 months, half the deposit is returned. After 12 months, you are free to leave with your full deposit returned." },
- { q: "What powers the screen?", a: "The screen runs off your vehicle's existing power supply. An auto-electrician installs it in about an hour. There are no batteries to charge and nothing extra to do." },
- { q: "What if the screen breaks or is damaged?", a: "Normal wear is covered. We handle repairs and replacements at no cost to you. The screen belongs to mydiio, you are hosting it, not responsible for it." },
- { q: "Can I refer other drivers?", a: "Yes. You earn LKR 1,500 for every driver you refer who successfully installs a screen and stays active for 30 days. There is no limit on how many drivers you can refer." },
- { q: "When exactly do I get paid?", a: "On the 5th of every calendar month, by bank transfer. This is a firm commitment, not 'around the 5th' or 'within the first week'. The 5th. Every month." },
+ { q: tt("drive.faq.q1.question"), a: tt("drive.faq.q1.answer") },
+ { q: tt("drive.faq.q2.question"), a: tt("drive.faq.q2.answer") },
+ { q: tt("drive.faq.q3.question"), a: tt("drive.faq.q3.answer") },
+ { q: tt("drive.faq.q4.question"), a: tt("drive.faq.q4.answer") },
+ { q: tt("drive.faq.q5.question"), a: tt("drive.faq.q5.answer") },
+ { q: tt("drive.faq.q6.question"), a: tt("drive.faq.q6.answer") },
  ];
  return (
  <Section bg={C.cream}>
- <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
- Everything you need to know
- </h2>
+ <h2 className="reveal reveal-up font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>{tt("drive.faq.headline")}</h2>
  <div style={{ maxWidth: 720, margin: "32px auto 0" }}>
  {items.map((it, i) => {
  const isOpen = open === i;
@@ -667,11 +658,12 @@ function FAQ() {
 
 /* ---------- Final CTA ---------- */
 function FinalCTA() {
+  const { tt } = useI18n();
  return (
  <section className="relative w-full overflow-hidden" style={{ minHeight: 520 }}>
  <img
  src={FLEET_SUNSET}
- alt="A line of mydiio tuk-tuks at sunset in Colombo"
+ alt={tt("drive.finalCta.imgAlt")}
  loading="lazy"
  width={1920}
  height={1080}
@@ -685,23 +677,9 @@ function FinalCTA() {
  }}
  />
  <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "120px 24px", textAlign: "center" }}>
- <span className="reveal eyebrow" style={{ textAlign: "center" }}>
- Colombo · Pilot launch · 2026
- </span>
- <h2 className="reveal font-display" style={{
- fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: "#fff",
- lineHeight: 1.5, marginTop: 0, letterSpacing: 0,
- maxWidth: 880, marginInline: "auto",
- }}>
- Join Sri Lanka's first connected passenger information network.
- </h2>
- <p className="reveal" style={{
- fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
- fontSize: "clamp(15px, 1.8vw, 18px)", color: "rgba(255,255,255,0.78)",
- marginTop: 18, maxWidth: 620, marginInline: "auto", lineHeight: 1.5,
- }}>
- Free screen installation. LKR 6,000 to 8,000 every month. Paid on the 5th, without fail.
- </p>
+ <span className="reveal eyebrow" style={{ textAlign: "center" }}>{tt("drive.finalCta.eyebrow")}</span>
+ <h2 className="reveal font-display" style={{ fontSize: "clamp(16px, 1.6vw, 18px)", fontWeight: 500, color: "#fff", lineHeight: 1.5, marginTop: 0, letterSpacing: 0, maxWidth: 880, marginInline: "auto" }}>{tt("drive.finalCta.headline")}</h2>
+ <p className="reveal" style={{ fontFamily: "\'DM Sans\', Nunito, sans-serif", fontWeight: 600, fontSize: "clamp(15px, 1.8vw, 18px)", color: "rgba(255,255,255,0.78)", marginTop: 18, maxWidth: 620, marginInline: "auto", lineHeight: 1.5 }}>{tt("drive.finalCta.body")}</p>
  <div className="reveal" style={{
  marginTop: 36, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center",
  }}>
@@ -713,9 +691,7 @@ function FinalCTA() {
  padding: "16px 24px", borderRadius: 13, fontSize: 17,
  textDecoration: "none", display: "inline-block",
  }}
- >
- Apply to drive →
- </a>
+ >{tt("drive.stickyCta.label")}</a>
  <a
  href="/contact"
  className="btn-bold font-display"
@@ -725,9 +701,7 @@ function FinalCTA() {
  padding: "16px 24px", borderRadius: 13, fontSize: 17,
  textDecoration: "none", display: "inline-block",
  }}
- >
- Get in touch →
- </a>
+ >{tt("drive.finalCta.ctaContact")}</a>
  </div>
  </div>
  </section>
@@ -736,6 +710,7 @@ function FinalCTA() {
 
 /* ============== MAIN ============== */
 function DrivePage() {
+  const { tt } = useI18n();
     usePageMeta({ titleKey: "meta_drive_title", descKey: "meta_drive_desc" });
  useEffect(() => {
  const handleScroll = () => {
@@ -813,7 +788,7 @@ function DrivePage() {
  <section className="relative w-full overflow-hidden drive-supporting-band">
  <img
  src="/illustrations/coverage-fleet.png"
- alt="mydiio tuk-tuk fleet on busy Colombo street with Sinhala shop signs"
+ alt={tt("home.coverage.fleetImg.alt")}
  loading="lazy"
  width={1200}
  height={500}
@@ -849,9 +824,7 @@ function DrivePage() {
  textDecoration: "none", display: "inline-block",
  transition: "transform 0.18s var(--ease-spring), box-shadow 0.18s var(--ease-spring), opacity 0.3s ease",
  }}
- >
- Apply to drive →
- </a>
+ >{tt("drive.stickyCta.label")}</a>
  </SiteShell>
  );
 }

@@ -1,4 +1,4 @@
-import { usePageMeta } from "@/lib/i18n";
+import { usePageMeta, useI18n } from "@/lib/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
@@ -49,6 +49,7 @@ function ContactPage() {
  const [generalError, setGeneralError] = useState<string | null>(null);
 
  const [isOpen, setIsOpen] = useState(false);
+  const { tt } = useI18n();
 
  useEffect(() => {
  const now = new Date();
@@ -89,7 +90,7 @@ function ContactPage() {
  if (!res.ok) throw new Error("failed");
  setInvestorSubmitted(true);
  } catch {
- setInvestorError("Something went wrong, please try again.");
+ setInvestorError(tt('contact.investorForm.errorMessage'));
  }
  setInvestorSubmitting(false);
  }
@@ -121,7 +122,7 @@ function ContactPage() {
  if (!res.ok) throw new Error("failed");
  setGeneralSubmitted(true);
  } catch {
- setGeneralError("Something went wrong, please try again.");
+ setGeneralError(tt('contact.investorForm.errorMessage'));
  }
  setGeneralSubmitting(false);
  }
@@ -156,7 +157,7 @@ function ContactPage() {
  }}
  />
  <div style={{ position: "relative", zIndex: 1 }}>
- <span className="page-hero-label">Contact</span>
+ <span className="page-hero-label">{tt("nav.contact")}</span>
  <h1
  className="reveal-up contact-hero-headline"
  style={{
@@ -169,7 +170,7 @@ function ContactPage() {
  marginTop: 12,
  }}
  >
- Let's talk.
+ {tt("contact.hero.headline")}
  </h1>
  <p
  className="reveal-up delay-1"
@@ -181,7 +182,7 @@ function ContactPage() {
  lineHeight: 1.55,
  }}
  >
- Campaign bookings, driver applications, investor questions, find your path below.
+ {tt("contact.hero.subheadline")}
  </p>
  </div>
  </section>
@@ -194,7 +195,7 @@ function ContactPage() {
  style={{ padding: 24, display: "flex", flexDirection: "column" }}
  >
  <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>
- For businesses
+ {tt("contact.advertiserCard.eyebrow")}
  </span>
  <h3
  style={{
@@ -205,10 +206,10 @@ function ContactPage() {
  margin: "8px 0 10px",
  }}
  >
- Launch a campaign.
+ {tt("contact.advertiserCard.heading")}
  </h3>
  <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65 }}>
- From LKR 25,000 a month. First 7 days free. GPS-verified proof every Monday. No agency needed.
+ {tt("contact.advertiserCard.body")}
  </p>
  <p
  style={{
@@ -218,7 +219,7 @@ function ContactPage() {
  margin: "14px 0 20px",
  }}
  >
- Takes 2 minutes · No payment now
+ {tt("contact.advertiserCard.meta")}
  </p>
  <Link
  to="/advertise/apply"
@@ -241,7 +242,7 @@ function ContactPage() {
  transition: "all 0.15s",
  }}
  >
- Apply for a campaign spot →
+ {tt("contact.advertiserCard.cta")}
  </Link>
  </div>
 
@@ -251,7 +252,7 @@ function ContactPage() {
  style={{ padding: 24, display: "flex", flexDirection: "column" }}
  >
  <span className="eyebrow" style={{ color: "var(--green-ink)" }}>
- For tuk-tuk drivers
+ {tt("contact.driverCard.eyebrow")}
  </span>
  <h3
  style={{
@@ -262,7 +263,7 @@ function ContactPage() {
  margin: "8px 0 10px",
  }}
  >
- Join the network.
+ {tt("contact.driverCard.heading")}
  </h3>
  <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65 }}>
  LKR 6,000 base pay every month. Screen installed free. Keep your routes. Payment on the 5th, every month,
@@ -276,7 +277,7 @@ function ContactPage() {
  margin: "14px 0 20px",
  }}
  >
- Takes 5 minutes · No deposit now
+ {tt("contact.driverCard.meta")}
  </p>
  <Link
  to="/drivers/apply"
@@ -299,7 +300,7 @@ function ContactPage() {
  transition: "all 0.15s",
  }}
  >
- Apply to drive →
+ {tt("contact.driverCard.cta")}
  </Link>
  </div>
 
@@ -308,7 +309,7 @@ function ContactPage() {
  className="mydiio-card reveal-up delay-3"
  style={{ padding: 24, display: "flex", flexDirection: "column" }}
  >
- <span className="eyebrow">Investors and press</span>
+ <span className="eyebrow">{tt("contact.investorCard.eyebrow")}</span>
  <h3
  style={{
  fontFamily: "'Space Grotesk', sans-serif",
@@ -318,14 +319,14 @@ function ContactPage() {
  margin: "8px 0 10px",
  }}
  >
- Get in touch.
+ {tt("contact.investorCard.heading")}
  </h3>
  <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65, marginBottom: 20 }}>
- Raising a pre-seed round. Strong early traction. Full investor brief available on request.
+ {tt("contact.investorCard.body")}
  </p>
  <img
  src={PIONEER_TUK.url}
- alt="mydiio pioneer tuk-tuk with amber flag"
+ alt={tt('contact.investorCard.pioneerTukAlt')}
  loading="lazy"
  width={400}
  height={300}
@@ -343,7 +344,7 @@ function ContactPage() {
  padding: "24px 0",
  }}
  >
- Message sent. We'll be in touch within 24 hours.
+ {tt('contact.investorForm.successMessage')}
  </p>
  ) : (
  <form
@@ -360,13 +361,13 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- Your name
+ {tt("contact.form.name")}
  </span>
  <input
  name="name"
  required
  maxLength={200}
- placeholder="Full name"
+ placeholder={tt("contact.form.name")}
  style={inputStyle}
  className="contact-input"
  />
@@ -381,14 +382,14 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- Email
+ {tt("contact.investorForm.fieldEmail.label")}
  </span>
  <input
  name="email"
  type="email"
  required
  maxLength={255}
- placeholder="hello@fund.com"
+ placeholder={tt("contact.investorForm.fieldEmail.placeholder")}
  style={inputStyle}
  className="contact-input"
  />
@@ -403,12 +404,12 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- Fund / Firm
+ {tt("contact.investorForm.fieldFundFirm.label")}
  </span>
  <input
  name="fund_firm"
  maxLength={200}
- placeholder="Optional"
+ placeholder={tt("contact.investorForm.fieldFundFirm.placeholder")}
  style={inputStyle}
  className="contact-input"
  />
@@ -423,13 +424,13 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- WhatsApp
+ {tt("contact.investorForm.fieldWhatsapp.label")}
  </span>
  <input
  name="whatsapp"
  type="tel"
  maxLength={50}
- placeholder="+94 77 000 0000"
+ placeholder={tt("contact.investorForm.fieldWhatsapp.placeholder")}
  style={inputStyle}
  className="contact-input"
  />
@@ -444,14 +445,14 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- Message
+ {tt("contact.investorForm.fieldMessage.label")}
  </span>
  <textarea
  name="message"
  required
  maxLength={4000}
  rows={3}
- placeholder="Tell us what you're working on."
+ placeholder={tt("contact.investorForm.fieldMessage.placeholder")}
  style={{ ...inputStyle, resize: "vertical" }}
  className="contact-input"
  />
@@ -475,7 +476,7 @@ function ContactPage() {
  transition: "all 0.15s",
  }}
  >
- {investorSubmitting ? "Sending…" : "Send message →"}
+ {investorSubmitting ? tt('contact.investorForm.submitSending') : tt('contact.investorForm.submitIdle')}
  </button>
  {investorError && (
  <p
@@ -498,7 +499,7 @@ function ContactPage() {
  className="mydiio-card reveal-up delay-4"
  style={{ padding: 24, display: "flex", flexDirection: "column" }}
  >
- <span className="eyebrow">General enquiries</span>
+ <span className="eyebrow">{tt("contact.generalCard.eyebrow")}</span>
  <h3
  style={{
  fontFamily: "'Space Grotesk', sans-serif",
@@ -508,10 +509,10 @@ function ContactPage() {
  margin: "8px 0 10px",
  }}
  >
- Everything else.
+ {tt("contact.generalCard.heading")}
  </h3>
  <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65, marginBottom: 20 }}>
- Partnerships, press, community, or just a question, drop us a message and we'll get back to you.
+ {tt("contact.generalCard.body")}
  </p>
  {generalSubmitted ? (
  <p
@@ -524,7 +525,7 @@ function ContactPage() {
  padding: "24px 0",
  }}
  >
- Message sent. We'll be in touch within 24 hours.
+ {tt('contact.generalForm.successMessage')}
  </p>
  ) : (
  <form
@@ -541,13 +542,13 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- Your name
+ {tt("contact.form.name")}
  </span>
  <input
  name="name"
  required
  maxLength={200}
- placeholder="Full name"
+ placeholder={tt("contact.form.name")}
  style={inputStyle}
  className="contact-input"
  />
@@ -562,14 +563,14 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- Email
+ {tt("contact.investorForm.fieldEmail.label")}
  </span>
  <input
  name="email"
  type="email"
  required
  maxLength={255}
- placeholder="hello@company.com"
+ placeholder={tt("contact.generalForm.fieldEmail.placeholder")}
  style={inputStyle}
  className="contact-input"
  />
@@ -584,13 +585,13 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- Phone
+ {tt("contact.generalForm.fieldPhone.label")}
  </span>
  <input
  name="phone"
  type="tel"
  maxLength={50}
- placeholder="+94 77 000 0000"
+ placeholder={tt("contact.investorForm.fieldWhatsapp.placeholder")}
  style={inputStyle}
  className="contact-input"
  />
@@ -605,14 +606,14 @@ function ContactPage() {
  letterSpacing: 1,
  }}
  >
- Message
+ {tt("contact.investorForm.fieldMessage.label")}
  </span>
  <textarea
  name="message"
  required
  maxLength={4000}
  rows={3}
- placeholder="What can we help with?"
+ placeholder={tt("contact.generalForm.fieldMessage.placeholder")}
  style={{ ...inputStyle, resize: "vertical" }}
  className="contact-input"
  />
@@ -636,7 +637,7 @@ function ContactPage() {
  transition: "all 0.15s",
  }}
  >
- {generalSubmitting ? "Sending…" : "Send message →"}
+ {generalSubmitting ? tt('contact.investorForm.submitSending') : tt('contact.investorForm.submitIdle')}
  </button>
  {generalError && (
  <p
@@ -679,12 +680,12 @@ function ContactPage() {
  />
  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.7)" }}>
  {isOpen
- ? "Available now · Sri Lanka time · Typical response under 2 hours"
- : "We'll respond first thing tomorrow morning · Sri Lanka time"}
+ ? tt('contact.statusStrip.openText')
+ : tt('contact.statusStrip.closedText')}
  </span>
  </div>
  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.5)" }}>
- Every application read by a real person · No automated replies
+ {tt("contact.statusStrip.humanNote")}
  </span>
  </div>
  </div>
@@ -699,7 +700,7 @@ function ContactPage() {
  margin: 0,
  }}
  >
- mydiio · Registered in Sri Lanka · Colombo · 2026
+ {tt("contact.legalFootnote")}
  </p>
 
  <style>{`
