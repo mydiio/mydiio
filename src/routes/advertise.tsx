@@ -267,25 +267,25 @@ function Pricing() {
     btnStyle: "primary" | "ink" | "ghost";
   }> = [
     {
-      name: "PIONEER", price: "LKR 25–35k", per: "/mo · 6-month min",
-      features: ["Twelve-month corridor exclusivity — no competitor in your category on your defined route while you are a Pioneer subscriber", "Rate locked for life — your subscription rate never increases", "Priority placement across the full fleet", "Free ad creative production"],
+      name: "PIONEER", price: "LKR 25–35k", per: "/mo · 3-month min",
+      features: ["7-day free trial", "Twelve-month corridor exclusivity — no competitor in your category on your defined route while you are a Pioneer subscriber", "Rate locked for life — your subscription rate never increases", "Priority placement across the full fleet", "Free ad creative production"],
       badge: "Founding — 10 spots only",
       highlight: true,
       tierSlug: "pioneer", ctaLabel: "Apply for Pioneer →", btnStyle: "primary",
     },
     {
       name: "ROAMER", price: "LKR 25,000", per: "/mo · 3-month min",
-      features: ["Standard rotation", "Up to 5 tuk-tuks in your area", "Full dashboard access", "Weekly GPS reports"],
+      features: ["7-day free trial", "Standard rotation", "Up to 5 tuk-tuks in your area", "Full dashboard access", "Weekly GPS reports"],
       tierSlug: "roamer", ctaLabel: "Apply for Roamer →", btnStyle: "ink",
     },
     {
-      name: "VOYAGER", price: "LKR 38,000", per: "/mo · 6-month min",
-      features: ["Priority rotation", "Up to 15 tuk-tuks across Colombo", "Full dashboard access"],
+      name: "VOYAGER", price: "LKR 38,000", per: "/mo · 3-month min",
+      features: ["7-day free trial", "Priority rotation", "Up to 15 tuk-tuks across Colombo", "Full dashboard access"],
       tierSlug: "voyager", ctaLabel: "Apply for Voyager →", btnStyle: "ink",
     },
     {
       name: "HORIZON", price: "LKR 65,000+", per: "/mo · Custom",
-      features: ["15 to 100+ tuk-tuks — your choice", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
+      features: ["7-day free trial", "15 to 100+ tuk-tuks — your choice", "Enterprise-level support", "Multi-vehicle campaigns", "Dedicated account access"],
       tierSlug: "horizon", ctaLabel: "Contact us about Horizon →", btnStyle: "ghost",
     },
   ];
