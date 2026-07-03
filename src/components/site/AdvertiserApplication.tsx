@@ -495,19 +495,6 @@ export function AdvertiserApplication() {
             <SummaryRow label="Contact" value={state.contact_name} />
             <SummaryRow label="WhatsApp" value={state.whatsapp_number} />
             <SummaryRow label="Business type" value={state.business_type} />
-            <div>
-              <div style={labelStyle}>Zones</div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 6 }}>
-                {state.zones_selected.map((z) => (
-                  <span key={z} style={{
-                    background: "var(--accent-soft)", border: "1.5px solid var(--accent-deep)",
-                    color: "var(--accent-deep)", borderRadius: "var(--radius-pill)",
-                    padding: "3px 10px", fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: 12, fontWeight: 600,
-                  }}>{z}</span>
-                ))}
-              </div>
-            </div>
             <SummaryRow label="Tier interest" value={state.tier_undecided ? "Undecided — help me choose" : (state.tier_interest ?? "—")} />
             <SummaryRow label="Creative ready" value={state.has_creative === true ? "Yes" : state.has_creative === false ? "No — needs help" : "—"} />
             {state.campaign_goals.length > 0 && <SummaryRow label="Goals" value={state.campaign_goals.join(" · ")} />}
