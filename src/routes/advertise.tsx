@@ -69,8 +69,8 @@ export const Route = createFileRoute("/advertise")({
             },
             {
               "@type": "Question",
-              name: "What is Pioneer category exclusivity?",
-              acceptedAnswer: { "@type": "Answer", text: "Pioneer advertisers are the only business in their category allowed to advertise in their active zones. For example, a Pioneer pharmacy in Fort means no other pharmacy can run on the mydiio fleet in Fort while your campaign is active." },
+              name: "What is Pioneer corridor exclusivity?",
+              acceptedAnswer: { "@type": "Answer", text: "Pioneer advertisers get twelve months of exclusivity on a defined corridor for their category. The corridor is agreed at sign-up, so no other business in your category can run ads on that route during your first twelve months. Your per-minute subscription rate is fixed for the life of your subscription." },
             },
             {
               "@type": "Question",
