@@ -85,9 +85,9 @@ export function ColomboMap() {
     return () => io.disconnect();
   }, []);
 
-  const selectZone = (z: Zone) => {
-    setActiveId(z.id);
-    if (mapRef.current) mapRef.current.flyTo(z.center, 13, { duration: 0.6 });
+  const selectArea = (a: Area) => {
+    setActiveId(a.id);
+    if (mapRef.current) mapRef.current.flyTo(a.center, 13, { duration: 0.6 });
   };
 
   const reset = () => {
