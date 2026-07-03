@@ -69,8 +69,8 @@ export const Route = createFileRoute("/advertise")({
             },
             {
               "@type": "Question",
-              name: "What is Pioneer category exclusivity?",
-              acceptedAnswer: { "@type": "Answer", text: "Pioneer advertisers are the only business in their category allowed to advertise in their active zones. For example, a Pioneer pharmacy in Fort means no other pharmacy can run on the mydiio fleet in Fort while your campaign is active." },
+              name: "What is Pioneer corridor exclusivity?",
+              acceptedAnswer: { "@type": "Answer", text: "Pioneer advertisers get twelve months of exclusivity on a defined corridor for their category. The corridor is agreed at sign-up, so no other business in your category can run ads on that route during your first twelve months. Your per-minute subscription rate is fixed for the life of your subscription." },
             },
             {
               "@type": "Question",
@@ -268,7 +268,7 @@ function Pricing() {
   }> = [
     {
       name: "PIONEER", price: "LKR 25–35k", per: "/mo · 6-month min",
-      features: ["Category exclusivity — you're the only business in your category on mydiio", "Rate locked for life — never increases", "Priority placement across the full fleet", "Free ad creative production"],
+      features: ["Twelve-month corridor exclusivity — no competitor in your category on your defined route while you are a Pioneer subscriber", "Rate locked for life — your subscription rate never increases", "Priority placement across the full fleet", "Free ad creative production"],
       badge: "Founding — 10 spots only",
       highlight: true,
       tierSlug: "pioneer", ctaLabel: "Apply for Pioneer →", btnStyle: "primary",
@@ -860,7 +860,7 @@ function PioneerProgramme() {
   }, []);
 
   const items = [
-    { n: "01", h: "Category exclusivity", b: "You are the only business in your category advertising on mydiio. A Pioneer pharmacy means no other pharmacy — anywhere on the fleet, anywhere in Colombo — can run ads on mydiio while your campaign is active." },
+    { n: "01", h: "Corridor exclusivity", b: "For the first twelve months of your subscription, you are the only business in your category advertising on your defined corridor. The route is agreed at sign-up and locked for the exclusivity period." },
     { n: "02", h: "Rate locked for life", b: "Your monthly rate never increases — regardless of how the network grows, how many advertisers join, or how many vehicles are added. The rate you start with is yours permanently." },
     { n: "03", h: "Priority rotation", b: "Your campaign always runs first in the ad rotation on every vehicle in your active zones. You are never bumped, delayed, or deprioritised by a higher-spending advertiser." },
     { n: "04", h: "Free creative production", b: "We produce your first campaign creative at no charge — a 15 or 30-second video ad or a static image, built from your existing branding. No agency needed to get started." },
@@ -888,7 +888,7 @@ function PioneerProgramme() {
           fontWeight: 400, color: "var(--on-dark)", opacity: 0.65, textAlign: "center",
           maxWidth: "52ch", margin: "16px auto 56px", lineHeight: 1.65,
         }}>
-          Pioneer spots are not a promotional offer — they are a permanent founding partnership. Your rate is locked in for life. Your category exclusivity means you are the only business in your sector advertising on mydiio. When Pioneer is full, it is full. There will only ever be 10.
+          Pioneer spots are a founding partnership. Your subscription rate is locked in for life. Your corridor exclusivity lasts twelve months from sign-up and covers the defined route we agree with you — not every street in Colombo. When Pioneer is full, it is full. There will only ever be 10.
         </p>
 
         <div className="reveal reveal-up" style={{ maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
@@ -988,7 +988,7 @@ function FAQ() {
   const items = [
     { q: "What kind of ads can I run?", a: "15-second or 30-second video ads, or static image ads. We can produce your first creative for free from your existing branding — just share your logo, colours, and a short brief." },
     { q: "How do I know my ad actually played?", a: "Every Monday you receive a GPS-verified report showing each vehicle that ran your ad, the GPS location at the time of each play, and the total play count. There is no guessing — every impression is logged." },
-    { q: "What is Pioneer category exclusivity?", a: "Pioneer advertisers are the only business in their category allowed to advertise in their active zones. For example, a Pioneer pharmacy in Fort means no other pharmacy can run on the mydiio fleet in Fort while your campaign is active." },
+    { q: "What is Pioneer corridor exclusivity?", a: "Pioneer advertisers get twelve months of exclusivity on a defined corridor for their category. The corridor is agreed at sign-up, so no other business in your category can run ads on that route during your first twelve months. Your per-minute subscription rate is fixed for the life of your subscription." },
     { q: "Can I cancel?", a: "Subscription plans have minimum terms: 3 months for Roamer, 6 months for Voyager and Pioneer. After the minimum term, you can cancel with 30 days' notice. Burst packages have no contract — they run until your minutes or validity period are used up." },
     { q: "What does the LKR 5,000 Pioneer deposit cover?", a: "The LKR 5,000 deposit secures your spot on the waiting list. It is fully refundable — credited against your first invoice when you proceed, or returned in full if you decide not to. No risk. No commitment." },
   ];
