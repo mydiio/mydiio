@@ -186,7 +186,7 @@ export function ColomboMap() {
               <button type="button" onClick={reset} style={{
                 background: "transparent", border: "none", padding: 0, cursor: "pointer",
                 fontSize: 13, color: C.inkSoft, fontWeight: 600,
-              }}>← All zones</button>
+              }}>← Coverage overview</button>
               <span className="font-display" style={{ fontSize: 18, color: C.amberDeep, textAlign: "right", letterSpacing: "-0.3px", lineHeight: 1.2 }}>
                 {active.name}
               </span>
