@@ -214,7 +214,7 @@ export default function TermsPage() {
  '"Creative", any video or image file uploaded by an advertiser for display on mydiio screens.',
  '"Campaign", an active or scheduled advertising run with defined start and end dates, assigned vehicles, and one or more creatives.',
  '"Impression", a single verified play of a creative on a mydiio screen, logged with a GPS location, timestamp, and play duration.',
- '"Pioneer tier", the founding advertiser package offering city-wide category exclusivity on the mydiio Colombo network, limited to ten advertisers in total.',
+ '"Pioneer tier", the founding advertiser package offering twelve-month neighbourhood category exclusivity within a corridor defined at the point of signing, a fixed per-minute rate for the life of the subscription, and limited to ten advertisers in total.',
  '"Deposit", the refundable security deposit paid by advertisers or driver partners at the commencement of their relationship with mydiio.',
  '"Agreement", any written contract signed separately between mydiio and an advertiser or driver partner, which supplements and incorporates these terms.',
  ]}
