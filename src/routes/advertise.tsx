@@ -433,8 +433,8 @@ function Pricing() {
   );
 }
 
-/* ---------- Colombo Coverage ---------- */
-function ColomboCoverage() {
+/* ---------- Fleet Reach ---------- */
+function FleetReach() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
@@ -453,30 +453,17 @@ function ColomboCoverage() {
     return () => io.disconnect();
   }, []);
 
-  const zones = [
-    { id: "CMB-01", name: "Fort / Pettah", desc: "Government, banking and commercial core" },
-    { id: "CMB-02", name: "Kollupitiya", desc: "Retail, hotels and seafront corridor" },
-    { id: "CMB-03", name: "Bambalapitiya", desc: "Shopping, schools and coast" },
-    { id: "CMB-04", name: "Wellawatte", desc: "Dense residential and dining strip" },
-    { id: "CMB-05", name: "Dehiwala", desc: "Major suburban hub south of the city" },
-    { id: "CMB-06", name: "Borella", desc: "Hospitals, offices and key junctions" },
-    { id: "CMB-07", name: "Maradana", desc: "Transport hub and rail interchange" },
-    { id: "CMB-08", name: "Rajagiriya / Kotte", desc: "Government and business district" },
-    { id: "NUG-01", name: "Nugegoda", desc: "Suburban retail and commuter belt" },
-    { id: "MAH-01", name: "Maharagama", desc: "Fast-growing outer suburb" },
-  ];
-
   const tiers = [
-    { name: "PIONEER", zones: "Full fleet", accent: true },
-    { name: "ROAMER", zones: "Up to 5 tuks", accent: false },
-    { name: "VOYAGER", zones: "Up to 15 tuks", accent: false },
-    { name: "HORIZON", zones: "15–100+ tuks", accent: false },
+    { name: "PIONEER", vehicles: "Full fleet", accent: true },
+    { name: "ROAMER", vehicles: "Up to 5 tuk-tuks", accent: false },
+    { name: "VOYAGER", vehicles: "Up to 15 tuk-tuks", accent: false },
+    { name: "HORIZON", vehicles: "15 to 100+ tuk-tuks", accent: false },
   ];
 
   const bursts = [
-    { name: "SPARK", zones: "Up to 5 tuks" },
-    { name: "BLAST", zones: "Up to 10 tuks" },
-    { name: "SURGE", zones: "Full fleet" },
+    { name: "SPARK", vehicles: "Up to 5 tuk-tuks" },
+    { name: "BLAST", vehicles: "Up to 10 tuk-tuks" },
+    { name: "SURGE", vehicles: "Full fleet" },
   ];
 
   return (
@@ -484,7 +471,7 @@ function ColomboCoverage() {
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <div className="reveal reveal-up" style={{ textAlign: "center" }}>
           <span className="eyebrow" style={{ textAlign: "center" }}>
-            Where your audience is
+            Fleet reach
           </span>
         </div>
         <h2 className="reveal reveal-up font-display" style={{
@@ -501,33 +488,8 @@ function ColomboCoverage() {
           mydiio tuk-tuks drive through every part of Colombo every day. Your weekly report shows exactly which neighbourhoods your ad reached — verified by GPS on every vehicle.
         </p>
 
-        <div className="coverage-tier-wrap">
-          <div className="reveal reveal-up zone-grid">
-            {zones.map((z) => (
-              <div key={z.id} className="zone-card">
-                <div style={{
-                  fontFamily: "'Space Mono', monospace", fontSize: 10, fontWeight: 700,
-                  color: "var(--accent-deep)",
-                }}>
-                  {z.id}
-                </div>
-                <div style={{
-                  fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
-                  fontSize: 15, color: "var(--ink)", marginTop: 4,
-                }}>
-                  {z.name}
-                </div>
-                <div style={{
-                  fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
-                  color: "var(--ink-soft)", lineHeight: 1.5, marginTop: 2,
-                }}>
-                  {z.desc}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="reveal reveal-up tier-card">
+        <div className="reach-tier-wrap">
+          <div className="reveal reveal-up reach-card">
             <div style={{
               fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
               fontSize: 17, color: "var(--ink)", marginBottom: 4,
@@ -558,7 +520,7 @@ function ColomboCoverage() {
                   fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700,
                   color: "var(--ink)",
                 }}>
-                  {t.zones}
+                  {t.vehicles}
                 </span>
               </div>
             ))}
@@ -590,7 +552,7 @@ function ColomboCoverage() {
                   fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700,
                   color: "var(--ink)",
                 }}>
-                  {b.zones}
+                  {b.vehicles}
                 </span>
               </div>
             ))}
@@ -609,33 +571,17 @@ function ColomboCoverage() {
           color: "var(--accent-deep)", fontWeight: 700,
           textAlign: "center", marginTop: 32,
         }}>
-          Coverage expands as more drivers join the fleet. Pioneer advertisers select their preferred zones at sign-up.
+          Coverage expands as more drivers join the fleet.
         </p>
       </div>
 
       <style>{`
-        .coverage-tier-wrap { display: flex; gap: 40px; flex-wrap: wrap; }
-        .coverage-tier-wrap > .zone-grid { flex: 1 1 55%; min-width: 280px; }
-        .coverage-tier-wrap > .tier-card { flex: 1 1 45%; min-width: 280px; }
+        .reach-tier-wrap { display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; }
+        .reach-tier-wrap > .reach-card { flex: 1 1 45%; min-width: 280px; max-width: 560px; }
         @media (max-width: 767px) {
-          .coverage-tier-wrap > .zone-grid,
-          .coverage-tier-wrap > .tier-card { flex: 1 1 100%; }
+          .reach-tier-wrap > .reach-card { flex: 1 1 100%; }
         }
-        .zone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .zone-card {
-          background: var(--paper);
-          border: 2px solid var(--ink);
-          border-radius: 14px;
-          box-shadow: 3px 3px 0 var(--ink);
-          padding: 14px 16px;
-          cursor: pointer;
-          transition: all 0.18s ease;
-        }
-        .zone-card:hover {
-          transform: translate(-2px, -2px);
-          box-shadow: 5px 5px 0 var(--ink);
-        }
-        .tier-card {
+        .reach-card {
           background: var(--paper);
           border: 2px solid var(--ink);
           border-radius: 22px;
