@@ -245,20 +245,20 @@ export const dict: Dict = {
   // ============================================================
   // HOME · SCALE STORY / ROAD AHEAD
   // ============================================================
-  scale_kicker: en("The Road Ahead"),
+  scale_kicker: tr({ en: "THE ROAD AHEAD", si: "ඉදිරි මාර්ගය", ta: "முன்னோக்கிய பாதை" }),
   scale_title: tr({
     en: "Colombo first. Every city next.",
     si: "මුලින්ම කොළඹ. ඊළඟට සෑම නගරයක්ම.",
     ta: "முதலில் கொழும்பு. அடுத்து ஒவ்வொரு நகரமும்.",
   }),
-  scale_c1_t: en("More screens."),
-  scale_c1_b: en("As the network grows, your campaigns can reach more passengers across more areas."),
-  scale_c2_t: en("More locations."),
-  scale_c2_b: en("Expand into new areas and connect with audiences wherever they travel."),
-  scale_c3_t: en("More insights."),
-  scale_c3_b: en("Smarter campaigns backed by real data."),
-  scale_c4_t: en("More growth."),
-  scale_c4_b: en("More value for businesses, drivers and passengers."),
+  scale_c1_t: tr({ en: "More screens.", si: "වැඩි තිර.", ta: "மேலும் திரைகள்." }),
+  scale_c1_b: tr({ en: "As the network grows, your campaigns can reach more passengers across more areas.", si: "ජාලය වර්ධනය වන විට, ඔබේ ප්‍රචාරණවලට වැඩි ප්‍රදේශ පුරා වැඩි මගීන් වෙත ළඟා විය හැක.", ta: "வலையமைப்பு வளரும்போது, உங்கள் பிரச்சாரங்கள் அதிக பகுதிகளில் அதிக பயணிகளை சென்றடையலாம்." }),
+  scale_c2_t: tr({ en: "More locations.", si: "වැඩි ස්ථාන.", ta: "மேலும் இடங்கள்." }),
+  scale_c2_b: tr({ en: "Expand into new areas and connect with audiences wherever they travel.", si: "නව ප්‍රදේශවලට පුළුල් වී, ප්‍රේක්ෂකයන් ගමන් කරන ඕනෑම තැනක ඔවුන් සමඟ සම්බන්ධ වන්න.", ta: "புதிய பகுதிகளுக்கு விரிவடைந்து, பார்வையாளர்கள் பயணிக்கும் இடமெல்லாம் அவர்களுடன் இணையுங்கள்." }),
+  scale_c3_t: tr({ en: "More insights.", si: "වැඩි තීක්ෂණතා.", ta: "மேலும் நுண்ணறிவுகள்." }),
+  scale_c3_b: tr({ en: "Smarter campaigns backed by real data.", si: "සැබෑ දත්ත මගින් සහාය දක්වන බුද්ධිමත් ප්‍රචාරණ.", ta: "உண்மையான தரவால் ஆதரிக்கப்படும் புத்திசாலித்தனமான பிரச்சாரங்கள்." }),
+  scale_c4_t: tr({ en: "More growth.", si: "වැඩි වර්ධනය.", ta: "மேலும் வளர்ச்சி." }),
+  scale_c4_b: tr({ en: "More value for businesses, drivers and passengers.", si: "ව්‍යාපාර, රියදුරන් සහ මගීන් සඳහා වැඩි වටිනාකමක්.", ta: "வணிகங்கள், ஓட்டுநர்கள் மற்றும் பயணிகளுக்கு அதிக மதிப்பு." }),
 
   // ============================================================
   // HOME · FOUNDING OFFER
