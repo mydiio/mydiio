@@ -28,7 +28,7 @@ const BUSINESS_TYPES = [
   "Salon", "Hotel", "Hospitality", "Event", "Entertainment", "Other",
 ];
 
-const ZONES = ["Fort", "Pettah", "Kollupitiya", "Bambalapitiya", "Wellawatte", "Dehiwala", "Borella", "Nugegoda", "Rajagiriya", "Maharagama"];
+
 
 const BUDGETS = ["Under LKR 20k", "LKR 20–35k", "LKR 35–65k", "LKR 65k+", "Not sure yet"];
 
@@ -39,7 +39,7 @@ const REFERRALS = ["Word of mouth", "Social media", "Saw a tuk-tuk screen", "Goo
 const TIER_MAP: Record<string, { name: string; desc: string }> = {
   "Under LKR 20k": { name: "Let's talk", desc: "We'll find the right entry point for your budget." },
   "LKR 20–35k": { name: "Roamer", desc: "Up to 5 tuk-tuks in your area — LKR 25,000/month, 3-month minimum." },
-  "LKR 35–65k": { name: "Voyager", desc: "Up to 15 tuk-tuks across Colombo — LKR 38,000/month, 6-month minimum." },
+  "LKR 35–65k": { name: "Voyager", desc: "Up to 15 tuk-tuks across Colombo — LKR 38,000/month, 3-month minimum." },
   "LKR 65k+": { name: "Horizon", desc: "15 to 100+ tuk-tuks — LKR 65,000+/month, custom terms." },
 };
 
@@ -47,7 +47,7 @@ const ALL_TIERS = ["Pioneer", "Roamer", "Voyager", "Horizon", "Not sure — help
 
 type Draft = {
   step?: number;
-  s1?: { businessName?: string; contactName?: string; whatsappNumber?: string; businessType?: string; zonesSelected?: string[] };
+  s1?: { businessName?: string; contactName?: string; whatsappNumber?: string; businessType?: string };
   s2?: { budgetRange?: string; tierInterest?: string; showAllTiers?: boolean; campaignGoal?: string; hasCreative?: boolean | null; referralSource?: string };
 };
 
