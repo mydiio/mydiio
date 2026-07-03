@@ -445,9 +445,9 @@ export default function PrivacyPage() {
  <SubHeading>Service providers (process data on our behalf under data protection agreements):</SubHeading>
  <BulletList
  items={[
- "Supabase, our cloud database and authentication provider (SOC 2 Type II compliant)",
- "Cloudinary, video and image hosting for advertising creatives",
- "Cloudflare, website and application hosting and DNS provider",
+          "Supabase, our cloud database and authentication provider (SOC 2 Type II compliant)",
+          "Supabase Storage, storage of advertiser creative uploads (images and video)",
+          "Cloudflare, website and application hosting and DNS provider",
  "Resend, email delivery service for transactional emails",
  "OpenWeatherMap, weather data for informational interstitials on tablets. No personal data is shared.",
  "NewsAPI.org, Sri Lanka news content for informational interstitials. No personal data is shared.",
