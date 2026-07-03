@@ -746,7 +746,7 @@ function TwoAudiences() {
  padding: 0,
  }}>
  <div className="brutal-frame">
- <img src={DRIVER_CARD.url} alt="Tuk-tuk driver earning passive income with mydiio advertising platform" loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
+ <img src={DRIVER_CARD.url} alt="Tuk-tuk driver earning passive income with mydiio, Sri Lanka's first connected passenger information network" loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
  </div>
  <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
  <span className="eyebrow" style={{ color: "var(--green-ink)" }}>{t("dr_kicker")}</span>
