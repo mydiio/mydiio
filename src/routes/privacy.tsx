@@ -286,18 +286,18 @@ export default function PrivacyPage() {
 
  <SubHeading>Automatically from devices and tablets</SubHeading>
  <BodyText>Our tablet devices in the field generate operational data including:</BodyText>
- <BulletList
- items={[
- "GPS coordinates of the device, transmitted every five minutes during operating hours",
- "Ad play logs recording which advertisement was displayed, at what time, for how long, and at which GPS coordinates",
- "Device online and offline status updated continuously",
- "Remote screenshots of the tablet screen captured automatically every thirty minutes during operating hours",
- "Device health signals including screen status and data connectivity",
- ]}
- />
- <BodyText>
- This operational data is tied to the vehicle and device, not to individual passengers. Screenshots capture the advertisement content being displayed, not the interior of the vehicle or its passengers.
- </BodyText>
+  <BulletList
+    items={[
+      "GPS coordinates of the device during operating hours",
+      "Ad play logs recording which advertisement was displayed, at what time, for how long, and at which GPS coordinates",
+      "Device online and offline status",
+      "Periodic screenshots of the tablet screen during operating hours",
+      "Device health signals including screen status and data connectivity",
+    ]}
+  />
+  <BodyText>
+  This data is collected for verifying ad delivery, device compliance, and driver safety. It is tied to the vehicle and device, not to individual passengers. Screenshots capture the advertisement content being displayed, not the interior of the vehicle or its passengers.
+  </BodyText>
  </section>
 
  {/* SECTION 04 */}
