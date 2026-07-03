@@ -371,16 +371,6 @@ export function AdvertiserApplication() {
             </select>
           </label>
 
-          <div style={fieldGroup}>
-            <span style={labelStyle}>Which neighbourhoods matter to you?</span>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 4 }}>
-              {ZONES.map((z) => (
-                <Pill key={z} active={state.zones_selected.includes(z)} onClick={() => toggleZone(z)}>{z}</Pill>
-              ))}
-            </div>
-            <span style={helperStyle}>Select all that apply</span>
-          </div>
-
           <button type="button" disabled={!step1Valid} onClick={() => setStep(2)}
             className="btn-bold font-display"
             style={{ ...primaryBtn, width: "100%", marginTop: 8, opacity: step1Valid ? 1 : 0.55, cursor: step1Valid ? "pointer" : "not-allowed" }}>
