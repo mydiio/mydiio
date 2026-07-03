@@ -118,13 +118,13 @@ export function ColomboMap() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          {ZONES.map((z) => {
-            const isActive = z.id === activeId;
+          {AREAS.map((a) => {
+            const isActive = a.id === activeId;
             return (
               <Circle
-                key={z.id}
-                center={z.center}
-                radius={z.radius}
+                key={a.id}
+                center={a.center}
+                radius={a.radius}
                 pathOptions={{
                   fillColor: "#F5A623",
                   fillOpacity: isActive ? 0.45 : 0.15,
@@ -132,19 +132,19 @@ export function ColomboMap() {
                   weight: isActive ? 2.5 : 1.5,
                 }}
                 eventHandlers={{
-                  click: () => selectZone(z),
+                  click: () => selectArea(a),
                   mouseover: (e) => {
-                    if (z.id !== activeId) e.target.setStyle({ fillOpacity: 0.3, weight: 2 });
+                    if (a.id !== activeId) e.target.setStyle({ fillOpacity: 0.3, weight: 2 });
                   },
                   mouseout: (e) => {
-                    if (z.id !== activeId) e.target.setStyle({ fillOpacity: 0.15, weight: 1.5 });
+                    if (a.id !== activeId) e.target.setStyle({ fillOpacity: 0.15, weight: 1.5 });
                   },
                 }}
               />
             );
           })}
-          {ZONES.map((z) => (
-            <Marker key={`m-${z.id}`} position={z.center} icon={amberDot} eventHandlers={{ click: () => selectZone(z) }} />
+          {AREAS.map((a) => (
+            <Marker key={`m-${a.id}`} position={a.center} icon={amberDot} eventHandlers={{ click: () => selectArea(a) }} />
           ))}
           <ZoomControls />
         </MapContainer>
