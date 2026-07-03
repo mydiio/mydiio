@@ -32,7 +32,29 @@ export const Route = createFileRoute("/drive")({
 });
 
 const DRIVER_CONTACT = "/contact";
-const SPOTS_REMAINING = 7;
+const GROUP_A_TOTAL = 10;
+
+/** Shared live count of remaining Group A founding driver spots.
+ * Pulls approved driver_applications from the backend so hero and
+ * founding-group section always show the same number. */
+function useGroupARemaining() {
+  const [approvedCount, setApprovedCount] = useState(0);
+  useEffect(() => {
+    (async () => {
+      try {
+        const { count } = await (supabase as any)
+          .from("driver_applications")
+          .select("id", { count: "exact", head: true })
+          .eq("status", "approved");
+        if (typeof count === "number") setApprovedCount(count);
+      } catch {
+        /* table may not exist yet */
+      }
+    })();
+  }, []);
+  return Math.max(0, GROUP_A_TOTAL - approvedCount);
+}
+
 
 
 /* ---------- Section ---------- */
@@ -158,21 +180,8 @@ function EarningsCalculator() {
   const monthly = hours >= 8 ? 8000 : 6000;
   const annual = monthly * 12;
 
-  const [approvedCount, setApprovedCount] = useState(0);
-  useEffect(() => {
-    (async () => {
-      try {
-        const { count } = await (supabase as any)
-          .from("driver_applications")
-          .select("id", { count: "exact", head: true })
-          .eq("status", "approved");
-        if (typeof count === "number") setApprovedCount(count);
-      } catch {
-        /* table may not exist yet */
-      }
-    })();
-  }, []);
-  const groupARemaining = Math.max(0, 10 - approvedCount);
+  const groupARemaining = useGroupARemaining();
+
 
   return (
     <Section bg={C.cream}>
@@ -443,6 +452,8 @@ function Installation() {
 
 /* ---------- Founding Group ---------- */
 function FoundingGroup() {
+  const groupARemaining = useGroupARemaining();
+
   const items = [
     "Group A (drivers 1–10) — LKR 5,000 loyalty bonus at Month 3, putting you ahead of what you paid to join",
     "Group B (drivers 11–20) — LKR 3,000 loyalty bonus at Month 3",
@@ -473,7 +484,7 @@ function FoundingGroup() {
           padding: "5px 10px", borderRadius: 999, fontWeight: 700,
           border: `2px solid ${C.ink}`,
         }}>
-          {SPOTS_REMAINING} SPOTS REMAINING
+          {groupARemaining} OF {GROUP_A_TOTAL} SPOTS REMAINING
         </div>
         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
           {items.map((t) => (
