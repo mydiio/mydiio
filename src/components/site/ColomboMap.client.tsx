@@ -160,23 +160,23 @@ export function ColomboMap() {
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <span className="coverage-pulse" />
               <span className="font-display" style={{ fontSize: 16, color: C.ink, letterSpacing: "-0.2px" }}>
-                10 zones across Greater Colombo
+                10 coverage areas across Greater Colombo
               </span>
             </div>
             <p style={{ marginTop: 14, fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, fontWeight: 500 }}>
-              Select a zone on the map to explore coverage, tuk-tuk density, and audience profile.
+              Explore the map to see where the fleet operates, how dense the coverage is, and what kind of audiences your ad will reach.
             </p>
             <div style={{ height: 1, background: "rgba(26,26,24,0.12)", margin: "20px 0" }} />
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               <div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amberDeep, textTransform: "uppercase" }}>All zones</div>
-                <div className="font-display" style={{ fontSize: 20, color: C.ink, marginTop: 6 }}>10 zones</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amberDeep, textTransform: "uppercase" }}>Coverage areas</div>
+                <div className="font-display" style={{ fontSize: 20, color: C.ink, marginTop: 6 }}>10 areas</div>
                 <div className="font-display" style={{ fontSize: 20, color: C.ink, marginTop: 6 }}>50+ tuks</div>
               </div>
               <div>
                 <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amberDeep, textTransform: "uppercase" }}>Launching Q3 2026</div>
-                <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>7 Colombo zones active</div>
-                <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>Across all zones at launch</div>
+                <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>Colombo-wide reach</div>
+                <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>Fleet expands at launch</div>
               </div>
             </div>
           </>
