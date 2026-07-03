@@ -263,7 +263,6 @@ export function AdvertiserApplication() {
       contact_name: state.contact_name.trim(),
       whatsapp_number: state.whatsapp_number.trim(),
       business_type: state.business_type,
-      zones_selected: state.zones_selected,
       tier_interest: state.tier_undecided ? "undecided" : state.tier_interest,
       has_creative: state.has_creative,
       campaign_goals: state.campaign_goals,
