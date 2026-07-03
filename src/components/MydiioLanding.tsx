@@ -666,7 +666,7 @@ function Coverage() {
           Your campaign, across Colombo.
         </h2>
         <p className="reveal-up delay-2" style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 16, fontWeight: 500 }}>
-          Reach passengers in the neighbourhoods where your customers already are. Click any zone to explore.
+          Reach passengers in the neighbourhoods where your customers already are. Explore where the fleet operates every day.
         </p>
       </div>
       <div className="reveal reveal-up delay-1" style={{ marginBottom: 32 }}>

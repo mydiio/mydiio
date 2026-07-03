@@ -425,7 +425,7 @@ function AboutPage() {
           <div className="steps-row reveal-up delay-3">
             {[
               { n: "01", h: "Send us your creative", b: "A 15 or 30-second video, or a static image. Don't have one yet? We'll produce your first ad for free as part of getting started." },
-              { n: "02", h: "We go live overnight", b: "Your ad loads to every active screen in your chosen zones across the fleet. GPS tracking starts the moment it goes live." },
+              { n: "02", h: "We go live overnight", b: "Your ad loads to every active screen in your chosen vehicle plan across the fleet. GPS tracking starts the moment it goes live." },
               { n: "03", h: "You get the proof", b: "Every Monday you receive a verified report. It shows every vehicle, every GPS location, every play. No estimates. No guessing. Exact numbers." },
 
             ].map((s, i, arr) => (

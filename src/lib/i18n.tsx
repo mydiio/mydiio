@@ -34,7 +34,7 @@ export const dict: Dict = {
     ta: "mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
   },
   metric_vehicles: { en: "Pilot vehicles", si: "පයිලට් වාහන", ta: "பைலட் வாகனங்கள்" },
-  metric_zones: { en: "Avg. ride attention", si: "සාමාන්‍ය ගමන් අවධානය", ta: "சராசரி பயண கவனம்" },
+  
   metric_attention: { en: "Campaign launch", si: "ව්‍යාපාර දියත් කිරීම", ta: "பிரச்சார தொடக்கம்" },
   metric_launch: { en: "Pioneer spots", si: "පුරෝගාමී ස්ථාන", ta: "முன்னோடி இடங்கள்" },
   metric_min: { en: "min", si: "මිනි", ta: "நிமி" },
@@ -94,7 +94,7 @@ export const dict: Dict = {
   // --- Reporting ---
   rep_kicker: { en: "Reporting", si: "වාර්තාකරණය", ta: "அறிக்கையிடல்" },
   rep_title: { en: "Measured, not guessed.", si: "මනින ලද, අනුමාන කරන ලද නොවේ.", ta: "அளவிடப்பட்டது, யூகிக்கப்பட்டதல்ல." },
-  rep_body: { en: "Track active vehicles, zone coverage, campaign uptime, and verified impressions — updated in real time. Every advertiser gets full dashboard access the moment their campaign goes live.", si: "ක්‍රියාකාරී වාහන, මාර්ග ආවරණය, ව්‍යාපාර ක්‍රියාත්මක කාලය සහ අනුමාන හැඟීම් අනුගමනය කරන්න — GPS මගින් තහවුරු කර තත්‍ය කාලීනව යාවත්කාලීන කරයි.", ta: "செயலில் உள்ள வாகனங்கள், வழி கவரேஜ், பிரச்சார இயங்கு நேரம் மற்றும் மதிப்பிடப்பட்ட பதிவுகளை கண்காணிக்கவும் — GPS மூலம் சரிபார்க்கப்பட்டு நிகழ்நேரத்தில் புதுப்பிக்கப்படுகிறது." },
+  rep_body: { en: "Track active vehicles, fleet coverage, campaign uptime, and verified impressions — updated in real time. Every advertiser gets full dashboard access the moment their campaign goes live.", si: "ක්‍රියාකාරී වාහන, රථ පෙළ ආවරණය, ව්‍යාපාර ක්‍රියාත්මක කාලය සහ තහවුරු කරන ලද හැඟීම් අනුගමනය කරන්න — තත්ත්‍ය කාලීනව යාවත්කාලීන වේ. GPS මගින් තහවුරු කර ඇත.", ta: "செயலில் உள்ள வாகனங்கள், வாகனப் படை ஆவரணம், பிரச்சார இயக்க நேரம் மற்றும் சரிபார்க்கப்பட்ட பதிவுகளைக் கண்காணிக்கவும் — நிகழ்நேரத்தில் புதுப்பிக்கப்படுகிறது. GPS மூலம் சரிபார்க்கப்பட்டுள்ளது." },
 
   // --- Why Now ---
   whyn_kicker: { en: "Why now", si: "දැන් ඇයි", ta: "ஏன் இப்போது" },

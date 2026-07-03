@@ -4,7 +4,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { C } from "./theme";
 
-type Zone = {
+type Area = {
   id: number;
   name: string;
   center: [number, number];
@@ -13,16 +13,16 @@ type Zone = {
   tuk_density: string;
 };
 
-const ZONES: Zone[] = [
+const AREAS: Area[] = [
   { id: 1, name: "Fort / Pettah", center: [6.9344, 79.8428], radius: 900, description: "The commercial heartbeat of Colombo. Highest footfall, highest ad value.", tuk_density: "High" },
   { id: 2, name: "Kollupitiya / Slave Island", center: [6.9147, 79.849], radius: 800, description: "Hotels, embassies, finance district. Premium audience, high dwell time.", tuk_density: "High" },
   { id: 3, name: "Bambalapitiya", center: [6.896, 79.853], radius: 750, description: "Busy retail corridor. Restaurants, boutiques, daily commuter traffic.", tuk_density: "High" },
   { id: 4, name: "Wellawatte / Pamankada", center: [6.8756, 79.8579], radius: 800, description: "Dense residential and commercial mix. Strong repeat audience.", tuk_density: "Medium" },
   { id: 5, name: "Dehiwala", center: [6.8535, 79.865], radius: 900, description: "Major suburban hub south of the city. Growing retail base.", tuk_density: "Medium" },
   { id: 6, name: "Borella / Cinnamon Gardens", center: [6.9147, 79.865], radius: 850, description: "Upmarket residential. Hospitals, schools, professional services.", tuk_density: "Medium" },
-  { id: 7, name: "Maradana / Dematagoda", center: [6.93, 79.87], radius: 800, description: "Transport hub zone. High tuk-tuk concentration at rail and bus interchanges.", tuk_density: "High" },
+  { id: 7, name: "Maradana / Dematagoda", center: [6.93, 79.87], radius: 800, description: "Transport hub area. High tuk-tuk concentration at rail and bus interchanges.", tuk_density: "High" },
   { id: 8, name: "Rajagiriya / Kotte", center: [6.909, 79.89], radius: 900, description: "Government and business district east of the city. Weekday commuter audience.", tuk_density: "Medium" },
-  { id: 9, name: "Nugegoda", center: [6.871, 79.887], radius: 1000, description: "The pilot launch corridor. Highest mydiio concentration. Dense suburban commercial.", tuk_density: "High — Pilot zone" },
+  { id: 9, name: "Nugegoda", center: [6.871, 79.887], radius: 1000, description: "The pilot launch corridor. Highest mydiio concentration. Dense suburban commercial.", tuk_density: "High — Pilot area" },
   { id: 10, name: "Maharagama", center: [6.8467, 79.927], radius: 1100, description: "Fast-growing outer suburb. Lower competition, high local business density.", tuk_density: "Medium" },
 ];
 
@@ -65,7 +65,7 @@ export function ColomboMap() {
   const [activeId, setActiveId] = useState<number | null>(null);
   const mapRef = useRef<L.Map | null>(null);
   const wrapRef = useRef<HTMLDivElement | null>(null);
-  const active = useMemo(() => ZONES.find((z) => z.id === activeId) || null, [activeId]);
+  const active = useMemo(() => AREAS.find((a) => a.id === activeId) || null, [activeId]);
 
   // Leaflet renders before the animated container has its final size; trigger
   // invalidateSize() once the map scrolls into view so tiles align correctly.
@@ -85,9 +85,9 @@ export function ColomboMap() {
     return () => io.disconnect();
   }, []);
 
-  const selectZone = (z: Zone) => {
-    setActiveId(z.id);
-    if (mapRef.current) mapRef.current.flyTo(z.center, 13, { duration: 0.6 });
+  const selectArea = (a: Area) => {
+    setActiveId(a.id);
+    if (mapRef.current) mapRef.current.flyTo(a.center, 13, { duration: 0.6 });
   };
 
   const reset = () => {
@@ -118,13 +118,13 @@ export function ColomboMap() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          {ZONES.map((z) => {
-            const isActive = z.id === activeId;
+          {AREAS.map((a) => {
+            const isActive = a.id === activeId;
             return (
               <Circle
-                key={z.id}
-                center={z.center}
-                radius={z.radius}
+                key={a.id}
+                center={a.center}
+                radius={a.radius}
                 pathOptions={{
                   fillColor: "#F5A623",
                   fillOpacity: isActive ? 0.45 : 0.15,
@@ -132,19 +132,19 @@ export function ColomboMap() {
                   weight: isActive ? 2.5 : 1.5,
                 }}
                 eventHandlers={{
-                  click: () => selectZone(z),
+                  click: () => selectArea(a),
                   mouseover: (e) => {
-                    if (z.id !== activeId) e.target.setStyle({ fillOpacity: 0.3, weight: 2 });
+                    if (a.id !== activeId) e.target.setStyle({ fillOpacity: 0.3, weight: 2 });
                   },
                   mouseout: (e) => {
-                    if (z.id !== activeId) e.target.setStyle({ fillOpacity: 0.15, weight: 1.5 });
+                    if (a.id !== activeId) e.target.setStyle({ fillOpacity: 0.15, weight: 1.5 });
                   },
                 }}
               />
             );
           })}
-          {ZONES.map((z) => (
-            <Marker key={`m-${z.id}`} position={z.center} icon={amberDot} eventHandlers={{ click: () => selectZone(z) }} />
+          {AREAS.map((a) => (
+            <Marker key={`m-${a.id}`} position={a.center} icon={amberDot} eventHandlers={{ click: () => selectArea(a) }} />
           ))}
           <ZoomControls />
         </MapContainer>
@@ -160,23 +160,23 @@ export function ColomboMap() {
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <span className="coverage-pulse" />
               <span className="font-display" style={{ fontSize: 16, color: C.ink, letterSpacing: "-0.2px" }}>
-                10 zones across Greater Colombo
+                10 coverage areas across Greater Colombo
               </span>
             </div>
             <p style={{ marginTop: 14, fontSize: 14.5, color: C.inkSoft, lineHeight: 1.55, fontWeight: 500 }}>
-              Select a zone on the map to explore coverage, tuk-tuk density, and audience profile.
+              Explore the map to see where the fleet operates, how dense the coverage is, and what kind of audiences your ad will reach.
             </p>
             <div style={{ height: 1, background: "rgba(26,26,24,0.12)", margin: "20px 0" }} />
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               <div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amberDeep, textTransform: "uppercase" }}>All zones</div>
-                <div className="font-display" style={{ fontSize: 20, color: C.ink, marginTop: 6 }}>10 zones</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amberDeep, textTransform: "uppercase" }}>Coverage areas</div>
+                <div className="font-display" style={{ fontSize: 20, color: C.ink, marginTop: 6 }}>10 areas</div>
                 <div className="font-display" style={{ fontSize: 20, color: C.ink, marginTop: 6 }}>50+ tuks</div>
               </div>
               <div>
                 <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, color: C.amberDeep, textTransform: "uppercase" }}>Launching Q3 2026</div>
-                <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>7 Colombo zones active</div>
-                <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>Across all zones at launch</div>
+                <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>Colombo-wide reach</div>
+                <div style={{ fontSize: 13.5, color: C.inkSoft, marginTop: 6, fontWeight: 500, lineHeight: 1.5 }}>Fleet expands at launch</div>
               </div>
             </div>
           </>
@@ -186,7 +186,7 @@ export function ColomboMap() {
               <button type="button" onClick={reset} style={{
                 background: "transparent", border: "none", padding: 0, cursor: "pointer",
                 fontSize: 13, color: C.inkSoft, fontWeight: 600,
-              }}>← All zones</button>
+              }}>← Coverage overview</button>
               <span className="font-display" style={{ fontSize: 18, color: C.amberDeep, textAlign: "right", letterSpacing: "-0.3px", lineHeight: 1.2 }}>
                 {active.name}
               </span>
@@ -210,7 +210,7 @@ export function ColomboMap() {
               marginTop: 20, background: C.amber, color: C.ink, padding: "13px 18px",
               borderRadius: 11, fontSize: 14.5, border: `2.5px solid ${C.ink}`, cursor: "pointer",
             }}>
-              Get coverage here →
+              View plans →
             </button>
           </>
         )}
@@ -218,13 +218,13 @@ export function ColomboMap() {
 
       {/* Mobile pill row */}
       <div className="coverage-pills">
-        {ZONES.map((z) => {
-          const isActive = z.id === activeId;
+        {AREAS.map((a) => {
+          const isActive = a.id === activeId;
           return (
             <button
-              key={z.id}
+              key={a.id}
               type="button"
-              onClick={() => selectZone(z)}
+              onClick={() => selectArea(a)}
               style={{
                 background: isActive ? C.amber : "#FEF3D7",
                 color: isActive ? C.ink : "#854F0B",
@@ -232,7 +232,7 @@ export function ColomboMap() {
                 border: "none", cursor: "pointer", whiteSpace: "nowrap", fontWeight: 700,
               }}
             >
-              {z.name}
+              {a.name}
             </button>
           );
         })}

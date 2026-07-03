@@ -10,15 +10,11 @@ const BUSINESS_TYPES = [
   "Beauty / Salon", "Hotel / Hospitality", "Event / Entertainment", "Other",
 ] as const;
 
-const ZONES = [
-  "Fort", "Pettah", "Kollupitiya", "Bambalapitiya", "Wellawatte",
-  "Dehiwala", "Borella", "Nugegoda", "Rajagiriya", "Maharagama",
-] as const;
 
 const TIERS = [
-  { id: "PIONEER", price: "LKR 25–35k/mo", desc: "Founding partner — full fleet, exclusive to your category", term: "6-month min" },
+  { id: "PIONEER", price: "LKR 25–35k/mo", desc: "Founding partner — full fleet, exclusive to your category", term: "3-month min" },
   { id: "ROAMER", price: "LKR 25k/mo", desc: "Up to 5 tuk-tuks in your area", term: "3-month min" },
-  { id: "VOYAGER", price: "LKR 38k/mo", desc: "Up to 15 tuk-tuks across Colombo", term: "6-month min" },
+  { id: "VOYAGER", price: "LKR 38k/mo", desc: "Up to 15 tuk-tuks across Colombo", term: "3-month min" },
   { id: "HORIZON", price: "LKR 65k+/mo", desc: "15 to 100+ tuk-tuks, enterprise terms", term: "Negotiated" },
 ] as const;
 
@@ -48,7 +44,6 @@ const submitSchema = z.object({
   contact_name: z.string().trim().min(1).max(200),
   whatsapp_number: z.string().trim().min(4).max(40),
   business_type: z.string().min(1).max(80),
-  zones_selected: z.array(z.string()).min(1).max(20),
   tier_interest: z.string().max(40).nullable(),
   has_creative: z.boolean().nullable(),
   campaign_goals: z.array(z.string()).max(10),
@@ -178,7 +173,6 @@ type FormState = {
   contact_name: string;
   whatsapp_number: string;
   business_type: string;
-  zones_selected: string[];
   tier_interest: string | null; // null = undecided
   tier_undecided: boolean;
   has_creative: boolean | null;
@@ -192,7 +186,6 @@ const initialState: FormState = {
   contact_name: "",
   whatsapp_number: "",
   business_type: "",
-  zones_selected: [],
   tier_interest: null,
   tier_undecided: false,
   has_creative: null,
@@ -244,8 +237,6 @@ export function AdvertiserApplication() {
 
   const set = <K extends keyof FormState>(k: K, v: FormState[K]) => setState((s) => ({ ...s, [k]: v }));
 
-  const toggleZone = (z: string) => set("zones_selected",
-    state.zones_selected.includes(z) ? state.zones_selected.filter((x) => x !== z) : [...state.zones_selected, z]);
   const toggleGoal = (g: string) => set("campaign_goals",
     state.campaign_goals.includes(g) ? state.campaign_goals.filter((x) => x !== g) : [...state.campaign_goals, g]);
 
@@ -253,8 +244,7 @@ export function AdvertiserApplication() {
     state.business_name.trim().length > 0 &&
     state.contact_name.trim().length > 0 &&
     state.whatsapp_number.trim().length >= 4 &&
-    state.business_type.length > 0 &&
-    state.zones_selected.length >= 1
+    state.business_type.length > 0
   ), [state]);
 
   const step2Valid = useMemo(() => (
@@ -273,7 +263,6 @@ export function AdvertiserApplication() {
       contact_name: state.contact_name.trim(),
       whatsapp_number: state.whatsapp_number.trim(),
       business_type: state.business_type,
-      zones_selected: state.zones_selected,
       tier_interest: state.tier_undecided ? "undecided" : state.tier_interest,
       has_creative: state.has_creative,
       campaign_goals: state.campaign_goals,
@@ -381,16 +370,6 @@ export function AdvertiserApplication() {
               {BUSINESS_TYPES.map((b) => <option key={b} value={b}>{b}</option>)}
             </select>
           </label>
-
-          <div style={fieldGroup}>
-            <span style={labelStyle}>Which neighbourhoods matter to you?</span>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 4 }}>
-              {ZONES.map((z) => (
-                <Pill key={z} active={state.zones_selected.includes(z)} onClick={() => toggleZone(z)}>{z}</Pill>
-              ))}
-            </div>
-            <span style={helperStyle}>Select all that apply</span>
-          </div>
 
           <button type="button" disabled={!step1Valid} onClick={() => setStep(2)}
             className="btn-bold font-display"
@@ -516,19 +495,6 @@ export function AdvertiserApplication() {
             <SummaryRow label="Contact" value={state.contact_name} />
             <SummaryRow label="WhatsApp" value={state.whatsapp_number} />
             <SummaryRow label="Business type" value={state.business_type} />
-            <div>
-              <div style={labelStyle}>Zones</div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 6 }}>
-                {state.zones_selected.map((z) => (
-                  <span key={z} style={{
-                    background: "var(--accent-soft)", border: "1.5px solid var(--accent-deep)",
-                    color: "var(--accent-deep)", borderRadius: "var(--radius-pill)",
-                    padding: "3px 10px", fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: 12, fontWeight: 600,
-                  }}>{z}</span>
-                ))}
-              </div>
-            </div>
             <SummaryRow label="Tier interest" value={state.tier_undecided ? "Undecided — help me choose" : (state.tier_interest ?? "—")} />
             <SummaryRow label="Creative ready" value={state.has_creative === true ? "Yes" : state.has_creative === false ? "No — needs help" : "—"} />
             {state.campaign_goals.length > 0 && <SummaryRow label="Goals" value={state.campaign_goals.join(" · ")} />}
