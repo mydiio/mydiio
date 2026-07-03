@@ -157,7 +157,7 @@ function ContactPage() {
  }}
  />
  <div style={{ position: "relative", zIndex: 1 }}>
- <span className="page-hero-label">tt("nav.contact")</span>
+ <span className="page-hero-label">{tt("nav.contact")}</span>
  <h1
  className="reveal-up contact-hero-headline"
  style={{
@@ -309,7 +309,7 @@ function ContactPage() {
  className="mydiio-card reveal-up delay-3"
  style={{ padding: 24, display: "flex", flexDirection: "column" }}
  >
- <span className="eyebrow">tt("contact.investorCard.eyebrow")</span>
+ <span className="eyebrow">{tt("contact.investorCard.eyebrow")}</span>
  <h3
  style={{
  fontFamily: "'Space Grotesk', sans-serif",
