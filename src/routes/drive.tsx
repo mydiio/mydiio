@@ -32,7 +32,29 @@ export const Route = createFileRoute("/drive")({
 });
 
 const DRIVER_CONTACT = "/contact";
-const SPOTS_REMAINING = 7;
+const GROUP_A_TOTAL = 10;
+
+/** Shared live count of remaining Group A founding driver spots.
+ * Pulls approved driver_applications from the backend so hero and
+ * founding-group section always show the same number. */
+function useGroupARemaining() {
+  const [approvedCount, setApprovedCount] = useState(0);
+  useEffect(() => {
+    (async () => {
+      try {
+        const { count } = await (supabase as any)
+          .from("driver_applications")
+          .select("id", { count: "exact", head: true })
+          .eq("status", "approved");
+        if (typeof count === "number") setApprovedCount(count);
+      } catch {
+        /* table may not exist yet */
+      }
+    })();
+  }, []);
+  return Math.max(0, GROUP_A_TOTAL - approvedCount);
+}
+
 
 
 /* ---------- Section ---------- */
