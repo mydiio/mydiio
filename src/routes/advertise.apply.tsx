@@ -88,7 +88,6 @@ function AdvertiseApplyPage() {
         setContactName(d.s1.contactName || "");
         setWhatsappNumber(d.s1.whatsappNumber || "");
         setBusinessType(d.s1.businessType || "");
-        setZonesSelected(d.s1.zonesSelected || []);
       }
       if (d.s2) {
         setBudgetRange(d.s2.budgetRange || "");
@@ -110,16 +109,14 @@ function AdvertiseApplyPage() {
     if (successId) return;
     const d: Draft = {
       step: currentStep,
-      s1: { businessName, contactName, whatsappNumber, businessType, zonesSelected },
+      s1: { businessName, contactName, whatsappNumber, businessType },
       s2: { budgetRange, tierInterest, showAllTiers, campaignGoal, hasCreative, referralSource },
     };
     try { localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); } catch {}
-  }, [currentStep, businessName, contactName, whatsappNumber, businessType, zonesSelected, budgetRange, tierInterest, showAllTiers, campaignGoal, hasCreative, referralSource, successId]);
+  }, [currentStep, businessName, contactName, whatsappNumber, businessType, budgetRange, tierInterest, showAllTiers, campaignGoal, hasCreative, referralSource, successId]);
 
-  const step1Valid = businessName.trim() && contactName.trim() && whatsappNumber.trim() && businessType && zonesSelected.length >= 1;
+  const step1Valid = businessName.trim() && contactName.trim() && whatsappNumber.trim() && businessType;
   const step2Valid = budgetRange && tierInterest && campaignGoal && hasCreative !== null;
-
-  const toggleZone = (z: string) => setZonesSelected((arr) => arr.includes(z) ? arr.filter((x) => x !== z) : [...arr, z]);
 
   const handleSelectBudget = (b: string) => {
     setBudgetRange(b);
