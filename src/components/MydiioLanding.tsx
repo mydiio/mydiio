@@ -360,6 +360,37 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
  );
 }
 
+function WhatsOnScreen() {
+  const { t } = useI18n();
+  return (
+    <Section bg="var(--bg2)">
+      <div className="reveal" style={{ maxWidth: 760, margin: "0 auto" }}>
+        <h2 className="reveal-up" style={{
+          fontFamily: "'Space Grotesk', system-ui, sans-serif",
+          fontWeight: 700,
+          fontSize: "clamp(44px, 7.4vw, 104px)",
+          color: "var(--ink)",
+          lineHeight: 0.93,
+          letterSpacing: "-0.04em",
+        }}>
+          {t("screen_title")}
+        </h2>
+        <p className="reveal-up delay-1" style={{
+          fontSize: "clamp(16px, 1.5vw, 19px)",
+          color: "var(--ink-soft)",
+          lineHeight: 1.55,
+          maxWidth: "60ch",
+          fontWeight: 500,
+          whiteSpace: "pre-line",
+          marginTop: 24,
+        }}>
+          {t("screen_body")}
+        </p>
+      </div>
+    </Section>
+  );
+}
+
 function SectionHeader({ kicker, title }: { kicker?: string; title: string }) {
  return (
  <div className="reveal" style={{ textAlign: "center", marginBottom: 32, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
