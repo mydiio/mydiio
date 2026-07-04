@@ -229,6 +229,15 @@ export const dict: Dict = {
   }),
 
   // ============================================================
+  // HOME · DRIVER SECTION
+  // ============================================================
+  driver_title: en("What this means for a driver"),
+  driver_body: en(
+    "Drivers are partners, not vendors. Paid on the 5th of every month, unconditionally. Never penalised for a technical fault outside their control. Never monitored in a way that feels punitive. The compliance framework starts from dignity, not surveillance. That is not a slogan. It is written into how the platform is built.",
+  ),
+
+
+  // ============================================================
   // HOME · WHAT MYDIIO IS NOT
   // ============================================================
   not_title: en("What mydiio is not"),
