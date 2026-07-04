@@ -653,8 +653,39 @@ function TukInterior() {
  }
  `}</style>
 
- </Section>
- );
+  </Section>
+  );
+}
+
+function Infrastructure() {
+  const { t } = useI18n();
+  return (
+    <Section bg="var(--bg)">
+      <div className="reveal" style={{ maxWidth: 760, margin: "0 auto" }}>
+        <h2 className="reveal-up" style={{
+          fontFamily: "'Space Grotesk', system-ui, sans-serif",
+          fontWeight: 700,
+          fontSize: "clamp(44px, 7.4vw, 104px)",
+          color: "var(--ink)",
+          lineHeight: 0.93,
+          letterSpacing: "-0.04em",
+        }}>
+          {t("infra_title")}
+        </h2>
+        <p className="reveal-up delay-1" style={{
+          fontSize: "clamp(16px, 1.5vw, 19px)",
+          color: "var(--ink-soft)",
+          lineHeight: 1.55,
+          maxWidth: "60ch",
+          fontWeight: 500,
+          whiteSpace: "pre-line",
+          marginTop: 24,
+        }}>
+          {t("infra_body")}
+        </p>
+      </div>
+    </Section>
+  );
 }
 
 function Coverage() {
