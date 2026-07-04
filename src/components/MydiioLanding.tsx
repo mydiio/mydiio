@@ -1210,8 +1210,9 @@ export default function MydiioLanding() {
  <WhyItWorks />
 
  <HowItWorks />
- <TukInterior />
- <Coverage />
+  <TukInterior />
+  <Infrastructure />
+  <Coverage />
  <ScaleStory />
  <TwoAudiences />
  <FoundingOffer />
