@@ -1283,9 +1283,10 @@ export default function MydiioLanding() {
   <ScaleStory />
   <TwoAudiences />
   <WhatMydiioIsNot />
+  <FutureDirection />
   <FoundingOffer />
- <FAQ />
- <FinalCTA />
+  <FAQ />
+  <FinalCTA />
  </SiteShell>
  );
 }
