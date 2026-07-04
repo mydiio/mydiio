@@ -50,35 +50,9 @@ function useCountUp(target: number, durationMs = 1400, delayMs = 0, start = true
  return value;
 }
 
-function HeroWords({ text }: { text: string }) {
- const words = text.split(/(\s+)/);
- let i = 0;
- return (
- <>
- {words.map((w, idx) => {
- if (/^\s+$/.test(w)) return <span key={idx}>{w}</span>;
- const delay = 300 + i * 60;
- i += 1;
- return (
- <span key={idx} className="hero-word" style={{ animationDelay: `${delay}ms`, display: "inline-block" }}>
- {w}
- </span>
- );
- })}
- </>
- );
-}
 
 function Hero() {
  const { t, tt } = useI18n();
-
-
-
- // Split trailing period off the headline so we can color it.
- const rawTitle = t("hero_title");
- const endsWithPeriod = /[.।。]$/.test(rawTitle);
- const titleBody = endsWithPeriod ? rawTitle.slice(0, -1) : rawTitle;
- const titlePeriod = endsWithPeriod ? rawTitle.slice(-1) : "";
 
  // On-dark color adaptations of the global tokens
  const ON_DARK = "#F4EFE3";
@@ -94,20 +68,6 @@ function Hero() {
  <span className="hero-brand hero-enter hero-badge" style={{ display: "block", color: C.accent }}>
  mydiio
  </span>
- <h1 className="hero-headline" style={{
- fontFamily: "'Space Grotesk', system-ui, sans-serif",
- fontWeight: 500,
- color: "#fff",
- lineHeight: 1.4,
- marginTop: 18,
- }}>
- <HeroWords text={titleBody} />
- {endsWithPeriod && (
- <span className="hero-word" style={{ color: C.accentDeep, display: "inline-block", animationDelay: "900ms" }}>
- {titlePeriod}
- </span>
- )}
- </h1>
  <p className="hero-enter hero-sub" style={{
  fontSize: "clamp(18px, 1.8vw, 22px)",
  color: ON_DARK_SOFT,

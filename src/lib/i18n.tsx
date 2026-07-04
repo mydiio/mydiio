@@ -568,7 +568,7 @@ const LEGACY_ALIAS: Record<string, string> = {
   nav_about: "nav.about",
   nav_contact: "nav.contact",
   // Hero / home
-  hero_title: "home.hero.subheadline",
+  hero_title: "home.hero.headline",
   hero_sub: "home.hero.subheadline",
   ann_pilot: "home.hero.pioneerBanner",
   mq_every: "home.marquee",
