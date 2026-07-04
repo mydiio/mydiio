@@ -368,10 +368,13 @@ export const dict: Dict = {
   // ============================================================
   fcta_kicker: tr({ en: "Get started", si: "ආරම්භ කරන්න", ta: "தொடங்குங்கள்" }),
   fcta_title: tr({
-    en: "Ready to own Colombo's streets?",
+    en: "Every journey, connected.",
     si: "කොළඹ වීදි අයිති කර ගැනීමට සූදානම්ද?",
     ta: "கொழும்பு தெருக்களை சொந்தமாக்க தயாரா?",
   }),
+  fcta_body: en(
+    "For the driver earning a living. For the passenger checking the weather before they step out. For the business trying to reach a customer who is actually paying attention.",
+  ),
 
   // ============================================================
   // FOOTER
