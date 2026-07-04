@@ -98,7 +98,7 @@ export const dict: Dict = {
   // HOME · WHY IT WORKS
   // ============================================================
   why_kicker: { en: "mydiio", si: "mydiio", ta: "mydiio" },
-  why_title: tr({ en: "Turn travel time into advertising time", si: "ගමන් කාලය දැන්වීම් කාලයක් බවට පත් කරන්න", ta: "பயண நேரத்தை விளம்பர நேரமாக மாற்றுங்கள்" }),
+  why_title: tr({ en: "The engine that funds the network", si: "ගමන් කාලය දැන්වීම් කාලයක් බවට පත් කරන්න", ta: "பயண நேரத்தை விளம்பர நேரமாக மாற்றுங்கள்" }),
   why_c1_t: tr({ en: "Advertising people actually see.", si: "මිනිසුන් සැබවින්ම දකින දැන්වීම්.", ta: "மக்கள் உண்மையில் பார்க்கும் விளம்பரம்." }),
   why_c1_b: tr({
     en: "Unlike social media ads that are skipped in seconds, mydiio places your message directly in front of engaged passengers during their daily journeys. No scroll button. No skip.",
