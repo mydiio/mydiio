@@ -373,7 +373,7 @@ function WhatsOnScreen() {
           lineHeight: 0.93,
           letterSpacing: "-0.04em",
         }}>
-          {t("screen_title")}
+          {t("tuk_title")}
         </h2>
         <p className="reveal-up delay-1" style={{
           fontSize: "clamp(16px, 1.5vw, 19px)",
@@ -384,12 +384,13 @@ function WhatsOnScreen() {
           whiteSpace: "pre-line",
           marginTop: 24,
         }}>
-          {t("screen_body")}
+          {t("tuk_body")}
         </p>
       </div>
     </Section>
   );
 }
+
 
 function SectionHeader({ kicker, title }: { kicker?: string; title: string }) {
  return (
