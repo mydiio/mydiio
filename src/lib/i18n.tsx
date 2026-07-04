@@ -166,6 +166,14 @@ export const dict: Dict = {
   tuk_live_campaign: tr({ en: "LIVE CAMPAIGN", si: "සජීවී ප්‍රචාරණය", ta: "நேரலை பிரச்சாரம்" }),
 
   // ============================================================
+  // HOME · INFRASTRUCTURE
+  // ============================================================
+  infra_title: en("The network underneath"),
+  infra_body: en(
+    "Every mydiio screen sits on infrastructure most passengers never think about. GPS tracking, live data, a driver programme, and a backend built for uptime, because a screen that fails is a promise broken to both the passenger and the driver. This layer is the foundation. It costs the most to build and pays back the slowest. Every vehicle added to the network is an investment in that foundation, not a sale.",
+  ),
+
+  // ============================================================
   // HOME · COVERAGE
   // ============================================================
   cov_kicker: tr({ en: "COVERAGE", si: "ප්‍රවේශය", ta: "அடையாளம்" }),
