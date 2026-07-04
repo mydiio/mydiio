@@ -211,13 +211,15 @@ export const dict: Dict = {
 
   dr_kicker: tr({ en: "For drivers", si: "රියදුරන් සඳහා", ta: "ஓட்டுநர்களுக்கு" }),
   dr_title: tr({
-    en: "Earn more from every ride.",
+    en: "What this means for a driver",
     si: "සෑම ගමනකින්ම වැඩි ආදායමක්.",
     ta: "ஒவ்வொரு பயணத்திலும் அதிக சம்பாதியுங்கள்.",
   }),
-  dr_body: en(
-    "Join the network and unlock extra monthly income, without changing your routes. We install a screen in your tuk. You just drive. We pay you on the 5th of every month.",
-  ),
+  dr_body: tr({
+    en: "Drivers are partners, not vendors. Paid on the 5th of every month, unconditionally. Never penalised for a technical fault outside their control. Never monitored in a way that feels punitive. The compliance framework starts from dignity, not surveillance. That is not a slogan. It is written into how the platform is built.",
+    si: "[SI] Join the network and unlock extra monthly income, without changing your routes. We install a screen in your tuk. You just drive. We pay you on the 5th of every month.",
+    ta: "[TA] Join the network and unlock extra monthly income, without changing your routes. We install a screen in your tuk. You just drive. We pay you on the 5th of every month.",
+  }),
   dr_cta: tr({
     en: "Join the driver network →",
     si: "රියදුරු ජාලයට එක්වන්න →",
