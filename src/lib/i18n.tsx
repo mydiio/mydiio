@@ -227,8 +227,13 @@ export const dict: Dict = {
   }),
 
   // ============================================================
-  // HOME · REPORTING
+  // HOME · WHAT MYDIIO IS NOT
   // ============================================================
+  not_title: en("What mydiio is not"),
+  not_l1: en("mydiio is not primarily an advertising business. Advertising is the engine, not the identity."),
+  not_l2: en("mydiio is not a technology company selling software. It is infrastructure with a commercial layer built on top of it."),
+  not_l3: en("mydiio is not a surveillance platform. Passenger information is used for that journey only and is never stored beyond it."),
+  not_l4: en("mydiio does not depend on any single partner, platform, or vehicle type."),
   rep_kicker: tr({ en: "Reporting", si: "වාර්තාකරණය", ta: "அறிக்கையிடல்" }),
   rep_title: tr({
     en: "Measured, not guessed.",
