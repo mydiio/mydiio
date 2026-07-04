@@ -1306,6 +1306,7 @@ export default function MydiioLanding() {
   <HowItWorks />
   <Infrastructure />
   <Coverage />
+  <DriverSection />
   <ScaleStory />
   <TwoAudiences />
   <WhatMydiioIsNot />
