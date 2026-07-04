@@ -820,9 +820,45 @@ function TwoAudiences() {
  .audience-img { height: 160px !important; }
  }
  `}</style>
- </Section>
+  </Section>
 
- );
+  );
+}
+
+function WhatMydiioIsNot() {
+  const { t } = useI18n();
+  const lines = [t("not_l1"), t("not_l2"), t("not_l3"), t("not_l4")];
+  return (
+    <Section bg="var(--bg)">
+      <div className="reveal" style={{ maxWidth: 860, margin: "0 auto" }}>
+        <h2 className="reveal-up" style={{
+          fontFamily: "'Space Grotesk', system-ui, sans-serif",
+          fontWeight: 700,
+          fontSize: "clamp(44px, 7.4vw, 104px)",
+          color: "var(--ink)",
+          lineHeight: 0.93,
+          letterSpacing: "-0.04em",
+          marginBottom: 40,
+        }}>
+          {t("not_title")}
+        </h2>
+        <div className="reveal-up delay-1" style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+          {lines.map((line, i) => (
+            <p key={i} style={{
+              fontSize: "clamp(18px, 2vw, 24px)",
+              color: "var(--ink)",
+              lineHeight: 1.3,
+              fontWeight: 600,
+              fontFamily: "'Space Grotesk', sans-serif",
+              letterSpacing: "-0.02em",
+            }}>
+              {line}
+            </p>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
 }
 
 // Wrap a trailing phrase in <em> for English headings; leave other languages untouched.
@@ -1213,9 +1249,10 @@ export default function MydiioLanding() {
   <TukInterior />
   <Infrastructure />
   <Coverage />
- <ScaleStory />
- <TwoAudiences />
- <FoundingOffer />
+  <ScaleStory />
+  <TwoAudiences />
+  <WhatMydiioIsNot />
+  <FoundingOffer />
  <FAQ />
  <FinalCTA />
  </SiteShell>
