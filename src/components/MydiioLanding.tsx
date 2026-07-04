@@ -1209,7 +1209,7 @@ export default function MydiioLanding() {
  <Marquee />
  <WhyItWorks />
 
- <HowItWorks />
+  <HowItWorks />
   <TukInterior />
   <Infrastructure />
   <Coverage />
