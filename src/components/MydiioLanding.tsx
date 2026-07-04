@@ -50,24 +50,6 @@ function useCountUp(target: number, durationMs = 1400, delayMs = 0, start = true
  return value;
 }
 
-function HeroWords({ text }: { text: string }) {
- const words = text.split(/(\s+)/);
- let i = 0;
- return (
- <>
- {words.map((w, idx) => {
- if (/^\s+$/.test(w)) return <span key={idx}>{w}</span>;
- const delay = 300 + i * 60;
- i += 1;
- return (
- <span key={idx} className="hero-word" style={{ animationDelay: `${delay}ms`, display: "inline-block" }}>
- {w}
- </span>
- );
- })}
- </>
- );
-}
 
 function Hero() {
  const { t, tt } = useI18n();
