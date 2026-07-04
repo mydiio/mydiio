@@ -234,6 +234,18 @@ export const dict: Dict = {
   not_l2: en("mydiio is not a technology company selling software. It is infrastructure with a commercial layer built on top of it."),
   not_l3: en("mydiio is not a surveillance platform. Passenger information is used for that journey only and is never stored beyond it."),
   not_l4: en("mydiio does not depend on any single partner, platform, or vehicle type."),
+
+  // ============================================================
+  // HOME · FUTURE DIRECTION
+  // ============================================================
+  future_title: en("Where this goes"),
+  future_body: en(
+    "Today, mydiio runs in tuk-tuks across Colombo. The same network is built to extend to buses, tour vehicles, and beyond, and to carry more than advertising over time: public information, transport data, and services that make a screen even more useful to the person riding behind it. The direction is set. The pace is set by getting each layer right before adding the next.",
+  ),
+
+  // ============================================================
+  // HOME · REPORTING
+  // ============================================================
   rep_kicker: tr({ en: "Reporting", si: "වාර්තාකරණය", ta: "அறிக்கையிடல்" }),
   rep_title: tr({
     en: "Measured, not guessed.",
