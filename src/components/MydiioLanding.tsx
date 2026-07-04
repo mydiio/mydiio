@@ -1249,9 +1249,10 @@ export default function MydiioLanding() {
   <TukInterior />
   <Infrastructure />
   <Coverage />
- <ScaleStory />
- <TwoAudiences />
- <FoundingOffer />
+  <ScaleStory />
+  <TwoAudiences />
+  <WhatMydiioIsNot />
+  <FoundingOffer />
  <FAQ />
  <FinalCTA />
  </SiteShell>
