@@ -54,14 +54,6 @@ function useCountUp(target: number, durationMs = 1400, delayMs = 0, start = true
 function Hero() {
  const { t, tt } = useI18n();
 
-
-
- // Split trailing period off the headline so we can color it.
- const rawTitle = t("hero_title");
- const endsWithPeriod = /[.।。]$/.test(rawTitle);
- const titleBody = endsWithPeriod ? rawTitle.slice(0, -1) : rawTitle;
- const titlePeriod = endsWithPeriod ? rawTitle.slice(-1) : "";
-
  // On-dark color adaptations of the global tokens
  const ON_DARK = "#F4EFE3";
  const ON_DARK_SOFT = "rgba(244,239,227,0.78)";
@@ -76,20 +68,6 @@ function Hero() {
  <span className="hero-brand hero-enter hero-badge" style={{ display: "block", color: C.accent }}>
  mydiio
  </span>
- <h1 className="hero-headline" style={{
- fontFamily: "'Space Grotesk', system-ui, sans-serif",
- fontWeight: 500,
- color: "#fff",
- lineHeight: 1.4,
- marginTop: 18,
- }}>
- <HeroWords text={titleBody} />
- {endsWithPeriod && (
- <span className="hero-word" style={{ color: C.accentDeep, display: "inline-block", animationDelay: "900ms" }}>
- {titlePeriod}
- </span>
- )}
- </h1>
  <p className="hero-enter hero-sub" style={{
  fontSize: "clamp(18px, 1.8vw, 22px)",
  color: ON_DARK_SOFT,
