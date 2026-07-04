@@ -1265,10 +1265,11 @@ export default function MydiioLanding() {
  }
  `}</style>
 
- <Hero />
- <StatsStrip />
- <Marquee />
- <WhyItWorks />
+  <Hero />
+  <StatsStrip />
+  <WhatsOnScreen />
+  <Marquee />
+  <WhyItWorks />
 
   <HowItWorks />
   <TukInterior />
