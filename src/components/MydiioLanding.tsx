@@ -1223,12 +1223,15 @@ function FinalCTA() {
  <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(30,26,21,0.3), rgba(30,26,21,0.7))" }} />
  <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(80px, 12vw, 140px) clamp(20px, 4vw, 32px)", textAlign: "center" }}>
  <span className="eyebrow" style={{ color: "var(--accent)", display: "inline-block" }}>{t("fcta_kicker")}</span>
- <h2 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--on-dark)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
- {t("fcta_title")}
- </h2>
- <div style={{ marginTop: 40 }}>
- <AdvertiserApplication />
- </div>
+  <h2 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, fontSize: "clamp(44px, 7.4vw, 104px)", color: "var(--on-dark)", lineHeight: 0.93, letterSpacing: "-0.04em", marginTop: 18 }}>
+  {t("fcta_title")}
+  </h2>
+  <p style={{ fontSize: "clamp(16px, 1.5vw, 19px)", color: "rgba(244,239,227,0.82)", lineHeight: 1.55, maxWidth: "52ch", margin: "24px auto 0", fontWeight: 500 }}>
+  {t("fcta_body")}
+  </p>
+  <div style={{ marginTop: 40 }}>
+  <AdvertiserApplication />
+  </div>
  </div>
  </section>
  );
