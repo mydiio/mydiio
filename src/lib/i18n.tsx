@@ -153,12 +153,12 @@ export const dict: Dict = {
   // ============================================================
   tuk_kicker: tr({ en: "Inside the ride", si: "ගමන තුළ", ta: "பயணத்தின் உள்ளே" }),
   tuk_title: tr({
-    en: "The screen they can't look away from.",
+    en: "What's actually on the screen",
     si: "ඔවුන් ඉවත බලා ගත නොහැකි තිරය.",
     ta: "அவர்கள் கண்களை அகற்ற முடியாத திரை.",
   }),
   tuk_body: tr({
-    en: "Every mydiio screen is mounted at passenger eye level, delivering your message throughout the journey.\n\ntuk-tuks move millions of people around Sri Lanka every day, yet digital advertising inside them remains virtually untapped.\n\nmydiio is building Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people, helping businesses reach customers while creating new earning opportunities for drivers.\n\nAdvertising that moves with the city.",
+    en: "Before it is anything else, mydiio is a screen that works for the passenger. On every ride, the screen shows real time weather, local news, and community information. If something needs attention, an emergency alert can reach every screen in the network at once. Passengers travelling alone can share their trip live with someone they trust, tracked by GPS from the moment the ride starts. Advertising appears too. It shares the same screen as everything else, because that is what funds the network. But the screen was not built to sell space. It was built to be useful first.",
     si: "සෑම mydiio තිරයක්ම මගී ඇස් මට්ටමින් සවි කර ඇත, ගමන පුරාම ඔබේ පණිවිඩය ලබා දෙයි.\n\nත්‍රී රෝද රථ සෑම දිනකම මිලියන ගණනක් ජනතාව ශ්‍රී ලංකාව පුරා ගමන් කරවනවා, නමුත් ඒවා තුළ ඩිජිටල් දැන්වීම් තවමත් සැබවින්ම භාවිතා කර නෑ.\n\nmydiio ත්‍රී රෝද රථ තුළ සවි කරන, දැන්වීම් මගින් පවත්වාගෙන යන, මිනිසුන් වෙනුවෙන් නිර්මාණය කළ, ව්‍යාපාරවලට ගනුදෙනුකරුවන් වෙත ළඟා වීමට උදව් කරන අතරම රියදුරන්ට නව ආදායම් අවස්ථා නිර්මාණය කරන, ශ්‍රී ලංකාවේ පළමු සම්බන්ධිත මගී තොරතුරු ජාලය mydiio ගොඩනගමින් සිටිනවා.\n\nනගරය සමඟ ගමන් කරන දැන්වීම්.",
     ta: "ஒவ்வொரு mydiio திரையும் பயணி கண் மட்டத்தில் பொருத்தப்பட்டுள்ளது, பயணம் முழுவதும் உங்கள் செய்தியை வழங்குகிறது.\n\nமூன்று சக்கர வாகனங்கள் ஒவ்வொரு நாளும் இலங்கை முழுவதும் மில்லியன் கணக்கான மக்களை நகர்த்துகின்றன, ஆனாலும் அவற்றுக்குள் டிஜிட்டல் விளம்பரம் இன்னும் கிட்டத்தட்ட பயன்படுத்தப்படவில்லை.\n\nமூன்று சக்கர வாகனங்களுக்குள் பொருத்தப்பட்ட, விளம்பரங்களால் இயங்கும், மக்களுக்காக உருவாக்கப்பட்ட, வணிகங்கள் வாடிக்கையாளர்களை சென்றடைய உதவும் அதே வேளையில் ஓட்டுநர்களுக்கு புதிய வருமான வாய்ப்புகளை உருவாக்கும், இலங்கையின் முதல் இணைக்கப்பட்ட பயணிகள் தகவல் வலையமைப்பை mydiio கட்டியெழுப்புகிறது.\n\nநகரத்துடன் நகரும் விளம்பரம்.",
   }),
