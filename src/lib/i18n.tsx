@@ -59,10 +59,10 @@ export const dict: Dict = {
   // ============================================================
   hero_kicker: { en: "mydiio", si: "mydiio", ta: "mydiio" },
   hero_title: en(
-    "Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.",
+    "Every Journey, Connected.",
   ),
   hero_sub: en(
-    "mydiio connects businesses with engaged passengers through digital advertising screens inside Colombo's tuk-tuks. Verified impressions, affordable campaigns, measured results.",
+    "mydiio is Sri Lanka's first connected passenger information network. Built into the tuk-tuks people ride every day, it brings weather, local news, safety tools, and useful information to every passenger, and gives small businesses a way to reach them.",
   ),
   hero_live_badge: tr({ en: "Founding fleet · launching now", si: "ආරම්භක රථ පිරිස · දැන් දියත් වෙමින්", ta: "நிறுவனர் வாகனத் தொகுதி · இப்போது துவங்குகிறது" }),
 
