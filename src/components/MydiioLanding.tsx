@@ -1273,7 +1273,6 @@ export default function MydiioLanding() {
   <WhyItWorks />
 
   <HowItWorks />
-  <TukInterior />
   <Infrastructure />
   <Coverage />
   <ScaleStory />
