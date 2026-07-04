@@ -198,13 +198,15 @@ export const dict: Dict = {
   // ============================================================
   ad_kicker: tr({ en: "For advertisers", si: "ප්‍රචාරකයින් සඳහා", ta: "விளம்பரதாரர்களுக்கு" }),
   ad_title: tr({
-    en: "Turn Colombo traffic into customers.",
+    en: "What this means for a small business",
     si: "කොළඹ ගමනාගමනය පාරිභෝගිකයන් බවට පත් කරන්න.",
     ta: "கொழும்பு போக்குவரத்தை வாடிக்கையாளர்களாக மாற்றுங்கள்.",
   }),
-  ad_body: en(
-    "From restaurants to banks to apps, businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 25,000 a month, with your first 7 days completely free.",
-  ),
+  ad_body: tr({
+    en: "Advertising is what makes the rest possible. When a business advertises on mydiio, it reaches real passengers on real journeys, verified by GPS, with no estimated numbers and no black box reporting. But the advertiser is joining something bigger than a media buy. Every rupee spent here helps pay a driver on the 5th of the month, without exception, and helps keep a screen running that a passenger relies on for more than an ad.",
+    si: "[SI] From restaurants to banks to apps, businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 25,000 a month, with your first 7 days completely free.",
+    ta: "[TA] From restaurants to banks to apps, businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 25,000 a month, with your first 7 days completely free.",
+  }),
   ad_cta: tr({ en: "Get pricing →", si: "මිල ලබා ගන්න →", ta: "விலையை பெறுங்கள் →" }),
 
   dr_kicker: tr({ en: "For drivers", si: "රියදුරන් සඳහා", ta: "ஓட்டுநர்களுக்கு" }),
