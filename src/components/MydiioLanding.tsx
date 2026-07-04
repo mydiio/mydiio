@@ -1016,7 +1016,7 @@ function DriverSection() {
           lineHeight: 0.93,
           letterSpacing: "-0.04em",
         }}>
-          {t("dr_title")}
+          {t("driver_title")}
         </h2>
         <p className="reveal-up delay-1" style={{
           fontSize: "clamp(16px, 1.5vw, 19px)",
@@ -1027,12 +1027,13 @@ function DriverSection() {
           whiteSpace: "pre-line",
           marginTop: 24,
         }}>
-          {t("dr_body")}
+          {t("driver_body")}
         </p>
       </div>
     </Section>
   );
 }
+
 
 function ScaleStory() {
  const { t, tt } = useI18n();
