@@ -165,13 +165,6 @@ export const dict: Dict = {
   tuk_cta: tr({ en: "See it in a pilot →", si: "පයිලට් එකකින් බලන්න →", ta: "பைலட்டில் பாருங்கள் →" }),
   tuk_live_campaign: tr({ en: "LIVE CAMPAIGN", si: "සජීවී ප්‍රචාරණය", ta: "நேரலை பிரச்சாரம்" }),
 
-  // ============================================================
-  // HOME · WHAT'S ON THE SCREEN
-  // ============================================================
-  screen_title: en("What's actually on the screen"),
-  screen_body: en(
-    "Before it is anything else, mydiio is a screen that works for the passenger. On every ride, the screen shows real time weather, local news, and community information. If something needs attention, an emergency alert can reach every screen in the network at once. Passengers travelling alone can share their trip live with someone they trust, tracked by GPS from the moment the ride starts. Advertising appears too. It shares the same screen as everything else, because that is what funds the network. But the screen was not built to sell space. It was built to be useful first.",
-  ),
 
 
   // ============================================================
