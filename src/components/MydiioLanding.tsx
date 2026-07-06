@@ -410,6 +410,7 @@ function WhatsOnScreen() {
           .bullet-fade-in li:nth-child(2) { animation-delay: 0.2s; }
           .bullet-fade-in li:nth-child(3) { animation-delay: 0.3s; }
           .bullet-fade-in li:nth-child(4) { animation-delay: 0.4s; }
+          .bullet-fade-in li:nth-child(5) { animation-delay: 0.5s; }
         }
         @keyframes bullet-fade-in {
           to { opacity: 1; }
@@ -1061,17 +1062,22 @@ function DriverSection() {
         }}>
           {t("driver_title")}
         </h2>
-        <p className="reveal-up delay-1" style={{
+        <ul className="bullet-fade-in reveal-up delay-1" style={{
           fontSize: "clamp(16px, 1.5vw, 19px)",
           color: "var(--ink-soft)",
           lineHeight: 1.55,
           maxWidth: "60ch",
           fontWeight: 500,
-          whiteSpace: "pre-line",
           marginTop: 24,
+          paddingLeft: 22,
+          listStyle: "disc",
         }}>
-          {t("driver_body")}
-        </p>
+          <li><strong>Guaranteed Pay:</strong> Unconditional LKR 6,000/month base.</li>
+          <li><strong>Route Bonus:</strong> Earn an extra LKR 2,000 for averaging 8+ hours/day.</li>
+          <li><strong>On-Time, Always:</strong> Paid directly to your bank on the 5th of every month.</li>
+          <li><strong>Zero Blame:</strong> Never penalized for technical faults outside your control.</li>
+          <li><strong>Dignity First:</strong> Partner status, not surveillance. Zero cost to join.</li>
+        </ul>
       </div>
     </Section>
   );
