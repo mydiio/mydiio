@@ -893,7 +893,6 @@ function TwoAudiences() {
 
 function WhatMydiioIsNot() {
   const { t } = useI18n();
-  const lines = [t("not_l1"), t("not_l2"), t("not_l3"), t("not_l4")];
   return (
     <Section bg="var(--bg)">
       <div className="reveal" style={{ maxWidth: 860, margin: "0 auto" }}>
@@ -908,21 +907,72 @@ function WhatMydiioIsNot() {
         }}>
           {t("not_title")}
         </h2>
-        <div className="reveal-up delay-1" style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          {lines.map((line, i) => (
-            <p key={i} style={{
-              fontSize: "clamp(18px, 2vw, 24px)",
-              color: "var(--ink)",
-              lineHeight: 1.3,
-              fontWeight: 600,
-              fontFamily: "'Space Grotesk', sans-serif",
-              letterSpacing: "-0.02em",
-            }}>
-              {line}
-            </p>
-          ))}
-        </div>
+        <ul className="not-list reveal-up delay-1" style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 28,
+          padding: 0,
+          margin: 0,
+          listStyle: "none",
+        }}>
+          <li><del>An ad business</del> — Ads fund us; they aren't our identity.</li>
+          <li><del>A software company</del> — We are physical city infrastructure.</li>
+          <li><del>A surveillance platform</del> — Trip data is never stored beyond the journey.</li>
+          <li><del>Tied to one partner</del> — We are platform and vehicle agnostic.</li>
+        </ul>
       </div>
+      <style>{`
+        .not-list li {
+          position: relative;
+          padding-left: 36px;
+          font-size: clamp(18px, 2vw, 24px);
+          color: var(--ink);
+          line-height: 1.3;
+          font-weight: 600;
+          font-family: 'Space Grotesk', sans-serif;
+          letter-spacing: -0.02em;
+        }
+        .not-list li::before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: var(--accent);
+          font-weight: 700;
+          font-size: 22px;
+        }
+        .not-list li del {
+          text-decoration: line-through;
+          text-decoration-color: var(--accent);
+          text-decoration-thickness: 2px;
+          opacity: 0.85;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .not-list {
+            opacity: 0;
+            animation: not-list-fade 0.6s ease-out forwards;
+          }
+          .not-list.in,
+          .reveal.in .not-list {
+            opacity: 1;
+          }
+          .not-list li {
+            opacity: 0;
+            transform: translateY(8px);
+            animation: not-li-fade 0.5s ease-out forwards;
+          }
+          .not-list li:nth-child(1) { animation-delay: 0.1s; }
+          .not-list li:nth-child(2) { animation-delay: 0.2s; }
+          .not-list li:nth-child(3) { animation-delay: 0.3s; }
+          .not-list li:nth-child(4) { animation-delay: 0.4s; }
+        }
+        @keyframes not-list-fade {
+          to { opacity: 1; }
+        }
+        @keyframes not-li-fade {
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </Section>
   );
 }
