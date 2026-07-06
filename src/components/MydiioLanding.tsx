@@ -206,7 +206,7 @@ function Hero() {
   }
   .hero-cta-row .btn-bold:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
   }
   `}</style>
  </section>
