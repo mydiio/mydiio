@@ -197,94 +197,126 @@ function Hero() {
  .hero-headline { font-size: 22px; }
  .hero-tuk-overlay { width: 360px; right: 40px; }
  }
- @media (min-width: 1025px) {
- .hero-brand { font-size: 56px; }
- .hero-headline { font-size: 28px; }
- }
- `}</style>
+  @media (min-width: 1025px) {
+  .hero-brand { font-size: 56px; }
+  .hero-headline { font-size: 28px; }
+  }
+  .hero-cta-row .btn-bold {
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+  .hero-cta-row .btn-bold:hover,
+  .hero-cta-row .btn-bold.cta-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+  }
+  `}</style>
  </section>
  );
 }
 
 function StatsStrip() {
-    const { t, tt } = useI18n();
-    const ref = useRef<HTMLElement>(null);
-    const [started, setStarted] = useState(false);
-    useEffect(() => {
-        const el = ref.current; if (!el) return;
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach((e) => { if (e.isIntersecting) { setStarted(true); io.disconnect(); } });
-        }, { threshold: 0.3 });
-        io.observe(el);
-        return () => io.disconnect();
-    }, []);
-    const v1 = useCountUp(10, 1200, 0, started);
-    const v2 = useCountUp(20, 1200, 0, started);
-    const v3 = useCountUp(72, 1200, 0, started);
-    const v4 = useCountUp(10, 1200, 0, started);
-    const items = [
-        { v: v1, suffix: "", label: t("stats_pilot_vehicles") },
-        { v: v2, suffix: ` ${t("stats_min")}`, label: t("stats_avg_ride") },
-        { v: v3, suffix: ` ${t("stats_hrs")}`, label: t("stats_campaign") },
-        { v: v4, suffix: "", label: t("stats_pioneer_spots") },
-    ];
- return (
- <section
- ref={ref}
- className="fade-up stats-strip"
- style={{
- background: "#F5A623",
- borderTop: "2px solid #1A1A18",
- borderBottom: "2px solid #1A1A18",
- display: "flex",
- justifyContent: "center",
- alignItems: "stretch",
- flexWrap: "wrap",
- borderRadius: 0,
- }}
- >
- {items.map((it, i) => (
- <div
- key={it.label}
- className="stats-strip-item"
- style={{
- padding: "28px 40px",
- borderRight: i < items.length - 1 ? "2px solid #1A1A18" : "none",
- textAlign: "center",
- }}
- >
- <div style={{
- fontFamily: "'Space Mono', monospace",
- fontSize: 32,
- fontWeight: 700,
- color: "#1A1A18",
- lineHeight: 1.1,
- }}>
- {it.v}{it.suffix}
- </div>
- <div style={{
- fontFamily: "'Space Mono', monospace",
- fontSize: 10,
- fontWeight: 700,
- letterSpacing: "0.08em",
- textTransform: "uppercase",
- color: "#1A1A18",
- opacity: 0.65,
- marginTop: 8,
- }}>
- {it.label}
- </div>
- </div>
- ))}
- <style>{`
- @media (max-width: 640px) {
- .stats-strip-item { flex: 1 1 50%; border-right: none !important; border-bottom: 2px solid #1A1A18; }
- .stats-strip-item:nth-child(odd) { border-right: 2px solid #1A1A18 !important; }
- .stats-strip-item:nth-last-child(-n+2) { border-bottom: none; }
- }
- `}</style>
- </section>
- );
+  const { t } = useI18n();
+  const ref = useRef<HTMLElement>(null);
+  const [started, setStarted] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { setStarted(true); io.disconnect(); } });
+    }, { threshold: 0.3 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    if (prefersReducedMotion()) {
+      ref.current?.querySelectorAll<HTMLElement>(".count-up").forEach((counter) => {
+        counter.innerText = counter.getAttribute("data-target") || "0";
+      });
+      return;
+    }
+    const counters = ref.current?.querySelectorAll<HTMLElement>(".count-up");
+    counters?.forEach((counter) => {
+      const target = +(counter.getAttribute("data-target") || "0");
+      const increment = target / 40;
+      let current = 0;
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.innerText = String(Math.ceil(current));
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.innerText = String(target);
+        }
+      };
+      updateCounter();
+    });
+  }, [started]);
+
+  const items = [
+    { target: 10, suffix: "", label: t("stats_pilot_vehicles") },
+    { target: 20, suffix: ` ${t("stats_min")}`, label: t("stats_avg_ride") },
+    { target: 72, suffix: ` ${t("stats_hrs")}`, label: t("stats_campaign") },
+    { target: 10, suffix: "", label: t("stats_pioneer_spots") },
+  ];
+
+  return (
+    <section
+      ref={ref}
+      className="fade-up stats-strip"
+      style={{
+        background: "#F5A623",
+        borderTop: "2px solid #1A1A18",
+        borderBottom: "2px solid #1A1A18",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "stretch",
+        flexWrap: "wrap",
+        borderRadius: 0,
+      }}
+    >
+      {items.map((it, i) => (
+        <div
+          key={it.label}
+          className="stats-strip-item"
+          style={{
+            padding: "28px 40px",
+            borderRight: i < items.length - 1 ? "2px solid #1A1A18" : "none",
+            textAlign: "center",
+          }}
+        >
+          <div style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 32,
+            fontWeight: 700,
+            color: "#1A1A18",
+            lineHeight: 1.1,
+          }}>
+            <span className="count-up" data-target={it.target}>0</span>{it.suffix}
+          </div>
+          <div style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 10,
+            fontWeight: 700,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "#1A1A18",
+            opacity: 0.65,
+            marginTop: 8,
+          }}>
+            {it.label}
+          </div>
+        </div>
+      ))}
+      <style>{`
+        @media (max-width: 640px) {
+          .stats-strip-item { flex: 1 1 50%; border-right: none !important; border-bottom: 2px solid #1A1A18; }
+          .stats-strip-item:nth-child(odd) { border-right: 2px solid #1A1A18 !important; }
+          .stats-strip-item:nth-last-child(-n+2) { border-bottom: none; }
+        }
+      `}</style>
+    </section>
+  );
 }
 
 function Marquee() {
