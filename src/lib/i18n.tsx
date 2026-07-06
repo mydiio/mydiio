@@ -101,7 +101,7 @@ export const dict: Dict = {
   why_title: tr({ en: "The engine that funds the network", si: "ගමන් කාලය දැන්වීම් කාලයක් බවට පත් කරන්න", ta: "பயண நேரத்தை விளம்பர நேரமாக மாற்றுங்கள்" }),
   why_c1_t: tr({ en: "Advertising people actually see.", si: "මිනිසුන් සැබවින්ම දකින දැන්වීම්.", ta: "மக்கள் உண்மையில் பார்க்கும் விளம்பரம்." }),
   why_c1_b: tr({
-    en: "Unlike social media ads that are skipped in seconds, mydiio places your message directly in front of engaged passengers during their daily journeys. No scroll button. No skip.",
+    en: "Captive audiences. No skip buttons, no scroll-past ads.",
     si: "තත්පර කිහිපයකින් මඟ හරින සමාජ මාධ්‍ය දැන්වීම් මෙන් නොව, mydiio ඔබේ පණිවිඩය දෛනික ගමන්වලදී අවධානයෙන් සිටින මගීන් ඉදිරියෙන්ම තබනවා. ස්ක්‍රෝල් බොත්තමක් නෑ. මඟ හැරීමක් නෑ.",
     ta: "வினாடிகளில் தவிர்க்கப்படும் சமூக ஊடக விளம்பரங்களைப் போலல்லாமல், mydiio உங்கள் செய்தியை தினசரி பயணங்களில் கவனத்துடன் இருக்கும் பயணிகளுக்கு நேரடியாக முன்வைக்கிறது. ஸ்க்ரோல் பொத்தான் இல்லை. தவிர்க்க முடியாது.",
   }),
