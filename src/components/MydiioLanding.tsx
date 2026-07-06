@@ -375,18 +375,49 @@ function WhatsOnScreen() {
         }}>
           {t("tuk_title")}
         </h2>
-        <p className="reveal-up delay-1" style={{
+        <ul className="bullet-fade-in reveal-up delay-1" style={{
           fontSize: "clamp(16px, 1.5vw, 19px)",
           color: "var(--ink-soft)",
           lineHeight: 1.55,
           maxWidth: "60ch",
           fontWeight: 500,
-          whiteSpace: "pre-line",
           marginTop: 24,
+          paddingLeft: 22,
+          listStyle: "disc",
         }}>
-          {t("tuk_body")}
-        </p>
+          <li><strong>Real-Time Utility:</strong> Live weather, local news, and community updates.</li>
+          <li><strong>Instant Alerts:</strong> Emergency broadcasts that reach the whole network instantly.</li>
+          <li><strong>Live Trip Sharing:</strong> GPS-tracked journey sharing for passengers riding alone.</li>
+          <li><strong>Ad-Funded:</strong> Subtle advertising that keeps the network free for passengers.</li>
+        </ul>
       </div>
+      <style>{`
+        @media (prefers-reduced-motion: no-preference) {
+          .bullet-fade-in {
+            opacity: 0;
+            animation: bullet-fade-in 0.6s ease-out forwards;
+          }
+          .bullet-fade-in.in,
+          .reveal.in .bullet-fade-in {
+            opacity: 1;
+          }
+          .bullet-fade-in li {
+            opacity: 0;
+            transform: translateY(8px);
+            animation: bullet-li-fade 0.5s ease-out forwards;
+          }
+          .bullet-fade-in li:nth-child(1) { animation-delay: 0.1s; }
+          .bullet-fade-in li:nth-child(2) { animation-delay: 0.2s; }
+          .bullet-fade-in li:nth-child(3) { animation-delay: 0.3s; }
+          .bullet-fade-in li:nth-child(4) { animation-delay: 0.4s; }
+        }
+        @keyframes bullet-fade-in {
+          to { opacity: 1; }
+        }
+        @keyframes bullet-li-fade {
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </Section>
   );
 }
