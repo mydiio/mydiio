@@ -410,6 +410,7 @@ function WhatsOnScreen() {
           .bullet-fade-in li:nth-child(2) { animation-delay: 0.2s; }
           .bullet-fade-in li:nth-child(3) { animation-delay: 0.3s; }
           .bullet-fade-in li:nth-child(4) { animation-delay: 0.4s; }
+          .bullet-fade-in li:nth-child(5) { animation-delay: 0.5s; }
         }
         @keyframes bullet-fade-in {
           to { opacity: 1; }
