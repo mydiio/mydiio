@@ -1178,54 +1178,60 @@ function FAQ() {
  {items.map((it, i) => {
  const open = openIdx === i;
  return (
- <div key={i} className={`faq-row reveal reveal-up${i < 4 ? ` delay-${i + 1}` : ""}`} style={{
- background: "#FFFFFF",
- border: "2px solid #1A1A18",
- borderRadius: 2,
- boxShadow: open ? "var(--sticker)" : "var(--sticker-press)",
- transition: "box-shadow 0.25s ease",
- overflow: "hidden",
- }}>
- <button
- type="button"
- onClick={() => setOpenIdx(open ? null : i)}
- aria-expanded={open}
- style={{
- width: "100%", background: "transparent", border: 0, cursor: "pointer",
- padding: "20px 24px", display: "flex", justifyContent: "space-between",
- alignItems: "center", gap: 16, textAlign: "left",
- fontFamily: "'Space Grotesk', sans-serif", fontSize: 19, fontWeight: 600,
- color: "var(--ink)", letterSpacing: "-0.01em",
- }}
- >
- <h3 style={{ margin: 0, fontFamily: "inherit", fontSize: "inherit", fontWeight: "inherit", color: "inherit", letterSpacing: "inherit" }}>{it.q}</h3>
- <span style={{
- fontFamily: "'Space Mono', monospace",
- color: "#F5A623",
- fontSize: 22,
- fontWeight: 700,
- lineHeight: 1,
- flexShrink: 0,
- transform: open ? "rotate(45deg)" : "rotate(0deg)",
- transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)",
- }}>+</span>
- </button>
- <div style={{
- maxHeight: open ? 600 : 0,
- overflow: "hidden",
- transition: "max-height 0.4s cubic-bezier(0.16,1,0.3,1)",
- }}>
- <p style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.65, padding: "0 24px 22px", margin: 0, fontWeight: 500 }}>
- {it.a}
- </p>
- </div>
- </div>
+            <div key={i} className={`faq-row reveal reveal-up${i < 4 ? ` delay-${i + 1}` : ""}`} style={{
+              background: "#FFFFFF",
+              border: "2px solid #1A1A18",
+              borderRadius: 2,
+              boxShadow: open ? "var(--sticker)" : "var(--sticker-press)",
+              transition: "box-shadow 0.25s ease",
+              overflow: "hidden",
+            }}>
+              <button
+                type="button"
+                onClick={() => setOpenIdx(open ? null : i)}
+                aria-expanded={open}
+                style={{
+                  width: "100%", background: "transparent", border: 0, cursor: "pointer",
+                  padding: "20px 24px", display: "flex", justifyContent: "space-between",
+                  alignItems: "center", gap: 16, textAlign: "left",
+                  fontFamily: "'Space Grotesk', sans-serif", fontSize: 19, fontWeight: 600,
+                  color: "var(--ink)", letterSpacing: "-0.01em",
+                }}
+              >
+                <h3 style={{ margin: 0, fontFamily: "inherit", fontSize: "inherit", fontWeight: "inherit", color: "inherit", letterSpacing: "inherit" }}>{it.q}</h3>
+                <span style={{
+                  fontFamily: "'Space Mono', monospace",
+                  color: "#F5A623",
+                  fontSize: 22,
+                  fontWeight: 700,
+                  lineHeight: 1,
+                  flexShrink: 0,
+                  transform: open ? "rotate(45deg)" : "rotate(0deg)",
+                  transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)",
+                }}>+</span>
+              </button>
+              <div className={open ? "faq-answer active" : "faq-answer"}>
+                <p style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.65, padding: "0 24px 22px", margin: 0, fontWeight: 500 }}>
+                  {it.a}
+                </p>
+              </div>
+            </div>
  );
- })}
- </div>
- </div>
- </Section>
- );
+          })}
+        </div>
+      </div>
+      <style>{`
+        .faq-answer {
+          overflow: hidden;
+          max-height: 0;
+          transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-answer.active {
+          max-height: 500px;
+        }
+      `}</style>
+    </Section>
+  );
 }
 
 function FinalCTA() {
