@@ -1034,14 +1034,8 @@ function DriverSection() {
           {t("driver_title")}
         </h2>
         <ul className="bullet-fade-in reveal-up delay-1" style={{
-          fontSize: "clamp(16px, 1.5vw, 19px)",
-          color: "var(--ink-soft)",
-          lineHeight: 1.55,
           maxWidth: "60ch",
-          fontWeight: 500,
           marginTop: 24,
-          paddingLeft: 22,
-          listStyle: "disc",
         }}>
           <li><strong>Guaranteed Pay:</strong> Unconditional LKR 6,000/month base.</li>
           <li><strong>Route Bonus:</strong> Earn an extra LKR 2,000 for averaging 8+ hours/day.</li>
