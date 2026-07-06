@@ -107,19 +107,19 @@ export const dict: Dict = {
   }),
   why_c2_t: tr({ en: "Verified campaign reporting.", si: "සනාථ කළ ප්‍රචාරණ වාර්තාකරණය.", ta: "உறுதிசெய்யப்பட்ட பிரச்சார அறிக்கையிடல்." }),
   why_c2_b: tr({
-    en: "Every ad play is automatically logged with location and time data. Advertisers receive regular reports showing where their campaign was displayed, how often it was played, and which areas of the city it reached.",
+    en: "Every ad play is logged with exact location and time data.",
     si: "සෑම දැන්වීම් ධාවනයක්ම ස්ථානය සහ වේලා දත්ත සමඟ ස්වයංක්‍රීයව වාර්තා වේ. දැන්වීම්කරුවන්ට ඔවුන්ගේ ප්‍රචාරණය පෙන්වූ ස්ථානය, කී වතාවක් ධාවනය වූවාද, සහ නගරයේ කුමන ප්‍රදේශවලට ළඟා වූවාද යන්න පෙන්වන නිතිපතා වාර්තා ලැබේ.",
     ta: "ஒவ்வொரு விளம்பர ஓட்டமும் இடம் மற்றும் நேர தரவுடன் தானாகவே பதிவு செய்யப்படுகிறது. விளம்பரதாரர்களுக்கு அவர்களின் பிரச்சாரம் எங்கு காட்டப்பட்டது, எத்தனை முறை ஓடியது, நகரத்தின் எந்தப் பகுதிகளை சென்றடைந்தது என்பதைக் காட்டும் வழக்கமான அறிக்கைகள் கிடைக்கும்.",
   }),
   why_c3_t: tr({ en: "Transparent Performance.", si: "විනිවිද පෙනෙන කාර්යසාධනය.", ta: "வெளிப்படையான செயல்திறன்." }),
   why_c3_b: tr({
-    en: "Know exactly where your advertising budget is being spent. Our reporting provides clear visibility of campaign delivery across the mydiio network.",
+    en: "Clear reports showing exactly where your budget went.",
     si: "ඔබේ දැන්වීම් අයවැය වියදම් වන්නේ කොහෙද කියලා හරියටම දැනගන්න. අපගේ වාර්තාකරණය mydiio ජාලය පුරා ප්‍රචාරණ බෙදාහැරීම පිළිබඳ පැහැදිලි දෘශ්‍යතාවක් සපයනවා.",
     ta: "உங்கள் விளம்பர பட்ஜெட் எங்கு செலவிடப்படுகிறது என்பதை சரியாக அறியுங்கள். எங்கள் அறிக்கையிடல் mydiio வலையமைப்பு முழுவதும் பிரச்சார விநியோகத்தின் தெளிவான காட்சிப்படுத்தலை வழங்குகிறது.",
   }),
   why_c4_t: tr({ en: "Quick campaign launch.", si: "ඉක්මන් ප්‍රචාරණ දියත් කිරීම.", ta: "விரைவான பிரச்சார துவக்கம்." }),
   why_c4_b: tr({
-    en: "From approval to launch, most mydiio campaigns are live within 72 hours, helping businesses get in front of customers faster.",
+    en: "From creative approval to live on the fleet in 3 days.",
     si: "අනුමැතියේ සිට දියත් කිරීම දක්වා, බොහෝ mydiio ප්‍රචාරණ පැය 72ක් ඇතුළත සජීවී වේ, ව්‍යාපාරවලට ගනුදෙනුකරුවන් ඉදිරියට වේගවත්ව යාමට උදව් වේ.",
     ta: "ஒப்புதலிலிருந்து துவக்கம் வரை, பெரும்பாலான mydiio பிரச்சாரங்கள் 72 மணி நேரத்திற்குள் நேரலைக்கு வரும், வணிகங்கள் வேகமாக வாடிக்கையாளர்களை சென்றடைய உதவும்.",
   }),
