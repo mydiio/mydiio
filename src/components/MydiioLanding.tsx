@@ -376,14 +376,8 @@ function WhatsOnScreen() {
           {t("tuk_title")}
         </h2>
         <ul className="bullet-fade-in reveal-up delay-1" style={{
-          fontSize: "clamp(16px, 1.5vw, 19px)",
-          color: "var(--ink-soft)",
-          lineHeight: 1.55,
           maxWidth: "60ch",
-          fontWeight: 500,
           marginTop: 24,
-          paddingLeft: 22,
-          listStyle: "disc",
         }}>
           <li><strong>Real-Time Utility:</strong> Live weather, local news, and community updates.</li>
           <li><strong>Instant Alerts:</strong> Emergency broadcasts that reach the whole network instantly.</li>
@@ -391,34 +385,6 @@ function WhatsOnScreen() {
           <li><strong>Ad-Funded:</strong> Subtle advertising that keeps the network free for passengers.</li>
         </ul>
       </div>
-      <style>{`
-        @media (prefers-reduced-motion: no-preference) {
-          .bullet-fade-in {
-            opacity: 0;
-            animation: bullet-fade-in 0.6s ease-out forwards;
-          }
-          .bullet-fade-in.in,
-          .reveal.in .bullet-fade-in {
-            opacity: 1;
-          }
-          .bullet-fade-in li {
-            opacity: 0;
-            transform: translateY(8px);
-            animation: bullet-li-fade 0.5s ease-out forwards;
-          }
-          .bullet-fade-in li:nth-child(1) { animation-delay: 0.1s; }
-          .bullet-fade-in li:nth-child(2) { animation-delay: 0.2s; }
-          .bullet-fade-in li:nth-child(3) { animation-delay: 0.3s; }
-          .bullet-fade-in li:nth-child(4) { animation-delay: 0.4s; }
-          .bullet-fade-in li:nth-child(5) { animation-delay: 0.5s; }
-        }
-        @keyframes bullet-fade-in {
-          to { opacity: 1; }
-        }
-        @keyframes bullet-li-fade {
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </Section>
   );
 }
@@ -697,59 +663,14 @@ function Infrastructure() {
           {t("infra_title")}
         </h2>
         <ul className="check-list reveal-up delay-1" style={{
-          fontSize: "clamp(16px, 1.5vw, 19px)",
-          color: "var(--ink-soft)",
-          lineHeight: 1.55,
           maxWidth: "60ch",
-          fontWeight: 500,
           marginTop: 24,
-          paddingLeft: 0,
-          listStyle: "none",
         }}>
           <li>Live GPS tracking on every device.</li>
           <li>Real-time data monitoring.</li>
           <li>Infrastructure designed for 100% operational reliability.</li>
         </ul>
       </div>
-      <style>{`
-        .check-list li {
-          position: relative;
-          padding-left: 28px;
-          margin-bottom: 10px;
-        }
-        .check-list li::before {
-          content: "✓";
-          position: absolute;
-          left: 0;
-          top: 0;
-          color: var(--accent);
-          font-weight: 700;
-        }
-        @media (prefers-reduced-motion: no-preference) {
-          .check-list {
-            opacity: 0;
-            animation: check-list-fade 0.6s ease-out forwards;
-          }
-          .check-list.in,
-          .reveal.in .check-list {
-            opacity: 1;
-          }
-          .check-list li {
-            opacity: 0;
-            transform: translateY(8px);
-            animation: check-li-fade 0.5s ease-out forwards;
-          }
-          .check-list li:nth-child(1) { animation-delay: 0.1s; }
-          .check-list li:nth-child(2) { animation-delay: 0.2s; }
-          .check-list li:nth-child(3) { animation-delay: 0.3s; }
-        }
-        @keyframes check-list-fade {
-          to { opacity: 1; }
-        }
-        @keyframes check-li-fade {
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </Section>
   );
 }
@@ -908,12 +829,8 @@ function WhatMydiioIsNot() {
           {t("not_title")}
         </h2>
         <ul className="not-list reveal-up delay-1" style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 28,
-          padding: 0,
-          margin: 0,
-          listStyle: "none",
+          maxWidth: "60ch",
+          marginTop: 24,
         }}>
           <li><del>An ad business</del> — Ads fund us; they aren't our identity.</li>
           <li><del>A software company</del> — We are physical city infrastructure.</li>
@@ -921,58 +838,6 @@ function WhatMydiioIsNot() {
           <li><del>Tied to one partner</del> — We are platform and vehicle agnostic.</li>
         </ul>
       </div>
-      <style>{`
-        .not-list li {
-          position: relative;
-          padding-left: 36px;
-          font-size: clamp(18px, 2vw, 24px);
-          color: var(--ink);
-          line-height: 1.3;
-          font-weight: 600;
-          font-family: 'Space Grotesk', sans-serif;
-          letter-spacing: -0.02em;
-        }
-        .not-list li::before {
-          content: "✓";
-          position: absolute;
-          left: 0;
-          top: 0;
-          color: var(--accent);
-          font-weight: 700;
-          font-size: 22px;
-        }
-        .not-list li del {
-          text-decoration: line-through;
-          text-decoration-color: var(--accent);
-          text-decoration-thickness: 2px;
-          opacity: 0.85;
-        }
-        @media (prefers-reduced-motion: no-preference) {
-          .not-list {
-            opacity: 0;
-            animation: not-list-fade 0.6s ease-out forwards;
-          }
-          .not-list.in,
-          .reveal.in .not-list {
-            opacity: 1;
-          }
-          .not-list li {
-            opacity: 0;
-            transform: translateY(8px);
-            animation: not-li-fade 0.5s ease-out forwards;
-          }
-          .not-list li:nth-child(1) { animation-delay: 0.1s; }
-          .not-list li:nth-child(2) { animation-delay: 0.2s; }
-          .not-list li:nth-child(3) { animation-delay: 0.3s; }
-          .not-list li:nth-child(4) { animation-delay: 0.4s; }
-        }
-        @keyframes not-list-fade {
-          to { opacity: 1; }
-        }
-        @keyframes not-li-fade {
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </Section>
   );
 }
@@ -1113,14 +978,8 @@ function DriverSection() {
           {t("driver_title")}
         </h2>
         <ul className="bullet-fade-in reveal-up delay-1" style={{
-          fontSize: "clamp(16px, 1.5vw, 19px)",
-          color: "var(--ink-soft)",
-          lineHeight: 1.55,
           maxWidth: "60ch",
-          fontWeight: 500,
           marginTop: 24,
-          paddingLeft: 22,
-          listStyle: "disc",
         }}>
           <li><strong>Guaranteed Pay:</strong> Unconditional LKR 6,000/month base.</li>
           <li><strong>Route Bonus:</strong> Earn an extra LKR 2,000 for averaging 8+ hours/day.</li>

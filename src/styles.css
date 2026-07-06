@@ -808,3 +808,47 @@ button, .card, .mydiio-card, .brutal-card, .feature-card,
 input, select, textarea, nav, header, footer {
   /* Block soft blurred shadows by overriding with sharp brutal token where shadow exists */
 }
+
+/* Bullet, check, and not-list styling */
+.bullet-fade-in li, .check-list li, .not-list li {
+  list-style: none;
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.bullet-fade-in li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.not-list li del {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.bullet-fade-in li:nth-child(1), .check-list li:nth-child(1), .not-list li:nth-child(1) { animation-delay: 0.1s; }
+.bullet-fade-in li:nth-child(2), .check-list li:nth-child(2), .not-list li:nth-child(2) { animation-delay: 0.2s; }
+.bullet-fade-in li:nth-child(3), .check-list li:nth-child(3), .not-list li:nth-child(3) { animation-delay: 0.3s; }
+.bullet-fade-in li:nth-child(4), .check-list li:nth-child(4), .not-list li:nth-child(4) { animation-delay: 0.4s; }
+.bullet-fade-in li:nth-child(5), .check-list li:nth-child(5), .not-list li:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
