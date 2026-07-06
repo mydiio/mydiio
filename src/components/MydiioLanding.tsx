@@ -1217,11 +1217,21 @@ function FAQ() {
               </div>
             </div>
  );
- })}
- </div>
- </div>
- </Section>
- );
+          })}
+        </div>
+      </div>
+      <style>{`
+        .faq-answer {
+          overflow: hidden;
+          max-height: 0;
+          transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-answer.active {
+          max-height: 500px;
+        }
+      `}</style>
+    </Section>
+  );
 }
 
 function FinalCTA() {
