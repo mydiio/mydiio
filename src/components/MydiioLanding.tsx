@@ -197,11 +197,18 @@ function Hero() {
  .hero-headline { font-size: 22px; }
  .hero-tuk-overlay { width: 360px; right: 40px; }
  }
- @media (min-width: 1025px) {
- .hero-brand { font-size: 56px; }
- .hero-headline { font-size: 28px; }
- }
- `}</style>
+  @media (min-width: 1025px) {
+  .hero-brand { font-size: 56px; }
+  .hero-headline { font-size: 28px; }
+  }
+  .hero-cta-row .btn-bold {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .hero-cta-row .btn-bold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  `}</style>
  </section>
  );
 }
