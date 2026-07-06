@@ -663,59 +663,14 @@ function Infrastructure() {
           {t("infra_title")}
         </h2>
         <ul className="check-list reveal-up delay-1" style={{
-          fontSize: "clamp(16px, 1.5vw, 19px)",
-          color: "var(--ink-soft)",
-          lineHeight: 1.55,
           maxWidth: "60ch",
-          fontWeight: 500,
           marginTop: 24,
-          paddingLeft: 0,
-          listStyle: "none",
         }}>
           <li>Live GPS tracking on every device.</li>
           <li>Real-time data monitoring.</li>
           <li>Infrastructure designed for 100% operational reliability.</li>
         </ul>
       </div>
-      <style>{`
-        .check-list li {
-          position: relative;
-          padding-left: 28px;
-          margin-bottom: 10px;
-        }
-        .check-list li::before {
-          content: "✓";
-          position: absolute;
-          left: 0;
-          top: 0;
-          color: var(--accent);
-          font-weight: 700;
-        }
-        @media (prefers-reduced-motion: no-preference) {
-          .check-list {
-            opacity: 0;
-            animation: check-list-fade 0.6s ease-out forwards;
-          }
-          .check-list.in,
-          .reveal.in .check-list {
-            opacity: 1;
-          }
-          .check-list li {
-            opacity: 0;
-            transform: translateY(8px);
-            animation: check-li-fade 0.5s ease-out forwards;
-          }
-          .check-list li:nth-child(1) { animation-delay: 0.1s; }
-          .check-list li:nth-child(2) { animation-delay: 0.2s; }
-          .check-list li:nth-child(3) { animation-delay: 0.3s; }
-        }
-        @keyframes check-list-fade {
-          to { opacity: 1; }
-        }
-        @keyframes check-li-fade {
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </Section>
   );
 }
