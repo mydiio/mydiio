@@ -4,7 +4,7 @@ import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 
 
-export const Route = createFileRoute("/advertise/apply")({
+export const Route = createFileRoute("/advertise_/apply")({
  component: AdvertiseApplyPage,
  head: () => ({
  meta: [

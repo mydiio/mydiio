@@ -20,7 +20,7 @@ import { Route as AdvertiseRouteImport } from './routes/advertise'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriversApplyRouteImport } from './routes/drivers.apply'
-import { Route as AdvertiseApplyRouteImport } from './routes/advertise.apply'
+import { Route as AdvertiseApplyRouteImport } from './routes/advertise_.apply'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -78,15 +78,15 @@ const DriversApplyRoute = DriversApplyRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdvertiseApplyRoute = AdvertiseApplyRouteImport.update({
-  id: '/apply',
-  path: '/apply',
-  getParentRoute: () => AdvertiseRoute,
+  id: '/advertise_/apply',
+  path: '/advertise/apply',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/advertise': typeof AdvertiseRouteWithChildren
+  '/advertise': typeof AdvertiseRoute
   '/contact': typeof ContactRoute
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
@@ -100,7 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/advertise': typeof AdvertiseRouteWithChildren
+  '/advertise': typeof AdvertiseRoute
   '/contact': typeof ContactRoute
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
@@ -115,7 +115,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/advertise': typeof AdvertiseRouteWithChildren
+  '/advertise': typeof AdvertiseRoute
   '/contact': typeof ContactRoute
   '/drive': typeof DriveRoute
   '/investors': typeof InvestorsRoute
@@ -123,7 +123,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
-  '/advertise/apply': typeof AdvertiseApplyRoute
+  '/advertise_/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
 }
 export interface FileRouteTypes {
@@ -167,14 +167,14 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sitemap.xml'
     | '/terms'
-    | '/advertise/apply'
+    | '/advertise_/apply'
     | '/drivers/apply'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AdvertiseRoute: typeof AdvertiseRouteWithChildren
+  AdvertiseRoute: typeof AdvertiseRoute
   ContactRoute: typeof ContactRoute
   DriveRoute: typeof DriveRoute
   InvestorsRoute: typeof InvestorsRoute
@@ -182,6 +182,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  AdvertiseApplyRoute: typeof AdvertiseApplyRoute
   DriversApplyRoute: typeof DriversApplyRoute
 }
 
@@ -264,32 +265,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriversApplyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/advertise/apply': {
-      id: '/advertise/apply'
-      path: '/apply'
+    '/advertise_/apply': {
+      id: '/advertise_/apply'
+      path: '/advertise/apply'
       fullPath: '/advertise/apply'
       preLoaderRoute: typeof AdvertiseApplyRouteImport
-      parentRoute: typeof AdvertiseRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface AdvertiseRouteChildren {
-  AdvertiseApplyRoute: typeof AdvertiseApplyRoute
-}
-
-const AdvertiseRouteChildren: AdvertiseRouteChildren = {
-  AdvertiseApplyRoute: AdvertiseApplyRoute,
-}
-
-const AdvertiseRouteWithChildren = AdvertiseRoute._addFileChildren(
-  AdvertiseRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AdvertiseRoute: AdvertiseRouteWithChildren,
+  AdvertiseRoute: AdvertiseRoute,
   ContactRoute: ContactRoute,
   DriveRoute: DriveRoute,
   InvestorsRoute: InvestorsRoute,
@@ -297,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  AdvertiseApplyRoute: AdvertiseApplyRoute,
   DriversApplyRoute: DriversApplyRoute,
 }
 export const routeTree = rootRouteImport
