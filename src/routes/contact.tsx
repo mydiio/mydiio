@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
-import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
+const PIONEER_TUK = "/assets/illustration-pioneer-tuk.png";
 
 export const Route = createFileRoute("/contact")({
  component: ContactPage,
@@ -325,7 +325,7 @@ function ContactPage() {
  {tt("contact.investorCard.body")}
  </p>
  <img
- src={PIONEER_TUK.url}
+ src={PIONEER_TUK}
  alt={tt('contact.investorCard.pioneerTukAlt')}
  loading="lazy"
  width={400}

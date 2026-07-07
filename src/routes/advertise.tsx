@@ -4,15 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
-import INSIDE_RIDE from "@/assets/inside-ride-passenger-pov-screen.png.asset.json";
-import ADVERTISER_DASHBOARD from "@/assets/advertiser-pharmacy-dashboard.png.asset.json";
-import PERERA from "@/assets/illustration-perera-pharmacy.png.asset.json";
-import AYASHA from "@/assets/illustration-ayasha-passenger.png.asset.json";
-import NISHARA from "@/assets/illustration-nishara-boutique.png.asset.json";
-import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
+const INSIDE_RIDE = "/assets/inside-ride-passenger-pov-screen.png";
+const ADVERTISER_DASHBOARD = "/assets/advertiser-pharmacy-dashboard.png";
+const PERERA = "/assets/illustration-perera-pharmacy.png";
+const AYASHA = "/assets/illustration-ayasha-passenger.png";
+const NISHARA = "/assets/illustration-nishara-boutique.png";
+const PIONEER_TUK = "/assets/illustration-pioneer-tuk.png";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
-import { AdvertiserApplication } from "@/components/site/AdvertiserApplication";
 import { ColomboMap } from "@/components/site/ColomboMap";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -134,7 +133,7 @@ function Hero() {
  ];
  return (
  <section className="relative w-full overflow-hidden page-hero-fixed">
- <img src={NISHARA.url} alt={tt("advertise.hero.imgAlt")} loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top", borderBottom: "2px solid #1A1A18" }} />
+ <img src={NISHARA} alt={tt("advertise.hero.imgAlt")} loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top", borderBottom: "2px solid #1A1A18" }} />
  <div className="absolute inset-0" style={{
  background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
  }} />
@@ -220,9 +219,9 @@ function StatPill({ value, label }: { value: string; label: string }) {
 function HowItWorks() {
   const { tt } = useI18n();
  const steps = [
- { n: 1, title: tt("advertise.howItWorks.step1.title"), body: tt("advertise.howItWorks.step1.body"), img: PERERA.url, alt: tt("advertise.howItWorks.step1.imgAlt") },
- { n: 2, title: tt("advertise.howItWorks.step2.title"), body: tt("advertise.howItWorks.step2.body"), img: AYASHA.url, alt: tt("advertise.howItWorks.step2.imgAlt") },
- { n: 3, title: tt("advertise.howItWorks.step3.title"), body: tt("advertise.howItWorks.step3.body"), img: NISHARA.url, alt: tt("advertise.howItWorks.step3.imgAlt") },
+ { n: 1, title: tt("advertise.howItWorks.step1.title"), body: tt("advertise.howItWorks.step1.body"), img: PERERA, alt: tt("advertise.howItWorks.step1.imgAlt") },
+ { n: 2, title: tt("advertise.howItWorks.step2.title"), body: tt("advertise.howItWorks.step2.body"), img: AYASHA, alt: tt("advertise.howItWorks.step2.imgAlt") },
+ { n: 3, title: tt("advertise.howItWorks.step3.title"), body: tt("advertise.howItWorks.step3.body"), img: NISHARA, alt: tt("advertise.howItWorks.step3.imgAlt") },
  ];
  return (
  <div id="how-it-works" style={{ scrollMarginTop: 96 }}>
@@ -337,7 +336,7 @@ function Pricing() {
  }}>
  {p.highlight && (
  <img
- src={PIONEER_TUK.url}
+ src={PIONEER_TUK}
  alt=""
  aria-hidden
  loading="lazy"
@@ -767,7 +766,7 @@ function DashboardPreview() {
  </div>
  <div className="reveal reveal-up dashboard-image-wrap" style={{ maxWidth: 600, marginInline: "auto", width: "100%" }}>
  <img
- src={ADVERTISER_DASHBOARD.url}
+ src={ADVERTISER_DASHBOARD}
  alt={tt("advertise.dashboard.imgAlt")}
  loading="lazy"
  width={1200}
@@ -1369,9 +1368,11 @@ function AdvertisePage() {
  <p style={{ fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600, fontSize: 16, color: C.inkSoft, lineHeight: 1.6, marginTop: 14 }}>
  {tt("advertise.applySection.body")}
  </p>
- <div style={{ marginTop: 32 }}>
- <AdvertiserApplication />
- </div>
+ <div style={{ marginTop: 32, textAlign: "center" }}>
+              <a href="/advertise/apply" className="pioneer-cta" style={{ display: "inline-block", padding: "16px 40px", background: C.amber, color: C.ink, fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 700, fontSize: 17, borderRadius: 14, textDecoration: "none" }}>
+                Launch your campaign
+              </a>
+            </div>
  </div>
  </section>
  <FinalCTA />

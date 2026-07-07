@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { LanguageSwitcher, useI18n } from "@/lib/i18n";
 import { C, accentColor, type Accent } from "./theme";
-import logoAsset from "@/assets/mydiio_lockup_transparent.png.asset.json";
+const logoAsset = "/assets/mydiio_lockup_transparent.png";
 
 function Logo() {
  return (
@@ -17,7 +17,7 @@ function Logo() {
  }}
  >
  <img
- src={logoAsset.url}
+ src={logoAsset}
  alt="mydiio logo, Sri Lanka's first connected passenger information network"
  height={56}
  style={{ height: 56, width: "auto", display: "block" }}

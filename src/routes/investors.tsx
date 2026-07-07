@@ -4,7 +4,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useI18n } /* pageMeta added below */
 from "@/lib/i18n";
 
-import COLOMBO_FLEET_GOLDEN from "@/assets/colombo-fleet-golden-hour.png.asset.json";
+const COLOMBO_FLEET_GOLDEN = "/assets/colombo-fleet-golden-hour.png";
 import TUKTUK_INTERIOR from "@/assets/tuktuk-interior-screen.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/investors")({
  { name: "description", content: "mydiio is building Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people." },
  { property: "og:title", content: "Investors, mydiio" },
  { property: "og:description", content: "Sri Lanka's first connected passenger information network. Recurring revenue. Asset-light. Regional potential." },
- { property: "og:image", content: COLOMBO_FLEET_GOLDEN.url },
+ { property: "og:image", content: COLOMBO_FLEET_GOLDEN },
  { property: "og:url", content: "https://mydiio.com/investors" },
  { name: "robots", content: "noindex, nofollow" },
  ],

@@ -2,14 +2,14 @@ import { usePageMeta, useI18n } from "@/lib/i18n";
 import { Fragment, useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
-import HERO_NIGHT from "@/assets/hero-tuk-tuk-night-screen.png.asset.json";
+const HERO_NIGHT = "/assets/hero-tuk-tuk-night-screen.png";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
-import TUK_SCREEN from "@/assets/illustration-tuk-screen.png.asset.json";
-import AYASHA from "@/assets/illustration-ayasha-passenger.png.asset.json";
-import KAMAL from "@/assets/illustration-kamal-driver.png.asset.json";
-import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
-import ROAD_LEFT from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
+const TUK_SCREEN = "/assets/illustration-tuk-screen.png";
+const AYASHA = "/assets/illustration-ayasha-passenger.png";
+const KAMAL = "/assets/illustration-kamal-driver.png";
+const PIONEER_TUK = "/assets/illustration-pioneer-tuk.png";
+const ROAD_LEFT = "/assets/tuk-stand-drivers-road-ahead.png";
 
 type Variant = "advertiser" | "driver";
 
@@ -259,7 +259,7 @@ function AboutPage() {
 
  {/* SECTION 1, HERO */}
  <section className="page-hero-fixed" style={{ position: "relative", overflow: "hidden", paddingBottom: "clamp(48px, 6vh, 80px)" }}>
- <img src={HERO_NIGHT.url} alt={tt('about.hero.imageAlt')} loading="eager" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
+ <img src={HERO_NIGHT} alt={tt('about.hero.imageAlt')} loading="eager" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center" }} />
  <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,26,24,0.55) 0%, rgba(26,26,24,0.55) 40%, rgba(26,26,24,0.88) 100%)" }} />
  {/* Amber arcs decoration */}
  <svg
@@ -345,7 +345,7 @@ function AboutPage() {
  </p>
  </div>
  <img
- src={TUK_SCREEN.url}
+ src={TUK_SCREEN}
  alt={tt('about.problem.imageAlt')}
  loading="lazy"
  width={600}
@@ -363,7 +363,7 @@ function AboutPage() {
  </div>
  <style>{`@media (max-width: 768px) { .mission-tuk-screen { width: 100% !important; } }`}</style>
  <div className="reveal-up delay-2" style={{ position: "relative", width: "100%", height: 280, overflow: "hidden", border: "2px solid #1A1A18", boxShadow: "#1A1A18 -5px 5px 0px 0px", marginBottom: 52 }}>
- <img src={ROAD_LEFT.url} alt={tt('about.problem.roadImageAlt')} loading="lazy" width={600} height={400} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+ <img src={ROAD_LEFT} alt={tt('about.problem.roadImageAlt')} loading="lazy" width={600} height={400} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
  </div>
  <div className="problem-grid reveal-up delay-3">
  <BeforeAfterCard variant="advertiser">
@@ -420,9 +420,9 @@ function AboutPage() {
  </p>
  <div className="pillars-row">
  {([
-  { n: "01", h: tt('about.pillars.transparency.title'), b: tt('about.pillars.transparency.bodyLong'), img: { url: AYASHA.url, alt: tt('about.pillars.transparency.imageAlt'), fit: "cover" as const } },
-  { n: "02", h: tt('about.pillars.driverDignity.title'), b: tt('about.pillars.driverDignity.bodyLong'), img: { url: KAMAL.url, alt: tt('about.pillars.driverDignity.imageAlt'), fit: "cover" as const } },
-  { n: "03", h: tt('about.pillars.communityReinvestment.title'), b: tt('about.pillars.communityReinvestment.bodyLong'), img: { url: PIONEER_TUK.url, alt: tt('about.pillars.communityReinvestment.imageAlt'), fit: "contain" as const, blend: true } },
+  { n: "01", h: tt('about.pillars.transparency.title'), b: tt('about.pillars.transparency.bodyLong'), img: { url: AYASHA, alt: tt('about.pillars.transparency.imageAlt'), fit: "cover" as const } },
+  { n: "02", h: tt('about.pillars.driverDignity.title'), b: tt('about.pillars.driverDignity.bodyLong'), img: { url: KAMAL, alt: tt('about.pillars.driverDignity.imageAlt'), fit: "cover" as const } },
+  { n: "03", h: tt('about.pillars.communityReinvestment.title'), b: tt('about.pillars.communityReinvestment.bodyLong'), img: { url: PIONEER_TUK, alt: tt('about.pillars.communityReinvestment.imageAlt'), fit: "contain" as const, blend: true } },
  ]).map((p, i) => (
  <PillarCard key={p.n} n={p.n} h={p.h} b={p.b} i={i} openId={openPillar} setOpenId={setOpenPillar} img={p.img} />
  ))}

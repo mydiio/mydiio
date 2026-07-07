@@ -47,7 +47,7 @@ const ALL_TIERS = ["Pioneer", "Roamer", "Voyager", "Horizon", "Not sure, help me
 
 type Draft = {
  step?: number;
- s1?: { businessName?: string; contactName?: string; whatsappNumber?: string; businessType?: string };
+ s1?: { businessName?: string; contactName?: string; email?: string; whatsappNumber?: string; businessType?: string };
  s2?: { budgetRange?: string; tierInterest?: string; showAllTiers?: boolean; campaignGoal?: string; hasCreative?: boolean | null; referralSource?: string };
 };
 
@@ -59,6 +59,7 @@ function AdvertiseApplyPage() {
  // Step 1
  const [businessName, setBusinessName] = useState("");
  const [contactName, setContactName] = useState("");
+ const [email, setEmail] = useState("");
  const [whatsappNumber, setWhatsappNumber] = useState("");
  const [businessType, setBusinessType] = useState("");
 
@@ -86,6 +87,7 @@ function AdvertiseApplyPage() {
  if (d.s1) {
  setBusinessName(d.s1.businessName || "");
  setContactName(d.s1.contactName || "");
+ setEmail(d.s1.email || "");
  setWhatsappNumber(d.s1.whatsappNumber || "");
  setBusinessType(d.s1.businessType || "");
  }
@@ -109,13 +111,13 @@ function AdvertiseApplyPage() {
  if (successId) return;
  const d: Draft = {
  step: currentStep,
- s1: { businessName, contactName, whatsappNumber, businessType },
+ s1: { businessName, contactName, email, whatsappNumber, businessType },
  s2: { budgetRange, tierInterest, showAllTiers, campaignGoal, hasCreative, referralSource },
  };
  try { localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); } catch {}
- }, [currentStep, businessName, contactName, whatsappNumber, businessType, budgetRange, tierInterest, showAllTiers, campaignGoal, hasCreative, referralSource, successId]);
+ }, [currentStep, businessName, contactName, email, whatsappNumber, businessType, budgetRange, tierInterest, showAllTiers, campaignGoal, hasCreative, referralSource, successId]);
 
- const step1Valid = businessName.trim() && contactName.trim() && whatsappNumber.trim() && businessType;
+ const step1Valid = businessName.trim() && contactName.trim() && email.trim() && whatsappNumber.trim() && businessType;
  const step2Valid = budgetRange && tierInterest && campaignGoal && hasCreative !== null;
 
  const handleSelectBudget = (b: string) => {
@@ -140,6 +142,7 @@ function AdvertiseApplyPage() {
  application_type: "advertiser",
  business_name: businessName,
  contact_name: contactName,
+ email: email,
  phone: whatsappNumber,
  business_type: businessType,
  budget_range: budgetRange,
@@ -251,6 +254,9 @@ function AdvertiseApplyPage() {
  </Field>
  <Field label="Your name">
  <input className="fld" type="text" required placeholder="Full name" value={contactName} onChange={(e) => setContactName(e.target.value)} />
+ </Field>
+ <Field label="Email">
+ <input className="fld" type="email" required placeholder="you@business.com" value={email} onChange={(e) => setEmail(e.target.value)} />
  </Field>
  </div>
 

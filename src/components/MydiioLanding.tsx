@@ -1,25 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import HERO_NIGHT from "@/assets/hero-tuk-tuk-night-screen.png.asset.json";
-import INSIDE_RIDE from "@/assets/inside-ride-passenger-pov-screen.png.asset.json";
+const HERO_NIGHT = "/assets/hero-tuk-tuk-night-screen.png";
+const INSIDE_RIDE = "/assets/inside-ride-passenger-pov-screen.png";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
-import DRIVER_CARD from "@/assets/illustration-kamal-driver.png.asset.json";
-import TUK_SCREEN from "@/assets/illustration-tuk-screen.png.asset.json";
-import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
+const DRIVER_CARD = "/assets/illustration-kamal-driver.png";
+const TUK_SCREEN = "/assets/illustration-tuk-screen.png";
+const PIONEER_TUK = "/assets/illustration-pioneer-tuk.png";
 
 
 
-import HOW_STEP1 from "@/assets/illustration-perera-pharmacy.png.asset.json";
-import HOW_STEP2 from "@/assets/illustration-ayasha-passenger.png.asset.json";
-import HOW_STEP3 from "@/assets/illustration-nishara-boutique.png.asset.json";
+const HOW_STEP1 = "/assets/illustration-perera-pharmacy.png";
+const HOW_STEP2 = "/assets/illustration-ayasha-passenger.png";
+const HOW_STEP3 = "/assets/illustration-nishara-boutique.png";
 
-import DILINI_DRIVER from "@/assets/illustration-dilini-driver.png.asset.json";
+const DILINI_DRIVER = "/assets/illustration-dilini-driver.png";
 
 import { useI18n } from "@/lib/i18n";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
-import { AdvertiserApplication } from "@/components/site/AdvertiserApplication";
 import { ColomboMap } from "@/components/site/ColomboMap";
 
 
@@ -61,7 +60,7 @@ function Hero() {
 
  return (
  <section data-nav-section="home" className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
- <img src={HERO_NIGHT.url} alt={tt("home.hero.heroImg.alt")} loading="eager" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+ <img src={HERO_NIGHT} alt={tt("home.hero.heroImg.alt")} loading="eager" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.45) 40%, rgba(20,16,12,0.88) 100%)" }} />
  <div className="relative z-10 flex flex-col items-start justify-end" style={{ minHeight: "100vh", padding: "clamp(120px, 16vh, 180px) clamp(22px, 6vw, 80px) clamp(72px, 10vh, 110px)" }}>
  <div style={{ maxWidth: 980 }}>
@@ -157,7 +156,7 @@ function Hero() {
 
  {/* Illustrated tuk overlay, bleeds below hero edge */}
  <img
- src={TUK_SCREEN.url}
+ src={TUK_SCREEN}
  alt={tt("home.hero.tukOverlayImg.alt")}
  loading="eager"
  width={600}
@@ -483,7 +482,7 @@ function WhyItWorks() {
  </div>
  </div>
  <div className="why-image reveal reveal-up delay-1">
- <img src={DILINI_DRIVER.url} alt={tt("home.whyItWorks.driverImg.alt")} loading="lazy" width={800} height={450} style={{ width: "100%", height: 380, display: "block", borderRadius: 16, objectFit: "cover", objectPosition: "center" }} />
+ <img src={DILINI_DRIVER} alt={tt("home.whyItWorks.driverImg.alt")} loading="lazy" width={800} height={450} style={{ width: "100%", height: 380, display: "block", borderRadius: 16, objectFit: "cover", objectPosition: "center" }} />
  </div>
  </div>
  <style>{`
@@ -511,9 +510,9 @@ function WhyItWorks() {
 function HowItWorks() {
  const { t, tt, lang } = useI18n();
  const steps = [
- { n: "01", t: t("how_s1_t"), b: t("how_s1_b"), img: HOW_STEP1.url, alt: tt("home.howItWorks.step1.imgAlt"), pos: "center top" },
- { n: "02", t: t("how_s2_t"), b: t("how_s2_b"), img: HOW_STEP2.url, alt: tt("home.howItWorks.step2.imgAlt"), pos: "center" },
- { n: "03", t: t("how_s3_t"), b: t("how_s3_b"), img: HOW_STEP3.url, alt: tt("home.howItWorks.step3.imgAlt"), pos: "center" },
+ { n: "01", t: t("how_s1_t"), b: t("how_s1_b"), img: HOW_STEP1, alt: tt("home.howItWorks.step1.imgAlt"), pos: "center top" },
+ { n: "02", t: t("how_s2_t"), b: t("how_s2_b"), img: HOW_STEP2, alt: tt("home.howItWorks.step2.imgAlt"), pos: "center" },
+ { n: "03", t: t("how_s3_t"), b: t("how_s3_b"), img: HOW_STEP3, alt: tt("home.howItWorks.step3.imgAlt"), pos: "center" },
  ];
  return (
  <Section bg="var(--bg)">
@@ -610,7 +609,7 @@ function TukInterior() {
  </div>
  <div className="reveal reveal-up delay-1 tuk-image" style={{ position: "relative" }}>
  <div className="brutal-frame" style={{ borderRadius: 4 }}>
- <img src={INSIDE_RIDE.url} alt={tt("home.insideTheRide.img.alt")} loading="lazy" width={800} height={450} className="inside-ride-img" style={{ width: "100%", display: "block", height: 400, objectFit: "cover", objectPosition: "center top" }} />
+ <img src={INSIDE_RIDE} alt={tt("home.insideTheRide.img.alt")} loading="lazy" width={800} height={450} className="inside-ride-img" style={{ width: "100%", display: "block", height: 400, objectFit: "cover", objectPosition: "center top" }} />
  </div>
  <div style={{
  position: "absolute",
@@ -755,7 +754,7 @@ function TwoAudiences() {
  padding: 0,
  }}>
  <div className="brutal-frame">
- <img src={HOW_STEP3.url} alt={tt("home.twoAudiences.advertiserImg.alt")} loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
+ <img src={HOW_STEP3} alt={tt("home.twoAudiences.advertiserImg.alt")} loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
  </div>
  <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
  <span className="eyebrow" style={{ color: "var(--accent-deep)" }}>{t("ad_kicker")}</span>
@@ -799,7 +798,7 @@ function TwoAudiences() {
  padding: 0,
  }}>
  <div className="brutal-frame">
- <img src={DRIVER_CARD.url} alt={tt("home.twoAudiences.driverImg.alt")} loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
+ <img src={DRIVER_CARD} alt={tt("home.twoAudiences.driverImg.alt")} loading="lazy" width={800} height={450} className="audience-img" style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: 0 }} />
  </div>
  <div style={{ padding: "clamp(28px, 4vw, 40px)" }}>
  <span className="eyebrow" style={{ color: "var(--green-ink)" }}>{t("dr_kicker")}</span>
@@ -1098,7 +1097,7 @@ function FoundingOffer() {
  pointerEvents: "none",
  }} />
  <img
- src={PIONEER_TUK.url}
+ src={PIONEER_TUK}
  alt="mydiio pioneer tuk-tuk with amber flag, founding advertiser programme"
  loading="lazy"
  width={400}
@@ -1250,8 +1249,10 @@ function FinalCTA() {
   {t("fcta_body")}
   </p>
   <div style={{ marginTop: 40 }}>
-  <AdvertiserApplication />
-  </div>
+            <a href="/advertise/apply" style={{ display: "inline-block", padding: "16px 40px", background: "#F5A623", color: "#1A1A18", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 700, fontSize: 17, borderRadius: 14, textDecoration: "none" }}>
+              Launch your campaign
+            </a>
+          </div>
  </div>
  </section>
  );

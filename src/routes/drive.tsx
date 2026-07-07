@@ -4,14 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import DRIVER_PAYMENT from "@/assets/driver-payment.jpg";
 import FLEET_SUNSET from "@/assets/tuktuk-fleet-sunset.jpg";
-import TUK_STAND from "@/assets/tuk-stand-drivers-road-ahead.png.asset.json";
-import COLOMBO_TUK_DAYTIME from "@/assets/colombo-tuk-tuk-street-daytime.png.asset.json";
-import INSTALL_HANDS from "@/assets/installation-hands-fitting-screen.png.asset.json";
-import INSTALL_LIVE from "@/assets/installation-screen-live-colombo.png.asset.json";
-import DRIVER_PORTRAIT from "@/assets/driver-portrait-tuk-golden-hour.png.asset.json";
-import DILINI from "@/assets/illustration-dilini-driver.png.asset.json";
-import KAMAL from "@/assets/illustration-kamal-driver.png.asset.json";
-import PIONEER_TUK from "@/assets/illustration-pioneer-tuk.png.asset.json";
+const TUK_STAND = "/assets/tuk-stand-drivers-road-ahead.png";
+const COLOMBO_TUK_DAYTIME = "/assets/colombo-tuk-tuk-street-daytime.png";
+const INSTALL_HANDS = "/assets/installation-hands-fitting-screen.png";
+const INSTALL_LIVE = "/assets/installation-screen-live-colombo.png";
+const DRIVER_PORTRAIT = "/assets/driver-portrait-tuk-golden-hour.png";
+const DILINI = "/assets/illustration-dilini-driver.png";
+const KAMAL = "/assets/illustration-kamal-driver.png";
+const PIONEER_TUK = "/assets/illustration-pioneer-tuk.png";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { supabase } from "@/integrations/supabase/client";
@@ -109,7 +109,7 @@ function Hero() {
  ];
  return (
  <section className="relative w-full overflow-hidden page-hero-fixed" style={{ borderBottom: "2px solid #1A1A18" }}>
- <img src={DILINI.url} alt={tt("home.whyItWorks.driverImg.alt")} loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top" }} />
+ <img src={DILINI} alt={tt("home.whyItWorks.driverImg.alt")} loading="eager" width={800} height={450} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center top" }} />
  <div className="absolute inset-0" style={{
  background: "linear-gradient(to right, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.65) 55%, rgba(20,16,12,0.35) 100%)",
  }} />
@@ -295,7 +295,7 @@ function DriverEarnings() {
  <div className="earnings-grid">
  <div className="reveal earnings-photo-wrap">
  <img
- src={KAMAL.url}
+ src={KAMAL}
  alt="mydiio driver smiling with a payment confirmation on his phone"
  loading="lazy"
  width={800}
@@ -426,7 +426,7 @@ function Installation() {
  display: "flex", flexDirection: "column", gap: 12,
  }}>
  <img
- src={INSTALL_HANDS.url}
+ src={INSTALL_HANDS}
  alt={tt("drive.installation.imgAlt1")}
  loading="lazy"
  width={800}
@@ -435,7 +435,7 @@ function Installation() {
  style={{ width: "100%", height: 260, objectFit: "cover", objectPosition: "center", borderRadius: 12, display: "block" }}
  />
  <img
- src={INSTALL_LIVE.url}
+ src={INSTALL_LIVE}
  alt={tt("drive.installation.imgAlt2")}
  loading="lazy"
  width={800}
@@ -502,7 +502,7 @@ function FoundingGroup() {
  ))}
  </ul>
  <img
- src={PIONEER_TUK.url}
+ src={PIONEER_TUK}
  alt=""
  loading="lazy"
  width={400}
