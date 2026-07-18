@@ -19,6 +19,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AdvertiseRouteImport } from './routes/advertise'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RideVehicleIdRouteImport } from './routes/ride.$vehicleId'
 import { Route as DriversApplyRouteImport } from './routes/drivers.apply'
 import { Route as AdvertiseApplyRouteImport } from './routes/advertise_.apply'
 
@@ -72,6 +73,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RideVehicleIdRoute = RideVehicleIdRouteImport.update({
+  id: '/ride/$vehicleId',
+  path: '/ride/$vehicleId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DriversApplyRoute = DriversApplyRouteImport.update({
   id: '/drivers/apply',
   path: '/drivers/apply',
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/advertise/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
+  '/ride/$vehicleId': typeof RideVehicleIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/advertise/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
+  '/ride/$vehicleId': typeof RideVehicleIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/advertise_/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
+  '/ride/$vehicleId': typeof RideVehicleIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/advertise/apply'
     | '/drivers/apply'
+    | '/ride/$vehicleId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/advertise/apply'
     | '/drivers/apply'
+    | '/ride/$vehicleId'
   id:
     | '__root__'
     | '/'
@@ -169,6 +180,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/advertise_/apply'
     | '/drivers/apply'
+    | '/ride/$vehicleId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -184,6 +196,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   AdvertiseApplyRoute: typeof AdvertiseApplyRoute
   DriversApplyRoute: typeof DriversApplyRoute
+  RideVehicleIdRoute: typeof RideVehicleIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -258,6 +271,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ride/$vehicleId': {
+      id: '/ride/$vehicleId'
+      path: '/ride/$vehicleId'
+      fullPath: '/ride/$vehicleId'
+      preLoaderRoute: typeof RideVehicleIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/drivers/apply': {
       id: '/drivers/apply'
       path: '/drivers/apply'
@@ -288,6 +308,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   AdvertiseApplyRoute: AdvertiseApplyRoute,
   DriversApplyRoute: DriversApplyRoute,
+  RideVehicleIdRoute: RideVehicleIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
