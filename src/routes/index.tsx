@@ -282,12 +282,14 @@ function HomePage() {
 
       {/* PROOF STRIP */}
       <section style={{ background: C.paper, padding: "36px 20px", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", gap: 28, flexWrap: "wrap" }}>
-          <ProofItem head="GPS-verified plays" sub="Every impression logged with its location and time. No black box." />
-          <ProofItem head="Your own portal" sub="Log in to build ads, track plays, and pull reports yourself." />
-          <ProofItem head="A report every Monday" sub="See exactly which vehicles ran your ad, and where." />
-          <ProofItem head="Refundable deposit" sub="LKR 5,000 secures your spot. Fully refundable." />
-        </div>
+        <Reveal stagger={0.08}>
+          <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", gap: 28, flexWrap: "wrap" }}>
+            <ProofItem head="GPS-verified plays" sub="Every impression logged with its location and time. No black box." />
+            <ProofItem head="Your own portal" sub="Log in to build ads, track plays, and pull reports yourself." />
+            <ProofItem head="A report every Monday" sub="See exactly which vehicles ran your ad, and where." />
+            <ProofItem head="Refundable deposit" sub="LKR 5,000 secures your spot. Fully refundable." />
+          </div>
+        </Reveal>
       </section>
 
       {/* THE DIFFERENCE */}
