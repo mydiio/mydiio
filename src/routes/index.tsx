@@ -334,20 +334,20 @@ function HomePage() {
           </Reveal>
           <div style={{ order: 2 }}>
             <Eyebrow>Your advertiser portal</Eyebrow>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: C.ink, margin: "0 0 16px", lineHeight: 1.2 }}>
+            <Reveal><h2 style={{ fontSize: 32, fontWeight: 800, color: C.ink, margin: "0 0 16px", lineHeight: 1.2 }}>
               Everything in one login.
-            </h2>
-            <p className="reveal" style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.7, margin: "0 0 18px" }}>
+            </h2></Reveal>
+            <Reveal><p style={{ fontSize: 16, color: C.inkSoft, lineHeight: 1.7, margin: "0 0 18px" }}>
               When you sign up you get your own portal, not a shared inbox. It is where you run your advertising and
               check that it is working.
-            </p>
-            <ul className="reveal" style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 9 }}>
+            </p></Reveal>
+            <Reveal stagger={0.06}><ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 9 }}>
               <li style={{ fontSize: 15.5, color: C.inkSoft, lineHeight: 1.5 }}>A dashboard with your live campaigns at a glance</li>
               <li style={{ fontSize: 15.5, color: C.inkSoft, lineHeight: 1.5 }}>An ad builder to upload, preview, and submit your creative</li>
               <li style={{ fontSize: 15.5, color: C.inkSoft, lineHeight: 1.5 }}>A creatives library for everything you have run</li>
               <li style={{ fontSize: 15.5, color: C.inkSoft, lineHeight: 1.5 }}>Reports with GPS-verified plays, refreshed every week</li>
               <li style={{ fontSize: 15.5, color: C.inkSoft, lineHeight: 1.5 }}>Top-ups and Peak time slots you can add yourself</li>
-            </ul>
+            </ul></Reveal>
           </div>
         </div>
       </section>
