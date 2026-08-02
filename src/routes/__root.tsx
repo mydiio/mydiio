@@ -12,6 +12,8 @@ import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
 import { I18nProvider } from "@/lib/i18n";
+import { MotionProvider } from "@/motion";
+import "@/styles/motion.css";
 
 function NotFoundComponent() {
  return (
@@ -197,8 +199,10 @@ function RootComponent() {
  return (
  <QueryClientProvider client={queryClient}>
  <I18nProvider>
- <Outlet />
- </I18nProvider>
+    <MotionProvider>
+      <Outlet />
+    </MotionProvider>
+  </I18nProvider>
  </QueryClientProvider>
  );
 }
