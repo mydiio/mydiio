@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, ElementType, ReactNode } from 'react';
+import React, { useRef, ElementType, ReactNode } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useReducedMotion } from './useReducedMotion';
@@ -65,7 +65,7 @@ export function Reveal({
   }
 
   return (
-    <Component ref={containerRef as any} className={className}>
+    <Component ref={containerRef as React.Ref<any>} className={className}>
       {children}
     </Component>
   );

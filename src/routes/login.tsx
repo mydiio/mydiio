@@ -154,7 +154,7 @@ function LoginPage() {
  </div>
 
  <Link
- to="/"
+ to="/" as const
  style={{
  marginTop: 24,
  fontSize: 14,
@@ -491,7 +491,7 @@ function AdvertiserSignUp({ onSwitchToSignIn }: { onSwitchToSignIn: () => void }
  <p style={{ color: "#555", fontSize: 15, lineHeight: 1.5, margin: "0 0 24px" }}>
  We'll review your details and activate your account within 24 hours. Keep an eye on your email.
  </p>
- <Link to="/" style={{ color: "#1A1A18", fontSize: 14, textDecoration: "underline", textUnderlineOffset: 3 }}>
+ <Link to="/" as const style={{ color: "#1A1A18", fontSize: 14, textDecoration: "underline", textUnderlineOffset: 3 }}>
  Back to mydiio.com
  </Link>
  </div>

@@ -296,7 +296,7 @@ function DriversApplyPage() {
  )}
 
  {successId ? (
- <SuccessPanel id={successId} name={fullName} language={preferredLanguage} onHome={() => navigate({ to: "/" })} />
+ <SuccessPanel id={successId} name={fullName} language={preferredLanguage} onHome={() => navigate({ to: "/" as const })} />
  ) : (
  <div key={currentStep} className="step-body" style={{ padding: "26px 24px" }}>
  {hadDraft && currentStep > 1 && (

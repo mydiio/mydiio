@@ -4,6 +4,6 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 // Any hit to /investors is redirected to the homepage.
 export const Route = createFileRoute("/investors")({
   beforeLoad: () => {
-    throw redirect({ to: "/" });
+    throw redirect({ to: "/" as const });
   },
 });
