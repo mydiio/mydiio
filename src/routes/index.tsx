@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
-import { Reveal } from "@/motion";
+import { Reveal, useParallax } from "@/motion";
 
 const DASHBOARD_IMG = "/assets/advertiser-pharmacy-dashboard.png";
 
@@ -232,6 +232,8 @@ function Faq({ q, a }: { q: string; a: string }) {
 }
 
 function HomePage() {
+  const dashboardParallax = useParallax(0.15);
+
   return (
     <SiteShell accent="amber">
       {/* HERO */}
@@ -326,9 +328,10 @@ function HomePage() {
       {/* PORTAL */}
       <section style={{ background: C.bg, padding: "64px 20px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 40, alignItems: "center" }}>
-          <div className="reveal" style={{ borderRadius: 18, overflow: "hidden", boxShadow: "0 16px 48px rgba(0,0,0,0.12)", order: 1 }}>
+          <Reveal><div ref={dashboardParallax} style={{ borderRadius: 18, overflow: "hidden", boxShadow: "0 16px 48px rgba(0,0,0,0.12)", order: 1 }}>
             <img src={DASHBOARD_IMG} alt="The mydiio advertiser portal dashboard" style={{ width: "100%", display: "block" }} />
           </div>
+          </Reveal>
           <div style={{ order: 2 }}>
             <Eyebrow>Your advertiser portal</Eyebrow>
             <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: C.ink, margin: "0 0 16px", lineHeight: 1.2 }}>
