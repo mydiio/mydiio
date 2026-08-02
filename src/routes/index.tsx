@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
-import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 import { Reveal, useParallax } from "@/motion";
+import HERO_PHOTO from "@/assets/hero-tuktuk.png";
 
 const DASHBOARD_IMG = "/assets/advertiser-pharmacy-dashboard.png";
 
