@@ -120,16 +120,19 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 
 function ProofItem({ head, sub }: { head: string; sub: string }) {
   return (
-    <div className="reveal" style={{ flex: "1 1 200px", minWidth: 180 }}>
-      <div style={{ fontWeight: 800, fontSize: 15, color: C.ink, marginBottom: 4 }}>{head}</div>
-      <div style={{ fontSize: 13.5, color: C.inkMute, lineHeight: 1.5 }}>{sub}</div>
-    </div>
+    <Reveal>
+      <div style={{ flex: "1 1 200px", minWidth: 180 }}>
+        <div style={{ fontWeight: 800, fontSize: 15, color: C.ink, marginBottom: 4 }}>{head}</div>
+        <div style={{ fontSize: 13.5, color: C.inkMute, lineHeight: 1.5 }}>{sub}</div>
+      </div>
+    </Reveal>
   );
 }
 
 function Step({ n, title, body }: { n: number; title: string; body: string }) {
   return (
-    <div className="reveal" style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+    <Reveal>
+      <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
       <div
         style={{
           flex: "0 0 auto",
@@ -151,7 +154,8 @@ function Step({ n, title, body }: { n: number; title: string; body: string }) {
         <div style={{ fontWeight: 800, fontSize: 17, color: C.ink, marginBottom: 5 }}>{title}</div>
         <div style={{ fontSize: 15, color: C.inkSoft, lineHeight: 1.6 }}>{body}</div>
       </div>
-    </div>
+      </div>
+    </Reveal>
   );
 }
 
@@ -169,8 +173,8 @@ function PlanCard({
   featured?: boolean;
 }) {
   return (
-    <div
-      className="reveal"
+    <Reveal>
+      <div
       style={{
         flex: "1 1 240px",
         minWidth: 230,
@@ -213,21 +217,23 @@ function PlanCard({
           </li>
         ))}
       </ul>
-    </div>
+      </div>
+    </Reveal>
   );
 }
 
 function Faq({ q, a }: { q: string; a: string }) {
   return (
-    <details
-      className="reveal"
+    <Reveal>
+      <details
       style={{ borderBottom: "1px solid rgba(0,0,0,0.10)", padding: "16px 0" }}
     >
       <summary style={{ fontWeight: 700, fontSize: 16, color: C.ink, cursor: "pointer", listStyle: "none" }}>
         {q}
       </summary>
       <p style={{ margin: "10px 0 0", fontSize: 15, color: C.inkSoft, lineHeight: 1.6 }}>{a}</p>
-    </details>
+      </details>
+    </Reveal>
   );
 }
 
@@ -248,32 +254,43 @@ function HomePage() {
             alignItems: "center",
           }}
         >
-          <Reveal>
           <div>
-            <Eyebrow>Sri Lanka's first connected passenger network</Eyebrow>
-            <h1 style={{ fontSize: 46, lineHeight: 1.05, fontWeight: 800, color: C.ink, margin: 0 }}>
-              Your ad inside Colombo's tuk-tuks. Every play proven by GPS.
-            </h1>
-            <p
-              className="reveal"
-              style={{ fontSize: 18, color: C.inkSoft, lineHeight: 1.6, margin: "20px 0 28px", maxWidth: 520 }}
-            >
-              Reach passengers on real Colombo routes. Build your ad in your own portal, watch every GPS-verified
-              play, and get a report every Monday. Campaigns from LKR 25,000 a month with 7 days free.
-            </p>
-            <div className="reveal" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <a href={APPLY} className="btn-bold" style={{ background: C.accent, color: C.accentInk, padding: "14px 24px", borderRadius: 12, fontWeight: 800, fontSize: 16, textDecoration: "none" }}>
-                Claim your spot
-              </a>
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-bold" style={{ background: C.paper, color: C.ink, padding: "14px 24px", borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: "none", border: "1px solid rgba(0,0,0,0.12)" }}>
-                Chat on WhatsApp
-              </a>
-            </div>
-            <div className="reveal" style={{ marginTop: 22, fontSize: 13.5, color: C.inkMute, lineHeight: 1.6 }}>
-              10 Pioneer spots ever. Category locked for 12 months. Rate locked for life.
-            </div>
+            <Reveal>
+              <Eyebrow>Sri Lanka's first connected passenger network</Eyebrow>
+            </Reveal>
+
+            <Reveal stagger={0.08}>
+              <h1 style={{ fontSize: 46, lineHeight: 1.05, fontWeight: 800, color: C.ink, margin: 0 }}>
+                Your ad inside Colombo's tuk-tuks. Every play proven by GPS.
+              </h1>
+            </Reveal>
+
+            <Reveal stagger={0.16}>
+              <p
+                style={{ fontSize: 18, color: C.inkSoft, lineHeight: 1.6, margin: "20px 0 28px", maxWidth: 520 }}
+              >
+                Reach passengers on real Colombo routes. Build your ad in your own portal, watch every GPS-verified
+                play, and get a report every Monday. Campaigns from LKR 25,000 a month with 7 days free.
+              </p>
+            </Reveal>
+
+            <Reveal stagger={0.24}>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <a href={APPLY} className="btn-bold" style={{ background: C.accent, color: C.accentInk, padding: "14px 24px", borderRadius: 12, fontWeight: 800, fontSize: 16, textDecoration: "none" }}>
+                  Claim your spot
+                </a>
+                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-bold" style={{ background: C.paper, color: C.ink, padding: "14px 24px", borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: "none", border: "1px solid rgba(0,0,0,0.12)" }}>
+                  Chat on WhatsApp
+                </a>
+              </div>
+            </Reveal>
+
+            <Reveal stagger={0.32}>
+              <div style={{ marginTop: 22, fontSize: 13.5, color: C.inkMute, lineHeight: 1.6 }}>
+                10 Pioneer spots ever. Category locked for 12 months. Rate locked for life.
+              </div>
+            </Reveal>
           </div>
-          </Reveal>
           <Reveal>
           <div style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.14)" }}>
             <img src={HERO_PHOTO} alt="A mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block" }} />
@@ -298,14 +315,18 @@ function HomePage() {
       <section style={{ background: C.bg, padding: "64px 20px" }}>
         <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
           <Eyebrow>Why mydiio</Eyebrow>
-          <h2 className="reveal" style={{ fontSize: 34, fontWeight: 800, color: C.ink, margin: "0 0 16px", lineHeight: 1.15 }}>
-            Most local advertising asks you to trust a number. We show you the map.
-          </h2>
-          <p className="reveal" style={{ fontSize: 17, color: C.inkSoft, lineHeight: 1.7, margin: 0 }}>
-            When your ad plays on a mydiio screen, we record where and when. You do not get an estimate. You get a
-            GPS-verified log of every play, in your portal and in your Monday report. That is the whole point of the
-            network, and it is what no printed poster or roadside board can give you.
-          </p>
+          <Reveal>
+            <h2 style={{ fontSize: 34, fontWeight: 800, color: C.ink, margin: "0 0 16px", lineHeight: 1.15 }}>
+              Most local advertising asks you to trust a number. We show you the map.
+            </h2>
+          </Reveal>
+          <Reveal>
+            <p style={{ fontSize: 17, color: C.inkSoft, lineHeight: 1.7, margin: 0 }}>
+              When your ad plays on a mydiio screen, we record where and when. You do not get an estimate. You get a
+              GPS-verified log of every play, in your portal and in your Monday report. That is the whole point of the
+              network, and it is what no printed poster or roadside board can give you.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -407,13 +428,17 @@ function HomePage() {
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, letterSpacing: 2, textTransform: "uppercase", color: C.accent, marginBottom: 14 }}>
             The Pioneer offer
           </div>
-          <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.2 }}>
-            Ten businesses lock their category. Everyone else waits.
-          </h2>
-          <p className="reveal" style={{ fontSize: 17, color: "rgba(253,250,243,0.82)", lineHeight: 1.7, margin: "0 0 26px" }}>
-            A Pioneer spot gives your category twelve months of exclusivity on your corridor, and fixes your
-            per-minute rate for as long as you stay. There will only ever be ten. When they are gone, they are gone.
-          </p>
+          <Reveal>
+            <h2 style={{ fontSize: 32, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.2 }}>
+              Ten businesses lock their category. Everyone else waits.
+            </h2>
+          </Reveal>
+          <Reveal>
+            <p style={{ fontSize: 17, color: "rgba(253,250,243,0.82)", lineHeight: 1.7, margin: "0 0 26px" }}>
+              A Pioneer spot gives your category twelve months of exclusivity on your corridor, and fixes your
+              per-minute rate for as long as you stay. There will only ever be ten. When they are gone, they are gone.
+            </p>
+          </Reveal>
           <a href={APPLY} className="btn-bold" style={{ background: C.accent, color: C.accentInk, padding: "14px 28px", borderRadius: 12, fontWeight: 800, fontSize: 16, textDecoration: "none", display: "inline-block" }}>
             Claim a Pioneer spot
           </a>
@@ -436,20 +461,26 @@ function HomePage() {
       {/* FINAL CTA */}
       <section style={{ background: C.paper, padding: "64px 20px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-          <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: C.ink, margin: "0 0 14px", lineHeight: 1.2 }}>
-            Put your brand on the road this week.
-          </h2>
-          <p className="reveal" style={{ fontSize: 16.5, color: C.inkSoft, lineHeight: 1.7, margin: "0 0 26px" }}>
-            Reserve your spot with a refundable deposit, or message us on WhatsApp and we will walk you through it.
-          </p>
-          <div className="reveal" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+          <Reveal>
+            <h2 style={{ fontSize: 32, fontWeight: 800, color: C.ink, margin: "0 0 14px", lineHeight: 1.2 }}>
+              Put your brand on the road this week.
+            </h2>
+          </Reveal>
+          <Reveal>
+            <p style={{ fontSize: 16.5, color: C.inkSoft, lineHeight: 1.7, margin: "0 0 26px" }}>
+              Reserve your spot with a refundable deposit, or message us on WhatsApp and we will walk you through it.
+            </p>
+          </Reveal>
+          <Reveal>
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <a href={APPLY} className="btn-bold" style={{ background: C.accent, color: C.accentInk, padding: "14px 26px", borderRadius: 12, fontWeight: 800, fontSize: 16, textDecoration: "none" }}>
               Claim your spot
             </a>
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-bold" style={{ background: C.paper, color: C.ink, padding: "14px 26px", borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: "none", border: "1px solid rgba(0,0,0,0.12)" }}>
               Chat on WhatsApp
             </a>
-          </div>
+            </div>
+          </Reveal>
           <p style={{ marginTop: 22, fontSize: 14, color: C.inkMute }}>
             hello@mydiio.com &nbsp;·&nbsp; 070 747 1002 &nbsp;·&nbsp;{" "}
             <a href="/about" style={{ color: C.inkSoft }}>What mydiio stands for</a>
