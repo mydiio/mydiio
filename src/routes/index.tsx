@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
+import { Reveal } from "@/motion";
 
 const DASHBOARD_IMG = "/assets/advertiser-pharmacy-dashboard.png";
 
@@ -245,9 +246,10 @@ function HomePage() {
             alignItems: "center",
           }}
         >
+          <Reveal>
           <div>
             <Eyebrow>Sri Lanka's first connected passenger network</Eyebrow>
-            <h1 className="reveal" style={{ fontSize: 46, lineHeight: 1.05, fontWeight: 800, color: C.ink, margin: 0 }}>
+            <h1 style={{ fontSize: 46, lineHeight: 1.05, fontWeight: 800, color: C.ink, margin: 0 }}>
               Your ad inside Colombo's tuk-tuks. Every play proven by GPS.
             </h1>
             <p
@@ -269,9 +271,12 @@ function HomePage() {
               10 Pioneer spots ever. Category locked for 12 months. Rate locked for life.
             </div>
           </div>
-          <div className="reveal" style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.14)" }}>
+          </Reveal>
+          <Reveal>
+          <div style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.14)" }}>
             <img src={HERO_PHOTO} alt="A mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block" }} />
           </div>
+          </Reveal>
         </div>
       </section>
 
