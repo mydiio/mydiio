@@ -2,6 +2,13 @@
 // One import surface for the whole motion system.
 
 export { MotionProvider, useMotion, useScrollProgress } from "./MotionProvider";
+export {
+  LoaderProvider,
+  useLoaderGate,
+  useOnReveal,
+  useLoaderControls,
+} from "./LoaderProvider";
+export { Loader } from "./Loader";
 export { Reveal } from "./Reveal";
 export { useParallax } from "./useParallax";
 export { ThreeStage } from "./ThreeStage";
