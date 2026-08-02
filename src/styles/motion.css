@@ -1,0 +1,48 @@
+/* src/styles/motion.css
+   Motion tokens as CSS custom properties (so CSS transitions match JS), the
+   Lenis base rules, and a global reduced-motion guard. Import once, high up. */
+
+:root {
+  /* mirror of src/motion/tokens.ts */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-xs: 0.2s;
+  --dur-sm: 0.35s;
+  --dur-md: 0.5s;
+  --dur-lg: 0.8s;
+  --stagger: 0.08s;
+}
+
+/* Lenis: it drives scroll via transform on <html>. These are the required
+   base rules. Remove `scroll-behavior` so it does not fight native smooth. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Only promote layers you are actively animating. Add this class deliberately,
+   never blanket-apply will-change. */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* Global brake. If the user asks for reduced motion, neutralise everything the
+   CSS layer might do. The JS layer already guards itself via useReducedMotion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

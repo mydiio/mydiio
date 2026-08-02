@@ -259,7 +259,7 @@ export const translations = {
       pioneerExclusivityNote: { en: "Pioneer exclusivity lasts twelve months in a corridor fixed when you sign. Your rate stays fixed for as long as you renew.", si: "පුරෝගාමී සුවිශේෂී අයිතිය ඔබ අත්සන් කරන විට ස්ථාවර කරන ලද කලාපයක මාස දොළහක් පවතී. ඔබ අලුත් කරන තාක් ඔබේ මිල ස්ථාවරව පවතී.", ta: "பயனியர் பிரத்யேக உரிமை நீங்கள் கையொப்பமிடும்போது நிர்ணயிக்கப்படும் பகுதியில் பன்னிரண்டு மாதங்கள் நீடிக்கும். நீங்கள் புதுப்பிக்கும் வரை உங்கள் விலை நிலையாக இருக்கும்." },
       eyebrow: { en: "Pricing", si: "මිල ගණන්", ta: "விலை" },
       sectionHeading: { en: "Simple plans. No hidden costs.", si: "සරල සැලසුම්. සැඟවුණු වියදම් නෑ.", ta: "எளிய திட்டங்கள். மறைமுக செலவுகள் இல்லை." },
-      subheading: { en: "All plans include your first 7 days completely free. GPS-verified weekly reports included.", si: "සියලුම සැලසුම්වල ඔබේ පළමු දින 7 සම්පූර්ණයෙන්ම නොමිලේ ඇතුළත්. GPS මගින් සනාථ කළ සතිපතා වාර්තා ඇතුළත්.", ta: "அனைத்து திட்டங்களிலும் உங்கள் முதல் 7 நாட்கள் முற்றிலும் இலவசம் அடங்கும். GPS உறுதிசெய்யப்பட்ட வாராந்திர அறிக்கைகள் அடங்கும்." },
+      subheading: { en: "All plans include your first 7 days completely free, with GPS-verified weekly reports. Add Peak time slots or top up your minutes anytime from your portal.", si: "සියලුම සැලසුම්වල ඔබේ පළමු දින 7 සම්පූර්ණයෙන්ම නොමිලේ ඇතුළත්. GPS මගින් සනාථ කළ සතිපතා වාර්තා ඇතුළත්.", ta: "அனைத்து திட்டங்களிலும் உங்கள் முதல் 7 நாட்கள் முற்றிலும் இலவசம் அடங்கும். GPS உறுதிசெய்யப்பட்ட வாராந்திர அறிக்கைகள் அடங்கும்." },
     },
     burst: {
       sectionTitle: { en: "Need a quick campaign?", si: "ඉක්මන් ප්‍රචාරණයක් අවශ්‍යද?", ta: "ஒரு விரைவான பிரச்சாரம் தேவையா?" },
@@ -317,7 +317,7 @@ export const translations = {
     fleetReach: {
       eyebrow: { en: "Fleet reach", si: "රථ පිරිසේ ප්‍රවේශය", ta: "வாகனத் தொகுதி அடையாளம்" },
       heading: { en: "Your ad moves with Colombo.", si: "ඔබේ දැන්වීම කොළඹ සමඟ ගමන් කරයි.", ta: "உங்கள் விளம்பரம் கொழும்புடன் நகர்கிறது." },
-      body: { en: "mydiio tuk-tuks drive through every part of Colombo every day. Your weekly report shows exactly which neighbourhoods your ad reached, verified by GPS on every vehicle.", si: "mydiio ත්‍රී රෝද රථ සෑම දිනකම කොළඹේ සෑම ප්‍රදේශයකින්ම ධාවනය වේ. ඔබේ සතිපතා වාර්තාව ඔබේ දැන්වීම ළඟා වූ ප්‍රදේශ හරියටම පෙන්වයි, සෑම රථයකම GPS මගින් සනාථ කර ඇත.", ta: "mydiio மூன்று சக்கர வாகனங்கள் ஒவ்வொரு நாளும் கொழும்பின் ஒவ்வொரு பகுதியிலும் ஓடுகின்றன. உங்கள் வாராந்திர அறிக்கை உங்கள் விளம்பரம் சென்றடைந்த பகுதிகளை சரியாகக் காட்டுகிறது, ஒவ்வொரு வாகனத்திலும் GPS மூலம் உறுதிசெய்யப்பட்டது." },
+      body: { en: "mydiio tuk-tuks drive across Colombo as the pilot fleet rolls out. Your weekly report shows exactly which neighbourhoods your ad reached, verified by GPS on every vehicle.", si: "mydiio ත්‍රී රෝද රථ සෑම දිනකම කොළඹේ සෑම ප්‍රදේශයකින්ම ධාවනය වේ. ඔබේ සතිපතා වාර්තාව ඔබේ දැන්වීම ළඟා වූ ප්‍රදේශ හරියටම පෙන්වයි, සෑම රථයකම GPS මගින් සනාථ කර ඇත.", ta: "mydiio மூன்று சக்கர வாகனங்கள் ஒவ்வொரு நாளும் கொழும்பின் ஒவ்வொரு பகுதியிலும் ஓடுகின்றன. உங்கள் வாராந்திர அறிக்கை உங்கள் விளம்பரம் சென்றடைந்த பகுதிகளை சரியாகக் காட்டுகிறது, ஒவ்வொரு வாகனத்திலும் GPS மூலம் உறுதிசெய்யப்பட்டது." },
       vehiclesByPlan: {
         title: { en: "Vehicles by plan", si: "සැලසුම අනුව රථ", ta: "திட்டத்தின் படி வாகனங்கள்" },
         description: { en: "The number of tuk-tuks carrying your ad at the same time depends on your plan.", si: "එකවර ඔබේ දැන්වීම රැගෙන යන ත්‍රී රෝද රථ ගණන රඳා පවතින්නේ ඔබේ සැලසුම මතයි.", ta: "ஒரே நேரத்தில் உங்கள் விளம்பரத்தை சுமக்கும் மூன்று சக்கர வாகனங்களின் எண்ணிக்கை உங்கள் திட்டத்தைப் பொறுத்தது." },
@@ -371,7 +371,7 @@ export const translations = {
         avgDwellTime: { en: "Avg. dwell time", si: "සාමාන්‍ය රැඳී සිටින කාලය", ta: "சராசரி தங்கும் நேரம்" },
         coverageLabel: { en: "Coverage label", si: "ප්‍රවේශ ලේබලය", ta: "அடையாள லேபிள்" },
       },
-      liveStatus: { en: "LIVE DATA · UPDATES IN REAL TIME", si: "සජීවී දත්ත · තථ්‍ය කාලීනව යාවත්කාලීන වේ", ta: "நேரலை தரவு · நிகழ் நேரத்தில் புதுப்பிக்கப்படும்" },
+      liveStatus: { en: "EXAMPLE DASHBOARD · SAMPLE DATA", si: "සජීවී දත්ත · තථ්‍ය කාලීනව යාවත්කාලීන වේ", ta: "நேரலை தரவு · நிகழ் நேரத்தில் புதுப்பிக்கப்படும்" },
       nextReport: {
         label: { en: "NEXT WEEKLY REPORT", si: "ඊළඟ සතිපතා වාර්තාව", ta: "அடுத்த வாராந்திர அறிக்கை" },
         time: { en: "MONDAY · 9:00 AM", si: "සඳුදා · පෙ.ව. 9:00", ta: "திங்கள் · காலை 9:00" },

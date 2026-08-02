@@ -89,7 +89,6 @@ export function SiteNav({ accent = "amber" }: SiteNavProps) {
  { to: "/", key: "nav_home" as const, section: "home" },
  { to: "/advertise", key: "nav_advertisers" as const, section: "advertise" },
  { to: "/drive", key: "nav_drivers" as const, section: "drive" },
- { to: "/investors", key: "nav_investors" as const, section: "investors" },
  { to: "/about", key: "nav_about" as const, section: "about" },
  { to: "/contact", key: "nav_contact" as const, section: "contact" },
  ];

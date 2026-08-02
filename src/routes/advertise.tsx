@@ -270,7 +270,7 @@ function Pricing() {
  btnStyle: "primary" | "ink" | "ghost";
  }> = [
  {
- name: "PIONEER", price: "LKR 25 to 35k", per: "/mo · 3-month min",
+ name: "PIONEER", price: "LKR 25,000", per: "/mo · 3-month min",
  features: [tt("advertise.pricing.pioneer.feature.freeTrial"), tt("advertise.pricing.pioneer.feature.exclusivity"), tt("advertise.pricing.pioneer.feature.rateLocked"), tt("advertise.pricing.pioneer.feature.priorityPlacement"), tt("advertise.pricing.pioneer.feature.freeCreative")],
  badge: tt("advertise.pricing.pioneer.badge"),
  highlight: true,
@@ -795,6 +795,12 @@ function DashboardPreview() {
 
 /* ---------- Pioneer Programme ---------- */
 function PioneerProgramme() {
+  const [pioneerClaimed, setPioneerClaimed] = useState(3);
+  useEffect(() => {
+    supabase.from("advertiser_applications").select("id", { count: "exact", head: true }).eq("tier_interest", "pioneer").then(({ count }) => {
+      if (count !== null && count !== undefined) setPioneerClaimed(Math.min(count, 10));
+    });
+  }, []);
   const { tt } = useI18n();
  const ref = useRef<HTMLDivElement>(null);
  useEffect(() => {
@@ -848,7 +854,7 @@ function PioneerProgramme() {
  <div className="reveal reveal-up" style={{ maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
  <div style={{ display: "flex", justifyContent: "center", gap: 8 }}>
  {Array.from({ length: 10 }).map((_, i) => {
- const filled = i < 3;
+ const filled = i < pioneerClaimed;
  return (
  <div key={i} style={{
  width: 28, height: 28, borderRadius: "50%",
@@ -863,10 +869,10 @@ function PioneerProgramme() {
  })}
  </div>
  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, color: "var(--accent)", marginTop: 14 }}>
- 3 of 10 Pioneer spots claimed
+ {pioneerClaimed} of 10 Pioneer spots claimed
  </div>
  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>
- 7 remaining
+ {10 - pioneerClaimed} remaining
  </div>
  </div>
 
@@ -1054,7 +1060,7 @@ function FinalCTA() {
  lineHeight: 1.05, marginTop: 16, letterSpacing: "-1px",
  maxWidth: 880, marginInline: "auto",
  }}>
- Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.
+ Put your brand on Colombo's tuk-tuks. First 7 days free.
  </h2>
  <p className="reveal" style={{
  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
@@ -1353,7 +1359,6 @@ function AdvertisePage() {
  <FleetReach />
  <BurstPackages />
  <PioneerProgramme />
- <SocialProofStrip />
  <Coverage />
  <DashboardPreview />
  <FAQ />

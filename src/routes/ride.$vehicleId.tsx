@@ -29,6 +29,7 @@ function RidePage() {
   const [phase, setPhase] = useState<Phase>("pick");
   const [errorMsg, setErrorMsg] = useState("");
   const [pin, setPin] = useState<{ lat: number; lng: number } | null>(null);
+  const [destLabel, setDestLabel] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Array<{ label: string; lat: number; lng: number }>>([]);
   const [searching, setSearching] = useState(false);
@@ -38,6 +39,62 @@ function RidePage() {
   const [rating, setRating] = useState(0);
   const [rated, setRated] = useState(false);
   const [sharing, setSharing] = useState(false);
+  // Pre-selected from the phone, not asked as a question. Someone whose
+  // handset is already in Sinhala should not have to answer anything, and
+  // the three options label themselves in their own scripts so the control
+  // is legible whichever one you read. Shared and secondhand phones make
+  // the locale wrong often enough to be worth an override.
+  const [lang, setLang] = useState<"en" | "si" | "ta">(() => {
+    if (typeof navigator === "undefined") return "en";
+    const l = (navigator.language || "").toLowerCase();
+    if (l.startsWith("si")) return "si";
+    if (l.startsWith("ta")) return "ta";
+    return "en";
+  });
+  // Applying the language on its own, without following a ride. Separate
+  // from confirmRide so a passenger who only wants to change the screen
+  // never has to drop a destination pin.
+  const [langApplied, setLangApplied] = useState(false);
+  const [applyingLang, setApplyingLang] = useState(false);
+  // Interface copy for this page, fetched from the database so the same
+  // native-speaker review covers it. Falls back to English per key, and to
+  // the key's own English literal if the fetch fails entirely.
+  const [strings, setStrings] = useState<Record<string, { en: string; si: string | null; ta: string | null }>>({});
+
+  useEffect(() => {
+    fetch(`${EDGE}/ride-strings`)
+      .then((r) => r.json())
+      .then((d) => { if (d && d.strings) setStrings(d.strings); })
+      .catch(() => { /* page falls back to English literals */ });
+  }, []);
+
+  // Resolve a label for the language the passenger has chosen. English
+  // fallback per field; the second argument is the English literal so a
+  // key that never loaded still shows correct text.
+  const t = (key: string, en: string) => {
+    const row = strings[key];
+    if (!row) return en;
+    if (lang !== "en") {
+      const v = row[lang];
+      if (typeof v === "string" && v.trim()) return v;
+    }
+    return row.en || en;
+  };
+
+  async function applyLanguage(next: "en" | "si" | "ta") {
+    setLang(next);
+    setLangApplied(false);
+    setApplyingLang(true);
+    try {
+      const res = await fetch(`${EDGE}/set-language`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ vehicle_id: vehicleId, language: next }),
+      });
+      if (res.ok) setLangApplied(true);
+    } catch { /* best-effort; the arm call still carries lang if they follow a ride */ }
+    setApplyingLang(false);
+  }
   const tokenRef = useRef<string | null>(null);
   const mapElRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<any>(null);
@@ -70,6 +127,7 @@ function RidePage() {
 
       map.on("click", (e: any) => {
         placePin(e.latlng.lat, e.latlng.lng);
+        reverseGeocode(e.latlng.lat, e.latlng.lng);
       });
 
       if (navigator.geolocation) {
@@ -126,6 +184,18 @@ function RidePage() {
     setSearching(false);
   }
 
+  async function reverseGeocode(lat: number, lng: number) {
+    setDestLabel(null);
+    try {
+      const url = "https://nominatim.openstreetmap.org/reverse?format=json&zoom=16&lat=" + lat + "&lon=" + lng;
+      const res = await fetch(url, { headers: { "Accept": "application/json" } });
+      const data = await res.json().catch(() => null);
+      if (data && data.display_name) {
+        setDestLabel(String(data.display_name).split(",").slice(0, 2).join(",").trim());
+      }
+    } catch { /* label is best-effort; ride is unaffected */ }
+  }
+
   async function confirmRide() {
     const p = pinRef.current;
     if (!p) return;
@@ -134,14 +204,14 @@ function RidePage() {
       const res = await fetch(`${EDGE}/arm-ride`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ vehicle_id: vehicleId, dest_lat: p.lat, dest_lng: p.lng }),
+        body: JSON.stringify({ vehicle_id: vehicleId, dest_lat: p.lat, dest_lng: p.lng, dest_label: destLabel, language: lang }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
         setErrorMsg(
-          res.status === 404 ? "This tuk could not be found. Check the code on the screen."
-          : res.status === 403 ? "This tuk is not currently active."
-          : "Something went wrong. Please try again.",
+          res.status === 404 ? t("ride.err_404", "This tuk could not be found. Check the code on the screen.")
+          : res.status === 403 ? t("ride.err_403", "This tuk is not currently active.")
+          : t("ride.err_generic", "Something went wrong. Please try again."),
         );
         setPhase("error");
         return;
@@ -151,7 +221,7 @@ function RidePage() {
       setPlate(data.vehicle_registration ?? null);
       setPhase("armed");
     } catch {
-      setErrorMsg("No connection. Check your signal and try again.");
+      setErrorMsg(t("ride.err_conn", "No connection. Check your signal and try again."));
       setPhase("error");
     }
   }
@@ -160,7 +230,10 @@ function RidePage() {
     const token = tokenRef.current;
     tokenRef.current = null;
     setPhase("ended");
-    if (!token) return;
+    // Always call end-ride, even with no token. The passenger may have set a
+    // screen language on tap without arming a ride, and that still needs to
+    // revert. The server treats token as optional: with one it scopes the
+    // session delete, without one it clears the standalone language anyway.
     try {
       await fetch(`${EDGE}/end-ride`, {
         method: "POST",
@@ -214,17 +287,17 @@ function RidePage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter") runSearch(); }}
-                placeholder="Search a place (e.g. Galle Face Hotel)"
+                placeholder={t("ride.search_ph", "Search a place (e.g. Galle Face Hotel)")}
                 style={styles.searchInput}
               />
               <button onClick={runSearch} style={styles.searchBtn} disabled={searching}>
-                {searching ? "…" : "Search"}
+                {searching ? "\u2026" : t("ride.search_btn", "Search")}
               </button>
             </div>
             {results.length > 0 && (
               <div style={styles.results}>
                 {results.map((r, i) => (
-                  <button key={i} style={styles.resultRow} onClick={() => { placePin(r.lat, r.lng); setResults([]); setQuery(r.label.split(",")[0]); }}>
+                  <button key={i} style={styles.resultRow} onClick={() => { placePin(r.lat, r.lng); setDestLabel(r.label.split(",").slice(0, 2).join(",").trim()); setResults([]); setQuery(r.label.split(",")[0]); }}>
                     {r.label}
                   </button>
                 ))}
@@ -232,28 +305,64 @@ function RidePage() {
             )}
           </div>
           <div ref={mapElRef} style={styles.map} />
+          <div style={{ padding: "12px 18px 0" }}>
+            <p style={styles.sectionLabel}>Screen language</p>
+            <div style={{ display: "flex", gap: 8 }}>
+              {([
+                { k: "en", label: "English" },
+                { k: "si", label: "\u0dc3\u0dd2\u0d82\u0dc4\u0dbd" },
+                { k: "ta", label: "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd" },
+              ] as const).map((o) => (
+                <button
+                  key={o.k}
+                  onClick={() => applyLanguage(o.k)}
+                  disabled={applyingLang}
+                  style={{
+                    flex: 1,
+                    padding: "10px 8px",
+                    borderRadius: 10,
+                    fontSize: 14,
+                    fontWeight: 600,
+                    cursor: applyingLang ? "default" : "pointer",
+                    border: lang === o.k ? "1px solid #F5A623" : "1px solid rgba(26,26,24,0.15)",
+                    background: lang === o.k ? "#F5A623" : "transparent",
+                    color: lang === o.k ? "#1A1A18" : "#6E6E66",
+                  }}
+                >
+                  {o.label}
+                </button>
+              ))}
+            </div>
+            <p style={{ ...styles.statusText, marginTop: 8, fontSize: 12 }}>
+              {applyingLang
+                ? "Setting the screen language\u2026"
+                : langApplied
+                ? "Done. The tuk screen is now in this language. You can leave without following your ride."
+                : "Tap a language to change the tuk screen right away. You do not need to follow your ride to do this."}
+            </p>
+          </div>
           <div style={{ padding: 14 }}>
             <button style={{ ...styles.primaryBtn, opacity: pin ? 1 : 0.5, cursor: pin ? "pointer" : "not-allowed" }} onClick={confirmRide} disabled={!pin}>
-              {pin ? "Follow my ride" : "Drop a pin to continue"}
+              {pin ? t("ride.follow", "Follow my ride") : t("ride.drop_pin", "Drop a pin to continue")}
             </button>
           </div>
         </div>
       )}
 
       {phase === "arming" && (
-        <div style={styles.card}><div style={styles.spinner} /><p style={styles.statusText}>Connecting to your ride…</p></div>
+        <div style={styles.card}><div style={styles.spinner} /><p style={styles.statusText}>{t("ride.connecting", "Connecting to your ride\u2026")}</p></div>
       )}
 
       {phase === "error" && (
-        <div style={styles.card}><p style={styles.errTitle}>Ride not connected</p><p style={styles.statusText}>{errorMsg}</p></div>
+        <div style={styles.card}><p style={styles.errTitle}>{t("ride.not_connected", "Ride not connected")}</p><p style={styles.statusText}>{errorMsg}</p></div>
       )}
 
       {phase === "armed" && (
         <>
           <div style={{ ...styles.card, borderColor: "#3D6B4F" }}>
             <div style={styles.tick}>✓</div>
-            <p style={styles.armedTitle}>Your ride is being followed</p>
-            <p style={styles.statusText}>The screen in your tuk is now showing your live location and route to your destination.</p>
+            <p style={styles.armedTitle}>{t("ride.armed_title", "Your ride is being followed")}</p>
+            <p style={styles.statusText}>{t("ride.armed_body", "The screen in your tuk is now showing your live location and route to your destination.")}</p>
           </div>
           {driver && (
             <div style={styles.card}>
@@ -264,16 +373,16 @@ function RidePage() {
                   <div style={styles.driverAvatar}>{(driver.first_name || "?").charAt(0)}</div>
                 )}
                 <div style={{ textAlign: "left" }}>
-                  <p style={styles.driverName}>{driver.first_name || "Your driver"}</p>
+                  <p style={styles.driverName}>{driver.first_name || t("ride.driver_fallback", "Your driver")}</p>
                   <p style={styles.driverPlate}>{plate || vehicleId ? (plate || "mydiio verified") : ""}</p>
                 </div>
               </div>
               <div style={styles.rateWrap}>
                 {rated ? (
-                  <p style={styles.statusText}>Thanks for rating your driver.</p>
+                  <p style={styles.statusText}>{t("ride.rate_thanks", "Thanks for rating your driver.")}</p>
                 ) : (
                   <>
-                    <p style={styles.sectionLabel}>Rate your driver</p>
+                    <p style={styles.sectionLabel}>{t("ride.rate", "Rate your driver")}</p>
                     <div style={styles.stars}>
                       {[1, 2, 3, 4, 5].map((n) => (
                         <button key={n} onClick={() => submitRating(n)} style={{ ...styles.star, color: n <= rating ? "#F5A623" : "#D8D2C2" }} aria-label={`${n} stars`}>★</button>
@@ -285,26 +394,26 @@ function RidePage() {
             </div>
           )}
           <div style={styles.card}>
-            <p style={styles.sectionLabel}>Share your ride</p>
-            <p style={styles.statusText}>Send a live tracking link to someone you trust.</p>
+            <p style={styles.sectionLabel}>{t("ride.share_title", "Share your ride")}</p>
+            <p style={styles.statusText}>{t("ride.share_body", "Send a live tracking link to someone you trust.")}</p>
             {!share ? (
-              <button style={styles.primaryBtn} onClick={handleShare} disabled={sharing}>{sharing ? "Creating link…" : "Create a tracking link"}</button>
+              <button style={styles.primaryBtn} onClick={handleShare} disabled={sharing}>{sharing ? t("ride.creating_link", "Creating link\u2026") : t("ride.create_link", "Create a tracking link")}</button>
             ) : (
               <div style={styles.shareRow}>
-                <a style={styles.shareBtn} href={share.whatsapp_url} target="_blank" rel="noreferrer">Share on WhatsApp</a>
-                <a style={styles.shareBtnAlt} href={share.sms_url}>Share by SMS</a>
+                <a style={styles.shareBtn} href={share.whatsapp_url} target="_blank" rel="noreferrer">{t("ride.share_wa", "Share on WhatsApp")}</a>
+                <a style={styles.shareBtnAlt} href={share.sms_url}>{t("ride.share_sms", "Share by SMS")}</a>
               </div>
             )}
           </div>
-          <a href="tel:119" style={styles.emergencyBtn}>Emergency — call 119</a>
-          <button style={styles.endBtn} onClick={endRideNow}>End ride</button>
+          <a href="tel:119" style={styles.emergencyBtn}>{t("ride.emergency", "Emergency \u2014 call 119")}</a>
+          <button style={styles.endBtn} onClick={endRideNow}>{t("ride.end_ride", "End ride")}</button>
         </>
       )}
 
       {phase === "ended" && (
         <div style={styles.card}>
-          <p style={styles.armedTitle}>Ride ended</p>
-          <p style={styles.statusText}>Your ride is no longer being followed. Safe travels.</p>
+          <p style={styles.armedTitle}>{t("ride.ended_title", "Ride ended")}</p>
+          <p style={styles.statusText}>{t("ride.ended_body", "Your ride is no longer being followed. Safe travels.")}</p>
         </div>
       )}
 

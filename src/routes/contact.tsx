@@ -3,7 +3,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import COLOMBO_STREET from "@/assets/colombo-street.jpg";
-const PIONEER_TUK = "/assets/illustration-pioneer-tuk.png";
 
 export const Route = createFileRoute("/contact")({
  component: ContactPage,
@@ -13,7 +12,7 @@ export const Route = createFileRoute("/contact")({
  {
  name: "description",
  content:
- "Get in touch with the mydiio team. Book a demo, launch a campaign, or apply to become a driver partner. Based in Colombo, Sri Lanka. mydiiomedia@gmail.com",
+ "Get in touch with the mydiio team. Book a demo, launch a campaign, or apply to become a driver partner. Based in Colombo, Sri Lanka. hello@mydiio.com",
  },
  { property: "og:title", content: "Contact, mydiio" },
  { property: "og:description", content: "Campaign bookings, driver applications, investor questions." },
@@ -40,9 +39,6 @@ const inputStyle: React.CSSProperties = {
 
 function ContactPage() {
     usePageMeta({ titleKey: "meta_contact_title", descKey: "meta_contact_desc" });
- const [investorSubmitted, setInvestorSubmitted] = useState(false);
- const [investorSubmitting, setInvestorSubmitting] = useState(false);
- const [investorError, setInvestorError] = useState<string | null>(null);
 
  const [generalSubmitted, setGeneralSubmitted] = useState(false);
  const [generalSubmitting, setGeneralSubmitting] = useState(false);
@@ -59,41 +55,6 @@ function ContactPage() {
  const hour = Math.floor(sriLankaMin / 60);
  setIsOpen(hour >= 8 && hour < 20);
  }, []);
-
- async function handleInvestorSubmit(e: React.FormEvent<HTMLFormElement>) {
- e.preventDefault();
- setInvestorError(null);
- const fd = new FormData(e.currentTarget);
- const name = String(fd.get("name") || "")
- .trim()
- .slice(0, 200);
- const email = String(fd.get("email") || "")
- .trim()
- .slice(0, 255);
- const whatsapp = String(fd.get("whatsapp") || "")
- .trim()
- .slice(0, 50);
- const fund_firm = String(fd.get("fund_firm") || "")
- .trim()
- .slice(0, 200);
- const message = String(fd.get("message") || "")
- .trim()
- .slice(0, 4000);
- if (!name || !email || !message) return;
- setInvestorSubmitting(true);
- try {
- const res = await fetch(`${EDGE}/submit-investor-enquiry`, {
- method: "POST",
- headers: { "Content-Type": "application/json" },
- body: JSON.stringify({ name, email, whatsapp, fund_firm, message }),
- });
- if (!res.ok) throw new Error("failed");
- setInvestorSubmitted(true);
- } catch {
- setInvestorError(tt('contact.investorForm.errorMessage'));
- }
- setInvestorSubmitting(false);
- }
 
  async function handleGeneralSubmit(e: React.FormEvent<HTMLFormElement>) {
  e.preventDefault();
@@ -302,196 +263,6 @@ function ContactPage() {
  >
  {tt("contact.driverCard.cta")}
  </Link>
- </div>
-
- {/* Card 3, Investors */}
- <div
- className="mydiio-card reveal-up delay-3"
- style={{ padding: 24, display: "flex", flexDirection: "column" }}
- >
- <span className="eyebrow">{tt("contact.investorCard.eyebrow")}</span>
- <h3
- style={{
- fontFamily: "'Space Grotesk', sans-serif",
- fontWeight: 700,
- fontSize: 22,
- color: "var(--ink)",
- margin: "8px 0 10px",
- }}
- >
- {tt("contact.investorCard.heading")}
- </h3>
- <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.65, marginBottom: 20 }}>
- {tt("contact.investorCard.body")}
- </p>
- <img
- src={PIONEER_TUK}
- alt={tt('contact.investorCard.pioneerTukAlt')}
- loading="lazy"
- width={400}
- height={300}
- className="contact-pioneer-tuk"
- style={{ display: "block", margin: "0 auto 16px", mixBlendMode: "multiply", pointerEvents: "none" }}
- />
- {investorSubmitted ? (
- <p
- style={{
- fontFamily: "'Space Grotesk', sans-serif",
- fontSize: 15,
- color: "var(--ink)",
- textAlign: "center",
- margin: "auto 0",
- padding: "24px 0",
- }}
- >
- {tt('contact.investorForm.successMessage')}
- </p>
- ) : (
- <form
- onSubmit={handleInvestorSubmit}
- style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: "auto" }}
- >
- <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
- <span
- style={{
- fontFamily: "'Space Mono', monospace",
- fontSize: 11,
- color: "var(--ink-mute)",
- textTransform: "uppercase",
- letterSpacing: 1,
- }}
- >
- {tt("contact.form.name")}
- </span>
- <input
- name="name"
- required
- maxLength={200}
- placeholder={tt("contact.form.name")}
- style={inputStyle}
- className="contact-input"
- />
- </label>
- <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
- <span
- style={{
- fontFamily: "'Space Mono', monospace",
- fontSize: 11,
- color: "var(--ink-mute)",
- textTransform: "uppercase",
- letterSpacing: 1,
- }}
- >
- {tt("contact.investorForm.fieldEmail.label")}
- </span>
- <input
- name="email"
- type="email"
- required
- maxLength={255}
- placeholder={tt("contact.investorForm.fieldEmail.placeholder")}
- style={inputStyle}
- className="contact-input"
- />
- </label>
- <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
- <span
- style={{
- fontFamily: "'Space Mono', monospace",
- fontSize: 11,
- color: "var(--ink-mute)",
- textTransform: "uppercase",
- letterSpacing: 1,
- }}
- >
- {tt("contact.investorForm.fieldFundFirm.label")}
- </span>
- <input
- name="fund_firm"
- maxLength={200}
- placeholder={tt("contact.investorForm.fieldFundFirm.placeholder")}
- style={inputStyle}
- className="contact-input"
- />
- </label>
- <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
- <span
- style={{
- fontFamily: "'Space Mono', monospace",
- fontSize: 11,
- color: "var(--ink-mute)",
- textTransform: "uppercase",
- letterSpacing: 1,
- }}
- >
- {tt("contact.investorForm.fieldWhatsapp.label")}
- </span>
- <input
- name="whatsapp"
- type="tel"
- maxLength={50}
- placeholder={tt("contact.investorForm.fieldWhatsapp.placeholder")}
- style={inputStyle}
- className="contact-input"
- />
- </label>
- <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
- <span
- style={{
- fontFamily: "'Space Mono', monospace",
- fontSize: 11,
- color: "var(--ink-mute)",
- textTransform: "uppercase",
- letterSpacing: 1,
- }}
- >
- {tt("contact.investorForm.fieldMessage.label")}
- </span>
- <textarea
- name="message"
- required
- maxLength={4000}
- rows={3}
- placeholder={tt("contact.investorForm.fieldMessage.placeholder")}
- style={{ ...inputStyle, resize: "vertical" }}
- className="contact-input"
- />
- </label>
- <button
- type="submit"
- disabled={investorSubmitting}
- className="contact-submit"
- style={{
- background: "transparent",
- border: "var(--card-border)",
- borderRadius: 12,
- boxShadow: "var(--shadow-card)",
- color: "var(--ink)",
- padding: "12px 16px",
- fontFamily: "'Space Grotesk', sans-serif",
- fontWeight: 700,
- fontSize: 14,
- cursor: investorSubmitting ? "wait" : "pointer",
- opacity: investorSubmitting ? 0.7 : 1,
- transition: "all 0.15s",
- }}
- >
- {investorSubmitting ? tt('contact.investorForm.submitSending') : tt('contact.investorForm.submitIdle')}
- </button>
- {investorError && (
- <p
- style={{
- fontFamily: "'Space Mono', monospace",
- fontSize: 12,
- color: "var(--accent-deep)",
- textAlign: "center",
- }}
- >
- {investorError}
- </p>
- )}
- </form>
- )}
  </div>
 
  {/* Card 4, General */}

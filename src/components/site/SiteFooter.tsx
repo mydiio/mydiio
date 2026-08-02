@@ -87,7 +87,6 @@ export function SiteFooter() {
                         <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 12 }}>
                             <Link to="/advertise" className="footer-link" style={linkStyle}>{t("nav_advertisers")}</Link>
                             <Link to="/drive" className="footer-link" style={linkStyle}>{t("nav_drivers")}</Link>
-                            <Link to="/investors" className="footer-link" style={linkStyle}>{t("ft_network")}</Link>
                             <Link to="/about" className="footer-link" style={linkStyle}>{t("nav_about")}</Link>
                         </div>
                     </div>

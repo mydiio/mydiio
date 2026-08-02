@@ -22,6 +22,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as RideVehicleIdRouteImport } from './routes/ride.$vehicleId'
 import { Route as DriversApplyRouteImport } from './routes/drivers.apply'
 import { Route as AdvertiseApplyRouteImport } from './routes/advertise_.apply'
+import { Route as RKindCodeRouteImport } from './routes/r.$kind.$code'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -88,6 +89,11 @@ const AdvertiseApplyRoute = AdvertiseApplyRouteImport.update({
   path: '/advertise/apply',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RKindCodeRoute = RKindCodeRouteImport.update({
+  id: '/r/$kind/$code',
+  path: '/r/$kind/$code',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/advertise/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
   '/ride/$vehicleId': typeof RideVehicleIdRoute
+  '/r/$kind/$code': typeof RKindCodeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/advertise/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
   '/ride/$vehicleId': typeof RideVehicleIdRoute
+  '/r/$kind/$code': typeof RKindCodeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/advertise_/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
   '/ride/$vehicleId': typeof RideVehicleIdRoute
+  '/r/$kind/$code': typeof RKindCodeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/advertise/apply'
     | '/drivers/apply'
     | '/ride/$vehicleId'
+    | '/r/$kind/$code'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/advertise/apply'
     | '/drivers/apply'
     | '/ride/$vehicleId'
+    | '/r/$kind/$code'
   id:
     | '__root__'
     | '/'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '/advertise_/apply'
     | '/drivers/apply'
     | '/ride/$vehicleId'
+    | '/r/$kind/$code'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -197,6 +209,7 @@ export interface RootRouteChildren {
   AdvertiseApplyRoute: typeof AdvertiseApplyRoute
   DriversApplyRoute: typeof DriversApplyRoute
   RideVehicleIdRoute: typeof RideVehicleIdRoute
+  RKindCodeRoute: typeof RKindCodeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -292,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdvertiseApplyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/r/$kind/$code': {
+      id: '/r/$kind/$code'
+      path: '/r/$kind/$code'
+      fullPath: '/r/$kind/$code'
+      preLoaderRoute: typeof RKindCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -309,6 +329,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdvertiseApplyRoute: AdvertiseApplyRoute,
   DriversApplyRoute: DriversApplyRoute,
   RideVehicleIdRoute: RideVehicleIdRoute,
+  RKindCodeRoute: RKindCodeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
