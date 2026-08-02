@@ -36,7 +36,9 @@ function TukModel({ progress }: { progress: number }) {
 export function Corridor() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const pingsRef = useRef<HTMLDivElement>(null);
+  const ping1Ref = useRef<HTMLDivElement>(null);
+  const ping2Ref = useRef<HTMLDivElement>(null);
+  const ping3Ref = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     if (!containerRef.current) return;
@@ -62,13 +64,22 @@ export function Corridor() {
       },
     });
 
-    pingTimeline
-      .to(pingsRef.current?.querySelector('.ping-1'), { opacity: 1, duration: 0.5 })
-      .to(pingsRef.current?.querySelector('.ping-1'), { opacity: 0.5, duration: 0.5 })
-      .to(pingsRef.current?.querySelector('.ping-2'), { opacity: 1, duration: 0.5 })
-      .to(pingsRef.current?.querySelector('.ping-2'), { opacity: 0.5, duration: 0.5 })
-      .to(pingsRef.current?.querySelector('.ping-3'), { opacity: 1, duration: 0.5 })
-      .to(pingsRef.current?.querySelector('.ping-3'), { opacity: 0.5, duration: 0.5 });
+    // Use refs directly instead of querySelector
+    if (ping1Ref.current) {
+      pingTimeline
+        .to(ping1Ref.current, { opacity: 1, duration: 0.5 })
+        .to(ping1Ref.current, { opacity: 0.5, duration: 0.5 });
+    }
+    if (ping2Ref.current) {
+      pingTimeline
+        .to(ping2Ref.current, { opacity: 1, duration: 0.5 })
+        .to(ping2Ref.current, { opacity: 0.5, duration: 0.5 });
+    }
+    if (ping3Ref.current) {
+      pingTimeline
+        .to(ping3Ref.current, { opacity: 1, duration: 0.5 })
+        .to(ping3Ref.current, { opacity: 0.5, duration: 0.5 });
+    }
   }, []);
 
   return (
@@ -91,14 +102,14 @@ export function Corridor() {
             <p className="font-body text-cream/60 text-sm">
               Scroll to see how we verify every play
             </p>
-            <div ref={pingsRef} className="font-mono text-xs text-cream/40 mt-8 space-y-2">
-              <div className="ping-1 opacity-0 transition-opacity">
+            <div className="font-mono text-xs text-cream/40 mt-8 space-y-2">
+              <div ref={ping1Ref} className="opacity-0 transition-opacity">
                 <span className="text-amber">●</span> 6.85°N 79.87°E · Play verified
               </div>
-              <div className="ping-2 opacity-0 transition-opacity">
+              <div ref={ping2Ref} className="opacity-0 transition-opacity">
                 <span className="text-amber">●</span> 6.82°N 79.85°E · Play verified
               </div>
-              <div className="ping-3 opacity-0 transition-opacity">
+              <div ref={ping3Ref} className="opacity-0 transition-opacity">
                 <span className="text-amber">●</span> 6.80°N 79.83°E · Play verified
               </div>
             </div>

@@ -18,7 +18,6 @@ import { Route as DriveRouteImport } from './routes/drive'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AdvertiseRouteImport } from './routes/advertise'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as IndexRouteImport } from './routes/index'
 import { Route as RideVehicleIdRouteImport } from './routes/ride.$vehicleId'
 import { Route as DriversApplyRouteImport } from './routes/drivers.apply'
 import { Route as AdvertiseApplyRouteImport } from './routes/advertise_.apply'
@@ -69,11 +68,6 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const RideVehicleIdRoute = RideVehicleIdRouteImport.update({
   id: '/ride/$vehicleId',
   path: '/ride/$vehicleId',
@@ -96,7 +90,6 @@ const RKindCodeRoute = RKindCodeRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/advertise': typeof AdvertiseRoute
   '/contact': typeof ContactRoute
@@ -112,7 +105,6 @@ export interface FileRoutesByFullPath {
   '/r/$kind/$code': typeof RKindCodeRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/advertise': typeof AdvertiseRoute
   '/contact': typeof ContactRoute
@@ -129,7 +121,6 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/advertise': typeof AdvertiseRoute
   '/contact': typeof ContactRoute
@@ -147,7 +138,6 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/about'
     | '/advertise'
     | '/contact'
@@ -163,7 +153,6 @@ export interface FileRouteTypes {
     | '/r/$kind/$code'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/about'
     | '/advertise'
     | '/contact'
@@ -179,7 +168,6 @@ export interface FileRouteTypes {
     | '/r/$kind/$code'
   id:
     | '__root__'
-    | '/'
     | '/about'
     | '/advertise'
     | '/contact'
@@ -196,7 +184,6 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdvertiseRoute: typeof AdvertiseRoute
   ContactRoute: typeof ContactRoute
@@ -277,13 +264,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/ride/$vehicleId': {
       id: '/ride/$vehicleId'
       path: '/ride/$vehicleId'
@@ -316,7 +296,6 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdvertiseRoute: AdvertiseRoute,
   ContactRoute: ContactRoute,

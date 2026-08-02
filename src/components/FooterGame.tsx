@@ -12,7 +12,7 @@ export function FooterGame() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const gameLoopRef = useRef<number>();
+  const gameLoopRef = useRef<number | undefined>(undefined);
   const obstaclesRef = useRef<Obstacle[]>([]);
   const frameCountRef = useRef(0);
 
