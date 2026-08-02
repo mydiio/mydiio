@@ -312,12 +312,14 @@ function HomePage() {
         <div style={{ maxWidth: 820, margin: "0 auto" }}>
           <Eyebrow>How it works</Eyebrow>
           <h2 style={{ fontSize: 32, fontWeight: 800, color: C.ink, margin: "0 0 32px" }}>Four steps to live.</h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
-            <Step n={1} title="Reserve your spot" body="A refundable LKR 5,000 deposit holds your place. Credited to your first invoice, or returned in full if you decide not to proceed." />
-            <Step n={2} title="Build your ad" body="Upload your logo and photos in your portal, preview the result, and submit. Prefer we do it? We make your first creative free from your existing branding." />
-            <Step n={3} title="We review, then go live" body="Every ad is checked before it runs, so the network stays clean. Approved ads are live within 72 hours." />
-            <Step n={4} title="Track and top up" body="Watch GPS-verified plays on your dashboard, pull a report every Monday, and buy more minutes in your portal whenever you run low." />
-          </div>
+          <Reveal stagger={0.12}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
+              <Step n={1} title="Reserve your spot" body="A refundable LKR 5,000 deposit holds your place. Credited to your first invoice, or returned in full if you decide not to proceed." />
+              <Step n={2} title="Build your ad" body="Upload your logo and photos in your portal, preview the result, and submit. Prefer we do it? We make your first creative free from your existing branding." />
+              <Step n={3} title="We review, then go live" body="Every ad is checked before it runs, so the network stays clean. Approved ads are live within 72 hours." />
+              <Step n={4} title="Track and top up" body="Watch GPS-verified plays on your dashboard, pull a report every Monday, and buy more minutes in your portal whenever you run low." />
+            </div>
+          </Reveal>
         </div>
       </section>
 
