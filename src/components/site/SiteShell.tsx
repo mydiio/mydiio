@@ -21,22 +21,6 @@ export function SiteShell({
  useEffect(() => {
  const root = ref.current;
  if (!root) return;
- const io = new IntersectionObserver(
- (entries) => {
- entries.forEach((e) => {
- if (e.isIntersecting) {
- const target = e.target as HTMLElement;
- target.querySelectorAll<HTMLElement>(".reveal:not(.in)").forEach((item, i) =>
- setTimeout(() => item.classList.add("in"), i * 70),
- );
- io.unobserve(target);
- }
- });
- },
- { threshold: 0.14 },
- );
- root.querySelectorAll<HTMLElement>("section, footer").forEach((s) => io.observe(s));
-
  // Scroll-triggered reveal-up system (delay classes handle stagger)
  const upObserver = new IntersectionObserver(
  (entries) => {
