@@ -11,6 +11,7 @@ const AYASHA = "/assets/illustration-ayasha-passenger.png";
 const NISHARA = "/assets/illustration-nishara-boutique.png";
 const PIONEER_TUK = "/assets/illustration-pioneer-tuk.png";
 import { SiteShell } from "@/components/site/SiteShell";
+import { Reveal } from "@/motion";
 import { C } from "@/components/site/theme";
 import { ColomboMap } from "@/components/site/ColomboMap";
 import { supabase } from "@/integrations/supabase/client";
@@ -102,17 +103,7 @@ function Section({ bg, children }: { bg: string; children: React.ReactNode }) {
  const ref = useRef<HTMLDivElement>(null);
  useEffect(() => {
  const el = ref.current; if (!el) return;
- const io = new IntersectionObserver((entries) => {
- entries.forEach((e) => {
- if (e.isIntersecting) {
- el.querySelectorAll<HTMLElement>(".reveal").forEach((item, i) =>
- setTimeout(() => item.classList.add("in"), i * 80)
- );
- io.disconnect();
- }
- });
- }, { threshold: 0.18 });
- io.observe(el);
+
  return () => io.disconnect();
  }, []);
  return (
@@ -443,17 +434,7 @@ function FleetReach() {
  useEffect(() => {
  const el = ref.current;
  if (!el) return;
- const io = new IntersectionObserver((entries) => {
- entries.forEach((e) => {
- if (e.isIntersecting) {
- el.querySelectorAll<HTMLElement>(".reveal").forEach((item, i) =>
- setTimeout(() => item.classList.add("in"), i * 80)
- );
- io.disconnect();
- }
- });
- }, { threshold: 0.18 });
- io.observe(el);
+
  return () => io.disconnect();
  }, []);
 
@@ -783,7 +764,7 @@ function DashboardPreview() {
  @media (max-width: 639px) { .dashboard-image-wrap { margin-top: 24px; } }
  `}</style>
 
- <p className="reveal" style={{
+ <p style={{
  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
  fontSize: 14, color: C.inkSoft, textAlign: "center", marginTop: 22, maxWidth: 520, marginInline: "auto",
  }}>
@@ -799,17 +780,7 @@ function PioneerProgramme() {
  const ref = useRef<HTMLDivElement>(null);
  useEffect(() => {
  const el = ref.current; if (!el) return;
- const io = new IntersectionObserver((entries) => {
- entries.forEach((e) => {
- if (e.isIntersecting) {
- el.querySelectorAll<HTMLElement>(".reveal").forEach((item, i) =>
- setTimeout(() => item.classList.add("in"), i * 80)
- );
- io.disconnect();
- }
- });
- }, { threshold: 0.18 });
- io.observe(el);
+
  return () => io.disconnect();
  }, []);
 
@@ -845,7 +816,7 @@ function PioneerProgramme() {
  {tt("advertise.pioneer.body")}
  </p>
 
- <div className="reveal reveal-up" style={{ maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
+ <div style={{ maxWidth: 480, margin: "0 auto 48px", textAlign: "center" }}>
  <div style={{ display: "flex", justifyContent: "center", gap: 8 }}>
  {Array.from({ length: 10 }).map((_, i) => {
  const filled = i < 3;
@@ -949,14 +920,15 @@ function FAQ() {
  ];
  return (
  <Section bg={C.cream}>
- <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+ <h2 className="font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
  {tt("advertise.faq.heading")}
  </h2>
  <div style={{ maxWidth: 720, margin: "32px auto 0" }}>
  {items.map((it, i) => {
  const isOpen = open === i;
  return (
- <div key={i} className="reveal" style={{
+ <Reveal key={i}>
+ <div style={{
  background: "#fff", border: `2px solid ${C.ink}`,
  borderRadius: 12, marginBottom: 12, overflow: "hidden",
  boxShadow: isOpen ? `5px 5px 0 ${C.ink}` : `3px 3px 0 ${C.ink}`,
@@ -987,6 +959,7 @@ function FAQ() {
  </div>
  )}
  </div>
+ </Reveal>
  );
  })}
  </div>
@@ -999,15 +972,16 @@ function Coverage() {
   const { tt } = useI18n();
  return (
  <Section bg={C.cream}>
- <div className="reveal" style={{ textAlign: "center", marginBottom: 14 }}>
+ <Reveal>
+ <div style={{ textAlign: "center", marginBottom: 14 }}>
  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3, color: C.amberDeep, textTransform: "uppercase" }}>
  {tt("advertise.coverage.eyebrow")}
  </span>
  </div>
- <h2 className="reveal font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
+ <h2 className="font-display" style={{ fontSize: "clamp(28px, 3.6vw, 40px)", color: C.ink, textAlign: "center", lineHeight: 1.1 }}>
  {tt("advertise.coverage.heading")}
  </h2>
- <p className="reveal" style={{
+ <p style={{
  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
  fontSize: 16, color: C.inkSoft, textAlign: "center", marginTop: 14,
  maxWidth: 560, marginInline: "auto",
@@ -1015,9 +989,10 @@ function Coverage() {
  {tt("advertise.coverage.body")}
  </p>
 
- <div className="reveal" style={{ marginTop: 40 }}>
+ <div style={{ marginTop: 40 }}>
  <ColomboMap />
  </div>
+ </Reveal>
  </Section>
  );
 }
@@ -1043,27 +1018,28 @@ function FinalCTA() {
  }}
  />
  <div className="relative z-10" style={{ maxWidth: 1100, margin: "0 auto", padding: "120px 24px", textAlign: "center" }}>
- <span className="reveal" style={{
+ <Reveal>
+ <span style={{
  fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 3,
  color: C.amber, textTransform: "uppercase",
  }}>
  {tt("advertise.finalCta.badge")}
  </span>
- <h2 className="reveal font-display" style={{
+ <h2 className="font-display" style={{
  fontSize: "clamp(32px, 5.2vw, 56px)", color: "#fff",
  lineHeight: 1.05, marginTop: 16, letterSpacing: "-1px",
  maxWidth: 880, marginInline: "auto",
  }}>
  Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.
  </h2>
- <p className="reveal" style={{
+ <p style={{
  fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 600,
  fontSize: "clamp(15px, 1.8vw, 18px)", color: "rgba(255,255,255,0.78)",
  marginTop: 18, maxWidth: 620, marginInline: "auto", lineHeight: 1.5,
  }}>
  {tt("advertise.finalCta.body")}
  </p>
- <div className="reveal" style={{
+ <div style={{
  marginTop: 36, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center",
  }}>
  <a
@@ -1094,6 +1070,7 @@ function FinalCTA() {
  {tt("advertise.finalCta.secondaryCta")}
  </a>
  </div>
+ </Reveal>
  </div>
  </section>
  );
@@ -1105,17 +1082,7 @@ function BurstPackages() {
  const ref = useRef<HTMLDivElement>(null);
  useEffect(() => {
  const el = ref.current; if (!el) return;
- const io = new IntersectionObserver((entries) => {
- entries.forEach((e) => {
- if (e.isIntersecting) {
- el.querySelectorAll<HTMLElement>(".reveal").forEach((item, i) =>
- setTimeout(() => item.classList.add("in"), i * 80)
- );
- io.disconnect();
- }
- });
- }, { threshold: 0.18 });
- io.observe(el);
+
  return () => io.disconnect();
  }, []);
  const bursts = [
