@@ -34,3 +34,10 @@ dist-ssr
 src/routes/index.tsx.broken-reveal
 
 backup/
+
+# Local working backups
+*.bak
+*.bak-*
+
+# Unoptimised Atlas video masters
+public/assets/video/**/master/
