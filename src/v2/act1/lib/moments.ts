@@ -1,5 +1,13 @@
 import { assets, type AssetId } from "./assets";
-export const moments: Moment[] = [
+
+export interface AtlasMoment {
+  id: AssetId;
+  src: string;
+  duration: number;
+  headline?: string;
+}
+
+export const moments: AtlasMoment[] = [
   {
     id: "m001",
     src: assets.m001,
