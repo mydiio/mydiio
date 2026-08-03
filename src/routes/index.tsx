@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { C } from "@/components/site/theme";
 import { Reveal, useParallax } from "@/motion";
-import HERO_PHOTO from "@/assets/hero-tuktuk.png";
+import HERO_PHOTO from "/assets/aerial-colombo-tuk-tuks-overhead.png?url";
 
 const DASHBOARD_IMG = "/assets/advertiser-pharmacy-dashboard.png";
 
@@ -243,60 +243,133 @@ function HomePage() {
   return (
     <SiteShell accent="amber">
       {/* HERO */}
-      <section style={{ background: C.bg, padding: "72px 20px 56px" }}>
+      <section
+        style={{
+          position: "relative",
+          height: "100vh",
+          minHeight: 640,
+          width: "100%",
+          overflow: "hidden",
+          background: C.ink,
+          color: "#FFFFFF",
+        }}
+      >
+        <img
+          src={HERO_PHOTO}
+          alt=""
+          aria-hidden="true"
+          className="hero-photo"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transformOrigin: "center center",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.55) 100%)",
+          }}
+        />
         <div
           style={{
-            maxWidth: 1100,
+            position: "relative",
+            height: "100%",
+            width: "100%",
+            maxWidth: 1400,
             margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "minmax(0,1.05fr) minmax(0,0.95fr)",
-            gap: 40,
-            alignItems: "center",
+            padding: "0 24px 96px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
           }}
         >
-          <div>
-            <Reveal>
-              <Eyebrow>Sri Lanka's first connected passenger network</Eyebrow>
-            </Reveal>
-
-            <Reveal stagger={0.08}>
-              <h1 style={{ fontSize: 46, lineHeight: 1.05, fontWeight: 800, color: C.ink, margin: 0 }}>
-                Your ad inside Colombo's tuk-tuks. Every play proven by GPS.
-              </h1>
-            </Reveal>
-
-            <Reveal stagger={0.16}>
-              <p
-                style={{ fontSize: 18, color: C.inkSoft, lineHeight: 1.6, margin: "20px 0 28px", maxWidth: 520 }}
-              >
-                Reach passengers on real Colombo routes. Build your ad in your own portal, watch every GPS-verified
-                play, and get a report every Monday. Campaigns from LKR 25,000 a month with 7 days free.
-              </p>
-            </Reveal>
-
-            <Reveal stagger={0.24}>
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <a href={APPLY} className="btn-bold" style={{ background: C.accent, color: C.accentInk, padding: "14px 24px", borderRadius: 12, fontWeight: 800, fontSize: 16, textDecoration: "none" }}>
-                  Claim your spot
-                </a>
-                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-bold" style={{ background: C.paper, color: C.ink, padding: "14px 24px", borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: "none", border: "1px solid rgba(0,0,0,0.12)" }}>
-                  Chat on WhatsApp
-                </a>
-              </div>
-            </Reveal>
-
-            <Reveal stagger={0.32}>
-              <div style={{ marginTop: 22, fontSize: 13.5, color: C.inkMute, lineHeight: 1.6 }}>
-                10 Pioneer spots ever. Category locked for 12 months. Rate locked for life.
-              </div>
-            </Reveal>
+          <h1
+            className="hero-title"
+            style={{
+              fontFamily: '"DM Serif Display", Georgia, serif',
+              fontWeight: 400,
+              fontSize: "clamp(56px, 7vw, 112px)",
+              lineHeight: 0.88,
+              letterSpacing: "-0.02em",
+              margin: 0,
+              maxWidth: "18ch",
+            }}
+          >
+            THE<br />CITY<br />MOVES.
+          </h1>
+          <p
+            className="hero-sub"
+            style={{
+              marginTop: 28,
+              fontFamily: '"Space Grotesk", system-ui, sans-serif',
+              fontSize: "clamp(16px, 1.4vw, 20px)",
+              lineHeight: 1.5,
+              color: "rgba(255,255,255,0.86)",
+              maxWidth: "36ch",
+            }}
+          >
+            Millions of journeys.<br />One new way to reach them.
+          </p>
+          <div className="hero-cta" style={{ marginTop: 36 }}>
+            <a
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+                padding: "16px 28px",
+                borderRadius: 999,
+                background: "#F5A623",
+                color: C.ink,
+                fontFamily: '"Space Grotesk", system-ui, sans-serif',
+                fontWeight: 600,
+                fontSize: 16,
+                textDecoration: "none",
+                border: "2px solid #F5A623",
+              }}
+            >
+              Reserve your route {"→"}
+            </a>
           </div>
-          <Reveal>
-          <div style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.14)" }}>
-            <img src={HERO_PHOTO} alt="A mydiio screen inside a Colombo tuk-tuk" style={{ width: "100%", display: "block" }} />
+          <div
+            aria-hidden="true"
+            className="hero-scroll"
+            style={{
+              position: "absolute",
+              left: "50%",
+              bottom: 28,
+              transform: "translateX(-50%)",
+              fontFamily: '"Space Mono", monospace',
+              fontSize: 11,
+              letterSpacing: "0.18em",
+              color: "rgba(255,255,255,0.7)",
+              textTransform: "uppercase",
+            }}
+          >
+            scroll ↓
           </div>
-          </Reveal>
         </div>
+        <style>{`
+          @keyframes heroImgIn { from { transform: scale(1.08); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+          @keyframes heroTitleIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+          @keyframes heroFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+          .hero-photo { animation: heroImgIn 3s cubic-bezier(0.22, 1, 0.36, 1) both; }
+          .hero-title { animation: heroTitleIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
+          .hero-sub   { animation: heroFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 1.0s both; }
+          .hero-cta   { animation: heroFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 1.4s both; }
+          .hero-scroll{ animation: heroFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 2.0s both; }
+          @media (prefers-reduced-motion: reduce) {
+            .hero-photo, .hero-title, .hero-sub, .hero-cta, .hero-scroll {
+              animation: none !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* PROOF STRIP */}
