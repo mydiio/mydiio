@@ -1,30 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AtlasShell, OpeningSequence } from "@/v2";
+import { ActOne } from "@/v2/act1";
 
 export const Route = createFileRoute("/v2")({
-  component: AtlasPreviewPage,
-  head: () => ({
-    meta: [
-      {
-        title: "Project Atlas | mydiio",
-      },
-      {
-        name: "description",
-        content:
-          "Internal preview of the new mydiio connected passenger network experience.",
-      },
-      {
-        name: "robots",
-        content: "noindex, nofollow",
-      },
-    ],
-  }),
+  component: V2Page,
 });
 
-function AtlasPreviewPage() {
-  return (
-    <AtlasShell>
-      <OpeningSequence />
-    </AtlasShell>
-  );
+function V2Page() {
+  return <ActOne />;
 }
