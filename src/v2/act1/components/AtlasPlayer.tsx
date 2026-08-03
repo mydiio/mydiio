@@ -1,18 +1,23 @@
-import { colors, EASE_CSS } from "@/design";
+import { colors } from "@/design";
 import type { AtlasMoment } from "../lib/moments";
 import { AtlasHeadline } from "./AtlasHeadline";
 import { AtlasOverlay } from "./AtlasOverlay";
-import { AtlasProgress } from "./AtlasProgress";
+import { AtlasEndCard } from "./AtlasEndCard";
 
 type AtlasPlayerProps = {
   moments: AtlasMoment[];
-  activeIndex: number;
+  sequenceProgress: number;
 };
+
+function clamp(value: number, min = 0, max = 1) {
+  return Math.min(max, Math.max(min, value));
+}
 
 export function AtlasPlayer({
   moments,
-  activeIndex,
+  sequenceProgress,
 }: AtlasPlayerProps) {
+  const position = sequenceProgress * (moments.length - 1);
   return (
     <div
       style={{
@@ -24,31 +29,37 @@ export function AtlasPlayer({
       }}
     >
       <style>{`
-        .atlas-player-video {
-          transition:
-            opacity 0.7s ${EASE_CSS},
-            transform 1.6s ${EASE_CSS};
-        }
-
         @media (prefers-reduced-motion: reduce) {
           .atlas-player-video,
           .atlas-headline {
             transition: none !important;
+            transform: none !important;
           }
         }
       `}</style>
 
       {moments.map((moment, index) => {
-        const active = index === activeIndex;
+        const distance = Math.abs(position - index);
+        const holdZone = 0.34;
+        const fadeZone = 0.66;
+        const opacity = clamp(
+          1 - Math.max(0, distance - holdZone) / fadeZone,
+        );
+        const isVisible = opacity > 0.001;
+        const headlineOpacity = clamp(
+          1 - Math.max(0, distance - 0.18) / 0.52,
+        );
 
         return (
           <div
             key={moment.id}
-            aria-hidden={!active}
+            aria-hidden={!isVisible}
             style={{
               position: "absolute",
               inset: 0,
+              opacity,
               pointerEvents: "none",
+              willChange: "opacity",
             }}
           >
             <video
@@ -58,32 +69,29 @@ export function AtlasPlayer({
               muted
               loop
               playsInline
-              preload={index < 2 ? "auto" : "metadata"}
+              preload={index < 3 ? "auto" : "metadata"}
               style={{
                 position: "absolute",
                 inset: 0,
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                opacity: active ? 1 : 0,
-                transform: active ? "scale(1)" : "scale(1.018)",
+                transform: `scale(${1.018 - opacity * 0.018})`,
+                willChange: "transform",
               }}
             />
 
-            <AtlasOverlay active={active} />
+            <AtlasOverlay active={isVisible} />
 
             <AtlasHeadline
               headline={moment.headline}
-              active={active}
+              opacity={headlineOpacity}
             />
           </div>
         );
       })}
 
-      <AtlasProgress
-        activeIndex={activeIndex}
-        total={moments.length}
-      />
+      <AtlasEndCard progress={sequenceProgress} />
     </div>
   );
 }

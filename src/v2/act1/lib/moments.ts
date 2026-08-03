@@ -44,6 +44,5 @@ export const moments: AtlasMoment[] = [
     id: "m011",
     src: assets.m011,
     duration: 5,
-    headline: "mydiio",
   },
 ];

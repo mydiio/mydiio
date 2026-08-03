@@ -3,66 +3,70 @@ import { colors } from "@/design";
 import { moments } from "../lib/moments";
 import { AtlasPlayer } from "./AtlasPlayer";
 
+function clamp(value: number, min = 0, max = 1) {
+  return Math.min(max, Math.max(min, value));
+}
+
 export function VideoSequence() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const triggerRefs = useRef<Array<HTMLElement | null>>([]);
+  const sequenceRef = useRef<HTMLElement | null>(null);
+  const frameRef = useRef<number | null>(null);
+  const [sequenceProgress, setSequenceProgress] = useState(0);
 
   useEffect(() => {
-    const observers = triggerRefs.current.map((element, index) => {
-      if (!element) return null;
+    const updateProgress = () => {
+      frameRef.current = null;
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveIndex(index);
-          }
-        },
-        {
-          rootMargin: "-46% 0px -46% 0px",
-          threshold: 0,
-        },
-      );
+      const element = sequenceRef.current;
+      if (!element) return;
 
-      observer.observe(element);
-      return observer;
+      const rect = element.getBoundingClientRect();
+      const scrollDistance = element.offsetHeight - window.innerHeight;
+
+      if (scrollDistance <= 0) {
+        setSequenceProgress(0);
+        return;
+      }
+
+      const travelled = -rect.top;
+      setSequenceProgress(clamp(travelled / scrollDistance));
+    };
+
+    const requestUpdate = () => {
+      if (frameRef.current !== null) return;
+
+      frameRef.current = window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+
+    window.addEventListener("scroll", requestUpdate, {
+      passive: true,
     });
+    window.addEventListener("resize", requestUpdate);
 
     return () => {
-      observers.forEach((observer) => observer?.disconnect());
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
     };
   }, []);
 
   return (
     <main
+      ref={sequenceRef}
       style={{
         position: "relative",
+        height: "470svh",
         background: colors.ink,
       }}
     >
       <AtlasPlayer
         moments={moments}
-        activeIndex={activeIndex}
+        sequenceProgress={sequenceProgress}
       />
-
-      <div
-        aria-label="Act one timeline"
-        style={{
-          position: "relative",
-          marginTop: "-100svh",
-        }}
-      >
-        {moments.map((moment, index) => (
-          <section
-            key={moment.id}
-            ref={(element) => {
-              triggerRefs.current[index] = element;
-            }}
-            style={{
-              minHeight: index === 0 ? "88svh" : "52svh",
-            }}
-          />
-        ))}
-      </div>
     </main>
   );
 }
