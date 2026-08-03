@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as V2RouteImport } from './routes/v2'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -23,6 +24,11 @@ import { Route as RideVehicleIdRouteImport } from './routes/ride.$vehicleId'
 import { Route as DriversApplyRouteImport } from './routes/drivers.apply'
 import { Route as AdvertiseApplyRouteImport } from './routes/advertise_.apply'
 
+const V2Route = V2RouteImport.update({
+  id: '/v2',
+  path: '/v2',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/v2': typeof V2Route
   '/advertise/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
   '/ride/$vehicleId': typeof RideVehicleIdRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/v2': typeof V2Route
   '/advertise/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
   '/ride/$vehicleId': typeof RideVehicleIdRoute
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/v2': typeof V2Route
   '/advertise_/apply': typeof AdvertiseApplyRoute
   '/drivers/apply': typeof DriversApplyRoute
   '/ride/$vehicleId': typeof RideVehicleIdRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sitemap.xml'
     | '/terms'
+    | '/v2'
     | '/advertise/apply'
     | '/drivers/apply'
     | '/ride/$vehicleId'
@@ -163,6 +173,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sitemap.xml'
     | '/terms'
+    | '/v2'
     | '/advertise/apply'
     | '/drivers/apply'
     | '/ride/$vehicleId'
@@ -178,6 +189,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sitemap.xml'
     | '/terms'
+    | '/v2'
     | '/advertise_/apply'
     | '/drivers/apply'
     | '/ride/$vehicleId'
@@ -194,6 +206,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  V2Route: typeof V2Route
   AdvertiseApplyRoute: typeof AdvertiseApplyRoute
   DriversApplyRoute: typeof DriversApplyRoute
   RideVehicleIdRoute: typeof RideVehicleIdRoute
@@ -201,6 +214,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/v2': {
+      id: '/v2'
+      path: '/v2'
+      fullPath: '/v2'
+      preLoaderRoute: typeof V2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -306,6 +326,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  V2Route: V2Route,
   AdvertiseApplyRoute: AdvertiseApplyRoute,
   DriversApplyRoute: DriversApplyRoute,
   RideVehicleIdRoute: RideVehicleIdRoute,
