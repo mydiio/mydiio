@@ -371,36 +371,102 @@ function HomePage() {
           }
         `}</style>
       </section>
-
-      {/* PROOF STRIP */}
-      <section style={{ background: C.paper, padding: "36px 20px", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-        <Reveal stagger={0.08}>
-          <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", gap: 28, flexWrap: "wrap" }}>
-            <ProofItem head="GPS-verified plays" sub="Every impression logged with its location and time. No black box." />
-            <ProofItem head="Your own portal" sub="Log in to build ads, track plays, and pull reports yourself." />
-            <ProofItem head="A report every Monday" sub="See exactly which vehicles ran your ad, and where." />
-            <ProofItem head="Refundable deposit" sub="LKR 5,000 secures your spot. Fully refundable." />
-          </div>
-        </Reveal>
-      </section>
-
       {/* THE DIFFERENCE */}
-      <section style={{ background: C.bg, padding: "64px 20px" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-          <Eyebrow>Why mydiio</Eyebrow>
-          <Reveal>
-            <h2 style={{ fontSize: 34, fontWeight: 800, color: C.ink, margin: "0 0 16px", lineHeight: 1.15 }}>
-              Most local advertising asks you to trust a number. We show you the map.
-            </h2>
-          </Reveal>
-          <Reveal>
-            <p style={{ fontSize: 17, color: C.inkSoft, lineHeight: 1.7, margin: 0 }}>
-              When your ad plays on a mydiio screen, we record where and when. You do not get an estimate. You get a
-              GPS-verified log of every play, in your portal and in your Monday report. That is the whole point of the
-              network, and it is what no printed poster or roadside board can give you.
-            </p>
-          </Reveal>
+      <section
+        style={{
+          position: "relative",
+          height: "100vh",
+          minHeight: 640,
+          width: "100%",
+          overflow: "hidden",
+          background: C.ink,
+          color: "#FFFFFF",
+        }}
+      >
+        <img
+          src="/assets/passenger-pointing-screen-food-delivery.png"
+          alt=""
+          aria-hidden="true"
+          className="s2-photo"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transformOrigin: "center center",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.20) 55%, rgba(0,0,0,0.60) 100%)",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(circle at 20% 85%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 55%)",
+          }}
+        />
+        <div
+          style={{
+            position: "relative",
+            height: "100%",
+            width: "100%",
+            maxWidth: 1400,
+            margin: "0 auto",
+            padding: "0 24px 96px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+          }}
+        >
+          <div
+            className="s2-eye"
+            style={{
+              fontFamily: '"Space Mono", monospace',
+              fontSize: 12,
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: "#F5A623",
+              marginBottom: 16,
+            }}
+          >
+            proof, not estimates
+          </div>
+          <h2
+            className="s2-title"
+            style={{
+              fontFamily: '"DM Serif Display", Georgia, serif',
+              fontWeight: 400,
+              fontSize: "clamp(40px, 5vw, 72px)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.01em",
+              margin: 0,
+              maxWidth: "22ch",
+              color: "#FFFFFF",
+            }}
+          >
+            we don't tell you it worked.<br />we show you where.
+          </h2>
         </div>
+        <style>{`
+          @keyframes s2ImgIn { from { transform: scale(1.05); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+          @keyframes s2FadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+          .s2-photo { animation: s2ImgIn 2.4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+          .s2-eye   { animation: s2FadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
+          .s2-title { animation: s2FadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
+          @media (prefers-reduced-motion: reduce) {
+            .s2-photo, .s2-eye, .s2-title { animation: none !important; }
+          }
+        `}</style>
       </section>
 
       {/* HOW IT WORKS */}
