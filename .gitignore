@@ -32,3 +32,5 @@ dist-ssr
 *.sw?
 .env
 src/routes/index.tsx.broken-reveal
+
+backup/
