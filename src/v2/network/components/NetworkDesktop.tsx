@@ -169,7 +169,6 @@ export function NetworkDesktop({ progress }: NetworkSceneProps) {
               label="Tuk-tuks moving through Colombo each day."
               progress={mapProgress}
               threshold={0.24}
-              endThreshold={0.7}
             />
 
             <div
@@ -185,7 +184,6 @@ export function NetworkDesktop({ progress }: NetworkSceneProps) {
                 label="Three-wheelers operating nationwide."
                 progress={mapProgress}
                 threshold={0.68}
-                endThreshold={0.94}
               />
             </div>
           </div>

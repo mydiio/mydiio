@@ -211,7 +211,7 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
                 textTransform: "uppercase",
               }}
             >
-              {activeTier.label}
+              {activeTier.eyebrow}
             </div>
 
             <div
@@ -255,9 +255,7 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
                 display: "grid",
                 marginTop: "14px",
                 borderTop: `1px solid ${
-                  isPioneer
-                    ? "rgba(253,250,243,0.12)"
-                    : "rgba(26,26,24,0.08)"
+                  isPioneer ? "rgba(253,250,243,0.12)" : "rgba(26,26,24,0.08)"
                 }`,
               }}
             >
@@ -270,17 +268,13 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
                     gap: "12px",
                     padding: "9px 0",
                     borderBottom: `1px solid ${
-                      isPioneer
-                        ? "rgba(253,250,243,0.09)"
-                        : "rgba(26,26,24,0.065)"
+                      isPioneer ? "rgba(253,250,243,0.09)" : "rgba(26,26,24,0.065)"
                     }`,
                   }}
                 >
                   <span
                     style={{
-                      color: isPioneer
-                        ? "rgba(253,250,243,0.42)"
-                        : "rgba(26,26,24,0.42)",
+                      color: isPioneer ? "rgba(253,250,243,0.42)" : "rgba(26,26,24,0.42)",
                       fontSize: "9px",
                       fontWeight: 700,
                       letterSpacing: "0.08em",
@@ -292,9 +286,7 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
 
                   <span
                     style={{
-                      color: isPioneer
-                        ? "rgba(253,250,243,0.88)"
-                        : colors.ink,
+                      color: isPioneer ? "rgba(253,250,243,0.88)" : colors.ink,
                       fontSize: "11px",
                       fontWeight: 650,
                       lineHeight: 1.3,
@@ -319,7 +311,7 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
                 fontWeight: 700,
               }}
             >
-              {activeTier.footer}
+              {activeTier.scale}
             </div>
           </div>
         </div>
