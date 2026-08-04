@@ -11,9 +11,7 @@ function mapProgress(rawProgress: number) {
   const holdBefore = 0.08;
   const holdAfter = 0.9;
 
-  const mapped = clamp(
-    (rawProgress - holdBefore) / (holdAfter - holdBefore),
-  );
+  const mapped = clamp((rawProgress - holdBefore) / (holdAfter - holdBefore));
 
   return mapped >= 0.985 ? 1 : mapped;
 }
@@ -32,8 +30,7 @@ export function ActFour() {
       if (!section) return;
 
       const rect = section.getBoundingClientRect();
-      const scrollDistance =
-        section.offsetHeight - window.innerHeight;
+      const scrollDistance = section.offsetHeight - window.innerHeight;
 
       if (scrollDistance <= 0) {
         setProgress(0);
@@ -72,7 +69,7 @@ export function ActFour() {
       ref={sectionRef}
       style={{
         position: "relative",
-        height: isMobile ? "190svh" : "220svh",
+        height: isMobile ? "255svh" : "280svh",
         background: colors.ink,
       }}
     >

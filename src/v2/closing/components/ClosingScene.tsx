@@ -8,14 +8,14 @@ function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
 }
 
-export function ClosingScene({
-  progress,
-}: ClosingSceneProps) {
-  const eyebrowProgress = clamp(progress / 0.14);
-  const headingProgress = clamp((progress - 0.06) / 0.22);
-  const bodyProgress = clamp((progress - 0.22) / 0.18);
-  const actionsProgress = clamp((progress - 0.48) / 0.22);
-  const footerProgress = clamp((progress - 0.7) / 0.2);
+export function ClosingScene({ progress }: ClosingSceneProps) {
+  const eyebrowProgress = clamp(progress / 0.13);
+  const headingProgress = clamp((progress - 0.05) / 0.22);
+  const proofProgress = clamp((progress - 0.22) / 0.2);
+  const bodyProgress = clamp((progress - 0.38) / 0.16);
+  const actionsProgress = clamp((progress - 0.55) / 0.18);
+  const footerProgress = clamp((progress - 0.76) / 0.16);
+  const glowProgress = clamp((progress - 0.08) / 0.78);
 
   return (
     <div
@@ -71,6 +71,12 @@ export function ClosingScene({
             width: 100% !important;
           }
 
+          .atlas-closing-proof {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+            text-align: left !important;
+          }
+
           .atlas-closing-footer {
             grid-template-columns: 1fr !important;
             gap: 24px !important;
@@ -97,7 +103,9 @@ export function ClosingScene({
             borderRadius: "50%",
             background:
               "radial-gradient(circle, rgba(245,166,35,0.14), rgba(245,166,35,0.04) 34%, transparent 68%)",
-            transform: "translate(-50%, -50%)",
+            opacity: 0.45 + glowProgress * 0.55,
+            transform: `translate(-50%, -50%) scale(${0.72 + glowProgress * 0.28})`,
+            transformOrigin: "center",
           }}
         />
 
@@ -108,8 +116,7 @@ export function ClosingScene({
             top: "50%",
             width: "min(760px, 70vw)",
             height: "1px",
-            background:
-              "linear-gradient(90deg, transparent, rgba(232,146,10,0.42), transparent)",
+            background: "linear-gradient(90deg, transparent, rgba(232,146,10,0.42), transparent)",
             transform: `translateX(-50%) scaleX(${actionsProgress})`,
             transformOrigin: "center",
           }}
@@ -158,9 +165,7 @@ export function ClosingScene({
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 opacity: eyebrowProgress,
-                transform: `translateY(${
-                  (1 - eyebrowProgress) * 10
-                }px)`,
+                transform: `translateY(${(1 - eyebrowProgress) * 10}px)`,
               }}
             >
               <span
@@ -171,9 +176,7 @@ export function ClosingScene({
                   background: colors.amber,
                 }}
               />
-
-              Start here
-
+              The network is moving
               <span
                 aria-hidden="true"
                 style={{
@@ -193,29 +196,75 @@ export function ClosingScene({
                 lineHeight: 0.88,
                 letterSpacing: "-0.075em",
                 opacity: headingProgress,
-                transform: `translateY(${
-                  (1 - headingProgress) * 26
-                }px)`,
+                transform: `translateY(${(1 - headingProgress) * 26}px)`,
               }}
             >
-              Put your campaign in motion.
+              The future of passenger advertising
+              <br />
+              is already moving.
             </h2>
+
+            <div
+              className="atlas-closing-proof"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                gap: "clamp(18px, 3vw, 42px)",
+                maxWidth: "840px",
+                margin: "clamp(30px, 4vh, 46px) auto 0",
+                padding: "20px 0",
+                borderTop: "1px solid rgba(26,26,24,0.1)",
+                borderBottom: "1px solid rgba(26,26,24,0.1)",
+                opacity: proofProgress,
+                transform: `translateY(${(1 - proofProgress) * 18}px)`,
+              }}
+            >
+              {[
+                ["Every journey", "Measured."],
+                ["Every campaign", "Verified."],
+                ["Every play", "Accounted for."],
+              ].map(([label, value]) => (
+                <div key={label}>
+                  <div
+                    style={{
+                      color: "rgba(26,26,24,0.43)",
+                      fontSize: "10px",
+                      fontWeight: 700,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {label}
+                  </div>
+
+                  <div
+                    style={{
+                      marginTop: "7px",
+                      color: colors.ink,
+                      fontSize: "clamp(18px, 1.65vw, 25px)",
+                      fontWeight: 650,
+                      letterSpacing: "-0.035em",
+                    }}
+                  >
+                    {value}
+                  </div>
+                </div>
+              ))}
+            </div>
 
             <p
               style={{
-                maxWidth: "52ch",
-                margin: "clamp(26px, 3.4vh, 38px) auto 0",
-                color: "rgba(26,26,24,0.6)",
-                fontSize: "clamp(17px, 1.35vw, 21px)",
+                maxWidth: "58ch",
+                margin: "clamp(22px, 2.8vh, 32px) auto 0",
+                color: "rgba(26,26,24,0.58)",
+                fontSize: "clamp(15px, 1.18vw, 19px)",
                 lineHeight: 1.55,
                 opacity: bodyProgress,
-                transform: `translateY(${
-                  (1 - bodyProgress) * 16
-                }px)`,
+                transform: `translateY(${(1 - bodyProgress) * 16}px)`,
               }}
             >
-              Reach passengers across Colombo with GPS-verified advertising,
-              or join the driver network helping move the city.
+              Launch GPS-verified campaigns across Colombo today, or join the driver network helping
+              build Sri Lanka&apos;s first connected passenger network.
             </p>
 
             <div
@@ -227,9 +276,7 @@ export function ClosingScene({
                 gap: "14px",
                 marginTop: "clamp(42px, 5.5vh, 60px)",
                 opacity: actionsProgress,
-                transform: `translateY(${
-                  (1 - actionsProgress) * 14
-                }px)`,
+                transform: `translateY(${(1 - actionsProgress) * 14}px)`,
               }}
             >
               <a
@@ -247,8 +294,7 @@ export function ClosingScene({
                   fontSize: "14px",
                   fontWeight: 750,
                   letterSpacing: "-0.015em",
-                  boxShadow:
-                    "0 20px 46px -28px rgba(26,26,24,0.38)",
+                  boxShadow: "0 20px 46px -28px rgba(26,26,24,0.38)",
                 }}
               >
                 Advertise with mydiio
@@ -263,8 +309,8 @@ export function ClosingScene({
                   minHeight: "54px",
                   padding: "0 25px",
                   borderRadius: "999px",
-                  border: "1px solid rgba(26,26,24,0.14)",
-                  background: "rgba(255,255,255,0.56)",
+                  border: "1px solid rgba(26,26,24,0.12)",
+                  background: "transparent",
                   color: colors.ink,
                   textDecoration: "none",
                   fontSize: "14px",
@@ -272,7 +318,7 @@ export function ClosingScene({
                   letterSpacing: "-0.015em",
                 }}
               >
-                Drive with mydiio
+                Join the driver network
               </a>
             </div>
           </div>
@@ -282,16 +328,13 @@ export function ClosingScene({
           className="atlas-closing-footer"
           style={{
             display: "grid",
-            gridTemplateColumns:
-              "minmax(0, 1fr) auto minmax(0, 1fr)",
+            gridTemplateColumns: "minmax(0, 1fr) auto minmax(0, 1fr)",
             gap: "34px",
             alignItems: "end",
             paddingTop: "24px",
             borderTop: "1px solid rgba(26,26,24,0.1)",
             opacity: footerProgress,
-            transform: `translateY(${
-              (1 - footerProgress) * 10
-            }px)`,
+            transform: `translateY(${(1 - footerProgress) * 10}px)`,
           }}
         >
           <div
@@ -350,8 +393,7 @@ export function ClosingScene({
             }}
           >
             © 2026 myd
-            <span style={{ color: colors.amberDeep }}>ii</span>
-            o
+            <span style={{ color: colors.amberDeep }}>ii</span>o
           </div>
         </footer>
       </div>

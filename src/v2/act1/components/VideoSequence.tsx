@@ -57,6 +57,7 @@ export function VideoSequence() {
   return (
     <main
       ref={sequenceRef}
+      data-atlas-act-one
       style={{
         position: "relative",
         height: "260svh",

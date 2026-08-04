@@ -9,43 +9,35 @@ function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
 }
 
+function range(value: number, start: number, end: number) {
+  return clamp((value - start) / (end - start));
+}
+
 function easeOutCubic(value: number) {
   return 1 - Math.pow(1 - value, 3);
+}
+
+function easeInOutCubic(value: number) {
+  return value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
 }
 
 function formatCount(value: number) {
   return Math.round(value).toLocaleString();
 }
 
-export function NetworkMobile({
-  progress,
-}: NetworkMobileProps) {
+export function NetworkMobile({ progress }: NetworkMobileProps) {
   const safeProgress = clamp(progress);
 
-  const copyProgress = easeOutCubic(
-    clamp(safeProgress / 0.18),
-  );
+  const copyIn = easeOutCubic(range(safeProgress, 0.02, 0.18));
+  const mapProgress = range(safeProgress, 0.12, 0.7);
+  const metricsIn = easeOutCubic(range(safeProgress, 0.5, 0.72));
 
-  const mapProgress = clamp(
-    (safeProgress - 0.12) / 0.54,
-  );
+  const stageOut = easeInOutCubic(range(safeProgress, 0.74, 0.84));
+  const finalIn = easeOutCubic(range(safeProgress, 0.89, 0.96));
 
-  const metricsProgress = easeOutCubic(
-    clamp((safeProgress - 0.56) / 0.24),
-  );
-
-  const finalProgress = easeOutCubic(
-    clamp((safeProgress - 0.8) / 0.16),
-  );
-
-  const colomboCount = formatCount(
-    320000 * metricsProgress,
-  );
-
+  const colomboCount = formatCount(320000 * metricsIn);
   const nationalCount =
-    metricsProgress >= 0.995
-      ? "1.1 million"
-      : `${(1.1 * metricsProgress).toFixed(1)} million`;
+    metricsIn >= 0.995 ? "1.1 million" : `${(1.1 * metricsIn).toFixed(1)} million`;
 
   return (
     <div
@@ -68,15 +60,14 @@ export function NetworkMobile({
           boxSizing: "border-box",
           display: "flex",
           flexDirection: "column",
+          transform: `translateY(${-stageOut * 9}px) scale(${1 - stageOut * 0.022})`,
         }}
       >
         <header
           style={{
             flex: "0 0 auto",
-            opacity: copyProgress,
-            transform: `translateY(${
-              (1 - copyProgress) * 16
-            }px)`,
+            opacity: copyIn * (1 - stageOut),
+            transform: `translateY(${(1 - copyIn) * 16 - stageOut * 10}px)`,
           }}
         >
           <div
@@ -89,27 +80,26 @@ export function NetworkMobile({
               textTransform: "uppercase",
             }}
           >
-            The network
+            Built to scale
           </div>
 
           <h2
             style={{
               margin: 0,
-              maxWidth: "8.5ch",
+              maxWidth: "9ch",
               fontSize: "clamp(38px, 11vw, 48px)",
               fontWeight: 600,
               lineHeight: 0.91,
               letterSpacing: "-0.064em",
             }}
           >
-            One connected passenger network
-            <span style={{ color: colors.amber }}>.</span>
+            One platform. Every connected vehicle.
           </h2>
 
           <p
             style={{
               margin: "12px 0 0",
-              maxWidth: "33ch",
+              maxWidth: "35ch",
               color: "rgba(26,26,24,0.6)",
               fontSize: "13px",
               fontWeight: 500,
@@ -117,8 +107,7 @@ export function NetworkMobile({
               letterSpacing: "-0.018em",
             }}
           >
-            Starting in Colombo and built to grow across Sri Lanka.
-            Every journey measurable.
+            We begin with tuk-tuks in Colombo and expand as each stage is proven.
           </p>
         </header>
 
@@ -134,11 +123,12 @@ export function NetworkMobile({
             flexDirection: "column",
             overflow: "hidden",
             borderRadius: "26px",
-            background:
-              "linear-gradient(145deg, rgba(255,255,255,0.96), rgba(253,250,243,0.82))",
+            background: "linear-gradient(145deg, rgba(255,255,255,0.96), rgba(253,250,243,0.82))",
             border: "1px solid rgba(26,26,24,0.07)",
-            boxShadow:
-              "0 30px 70px -46px rgba(26,26,24,0.28)",
+            boxShadow: "0 30px 70px -46px rgba(26,26,24,0.28)",
+            opacity: 1 - stageOut * 0.92,
+            transform: `scale(${1 - stageOut * 0.035})`,
+            transformOrigin: "center",
           }}
         >
           <div
@@ -167,14 +157,13 @@ export function NetworkMobile({
               transform: `translateY(${
                 (1 - mapProgress) * 14
               }px) scale(${0.96 + mapProgress * 0.04})`,
-              transformOrigin: "center center",
-              willChange: "opacity, transform",
+              transformOrigin: "center",
             }}
           >
             <div
               style={{
                 position: "absolute",
-                inset: "0 24px 0",
+                inset: "0 24px",
               }}
             >
               <NetworkCanvas progress={mapProgress} />
@@ -190,11 +179,8 @@ export function NetworkMobile({
               gridTemplateColumns: "1fr 1fr",
               gap: "9px",
               marginTop: "8px",
-              opacity: metricsProgress,
-              transform: `translateY(${
-                (1 - metricsProgress) * 18
-              }px)`,
-              willChange: "opacity, transform",
+              opacity: metricsIn,
+              transform: `translateY(${(1 - metricsIn) * 18}px)`,
             }}
           >
             <div
@@ -206,8 +192,6 @@ export function NetworkMobile({
                 borderRadius: "18px",
                 background: "rgba(255,255,255,0.96)",
                 border: "1px solid rgba(26,26,24,0.07)",
-                boxShadow:
-                  "0 14px 30px -24px rgba(26,26,24,0.3)",
               }}
             >
               <div
@@ -219,18 +203,16 @@ export function NetworkMobile({
                   textTransform: "uppercase",
                 }}
               >
-                Colombo today
+                Colombo opportunity
               </div>
 
               <div
                 style={{
                   marginTop: "7px",
-                  color: colors.ink,
                   fontSize: "clamp(23px, 6.7vw, 29px)",
                   fontWeight: 650,
                   lineHeight: 0.95,
                   letterSpacing: "-0.055em",
-                  fontVariantNumeric: "tabular-nums",
                   whiteSpace: "nowrap",
                 }}
               >
@@ -245,7 +227,7 @@ export function NetworkMobile({
                   lineHeight: 1.3,
                 }}
               >
-                Tuk-tuks operating daily.
+                Tuk-tuks moving daily.
               </div>
             </div>
 
@@ -258,8 +240,6 @@ export function NetworkMobile({
                 borderRadius: "18px",
                 background: colors.ink,
                 border: "1px solid rgba(245,166,35,0.34)",
-                boxShadow:
-                  "0 16px 34px -24px rgba(26,26,24,0.48)",
               }}
             >
               <div
@@ -282,7 +262,6 @@ export function NetworkMobile({
                   fontWeight: 650,
                   lineHeight: 0.95,
                   letterSpacing: "-0.055em",
-                  fontVariantNumeric: "tabular-nums",
                   whiteSpace: "nowrap",
                 }}
               >
@@ -302,56 +281,52 @@ export function NetworkMobile({
             </div>
           </div>
         </div>
+      </div>
 
-        <div
-          style={{
-            flex: "0 0 auto",
-            display: "flex",
-            justifyContent: "center",
-            minHeight: "38px",
-            marginTop: "8px",
-            opacity: finalProgress,
-            transform: `translateY(${
-              (1 - finalProgress) * 9
-            }px) scale(${0.97 + finalProgress * 0.03})`,
-            willChange: "opacity, transform",
-          }}
-        >
+      <div
+        style={{
+          position: "absolute",
+          zIndex: 20,
+          inset: 0,
+          display: "grid",
+          placeItems: "center",
+          padding: "78px 20px 34px",
+          boxSizing: "border-box",
+          textAlign: "center",
+          opacity: finalIn,
+          transform: `translateY(${
+            (1 - finalIn) * 28 - finalIn * 4
+          }vh) scale(${0.92 + finalIn * 0.08})`,
+          pointerEvents: "none",
+        }}
+      >
+        <div>
           <div
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "7px",
-              padding: "8px 13px",
-              borderRadius: "999px",
-              border: "1px solid rgba(232,146,10,0.4)",
-              background: "rgba(255,255,255,0.94)",
-              color: colors.ink,
-              fontSize: "11px",
+              color: colors.amberDeep,
+              fontSize: "9px",
               fontWeight: 700,
-              boxShadow:
-                "0 14px 30px -24px rgba(26,26,24,0.34)",
+              letterSpacing: "0.17em",
+              textTransform: "uppercase",
             }}
           >
-            <span
-              aria-hidden="true"
-              style={{
-                display: "grid",
-                placeItems: "center",
-                width: "19px",
-                height: "19px",
-                borderRadius: "50%",
-                background: colors.amber,
-                color: colors.ink,
-                fontSize: "10px",
-                fontWeight: 800,
-              }}
-            >
-              ✓
-            </span>
-
-            Every journey becomes measurable.
+            Built to compound
           </div>
+
+          <p
+            style={{
+              margin: "14px auto 0",
+              maxWidth: "11ch",
+              fontSize: "clamp(42px, 13vw, 64px)",
+              fontWeight: 600,
+              lineHeight: 0.91,
+              letterSpacing: "-0.066em",
+            }}
+          >
+            Every connected vehicle
+            <br />
+            extends the network.
+          </p>
         </div>
       </div>
     </div>

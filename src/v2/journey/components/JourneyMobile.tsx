@@ -10,9 +10,7 @@ function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
 }
 
-export function JourneyMobile({
-  progress,
-}: JourneyMobileProps) {
+export function JourneyMobile({ progress }: JourneyMobileProps) {
   const safeProgress = clamp(progress);
 
   const activeStepIndex = Math.min(
@@ -22,25 +20,17 @@ export function JourneyMobile({
 
   const activeStep = journeySteps[activeStepIndex];
 
-  const scaledStepProgress =
-    safeProgress * journeySteps.length;
+  const scaledStepProgress = safeProgress * journeySteps.length;
 
-  const activeStepProgress = clamp(
-    scaledStepProgress - activeStepIndex,
-  );
+  const activeStepProgress = clamp(scaledStepProgress - activeStepIndex);
 
-  const reportProgress = clamp(
-    (safeProgress - 0.72) / 0.16,
-  );
+  const reportProgress = clamp((safeProgress - 0.72) / 0.16);
 
-  const successProgress = clamp(
-    (safeProgress - 0.84) / 0.1,
-  );
+  const successProgress = clamp((safeProgress - 0.84) / 0.1);
 
   const stepProgress = 1 - reportProgress;
 
-  const pulseScale =
-    1 + Math.sin(activeStepProgress * Math.PI) * 0.08;
+  const pulseScale = 1 + Math.sin(activeStepProgress * Math.PI) * 0.08;
 
   return (
     <div
@@ -76,7 +66,7 @@ export function JourneyMobile({
               textTransform: "uppercase",
             }}
           >
-            How proof is created
+            One journey. Multiple outcomes.
           </div>
 
           <h2
@@ -89,7 +79,7 @@ export function JourneyMobile({
               letterSpacing: "-0.062em",
             }}
           >
-            Every play is proven.
+            One journey creates value for everyone.
           </h2>
 
           <p
@@ -103,15 +93,12 @@ export function JourneyMobile({
               letterSpacing: "-0.018em",
             }}
           >
-            We record the vehicle, location and time, then add the verified
-            play to your report.
+            We record the vehicle, location and time, then add the verified play to your report.
           </p>
         </header>
 
         <div
-          aria-label={`Proof step ${activeStepIndex + 1} of ${
-            journeySteps.length
-          }`}
+          aria-label={`Proof step ${activeStepIndex + 1} of ${journeySteps.length}`}
           style={{
             display: "flex",
             gap: "6px",
@@ -175,24 +162,15 @@ export function JourneyMobile({
               boxSizing: "border-box",
               overflow: "hidden",
               borderRadius: "25px",
-              background:
-                "linear-gradient(145deg, rgba(255,255,255,0.96), rgba(253,250,243,0.9))",
+              background: "linear-gradient(145deg, rgba(255,255,255,0.96), rgba(253,250,243,0.9))",
               border: "1px solid rgba(26,26,24,0.075)",
-              boxShadow:
-                "0 28px 64px -42px rgba(26,26,24,0.28)",
+              boxShadow: "0 28px 64px -42px rgba(26,26,24,0.28)",
               opacity: stepProgress,
               transform: `translateY(${
-                reportProgress * -14 +
-                (1 - activeStepProgress) * 8
-              }px) scale(${
-                1 -
-                reportProgress * 0.025 -
-                (1 - activeStepProgress) * 0.008
-              })`,
-              pointerEvents:
-                reportProgress > 0.5 ? "none" : "auto",
-              visibility:
-                reportProgress >= 0.98 ? "hidden" : "visible",
+                reportProgress * -14 + (1 - activeStepProgress) * 8
+              }px) scale(${1 - reportProgress * 0.025 - (1 - activeStepProgress) * 0.008})`,
+              pointerEvents: reportProgress > 0.5 ? "none" : "auto",
+              visibility: reportProgress >= 0.98 ? "hidden" : "visible",
               willChange: "opacity, transform",
             }}
           >
@@ -239,8 +217,7 @@ export function JourneyMobile({
                   borderRadius: "50%",
                   border: `1px solid ${colors.amber}`,
                   background: "rgba(245,166,35,0.075)",
-                  boxShadow:
-                    "0 0 0 12px rgba(245,166,35,0.045)",
+                  boxShadow: "0 0 0 12px rgba(245,166,35,0.045)",
                   transform: `scale(${pulseScale})`,
                   willChange: "transform",
                 }}
@@ -252,9 +229,7 @@ export function JourneyMobile({
                     height: "15px",
                     borderRadius: "50%",
                     background: colors.amber,
-                    boxShadow: `0 0 0 ${
-                      6 + activeStepProgress * 7
-                    }px rgba(245,166,35,${
+                    boxShadow: `0 0 0 ${6 + activeStepProgress * 7}px rgba(245,166,35,${
                       0.14 - activeStepProgress * 0.07
                     })`,
                     willChange: "box-shadow",
@@ -309,7 +284,6 @@ export function JourneyMobile({
                   background: colors.amber,
                 }}
               />
-
               Creating verified proof
             </div>
           </article>
@@ -329,8 +303,7 @@ export function JourneyMobile({
                 (1 - reportProgress) * 28
               }px) scale(${0.94 + reportProgress * 0.06})`,
               transformOrigin: "center bottom",
-              pointerEvents:
-                reportProgress > 0.5 ? "auto" : "none",
+              pointerEvents: reportProgress > 0.5 ? "auto" : "none",
               willChange: "opacity, transform",
             }}
           >
@@ -381,7 +354,6 @@ export function JourneyMobile({
             >
               ✓
             </span>
-
             Verified and added to Monday’s report
           </div>
         </div>

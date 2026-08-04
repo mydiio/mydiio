@@ -8,9 +8,7 @@ function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
 }
 
-export function PioneerDesktop({
-  progress,
-}: PioneerSceneProps) {
+export function PioneerDesktop({ progress }: PioneerSceneProps) {
   const eyebrowProgress = clamp(progress / 0.14);
   const headingProgress = clamp((progress - 0.06) / 0.2);
   const bodyProgress = clamp((progress - 0.2) / 0.18);
@@ -83,8 +81,7 @@ export function PioneerDesktop({
             width: "64vw",
             height: "64vw",
             borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(245,166,35,0.08), transparent 66%)",
+            background: "radial-gradient(circle, rgba(245,166,35,0.08), transparent 66%)",
           }}
         />
       </div>
@@ -100,8 +97,7 @@ export function PioneerDesktop({
           padding: "clamp(34px, 4.8vh, 56px) 0",
           boxSizing: "border-box",
           display: "grid",
-          gridTemplateColumns:
-            "minmax(0, 0.9fr) minmax(360px, 0.52fr)",
+          gridTemplateColumns: "minmax(0, 0.9fr) minmax(360px, 0.52fr)",
           gap: "clamp(48px, 7vw, 108px)",
           alignItems: "center",
         }}
@@ -119,9 +115,7 @@ export function PioneerDesktop({
               letterSpacing: "0.15em",
               textTransform: "uppercase",
               opacity: eyebrowProgress,
-              transform: `translateY(${
-                (1 - eyebrowProgress) * 10
-              }px)`,
+              transform: `translateY(${(1 - eyebrowProgress) * 10}px)`,
             }}
           >
             <span
@@ -132,7 +126,6 @@ export function PioneerDesktop({
                 background: colors.amber,
               }}
             />
-
             Pioneer
           </div>
 
@@ -145,12 +138,12 @@ export function PioneerDesktop({
               lineHeight: 0.9,
               letterSpacing: "-0.07em",
               opacity: headingProgress,
-              transform: `translateY(${
-                (1 - headingProgress) * 24
-              }px)`,
+              transform: `translateY(${(1 - headingProgress) * 24}px)`,
             }}
           >
-            Ten brands. One founding network.
+            Only ten Pioneer partners.
+            <br />
+            Never more.
           </h2>
 
           <p
@@ -161,14 +154,65 @@ export function PioneerDesktop({
               fontSize: "clamp(16px, 1.25vw, 20px)",
               lineHeight: 1.55,
               opacity: bodyProgress,
-              transform: `translateY(${
-                (1 - bodyProgress) * 16
-              }px)`,
+              transform: `translateY(${(1 - bodyProgress) * 16}px)`,
             }}
           >
-            Priority access and stronger visibility as the mydiio network
-            grows across Colombo.
+            The first ten businesses receive founding benefits that will not be offered again as the
+            network grows.
           </p>
+
+          <div
+            style={{
+              display: "grid",
+              gap: 0,
+              maxWidth: "620px",
+              marginTop: "clamp(28px, 3.8vh, 42px)",
+              borderTop: "1px solid rgba(253,250,243,0.12)",
+              opacity: bodyProgress,
+              transform: `translateY(${(1 - bodyProgress) * 14}px)`,
+            }}
+          >
+            {[
+              ["Rate", "Fixed for the life of your active subscription."],
+              ["Category", "12 months of exclusivity on your agreed corridor."],
+              ["Coverage", "Priority placement across the full operating fleet."],
+              ["Status", "Permanent recognition as one of ten founding partners."],
+            ].map(([label, value]) => (
+              <div
+                key={label}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "120px minmax(0, 1fr)",
+                  gap: "22px",
+                  padding: "15px 0",
+                  borderBottom: "1px solid rgba(253,250,243,0.09)",
+                }}
+              >
+                <span
+                  style={{
+                    color: colors.amber,
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {label}
+                </span>
+
+                <span
+                  style={{
+                    color: "rgba(253,250,243,0.76)",
+                    fontSize: "14px",
+                    fontWeight: 550,
+                    lineHeight: 1.45,
+                  }}
+                >
+                  {value}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div
@@ -251,16 +295,10 @@ export function PioneerDesktop({
                     border: active
                       ? `1px solid ${colors.amber}`
                       : "1px solid rgba(253,250,243,0.16)",
-                    background: active
-                      ? "rgba(245,166,35,0.15)"
-                      : "rgba(253,250,243,0.025)",
-                    boxShadow: active
-                      ? "0 0 0 6px rgba(245,166,35,0.045)"
-                      : "none",
+                    background: active ? "rgba(245,166,35,0.15)" : "rgba(253,250,243,0.025)",
+                    boxShadow: active ? "0 0 0 6px rgba(245,166,35,0.045)" : "none",
                     opacity: 0.24 + positionsProgress * 0.76,
-                    transform: active
-                      ? "scale(1)"
-                      : "scale(0.88)",
+                    transform: active ? "scale(1)" : "scale(0.88)",
                     transition:
                       "background 0.3s ease, border 0.3s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1)",
                   }}
@@ -269,9 +307,7 @@ export function PioneerDesktop({
                     style={{
                       position: "absolute",
                       inset: "50% auto auto 50%",
-                      color: active
-                        ? colors.amber
-                        : "rgba(253,250,243,0.28)",
+                      color: active ? colors.amber : "rgba(253,250,243,0.28)",
                       fontSize: "10px",
                       fontWeight: 700,
                       lineHeight: 1,
@@ -298,7 +334,7 @@ export function PioneerDesktop({
               opacity: positionsProgress,
             }}
           >
-            Priority access and GPS-verified reporting included.
+            Ten positions only. When all ten are taken, Pioneer closes permanently.
           </div>
 
           <div
@@ -310,9 +346,7 @@ export function PioneerDesktop({
               gap: "13px",
               marginTop: "32px",
               opacity: ctaProgress,
-              transform: `translateY(${
-                (1 - ctaProgress) * 12
-              }px)`,
+              transform: `translateY(${(1 - ctaProgress) * 12}px)`,
             }}
           >
             <a
@@ -330,11 +364,10 @@ export function PioneerDesktop({
                 fontSize: "14px",
                 fontWeight: 750,
                 letterSpacing: "-0.015em",
-                boxShadow:
-                  "0 18px 44px -24px rgba(245,166,35,0.58)",
+                boxShadow: "0 18px 44px -24px rgba(245,166,35,0.58)",
               }}
             >
-              Claim a Pioneer position
+              Apply for Pioneer
             </a>
 
             <span

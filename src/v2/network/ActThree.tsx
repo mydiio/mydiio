@@ -11,9 +11,7 @@ function mapProgress(rawProgress: number) {
   const holdBefore = 0.08;
   const holdAfter = 0.92;
 
-  return clamp(
-    (rawProgress - holdBefore) / (holdAfter - holdBefore),
-  );
+  return clamp((rawProgress - holdBefore) / (holdAfter - holdBefore));
 }
 
 export function ActThree() {
@@ -30,8 +28,7 @@ export function ActThree() {
       if (!section) return;
 
       const rect = section.getBoundingClientRect();
-      const scrollDistance =
-        section.offsetHeight - window.innerHeight;
+      const scrollDistance = section.offsetHeight - window.innerHeight;
 
       if (scrollDistance <= 0) {
         setProgress(0);
@@ -69,7 +66,7 @@ export function ActThree() {
       ref={sectionRef}
       style={{
         position: "relative",
-        height: isMobile ? "190svh" : "220svh",
+        height: isMobile ? "230svh" : "250svh",
         background: colors.cream,
       }}
     >

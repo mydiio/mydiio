@@ -11,10 +11,7 @@ function mapProgress(rawProgress: number) {
   const holdBefore = 0.06;
   const holdAfter = 0.93;
 
-  const mapped = clamp(
-    (rawProgress - holdBefore) /
-      (holdAfter - holdBefore),
-  );
+  const mapped = clamp((rawProgress - holdBefore) / (holdAfter - holdBefore));
 
   return mapped >= 0.985 ? 1 : mapped;
 }
@@ -33,17 +30,14 @@ export function ActSeven() {
       if (!section) return;
 
       const rect = section.getBoundingClientRect();
-      const scrollDistance =
-        section.offsetHeight - window.innerHeight;
+      const scrollDistance = section.offsetHeight - window.innerHeight;
 
       if (scrollDistance <= 0) {
         setProgress(0);
         return;
       }
 
-      const rawProgress = clamp(
-        -rect.top / scrollDistance,
-      );
+      const rawProgress = clamp(-rect.top / scrollDistance);
 
       setProgress(mapProgress(rawProgress));
     };
@@ -51,8 +45,7 @@ export function ActSeven() {
     const requestUpdate = () => {
       if (frameRef.current !== null) return;
 
-      frameRef.current =
-        window.requestAnimationFrame(update);
+      frameRef.current = window.requestAnimationFrame(update);
     };
 
     update();
@@ -77,7 +70,7 @@ export function ActSeven() {
       ref={sectionRef}
       style={{
         position: "relative",
-        height: isMobile ? "185svh" : "220svh",
+        height: isMobile ? "225svh" : "255svh",
         background: colors.ink,
       }}
     >

@@ -12,26 +12,16 @@ function easeOutCubic(value: number) {
   return 1 - Math.pow(1 - value, 3);
 }
 
-export function PioneerMobile({
-  progress,
-}: PioneerMobileProps) {
+export function PioneerMobile({ progress }: PioneerMobileProps) {
   const safeProgress = clamp(progress);
 
-  const introProgress = easeOutCubic(
-    clamp(safeProgress / 0.18),
-  );
+  const introProgress = easeOutCubic(clamp(safeProgress / 0.18));
 
-  const positionsProgress = easeOutCubic(
-    clamp((safeProgress - 0.2) / 0.48),
-  );
+  const positionsProgress = easeOutCubic(clamp((safeProgress - 0.2) / 0.48));
 
-  const ctaProgress = easeOutCubic(
-    clamp((safeProgress - 0.7) / 0.2),
-  );
+  const ctaProgress = easeOutCubic(clamp((safeProgress - 0.7) / 0.2));
 
-  const filledPositions = Math.round(
-    positionsProgress * 10,
-  );
+  const filledPositions = Math.round(positionsProgress * 10);
 
   return (
     <div
@@ -75,8 +65,7 @@ export function PioneerMobile({
             width: "110vw",
             height: "110vw",
             borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(245,166,35,0.08), transparent 68%)",
+            background: "radial-gradient(circle, rgba(245,166,35,0.08), transparent 68%)",
           }}
         />
       </div>
@@ -98,9 +87,7 @@ export function PioneerMobile({
           style={{
             flex: "0 0 auto",
             opacity: introProgress,
-            transform: `translateY(${
-              (1 - introProgress) * 16
-            }px)`,
+            transform: `translateY(${(1 - introProgress) * 16}px)`,
           }}
         >
           <div
@@ -124,7 +111,6 @@ export function PioneerMobile({
                 background: colors.amber,
               }}
             />
-
             Pioneer
           </div>
 
@@ -138,7 +124,9 @@ export function PioneerMobile({
               letterSpacing: "-0.068em",
             }}
           >
-            Ten brands. One founding network.
+            Only ten Pioneer partners.
+            <br />
+            Never more.
           </h2>
 
           <p
@@ -151,8 +139,8 @@ export function PioneerMobile({
               letterSpacing: "-0.018em",
             }}
           >
-            Priority access and stronger visibility as the mydiio network
-            grows across Colombo.
+            The first ten businesses receive founding benefits that will not be offered again as the
+            network grows.
           </p>
         </header>
 
@@ -168,11 +156,9 @@ export function PioneerMobile({
             flexDirection: "column",
             overflow: "hidden",
             borderRadius: "26px",
-            background:
-              "linear-gradient(155deg, rgba(255,255,255,0.045), rgba(245,166,35,0.055))",
+            background: "linear-gradient(155deg, rgba(255,255,255,0.045), rgba(245,166,35,0.055))",
             border: "1px solid rgba(245,166,35,0.2)",
-            boxShadow:
-              "0 30px 70px -44px rgba(0,0,0,0.88)",
+            boxShadow: "0 30px 70px -44px rgba(0,0,0,0.88)",
             opacity: positionsProgress,
             transform: `translateY(${
               (1 - positionsProgress) * 18
@@ -189,6 +175,57 @@ export function PioneerMobile({
             }}
           >
             Founding positions
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gap: 0,
+              marginTop: "14px",
+              borderTop: "1px solid rgba(253,250,243,0.1)",
+            }}
+          >
+            {[
+              ["Rate", "Fixed for subscription life"],
+              ["Category", "12-month corridor exclusivity"],
+              ["Coverage", "Priority across the full fleet"],
+              ["Status", "One of ten founding partners"],
+            ].map(([label, value]) => (
+              <div
+                key={label}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "82px minmax(0, 1fr)",
+                  gap: "10px",
+                  padding: "8px 0",
+                  borderBottom: "1px solid rgba(253,250,243,0.075)",
+                }}
+              >
+                <span
+                  style={{
+                    color: colors.amber,
+                    fontSize: "8px",
+                    fontWeight: 700,
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {label}
+                </span>
+
+                <span
+                  style={{
+                    color: "rgba(253,250,243,0.74)",
+                    fontSize: "10px",
+                    fontWeight: 600,
+                    lineHeight: 1.3,
+                    textAlign: "right",
+                  }}
+                >
+                  {value}
+                </span>
+              </div>
+            ))}
           </div>
 
           <div
@@ -226,81 +263,61 @@ export function PioneerMobile({
           <div
             style={{
               display: "grid",
-              gridTemplateColumns:
-                "repeat(5, minmax(0, 1fr))",
+              gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
               gap: "10px",
               marginTop: "28px",
             }}
           >
-            {Array.from({ length: 10 }).map(
-              (_, index) => {
-                const active =
-                  index < filledPositions;
+            {Array.from({ length: 10 }).map((_, index) => {
+              const active = index < filledPositions;
 
-                return (
-                  <div
-                    key={index}
+              return (
+                <div
+                  key={index}
+                  style={{
+                    position: "relative",
+                    aspectRatio: "1 / 1",
+                    borderRadius: "50%",
+                    border: active
+                      ? `1px solid ${colors.amber}`
+                      : "1px solid rgba(253,250,243,0.14)",
+                    background: active ? "rgba(245,166,35,0.15)" : "rgba(253,250,243,0.025)",
+                    boxShadow: active ? "0 0 0 5px rgba(245,166,35,0.045)" : "none",
+                    opacity: active ? 1 : 0.4,
+                    transform: active ? "scale(1)" : "scale(0.88)",
+                    transition: "background 0.3s ease, border 0.3s ease, transform 0.35s ease",
+                  }}
+                >
+                  <span
                     style={{
-                      position: "relative",
-                      aspectRatio: "1 / 1",
-                      borderRadius: "50%",
-                      border: active
-                        ? `1px solid ${colors.amber}`
-                        : "1px solid rgba(253,250,243,0.14)",
-                      background: active
-                        ? "rgba(245,166,35,0.15)"
-                        : "rgba(253,250,243,0.025)",
-                      boxShadow: active
-                        ? "0 0 0 5px rgba(245,166,35,0.045)"
-                        : "none",
-                      opacity: active ? 1 : 0.4,
-                      transform: active
-                        ? "scale(1)"
-                        : "scale(0.88)",
-                      transition:
-                        "background 0.3s ease, border 0.3s ease, transform 0.35s ease",
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      color: active ? colors.amber : "rgba(253,250,243,0.3)",
+                      fontSize: "9px",
+                      fontWeight: 700,
+                      fontVariantNumeric: "tabular-nums",
+                      transform: "translate(-50%, -50%)",
                     }}
                   >
-                    <span
-                      style={{
-                        position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                        color: active
-                          ? colors.amber
-                          : "rgba(253,250,243,0.3)",
-                        fontSize: "9px",
-                        fontWeight: 700,
-                        fontVariantNumeric:
-                          "tabular-nums",
-                        transform:
-                          "translate(-50%, -50%)",
-                      }}
-                    >
-                      {String(index + 1).padStart(
-                        2,
-                        "0",
-                      )}
-                    </span>
-                  </div>
-                );
-              },
-            )}
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+              );
+            })}
           </div>
 
           <div
             style={{
               marginTop: "auto",
               paddingTop: "17px",
-              borderTop:
-                "1px solid rgba(253,250,243,0.1)",
+              borderTop: "1px solid rgba(253,250,243,0.1)",
               color: "rgba(253,250,243,0.54)",
               fontSize: "12px",
               lineHeight: 1.45,
             }}
           >
-            Priority campaign access, early network visibility and
-            GPS-verified reporting are included.
+            Ten positions only. When all ten are taken, Pioneer closes permanently.
           </div>
         </div>
 
@@ -309,9 +326,7 @@ export function PioneerMobile({
             flex: "0 0 auto",
             marginTop: "12px",
             opacity: ctaProgress,
-            transform: `translateY(${
-              (1 - ctaProgress) * 12
-            }px)`,
+            transform: `translateY(${(1 - ctaProgress) * 12}px)`,
           }}
         >
           <a
@@ -329,11 +344,10 @@ export function PioneerMobile({
               fontSize: "14px",
               fontWeight: 750,
               letterSpacing: "-0.015em",
-              boxShadow:
-                "0 18px 42px -22px rgba(245,166,35,0.55)",
+              boxShadow: "0 18px 42px -22px rgba(245,166,35,0.55)",
             }}
           >
-            Claim a Pioneer position
+            Apply for Pioneer
           </a>
 
           <div

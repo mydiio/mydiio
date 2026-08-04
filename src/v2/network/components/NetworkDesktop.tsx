@@ -10,20 +10,26 @@ function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
 }
 
-export function NetworkDesktop({
-  progress,
-}: NetworkSceneProps) {
-  const contentProgress = clamp(
-    (progress - 0.06) / 0.16,
-  );
+function range(value: number, start: number, end: number) {
+  return clamp((value - start) / (end - start));
+}
 
-  const mapProgress = clamp(
-    (progress - 0.16) / 0.7,
-  );
+function easeOutCubic(value: number) {
+  return 1 - Math.pow(1 - value, 3);
+}
 
-  const footerProgress = clamp(
-    (progress - 0.92) / 0.06,
-  );
+function easeInOutCubic(value: number) {
+  return value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
+}
+
+export function NetworkDesktop({ progress }: NetworkSceneProps) {
+  const safeProgress = clamp(progress);
+
+  const contentIn = easeOutCubic(range(safeProgress, 0.03, 0.18));
+  const mapProgress = range(safeProgress, 0.14, 0.76);
+
+  const stageOut = easeInOutCubic(range(safeProgress, 0.75, 0.84));
+  const finalIn = easeOutCubic(range(safeProgress, 0.89, 0.96));
 
   return (
     <div
@@ -68,21 +74,22 @@ export function NetworkDesktop({
             position: relative;
             z-index: 3;
             max-width: 620px;
-            order: 1 !important;
           }
+        }
 
-          .atlas-network-map {
-            order: 2 !important;
+        @media (prefers-reduced-motion: reduce) {
+          .atlas-network-motion {
+            opacity: 1 !important;
+            transform: none !important;
           }
         }
       `}</style>
 
       <div
-        className="atlas-network-layout"
+        className="atlas-network-layout atlas-network-motion"
         style={{
           display: "grid",
-          gridTemplateColumns:
-            "minmax(480px, 1.05fr) minmax(500px, 0.95fr)",
+          gridTemplateColumns: "minmax(480px, 1.05fr) minmax(500px, 0.95fr)",
           gap: "clamp(38px, 5vw, 88px)",
           alignItems: "center",
           width: "min(1360px, calc(100% - 112px))",
@@ -90,6 +97,7 @@ export function NetworkDesktop({
           marginInline: "auto",
           paddingTop: "clamp(28px, 4vh, 48px)",
           boxSizing: "border-box",
+          transform: `translateY(${-stageOut * 12}px) scale(${1 - stageOut * 0.025})`,
         }}
       >
         <div
@@ -99,10 +107,8 @@ export function NetworkDesktop({
             position: "relative",
             zIndex: 4,
             paddingTop: "clamp(10px, 2vh, 24px)",
-            opacity: contentProgress,
-            transform: `translateY(${
-              (1 - contentProgress) * 22
-            }px)`,
+            opacity: contentIn * (1 - stageOut),
+            transform: `translateY(${(1 - contentIn) * 22 - stageOut * 14}px)`,
           }}
         >
           <div
@@ -115,7 +121,7 @@ export function NetworkDesktop({
               textTransform: "uppercase",
             }}
           >
-            The Network
+            Built to scale
           </div>
 
           <h2
@@ -123,122 +129,65 @@ export function NetworkDesktop({
             style={{
               margin: 0,
               maxWidth: "10ch",
-              fontSize:
-                "clamp(46px, 5.2vw, 82px)",
+              fontSize: "clamp(46px, 5.2vw, 82px)",
               fontWeight: 600,
               lineHeight: 0.92,
               letterSpacing: "-0.065em",
             }}
           >
-            One connected passenger network
-            <span
-              style={{
-                color: colors.amber,
-              }}
-            >
-              .
-            </span>
+            One platform. Every connected vehicle.
           </h2>
 
           <p
             style={{
               margin: "22px 0 0",
-              maxWidth: "510px",
+              maxWidth: "540px",
               color: "rgba(26,26,24,0.62)",
-              fontSize:
-                "clamp(16px, 1.15vw, 19px)",
+              fontSize: "clamp(16px, 1.15vw, 19px)",
               fontWeight: 500,
               lineHeight: 1.5,
               letterSpacing: "-0.025em",
             }}
           >
-            From one verified play in Colombo
-            to a nationwide connected passenger
-            network. Every journey measurable.
+            We begin with tuk-tuks in Colombo. The same operating system can expand across fleets,
+            vehicle types and cities as each stage is proven.
           </p>
 
           <div
             style={{
               display: "grid",
-              gridTemplateColumns:
-                "minmax(0, 1.08fr) minmax(0, 0.92fr)",
+              gridTemplateColumns: "minmax(0, 1.08fr) minmax(0, 0.92fr)",
               gap: "clamp(20px, 2.5vw, 34px)",
               marginTop: "clamp(28px, 3.5vh, 42px)",
-              maxWidth: "600px",
+              maxWidth: "610px",
             }}
           >
             <Metric
               value={320000}
               display="320,000"
-              eyebrow="Colombo today"
-              label="Tuk-tuks operating in Colombo every day."
-              progress={progress}
-              threshold={0.78}
+              eyebrow="Colombo opportunity"
+              label="Tuk-tuks moving through Colombo each day."
+              progress={mapProgress}
+              threshold={0.24}
+              endThreshold={0.7}
             />
 
             <div
               style={{
                 paddingLeft: "clamp(18px, 2vw, 30px)",
-                borderLeft:
-                  "1px solid rgba(26,26,24,0.12)",
+                borderLeft: "1px solid rgba(26,26,24,0.12)",
               }}
             >
               <Metric
                 value={1100000}
                 display="1.1 million"
                 eyebrow="National opportunity"
-                label="Three-wheelers nationwide."
-                progress={progress}
-                threshold={0.84}
+                label="Three-wheelers operating nationwide."
+                progress={mapProgress}
+                threshold={0.68}
+                endThreshold={0.94}
               />
             </div>
-          </div>
-
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "12px",
-              marginTop: "24px",
-              padding: "11px 17px",
-              border:
-                "1px solid rgba(232,146,10,0.52)",
-              borderRadius: "999px",
-              opacity: footerProgress,
-              visibility:
-                footerProgress > 0.02
-                  ? "visible"
-                  : "hidden",
-              transform: `translateY(${
-                (1 - footerProgress) * 12
-              }px)`,
-            }}
-          >
-            <span
-              aria-hidden="true"
-              style={{
-                display: "grid",
-                placeItems: "center",
-                width: "25px",
-                height: "25px",
-                borderRadius: "50%",
-                background:
-                  "rgba(245,166,35,0.18)",
-                color: colors.amberDeep,
-                fontWeight: 700,
-              }}
-            >
-              ✓
-            </span>
-
-            <span
-              style={{
-                fontSize: "15px",
-                fontWeight: 600,
-              }}
-            >
-              Every journey becomes measurable.
-            </span>
           </div>
         </div>
 
@@ -250,11 +199,12 @@ export function NetworkDesktop({
             zIndex: 3,
             height: "88svh",
             minHeight: 0,
+            opacity: 1 - stageOut * 0.92,
+            transform: `scale(${1 - stageOut * 0.035})`,
+            transformOrigin: "center",
           }}
         >
-          <NetworkCanvas
-            progress={mapProgress}
-          />
+          <NetworkCanvas progress={mapProgress} />
 
           <div
             style={{
@@ -266,22 +216,70 @@ export function NetworkDesktop({
               gap: "9px",
               color: "rgba(26,26,24,0.54)",
               fontSize: "13px",
-              opacity: footerProgress,
+              opacity: easeOutCubic(range(mapProgress, 0.86, 1)),
             }}
           >
             <span
+              aria-hidden="true"
               style={{
                 width: "10px",
                 height: "10px",
                 borderRadius: "50%",
                 background: colors.amber,
-                boxShadow:
-                  "0 0 0 5px rgba(245,166,35,0.12)",
+                boxShadow: "0 0 0 5px rgba(245,166,35,0.12)",
               }}
             />
-
             Network vision
           </div>
+        </div>
+      </div>
+
+      <div
+        className="atlas-network-motion"
+        style={{
+          position: "absolute",
+          zIndex: 20,
+          inset: 0,
+          display: "grid",
+          placeItems: "center",
+          padding: "72px 36px 48px",
+          boxSizing: "border-box",
+          textAlign: "center",
+          opacity: finalIn,
+          transform: `translateY(${
+            (1 - finalIn) * 30 - finalIn * 6
+          }vh) scale(${0.92 + finalIn * 0.08})`,
+          pointerEvents: "none",
+        }}
+      >
+        <div>
+          <div
+            style={{
+              color: colors.amberDeep,
+              fontSize: "11px",
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+            }}
+          >
+            Built to compound
+          </div>
+
+          <p
+            style={{
+              margin: "18px auto 0",
+              maxWidth: "14ch",
+              color: colors.ink,
+              fontSize: "clamp(58px, 7.1vw, 108px)",
+              fontWeight: 600,
+              lineHeight: 0.91,
+              letterSpacing: "-0.068em",
+            }}
+          >
+            Every connected vehicle
+            <br />
+            extends the network.
+          </p>
         </div>
       </div>
 
@@ -292,6 +290,7 @@ export function NetworkDesktop({
           bottom: "20px",
           color: "rgba(26,26,24,0.34)",
           fontSize: "10px",
+          opacity: 1 - stageOut,
           transform: "translateX(-50%)",
         }}
       >

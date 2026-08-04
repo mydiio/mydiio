@@ -13,35 +13,36 @@ const routeOrder = [
   {
     city: "Negombo",
     threshold: 0.2,
+    duration: 0.11,
   },
   {
     city: "Galle",
     threshold: 0.32,
+    duration: 0.13,
   },
   {
     city: "Hambantota",
     threshold: 0.44,
+    duration: 0.1,
   },
   {
     city: "Batticaloa",
     threshold: 0.56,
+    duration: 0.14,
   },
   {
     city: "Trincomalee",
     threshold: 0.68,
+    duration: 0.15,
   },
   {
     city: "Jaffna",
     threshold: 0.8,
+    duration: 0.17,
   },
 ] as const;
 
-const visibleLabels = new Set([
-  "Colombo",
-  "Galle",
-  "Trincomalee",
-  "Jaffna",
-]);
+const visibleLabels = new Set(["Colombo", "Galle", "Trincomalee", "Jaffna"]);
 
 const labelSettings: Record<
   string,
@@ -73,16 +74,12 @@ const labelSettings: Record<
   },
 };
 
-export function NetworkCanvas({
-  progress,
-}: NetworkCanvasProps) {
+export function NetworkCanvas({ progress }: NetworkCanvasProps) {
   const outlineReveal = clamp(progress / 0.16);
   const roadsReveal = clamp((progress - 0.1) / 0.24);
   const colomboReveal = clamp((progress - 0.16) / 0.1);
 
-  const cityByName = Object.fromEntries(
-    mapCities.map((city) => [city.name, city]),
-  );
+  const cityByName = Object.fromEntries(mapCities.map((city) => [city.name, city]));
 
   const colombo = cityByName.Colombo;
 
@@ -163,17 +160,8 @@ export function NetworkCanvas({
         }}
       >
         <defs>
-          <filter
-            id="atlas-network-glow"
-            x="-100%"
-            y="-100%"
-            width="300%"
-            height="300%"
-          >
-            <feGaussianBlur
-              stdDeviation="8"
-              result="blur"
-            />
+          <filter id="atlas-network-glow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="8" result="blur" />
 
             <feMerge>
               <feMergeNode in="blur" />
@@ -210,17 +198,12 @@ export function NetworkCanvas({
           opacity={colomboReveal}
         />
 
-        {routeOrder.map(({ city: cityName, threshold }) => {
+        {routeOrder.map(({ city: cityName, threshold, duration }) => {
           const city = cityByName[cityName];
 
-          const localProgress = clamp(
-            (progress - threshold) / 0.12,
-          );
+          const localProgress = clamp((progress - threshold) / duration);
 
-          const length = Math.hypot(
-            city.x - colombo.x,
-            city.y - colombo.y,
-          );
+          const length = Math.hypot(city.x - colombo.x, city.y - colombo.y);
 
           return (
             <g key={cityName}>
@@ -233,9 +216,7 @@ export function NetworkCanvas({
                 strokeWidth="2.4"
                 strokeLinecap="round"
                 strokeDasharray={length}
-                strokeDashoffset={
-                  length * (1 - localProgress)
-                }
+                strokeDashoffset={length * (1 - localProgress)}
                 opacity={localProgress}
               />
 
@@ -262,19 +243,12 @@ export function NetworkCanvas({
           const threshold =
             city.name === "Colombo"
               ? 0.16
-              : routeOrder.find(
-                  (route) => route.city === city.name,
-                )?.threshold ?? 1;
+              : (routeOrder.find((route) => route.city === city.name)?.threshold ?? 1);
 
-          const labelProgress = clamp(
-            (progress - threshold - 0.06) / 0.1,
-          );
+          const labelProgress = clamp((progress - threshold - 0.06) / 0.1);
 
           return (
-            <g
-              key={`label-${city.id}`}
-              opacity={labelProgress}
-            >
+            <g key={`label-${city.id}`} opacity={labelProgress}>
               <line
                 x1={city.x}
                 y1={city.y}

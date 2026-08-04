@@ -10,10 +10,7 @@ function mapProgress(rawProgress: number) {
   const holdBefore = 0.05;
   const holdAfter = 0.92;
 
-  const mapped = clamp(
-    (rawProgress - holdBefore) /
-      (holdAfter - holdBefore),
-  );
+  const mapped = clamp((rawProgress - holdBefore) / (holdAfter - holdBefore));
 
   return mapped >= 0.985 ? 1 : mapped;
 }
@@ -31,17 +28,14 @@ export function ActEight() {
       if (!section) return;
 
       const rect = section.getBoundingClientRect();
-      const scrollDistance =
-        section.offsetHeight - window.innerHeight;
+      const scrollDistance = section.offsetHeight - window.innerHeight;
 
       if (scrollDistance <= 0) {
         setProgress(0);
         return;
       }
 
-      const rawProgress = clamp(
-        -rect.top / scrollDistance,
-      );
+      const rawProgress = clamp(-rect.top / scrollDistance);
 
       setProgress(mapProgress(rawProgress));
     };
@@ -49,8 +43,7 @@ export function ActEight() {
     const requestUpdate = () => {
       if (frameRef.current !== null) return;
 
-      frameRef.current =
-        window.requestAnimationFrame(update);
+      frameRef.current = window.requestAnimationFrame(update);
     };
 
     update();
@@ -75,7 +68,7 @@ export function ActEight() {
       ref={sectionRef}
       style={{
         position: "relative",
-        height: "220svh",
+        height: "250svh",
         background: colors.cream,
       }}
     >

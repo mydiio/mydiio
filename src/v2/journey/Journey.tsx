@@ -10,10 +10,7 @@ function mapProgress(rawProgress: number) {
   const holdBefore = 0.06;
   const holdAfter = 0.94;
 
-  return clamp(
-    (rawProgress - holdBefore) /
-      (holdAfter - holdBefore),
-  );
+  return clamp((rawProgress - holdBefore) / (holdAfter - holdBefore));
 }
 
 export function Journey() {
@@ -31,17 +28,14 @@ export function Journey() {
       if (!section) return;
 
       const rect = section.getBoundingClientRect();
-      const scrollDistance =
-        section.offsetHeight - window.innerHeight;
+      const scrollDistance = section.offsetHeight - window.innerHeight;
 
       if (scrollDistance <= 0) {
         setProgress(0);
         return;
       }
 
-      const rawProgress = clamp(
-        -rect.top / scrollDistance,
-      );
+      const rawProgress = clamp(-rect.top / scrollDistance);
 
       setProgress(mapProgress(rawProgress));
     };
@@ -49,8 +43,7 @@ export function Journey() {
     const requestUpdate = () => {
       if (frameRef.current !== null) return;
 
-      frameRef.current =
-        window.requestAnimationFrame(update);
+      frameRef.current = window.requestAnimationFrame(update);
     };
 
     update();
@@ -75,7 +68,7 @@ export function Journey() {
       ref={sectionRef}
       style={{
         position: "relative",
-        height: isMobile ? "190svh" : "220svh",
+        height: isMobile ? "290svh" : "275svh",
         background: "#FDFAF3",
       }}
     >

@@ -114,7 +114,7 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
               textTransform: "uppercase",
             }}
           >
-            How proof is created
+            One journey. Multiple outcomes.
           </div>
 
           <h2
@@ -127,7 +127,7 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
               letterSpacing: "-0.06em",
             }}
           >
-            Every play is proven.
+            One journey creates value for everyone.
           </h2>
 
           <p
@@ -142,8 +142,8 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
               letterSpacing: "-0.025em",
             }}
           >
-            We record where, when and on which vehicle every
-            advertisement plays. Then we send you the proof.
+            Passengers receive useful information. Drivers earn more. Businesses reach nearby
+            communities. The network connects all three.
           </p>
         </div>
 
@@ -175,12 +175,8 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
                     flex: 1,
                     height: "3px",
                     borderRadius: "999px",
-                    background: complete
-                      ? colors.amber
-                      : "rgba(26,26,24,0.1)",
-                    transform: complete
-                      ? "scaleX(1)"
-                      : "scaleX(0.92)",
+                    background: complete ? colors.amber : "rgba(26,26,24,0.1)",
+                    transform: complete ? "scaleX(1)" : "scaleX(0.92)",
                     transformOrigin: "left center",
                     transition:
                       "background 0.25s ease, transform 0.35s cubic-bezier(0.22,1,0.36,1)",
@@ -198,8 +194,7 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
               borderRadius: "24px",
               background: "rgba(255,255,255,0.84)",
               border: "1px solid rgba(26,26,24,0.075)",
-              boxShadow:
-                "0 28px 64px -42px rgba(26,26,24,0.25)",
+              boxShadow: "0 28px 64px -42px rgba(26,26,24,0.25)",
               overflow: "hidden",
             }}
           >
@@ -216,9 +211,7 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
               }}
             >
               <span>{activeStep.number}</span>
-              <span>
-                {String(activeStepIndex + 1).padStart(2, "0")} / 05
-              </span>
+              <span>{String(activeStepIndex + 1).padStart(2, "0")} / 05</span>
             </div>
 
             <div
@@ -231,8 +224,7 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
                 borderRadius: "50%",
                 border: `1px solid ${colors.amber}`,
                 background: "rgba(245,166,35,0.08)",
-                boxShadow:
-                  "0 0 0 10px rgba(245,166,35,0.045)",
+                boxShadow: "0 0 0 10px rgba(245,166,35,0.045)",
               }}
             >
               <span
@@ -310,8 +302,7 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
                 height: "16px",
                 borderRadius: "50%",
                 background: colors.amber,
-                boxShadow:
-                  "0 0 0 8px rgba(245,166,35,0.12)",
+                boxShadow: "0 0 0 8px rgba(245,166,35,0.12)",
               }}
             />
 
@@ -322,11 +313,8 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
                 right: 0,
                 top: "18px",
                 opacity: reportVisible ? 1 : 0,
-                transform: `translateY(${
-                  reportVisible ? 0 : 14
-                }px)`,
-                transition:
-                  "opacity 0.35s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1)",
+                transform: `translateY(${reportVisible ? 0 : 14}px)`,
+                transition: "opacity 0.35s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1)",
               }}
             >
               <JourneyReport progress={progress} />
@@ -363,18 +351,10 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
             >
               {journeySteps.map((step, index) => {
                 const nextStep = journeySteps[index + 1];
-                const isPast =
-                  nextStep !== undefined &&
-                  progress >= nextStep.progress;
-                const isCurrent =
-                  progress >= step.progress && !isPast;
+                const isPast = nextStep !== undefined && progress >= nextStep.progress;
+                const isCurrent = progress >= step.progress && !isPast;
 
-                const state =
-                  isPast
-                    ? "past"
-                    : isCurrent
-                      ? "current"
-                      : "future";
+                const state = isPast ? "past" : isCurrent ? "current" : "future";
 
                 return (
                   <JourneyStep
@@ -391,7 +371,7 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
             <svg
               className="atlas-proof-route"
               role="img"
-              aria-label="A verification rail connecting five proof steps"
+              aria-label="A connected journey creating value for passengers, drivers and businesses"
               viewBox="0 0 1000 120"
               preserveAspectRatio="none"
               style={{
@@ -442,8 +422,7 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
               />
 
               {[70, 285, 500, 715, 930].map((x, index) => {
-                const active =
-                  progress >= journeySteps[index].progress;
+                const active = progress >= journeySteps[index].progress;
 
                 return (
                   <g key={journeySteps[index].id}>
@@ -452,11 +431,7 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
                       cy="58"
                       r="13"
                       fill={colors.cream}
-                      stroke={
-                        active
-                          ? colors.amber
-                          : "rgba(26,26,24,0.14)"
-                      }
+                      stroke={active ? colors.amber : "rgba(26,26,24,0.14)"}
                       strokeWidth="4"
                     />
 
@@ -464,11 +439,7 @@ export function JourneyDesktop({ progress }: JourneySceneProps) {
                       cx={x}
                       cy="58"
                       r="5"
-                      fill={
-                        active
-                          ? colors.amber
-                          : "rgba(26,26,24,0.12)"
-                      }
+                      fill={active ? colors.amber : "rgba(26,26,24,0.12)"}
                     />
                   </g>
                 );

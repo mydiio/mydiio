@@ -25,27 +25,15 @@ function formatLiveValue(value: number) {
   return value.toLocaleString();
 }
 
-export function Metric({
-  value,
-  display,
-  label,
-  eyebrow,
-  progress,
-  threshold,
-}: MetricProps) {
+export function Metric({ value, display, label, eyebrow, progress, threshold }: MetricProps) {
   const availableProgress = Math.max(0.08, 1 - threshold);
 
-  const localProgress = clamp(
-    (progress - threshold) / availableProgress,
-  );
+  const localProgress = clamp((progress - threshold) / availableProgress);
 
   const eased = easeOutCubic(localProgress);
   const currentValue = Math.round(value * eased);
 
-  const formatted =
-    localProgress >= 0.995
-      ? display
-      : formatLiveValue(currentValue);
+  const formatted = localProgress >= 0.995 ? display : formatLiveValue(currentValue);
 
   return (
     <div
