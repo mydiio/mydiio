@@ -9,25 +9,13 @@ function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
 }
 
-export function CoverageDesktop({
-  progress,
-}: CoverageSceneProps) {
+export function CoverageDesktop({ progress }: CoverageSceneProps) {
   const eyebrowProgress = clamp(progress / 0.1);
-  const headingProgress = clamp(
-    (progress - 0.04) / 0.16,
-  );
-  const bodyProgress = clamp(
-    (progress - 0.1) / 0.15,
-  );
-  const stageProgress = clamp(
-    (progress - 0.18) / 0.2,
-  );
-  const routeProgress = clamp(
-    (progress - 0.22) / 0.7,
-  );
-  const finalProgress = clamp(
-    (progress - 0.88) / 0.09,
-  );
+  const headingProgress = clamp((progress - 0.04) / 0.16);
+  const bodyProgress = clamp((progress - 0.1) / 0.15);
+  const stageProgress = clamp((progress - 0.18) / 0.2);
+  const routeProgress = clamp((progress - 0.22) / 0.7);
+  const finalProgress = clamp((progress - 0.88) / 0.09);
 
   return (
     <div
@@ -74,8 +62,7 @@ export function CoverageDesktop({
           className="atlas-coverage-header"
           style={{
             display: "grid",
-            gridTemplateColumns:
-              "minmax(0, 0.96fr) minmax(340px, 0.44fr)",
+            gridTemplateColumns: "minmax(0, 0.96fr) minmax(340px, 0.44fr)",
             gap: "clamp(54px, 7vw, 112px)",
             alignItems: "end",
           }}
@@ -90,12 +77,10 @@ export function CoverageDesktop({
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
                 opacity: eyebrowProgress,
-                transform: `translateY(${
-                  (1 - eyebrowProgress) * 10
-                }px)`,
+                transform: `translateY(${(1 - eyebrowProgress) * 10}px)`,
               }}
             >
-              Live coverage
+              LIVE TODAY
             </div>
 
             <h2
@@ -103,17 +88,15 @@ export function CoverageDesktop({
                 margin: 0,
                 maxWidth: "11ch",
                 color: colors.ink,
-                fontSize: "clamp(40px, 4.7vw, 70px)",
+                fontSize: "clamp(48px, 5.8vw, 86px)",
                 fontWeight: 600,
                 lineHeight: 0.93,
                 letterSpacing: "-0.062em",
                 opacity: headingProgress,
-                transform: `translateY(${
-                  (1 - headingProgress) * 18
-                }px)`,
+                transform: `translateY(${(1 - headingProgress) * 18}px)`,
               }}
             >
-              Every journey across Colombo becomes measurable.
+              Campaigns begin in Colombo.
             </h2>
           </div>
 
@@ -122,9 +105,7 @@ export function CoverageDesktop({
               maxWidth: "440px",
               paddingBottom: "7px",
               opacity: bodyProgress,
-              transform: `translateY(${
-                (1 - bodyProgress) * 16
-              }px)`,
+              transform: `translateY(${(1 - bodyProgress) * 16}px)`,
             }}
           >
             <p
@@ -135,9 +116,8 @@ export function CoverageDesktop({
                 lineHeight: 1.58,
               }}
             >
-              Every verified play is connected to a real location, a real
-              journey and a clear report. As the network grows, every campaign
-              becomes measurable across Colombo.
+              Our first operating corridor connects Dehiwala, Mount Lavinia and Ratmalana. Every
+              campaign starts here while the network expands corridor by corridor.
             </p>
 
             <div
@@ -158,11 +138,9 @@ export function CoverageDesktop({
                   height: "9px",
                   borderRadius: "50%",
                   background: colors.amber,
-                  boxShadow:
-                    "0 0 0 5px rgba(245,166,35,0.12)",
+                  boxShadow: "0 0 0 5px rgba(245,166,35,0.12)",
                 }}
               />
-
               Live in Colombo
             </div>
           </div>
@@ -177,8 +155,7 @@ export function CoverageDesktop({
             minHeight: "380px",
             borderRadius: "28px",
             overflow: "hidden",
-            background:
-              "linear-gradient(145deg, rgba(255,255,255,0.91), rgba(253,250,243,0.96))",
+            background: "linear-gradient(145deg, rgba(255,255,255,0.91), rgba(253,250,243,0.96))",
             border: "1px solid rgba(26,26,24,0.065)",
             boxShadow:
               "0 30px 72px -42px rgba(26,26,24,0.28), 0 8px 22px -16px rgba(26,26,24,0.12)",
@@ -236,9 +213,7 @@ export function CoverageDesktop({
               bottom: "14px",
               zIndex: 4,
               opacity: finalProgress,
-              transform: `translate(-50%, ${
-                (1 - finalProgress) * 8
-              }px)`,
+              transform: `translate(-50%, ${(1 - finalProgress) * 8}px)`,
             }}
           >
             <div
@@ -248,14 +223,12 @@ export function CoverageDesktop({
                 gap: "10px",
                 padding: "9px 15px",
                 borderRadius: "999px",
-                border:
-                  "1px solid rgba(232,146,10,0.42)",
+                border: "1px solid rgba(232,146,10,0.42)",
                 background: "rgba(255,255,255,0.84)",
                 color: colors.ink,
                 fontSize: "13px",
                 fontWeight: 650,
-                boxShadow:
-                  "0 12px 30px -22px rgba(26,26,24,0.26)",
+                boxShadow: "0 12px 30px -22px rgba(26,26,24,0.26)",
                 backdropFilter: "blur(10px)",
                 whiteSpace: "nowrap",
               }}
@@ -268,17 +241,15 @@ export function CoverageDesktop({
                   width: "22px",
                   height: "22px",
                   borderRadius: "50%",
-                  background:
-                    "rgba(245,166,35,0.16)",
+                  background: "rgba(245,166,35,0.16)",
                   color: colors.amberDeep,
                   fontSize: "12px",
                   fontWeight: 700,
                 }}
-              >
-                ✓
-              </span>
-
-              Every journey becomes measurable.
+              ></span>
+              Operating today.
+              <br />
+              Growing corridor by corridor.
             </div>
           </div>
         </div>

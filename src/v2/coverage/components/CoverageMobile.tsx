@@ -64,22 +64,14 @@ function easeOutCubic(value: number) {
   return 1 - Math.pow(1 - value, 3);
 }
 
-export function CoverageMobile({
-  progress,
-}: CoverageMobileProps) {
+export function CoverageMobile({ progress }: CoverageMobileProps) {
   const safeProgress = clamp(progress);
 
-  const copyProgress = easeOutCubic(
-    clamp(safeProgress / 0.16),
-  );
+  const copyProgress = easeOutCubic(clamp(safeProgress / 0.16));
 
-  const stageProgress = easeOutCubic(
-    clamp((safeProgress - 0.1) / 0.18),
-  );
+  const stageProgress = easeOutCubic(clamp((safeProgress - 0.1) / 0.18));
 
-  const routeProgress = clamp(
-    (safeProgress - 0.18) / 0.58,
-  );
+  const routeProgress = clamp((safeProgress - 0.18) / 0.58);
 
   const activeIndex = Math.min(
     routePoints.length - 1,
@@ -88,13 +80,9 @@ export function CoverageMobile({
 
   const activePoint = routePoints[activeIndex];
 
-  const cardProgress = easeOutCubic(
-    clamp((routeProgress * routePoints.length) - activeIndex),
-  );
+  const cardProgress = easeOutCubic(clamp(routeProgress * routePoints.length - activeIndex));
 
-  const finalProgress = easeOutCubic(
-    clamp((safeProgress - 0.82) / 0.14),
-  );
+  const finalProgress = easeOutCubic(clamp((safeProgress - 0.82) / 0.14));
 
   return (
     <div
@@ -123,9 +111,7 @@ export function CoverageMobile({
           style={{
             flex: "0 0 auto",
             opacity: copyProgress,
-            transform: `translateY(${
-              (1 - copyProgress) * 14
-            }px)`,
+            transform: `translateY(${(1 - copyProgress) * 14}px)`,
           }}
         >
           <div
@@ -138,20 +124,20 @@ export function CoverageMobile({
               textTransform: "uppercase",
             }}
           >
-            Live coverage
+            LIVE TODAY
           </div>
 
           <h2
             style={{
               margin: 0,
               maxWidth: "8.8ch",
-              fontSize: "clamp(38px, 11vw, 48px)",
+              fontSize: "clamp(42px, 12vw, 58px)",
               fontWeight: 600,
               lineHeight: 0.91,
               letterSpacing: "-0.064em",
             }}
           >
-            Every journey across Colombo becomes measurable.
+            Campaigns begin in Colombo.
           </h2>
 
           <p
@@ -164,8 +150,8 @@ export function CoverageMobile({
               letterSpacing: "-0.018em",
             }}
           >
-            Every verified play is connected to a real location, a real
-            journey and a clear report.
+            Our first operating corridor connects Dehiwala, Mount Lavinia and Ratmalana. Every
+            campaign starts here while the network expands corridor by corridor.
           </p>
 
           <div
@@ -186,11 +172,9 @@ export function CoverageMobile({
                 height: "8px",
                 borderRadius: "50%",
                 background: colors.amber,
-                boxShadow:
-                  "0 0 0 4px rgba(245,166,35,0.12)",
+                boxShadow: "0 0 0 4px rgba(245,166,35,0.12)",
               }}
             />
-
             Live in Colombo
           </div>
         </header>
@@ -203,11 +187,9 @@ export function CoverageMobile({
             marginTop: "15px",
             overflow: "hidden",
             borderRadius: "26px",
-            background:
-              "linear-gradient(145deg, rgba(255,255,255,0.96), rgba(253,250,243,0.86))",
+            background: "linear-gradient(145deg, rgba(255,255,255,0.96), rgba(253,250,243,0.86))",
             border: "1px solid rgba(26,26,24,0.07)",
-            boxShadow:
-              "0 30px 70px -46px rgba(26,26,24,0.28)",
+            boxShadow: "0 30px 70px -46px rgba(26,26,24,0.28)",
             opacity: stageProgress,
             transform: `translateY(${
               (1 - stageProgress) * 18
@@ -266,28 +248,19 @@ export function CoverageMobile({
               />
 
               {routePoints.map((point, index) => {
-                const threshold =
-                  index / (routePoints.length - 1);
+                const threshold = index / (routePoints.length - 1);
 
-                const visible =
-                  routeProgress >= threshold;
+                const visible = routeProgress >= threshold;
 
                 const active = index === activeIndex;
 
                 return (
-                  <g
-                    key={point.number}
-                    opacity={visible ? 1 : 0.18}
-                  >
+                  <g key={point.number} opacity={visible ? 1 : 0.18}>
                     <circle
                       cx={point.x}
                       cy={point.y}
                       r={active ? 12 : 9}
-                      fill={
-                        active
-                          ? "rgba(245,166,35,0.16)"
-                          : "rgba(245,166,35,0.08)"
-                      }
+                      fill={active ? "rgba(245,166,35,0.16)" : "rgba(245,166,35,0.08)"}
                     />
 
                     <circle
@@ -317,12 +290,9 @@ export function CoverageMobile({
               borderRadius: "18px",
               background: "rgba(255,255,255,0.96)",
               border: "1px solid rgba(26,26,24,0.07)",
-              boxShadow:
-                "0 16px 36px -26px rgba(26,26,24,0.38)",
+              boxShadow: "0 16px 36px -26px rgba(26,26,24,0.38)",
               opacity: 0.45 + cardProgress * 0.55,
-              transform: `translateY(${
-                (1 - cardProgress) * 10
-              }px)`,
+              transform: `translateY(${(1 - cardProgress) * 10}px)`,
               willChange: "opacity, transform",
             }}
           >
@@ -422,8 +392,7 @@ export function CoverageMobile({
               color: colors.ink,
               fontSize: "11px",
               fontWeight: 700,
-              boxShadow:
-                "0 14px 30px -24px rgba(26,26,24,0.34)",
+              boxShadow: "0 14px 30px -24px rgba(26,26,24,0.34)",
             }}
           >
             <span
@@ -439,11 +408,10 @@ export function CoverageMobile({
                 fontSize: "10px",
                 fontWeight: 800,
               }}
-            >
-              ✓
-            </span>
-
-            Every journey becomes measurable.
+            ></span>
+            Operating today.
+            <br />
+            Growing corridor by corridor.
           </div>
         </div>
       </div>
