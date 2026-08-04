@@ -14,19 +14,13 @@ export function PackageCard({
   complete,
   settled,
 }: PackageCardProps) {
-  const opacity = settled
-    ? 1
-    : active
-      ? 1
-      : complete
-        ? 0.7
-        : 0.28;
+  const opacity = settled ? 1 : active ? 1 : complete ? 0.7 : 0.28;
 
   return (
     <article
       style={{
         position: "relative",
-        minHeight: "330px",
+        minHeight: "430px",
         padding: "26px",
         borderRadius: "24px",
         overflow: "hidden",
@@ -55,7 +49,7 @@ export function PackageCard({
           "opacity 0.42s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s ease",
       }}
     >
-      {tier.featured && (
+      {tier.featured ? (
         <div
           aria-hidden="true"
           style={{
@@ -70,7 +64,7 @@ export function PackageCard({
             pointerEvents: "none",
           }}
         />
-      )}
+      ) : null}
 
       <div
         style={{
@@ -87,14 +81,11 @@ export function PackageCard({
             justifyContent: "space-between",
             alignItems: "center",
             gap: "14px",
-            marginBottom: "34px",
           }}
         >
           <span
             style={{
-              color: tier.featured
-                ? colors.amber
-                : colors.amberDeep,
+              color: tier.featured ? colors.amber : colors.amberDeep,
               fontSize: "12px",
               fontWeight: 700,
               letterSpacing: "0.13em",
@@ -103,7 +94,7 @@ export function PackageCard({
             {tier.number}
           </span>
 
-          {tier.emphasis && (
+          {tier.emphasis ? (
             <span
               style={{
                 padding: "7px 10px",
@@ -118,16 +109,16 @@ export function PackageCard({
             >
               {tier.emphasis}
             </span>
-          )}
+          ) : null}
         </div>
 
         <div
           style={{
-            marginBottom: "10px",
+            marginTop: "28px",
             color: tier.featured
               ? "rgba(253,250,243,0.54)"
-              : "rgba(26,26,24,0.66)",
-            fontSize: "11px",
+              : "rgba(26,26,24,0.56)",
+            fontSize: "10px",
             fontWeight: 700,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
@@ -138,8 +129,8 @@ export function PackageCard({
 
         <h3
           style={{
-            margin: 0,
-            fontSize: "clamp(32px, 2.7vw, 46px)",
+            margin: "9px 0 0",
+            fontSize: "clamp(31px, 2.6vw, 44px)",
             fontWeight: 600,
             lineHeight: 0.98,
             letterSpacing: "-0.055em",
@@ -148,14 +139,26 @@ export function PackageCard({
           {tier.name}
         </h3>
 
+        <div
+          style={{
+            marginTop: "16px",
+            color: tier.featured ? colors.amber : colors.ink,
+            fontSize: "16px",
+            fontWeight: 700,
+            letterSpacing: "-0.025em",
+          }}
+        >
+          {tier.price}
+        </div>
+
         <p
           style={{
-            margin: "20px 0 0",
+            margin: "14px 0 0",
             color: tier.featured
-              ? "rgba(253,250,243,0.66)"
-              : "rgba(26,26,24,0.58)",
-            fontSize: "14px",
-            lineHeight: 1.5,
+              ? "rgba(253,250,243,0.62)"
+              : "rgba(26,26,24,0.56)",
+            fontSize: "13px",
+            lineHeight: 1.45,
           }}
         >
           {tier.description}
@@ -163,18 +166,70 @@ export function PackageCard({
 
         <div
           style={{
-            marginTop: "auto",
-            paddingTop: "26px",
+            display: "grid",
+            gap: 0,
+            marginTop: "20px",
             borderTop: `1px solid ${
               tier.featured
                 ? "rgba(253,250,243,0.12)"
                 : "rgba(26,26,24,0.08)"
             }`,
-            color: tier.featured
-              ? colors.amber
-              : colors.ink,
-            fontSize: "14px",
-            fontWeight: 650,
+          }}
+        >
+          {tier.specs.map((spec) => (
+            <div
+              key={spec.label}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "minmax(0, 0.9fr) minmax(0, 1.1fr)",
+                gap: "14px",
+                alignItems: "start",
+                padding: "11px 0",
+                borderBottom: `1px solid ${
+                  tier.featured
+                    ? "rgba(253,250,243,0.09)"
+                    : "rgba(26,26,24,0.065)"
+                }`,
+              }}
+            >
+              <span
+                style={{
+                  color: tier.featured
+                    ? "rgba(253,250,243,0.44)"
+                    : "rgba(26,26,24,0.44)",
+                  fontSize: "10px",
+                  fontWeight: 700,
+                  letterSpacing: "0.09em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {spec.label}
+              </span>
+
+              <span
+                style={{
+                  color: tier.featured
+                    ? "rgba(253,250,243,0.88)"
+                    : colors.ink,
+                  fontSize: "12px",
+                  fontWeight: 650,
+                  lineHeight: 1.35,
+                  textAlign: "right",
+                }}
+              >
+                {spec.value}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div
+          style={{
+            marginTop: "auto",
+            paddingTop: "18px",
+            color: tier.featured ? colors.amber : colors.ink,
+            fontSize: "13px",
+            fontWeight: 700,
           }}
         >
           {tier.scale}

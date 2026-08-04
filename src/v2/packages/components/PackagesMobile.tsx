@@ -13,49 +13,33 @@ function easeOutCubic(value: number) {
   return 1 - Math.pow(1 - value, 3);
 }
 
-export function PackagesMobile({
-  progress,
-}: PackagesMobileProps) {
+export function PackagesMobile({ progress }: PackagesMobileProps) {
   const safeProgress = clamp(progress);
 
-  const copyProgress = Math.max(
-    0.96,
-    easeOutCubic(clamp(safeProgress / 0.12)),
-  );
+  const copyProgress = Math.max(0.96, easeOutCubic(clamp(safeProgress / 0.12)));
 
-  const cardsProgress = clamp(
-    (safeProgress - 0.14) / 0.68,
-  );
+  const cardsProgress = clamp((safeProgress - 0.15) / 0.72);
 
   const stagePosition =
-    cardsProgress * packageTiers.length;
+    cardsProgress < 0.5
+      ? cardsProgress * 4
+      : cardsProgress < 0.76
+        ? 2 + (cardsProgress - 0.5) * 3.15
+        : 2.82 + (cardsProgress - 0.76) * 4.92;
 
-  const activeIndex = Math.min(
-    packageTiers.length - 1,
-    Math.floor(stagePosition),
-  );
+  const activeIndex = Math.min(packageTiers.length - 1, Math.floor(stagePosition));
 
   const activeTier = packageTiers[activeIndex];
 
-  const localProgress = clamp(
-    stagePosition - activeIndex,
-  );
+  const localProgress = clamp(stagePosition - activeIndex);
 
-  const cardProgress = easeOutCubic(
-    localProgress,
-  );
+  const cardProgress = easeOutCubic(localProgress);
 
-  const cardEntrance =
-    activeIndex === 0 && cardsProgress < 0.01
-      ? 1
-      : cardProgress;
+  const cardEntrance = activeIndex === 0 && cardsProgress < 0.01 ? 1 : cardProgress;
 
-  const finalProgress = easeOutCubic(
-    clamp((safeProgress - 0.82) / 0.14),
-  );
+  const finalProgress = easeOutCubic(clamp((safeProgress - 0.91) / 0.06));
 
-  const isPioneer =
-    activeTier.name === "Pioneer";
+  const isPioneer = activeTier.name === "Pioneer";
 
   return (
     <div
@@ -84,9 +68,7 @@ export function PackagesMobile({
           style={{
             flex: "0 0 auto",
             opacity: copyProgress,
-            transform: `translateY(${
-              (1 - copyProgress) * 14
-            }px)`,
+            transform: `translateY(${(1 - copyProgress) * 14}px)`,
           }}
         >
           <div
@@ -99,7 +81,7 @@ export function PackagesMobile({
               textTransform: "uppercase",
             }}
           >
-            Choose your entry
+            CAMPAIGNS
           </div>
 
           <h2
@@ -112,7 +94,9 @@ export function PackagesMobile({
               letterSpacing: "-0.064em",
             }}
           >
-            A campaign built around your ambition.
+            One network.
+            <br />
+            Four ways to grow.
           </h2>
 
           <p
@@ -125,8 +109,8 @@ export function PackagesMobile({
               letterSpacing: "-0.018em",
             }}
           >
-            Start focused, build frequency or secure a larger presence
-            across the connected passenger network.
+            Whether you're testing your first campaign or scaling across Colombo, there's a path
+            built for your brand.
           </p>
 
           <div
@@ -166,9 +150,7 @@ export function PackagesMobile({
               background: isPioneer
                 ? "linear-gradient(155deg, #171714 0%, #171714 65%, #4b3518 100%)"
                 : "rgba(255,255,255,0.94)",
-              color: isPioneer
-                ? colors.cream
-                : colors.ink,
+              color: isPioneer ? colors.cream : colors.ink,
               border: isPioneer
                 ? "1px solid rgba(245,166,35,0.34)"
                 : "1px solid rgba(26,26,24,0.07)",
@@ -206,9 +188,7 @@ export function PackagesMobile({
                   style={{
                     padding: "7px 10px",
                     borderRadius: "999px",
-                    background: isPioneer
-                      ? "rgba(245,166,35,0.15)"
-                      : "rgba(245,166,35,0.1)",
+                    background: isPioneer ? "rgba(245,166,35,0.15)" : "rgba(245,166,35,0.1)",
                     color: colors.amber,
                     fontSize: "9px",
                     fontWeight: 700,
@@ -224,9 +204,7 @@ export function PackagesMobile({
             <div
               style={{
                 marginTop: "30px",
-                color: isPioneer
-                  ? "rgba(253,250,243,0.5)"
-                  : "rgba(26,26,24,0.44)",
+                color: isPioneer ? "rgba(253,250,243,0.5)" : "rgba(26,26,24,0.44)",
                 fontSize: "10px",
                 fontWeight: 700,
                 letterSpacing: "0.14em",
@@ -251,12 +229,10 @@ export function PackagesMobile({
             <div
               style={{
                 marginTop: "14px",
-                maxWidth: "28ch",
-                color: isPioneer
-                  ? "rgba(253,250,243,0.62)"
-                  : "rgba(26,26,24,0.56)",
-                fontSize: "14px",
-                lineHeight: 1.45,
+                maxWidth: "30ch",
+                color: isPioneer ? "rgba(253,250,243,0.62)" : "rgba(26,26,24,0.56)",
+                fontSize: "13px",
+                lineHeight: 1.42,
               }}
             >
               {activeTier.description}
@@ -264,16 +240,81 @@ export function PackagesMobile({
 
             <div
               style={{
-                marginTop: "auto",
-                paddingTop: "16px",
+                marginTop: "16px",
+                color: isPioneer ? colors.amber : colors.ink,
+                fontSize: "15px",
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              {activeTier.price}
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                marginTop: "14px",
                 borderTop: `1px solid ${
                   isPioneer
                     ? "rgba(253,250,243,0.12)"
                     : "rgba(26,26,24,0.08)"
                 }`,
-                color: isPioneer
-                  ? colors.amber
-                  : colors.ink,
+              }}
+            >
+              {activeTier.specs.map((spec) => (
+                <div
+                  key={spec.label}
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "minmax(0, 0.9fr) minmax(0, 1.1fr)",
+                    gap: "12px",
+                    padding: "9px 0",
+                    borderBottom: `1px solid ${
+                      isPioneer
+                        ? "rgba(253,250,243,0.09)"
+                        : "rgba(26,26,24,0.065)"
+                    }`,
+                  }}
+                >
+                  <span
+                    style={{
+                      color: isPioneer
+                        ? "rgba(253,250,243,0.42)"
+                        : "rgba(26,26,24,0.42)",
+                      fontSize: "9px",
+                      fontWeight: 700,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {spec.label}
+                  </span>
+
+                  <span
+                    style={{
+                      color: isPioneer
+                        ? "rgba(253,250,243,0.88)"
+                        : colors.ink,
+                      fontSize: "11px",
+                      fontWeight: 650,
+                      lineHeight: 1.3,
+                      textAlign: "right",
+                    }}
+                  >
+                    {spec.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div
+              style={{
+                marginTop: "auto",
+                paddingTop: "16px",
+                borderTop: `1px solid ${
+                  isPioneer ? "rgba(253,250,243,0.12)" : "rgba(26,26,24,0.08)"
+                }`,
+                color: isPioneer ? colors.amber : colors.ink,
                 fontSize: "14px",
                 fontWeight: 700,
               }}
@@ -287,18 +328,15 @@ export function PackagesMobile({
           style={{
             flex: "0 0 auto",
             display: "grid",
-            gridTemplateColumns:
-              "repeat(4, minmax(0, 1fr))",
+            gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
             gap: "7px",
             marginTop: "12px",
           }}
         >
           {packageTiers.map((tier, index) => {
-            const active =
-              index === activeIndex;
+            const active = index === activeIndex;
 
-            const past =
-              index < activeIndex;
+            const past = index < activeIndex;
 
             return (
               <div
@@ -308,8 +346,7 @@ export function PackagesMobile({
                   height: "3px",
                   overflow: "hidden",
                   borderRadius: "999px",
-                  background:
-                    "rgba(26,26,24,0.08)",
+                  background: "rgba(26,26,24,0.08)",
                 }}
               >
                 <div
@@ -353,14 +390,12 @@ export function PackagesMobile({
               gap: "7px",
               padding: "8px 13px",
               borderRadius: "999px",
-              border:
-                "1px solid rgba(232,146,10,0.4)",
+              border: "1px solid rgba(232,146,10,0.4)",
               background: "rgba(255,255,255,0.94)",
               color: colors.ink,
               fontSize: "11px",
               fontWeight: 700,
-              boxShadow:
-                "0 14px 30px -24px rgba(26,26,24,0.34)",
+              boxShadow: "0 14px 30px -24px rgba(26,26,24,0.34)",
             }}
           >
             <span
@@ -372,7 +407,6 @@ export function PackagesMobile({
                 background: colors.amber,
               }}
             />
-
             Every package includes GPS-verified reporting.
           </div>
         </div>
