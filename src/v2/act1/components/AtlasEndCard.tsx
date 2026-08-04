@@ -12,26 +12,20 @@ function easeOutCubic(value: number) {
   return 1 - Math.pow(1 - value, 3);
 }
 
-export function AtlasEndCard({
-  progress,
-}: AtlasEndCardProps) {
+export function AtlasEndCard({ progress }: AtlasEndCardProps) {
   const cardOpacity = clamp(progress);
 
-  const firstReveal = easeOutCubic(
-    clamp((progress - 0.14) / 0.34),
-  );
+  const firstReveal = easeOutCubic(clamp((progress - 0.14) / 0.34));
 
-  const secondReveal = easeOutCubic(
-    clamp((progress - 0.22) / 0.34),
-  );
+  const secondReveal = easeOutCubic(clamp((progress - 0.22) / 0.34));
 
-  const thirdReveal = easeOutCubic(
-    clamp((progress - 0.3) / 0.34),
-  );
+  const thirdReveal = easeOutCubic(clamp((progress - 0.3) / 0.34));
 
-  const taglineOpacity = easeOutCubic(
-    clamp((progress - 0.52) / 0.32),
-  );
+  const taglineOpacity = easeOutCubic(clamp((progress - 0.5) / 0.28));
+
+  const glowProgress = easeOutCubic(clamp((progress - 0.68) / 0.32));
+
+  const settleProgress = easeOutCubic(clamp((progress - 0.18) / 0.66));
 
   return (
     <div
@@ -62,13 +56,38 @@ export function AtlasEndCard({
       `}</style>
 
       <div
+        aria-hidden="true"
         style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          width: "min(720px, 82vw)",
+          aspectRatio: "1",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(245,166,35,0.16) 0%, rgba(245,166,35,0.055) 34%, rgba(245,166,35,0) 70%)",
+          opacity: glowProgress,
+          transform: `translate(-50%, -50%) scale(${0.72 + glowProgress * 0.28})`,
+          filter: "blur(10px)",
+          pointerEvents: "none",
+          willChange: "opacity, transform",
+        }}
+      />
+
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           width: "100%",
           paddingInline: "24px",
           textAlign: "center",
+          transform: `translateY(${(1 - settleProgress) * 10}px) scale(${
+            0.985 + settleProgress * 0.015
+          })`,
+          willChange: "transform",
         }}
       >
         <div
@@ -88,9 +107,7 @@ export function AtlasEndCard({
           <span
             style={{
               opacity: firstReveal,
-              transform: `translateY(${
-                (1 - firstReveal) * 18
-              }px)`,
+              transform: `translateY(${(1 - firstReveal) * 18}px)`,
               willChange: "opacity, transform",
             }}
           >
@@ -101,9 +118,7 @@ export function AtlasEndCard({
             style={{
               color: colors.amber,
               opacity: secondReveal,
-              transform: `translateY(${
-                (1 - secondReveal) * 18
-              }px)`,
+              transform: `translateY(${(1 - secondReveal) * 18}px)`,
               willChange: "opacity, transform",
             }}
           >
@@ -113,9 +128,7 @@ export function AtlasEndCard({
           <span
             style={{
               opacity: thirdReveal,
-              transform: `translateY(${
-                (1 - thirdReveal) * 18
-              }px)`,
+              transform: `translateY(${(1 - thirdReveal) * 18}px)`,
               willChange: "opacity, transform",
             }}
           >
@@ -134,9 +147,7 @@ export function AtlasEndCard({
             lineHeight: 1.2,
             letterSpacing: "-0.035em",
             opacity: taglineOpacity,
-            transform: `translateY(${
-              (1 - taglineOpacity) * 12
-            }px)`,
+            transform: `translateY(${(1 - taglineOpacity) * 12}px)`,
             willChange: "opacity, transform",
           }}
         >

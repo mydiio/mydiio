@@ -13,20 +13,12 @@ function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
 }
 
-function getWeightedPosition(
-  progress: number,
-  moments: AtlasMoment[],
-) {
+function getWeightedPosition(progress: number, moments: AtlasMoment[]) {
   if (moments.length <= 1) return 0;
 
-  const weights = moments.map((moment) =>
-    Math.max(0.01, moment.weight),
-  );
+  const weights = moments.map((moment) => Math.max(0.01, moment.weight));
 
-  const totalWeight = weights.reduce(
-    (sum, weight) => sum + weight,
-    0,
-  );
+  const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
 
   let cursor = 0;
 
@@ -49,9 +41,7 @@ function getWeightedPosition(
     const end = centres[index + 1];
 
     if (progress <= end) {
-      const localProgress = clamp(
-        (progress - start) / (end - start),
-      );
+      const localProgress = clamp((progress - start) / (end - start));
 
       return index + localProgress;
     }
@@ -60,26 +50,14 @@ function getWeightedPosition(
   return lastIndex;
 }
 
-export function AtlasPlayer({
-  moments,
-  sequenceProgress,
-}: AtlasPlayerProps) {
-  const videoSequenceProgress = clamp(
-    sequenceProgress / 0.88,
-  );
+export function AtlasPlayer({ moments, sequenceProgress }: AtlasPlayerProps) {
+  const videoSequenceProgress = clamp(sequenceProgress / 0.88);
 
-  const position = getWeightedPosition(
-    videoSequenceProgress,
-    moments,
-  );
+  const position = getWeightedPosition(videoSequenceProgress, moments);
 
-  const finalVideoExit = clamp(
-    (sequenceProgress - 0.94) / 0.025,
-  );
+  const finalVideoExit = clamp((sequenceProgress - 0.91) / 0.04);
 
-  const endCardProgress = clamp(
-    (sequenceProgress - 0.962) / 0.03,
-  );
+  const endCardProgress = clamp((sequenceProgress - 0.925) / 0.05);
 
   return (
     <div
@@ -147,21 +125,14 @@ export function AtlasPlayer({
         const distance = Math.abs(position - index);
         const holdZone = 0.62;
         const fadeZone = 0.26;
-        const baseOpacity = clamp(
-          1 - Math.max(0, distance - holdZone) / fadeZone,
-        );
+        const baseOpacity = clamp(1 - Math.max(0, distance - holdZone) / fadeZone);
 
-        const isFinalMoment =
-          index === moments.length - 1;
+        const isFinalMoment = index === moments.length - 1;
 
-        const opacity = isFinalMoment
-          ? baseOpacity * (1 - finalVideoExit)
-          : baseOpacity;
+        const opacity = isFinalMoment ? baseOpacity * (1 - finalVideoExit) : baseOpacity;
 
         const isVisible = opacity > 0.001;
-        const headlineOpacity = clamp(
-          1 - Math.max(0, distance - 0.46) / 0.68,
-        );
+        const headlineOpacity = clamp(1 - Math.max(0, distance - 0.46) / 0.68);
 
         return (
           <div
@@ -194,17 +165,13 @@ export function AtlasPlayer({
               }}
             />
 
-            <AtlasOverlay
-              active={
-                isVisible &&
-                (!isFinalMoment || finalVideoExit < 0.01)
-              }
-            />
+            <AtlasOverlay active={isVisible && (!isFinalMoment || finalVideoExit < 0.01)} />
 
             <AtlasHeadline
               eyebrow={moment.eyebrow}
               headline={moment.headline}
               supporting={moment.supporting}
+              headlineTop={moment.headlineTop}
               opacity={headlineOpacity}
             />
           </div>

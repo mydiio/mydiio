@@ -13,6 +13,7 @@ export interface AtlasMoment {
   eyebrow?: string;
   headline?: string;
   supporting?: string;
+  headlineTop?: string;
 }
 
 export const moments: AtlasMoment[] = [
@@ -27,8 +28,7 @@ export const moments: AtlasMoment[] = [
     weight: 1.25,
     eyebrow: "In-tuk-tuk advertising",
     headline: "Your ad plays inside Colombo’s tuk-tuks.",
-    supporting:
-      "Reach passengers while they travel across Colombo.",
+    supporting: "Reach passengers across Colombo.",
   },
   {
     id: "m008",
@@ -36,8 +36,8 @@ export const moments: AtlasMoment[] = [
     weight: 1.2,
     eyebrow: "Proof, not estimates",
     headline: "Every play is verified by GPS.",
-    supporting:
-      "Vehicle, location and time recorded for every play.",
+    supporting: "Vehicle, location and time recorded for every play.",
+    headlineTop: "clamp(52%, 61vh, 66%)",
   },
   {
     id: "m010",
