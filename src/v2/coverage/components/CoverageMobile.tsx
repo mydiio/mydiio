@@ -150,8 +150,8 @@ export function CoverageMobile({ progress }: CoverageMobileProps) {
               letterSpacing: "-0.018em",
             }}
           >
-            Our first operating corridor connects Dehiwala, Mount Lavinia and Ratmalana. Every
-            campaign starts here while the network expands corridor by corridor.
+            Our first operating corridor serves Colombo. Every campaign starts here while the
+            network expands corridor by corridor.
           </p>
 
           <div
