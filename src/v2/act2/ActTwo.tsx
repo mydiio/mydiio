@@ -66,7 +66,7 @@ export function ActTwo() {
 
   const headlineProgress = Math.max(0.96, easeOutCubic(mapRange(heroProgress, 0, 0.22)));
 
-  const counterProgress = easeOutCubic(mapRange(heroProgress, 0.28, 0.8));
+  const counterProgress = easeOutCubic(mapRange(heroProgress, 0.3, 0.9));
 
   const supportingProgress = easeOutCubic(mapRange(heroProgress, 0.52, 0.84));
 
@@ -77,6 +77,7 @@ export function ActTwo() {
   return (
     <section
       data-atlas-act-two
+      data-v2-act="act-two"
       style={{
         position: "relative",
         background: colors.cream,
@@ -214,8 +215,8 @@ export function ActTwo() {
                 letterSpacing: "-0.066em",
                 opacity: 1,
                 transform: `
-                  translateY(${handoffProgress * -42}px)
-                  scale(${1 - handoffProgress * 0.14})
+                  translateY(${handoffProgress * -22}px)
+                  scale(${1 - handoffProgress * 0.06})
                 `,
                 transformOrigin: "left top",
               }}
@@ -238,9 +239,9 @@ export function ActTwo() {
               >
                 <div
                   style={{
-                    color: colors.ink,
-                    fontSize: "clamp(76px, 13vw, 184px)",
-                    fontWeight: 700,
+                    color: "rgba(26,26,24,0.82)",
+                    fontSize: "clamp(66px, 10.4vw, 138px)",
+                    fontWeight: 650,
                     lineHeight: 0.8,
                     letterSpacing: "-0.08em",
                     fontVariantNumeric: "tabular-nums",
@@ -261,7 +262,7 @@ export function ActTwo() {
                     letterSpacing: "-0.038em",
                   }}
                 >
-                  tuk-tuks already moving through Colombo each day.
+                  tuk-tuks operating across Colombo every day.
                 </div>
               </div>
 
@@ -294,7 +295,7 @@ export function ActTwo() {
                     letterSpacing: "-0.026em",
                   }}
                 >
-                  We connect the transport network that already moves the city.
+                  We don't build a new network. We connect the one Colombo already uses every day.
                 </p>
               </div>
             </div>
