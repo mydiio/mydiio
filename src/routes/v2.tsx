@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { AtlasNav } from "@/v2/layout";
 import { ActOne } from "@/v2/act1";
-import { ActTwo } from "@/v2/act2";
+import { ActTwo, FundingStatement } from "@/v2/act2";
+import { NodeReveal } from "@/v2/nodeReveal";
 import { Journey } from "@/v2/journey";
 import { ActThree } from "@/v2/network";
 import { ActFour } from "@/v2/platform";
@@ -18,8 +20,7 @@ export const Route = createFileRoute("/v2")({
       },
       {
         name: "description",
-        content:
-          "Internal preview of the new mydiio connected passenger network experience.",
+        content: "Internal preview of the new mydiio connected passenger network experience.",
       },
       {
         name: "robots",
@@ -32,11 +33,14 @@ export const Route = createFileRoute("/v2")({
 function V2Page() {
   return (
     <>
+      <AtlasNav />
       <ActOne />
       <ActTwo />
+      <NodeReveal />
       <Journey />
-      <ActThree />
+      <FundingStatement />
       <ActFour />
+      <ActThree />
       <ActFive />
       <ActSix />
       <ActSeven />
