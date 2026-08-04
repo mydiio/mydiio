@@ -1,0 +1,353 @@
+import { colors } from "@/design";
+
+type PioneerSceneProps = {
+  progress: number;
+};
+
+function clamp(value: number, min = 0, max = 1) {
+  return Math.min(max, Math.max(min, value));
+}
+
+export function PioneerDesktop({
+  progress,
+}: PioneerSceneProps) {
+  const eyebrowProgress = clamp(progress / 0.14);
+  const headingProgress = clamp((progress - 0.06) / 0.2);
+  const bodyProgress = clamp((progress - 0.2) / 0.18);
+  const positionsProgress = clamp((progress - 0.34) / 0.42);
+  const ctaProgress = clamp((progress - 0.76) / 0.16);
+
+  const filledPositions = Math.round(positionsProgress * 10);
+
+  return (
+    <div
+      style={{
+        position: "sticky",
+        top: 0,
+        height: "100svh",
+        overflow: "hidden",
+        background: colors.ink,
+        color: colors.cream,
+        fontFamily: '"DM Sans", system-ui, sans-serif',
+      }}
+    >
+      <style>{`
+        @media (max-width: 820px) {
+          .atlas-pioneer-layout {
+            grid-template-columns: 1fr !important;
+            gap: 34px !important;
+          }
+
+          .atlas-pioneer-positions {
+            justify-content: flex-start !important;
+          }
+        }
+
+        @media (max-width: 560px) {
+          .atlas-pioneer-actions {
+            align-items: stretch !important;
+          }
+
+          .atlas-pioneer-actions a {
+            width: 100% !important;
+          }
+        }
+      `}</style>
+
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          overflow: "hidden",
+          pointerEvents: "none",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            right: "-18%",
+            top: "-28%",
+            width: "68vw",
+            height: "68vw",
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(245,166,35,0.18), rgba(245,166,35,0.04) 38%, transparent 68%)",
+          }}
+        />
+
+        <div
+          style={{
+            position: "absolute",
+            left: "-22%",
+            bottom: "-40%",
+            width: "64vw",
+            height: "64vw",
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(245,166,35,0.08), transparent 66%)",
+          }}
+        />
+      </div>
+
+      <div
+        className="atlas-pioneer-layout"
+        style={{
+          position: "relative",
+          zIndex: 2,
+          width: "min(1360px, calc(100% - 96px))",
+          height: "100%",
+          marginInline: "auto",
+          padding: "clamp(34px, 4.8vh, 56px) 0",
+          boxSizing: "border-box",
+          display: "grid",
+          gridTemplateColumns:
+            "minmax(0, 0.9fr) minmax(360px, 0.52fr)",
+          gap: "clamp(48px, 7vw, 108px)",
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "11px",
+              marginBottom: "22px",
+              color: colors.amber,
+              fontSize: "13px",
+              fontWeight: 700,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              opacity: eyebrowProgress,
+              transform: `translateY(${
+                (1 - eyebrowProgress) * 10
+              }px)`,
+            }}
+          >
+            <span
+              aria-hidden="true"
+              style={{
+                width: "30px",
+                height: "1px",
+                background: colors.amber,
+              }}
+            />
+
+            Pioneer
+          </div>
+
+          <h2
+            style={{
+              margin: 0,
+              maxWidth: "10ch",
+              fontSize: "clamp(52px, 6.2vw, 96px)",
+              fontWeight: 600,
+              lineHeight: 0.9,
+              letterSpacing: "-0.07em",
+              opacity: headingProgress,
+              transform: `translateY(${
+                (1 - headingProgress) * 24
+              }px)`,
+            }}
+          >
+            Ten brands. One founding network.
+          </h2>
+
+          <p
+            style={{
+              margin: "clamp(24px, 3vh, 34px) 0 0",
+              maxWidth: "48ch",
+              color: "rgba(253,250,243,0.65)",
+              fontSize: "clamp(16px, 1.25vw, 20px)",
+              lineHeight: 1.55,
+              opacity: bodyProgress,
+              transform: `translateY(${
+                (1 - bodyProgress) * 16
+              }px)`,
+            }}
+          >
+            Priority access and stronger visibility as the mydiio network
+            grows across Colombo.
+          </p>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            minWidth: 0,
+            paddingLeft: "clamp(28px, 4vw, 58px)",
+            borderLeft: "1px solid rgba(253,250,243,0.1)",
+          }}
+        >
+          <div
+            style={{
+              color: "rgba(253,250,243,0.46)",
+              fontSize: "12px",
+              fontWeight: 700,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              opacity: bodyProgress,
+            }}
+          >
+            Founding positions
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              gap: "10px",
+              marginTop: "14px",
+              opacity: bodyProgress,
+            }}
+          >
+            <span
+              style={{
+                color: colors.cream,
+                fontSize: "clamp(72px, 8vw, 128px)",
+                fontWeight: 600,
+                lineHeight: 0.88,
+                letterSpacing: "-0.075em",
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              10
+            </span>
+
+            <span
+              style={{
+                color: colors.amber,
+                fontSize: "clamp(18px, 1.7vw, 26px)",
+                fontWeight: 650,
+              }}
+            >
+              spots ever
+            </span>
+          </div>
+
+          <div
+            className="atlas-pioneer-positions"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              gap: "10px",
+              marginTop: "34px",
+            }}
+          >
+            {Array.from({ length: 10 }).map((_, index) => {
+              const active = index < filledPositions;
+
+              return (
+                <div
+                  key={index}
+                  style={{
+                    position: "relative",
+                    flex: "1 1 0",
+                    maxWidth: "42px",
+                    aspectRatio: "1 / 1",
+                    borderRadius: "50%",
+                    border: active
+                      ? `1px solid ${colors.amber}`
+                      : "1px solid rgba(253,250,243,0.16)",
+                    background: active
+                      ? "rgba(245,166,35,0.15)"
+                      : "rgba(253,250,243,0.025)",
+                    boxShadow: active
+                      ? "0 0 0 6px rgba(245,166,35,0.045)"
+                      : "none",
+                    opacity: 0.24 + positionsProgress * 0.76,
+                    transform: active
+                      ? "scale(1)"
+                      : "scale(0.88)",
+                    transition:
+                      "background 0.3s ease, border 0.3s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1)",
+                  }}
+                >
+                  <span
+                    style={{
+                      position: "absolute",
+                      inset: "50% auto auto 50%",
+                      color: active
+                        ? colors.amber
+                        : "rgba(253,250,243,0.28)",
+                      fontSize: "10px",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                      letterSpacing: "-0.02em",
+                      fontVariantNumeric: "tabular-nums",
+                      transform: "translate(-50%, -50%)",
+                    }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          <div
+            style={{
+              marginTop: "26px",
+              paddingTop: "24px",
+              borderTop: "1px solid rgba(253,250,243,0.12)",
+              color: "rgba(253,250,243,0.54)",
+              fontSize: "14px",
+              lineHeight: 1.5,
+              opacity: positionsProgress,
+            }}
+          >
+            Priority access and GPS-verified reporting included.
+          </div>
+
+          <div
+            className="atlas-pioneer-actions"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "13px",
+              marginTop: "32px",
+              opacity: ctaProgress,
+              transform: `translateY(${
+                (1 - ctaProgress) * 12
+              }px)`,
+            }}
+          >
+            <a
+              href="/advertise/apply"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: "52px",
+                padding: "0 24px",
+                borderRadius: "999px",
+                background: colors.amber,
+                color: colors.ink,
+                textDecoration: "none",
+                fontSize: "14px",
+                fontWeight: 750,
+                letterSpacing: "-0.015em",
+                boxShadow:
+                  "0 18px 44px -24px rgba(245,166,35,0.58)",
+              }}
+            >
+              Claim a Pioneer position
+            </a>
+
+            <span
+              style={{
+                color: "rgba(253,250,243,0.42)",
+                fontSize: "12px",
+              }}
+            >
+              Subject to campaign suitability and availability.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -59,7 +59,7 @@ export function VideoSequence() {
       ref={sequenceRef}
       style={{
         position: "relative",
-        height: "470svh",
+        height: "260svh",
         background: colors.ink,
       }}
     >

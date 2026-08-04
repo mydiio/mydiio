@@ -1,0 +1,32 @@
+export const colomboJourney = [
+  {
+    id: "play",
+    number: "01",
+    title: "Play begins",
+    detail: "Campaign active",
+    time: "08:38",
+    x: 120,
+    y: 410,
+    reveal: 0.16,
+  },
+  {
+    id: "location",
+    number: "02",
+    title: "Location recorded",
+    detail: "GPS verified",
+    time: "08:42",
+    x: 500,
+    y: 250,
+    reveal: 0.46,
+  },
+  {
+    id: "report",
+    number: "03",
+    title: "Added to report",
+    detail: "Journey verified",
+    time: "08:47",
+    x: 880,
+    y: 400,
+    reveal: 0.74,
+  },
+] as const;

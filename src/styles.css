@@ -852,3 +852,10 @@ input, select, textarea, nav, header, footer {
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* V2 mobile journey */
+@media (max-width: 560px) {
+  .atlas-journey-section {
+    height: 180svh !important;
+  }
+}
