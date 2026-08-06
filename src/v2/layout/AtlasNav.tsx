@@ -10,7 +10,12 @@ const navLinks = [
   { label: "Contact", to: "/contact" },
 ] as const;
 
-export function AtlasNav() {
+type AtlasNavProps = {
+  homeTo?: "/" | "/v2";
+  campaignTo?: "/advertise" | "/advertise/apply";
+};
+
+export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [compact, setCompact] = useState(false);
   const [darkSurface, setDarkSurface] = useState(true);
@@ -21,34 +26,19 @@ export function AtlasNav() {
 
     const resolveTone = () => {
       const navProbeY = compact ? 72 : 90;
-      const navProbeX =
-        Math.min(
-          window.innerWidth - 1,
-          Math.max(1, window.innerWidth / 2),
-        );
+      const navProbeX = Math.min(window.innerWidth - 1, Math.max(1, window.innerWidth / 2));
 
-      const elements =
-        document.elementsFromPoint(
-          navProbeX,
-          Math.min(
-            window.innerHeight - 1,
-            navProbeY,
-          ),
-        );
+      const elements = document.elementsFromPoint(
+        navProbeX,
+        Math.min(window.innerHeight - 1, navProbeY),
+      );
 
       const toneElement = elements
-        .map((element) =>
-          element.closest<HTMLElement>(
-            "[data-atlas-tone]",
-          ),
-        )
+        .map((element) => element.closest<HTMLElement>("[data-atlas-tone]"))
         .find(Boolean);
 
       if (toneElement) {
-        setDarkSurface(
-          toneElement.dataset.atlasTone ===
-            "dark",
-        );
+        setDarkSurface(toneElement.dataset.atlasTone === "dark");
         return;
       }
 
@@ -56,10 +46,7 @@ export function AtlasNav() {
        * Act One contains both a dark film and a light
        * end card, so its tone remains progress-aware.
        */
-      const actOne =
-        document.querySelector<HTMLElement>(
-          "[data-atlas-act-one]",
-        );
+      const actOne = document.querySelector<HTMLElement>("[data-atlas-act-one]");
 
       if (!actOne) {
         setDarkSurface(false);
@@ -68,14 +55,9 @@ export function AtlasNav() {
 
       const y = window.scrollY;
       const actStart = actOne.offsetTop;
-      const scrollDistance =
-        actOne.offsetHeight -
-        window.innerHeight;
+      const scrollDistance = actOne.offsetHeight - window.innerHeight;
 
-      const endCardStart =
-        actStart +
-        Math.max(0, scrollDistance) *
-          0.955;
+      const endCardStart = actStart + Math.max(0, scrollDistance) * 0.955;
 
       setDarkSurface(y < endCardStart);
     };
@@ -94,53 +76,37 @@ export function AtlasNav() {
     const requestUpdate = () => {
       if (frame) return;
 
-      frame =
-        window.requestAnimationFrame(update);
+      frame = window.requestAnimationFrame(update);
     };
 
     requestUpdate();
 
-    window.addEventListener(
-      "scroll",
-      requestUpdate,
-      {
-        passive: true,
-      },
-    );
+    window.addEventListener("scroll", requestUpdate, {
+      passive: true,
+    });
 
-    window.addEventListener(
-      "resize",
-      requestUpdate,
-    );
+    window.addEventListener("resize", requestUpdate);
 
     return () => {
       if (frame) {
         window.cancelAnimationFrame(frame);
       }
 
-      window.removeEventListener(
-        "scroll",
-        requestUpdate,
-      );
+      window.removeEventListener("scroll", requestUpdate);
 
-      window.removeEventListener(
-        "resize",
-        requestUpdate,
-      );
+      window.removeEventListener("resize", requestUpdate);
     };
   }, [compact]);
 
   useEffect(() => {
     if (!open) return;
 
-    const previousOverflow =
-      document.body.style.overflow;
+    const previousOverflow = document.body.style.overflow;
 
     document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow =
-        previousOverflow;
+      document.body.style.overflow = previousOverflow;
     };
   }, [open]);
 
@@ -151,22 +117,14 @@ export function AtlasNav() {
       }
     };
 
-    window.addEventListener(
-      "resize",
-      closeDesktopMenu,
-    );
+    window.addEventListener("resize", closeDesktopMenu);
 
     return () => {
-      window.removeEventListener(
-        "resize",
-        closeDesktopMenu,
-      );
+      window.removeEventListener("resize", closeDesktopMenu);
     };
   }, []);
 
-  const foreground = darkSurface
-    ? colors.cream
-    : colors.ink;
+  const foreground = darkSurface ? colors.cream : colors.ink;
 
   return (
     <>
@@ -175,16 +133,14 @@ export function AtlasNav() {
           "atlas-nav",
           scrolled ? "atlas-nav-scrolled" : "",
           compact ? "atlas-nav-compact" : "",
-          darkSurface
-            ? "atlas-nav-dark"
-            : "atlas-nav-light",
+          darkSurface ? "atlas-nav-dark" : "atlas-nav-light",
         ]
           .filter(Boolean)
           .join(" ")}
       >
         <div className="atlas-nav-inner">
           <Link
-            to="/v2"
+            to={homeTo}
             aria-label="mydiio"
             className="atlas-nav-wordmark"
             style={{ color: foreground }}
@@ -194,10 +150,7 @@ export function AtlasNav() {
             <span>o</span>
           </Link>
 
-          <nav
-            className="atlas-nav-links"
-            aria-label="Primary navigation"
-          >
+          <nav className="atlas-nav-links" aria-label="Primary navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
@@ -219,29 +172,20 @@ export function AtlasNav() {
               Sign in
             </a>
 
-            <Link
-              to="/advertise"
-              className="atlas-nav-cta"
-            >
+            <Link to={campaignTo} className="atlas-nav-cta">
               Launch campaign
             </Link>
 
             <button
               type="button"
               className="atlas-nav-menu"
-              aria-label={
-                open ? "Close menu" : "Open menu"
-              }
+              aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((value) => !value)}
               style={{ color: foreground }}
             >
               <span
-                className={
-                  open
-                    ? "atlas-nav-menu-lines open"
-                    : "atlas-nav-menu-lines"
-                }
+                className={open ? "atlas-nav-menu-lines open" : "atlas-nav-menu-lines"}
                 aria-hidden="true"
               >
                 <i />
@@ -252,17 +196,10 @@ export function AtlasNav() {
         </div>
       </header>
 
-      <div
-        className={
-          open
-            ? "atlas-nav-mobile open"
-            : "atlas-nav-mobile"
-        }
-        aria-hidden={!open}
-      >
+      <div className={open ? "atlas-nav-mobile open" : "atlas-nav-mobile"} aria-hidden={!open}>
         <div className="atlas-nav-mobile-top">
           <Link
-            to="/v2"
+            to={homeTo}
             aria-label="mydiio"
             className="atlas-nav-mobile-wordmark"
             onClick={() => setOpen(false)}
@@ -283,10 +220,7 @@ export function AtlasNav() {
           </button>
         </div>
 
-        <nav
-          className="atlas-nav-mobile-links"
-          aria-label="Mobile navigation"
-        >
+        <nav className="atlas-nav-mobile-links" aria-label="Mobile navigation">
           {navLinks.map((link, index) => (
             <Link
               key={link.to}
@@ -294,9 +228,7 @@ export function AtlasNav() {
               onClick={() => setOpen(false)}
               className="atlas-nav-mobile-link"
               style={{
-                transitionDelay: open
-                  ? `${80 + index * 45}ms`
-                  : "0ms",
+                transitionDelay: open ? `${80 + index * 45}ms` : "0ms",
               }}
             >
               <span>{link.label}</span>
@@ -306,18 +238,11 @@ export function AtlasNav() {
         </nav>
 
         <div className="atlas-nav-mobile-actions">
-          <Link
-            to="/advertise"
-            onClick={() => setOpen(false)}
-            className="atlas-nav-mobile-cta"
-          >
+          <Link to={campaignTo} onClick={() => setOpen(false)} className="atlas-nav-mobile-cta">
             Launch campaign
           </Link>
 
-          <a
-            href="https://app.mydiio.com/login"
-            className="atlas-nav-mobile-signin"
-          >
+          <a href="https://app.mydiio.com/login" className="atlas-nav-mobile-signin">
             Sign in
           </a>
         </div>
