@@ -564,16 +564,16 @@ function NetworkNodes({ progress }: { progress: number }) {
 export function NodeRevealScene({ progress }: Props) {
   const sceneIn = easeOutCubic(range(progress, 0.025, 0.105));
   const headerIn = easeOutCubic(range(progress, 0.045, 0.13));
-  const headerOut = easeInOutCubic(range(progress, 0.78, 0.91));
+  const headerOut = easeInOutCubic(range(progress, 0.88, 0.97));
 
   const partsIn = easeOutCubic(range(progress, 0.05, 0.11));
   const assemblyIn = easeInOutCubic(range(progress, 0.2, 0.41));
   const activationIn = easeOutCubic(range(progress, 0.37, 0.5));
   const utilityIn = easeOutCubic(range(progress, 0.46, 0.61));
-  const connectionsIn = easeOutCubic(range(progress, 0.62, 0.76));
-  const collapse = easeInOutCubic(range(progress, 0.74, 0.84));
-  const nodeIn = easeOutCubic(range(progress, 0.8, 0.9));
-  const networkIn = easeOutCubic(range(progress, 0.86, 0.98));
+  const connectionsIn = easeOutCubic(range(progress, 0.62, 0.82));
+  const collapse = easeInOutCubic(range(progress, 0.86, 0.94));
+  const nodeIn = easeOutCubic(range(progress, 0.91, 0.98));
+  const networkIn = easeOutCubic(range(progress, 0.96, 1));
 
   const activeStage = Math.min(stages.length - 1, Math.floor(clamp(progress) * stages.length));
 

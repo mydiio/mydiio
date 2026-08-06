@@ -24,15 +24,16 @@ function easeInOutCubic(value: number) {
 export function PlatformDesktop({ progress }: PlatformSceneProps) {
   const safeProgress = clamp(progress);
 
-  const copyIn = easeOutCubic(range(safeProgress, 0.02, 0.18));
+  const copyIn = easeOutCubic(range(safeProgress, 0.06, 0.24));
   const focusShift = easeInOutCubic(range(safeProgress, 0.5, 0.7));
-  const copyOut = easeInOutCubic(range(safeProgress, 0.72, 0.82));
+  const handoff = easeInOutCubic(range(safeProgress, 0.78, 0.9));
+  const copyOut = handoff;
 
-  const diagramIn = easeOutCubic(range(safeProgress, 0.14, 0.3));
-  const diagramQuiet = easeInOutCubic(range(safeProgress, 0.72, 0.84));
+  const diagramIn = easeOutCubic(range(safeProgress, 0.18, 0.36));
+  const diagramQuiet = handoff;
 
-  const conclusionIn = easeOutCubic(range(safeProgress, 0.87, 0.94));
-  const handoff = easeInOutCubic(range(safeProgress, 0.985, 1));
+  const conclusionIn = handoff;
+  const glowHandoff = easeInOutCubic(range(safeProgress, 0.96, 1));
 
   return (
     <div
@@ -83,13 +84,13 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
         style={{
           position: "absolute",
           left: "50%",
-          bottom: `${-48 + handoff * 28}%`,
-          width: `${74 + handoff * 36}vw`,
-          height: `${74 + handoff * 36}vw`,
+          bottom: `${-48 + glowHandoff * 28}%`,
+          width: `${74 + glowHandoff * 36}vw`,
+          height: `${74 + glowHandoff * 36}vw`,
           borderRadius: "50%",
           background:
             "radial-gradient(circle, rgba(253,250,243,0.08), rgba(253,250,243,0.018) 42%, transparent 70%)",
-          opacity: handoff,
+          opacity: glowHandoff,
           transform: "translateX(-50%)",
           pointerEvents: "none",
         }}
@@ -126,7 +127,7 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
               zIndex: 12,
               opacity: copyIn * (1 - focusShift * 0.62) * (1 - copyOut),
               transform: `translateY(${
-                (1 - copyIn) * 24 - focusShift * 15 - copyOut * 14
+                (1 - copyIn) * 18 - focusShift * 12 - copyOut * 12
               }px) scale(${1 - focusShift * 0.025})`,
               transformOrigin: "left center",
             }}
@@ -138,9 +139,9 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
                 gap: "10px",
                 marginBottom: "18px",
                 color: colors.amber,
-                fontSize: "12px",
-                fontWeight: 700,
-                letterSpacing: "0.16em",
+                fontSize: "var(--atlas-eyebrow-size)",
+                fontWeight: "var(--atlas-eyebrow-weight)",
+                letterSpacing: "var(--atlas-eyebrow-tracking)",
                 textTransform: "uppercase",
               }}
             >
@@ -152,11 +153,11 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
                   background: colors.amber,
                 }}
               />
-              The Operating System
+              The infrastructure behind the network
             </div>
 
             <h2
-              className="atlas-os-desktop-heading"
+              className="atlas-os-desktop-heading atlas-section-heading"
               style={{
                 margin: 0,
                 maxWidth: "9.5ch",
@@ -166,22 +167,22 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
                 letterSpacing: "-0.068em",
               }}
             >
-              One system keeps the whole network moving.
+              One operating system keeps the network moving.
             </h2>
 
             <p
               style={{
                 margin: "25px 0 0",
                 maxWidth: "470px",
-                color: "rgba(253,250,243,0.6)",
+                color: "var(--atlas-copy-light)",
                 fontSize: "clamp(17px, 1.25vw, 20px)",
                 fontWeight: 500,
-                lineHeight: 1.5,
+                lineHeight: 1.55,
                 letterSpacing: "-0.022em",
               }}
             >
-              Passengers, drivers, businesses and operations are connected through one coordinated
-              platform.
+              Passenger screens, driver activity, advertiser campaigns and network operations are
+              coordinated through one connected platform.
             </p>
           </header>
 
@@ -214,8 +215,8 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
             textAlign: "center",
             opacity: conclusionIn,
             transform: `translateY(${
-              (1 - conclusionIn) * 30
-            }vh) scale(${0.92 + conclusionIn * 0.08})`,
+              (1 - conclusionIn) * 20
+            }px) scale(${0.975 + conclusionIn * 0.025})`,
             transformOrigin: "center",
             pointerEvents: "none",
             willChange: "opacity, transform",
@@ -236,7 +237,7 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
                 textTransform: "uppercase",
               }}
             >
-              One coordinated platform
+              Built for focused expansion
             </div>
 
             <p
@@ -250,9 +251,9 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
                 letterSpacing: "-0.068em",
               }}
             >
-              Different products.
-              <br />
               One connected system.
+              <br />
+              Ready to grow corridor by corridor.
             </p>
           </div>
         </div>

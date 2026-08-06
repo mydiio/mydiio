@@ -8,25 +8,21 @@ type PackageCardProps = {
   settled: boolean;
 };
 
-export function PackageCard({
-  tier,
-  active,
-  complete,
-  settled,
-}: PackageCardProps) {
+export function PackageCard({ tier, active, complete, settled }: PackageCardProps) {
   const opacity = settled ? 1 : active ? 1 : complete ? 0.7 : 0.28;
 
   return (
     <article
+      className={`atlas-commercial-card ${
+        tier.featured ? "atlas-commercial-card-dark" : "atlas-commercial-card-light"
+      }`}
       style={{
         position: "relative",
         minHeight: "430px",
         padding: "26px",
-        borderRadius: "24px",
+        borderRadius: "var(--atlas-commercial-card-radius)",
         overflow: "hidden",
-        background: tier.featured
-          ? colors.ink
-          : "rgba(255,255,255,0.88)",
+        background: tier.featured ? colors.ink : "rgba(255,255,255,0.88)",
         border: tier.featured
           ? "1px solid rgba(245,166,35,0.42)"
           : "1px solid rgba(26,26,24,0.075)",
@@ -59,8 +55,7 @@ export function PackageCard({
             width: "92%",
             aspectRatio: "1 / 1",
             borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(245,166,35,0.2), transparent 66%)",
+            background: "radial-gradient(circle, rgba(245,166,35,0.2), transparent 66%)",
             pointerEvents: "none",
           }}
         />
@@ -115,9 +110,7 @@ export function PackageCard({
         <div
           style={{
             marginTop: "28px",
-            color: tier.featured
-              ? "rgba(253,250,243,0.54)"
-              : "rgba(26,26,24,0.56)",
+            color: tier.featured ? "rgba(253,250,243,0.54)" : "rgba(26,26,24,0.56)",
             fontSize: "10px",
             fontWeight: 700,
             letterSpacing: "0.12em",
@@ -154,9 +147,7 @@ export function PackageCard({
         <p
           style={{
             margin: "14px 0 0",
-            color: tier.featured
-              ? "rgba(253,250,243,0.62)"
-              : "rgba(26,26,24,0.56)",
+            color: tier.featured ? "rgba(253,250,243,0.62)" : "rgba(26,26,24,0.56)",
             fontSize: "13px",
             lineHeight: 1.45,
           }}
@@ -170,9 +161,7 @@ export function PackageCard({
             gap: 0,
             marginTop: "20px",
             borderTop: `1px solid ${
-              tier.featured
-                ? "rgba(253,250,243,0.12)"
-                : "rgba(26,26,24,0.08)"
+              tier.featured ? "rgba(253,250,243,0.12)" : "rgba(26,26,24,0.08)"
             }`,
           }}
         >
@@ -186,17 +175,13 @@ export function PackageCard({
                 alignItems: "start",
                 padding: "11px 0",
                 borderBottom: `1px solid ${
-                  tier.featured
-                    ? "rgba(253,250,243,0.09)"
-                    : "rgba(26,26,24,0.065)"
+                  tier.featured ? "rgba(253,250,243,0.09)" : "rgba(26,26,24,0.065)"
                 }`,
               }}
             >
               <span
                 style={{
-                  color: tier.featured
-                    ? "rgba(253,250,243,0.44)"
-                    : "rgba(26,26,24,0.44)",
+                  color: tier.featured ? "rgba(253,250,243,0.44)" : "rgba(26,26,24,0.44)",
                   fontSize: "10px",
                   fontWeight: 700,
                   letterSpacing: "0.09em",
@@ -208,9 +193,7 @@ export function PackageCard({
 
               <span
                 style={{
-                  color: tier.featured
-                    ? "rgba(253,250,243,0.88)"
-                    : colors.ink,
+                  color: tier.featured ? "rgba(253,250,243,0.88)" : colors.ink,
                   fontSize: "12px",
                   fontWeight: 650,
                   lineHeight: 1.35,

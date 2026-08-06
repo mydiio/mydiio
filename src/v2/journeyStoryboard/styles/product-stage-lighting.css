@@ -1,0 +1,96 @@
+/*
+ * Journey product stage
+ *
+ * Deliberately visible lighting:
+ * - product halo behind tablet
+ * - architecture separation
+ * - road reflection
+ * - subtle physical tablet movement
+ */
+
+[data-journey-tablet-stage] {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Focused product halo with fast falloff */
+[data-journey-tablet-stage]::before {
+  content: "";
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse 35% 30% at 50% 52%,
+      rgba(245, 166, 35, 0.17) 0%,
+      rgba(205, 138, 53, 0.078) 27%,
+      rgba(133, 93, 51, 0.025) 48%,
+      transparent 69%
+    ),
+    radial-gradient(
+      ellipse 45% 15% at 50% 68%,
+      rgba(245, 166, 35, 0.072) 0%,
+      rgba(155, 103, 49, 0.022) 43%,
+      transparent 74%
+    );
+
+  filter: blur(14px);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
+
+/* Restrained architecture separation and centre-road reflection */
+[data-journey-tablet-stage]::after {
+  content: "";
+  position: absolute;
+  z-index: 9;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse 22% 56% at 4% 58%,
+      rgba(214, 162, 96, 0.045) 0%,
+      rgba(135, 96, 57, 0.016) 43%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 22% 56% at 96% 58%,
+      rgba(214, 162, 96, 0.045) 0%,
+      rgba(135, 96, 57, 0.016) 43%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 10% 45% at 50% 100%,
+      rgba(245, 166, 35, 0.095) 0%,
+      rgba(178, 119, 53, 0.033) 35%,
+      rgba(95, 70, 43, 0.01) 58%,
+      transparent 74%
+    );
+
+  filter: blur(10px);
+  mix-blend-mode: screen;
+  opacity: 0.74;
+}
+
+
+/* Product lighting breathes with the device */
+[data-journey-tablet-stage]::before {
+  animation: journey-product-glow-breathe 8s ease-in-out infinite;
+}
+
+@keyframes journey-product-glow-breathe {
+  0%,
+  100% {
+    opacity: 0.82;
+    filter: blur(14px) brightness(0.98);
+  }
+
+  50% {
+    opacity: 1;
+    filter: blur(16px) brightness(1.06);
+  }
+}
+

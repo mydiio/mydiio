@@ -66,10 +66,11 @@ export function Journey() {
   return (
     <section
       ref={sectionRef}
+      data-v2-act="journey"
       style={{
         position: "relative",
-        height: isMobile ? "290svh" : "275svh",
-        background: "#FDFAF3",
+        height: isMobile ? "360svh" : "340svh",
+        background: "#181715",
       }}
     >
       <JourneyScene progress={progress} />

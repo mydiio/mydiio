@@ -160,9 +160,9 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
                 gap: "11px",
                 marginBottom: "20px",
                 color: colors.amberDeep,
-                fontSize: "13px",
-                fontWeight: 700,
-                letterSpacing: "0.15em",
+                fontSize: "var(--atlas-eyebrow-size)",
+                fontWeight: "var(--atlas-eyebrow-weight)",
+                letterSpacing: "var(--atlas-eyebrow-tracking)",
                 textTransform: "uppercase",
                 opacity: eyebrowProgress,
                 transform: `translateY(${(1 - eyebrowProgress) * 10}px)`,
@@ -188,6 +188,7 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
             </div>
 
             <h2
+              className="atlas-commercial-heading"
               style={{
                 margin: 0,
                 color: colors.ink,
@@ -213,8 +214,8 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
                 maxWidth: "840px",
                 margin: "clamp(30px, 4vh, 46px) auto 0",
                 padding: "20px 0",
-                borderTop: "1px solid rgba(26,26,24,0.1)",
-                borderBottom: "1px solid rgba(26,26,24,0.1)",
+                borderTop: "1px solid var(--atlas-border-light)",
+                borderBottom: "1px solid var(--atlas-border-light)",
                 opacity: proofProgress,
                 transform: `translateY(${(1 - proofProgress) * 18}px)`,
               }}
@@ -229,7 +230,6 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
                     style={{
                       color: "rgba(26,26,24,0.43)",
                       fontSize: "10px",
-                      fontWeight: 700,
                       letterSpacing: "0.12em",
                       textTransform: "uppercase",
                     }}
@@ -240,7 +240,6 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
                   <div
                     style={{
                       marginTop: "7px",
-                      color: colors.ink,
                       fontSize: "clamp(18px, 1.65vw, 25px)",
                       fontWeight: 650,
                       letterSpacing: "-0.035em",
@@ -253,10 +252,11 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
             </div>
 
             <p
+              className="atlas-commercial-copy"
               style={{
                 maxWidth: "58ch",
                 margin: "clamp(22px, 2.8vh, 32px) auto 0",
-                color: "rgba(26,26,24,0.58)",
+                color: "var(--atlas-copy-dark)",
                 fontSize: "clamp(15px, 1.18vw, 19px)",
                 lineHeight: 1.55,
                 opacity: bodyProgress,
@@ -268,7 +268,7 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
             </p>
 
             <div
-              className="atlas-closing-actions"
+              className="atlas-closing-actions atlas-closing-paths"
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -279,45 +279,11 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
                 transform: `translateY(${(1 - actionsProgress) * 14}px)`,
               }}
             >
-              <a
-                href="/advertise/apply"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "54px",
-                  padding: "0 25px",
-                  borderRadius: "999px",
-                  background: colors.ink,
-                  color: colors.cream,
-                  textDecoration: "none",
-                  fontSize: "14px",
-                  fontWeight: 750,
-                  letterSpacing: "-0.015em",
-                  boxShadow: "0 20px 46px -28px rgba(26,26,24,0.38)",
-                }}
-              >
+              <a href="/advertise/apply" className="atlas-button-primary">
                 Advertise with mydiio
               </a>
 
-              <a
-                href="/drive"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "54px",
-                  padding: "0 25px",
-                  borderRadius: "999px",
-                  border: "1px solid rgba(26,26,24,0.12)",
-                  background: "transparent",
-                  color: colors.ink,
-                  textDecoration: "none",
-                  fontSize: "14px",
-                  fontWeight: 700,
-                  letterSpacing: "-0.015em",
-                }}
-              >
+              <a href="/drive" className="atlas-button-secondary">
                 Join the driver network
               </a>
             </div>
@@ -332,7 +298,7 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
             gap: "34px",
             alignItems: "end",
             paddingTop: "24px",
-            borderTop: "1px solid rgba(26,26,24,0.1)",
+            borderTop: "1px solid var(--atlas-border-light)",
             opacity: footerProgress,
             transform: `translateY(${(1 - footerProgress) * 10}px)`,
           }}

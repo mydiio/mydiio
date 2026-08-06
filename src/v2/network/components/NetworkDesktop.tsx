@@ -28,8 +28,9 @@ export function NetworkDesktop({ progress }: NetworkSceneProps) {
   const contentIn = easeOutCubic(range(safeProgress, 0.03, 0.18));
   const mapProgress = range(safeProgress, 0.14, 0.76);
 
-  const stageOut = easeInOutCubic(range(safeProgress, 0.75, 0.84));
-  const finalIn = easeOutCubic(range(safeProgress, 0.89, 0.96));
+  const handoff = easeInOutCubic(range(safeProgress, 0.78, 0.9));
+  const stageOut = handoff;
+  const finalIn = handoff;
 
   return (
     <div
@@ -97,11 +98,11 @@ export function NetworkDesktop({ progress }: NetworkSceneProps) {
           marginInline: "auto",
           paddingTop: "clamp(28px, 4vh, 48px)",
           boxSizing: "border-box",
-          transform: `translateY(${-stageOut * 12}px) scale(${1 - stageOut * 0.025})`,
+          transform: `translateY(${-stageOut * 12}px)`,
         }}
       >
         <div
-          className="atlas-network-copy"
+          className="atlas-network-copy atlas-section-copy"
           style={{
             order: 2,
             position: "relative",
@@ -115,17 +116,17 @@ export function NetworkDesktop({ progress }: NetworkSceneProps) {
             style={{
               marginBottom: "18px",
               color: colors.amberDeep,
-              fontSize: "13px",
-              fontWeight: 700,
-              letterSpacing: "0.14em",
+              fontSize: "var(--atlas-eyebrow-size)",
+              fontWeight: "var(--atlas-eyebrow-weight)",
+              letterSpacing: "var(--atlas-eyebrow-tracking)",
               textTransform: "uppercase",
             }}
           >
-            Built to scale
+            The scale ahead
           </div>
 
           <h2
-            className="atlas-network-heading"
+            className="atlas-network-heading atlas-section-heading"
             style={{
               margin: 0,
               maxWidth: "10ch",
@@ -135,22 +136,22 @@ export function NetworkDesktop({ progress }: NetworkSceneProps) {
               letterSpacing: "-0.065em",
             }}
           >
-            One platform. Every connected vehicle.
+            A citywide network, built vehicle by vehicle.
           </h2>
 
           <p
             style={{
               margin: "22px 0 0",
               maxWidth: "540px",
-              color: "rgba(26,26,24,0.62)",
+              color: "var(--atlas-copy-dark)",
               fontSize: "clamp(16px, 1.15vw, 19px)",
               fontWeight: 500,
-              lineHeight: 1.5,
+              lineHeight: 1.55,
               letterSpacing: "-0.025em",
             }}
           >
-            We begin with tuk-tuks in Colombo. The same operating system can expand across fleets,
-            vehicle types and cities as each stage is proven.
+            Colombo has 320,000 tuk-tuks moving each day, within a national fleet of 1.1 million
+            three-wheelers. The opportunity grows with every vehicle connected.
           </p>
 
           <div
@@ -197,7 +198,7 @@ export function NetworkDesktop({ progress }: NetworkSceneProps) {
             zIndex: 3,
             height: "88svh",
             minHeight: 0,
-            opacity: 1 - stageOut * 0.92,
+            opacity: 1 - stageOut,
             transform: `scale(${1 - stageOut * 0.035})`,
             transformOrigin: "center",
           }}
@@ -245,8 +246,8 @@ export function NetworkDesktop({ progress }: NetworkSceneProps) {
           textAlign: "center",
           opacity: finalIn,
           transform: `translateY(${
-            (1 - finalIn) * 30 - finalIn * 6
-          }vh) scale(${0.92 + finalIn * 0.08})`,
+            (1 - finalIn) * 22 - finalIn * 4
+          }px) scale(${0.975 + finalIn * 0.025})`,
           pointerEvents: "none",
         }}
       >
@@ -260,7 +261,7 @@ export function NetworkDesktop({ progress }: NetworkSceneProps) {
               textTransform: "uppercase",
             }}
           >
-            Built to compound
+            Scale needs coordination
           </div>
 
           <p
@@ -276,7 +277,7 @@ export function NetworkDesktop({ progress }: NetworkSceneProps) {
           >
             Every connected vehicle
             <br />
-            extends the network.
+            needs one operating system.
           </p>
         </div>
       </div>

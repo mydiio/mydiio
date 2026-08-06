@@ -1,72 +1,23 @@
-import { useEffect, useRef, useState } from "react";
 import { colors } from "@/design";
-import { useMediaQuery } from "@/v2/hooks";
+import { useMediaQuery, useSmoothSectionProgress } from "@/v2/hooks";
 import { NetworkScene } from "./components/NetworkScene";
 
-function clamp(value: number, min = 0, max = 1) {
-  return Math.min(max, Math.max(min, value));
-}
-
-function mapProgress(rawProgress: number) {
-  const holdBefore = 0.08;
-  const holdAfter = 0.92;
-
-  return clamp((rawProgress - holdBefore) / (holdAfter - holdBefore));
-}
-
 export function ActThree() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const frameRef = useRef<number | null>(null);
-  const [progress, setProgress] = useState(0);
   const isMobile = useMediaQuery("(max-width: 560px)");
-
-  useEffect(() => {
-    const update = () => {
-      frameRef.current = null;
-
-      const section = sectionRef.current;
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const scrollDistance = section.offsetHeight - window.innerHeight;
-
-      if (scrollDistance <= 0) {
-        setProgress(0);
-        return;
-      }
-
-      const rawProgress = clamp(-rect.top / scrollDistance);
-      setProgress(mapProgress(rawProgress));
-    };
-
-    const requestUpdate = () => {
-      if (frameRef.current !== null) return;
-      frameRef.current = window.requestAnimationFrame(update);
-    };
-
-    update();
-
-    window.addEventListener("scroll", requestUpdate, {
-      passive: true,
-    });
-    window.addEventListener("resize", requestUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-
-      if (frameRef.current !== null) {
-        window.cancelAnimationFrame(frameRef.current);
-      }
-    };
-  }, [isMobile]);
+  const { sectionRef, progress } = useSmoothSectionProgress({
+    holdBefore: 0,
+    holdAfter: 1,
+    damping: 22,
+  });
 
   return (
     <section
       ref={sectionRef}
+      data-v2-act="network"
+      data-atlas-tone="light"
       style={{
         position: "relative",
-        height: isMobile ? "230svh" : "250svh",
+        height: isMobile ? "255svh" : "255svh",
         background: colors.cream,
       }}
     >

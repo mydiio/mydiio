@@ -24,15 +24,16 @@ function easeInOutCubic(value: number) {
 export function PlatformMobile({ progress }: PlatformMobileProps) {
   const safeProgress = clamp(progress);
 
-  const copyIn = easeOutCubic(range(safeProgress, 0.02, 0.18));
+  const copyIn = easeOutCubic(range(safeProgress, 0.06, 0.24));
   const focusShift = easeInOutCubic(range(safeProgress, 0.5, 0.7));
-  const copyOut = easeInOutCubic(range(safeProgress, 0.72, 0.82));
+  const handoff = easeInOutCubic(range(safeProgress, 0.78, 0.9));
+  const copyOut = handoff;
 
-  const diagramIn = easeOutCubic(range(safeProgress, 0.14, 0.3));
-  const diagramQuiet = easeInOutCubic(range(safeProgress, 0.72, 0.84));
+  const diagramIn = easeOutCubic(range(safeProgress, 0.18, 0.36));
+  const diagramQuiet = handoff;
 
-  const conclusionIn = easeOutCubic(range(safeProgress, 0.87, 0.94));
-  const handoff = easeInOutCubic(range(safeProgress, 0.985, 1));
+  const conclusionIn = handoff;
+  const glowHandoff = easeInOutCubic(range(safeProgress, 0.96, 1));
 
   return (
     <div
@@ -77,7 +78,7 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
             textAlign: "center",
             opacity: copyIn * (1 - focusShift * 0.62) * (1 - copyOut),
             transform: `translateY(${
-              (1 - copyIn) * 18 - focusShift * 12 - copyOut * 10
+              (1 - copyIn) * 14 - focusShift * 10 - copyOut * 9
             }px) scale(${1 - focusShift * 0.02})`,
             transformOrigin: "center top",
           }}
@@ -85,13 +86,13 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
           <div
             style={{
               color: colors.amber,
-              fontSize: "9px",
-              fontWeight: 700,
-              letterSpacing: "0.15em",
+              fontSize: "var(--atlas-eyebrow-size)",
+              fontWeight: "var(--atlas-eyebrow-weight)",
+              letterSpacing: "var(--atlas-eyebrow-tracking)",
               textTransform: "uppercase",
             }}
           >
-            The Operating System
+            The infrastructure behind the network
           </div>
 
           <h2
@@ -105,20 +106,20 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
               letterSpacing: "-0.066em",
             }}
           >
-            One system keeps the whole network moving.
+            One operating system keeps the network moving.
           </h2>
 
           <p
             style={{
               margin: "13px auto 0",
               maxWidth: "35ch",
-              color: "rgba(253,250,243,0.58)",
+              color: "var(--atlas-copy-light)",
               fontSize: "12px",
               fontWeight: 500,
               lineHeight: 1.42,
             }}
           >
-            Passengers, drivers, businesses and operations are connected through one coordinated
+            Screens, drivers, campaigns and operations are coordinated through one connected
             platform.
           </p>
         </header>
@@ -152,8 +153,8 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
             textAlign: "center",
             opacity: conclusionIn,
             transform: `translateY(${
-              (1 - conclusionIn) * 28
-            }vh) scale(${0.92 + conclusionIn * 0.08})`,
+              (1 - conclusionIn) * 17
+            }px) scale(${0.98 + conclusionIn * 0.02})`,
             transformOrigin: "center",
             pointerEvents: "none",
             willChange: "opacity, transform",
@@ -174,7 +175,7 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
                 textTransform: "uppercase",
               }}
             >
-              One coordinated platform
+              Built for focused expansion
             </div>
 
             <p
@@ -188,9 +189,9 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
                 letterSpacing: "-0.066em",
               }}
             >
-              Different products.
-              <br />
               One connected system.
+              <br />
+              Ready to grow corridor by corridor.
             </p>
           </div>
         </div>

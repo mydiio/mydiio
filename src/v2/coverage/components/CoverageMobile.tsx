@@ -118,9 +118,9 @@ export function CoverageMobile({ progress }: CoverageMobileProps) {
             style={{
               marginBottom: "9px",
               color: colors.amberDeep,
-              fontSize: "10px",
-              fontWeight: 700,
-              letterSpacing: "0.14em",
+              fontSize: "var(--atlas-eyebrow-size)",
+              fontWeight: "var(--atlas-eyebrow-weight)",
+              letterSpacing: "var(--atlas-eyebrow-tracking)",
               textTransform: "uppercase",
             }}
           >
@@ -186,7 +186,7 @@ export function CoverageMobile({ progress }: CoverageMobileProps) {
             minHeight: 0,
             marginTop: "15px",
             overflow: "hidden",
-            borderRadius: "26px",
+            borderRadius: "var(--atlas-panel-radius)",
             background: "linear-gradient(145deg, rgba(255,255,255,0.96), rgba(253,250,243,0.86))",
             border: "1px solid rgba(26,26,24,0.07)",
             boxShadow: "0 30px 70px -46px rgba(26,26,24,0.28)",

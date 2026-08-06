@@ -16,7 +16,7 @@ function easeOutCubic(value: number) {
 export function PackagesMobile({ progress }: PackagesMobileProps) {
   const safeProgress = clamp(progress);
 
-  const copyProgress = Math.max(0.96, easeOutCubic(clamp(safeProgress / 0.12)));
+  const copyProgress = easeOutCubic(clamp(safeProgress / 0.12));
 
   const cardsProgress = clamp((safeProgress - 0.15) / 0.72);
 
@@ -75,9 +75,9 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
             style={{
               marginBottom: "9px",
               color: colors.amberDeep,
-              fontSize: "10px",
-              fontWeight: 700,
-              letterSpacing: "0.14em",
+              fontSize: "var(--atlas-eyebrow-size)",
+              fontWeight: "var(--atlas-eyebrow-weight)",
+              letterSpacing: "var(--atlas-eyebrow-tracking)",
               textTransform: "uppercase",
             }}
           >
@@ -85,6 +85,7 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
           </div>
 
           <h2
+            className="atlas-commercial-heading"
             style={{
               margin: 0,
               maxWidth: "8.8ch",
@@ -100,6 +101,7 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
           </h2>
 
           <p
+            className="atlas-commercial-copy"
             style={{
               margin: "12px 0 0",
               maxWidth: "34ch",
@@ -113,16 +115,7 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
             built for your brand.
           </p>
 
-          <div
-            style={{
-              marginTop: "10px",
-              color: colors.ink,
-              fontSize: "11px",
-              fontWeight: 700,
-            }}
-          >
-            Campaigns from LKR 25,000 a month
-          </div>
+          <div className="atlas-price-anchor">Campaigns from LKR 25,000 a month</div>
         </header>
 
         <div
@@ -139,12 +132,15 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
         >
           <div
             key={activeTier.id}
+            className={`atlas-commercial-card ${
+              isPioneer ? "atlas-commercial-card-dark" : "atlas-commercial-card-light"
+            }`}
             style={{
               width: "100%",
               minHeight: "clamp(285px, 38svh, 330px)",
               padding: "22px",
               boxSizing: "border-box",
-              borderRadius: "25px",
+              borderRadius: "var(--atlas-commercial-card-radius)",
               display: "flex",
               flexDirection: "column",
               background: isPioneer

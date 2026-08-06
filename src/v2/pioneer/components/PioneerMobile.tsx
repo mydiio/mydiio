@@ -93,13 +93,12 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
           <div
             style={{
               display: "inline-flex",
-              alignItems: "center",
               gap: "9px",
               marginBottom: "13px",
               color: colors.amber,
-              fontSize: "10px",
-              fontWeight: 700,
-              letterSpacing: "0.14em",
+              fontSize: "var(--atlas-eyebrow-size)",
+              fontWeight: "var(--atlas-eyebrow-weight)",
+              letterSpacing: "var(--atlas-eyebrow-tracking)",
               textTransform: "uppercase",
             }}
           >
@@ -108,13 +107,13 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
               style={{
                 width: "24px",
                 height: "1px",
-                background: colors.amber,
               }}
             />
             Pioneer
           </div>
 
           <h2
+            className="atlas-commercial-heading"
             style={{
               margin: 0,
               maxWidth: "8.5ch",
@@ -124,12 +123,13 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
               letterSpacing: "-0.068em",
             }}
           >
-            Only ten Pioneer partners.
+            Ten founding partners.
             <br />
             Never more.
           </h2>
 
           <p
+            className="atlas-section-copy atlas-section-copy-light"
             style={{
               margin: "15px 0 0",
               maxWidth: "33ch",
@@ -139,8 +139,8 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
               letterSpacing: "-0.018em",
             }}
           >
-            The first ten businesses receive founding benefits that will not be offered again as the
-            network grows.
+            The first ten businesses receive permanent founding recognition and launch benefits that
+            will not be offered again as the network grows.
           </p>
         </header>
 
@@ -155,7 +155,7 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
-            borderRadius: "26px",
+            borderRadius: "var(--atlas-panel-radius)",
             background: "linear-gradient(155deg, rgba(255,255,255,0.045), rgba(245,166,35,0.055))",
             border: "1px solid rgba(245,166,35,0.2)",
             boxShadow: "0 30px 70px -44px rgba(0,0,0,0.88)",
@@ -230,7 +230,6 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
 
           <div
             style={{
-              display: "flex",
               alignItems: "baseline",
               gap: "9px",
               marginTop: "12px",
@@ -331,20 +330,10 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
         >
           <a
             href="/advertise/apply"
+            className="atlas-button-amber"
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              width: "100%",
-              minHeight: "50px",
-              borderRadius: "999px",
-              background: colors.amber,
-              color: colors.ink,
-              textDecoration: "none",
-              fontSize: "14px",
-              fontWeight: 750,
-              letterSpacing: "-0.015em",
-              boxShadow: "0 18px 42px -22px rgba(245,166,35,0.55)",
             }}
           >
             Apply for Pioneer

@@ -13,47 +13,122 @@ const navLinks = [
 export function AtlasNav() {
   const [scrolled, setScrolled] = useState(false);
   const [compact, setCompact] = useState(false);
-  const [overFilm, setOverFilm] = useState(true);
+  const [darkSurface, setDarkSurface] = useState(true);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    let frame = 0;
+
+    const resolveTone = () => {
+      const navProbeY = compact ? 72 : 90;
+      const navProbeX =
+        Math.min(
+          window.innerWidth - 1,
+          Math.max(1, window.innerWidth / 2),
+        );
+
+      const elements =
+        document.elementsFromPoint(
+          navProbeX,
+          Math.min(
+            window.innerHeight - 1,
+            navProbeY,
+          ),
+        );
+
+      const toneElement = elements
+        .map((element) =>
+          element.closest<HTMLElement>(
+            "[data-atlas-tone]",
+          ),
+        )
+        .find(Boolean);
+
+      if (toneElement) {
+        setDarkSurface(
+          toneElement.dataset.atlasTone ===
+            "dark",
+        );
+        return;
+      }
+
+      /*
+       * Act One contains both a dark film and a light
+       * end card, so its tone remains progress-aware.
+       */
+      const actOne =
+        document.querySelector<HTMLElement>(
+          "[data-atlas-act-one]",
+        );
+
+      if (!actOne) {
+        setDarkSurface(false);
+        return;
+      }
+
+      const y = window.scrollY;
+      const actStart = actOne.offsetTop;
+      const scrollDistance =
+        actOne.offsetHeight -
+        window.innerHeight;
+
+      const endCardStart =
+        actStart +
+        Math.max(0, scrollDistance) *
+          0.955;
+
+      setDarkSurface(y < endCardStart);
+    };
+
     const update = () => {
-      const actOne = document.querySelector<HTMLElement>(
-        "[data-atlas-act-one]",
-      );
+      frame = 0;
 
       const y = window.scrollY;
 
       setScrolled(y > 40);
       setCompact(y > 200);
 
-      if (!actOne) {
-        setOverFilm(false);
-        return;
-      }
-
-      const actStart = actOne.offsetTop;
-      const scrollDistance =
-        actOne.offsetHeight - window.innerHeight;
-
-      const endCardStart =
-        actStart + Math.max(0, scrollDistance) * 0.955;
-
-      setOverFilm(y < endCardStart);
+      resolveTone();
     };
 
-    update();
+    const requestUpdate = () => {
+      if (frame) return;
 
-    window.addEventListener("scroll", update, {
-      passive: true,
-    });
-    window.addEventListener("resize", update);
+      frame =
+        window.requestAnimationFrame(update);
+    };
+
+    requestUpdate();
+
+    window.addEventListener(
+      "scroll",
+      requestUpdate,
+      {
+        passive: true,
+      },
+    );
+
+    window.addEventListener(
+      "resize",
+      requestUpdate,
+    );
 
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
+
+      window.removeEventListener(
+        "scroll",
+        requestUpdate,
+      );
+
+      window.removeEventListener(
+        "resize",
+        requestUpdate,
+      );
     };
-  }, []);
+  }, [compact]);
 
   useEffect(() => {
     if (!open) return;
@@ -89,7 +164,7 @@ export function AtlasNav() {
     };
   }, []);
 
-  const foreground = overFilm
+  const foreground = darkSurface
     ? colors.cream
     : colors.ink;
 
@@ -99,7 +174,10 @@ export function AtlasNav() {
         className={[
           "atlas-nav",
           scrolled ? "atlas-nav-scrolled" : "",
-          compact && !overFilm ? "atlas-nav-compact" : "",
+          compact ? "atlas-nav-compact" : "",
+          darkSurface
+            ? "atlas-nav-dark"
+            : "atlas-nav-light",
         ]
           .filter(Boolean)
           .join(" ")}
@@ -252,7 +330,7 @@ export function AtlasNav() {
           left: 0;
           right: 0;
           z-index: 100;
-          height: 88px;
+          height: var(--atlas-nav-height, 88px);
           padding-inline: 28px;
           box-sizing: border-box;
           border-bottom: 1px solid transparent;
@@ -265,14 +343,40 @@ export function AtlasNav() {
             backdrop-filter 180ms ease;
         }
 
-        .atlas-nav-scrolled {
+        .atlas-nav-scrolled.atlas-nav-light {
+          background:
+            rgba(253,250,243,0.82);
+          border-bottom-color:
+            rgba(26,26,24,0.055);
+          box-shadow:
+            0 18px 48px -38px
+            rgba(26,26,24,0.28);
+          backdrop-filter:
+            blur(18px)
+            saturate(1.08);
+          -webkit-backdrop-filter:
+            blur(18px)
+            saturate(1.08);
         }
 
-        .atlas-nav-scrolled.atlas-nav-over-film {
+        .atlas-nav-scrolled.atlas-nav-dark {
+          background:
+            rgba(8,8,7,0.62);
+          border-bottom-color:
+            rgba(255,255,255,0.055);
+          box-shadow:
+            0 18px 52px -40px
+            rgba(0,0,0,0.72);
+          backdrop-filter:
+            blur(18px)
+            saturate(1.04);
+          -webkit-backdrop-filter:
+            blur(18px)
+            saturate(1.04);
         }
 
         .atlas-nav-compact {
-          height: 70px;
+          height: var(--atlas-nav-height-compact, 70px);
         }
 
         .atlas-nav-inner {

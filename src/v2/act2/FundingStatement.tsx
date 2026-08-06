@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import { colors } from "@/design";
+import { useSmoothSectionProgress } from "@/v2/hooks";
 
 function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
@@ -10,70 +10,38 @@ function easeOutCubic(value: number) {
 }
 
 export function FundingStatement() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const frameRef = useRef<number | null>(null);
-  const [progress, setProgress] = useState(0);
+  const { sectionRef, progress } = useSmoothSectionProgress({
+    damping: 12,
+    entryProgress: true,
+    entryDistance: 1.05,
+    snapToEnd: true,
+  });
 
-  useEffect(() => {
-    const update = () => {
-      frameRef.current = null;
+  const panelProgress = easeOutCubic(clamp(progress / 0.28));
 
-      const section = sectionRef.current;
-      if (!section) return;
+  const copyProgress = easeOutCubic(clamp((progress - 0.04) / 0.42));
 
-      const rect = section.getBoundingClientRect();
-
-      const nextProgress = clamp((window.innerHeight - rect.top) / (window.innerHeight * 0.72));
-
-      setProgress(nextProgress);
-    };
-
-    const requestUpdate = () => {
-      if (frameRef.current !== null) return;
-
-      frameRef.current = window.requestAnimationFrame(update);
-    };
-
-    update();
-
-    window.addEventListener("scroll", requestUpdate, {
-      passive: true,
-    });
-    window.addEventListener("resize", requestUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-
-      if (frameRef.current !== null) {
-        window.cancelAnimationFrame(frameRef.current);
-      }
-    };
-  }, []);
-
-  const panelProgress = easeOutCubic(clamp(progress / 0.52));
-
-  const copyProgress = easeOutCubic(clamp((progress - 0.24) / 0.5));
-
-  const supportingProgress = easeOutCubic(clamp((progress - 0.48) / 0.38));
+  const supportingProgress = easeOutCubic(clamp((progress - 0.2) / 0.42));
 
   return (
     <section
       ref={sectionRef}
+      data-v2-act="funding"
+      data-atlas-tone="dark"
       style={{
         position: "relative",
-        minHeight: "108svh",
+        minHeight: "100svh",
         overflow: "hidden",
         display: "grid",
         placeItems: "center",
-        padding: "110px 24px 78px",
+        padding: "96px 24px 70px",
         boxSizing: "border-box",
-        borderRadius: "34px 34px 0 0",
+        borderRadius: 0,
         background: colors.ink,
         color: colors.cream,
-        boxShadow: "0 -34px 90px -52px rgba(26,26,24,0.72)",
-        opacity: 0.84 + panelProgress * 0.16,
-        transform: `translateY(${(1 - panelProgress) * 72}px)`,
+        boxShadow: "none",
+        opacity: 1,
+        transform: `translateY(${(1 - panelProgress) * 4}px)`,
         transformOrigin: "center bottom",
         fontFamily: '"DM Sans", system-ui, sans-serif',
       }}
@@ -131,7 +99,7 @@ export function FundingStatement() {
           maxWidth: "1260px",
           textAlign: "center",
           opacity: copyProgress,
-          transform: `translateY(${(1 - copyProgress) * 28}px)`,
+          transform: `translateY(${(1 - copyProgress) * 18}px)`,
         }}
       >
         <div
@@ -141,9 +109,9 @@ export function FundingStatement() {
             gap: "9px",
             marginBottom: "24px",
             color: colors.amber,
-            fontSize: "11px",
-            fontWeight: 700,
-            letterSpacing: "0.14em",
+            fontSize: "var(--atlas-eyebrow-size)",
+            fontWeight: "var(--atlas-eyebrow-weight)",
+            letterSpacing: "var(--atlas-eyebrow-tracking)",
             textTransform: "uppercase",
           }}
         >
@@ -155,7 +123,7 @@ export function FundingStatement() {
               background: colors.amber,
             }}
           />
-          The commercial engine
+          How the network grows
           <span
             aria-hidden="true"
             style={{
@@ -167,7 +135,7 @@ export function FundingStatement() {
         </div>
 
         <h2
-          className="atlas-funding-headline"
+          className="atlas-funding-headline atlas-section-heading-large"
           style={{
             margin: 0,
             color: colors.cream,
@@ -182,7 +150,7 @@ export function FundingStatement() {
         </h2>
 
         <p
-          className="atlas-funding-supporting atlas-funding-motion"
+          className="atlas-funding-supporting atlas-funding-motion atlas-section-copy atlas-section-copy-light"
           style={{
             margin: "34px auto 0",
             maxWidth: "650px",
@@ -194,8 +162,8 @@ export function FundingStatement() {
             transform: `translateY(${(1 - supportingProgress) * 14}px)`,
           }}
         >
-          Businesses fund connected vehicles, driver income and useful passenger information. Every
-          campaign helps the network grow.
+          Every campaign supports connected vehicles, driver income and useful passenger
+          information. As participation grows, the network grows with it.
         </p>
       </div>
     </section>

@@ -37,7 +37,9 @@ function HeroPackage({
 
   return (
     <article
-      className="atlas-package-motion"
+      className={`atlas-package-motion atlas-commercial-card ${
+        featured ? "atlas-commercial-card-dark" : "atlas-commercial-card-light"
+      }`}
       style={{
         position: "absolute",
         inset: 0,
@@ -49,7 +51,7 @@ function HeroPackage({
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
-        borderRadius: "34px",
+        borderRadius: "var(--atlas-commercial-card-radius)",
         background: featured
           ? "linear-gradient(150deg, #171714 0%, #171714 64%, #4b3518 100%)"
           : "rgba(255,255,255,0.94)",
@@ -115,11 +117,9 @@ function HeroPackage({
             <span
               style={{
                 padding: "8px 12px",
-                borderRadius: "999px",
                 background: featured ? "rgba(245,166,35,0.15)" : "rgba(245,166,35,0.1)",
                 color: colors.amber,
                 fontSize: "10px",
-                fontWeight: 700,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
               }}
@@ -214,7 +214,6 @@ function HeroPackage({
                 style={{
                   textAlign: "right",
                   color: featured ? "rgba(253,250,243,0.92)" : colors.ink,
-                  fontSize: "14px",
                   fontWeight: 650,
                   lineHeight: 1.35,
                 }}
@@ -323,13 +322,10 @@ export function PackagesDesktop({ progress }: PackagesSceneProps) {
           </div>
 
           <h2
+            className="atlas-commercial-heading"
             style={{
               margin: "18px auto 0",
               maxWidth: "11ch",
-              fontSize: "clamp(62px, 7.5vw, 112px)",
-              fontWeight: 600,
-              lineHeight: 0.9,
-              letterSpacing: "-0.072em",
             }}
           >
             One network.
@@ -338,27 +334,16 @@ export function PackagesDesktop({ progress }: PackagesSceneProps) {
           </h2>
 
           <p
+            className="atlas-commercial-copy"
             style={{
               margin: "24px auto 0",
-              maxWidth: "48ch",
-              color: "rgba(26,26,24,0.58)",
-              fontSize: "clamp(16px, 1.25vw, 20px)",
-              lineHeight: 1.5,
             }}
           >
             Whether you're testing your first campaign or scaling across Colombo, there's a path
             built for your brand.
           </p>
 
-          <div
-            style={{
-              marginTop: "20px",
-              fontSize: "14px",
-              fontWeight: 700,
-            }}
-          >
-            Campaigns from LKR 25,000 a month
-          </div>
+          <div className="atlas-price-anchor">Campaigns from LKR 25,000 a month</div>
         </div>
       </header>
 
@@ -451,7 +436,7 @@ export function PackagesDesktop({ progress }: PackagesSceneProps) {
           boxSizing: "border-box",
           textAlign: "center",
           opacity: keynoteIn,
-          transform: `translateY(${(1 - keynoteIn) * 30}vh) scale(${0.92 + keynoteIn * 0.08})`,
+          transform: `translateY(${(1 - keynoteIn) * 22}px) scale(${0.975 + keynoteIn * 0.025})`,
           pointerEvents: keynoteIn > 0.9 ? "auto" : "none",
         }}
       >
@@ -490,22 +475,7 @@ export function PackagesDesktop({ progress }: PackagesSceneProps) {
               transform: `translateY(${(1 - ctaIn) * 12}px)`,
             }}
           >
-            <a
-              href="/advertise"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                minHeight: "50px",
-                padding: "0 24px",
-                borderRadius: "999px",
-                background: colors.ink,
-                color: colors.cream,
-                textDecoration: "none",
-                fontSize: "14px",
-                fontWeight: 700,
-              }}
-            >
+            <a href="/advertise" className="atlas-button-primary">
               Build your campaign
             </a>
 

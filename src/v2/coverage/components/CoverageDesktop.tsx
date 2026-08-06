@@ -9,11 +9,15 @@ function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
 }
 
+function easeOutCubic(value: number) {
+  return 1 - Math.pow(1 - value, 3);
+}
+
 export function CoverageDesktop({ progress }: CoverageSceneProps) {
-  const eyebrowProgress = clamp(progress / 0.1);
-  const headingProgress = clamp((progress - 0.04) / 0.16);
-  const bodyProgress = clamp((progress - 0.1) / 0.15);
-  const stageProgress = clamp((progress - 0.18) / 0.2);
+  const eyebrowProgress = easeOutCubic(clamp(progress / 0.1));
+  const headingProgress = easeOutCubic(clamp((progress - 0.04) / 0.16));
+  const bodyProgress = easeOutCubic(clamp((progress - 0.1) / 0.15));
+  const stageProgress = easeOutCubic(clamp((progress - 0.18) / 0.2));
   const routeProgress = clamp((progress - 0.22) / 0.7);
   const finalProgress = clamp((progress - 0.88) / 0.09);
 
@@ -72,18 +76,19 @@ export function CoverageDesktop({ progress }: CoverageSceneProps) {
               style={{
                 marginBottom: "15px",
                 color: colors.amberDeep,
-                fontSize: "13px",
-                fontWeight: 700,
-                letterSpacing: "0.14em",
+                fontSize: "var(--atlas-eyebrow-size)",
+                fontWeight: "var(--atlas-eyebrow-weight)",
+                letterSpacing: "var(--atlas-eyebrow-tracking)",
                 textTransform: "uppercase",
                 opacity: eyebrowProgress,
                 transform: `translateY(${(1 - eyebrowProgress) * 10}px)`,
               }}
             >
-              LIVE TODAY
+              WHERE THE NETWORK BEGINS
             </div>
 
             <h2
+              className="atlas-section-heading"
               style={{
                 margin: 0,
                 maxWidth: "11ch",
@@ -96,7 +101,7 @@ export function CoverageDesktop({ progress }: CoverageSceneProps) {
                 transform: `translateY(${(1 - headingProgress) * 18}px)`,
               }}
             >
-              Campaigns begin in Colombo.
+              Colombo, corridor by corridor.
             </h2>
           </div>
 
@@ -111,13 +116,13 @@ export function CoverageDesktop({ progress }: CoverageSceneProps) {
             <p
               style={{
                 margin: 0,
-                color: "rgba(26,26,24,0.62)",
+                color: "var(--atlas-copy-dark)",
                 fontSize: "clamp(16px, 1.18vw, 19px)",
                 lineHeight: 1.58,
               }}
             >
-              Our first operating corridor serves Colombo. Every campaign starts here while the
-              network expands corridor by corridor.
+              The network begins with a focused Colombo corridor. Each verified journey builds the
+              operating proof needed to expand responsibly.
             </p>
 
             <div
@@ -141,22 +146,22 @@ export function CoverageDesktop({ progress }: CoverageSceneProps) {
                   boxShadow: "0 0 0 5px rgba(245,166,35,0.12)",
                 }}
               />
-              Live in Colombo
+              First Colombo corridor
             </div>
           </div>
         </div>
 
         <div
-          className="atlas-coverage-stage"
+          className="atlas-coverage-stage atlas-premium-panel-light"
           style={{
             position: "relative",
             marginTop: "clamp(16px, 2vh, 24px)",
             padding: "18px 28px 16px",
             minHeight: "380px",
-            borderRadius: "28px",
+            borderRadius: "var(--atlas-panel-radius)",
             overflow: "hidden",
             background: "linear-gradient(145deg, rgba(255,255,255,0.91), rgba(253,250,243,0.96))",
-            border: "1px solid rgba(26,26,24,0.065)",
+            border: "1px solid var(--atlas-border-light)",
             boxShadow:
               "0 30px 72px -42px rgba(26,26,24,0.28), 0 8px 22px -16px rgba(26,26,24,0.12)",
             opacity: stageProgress,
@@ -247,9 +252,9 @@ export function CoverageDesktop({ progress }: CoverageSceneProps) {
                   fontWeight: 700,
                 }}
               ></span>
-              Operating today.
+              Beginning in Colombo.
               <br />
-              Growing corridor by corridor.
+              Expanding corridor by corridor.
             </div>
           </div>
         </div>

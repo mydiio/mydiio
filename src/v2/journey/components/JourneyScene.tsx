@@ -1,4 +1,5 @@
 import { colors } from "@/design";
+import { JourneyWorld } from "../world";
 
 type JourneySceneProps = {
   progress: number;
@@ -419,7 +420,7 @@ function VerificationCard({ progress, exit }: { progress: number; exit: number }
         <div>
           <div
             style={{
-              color: colors.amberDeep,
+              color: colors.amber,
               fontSize: "11px",
               fontWeight: 700,
               letterSpacing: "0.18em",
@@ -675,11 +676,13 @@ export function JourneyScene({ progress }: JourneySceneProps) {
         top: 0,
         height: "100svh",
         overflow: "hidden",
-        background: colors.cream,
-        color: colors.ink,
+        background: "#181715",
+        color: colors.cream,
         fontFamily: '"DM Sans", system-ui, sans-serif',
       }}
     >
+      <JourneyWorld opacity={sceneIn} />
+
       <style>{`
         .journey-cinematic-frame {
           width: min(1240px, calc(100% - 56px));
@@ -769,7 +772,7 @@ export function JourneyScene({ progress }: JourneySceneProps) {
         >
           <div
             style={{
-              color: colors.amberDeep,
+              color: colors.amber,
               fontSize: "11px",
               fontWeight: 700,
               letterSpacing: "0.16em",
@@ -786,7 +789,9 @@ export function JourneyScene({ progress }: JourneySceneProps) {
               maxWidth: "13ch",
               fontWeight: 600,
               lineHeight: 0.96,
+              color: colors.cream,
               letterSpacing: "-0.058em",
+              textShadow: "0 8px 34px rgba(0,0,0,0.38)",
             }}
           >
             Watch one journey become trusted data.
@@ -832,7 +837,7 @@ export function JourneyScene({ progress }: JourneySceneProps) {
         >
           <div
             style={{
-              color: colors.amberDeep,
+              color: colors.amber,
               fontSize: "11px",
               fontWeight: 700,
               letterSpacing: "0.18em",
@@ -846,7 +851,7 @@ export function JourneyScene({ progress }: JourneySceneProps) {
             style={{
               margin: "16px auto 0",
               maxWidth: "18ch",
-              color: colors.ink,
+              color: colors.cream,
               fontSize: "clamp(42px, 5.2vw, 76px)",
               fontWeight: 600,
               lineHeight: 0.95,

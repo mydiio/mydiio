@@ -71,10 +71,7 @@ export function AtlasPlayer({ moments, sequenceProgress }: AtlasPlayerProps) {
     >
       <style>{`
         .atlas-headline {
-          transition:
-            opacity 0.2s linear,
-            transform 0.2s linear,
-            filter 0.2s linear;
+          will-change: opacity, transform, filter;
         }
 
         @media (max-width: 760px) {

@@ -32,8 +32,9 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
   const mapProgress = range(safeProgress, 0.12, 0.7);
   const metricsIn = easeOutCubic(range(safeProgress, 0.5, 0.72));
 
-  const stageOut = easeInOutCubic(range(safeProgress, 0.74, 0.84));
-  const finalIn = easeOutCubic(range(safeProgress, 0.89, 0.96));
+  const handoff = easeInOutCubic(range(safeProgress, 0.78, 0.9));
+  const stageOut = handoff;
+  const finalIn = handoff;
 
   const colomboCount = formatCount(320000 * metricsIn);
   const nationalCount =
@@ -60,7 +61,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
           boxSizing: "border-box",
           display: "flex",
           flexDirection: "column",
-          transform: `translateY(${-stageOut * 9}px) scale(${1 - stageOut * 0.022})`,
+          transform: `translateY(${-stageOut * 9}px)`,
         }}
       >
         <header
@@ -74,13 +75,13 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
             style={{
               marginBottom: "9px",
               color: colors.amberDeep,
-              fontSize: "10px",
-              fontWeight: 700,
-              letterSpacing: "0.14em",
+              fontSize: "var(--atlas-eyebrow-size)",
+              fontWeight: "var(--atlas-eyebrow-weight)",
+              letterSpacing: "var(--atlas-eyebrow-tracking)",
               textTransform: "uppercase",
             }}
           >
-            Built to scale
+            The scale ahead
           </div>
 
           <h2
@@ -93,21 +94,21 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
               letterSpacing: "-0.064em",
             }}
           >
-            One platform. Every connected vehicle.
+            A citywide network, built vehicle by vehicle.
           </h2>
 
           <p
             style={{
               margin: "12px 0 0",
               maxWidth: "35ch",
-              color: "rgba(26,26,24,0.6)",
+              color: "var(--atlas-copy-dark)",
               fontSize: "13px",
               fontWeight: 500,
               lineHeight: 1.42,
               letterSpacing: "-0.018em",
             }}
           >
-            We begin with tuk-tuks in Colombo and expand as each stage is proven.
+            320,000 tuk-tuks move through Colombo each day, within 1.1 million nationwide.
           </p>
         </header>
 
@@ -122,11 +123,11 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
-            borderRadius: "26px",
+            borderRadius: "var(--atlas-panel-radius)",
             background: "linear-gradient(145deg, rgba(255,255,255,0.96), rgba(253,250,243,0.82))",
-            border: "1px solid rgba(26,26,24,0.07)",
+            border: "1px solid var(--atlas-border-light)",
             boxShadow: "0 30px 70px -46px rgba(26,26,24,0.28)",
-            opacity: 1 - stageOut * 0.92,
+            opacity: 1 - stageOut,
             transform: `scale(${1 - stageOut * 0.035})`,
             transformOrigin: "center",
           }}
@@ -295,8 +296,8 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
           textAlign: "center",
           opacity: finalIn,
           transform: `translateY(${
-            (1 - finalIn) * 28 - finalIn * 4
-          }vh) scale(${0.92 + finalIn * 0.08})`,
+            (1 - finalIn) * 18 - finalIn * 3
+          }px) scale(${0.98 + finalIn * 0.02})`,
           pointerEvents: "none",
         }}
       >
@@ -310,7 +311,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
               textTransform: "uppercase",
             }}
           >
-            Built to compound
+            Scale needs coordination
           </div>
 
           <p
@@ -325,7 +326,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
           >
             Every connected vehicle
             <br />
-            extends the network.
+            needs one operating system.
           </p>
         </div>
       </div>

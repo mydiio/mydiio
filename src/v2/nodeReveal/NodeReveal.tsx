@@ -68,9 +68,10 @@ export function NodeReveal() {
     <section
       ref={sectionRef}
       data-atlas-node-reveal
+      data-v2-act="node-reveal"
       style={{
         position: "relative",
-        height: isMobile ? "285svh" : "265svh",
+        height: isMobile ? "315svh" : "300svh",
         background: colors.cream,
       }}
     >

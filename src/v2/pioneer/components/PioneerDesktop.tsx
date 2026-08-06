@@ -106,13 +106,12 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
           <div
             style={{
               display: "inline-flex",
-              alignItems: "center",
               gap: "11px",
               marginBottom: "22px",
               color: colors.amber,
-              fontSize: "13px",
-              fontWeight: 700,
-              letterSpacing: "0.15em",
+              fontSize: "var(--atlas-eyebrow-size)",
+              fontWeight: "var(--atlas-eyebrow-weight)",
+              letterSpacing: "var(--atlas-eyebrow-tracking)",
               textTransform: "uppercase",
               opacity: eyebrowProgress,
               transform: `translateY(${(1 - eyebrowProgress) * 10}px)`,
@@ -123,13 +122,13 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               style={{
                 width: "30px",
                 height: "1px",
-                background: colors.amber,
               }}
             />
             Pioneer
           </div>
 
           <h2
+            className="atlas-commercial-heading"
             style={{
               margin: 0,
               maxWidth: "10ch",
@@ -141,12 +140,13 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               transform: `translateY(${(1 - headingProgress) * 24}px)`,
             }}
           >
-            Only ten Pioneer partners.
+            Ten founding partners.
             <br />
             Never more.
           </h2>
 
           <p
+            className="atlas-section-copy atlas-section-copy-light"
             style={{
               margin: "clamp(24px, 3vh, 34px) 0 0",
               maxWidth: "48ch",
@@ -157,8 +157,8 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               transform: `translateY(${(1 - bodyProgress) * 16}px)`,
             }}
           >
-            The first ten businesses receive founding benefits that will not be offered again as the
-            network grows.
+            The first ten businesses receive permanent founding recognition and launch benefits that
+            will not be offered again as the network grows.
           </p>
 
           <div
@@ -203,7 +203,6 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
                 <span
                   style={{
                     color: "rgba(253,250,243,0.76)",
-                    fontSize: "14px",
                     fontWeight: 550,
                     lineHeight: 1.45,
                   }}
@@ -240,7 +239,6 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
 
           <div
             style={{
-              display: "flex",
               alignItems: "baseline",
               gap: "10px",
               marginTop: "14px",
@@ -349,24 +347,7 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               transform: `translateY(${(1 - ctaProgress) * 12}px)`,
             }}
           >
-            <a
-              href="/advertise/apply"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                minHeight: "52px",
-                padding: "0 24px",
-                borderRadius: "999px",
-                background: colors.amber,
-                color: colors.ink,
-                textDecoration: "none",
-                fontSize: "14px",
-                fontWeight: 750,
-                letterSpacing: "-0.015em",
-                boxShadow: "0 18px 44px -24px rgba(245,166,35,0.58)",
-              }}
-            >
+            <a href="/advertise/apply" className="atlas-button-amber">
               Apply for Pioneer
             </a>
 

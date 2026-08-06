@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import { colors } from "@/design";
+import { useSmoothSectionProgress } from "@/v2/hooks";
 
 function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
@@ -18,51 +18,10 @@ function formatCount(value: number) {
 }
 
 export function ActTwo() {
-  const heroRef = useRef<HTMLElement | null>(null);
-  const frameRef = useRef<number | null>(null);
-
-  const [heroProgress, setHeroProgress] = useState(0);
-
-  useEffect(() => {
-    const update = () => {
-      frameRef.current = null;
-
-      const hero = heroRef.current;
-      if (hero) {
-        const rect = hero.getBoundingClientRect();
-        const distance = hero.offsetHeight - window.innerHeight;
-
-        const progress =
-          distance > 0
-            ? clamp(-rect.top / distance)
-            : clamp((window.innerHeight - rect.top) / window.innerHeight);
-
-        setHeroProgress(progress);
-      }
-    };
-
-    const requestUpdate = () => {
-      if (frameRef.current !== null) return;
-
-      frameRef.current = window.requestAnimationFrame(update);
-    };
-
-    update();
-
-    window.addEventListener("scroll", requestUpdate, {
-      passive: true,
-    });
-    window.addEventListener("resize", requestUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-
-      if (frameRef.current !== null) {
-        window.cancelAnimationFrame(frameRef.current);
-      }
-    };
-  }, []);
+  const { sectionRef: heroRef, progress: heroProgress } = useSmoothSectionProgress({
+    damping: 12,
+    snapToEnd: true,
+  });
 
   const headlineProgress = Math.max(0.96, easeOutCubic(mapRange(heroProgress, 0, 0.22)));
 
@@ -78,6 +37,7 @@ export function ActTwo() {
     <section
       data-atlas-act-two
       data-v2-act="act-two"
+      data-atlas-tone="light"
       style={{
         position: "relative",
         background: colors.cream,
@@ -135,7 +95,7 @@ export function ActTwo() {
         ref={heroRef}
         style={{
           position: "relative",
-          height: "122svh",
+          height: "145svh",
           background: colors.cream,
         }}
       >
