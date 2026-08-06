@@ -24,12 +24,12 @@ function easeInOutCubic(value: number) {
 export function PlatformDesktop({ progress }: PlatformSceneProps) {
   const safeProgress = clamp(progress);
 
-  const copyIn = easeOutCubic(range(safeProgress, 0.06, 0.24));
+  const copyIn = easeOutCubic(range(safeProgress, 0, 0.14));
   const focusShift = easeInOutCubic(range(safeProgress, 0.5, 0.7));
   const handoff = easeInOutCubic(range(safeProgress, 0.78, 0.9));
   const copyOut = handoff;
 
-  const diagramIn = easeOutCubic(range(safeProgress, 0.18, 0.36));
+  const diagramIn = easeOutCubic(range(safeProgress, 0.03, 0.16));
   const diagramQuiet = handoff;
 
   const conclusionIn = handoff;

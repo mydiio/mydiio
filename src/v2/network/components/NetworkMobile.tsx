@@ -28,9 +28,9 @@ function formatCount(value: number) {
 export function NetworkMobile({ progress }: NetworkMobileProps) {
   const safeProgress = clamp(progress);
 
-  const copyIn = easeOutCubic(range(safeProgress, 0.02, 0.18));
-  const mapProgress = range(safeProgress, 0.12, 0.7);
-  const metricsIn = easeOutCubic(range(safeProgress, 0.5, 0.72));
+  const copyIn = 1;
+  const mapProgress = 0.08 + range(safeProgress, 0, 0.7) * 0.92;
+  const metricsIn = easeOutCubic(range(safeProgress, 0.22, 0.58));
 
   const handoff = easeInOutCubic(range(safeProgress, 0.78, 0.9));
   const stageOut = handoff;

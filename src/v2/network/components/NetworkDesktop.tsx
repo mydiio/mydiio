@@ -25,8 +25,8 @@ function easeInOutCubic(value: number) {
 export function NetworkDesktop({ progress }: NetworkSceneProps) {
   const safeProgress = clamp(progress);
 
-  const contentIn = easeOutCubic(range(safeProgress, 0.03, 0.18));
-  const mapProgress = range(safeProgress, 0.14, 0.76);
+  const contentIn = 1;
+  const mapProgress = 0.08 + range(safeProgress, 0, 0.7) * 0.92;
 
   const handoff = easeInOutCubic(range(safeProgress, 0.78, 0.9));
   const stageOut = handoff;

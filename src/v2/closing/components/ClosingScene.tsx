@@ -20,9 +20,8 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
   return (
     <div
       style={{
-        position: "sticky",
-        top: 0,
-        height: "100svh",
+        position: "relative",
+        minHeight: "100svh",
         overflow: "hidden",
         background: colors.cream,
         color: colors.ink,

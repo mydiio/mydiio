@@ -85,7 +85,7 @@ export function StoryboardScene() {
   /*
    * The tablet demonstration occupies the first chapter.
    */
-  const tabletProgress = useTransform(progress, [0.015, 0.57], [0, 1], {
+  const tabletProgress = useTransform(progress, [0, 0.57], [0, 1], {
     clamp: true,
   });
 
@@ -93,11 +93,15 @@ export function StoryboardScene() {
    * The complete tablet composition leaves together:
    * hardware, screen, tabs and supporting copy.
    */
-  const tabletOpacity = useTransform(progress, [0, 0.035, 0.555, 0.65], [0, 1, 1, 0]);
+  const tabletOpacity = useTransform(
+    progress,
+    [0, 0.012, 0.09, 0.555, 0.65],
+    [0.42, 0.78, 1, 1, 0],
+  );
 
-  const tabletY = useTransform(progress, [0, 0.115, 0.555, 0.65], [150, 0, 0, -42]);
+  const tabletY = useTransform(progress, [0, 0.13, 0.555, 0.65], [180, 0, 0, -42]);
 
-  const tabletScale = useTransform(progress, [0, 0.15, 0.555, 0.65], [0.95, 1, 1, 0.972]);
+  const tabletScale = useTransform(progress, [0, 0.13, 0.555, 0.65], [0.95, 1, 1, 0.972]);
 
   const tabletBlur = useTransform(progress, [0.57, 0.65], [0, 4]);
 
@@ -129,7 +133,7 @@ export function StoryboardScene() {
       data-v2-act="journey-storyboard"
       data-atlas-dark
       data-atlas-tone="dark"
-      className="relative z-10 h-[350vh] w-full bg-[#080807]"
+      className="relative z-10 h-[320vh] w-full bg-[#080807]"
     >
       <div className="sticky top-0 h-screen min-h-[700px] w-full overflow-hidden bg-[#080807]">
         <div

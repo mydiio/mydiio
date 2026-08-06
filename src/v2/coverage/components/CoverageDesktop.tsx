@@ -24,9 +24,8 @@ export function CoverageDesktop({ progress }: CoverageSceneProps) {
   return (
     <div
       style={{
-        position: "sticky",
-        top: 0,
-        height: "100svh",
+        position: "relative",
+        minHeight: "100svh",
         overflow: "hidden",
         background: "#F2E7D5",
         color: colors.ink,

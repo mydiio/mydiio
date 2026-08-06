@@ -8,6 +8,8 @@ export function ActThree() {
     holdBefore: 0,
     holdAfter: 1,
     damping: 22,
+    entryProgress: true,
+    entryDistance: 2.2,
   });
 
   return (
@@ -17,7 +19,7 @@ export function ActThree() {
       data-atlas-tone="light"
       style={{
         position: "relative",
-        height: isMobile ? "255svh" : "255svh",
+        height: isMobile ? "220svh" : "220svh",
         background: colors.cream,
       }}
     >

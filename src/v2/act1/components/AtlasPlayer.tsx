@@ -51,13 +51,13 @@ function getWeightedPosition(progress: number, moments: AtlasMoment[]) {
 }
 
 export function AtlasPlayer({ moments, sequenceProgress }: AtlasPlayerProps) {
-  const videoSequenceProgress = clamp(sequenceProgress / 0.88);
+  const videoSequenceProgress = clamp(sequenceProgress / 0.84);
 
   const position = getWeightedPosition(videoSequenceProgress, moments);
 
-  const finalVideoExit = clamp((sequenceProgress - 0.91) / 0.04);
+  const finalVideoExit = clamp((sequenceProgress - 0.965) / 0.035);
 
-  const endCardProgress = clamp((sequenceProgress - 0.925) / 0.05);
+  const endCardProgress = clamp((sequenceProgress - 0.82) / 0.17);
 
   return (
     <div

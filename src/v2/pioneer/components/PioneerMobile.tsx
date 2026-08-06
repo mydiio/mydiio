@@ -26,9 +26,8 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
   return (
     <div
       style={{
-        position: "sticky",
-        top: 0,
-        height: "100svh",
+        position: "relative",
+        minHeight: "100svh",
         overflow: "hidden",
         background: colors.ink,
         color: colors.cream,

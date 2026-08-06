@@ -15,15 +15,15 @@ function easeOutCubic(value: number) {
 export function AtlasEndCard({ progress }: AtlasEndCardProps) {
   const cardOpacity = clamp(progress);
 
-  const firstReveal = easeOutCubic(clamp((progress - 0.14) / 0.34));
+  const firstReveal = easeOutCubic(clamp((progress - 0.08) / 0.42));
 
-  const secondReveal = easeOutCubic(clamp((progress - 0.22) / 0.34));
+  const secondReveal = easeOutCubic(clamp((progress - 0.2) / 0.42));
 
-  const thirdReveal = easeOutCubic(clamp((progress - 0.3) / 0.34));
+  const thirdReveal = easeOutCubic(clamp((progress - 0.32) / 0.42));
 
-  const taglineOpacity = easeOutCubic(clamp((progress - 0.5) / 0.28));
+  const taglineOpacity = easeOutCubic(clamp((progress - 0.56) / 0.3));
 
-  const glowProgress = easeOutCubic(clamp((progress - 0.68) / 0.32));
+  const glowProgress = easeOutCubic(clamp((progress - 0.58) / 0.42));
 
   const settleProgress = easeOutCubic(clamp((progress - 0.18) / 0.66));
 
@@ -37,7 +37,7 @@ export function AtlasEndCard({ progress }: AtlasEndCardProps) {
         display: "grid",
         placeItems: "center",
         overflow: "hidden",
-        background: colors.cream,
+        background: "rgba(253,250,243,0.58)",
         opacity: cardOpacity,
         pointerEvents: "none",
         willChange: "opacity",

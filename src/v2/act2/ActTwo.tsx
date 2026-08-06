@@ -95,7 +95,7 @@ export function ActTwo() {
         ref={heroRef}
         style={{
           position: "relative",
-          height: "145svh",
+          height: "100svh",
           background: colors.cream,
         }}
       >

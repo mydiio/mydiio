@@ -8,6 +8,8 @@ export function ActFour() {
     holdBefore: 0,
     holdAfter: 1,
     damping: 22,
+    entryProgress: true,
+    entryDistance: 2.3,
   });
 
   return (
@@ -17,7 +19,7 @@ export function ActFour() {
       data-atlas-tone="dark"
       style={{
         position: "relative",
-        height: isMobile ? "280svh" : "280svh",
+        height: isMobile ? "230svh" : "230svh",
         background: colors.ink,
       }}
     >

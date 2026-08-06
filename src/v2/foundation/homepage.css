@@ -497,3 +497,62 @@ body {
     backface-visibility: hidden;
   }
 }
+
+/* FINAL CONTINUOUS ACT FLOW
+   Adjacent real acts overlap slightly so the next act enters from below
+   before the current act has completely released. */
+[data-v2-page] > section[data-v2-act] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-v2-page] > section[data-v2-act] + section[data-v2-act] {
+  margin-top: -10svh;
+}
+
+/* Later acts naturally paint above earlier acts during the overlap. */
+[data-v2-page] > section[data-v2-act]:nth-of-type(1) {
+  z-index: 1;
+}
+
+[data-v2-page] > section[data-v2-act]:nth-of-type(2) {
+  z-index: 2;
+}
+
+[data-v2-page] > section[data-v2-act]:nth-of-type(3) {
+  z-index: 3;
+}
+
+[data-v2-page] > section[data-v2-act]:nth-of-type(4) {
+  z-index: 4;
+}
+
+[data-v2-page] > section[data-v2-act]:nth-of-type(5) {
+  z-index: 5;
+}
+
+[data-v2-page] > section[data-v2-act]:nth-of-type(6) {
+  z-index: 6;
+}
+
+[data-v2-page] > section[data-v2-act]:nth-of-type(7) {
+  z-index: 7;
+}
+
+[data-v2-page] > section[data-v2-act]:nth-of-type(8) {
+  z-index: 8;
+}
+
+[data-v2-page] > section[data-v2-act]:nth-of-type(9) {
+  z-index: 9;
+}
+
+[data-v2-page] > section[data-v2-act]:nth-of-type(10) {
+  z-index: 10;
+}
+
+@media (max-width: 760px) {
+  [data-v2-page] > section[data-v2-act] + section[data-v2-act] {
+    margin-top: -7svh;
+  }
+}
