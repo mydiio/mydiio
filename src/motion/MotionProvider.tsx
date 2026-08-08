@@ -26,8 +26,6 @@ import Lenis from "lenis";
 import { EASE_FN } from "./tokens";
 import { useReducedMotion } from "./useReducedMotion";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
-
 type ProgressListener = (progress: number) => void;
 
 type MotionContextValue = {
@@ -56,6 +54,11 @@ export function MotionProvider({ children }: { children: ReactNode }) {
   useGSAP(
     () => {
       if (typeof window === "undefined") return;
+
+      // Register GSAP plugins on the client only. Doing this at module
+      // scope crashes the Cloudflare Workers SSR runtime (disallowed
+      // operation in global scope).
+      gsap.registerPlugin(ScrollTrigger, useGSAP);
 
       // Reduced motion: no smoothing. Track progress off native scroll so
       // consumers still work, but leave animation to the components (frozen).
