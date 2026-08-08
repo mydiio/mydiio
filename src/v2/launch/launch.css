@@ -1,0 +1,622 @@
+/* src/v2/launch/launch.css
+ * V2 launch-campaign page styles. Mirrors the Atlas V2 design system used
+ * on home / advertiser / driver / about / contact so the locked identity
+ * reads identically across pages.
+ *
+ * Motion vocabulary: cubic-bezier(0.22, 1, 0.36, 1) easing on every
+ * transition. Soft amber pulse on the "live" status dots. Subtle hover lift
+ * on every card and chip. Premium form focus. Everything disabled under
+ * prefers-reduced-motion.
+ */
+
+[data-launch-page] {
+  background: #fdfaf3;
+  color: #1a1a18;
+  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+[data-launch-page] *,
+[data-launch-page] *::before,
+[data-launch-page] *::after {
+  box-sizing: border-box;
+}
+
+.launch-shell {
+  width: min(1180px, 100%);
+  margin-inline: auto;
+  padding-inline: clamp(24px, 5vw, 80px);
+}
+
+[data-launch-page] h1,
+[data-launch-page] h2,
+[data-launch-page] h3 {
+  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  text-wrap: balance;
+  letter-spacing: -0.045em;
+}
+
+[data-launch-page] p {
+  text-wrap: pretty;
+}
+
+[data-launch-page] button {
+  font-family: inherit;
+}
+
+/* ============================================================
+ * 01 HERO
+ * ============================================================ */
+
+.launch-hero {
+  position: relative;
+  padding: clamp(132px, 14vh, 176px) 0 clamp(72px, 7vw, 110px);
+  background:
+    radial-gradient(900px 600px at 12% 10%, rgba(245, 166, 35, 0.10), transparent 70%),
+    radial-gradient(800px 540px at 90% 90%, rgba(69, 133, 90, 0.06), transparent 65%),
+    #fdfaf3;
+  overflow: hidden;
+}
+
+.launch-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26, 26, 24, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 24, 0.04) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.launch-hero > .launch-shell {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.launch-hero-copy {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.launch-hero-title {
+  margin: 18px 0 0;
+  color: #1a1a18;
+  font-size: clamp(48px, 6.4vw, 96px);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+  max-width: 14ch;
+}
+
+.launch-hero-body {
+  margin: 0;
+  color: rgba(26, 26, 24, 0.62);
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.55;
+  max-width: 56ch;
+}
+
+.launch-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.launch-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 24, 0.08);
+  color: rgba(26, 26, 24, 0.7);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.launch-hero-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #45855a;
+  box-shadow: 0 0 0 0 rgba(69, 133, 90, 0.55);
+  animation: launch-pulse 2.4s ease-out infinite;
+}
+
+@keyframes launch-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(69, 133, 90, 0.55); }
+  70% { box-shadow: 0 0 0 10px rgba(69, 133, 90, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(69, 133, 90, 0); }
+}
+
+@media (max-width: 760px) {
+  .launch-hero {
+    padding: clamp(112px, 12vh, 144px) 0 clamp(60px, 7vw, 88px);
+  }
+}
+
+/* ============================================================
+ * 02 PLANS (Stripe-style cards)
+ * ============================================================ */
+
+.launch-plans {
+  padding: clamp(96px, 11vw, 160px) 0;
+  background: #ffffff;
+  border-top: 1px solid rgba(26, 26, 24, 0.06);
+  border-bottom: 1px solid rgba(26, 26, 24, 0.06);
+}
+
+.launch-plans-intro {
+  max-width: 760px;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+.launch-plans-intro .atlas-section-heading {
+  margin-top: 18px;
+  max-width: 18ch;
+}
+
+.launch-plans-intro .atlas-section-copy {
+  margin-top: 22px;
+  max-width: 560px;
+}
+
+.launch-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.launch-plan-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 24px 24px;
+  border: 1px solid rgba(26, 26, 24, 0.08);
+  border-radius: 22px;
+  background: #fdfaf3;
+  min-height: 180px;
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 320ms ease;
+}
+
+.launch-plan-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(26, 26, 24, 0.2);
+  box-shadow:
+    0 24px 48px -32px rgba(26, 26, 24, 0.18),
+    0 8px 20px -16px rgba(26, 26, 24, 0.1);
+}
+
+.launch-plan-card-name {
+  color: #1a1a18;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.launch-plan-card-pitch {
+  margin: 0;
+  color: rgba(26, 26, 24, 0.6);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+  .launch-plans-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .launch-plans-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .launch-plan-card {
+    min-height: 0;
+  }
+}
+
+/* ============================================================
+ * 03 FORM (Stripe-style form)
+ * ============================================================ */
+
+.launch-form-section {
+  padding: clamp(96px, 11vw, 160px) 0;
+  background: #fdfaf3;
+}
+
+.launch-form-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+
+.launch-form-copy {
+  max-width: 480px;
+  position: sticky;
+  top: 110px;
+}
+
+.launch-form-copy .atlas-section-heading {
+  margin-top: 18px;
+  max-width: 14ch;
+}
+
+.launch-form-copy .atlas-section-copy {
+  margin-top: 22px;
+  max-width: 44ch;
+}
+
+.launch-form-note {
+  margin: 22px 0 0;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: rgba(245, 166, 35, 0.12);
+  color: #a85f00;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.launch-form-wrap {
+  position: relative;
+}
+
+.launch-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 36px;
+  border: 1px solid rgba(26, 26, 24, 0.08);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow:
+    0 30px 72px -46px rgba(26, 26, 24, 0.16),
+    0 10px 26px -22px rgba(26, 26, 24, 0.08);
+}
+
+.launch-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.launch-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.launch-form-field-wide {
+  grid-column: 1 / -1;
+}
+
+.launch-form-label {
+  color: #e8920a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.launch-form-field input,
+.launch-form-field select {
+  appearance: none;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(26, 26, 24, 0.14);
+  border-radius: 12px;
+  background: #ffffff;
+  color: #1a1a18;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.45;
+  transition:
+    border-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.launch-form-field select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(26, 26, 24, 0.55) 50%),
+    linear-gradient(135deg, rgba(26, 26, 24, 0.55) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 13px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 36px;
+  appearance: none;
+}
+
+.launch-form-field input::placeholder {
+  color: rgba(26, 26, 24, 0.38);
+}
+
+.launch-form-field input:hover,
+.launch-form-field select:hover {
+  border-color: rgba(26, 26, 24, 0.24);
+}
+
+.launch-form-field input:focus,
+.launch-form-field select:focus {
+  outline: none;
+  border-color: #e8920a;
+  box-shadow: 0 0 0 4px rgba(232, 146, 10, 0.12);
+}
+
+.launch-form-field input:disabled,
+.launch-form-field select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Chip groups — radio buttons styled as pills (used by Goal, Budget, Has-creative) */
+.launch-form-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.launch-form-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid rgba(26, 26, 24, 0.14);
+  border-radius: 999px;
+  background: #ffffff;
+  color: rgba(26, 26, 24, 0.7);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.launch-form-chip:hover {
+  border-color: rgba(26, 26, 24, 0.32);
+  color: #1a1a18;
+}
+
+.launch-form-chip input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+}
+
+.launch-form-chip-wide {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14px 18px;
+  border-radius: 16px;
+  gap: 4px;
+}
+
+.launch-form-chip-id {
+  font-size: 13px;
+  font-weight: 700;
+  color: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.launch-form-chip-tier {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(232, 146, 10, 0.95);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.launch-form-chip.is-active {
+  background: #f5a623;
+  border-color: #e8920a;
+  color: #1a1a18;
+}
+
+.launch-form-chip-wide.is-active {
+  background: rgba(245, 166, 35, 0.18);
+  border-color: #e8920a;
+  color: #1a1a18;
+}
+
+.launch-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+  padding-top: 4px;
+}
+
+.launch-form-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 28px;
+  border: 1px solid #e8920a;
+  border-radius: 999px;
+  background: #f5a623;
+  color: #1a1a18;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+  cursor: pointer;
+  box-shadow: 0 20px 48px -24px rgba(245, 166, 35, 0.48);
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.launch-form-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 52px -22px rgba(245, 166, 35, 0.55);
+}
+
+.launch-form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.launch-form-submit-arrow {
+  display: inline-flex;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.launch-form-submit:hover:not(:disabled) .launch-form-submit-arrow {
+  transform: translateX(3px);
+}
+
+.launch-form-status {
+  margin: 4px 0 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+
+.launch-form-status-success {
+  background: rgba(69, 133, 90, 0.1);
+  color: #2e5538;
+  border: 1px solid rgba(69, 133, 90, 0.18);
+}
+
+.launch-form-status-info {
+  background: rgba(245, 166, 35, 0.12);
+  color: #a85f00;
+  border: 1px solid rgba(245, 166, 35, 0.22);
+}
+
+.launch-form-status-error {
+  background: rgba(232, 90, 90, 0.1);
+  color: #b53434;
+  border: 1px solid rgba(232, 90, 90, 0.2);
+}
+
+@media (max-width: 760px) {
+  .launch-form-shell {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .launch-form-copy {
+    position: static;
+  }
+
+  .launch-form {
+    padding: 24px;
+  }
+
+  .launch-form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ============================================================
+ * 04 CLOSING
+ * ============================================================ */
+
+.launch-closing {
+  padding: clamp(120px, 14vw, 200px) 0;
+  background: #ffffff;
+  border-top: 1px solid rgba(26, 26, 24, 0.06);
+}
+
+.launch-closing-inner {
+  max-width: 720px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  text-align: left;
+}
+
+.launch-closing-heading {
+  margin: 0;
+  color: #1a1a18;
+  font-size: clamp(40px, 4.4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  max-width: 22ch;
+}
+
+.launch-closing-body {
+  margin: 0;
+  color: rgba(26, 26, 24, 0.62);
+  font-size: clamp(16px, 1.18vw, 19px);
+  line-height: 1.55;
+  letter-spacing: -0.022em;
+  max-width: 56ch;
+}
+
+.launch-closing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.launch-closing-arrow {
+  display: inline-flex;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.atlas-button-amber:hover .launch-closing-arrow {
+  transform: translateX(3px);
+}
+
+/* ============================================================
+ * Reduced motion
+ * ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-launch-page] *,
+  [data-launch-page] *::before,
+  [data-launch-page] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .launch-form-chip:hover,
+  .launch-form-submit:hover:not(:disabled),
+  .launch-plan-card:hover {
+    transform: none !important;
+  }
+}

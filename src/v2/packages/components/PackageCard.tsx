@@ -32,7 +32,7 @@ export function PackageCard({ tier, active, complete, settled }: PackageCardProp
             : "0 30px 68px -44px rgba(26,26,24,0.24)"
           : "none",
         color: tier.featured ? colors.cream : colors.ink,
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
         opacity,
         transform: settled
           ? tier.featured

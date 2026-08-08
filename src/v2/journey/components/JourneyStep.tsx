@@ -27,7 +27,7 @@ export function JourneyStep({
         position: "relative",
         zIndex: 4,
         textAlign: "center",
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
         opacity,
         transform: isCurrent ? "translateY(-4px)" : "translateY(0)",
         transition:

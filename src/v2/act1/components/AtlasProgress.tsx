@@ -26,7 +26,7 @@ export function AtlasProgress({
         alignItems: "center",
         gap: spacing[3],
         color: "rgba(253,250,243,0.68)",
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
         fontSize: typeScale.micro,
         fontWeight: 600,
         letterSpacing: letterSpacing.mono,

@@ -221,7 +221,7 @@ export function DashboardFrame({
               marginBottom: "30px",
               color: colors.ink,
               fontFamily:
-                '"DM Sans", system-ui, sans-serif',
+                '"Space Grotesk", system-ui, -apple-system, sans-serif',
               fontSize: "20px",
               fontWeight: 700,
               letterSpacing: "-0.04em",
@@ -257,7 +257,7 @@ export function DashboardFrame({
                     ? colors.ink
                     : "rgba(26,26,24,0.5)",
                   fontFamily:
-                    '"DM Sans", system-ui, sans-serif',
+                    '"Space Grotesk", system-ui, -apple-system, sans-serif',
                   fontSize: "13px",
                   fontWeight: active
                     ? 650
@@ -279,7 +279,7 @@ export function DashboardFrame({
           style={{
             padding: "26px 28px",
             fontFamily:
-              '"DM Sans", system-ui, sans-serif',
+              '"Space Grotesk", system-ui, -apple-system, sans-serif',
           }}
         >
           <div

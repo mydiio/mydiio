@@ -38,7 +38,6 @@ export function SiteShell({
  }, 10);
 
  return () => {
- io.disconnect();
  upObserver.disconnect();
  window.clearTimeout(t);
  };

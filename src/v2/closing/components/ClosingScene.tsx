@@ -25,7 +25,7 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
         overflow: "hidden",
         background: colors.cream,
         color: colors.ink,
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
       }}
     >
       <style>{`

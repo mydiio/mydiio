@@ -3,7 +3,7 @@
 // markup; JS hides it and plays it in only when motion is allowed, so no-JS and
 // reduced-motion users always see the final state with zero shift.
 
-import { createElement, useRef, type ElementType, type ReactNode } from "react";
+import { forwardRef, createElement, useRef, type ElementType, type ReactNode } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -22,16 +22,20 @@ type RevealProps = {
   className?: string;
 };
 
-export function Reveal({
-  children,
-  y = 24,
-  stagger = STAGGER,
-  start = "top 85%",
-  as: Tag = "div",
-  className,
-}: RevealProps) {
+export const Reveal = forwardRef<HTMLElement, RevealProps>(function Reveal(
+  {
+    children,
+    y = 24,
+    stagger = STAGGER,
+    start = "top 85%",
+    as: Tag = "div",
+    className,
+  },
+  forwardedRef,
+) {
   const reduced = useReducedMotion();
-  const scope = useRef<HTMLElement>(null);
+  const localRef = useRef<HTMLElement>(null);
+  const scope = (forwardedRef as React.RefObject<HTMLElement>) ?? localRef;
 
   useGSAP(
     () => {
@@ -53,10 +57,8 @@ export function Reveal({
         scrollTrigger: { trigger: root, start, once: true },
       });
     },
-    { dependencies: [reduced], scope },
+    { dependencies: [reduced], scope: localRef },
   );
 
-  // createElement (not JSX) so a polymorphic `as` does not collapse its props
-  // type to `never`, while ref and className still pass through cleanly.
   return createElement(Tag, { ref: scope, className }, children);
-}
+});

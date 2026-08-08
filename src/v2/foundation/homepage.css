@@ -556,3 +556,244 @@ body {
     margin-top: -7svh;
   }
 }
+
+/* ===== ATLAS FOOTER ===== */
+.atlas-footer {
+  margin-top: auto;
+  padding-top: clamp(80px, 10vw, 120px);
+  padding-bottom: clamp(48px, 6vw, 80px);
+  padding-inline: clamp(24px, 5vw, 80px);
+  border-top: 1px solid rgba(26, 26, 24, 0.08);
+  background: #fdfaf3;
+  font-family: var(--font-body);
+}
+
+.atlas-footer-inner {
+  width: min(1400px, 100%);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 64px);
+}
+
+.atlas-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+  color: #1a1a18;
+  text-decoration: none;
+}
+
+.atlas-footer-logo svg {
+  width: 24px;
+  height: 24px;
+  color: #f5a623;
+}
+
+.atlas-footer-nav {
+  display: flex;
+  gap: clamp(24px, 3vw, 40px);
+  flex-wrap: wrap;
+}
+
+.atlas-footer-nav a {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #1a1a18;
+  text-decoration: none;
+  transition: opacity 200ms var(--atlas-ease, ease-out);
+}
+
+.atlas-footer-nav a:hover {
+  opacity: 0.6;
+}
+
+.atlas-footer-copyright {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(26, 26, 24, 0.48);
+}
+
+@media (max-width: 720px) {
+  .atlas-footer {
+    padding-top: clamp(64px, 8vw, 80px);
+    padding-bottom: clamp(40px, 5vw, 60px);
+  }
+
+  .atlas-footer-inner {
+    gap: clamp(32px, 4vw, 48px);
+  }
+
+  .atlas-footer-nav {
+    gap: 16px;
+    flex-direction: column;
+  }
+}
+
+
+/* =========================================================
+   ATLAS V2 MOTION POLISH
+   Single motion vocabulary applied across every act section.
+   Every transition uses cubic-bezier(0.22, 1, 0.36, 1).
+   Every ongoing animation is gated by prefers-reduced-motion.
+   ========================================================= */
+
+:root {
+  --atlas-v2-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --atlas-v2-dur-quick: 240ms;
+  --atlas-v2-dur-soft: 520ms;
+  --atlas-v2-dur-deep: 900ms;
+}
+
+[data-v2-page] [data-v2-act],
+[data-v2-page] section[data-atlas-act-one],
+[data-v2-page] section[data-v2-act="funding"] {
+  transition:
+    background-color var(--atlas-v2-dur-soft) var(--atlas-v2-ease),
+    color var(--atlas-v2-dur-soft) var(--atlas-v2-ease);
+}
+
+/* Premium entrance for every act — section fades up subtly as it enters view */
+@keyframes atlas-v2-act-enter {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-v2-page] [data-v2-act]:not([data-v2-act="act-one"]) {
+  animation: atlas-v2-act-enter var(--atlas-v2-dur-deep) var(--atlas-v2-ease) both;
+}
+
+/* Soft pulse for every amber accent dot across the page */
+@keyframes atlas-v2-soft-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(0.94);
+  }
+}
+
+[data-v2-page] [class*="atlas-"] svg circle[fill*="amber"]:not([class*="pulse"]),
+[data-v2-page] [class*="atlas-"] [data-amber-dot] {
+  animation: atlas-v2-soft-pulse 3.6s var(--atlas-v2-ease) infinite;
+  transform-origin: center;
+}
+
+/* Slow rotating conic accent for every dark section */
+@keyframes atlas-v2-conic-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+[data-v2-page] [data-atlas-tone="dark"]::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(245, 166, 35, 0.18) 60deg,
+    rgba(245, 166, 35, 0.32) 140deg,
+    transparent 220deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: atlas-v2-conic-rotate 18s linear infinite;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Gentle ambient glow that breathes behind every dark band */
+@keyframes atlas-v2-ambient-glow {
+  0%, 100% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+}
+
+[data-v2-page] [data-atlas-tone="dark"] [data-ambient-glow] {
+  animation: atlas-v2-ambient-glow 9s ease-in-out infinite;
+}
+
+/* Subtle drift on light section heading wrappers */
+@keyframes atlas-v2-heading-drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-2px); }
+}
+
+/* Premium card hover — translate + shadow + border */
+[data-v2-page] [class*="atlas-commercial-card"] {
+  transition:
+    transform var(--atlas-v2-dur-soft) var(--atlas-v2-ease),
+    box-shadow var(--atlas-v2-dur-soft) var(--atlas-v2-ease),
+    border-color var(--atlas-v2-dur-soft) var(--atlas-v2-ease);
+}
+
+[data-v2-page] [class*="atlas-commercial-card"]:hover {
+  transform: translateY(-4px);
+}
+
+/* Premium focus ring */
+[data-v2-page] a:focus-visible,
+[data-v2-page] button:focus-visible {
+  outline: 2px solid rgba(245, 166, 35, 0.85);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Selection */
+[data-v2-page] ::selection {
+  background: rgba(245, 166, 35, 0.32);
+  color: inherit;
+}
+
+/* Reduced motion — neutralize all the polish above */
+@media (prefers-reduced-motion: reduce) {
+  [data-v2-page] [data-v2-act]:not([data-v2-act="act-one"]) {
+    animation: none;
+  }
+
+  [data-v2-page] [class*="atlas-"] svg circle[fill*="amber"]:not([class*="pulse"]),
+  [data-v2-page] [class*="atlas-"] [data-amber-dot] {
+    animation: none;
+  }
+
+  [data-v2-page] [data-atlas-tone="dark"]::before {
+    animation: none;
+    opacity: 0;
+  }
+
+  [data-v2-page] [data-atlas-tone="dark"] [data-ambient-glow] {
+    animation: none;
+  }
+
+  [data-v2-page] [class*="atlas-commercial-card"] {
+    transition: none;
+  }
+
+  [data-v2-page] [class*="atlas-commercial-card"]:hover {
+    transform: none;
+  }
+}

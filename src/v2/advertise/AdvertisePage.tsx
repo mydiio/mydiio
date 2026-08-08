@@ -9,6 +9,7 @@ import { ClientPortalSection } from "./components/ClientPortalSection";
 import { UseCases } from "./components/UseCases";
 import { AdvertiserFaq } from "./components/AdvertiserFaq";
 import { AdvertiseClosing } from "./components/AdvertiseClosing";
+import { AtlasFooter } from "@/v2/layout";
 
 export function AdvertisePage() {
   return (
@@ -24,6 +25,7 @@ export function AdvertisePage() {
       <UseCases />
       <AdvertiserFaq />
       <AdvertiseClosing />
+      <AtlasFooter />
     </main>
   );
 }

@@ -1,17 +1,24 @@
-import { burstPackages } from "../advertiserContent";
+import {
+  burstPackages,
+  burstEyebrow,
+  burstHeading,
+  burstBody,
+  burstNote,
+} from "../advertiserContent";
+import { Reveal } from "@/motion";
 
 export function BurstPackages() {
   return (
     <div className="advertiser-burst" id="burst-packages">
-      <header className="advertiser-burst-intro">
-        <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">One-off campaigns</div>
+      <Reveal as="header" className="advertiser-burst-intro">
+        <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">{burstEyebrow}</div>
 
-        <h2>Need a campaign for a few days?</h2>
+        <h2 className="atlas-section-heading">{burstHeading}</h2>
 
-        <p>Buy a block of screen minutes once. No monthly plan. No contract.</p>
-      </header>
+        <p className="atlas-section-copy atlas-section-copy-dark">{burstBody}</p>
+      </Reveal>
 
-      <div className="advertiser-burst-grid">
+      <Reveal as="div" className="advertiser-burst-grid">
         {burstPackages.map((item) => {
           const featured = item.id === "burst-blast";
 
@@ -33,19 +40,19 @@ export function BurstPackages() {
               <div className="advertiser-burst-price">{item.price}</div>
               <div className="advertiser-burst-payment">One-off payment</div>
 
-              <dl>
-                {item.facts.map((fact) => (
-                  <div key={fact.label}>
-                    <dt>{fact.label}</dt>
-                    <dd>{fact.value}</dd>
+              <dl className="advertiser-burst-specs">
+                {item.features.map((feature) => (
+                  <div key={feature.label}>
+                    <dt>{feature.label}</dt>
+                    <dd>{feature.value}</dd>
                   </div>
                 ))}
-              </dl>
 
-              <div className="advertiser-burst-best">
-                <span>Best for</span>
-                <p>{item.bestFor}</p>
-              </div>
+                <div className="advertiser-burst-best-row">
+                  <dt>Good for</dt>
+                  <dd>{item.bestFor}</dd>
+                </div>
+              </dl>
 
               <a
                 href={`/advertise/apply?tier=${item.id}`}
@@ -60,12 +67,9 @@ export function BurstPackages() {
             </article>
           );
         })}
-      </div>
+      </Reveal>
 
-      <p className="advertiser-burst-note">
-        Your campaign runs until its minutes are used or its time limit ends, whichever comes first.
-        Monthly plans play first in the rotation.
-      </p>
+      <p className="advertiser-burst-note">{burstNote}</p>
     </div>
   );
 }

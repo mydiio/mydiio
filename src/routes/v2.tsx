@@ -5,7 +5,6 @@ import { ActTwo, FundingStatement } from "@/v2/act2";
 import { JourneyStoryboard } from "@/v2/journeyStoryboard";
 import { ActThree } from "@/v2/network";
 import { ActFour } from "@/v2/platform";
-import { ActFive } from "@/v2/coverage";
 import { ActSix } from "@/v2/packages";
 import { ActSeven } from "@/v2/pioneer";
 import { ActEight } from "@/v2/closing";
@@ -43,8 +42,6 @@ function V2Page() {
 
       <ActThree />
       <ActFour />
-      <ActFive />
-
       <ActSix />
       <ActSeven />
       <ActEight />

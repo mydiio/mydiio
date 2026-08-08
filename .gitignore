@@ -43,3 +43,9 @@ backup/
 public/assets/video/**/master/
 # Generated local diagnostics
 diagnostics/
+.aider*
+
+# Local review artifacts and stray files
+*.zip
+.venv-compositor/
+package-lock.json

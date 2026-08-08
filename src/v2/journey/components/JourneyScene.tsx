@@ -678,7 +678,7 @@ export function JourneyScene({ progress }: JourneySceneProps) {
         overflow: "hidden",
         background: "#181715",
         color: colors.cream,
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
       }}
     >
       <JourneyWorld opacity={sceneIn} />

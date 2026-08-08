@@ -4,3 +4,5 @@ export * from "./Grid";
 export * from "./Section";
 export * from "./Stack";
 export * from "./AtlasNav";
+
+export { AtlasFooter } from "./AtlasFooter";

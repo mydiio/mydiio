@@ -1,24 +1,19 @@
-import { advertiserUseCases } from "../advertiserContent";
+import { storiesEyebrow, storiesHeading, advertiserStories } from "../advertiserContent";
+import { Reveal } from "@/motion";
 
 export function UseCases() {
   return (
-    <section id="use-cases" className="advertiser-use-cases" data-atlas-tone="light">
+    <section id="stories" className="advertiser-use-cases" data-atlas-tone="light">
       <div className="advertiser-shell">
-        <header className="advertiser-use-cases-intro">
-          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">
-            Built for different campaigns
-          </div>
+        <Reveal as="header" className="advertiser-use-cases-intro">
+          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">{storiesEyebrow}</div>
 
-          <h2 className="atlas-section-heading">
-            One system.
-            <br />
-            Three ways to use it.
-          </h2>
-        </header>
+          <h2 className="atlas-section-heading">{storiesHeading}</h2>
+        </Reveal>
 
-        <div className="advertiser-use-case-grid">
-          {advertiserUseCases.map((item) => (
-            <article key={item.number}>
+        <Reveal as="div" className="advertiser-use-case-grid">
+          {advertiserStories.map((item) => (
+            <article key={item.number} className="advertiser-use-case-card">
               <div className="advertiser-use-case-topline">
                 <span>{item.number}</span>
                 <strong>{item.audience}</strong>
@@ -41,7 +36,7 @@ export function UseCases() {
               </a>
             </article>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -62,7 +62,7 @@ function BodyText({ children }: { children: React.ReactNode }) {
  return (
  <p
  style={{
- fontFamily: "'DM Sans', sans-serif",
+ fontFamily: "'Space Grotesk', system-ui, -apple-system, sans-serif",
  fontSize: "clamp(15px, 1.2vw, 17px)",
  color: ink,
  lineHeight: 1.65,
@@ -94,7 +94,7 @@ function BulletList({ items }: { items: string[] }) {
  display: "flex",
  gap: 10,
  alignItems: "flex-start",
- fontFamily: "'DM Sans', sans-serif",
+ fontFamily: "'Space Grotesk', system-ui, -apple-system, sans-serif",
  fontSize: "clamp(15px, 1.2vw, 17px)",
  color: ink,
  lineHeight: 1.55,
@@ -166,7 +166,7 @@ export default function PrivacyPage() {
  </h1>
  <p
  style={{
- fontFamily: "'DM Sans', sans-serif",
+ fontFamily: "'Space Grotesk', system-ui, -apple-system, sans-serif",
  fontSize: 14,
  color: muted,
  marginTop: 10,
@@ -193,7 +193,7 @@ export default function PrivacyPage() {
  borderRadius: 8,
  padding: "1.25rem 1.5rem",
  color: "#7A5C0A",
- fontFamily: "'DM Sans', sans-serif",
+ fontFamily: "'Space Grotesk', system-ui, -apple-system, sans-serif",
  fontSize: "clamp(15px, 1.2vw, 17px)",
  lineHeight: 1.65,
  }}
@@ -363,7 +363,7 @@ export default function PrivacyPage() {
  >
  <p
  style={{
- fontFamily: "'DM Sans', sans-serif",
+ fontFamily: "'Space Grotesk', system-ui, -apple-system, sans-serif",
  fontSize: "clamp(15px, 1.2vw, 17px)",
  color: ink,
  lineHeight: 1.65,
@@ -574,7 +574,7 @@ export default function PrivacyPage() {
  </h3>
  <div
  style={{
- fontFamily: "'DM Sans', sans-serif",
+ fontFamily: "'Space Grotesk', system-ui, -apple-system, sans-serif",
  fontSize: "clamp(15px, 1.2vw, 17px)",
  color: "#C8C8C4",
  lineHeight: 1.65,

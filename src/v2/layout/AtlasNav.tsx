@@ -5,7 +5,7 @@ import { colors } from "@/design";
 const navLinks = [
   { label: "Advertise", to: "/advertise" },
   { label: "Drive", to: "/drive" },
-  { label: "Investors", to: "/investors" },
+  
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
 ] as const;
@@ -323,8 +323,9 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
           width: max-content;
           align-items: baseline;
           font-family:
-            "DM Sans",
+            "Space Grotesk",
             system-ui,
+            -apple-system,
             sans-serif;
           font-size: 26px;
           font-weight: 760;
@@ -352,8 +353,9 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
           align-items: center;
           padding: 10px 0;
           font-family:
-            "DM Sans",
+            "Space Grotesk",
             system-ui,
+            -apple-system,
             sans-serif;
           font-size: 13px;
           font-weight: 620;
@@ -415,8 +417,9 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
           min-height: 42px;
           padding: 0 12px;
           font-family:
-            "DM Sans",
+            "Space Grotesk",
             system-ui,
+            -apple-system,
             sans-serif;
           font-size: 13px;
           font-weight: 620;
@@ -441,8 +444,9 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
           background: ${colors.amber};
           color: ${colors.ink};
           font-family:
-            "DM Sans",
+            "Space Grotesk",
             system-ui,
+            -apple-system,
             sans-serif;
           font-size: 13px;
           font-weight: 740;
@@ -607,8 +611,9 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
             1px solid rgba(26,26,24,0.09);
           color: ${colors.ink};
           font-family:
-            "DM Sans",
+            "Space Grotesk",
             system-ui,
+            -apple-system,
             sans-serif;
           font-size: clamp(34px, 10vw, 46px);
           font-weight: 600;
@@ -652,8 +657,9 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
           min-height: 52px;
           border-radius: 14px;
           font-family:
-            "DM Sans",
+            "Space Grotesk",
             system-ui,
+            -apple-system,
             sans-serif;
           font-size: 14px;
           font-weight: 720;

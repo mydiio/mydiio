@@ -47,7 +47,7 @@ export function PlatformFeature({
             ? "rgba(245,166,35,0.72)"
             : "rgba(253,250,243,0.14)"
         }`,
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
         opacity,
         transform: isCurrent
           ? "translateY(-3px)"

@@ -1,30 +1,33 @@
 import { packageTiers } from "@/v2/packages/packageData";
-import { advertiserPackageCopy, packageAudience } from "../advertiserContent";
+import {
+  packagesEyebrow,
+  packagesHeading,
+  packagesBody,
+  packagesAnchor,
+  packagesFooter,
+  advertiserPackageCopy,
+  packageAudience,
+} from "../advertiserContent";
 import { BurstPackages } from "./BurstPackages";
+import { Reveal } from "@/motion";
 
 export function AdvertiserPackages() {
   return (
     <section id="monthly-packages" className="advertiser-packages" data-atlas-tone="light">
       <div className="advertiser-shell">
-        <header className="advertiser-packages-intro">
-          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">Campaign packages</div>
+        <Reveal as="header" className="advertiser-packages-intro">
+          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">{packagesEyebrow}</div>
+          <h2 className="atlas-section-heading atlas-section-heading-large">{packagesHeading}</h2>
+          <p className="atlas-section-copy atlas-section-copy-dark">{packagesBody}</p>
+          <div className="advertiser-packages-anchor">{packagesAnchor}</div>
+        </Reveal>
 
-          <h2 className="atlas-section-heading atlas-section-heading-large">
-            Four plans. Built around your goal.
-          </h2>
-
-          <p className="atlas-section-copy atlas-section-copy-dark">
-            Start small, build regular visibility, join the full network or create a custom
-            campaign.
-          </p>
-
-          <div className="advertiser-packages-anchor">Campaigns from LKR 25,000 a month</div>
-        </header>
-
-        <div className="advertiser-package-grid">
+        <Reveal as="div" className="advertiser-package-grid">
           {packageTiers.map((tier) => {
             const featured = tier.id === "pioneer";
             const copy = advertiserPackageCopy[tier.id as keyof typeof advertiserPackageCopy];
+            const audience =
+              packageAudience[tier.id as keyof typeof packageAudience];
 
             return (
               <article
@@ -36,28 +39,26 @@ export function AdvertiserPackages() {
                 key={tier.id}
               >
                 <div className="advertiser-package-topline">
-                  <span>{tier.number}</span>
-                  {tier.emphasis ? <strong>{tier.emphasis}</strong> : null}
+                  <span className="advertiser-package-number">{tier.number}</span>
+                  {tier.emphasis ? (
+                    <span className="advertiser-package-emphasis">{tier.emphasis}</span>
+                  ) : null}
                 </div>
 
+                <h3 className="advertiser-package-name">{tier.name}</h3>
                 <div className="advertiser-package-eyebrow">{copy.eyebrow}</div>
+                <div className="advertiser-package-price">{copy.price}</div>
 
-                <h3>{tier.name}</h3>
-                <div className="advertiser-package-price">{tier.price}</div>
-
-                <dl>
-                  {copy.specs.map((spec) => (
-                    <div key={spec.label}>
-                      <dt>{spec.label}</dt>
-                      <dd>{spec.value}</dd>
+                <dl className="advertiser-package-features">
+                  {copy.features.map((feature) => (
+                    <div key={feature.label}>
+                      <dt>{feature.label}</dt>
+                      <dd>{feature.value}</dd>
                     </div>
                   ))}
-
-                  <div>
-                    <dt>Best for</dt>
-                    <dd>{packageAudience[tier.id as keyof typeof packageAudience]}</dd>
-                  </div>
                 </dl>
+
+                <p className="advertiser-package-audience">{audience}</p>
 
                 <a
                   href={`/advertise/apply?tier=${tier.id}`}
@@ -72,13 +73,12 @@ export function AdvertiserPackages() {
               </article>
             );
           })}
-        </div>
+        </Reveal>
 
-        <div className="advertiser-package-footer">
-          <p>The number of available tuk-tuks depends on the live fleet in your chosen area.</p>
-
-          <a href="#burst-packages">Need a short campaign? See Burst packages.</a>
-        </div>
+        <Reveal as="div" className="advertiser-package-footer">
+          <p>{packagesFooter}</p>
+          <a href="#burst-packages">See Burst packages.</a>
+        </Reveal>
 
         <BurstPackages />
       </div>

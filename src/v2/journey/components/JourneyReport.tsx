@@ -45,7 +45,7 @@ export function JourneyReport({ progress }: JourneyReportProps) {
         border: "1px solid rgba(26,26,24,0.065)",
         boxShadow:
           "0 24px 58px -30px rgba(26,26,24,0.2), 0 5px 14px -8px rgba(26,26,24,0.09)",
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
         opacity: visible ? 1 : 0,
         transform: visible
           ? "translateY(0) scale(1)"

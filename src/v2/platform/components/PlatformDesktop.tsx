@@ -44,7 +44,7 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
         overflow: "hidden",
         background: colors.ink,
         color: colors.cream,
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
       }}
     >
       <style>{`

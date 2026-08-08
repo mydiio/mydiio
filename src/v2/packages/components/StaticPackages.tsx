@@ -10,7 +10,7 @@ export function StaticPackages() {
         overflow: "hidden",
         background: colors.cream,
         color: colors.ink,
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
         padding: "clamp(92px, 11vw, 150px) 24px",
         boxSizing: "border-box",
       }}

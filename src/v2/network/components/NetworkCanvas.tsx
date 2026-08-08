@@ -264,7 +264,7 @@ export function NetworkCanvas({ progress }: NetworkCanvasProps) {
                 y={city.y + settings.dy + 5}
                 textAnchor={settings.anchor}
                 fill="rgba(26,26,24,0.52)"
-                fontFamily="DM Sans, system-ui, sans-serif"
+                fontFamily="Space Grotesk, system-ui, -apple-system, sans-serif"
                 fontSize="21"
                 fontWeight="500"
               >

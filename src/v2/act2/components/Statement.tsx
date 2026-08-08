@@ -22,7 +22,7 @@ export function Statement() {
         <p
           style={{
             margin: 0,
-            fontFamily: '"DM Sans", system-ui, sans-serif',
+            fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
             fontSize: "clamp(48px, 7vw, 112px)",
             fontWeight: 600,
             lineHeight: 0.96,

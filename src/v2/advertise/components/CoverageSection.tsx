@@ -1,49 +1,47 @@
-import { corridorStops } from "../advertiserContent";
+import {
+  coverageEyebrow,
+  coverageHeading,
+  coverageBody,
+  corridorStops,
+  expansionLabel,
+  expansionBody,
+} from "../advertiserContent";
+import { Reveal } from "@/motion";
 
 export function CoverageSection() {
   return (
     <section className="advertiser-coverage" data-atlas-tone="light">
       <div className="advertiser-shell advertiser-coverage-grid">
-        <header className="advertiser-coverage-copy">
-          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">Current coverage</div>
+        <Reveal as="header" className="advertiser-coverage-copy">
+          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">{coverageEyebrow}</div>
 
-          <h2 className="atlas-section-heading">
-            One live corridor.
-            <br />
-            Three active areas.
-          </h2>
+          <h2 className="atlas-section-heading">{coverageHeading}</h2>
 
-          <p className="atlas-section-copy atlas-section-copy-dark">
-            mydiio currently runs through Dehiwala, Mount Lavinia and Ratmalana. We only add an area
-            when active tuk-tuks are operating there.
-          </p>
+          <p className="atlas-section-copy atlas-section-copy-dark">{coverageBody}</p>
 
-          <div className="advertiser-live-status">
-            <span aria-hidden="true" />
-            Current live corridor
-          </div>
-        </header>
+          <div className="advertiser-live-status">Live today</div>
+        </Reveal>
 
-        <div className="advertiser-corridor" aria-label="Current mydiio corridor">
+        <div className="advertiser-corridor" aria-label="Current mydiio live area">
           <div className="advertiser-corridor-heading">
             <span>Colombo South</span>
-            <strong>Live corridor</strong>
+            <strong>Live area</strong>
           </div>
 
-          <ol>
+          <Reveal as="ol" className="advertiser-corridor-list">
             {corridorStops.map((stop) => (
-              <li key={stop.name}>
+              <li key={stop.name} className="advertiser-corridor-row">
                 <span className="advertiser-corridor-node" aria-hidden="true" />
                 <span className="advertiser-corridor-number">{stop.number}</span>
                 <strong>{stop.name}</strong>
-                <span>Active</span>
+                <span className="advertiser-corridor-status">Active</span>
               </li>
             ))}
-          </ol>
+          </Reveal>
 
           <div className="advertiser-expansion-note">
-            <span>Future expansion</span>
-            <p>We will add new areas when active tuk-tuks are operating there.</p>
+            <span>{expansionLabel}</span>
+            <p>{expansionBody}</p>
           </div>
         </div>
       </div>

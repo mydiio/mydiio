@@ -1249,7 +1249,7 @@ function FinalCTA() {
   {t("fcta_body")}
   </p>
   <div style={{ marginTop: 40 }}>
-            <a href="/advertise/apply" style={{ display: "inline-block", padding: "16px 40px", background: "#F5A623", color: "#1A1A18", fontFamily: "'DM Sans', Nunito, sans-serif", fontWeight: 700, fontSize: 17, borderRadius: 14, textDecoration: "none" }}>
+            <a href="/advertise/apply" style={{ display: "inline-block", padding: "16px 40px", background: "#F5A623", color: "#1A1A18", fontFamily: "'Space Grotesk', system-ui, -apple-system, sans-serif", fontWeight: 700, fontSize: 17, borderRadius: 14, textDecoration: "none" }}>
               Launch your campaign
             </a>
           </div>

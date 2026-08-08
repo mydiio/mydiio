@@ -24,7 +24,7 @@ export function NetworkHero() {
           style={{
             margin: `0 0 ${spacing[7]}`,
             maxWidth: "16ch",
-            fontFamily: '"DM Sans", system-ui, sans-serif',
+            fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
             fontSize: "clamp(52px, 8vw, 124px)",
             fontWeight: 600,
             lineHeight: 0.92,
@@ -45,7 +45,7 @@ export function NetworkHero() {
           <div>
             <div
               style={{
-                fontFamily: '"DM Sans", system-ui, sans-serif',
+                fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
                 fontSize: "clamp(72px, 11vw, 180px)",
                 fontWeight: 700,
                 lineHeight: 0.82,
@@ -59,7 +59,7 @@ export function NetworkHero() {
               style={{
                 margin: `${spacing[5]} 0 0`,
                 maxWidth: "18ch",
-                fontFamily: '"DM Sans", system-ui, sans-serif',
+                fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
                 fontSize: "clamp(20px, 2vw, 30px)",
                 fontWeight: 500,
                 lineHeight: 1.1,
@@ -75,7 +75,7 @@ export function NetworkHero() {
               maxWidth: "28ch",
               justifySelf: "end",
               paddingBottom: spacing[3],
-              fontFamily: '"DM Sans", system-ui, sans-serif',
+              fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
               fontSize: "clamp(18px, 1.5vw, 24px)",
               fontWeight: 500,
               lineHeight: 1.35,

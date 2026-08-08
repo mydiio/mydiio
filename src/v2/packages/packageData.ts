@@ -25,7 +25,7 @@ export const packageTiers: PackageTier[] = [
     description:
       "A simple entry point for brands testing verified in-vehicle advertising in Colombo.",
     scale: "Focused campaign",
-    price: "LKR 25,000 / month",
+    price: "From LKR 25,000 / month",
     specs: [
       {
         label: "Campaign minutes",
@@ -49,7 +49,7 @@ export const packageTiers: PackageTier[] = [
     description:
       "Increase repetition across more journeys while keeping every play measurable.",
     scale: "Growing coverage",
-    price: "LKR 38,000 / month",
+    price: "From LKR 38,000 / month",
     specs: [
       {
         label: "Campaign minutes",
@@ -73,7 +73,7 @@ export const packageTiers: PackageTier[] = [
     description:
       "Priority access for brands that want stronger visibility as the mydiio network expands.",
     scale: "Full-network presence",
-    price: "LKR 25,000–35,000 / month",
+    price: "From LKR 25,000 / month",
     specs: [
       {
         label: "Campaign minutes",

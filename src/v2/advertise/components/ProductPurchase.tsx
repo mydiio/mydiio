@@ -1,20 +1,19 @@
-import { productPurchases } from "../advertiserContent";
+import { productPurchases, productEyebrow, productHeading, productBody } from "../advertiserContent";
+import { Reveal } from "@/motion";
 
 export function ProductPurchase() {
   return (
     <section id="difference" className="advertiser-purchase" data-atlas-tone="light">
       <div className="advertiser-shell">
-        <header className="advertiser-section-intro">
-          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">Why mydiio</div>
+        <Reveal as="header" className="advertiser-section-intro">
+          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">{productEyebrow}</div>
 
-          <h2 className="atlas-section-heading">Advertising, with fewer unknowns.</h2>
+          <h2 className="atlas-section-heading">{productHeading}</h2>
 
-          <p className="atlas-section-copy atlas-section-copy-dark">
-            A moving screen network, flexible ways to buy and a clear view of what happened.
-          </p>
-        </header>
+          <p className="atlas-section-copy atlas-section-copy-dark">{productBody}</p>
+        </Reveal>
 
-        <div className="advertiser-purchase-grid">
+        <Reveal as="div" className="advertiser-purchase-grid">
           {productPurchases.map((item) => (
             <article className="advertiser-purchase-item" key={item.number}>
               <div className="advertiser-item-number">{item.number}</div>
@@ -22,7 +21,7 @@ export function ProductPurchase() {
               <p>{item.body}</p>
             </article>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -43,7 +43,7 @@ export function FundingStatement() {
         opacity: 1,
         transform: `translateY(${(1 - panelProgress) * 4}px)`,
         transformOrigin: "center bottom",
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
       }}
     >
       <style>{`

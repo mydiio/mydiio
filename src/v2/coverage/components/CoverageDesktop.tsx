@@ -29,7 +29,7 @@ export function CoverageDesktop({ progress }: CoverageSceneProps) {
         overflow: "hidden",
         background: "#F2E7D5",
         color: colors.ink,
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
       }}
     >
       <style>{`
@@ -70,83 +70,36 @@ export function CoverageDesktop({ progress }: CoverageSceneProps) {
             alignItems: "end",
           }}
         >
-          <div>
-            <div
-              style={{
-                marginBottom: "15px",
-                color: colors.amberDeep,
-                fontSize: "var(--atlas-eyebrow-size)",
-                fontWeight: "var(--atlas-eyebrow-weight)",
-                letterSpacing: "var(--atlas-eyebrow-tracking)",
-                textTransform: "uppercase",
-                opacity: eyebrowProgress,
-                transform: `translateY(${(1 - eyebrowProgress) * 10}px)`,
-              }}
-            >
-              WHERE THE NETWORK BEGINS
-            </div>
-
-            <h2
-              className="atlas-section-heading"
-              style={{
-                margin: 0,
-                maxWidth: "11ch",
-                color: colors.ink,
-                fontSize: "clamp(48px, 5.8vw, 86px)",
-                fontWeight: 600,
-                lineHeight: 0.93,
-                letterSpacing: "-0.062em",
-                opacity: headingProgress,
-                transform: `translateY(${(1 - headingProgress) * 18}px)`,
-              }}
-            >
-              Colombo, corridor by corridor.
-            </h2>
-          </div>
-
           <div
             style={{
-              maxWidth: "440px",
-              paddingBottom: "7px",
-              opacity: bodyProgress,
-              transform: `translateY(${(1 - bodyProgress) * 16}px)`,
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              paddingBottom: 4,
             }}
           >
-            <p
+            <span
+              aria-hidden="true"
               style={{
-                margin: 0,
-                color: "var(--atlas-copy-dark)",
-                fontSize: "clamp(16px, 1.18vw, 19px)",
-                lineHeight: 1.58,
+                width: 9,
+                height: 9,
+                borderRadius: "50%",
+                background: colors.amber,
+                boxShadow: "0 0 0 5px rgba(245,166,35,0.12)",
+                animation: "atlas-coverage-pulse 2.4s ease-out infinite",
               }}
-            >
-              The network begins with a focused Colombo corridor. Each verified journey builds the
-              operating proof needed to expand responsibly.
-            </p>
-
-            <div
+            />
+            <span
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "9px",
-                marginTop: "18px",
                 color: "rgba(26,26,24,0.54)",
-                fontSize: "13px",
+                fontSize: 13,
                 fontWeight: 600,
+                letterSpacing: "0.04em",
+                textTransform: "uppercase",
               }}
             >
-              <span
-                aria-hidden="true"
-                style={{
-                  width: "9px",
-                  height: "9px",
-                  borderRadius: "50%",
-                  background: colors.amber,
-                  boxShadow: "0 0 0 5px rgba(245,166,35,0.12)",
-                }}
-              />
-              First Colombo corridor
-            </div>
+              First Colombo corridor · Live
+            </span>
           </div>
         </div>
 

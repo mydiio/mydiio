@@ -97,7 +97,7 @@ export function AtlasEndCard({ progress }: AtlasEndCardProps) {
             display: "inline-flex",
             alignItems: "baseline",
             color: colors.ink,
-            fontFamily: '"DM Sans", system-ui, sans-serif',
+            fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
             fontSize: "clamp(92px, 12vw, 190px)",
             fontWeight: 750,
             lineHeight: 0.86,
@@ -141,7 +141,7 @@ export function AtlasEndCard({ progress }: AtlasEndCardProps) {
           style={{
             marginTop: "clamp(24px, 3vh, 34px)",
             color: "rgba(26,26,24,0.64)",
-            fontFamily: '"DM Sans", system-ui, sans-serif',
+            fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
             fontSize: "clamp(20px, 2vw, 30px)",
             fontWeight: 500,
             lineHeight: 1.2,

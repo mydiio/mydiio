@@ -1,49 +1,111 @@
-import { reportFeatures } from "../advertiserContent";
-import { ReportPreview } from "./ReportPreview";
+import {
+  reportEyebrow,
+  reportHeading,
+  reportBody,
+  reportFeatures,
+  reportRows,
+  reportLocations,
+  reportNextDate,
+} from "../advertiserContent";
+import { Reveal } from "@/motion";
 
 export function MondayReportSection() {
   return (
     <section className="advertiser-report" data-atlas-tone="dark">
       <div className="advertiser-shell advertiser-report-grid">
-        <header className="advertiser-report-copy">
-          <div className="atlas-section-eyebrow atlas-section-eyebrow-light">
-            Your Monday report
-          </div>
+        <Reveal as="header" className="advertiser-report-copy">
+          <div className="atlas-section-eyebrow atlas-section-eyebrow-light">{reportEyebrow}</div>
 
-          <h2 className="atlas-section-heading atlas-section-heading-large">
-            Everything in one report.
-          </h2>
+          <h2 className="atlas-section-heading atlas-section-heading-large">{reportHeading}</h2>
 
-          <p className="atlas-section-copy atlas-section-copy-light">
-            See the tuk-tuks used, recorded places, play times, past delivery and remaining minutes
-            in one place.
-          </p>
+          <p className="atlas-section-copy atlas-section-copy-light">{reportBody}</p>
 
           <ul className="advertiser-report-features">
             {reportFeatures.map((feature) => (
-              <li key={feature}>
-                <span aria-hidden="true">✓</span>
-                {feature}
-              </li>
+              <li key={feature}>{feature}</li>
             ))}
           </ul>
-        </header>
+        </Reveal>
 
-        <div className="advertiser-report-preview">
-          <div className="advertiser-report-preview-topline">
-            <span>Report preview</span>
+        <Reveal as="div" className="advertiser-report-preview" stagger={0}>
+          <div className="advertiser-report-topline">
+            <span>Monday report</span>
             <strong>Delivered Monday</strong>
           </div>
 
           <div className="advertiser-report-surface">
-            <ReportPreview />
-          </div>
+            <div className="advertiser-report-headline">
+              <div>
+                <span>Reporting period</span>
+                <h3>Every journey, recorded.</h3>
+              </div>
+              <span>Weekly</span>
+            </div>
 
-          <p>
-            This preview shows the structure of your Monday report. Your report is built from
-            completed campaign plays.
-          </p>
-        </div>
+            <div className="advertiser-report-route">
+              <div className="advertiser-report-route-label">
+                <span>GPS route record</span>
+                <strong>Verified locations</strong>
+              </div>
+              <div className="advertiser-report-route-line">
+                {reportLocations.map((location) => (
+                  <div key={location}>
+                    <span aria-hidden="true" />
+                    <strong>{location}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="advertiser-report-summary">
+              <div>
+                <span>Plays</span>
+                <strong>Tuk-tuk, place, time</strong>
+              </div>
+              <div>
+                <span>Verification</span>
+                <strong>GPS recorded</strong>
+              </div>
+              <div>
+                <span>Delivery</span>
+                <strong>Every Monday</strong>
+              </div>
+            </div>
+
+            <div className="advertiser-report-table-wrap">
+              <div className="advertiser-report-table-label">Plays from this week</div>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Vehicle</th>
+                    <th>Location</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {reportRows.map((row, index) => (
+                    <tr key={`${row.location}-${index}`}>
+                      <td>{row.vehicle}</td>
+                      <td>{row.location}</td>
+                      <td>{row.time}</td>
+                      <td>
+                        <span className="advertiser-report-verified">Verified</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="advertiser-report-foot">
+              <span>Next report</span>
+              <strong>{reportNextDate}</strong>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

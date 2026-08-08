@@ -26,7 +26,7 @@ export function CoverageStop({
         border: "1px solid rgba(26,26,24,0.07)",
         boxShadow:
           "0 24px 52px -30px rgba(26,26,24,0.32), 0 7px 18px -12px rgba(26,26,24,0.14)",
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
       }}
     >
       <div
