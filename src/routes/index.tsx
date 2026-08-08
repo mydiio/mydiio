@@ -1,5 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { HomePage as HomePageV2 } from "@/v2/home";
+import { AtlasNav } from "@/v2/layout";
+import { ActOne } from "@/v2/act1";
+import { ActTwo, FundingStatement } from "@/v2/act2";
+import { JourneyStoryboard } from "@/v2/journeyStoryboard";
+import { ActThree } from "@/v2/network";
+import { ActFour } from "@/v2/platform";
+import { ActSix } from "@/v2/packages";
+import { ActSeven } from "@/v2/pioneer";
+import { ActEight } from "@/v2/closing";
+import "@/v2/foundation/homepage.css";
 
 const DASHBOARD_IMG = "/assets/advertiser-pharmacy-dashboard.png";
 
@@ -96,5 +105,21 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
-  return <HomePageV2 />;
+  return (
+    <main data-v2-page>
+      <AtlasNav />
+
+      <ActOne />
+      <ActTwo />
+
+      <JourneyStoryboard />
+      <FundingStatement />
+
+      <ActThree />
+      <ActFour />
+      <ActSix />
+      <ActSeven />
+      <ActEight />
+    </main>
+  );
 }
