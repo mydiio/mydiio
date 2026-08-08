@@ -1,4 +1,3 @@
-import { SiteShell } from "@/components/site/SiteShell";
 import { AtlasNav } from "@/v2/layout";
 import { AtlasFooter } from "@/v2/layout";
 import "@/v2/foundation/homepage.css";
@@ -17,8 +16,7 @@ import { HomeWhatsapp } from "./components/HomeWhatsapp";
 
 export function HomePage() {
   return (
-    <SiteShell accent="amber">
-      <main data-v2-page data-home-page>
+    <main data-v2-page data-home-page>
         <AtlasNav />
         <HomeHero />
         <HomeProof />
@@ -31,7 +29,6 @@ export function HomePage() {
         <HomeClosing />
         <AtlasFooter />
         <HomeWhatsapp />
-      </main>
-    </SiteShell>
+    </main>
   );
 }
