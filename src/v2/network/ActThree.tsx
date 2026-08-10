@@ -6,7 +6,7 @@ export function ActThree() {
   const isMobile = useMediaQuery("(max-width: 560px)");
   const { sectionRef, progress } = useSmoothSectionProgress({
     holdBefore: 0,
-    holdAfter: isMobile ? 0 : 1,
+    holdAfter: isMobile ? 0.28 : 1,
     damping: 22,
     entryProgress: true,
     entryDistance: 2.2,
