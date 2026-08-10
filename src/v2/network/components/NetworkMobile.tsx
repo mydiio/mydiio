@@ -32,7 +32,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
   const mapProgress = 0.08 + range(safeProgress, 0, 0.7) * 0.92;
   const metricsIn = easeOutCubic(range(safeProgress, 0.22, 0.58));
 
-  const handoff = easeInOutCubic(range(safeProgress, 0.7, 1));
+  const handoff = easeInOutCubic(range(safeProgress, 0.84, 1));
   const stageOut = handoff;
   const finalIn = handoff;
 

@@ -807,3 +807,23 @@ body {
     transform: none;
   }
 }
+
+/* atlas-mobile-act-layering */
+@media (max-width: 559px) {
+  [data-v2-page] > section[data-v2-act] {
+    margin-top: 0 !important;
+    transform: none !important;
+  }
+
+  [data-v2-page] > section[data-v2-act="funding"] {
+    z-index: 1;
+  }
+
+  [data-v2-page] > section[data-v2-act="network"] {
+    z-index: 3;
+  }
+
+  [data-v2-page] > section[data-v2-act="platform"] {
+    z-index: 2;
+  }
+}
