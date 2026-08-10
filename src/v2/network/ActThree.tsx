@@ -6,10 +6,10 @@ export function ActThree() {
   const isMobile = useMediaQuery("(max-width: 560px)");
   const { sectionRef, progress } = useSmoothSectionProgress({
     holdBefore: 0,
-    holdAfter: isMobile ? 0.35 : 1,
+    holdAfter: 1,
     damping: 22,
-    entryProgress: true,
-    entryDistance: 2.2,
+    entryProgress: !isMobile,
+    entryDistance: isMobile ? 1 : 2.2,
   });
 
   return (
@@ -19,7 +19,7 @@ export function ActThree() {
       data-atlas-tone="light"
       style={{
         position: "relative",
-        height: isMobile ? "260svh" : "220svh",
+        height: isMobile ? "290svh" : "220svh",
         background: colors.cream,
       }}
     >
