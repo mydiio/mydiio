@@ -4,7 +4,7 @@ export const assets = {
   m003: "/assets/video/act1/compressed/m003-street-sunrise.mp4",
   m006: "/assets/video/act1/compressed/m006-marine-drive.mp4",
   m007: "/assets/video/act1/compressed/m007-colombo-junction.mp4",
-  m008: "/assets/video/act1/compressed/m008-passenger-screen.mp4",
+  m008: "/assets/video/act1/compressed/m008-tuktuk-higgsfield-v3.mp4",
   m010: "/assets/video/act1/compressed/m010-gps-pulse.mp4",
   m011: "/assets/video/act1/compressed/m011-dashboard.mp4",
 } as const;
