@@ -169,7 +169,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-v2-act="network"],
   [data-v2-act="coverage"] {
     height: 100svh !important;
     min-height: 100svh !important;

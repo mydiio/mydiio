@@ -32,9 +32,16 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
   const mapProgress = 0.08 + range(safeProgress, 0, 0.7) * 0.92;
   const metricsIn = easeOutCubic(range(safeProgress, 0.22, 0.58));
 
-  const handoff = easeInOutCubic(range(safeProgress, 0.78, 0.9));
+  const handoff = easeInOutCubic(range(safeProgress, 0.7, 1));
   const stageOut = handoff;
   const finalIn = handoff;
+
+  const backgroundRed = Math.round(253 + (26 - 253) * handoff);
+  const backgroundGreen = Math.round(250 + (26 - 250) * handoff);
+  const backgroundBlue = Math.round(243 + (24 - 243) * handoff);
+
+  const sceneBackground =
+    "rgb(" + backgroundRed + ", " + backgroundGreen + ", " + backgroundBlue + ")";
 
   const colomboCount = formatCount(320000 * metricsIn);
   const nationalCount =
@@ -42,17 +49,19 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
 
   return (
     <div
+      className="atlas-network-mobile-root"
       style={{
         position: "sticky",
         top: 0,
         height: "100svh",
         overflow: "hidden",
-        background: colors.cream,
+        background: sceneBackground,
         color: colors.ink,
         fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
       }}
     >
       <div
+        className="atlas-network-mobile-inner"
         style={{
           width: "calc(100% - 36px)",
           height: "100%",
@@ -65,6 +74,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
         }}
       >
         <header
+          className="atlas-network-mobile-header"
           style={{
             flex: "0 0 auto",
             opacity: copyIn * (1 - stageOut),
@@ -88,7 +98,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
             style={{
               margin: 0,
               maxWidth: "9ch",
-              fontSize: "clamp(38px, 11vw, 48px)",
+              fontSize: "clamp(36px, 10.2vw, 44px)",
               fontWeight: 600,
               lineHeight: 0.91,
               letterSpacing: "-0.064em",
@@ -113,11 +123,12 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
         </header>
 
         <div
+          className="atlas-network-mobile-panel"
           style={{
             position: "relative",
-            flex: 1,
-            minHeight: 0,
-            marginTop: "16px",
+            flex: "0 0 clamp(350px, 52svh, 500px)",
+            minHeight: "350px",
+            marginTop: "14px",
             padding: "12px",
             boxSizing: "border-box",
             display: "flex",
@@ -147,6 +158,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
           />
 
           <div
+            className="atlas-network-mobile-map"
             style={{
               position: "relative",
               zIndex: 1,
@@ -164,7 +176,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
             <div
               style={{
                 position: "absolute",
-                inset: "0 24px",
+                inset: "0 12px",
               }}
             >
               <NetworkCanvas progress={mapProgress} />
@@ -172,6 +184,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
           </div>
 
           <div
+            className="atlas-network-mobile-metrics"
             style={{
               position: "relative",
               zIndex: 2,
@@ -187,8 +200,8 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
             <div
               style={{
                 minWidth: 0,
-                minHeight: "105px",
-                padding: "13px 12px",
+                minHeight: "92px",
+                padding: "11px 10px",
                 boxSizing: "border-box",
                 borderRadius: "18px",
                 background: "rgba(255,255,255,0.96)",
@@ -235,8 +248,8 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
             <div
               style={{
                 minWidth: 0,
-                minHeight: "105px",
-                padding: "13px 12px",
+                minHeight: "92px",
+                padding: "11px 10px",
                 boxSizing: "border-box",
                 borderRadius: "18px",
                 background: colors.ink,
@@ -304,7 +317,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
         <div>
           <div
             style={{
-              color: colors.amberDeep,
+              color: handoff > 0.5 ? colors.amber : colors.amberDeep,
               fontSize: "9px",
               fontWeight: 700,
               letterSpacing: "0.17em",
@@ -318,7 +331,8 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
             style={{
               margin: "14px auto 0",
               maxWidth: "11ch",
-              fontSize: "clamp(42px, 13vw, 64px)",
+              color: handoff > 0.5 ? colors.cream : colors.ink,
+              fontSize: "clamp(40px, 12vw, 58px)",
               fontWeight: 600,
               lineHeight: 0.91,
               letterSpacing: "-0.066em",
