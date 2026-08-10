@@ -37,6 +37,7 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
 
   return (
     <div
+      className="atlas-os-mobile-root"
       style={{
         position: "sticky",
         top: 0,
@@ -49,12 +50,32 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
     >
       <style>{`
         @media (prefers-reduced-motion: reduce) {
+          .atlas-os-mobile-root {
+            position: relative !important;
+            top: auto !important;
+            height: auto !important;
+            min-height: 0 !important;
+            overflow: hidden !important;
+          }
+
+          .atlas-os-mobile-inner {
+            height: auto !important;
+            min-height: 0 !important;
+            padding-top: 88px !important;
+            padding-bottom: 76px !important;
+          }
+
           .atlas-os-intro {
             opacity: 1 !important;
             transform: none !important;
           }
 
           .atlas-os-diagram-stage {
+            flex: 0 0 560px !important;
+            width: 100% !important;
+            height: 560px !important;
+            min-height: 560px !important;
+            margin-top: 52px !important;
             opacity: 1 !important;
             transform: none !important;
           }
@@ -63,13 +84,170 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
             opacity: 1 !important;
           }
 
+          .atlas-os-diagram-stage .atlas-os-relationship {
+            width: min(126px, 30vw) !important;
+            transform: translate(-50%, -50%) !important;
+          }
+
+          .atlas-os-relationship[data-relationship="passengers"] {
+            left: 50% !important;
+            top: 10% !important;
+          }
+
+          .atlas-os-relationship[data-relationship="businesses"] {
+            left: 18% !important;
+            top: 48% !important;
+          }
+
+          .atlas-os-relationship[data-relationship="drivers"] {
+            left: 82% !important;
+            top: 48% !important;
+          }
+
+          .atlas-os-relationship[data-relationship="operations"] {
+            left: 50% !important;
+            top: 89% !important;
+          }
+
+          .atlas-os-diagram-stage .atlas-os-centre {
+            width: clamp(138px, 38vw, 164px) !important;
+          }
+
           .atlas-os-conclusion {
             display: none !important;
+          }
+        }
+
+        /* atlas-os-mobile-grid-layout */
+        @media (max-width: 560px) {
+          .atlas-os-diagram-stage {
+            min-width: 0;
+          }
+
+          .atlas-os-diagram-stage .atlas-os-diagram {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: auto auto auto;
+            grid-template-areas:
+              "hub hub"
+              "passengers drivers"
+              "businesses operations";
+            align-content: center;
+            align-items: stretch;
+            gap: 14px;
+            width: 100% !important;
+            height: 100% !important;
+            padding: 4px 0;
+            box-sizing: border-box;
+            transform: none !important;
+          }
+
+          .atlas-os-diagram-stage
+            .atlas-os-diagram > [aria-hidden="true"] {
+            display: none !important;
+          }
+
+          .atlas-os-diagram-stage .atlas-os-centre {
+            position: relative !important;
+            grid-area: hub;
+            left: auto !important;
+            top: auto !important;
+            justify-self: center;
+            align-self: center;
+            width: clamp(138px, 39vw, 166px) !important;
+            margin-bottom: 10px;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+
+          .atlas-os-diagram-stage .atlas-os-relationship {
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
+            width: auto !important;
+            min-width: 0;
+            padding: 15px 13px 14px;
+            box-sizing: border-box;
+            border: 1px solid rgba(253, 250, 243, 0.09);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.025);
+            text-align: left !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+
+          .atlas-os-diagram-stage
+            .atlas-os-relationship[data-relationship="passengers"] {
+            grid-area: passengers;
+          }
+
+          .atlas-os-diagram-stage
+            .atlas-os-relationship[data-relationship="drivers"] {
+            grid-area: drivers;
+          }
+
+          .atlas-os-diagram-stage
+            .atlas-os-relationship[data-relationship="businesses"] {
+            grid-area: businesses;
+          }
+
+          .atlas-os-diagram-stage
+            .atlas-os-relationship[data-relationship="operations"] {
+            grid-area: operations;
+          }
+
+          .atlas-os-diagram-stage
+            .atlas-os-relationship > div:nth-child(1) {
+            font-size: 8px !important;
+            line-height: 1.2;
+          }
+
+          .atlas-os-diagram-stage
+            .atlas-os-relationship > div:nth-child(2) {
+            margin-top: 7px !important;
+            font-size: clamp(14px, 4vw, 17px) !important;
+            line-height: 1.08 !important;
+          }
+
+          .atlas-os-diagram-stage .atlas-os-detail {
+            margin-top: 6px !important;
+            font-size: 9px !important;
+            line-height: 1.38 !important;
+          }
+        }
+
+        @media (max-width: 350px) {
+          .atlas-os-diagram-stage .atlas-os-diagram {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            grid-template-areas:
+              "hub"
+              "passengers"
+              "drivers"
+              "businesses"
+              "operations";
+            gap: 10px;
+          }
+
+          .atlas-os-diagram-stage {
+            height: 720px !important;
+            min-height: 720px !important;
+            flex-basis: 720px !important;
+          }
+
+          .atlas-os-diagram-stage .atlas-os-centre {
+            width: 132px !important;
+            margin-bottom: 4px;
+          }
+
+          .atlas-os-diagram-stage .atlas-os-relationship {
+            padding: 12px 13px;
           }
         }
       `}</style>
 
       <div
+        className="atlas-os-mobile-inner"
         style={{
           position: "relative",
           zIndex: 1,

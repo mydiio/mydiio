@@ -104,6 +104,7 @@ function RelationshipLabel({
   return (
     <div
       className="atlas-os-relationship atlas-os-motion"
+      data-relationship={relationship.id}
       style={{
         position: "absolute",
         zIndex: 8,
