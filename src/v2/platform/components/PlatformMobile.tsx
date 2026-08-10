@@ -49,9 +49,19 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
     >
       <style>{`
         @media (prefers-reduced-motion: reduce) {
-          .atlas-os-motion {
+          .atlas-os-intro {
             opacity: 1 !important;
             transform: none !important;
+          }
+
+          .atlas-os-diagram-stage,
+          .atlas-os-diagram-stage .atlas-os-motion {
+            opacity: 1 !important;
+            transform: none !important;
+          }
+
+          .atlas-os-conclusion {
+            display: none !important;
           }
         }
       `}</style>
@@ -70,7 +80,7 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
         }}
       >
         <header
-          className="atlas-os-motion"
+          className="atlas-os-motion atlas-os-intro"
           style={{
             position: "relative",
             zIndex: 12,
@@ -125,13 +135,13 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
         </header>
 
         <div
-          className="atlas-os-motion"
+          className="atlas-os-motion atlas-os-diagram-stage"
           style={{
             position: "relative",
             flex: 1,
             minHeight: 0,
             marginTop: "8px",
-            opacity: diagramIn * (1 - diagramQuiet),
+            opacity: diagramIn * (1 - diagramQuiet) * (1 - conclusionIn * 0.85),
             transform: `translateY(${(1 - diagramIn) * 16 - diagramQuiet * 6}px) scale(${
               0.96 + diagramIn * 0.04 - diagramQuiet * 0.07
             })`,
@@ -141,7 +151,7 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
         </div>
 
         <div
-          className="atlas-os-motion"
+          className="atlas-os-motion atlas-os-conclusion"
           style={{
             position: "absolute",
             zIndex: 30,

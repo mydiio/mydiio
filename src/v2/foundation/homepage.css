@@ -171,12 +171,16 @@ body {
 @media (prefers-reduced-motion: reduce) {
   [data-v2-act="network"],
   [data-v2-act="platform"],
-  [data-v2-act="coverage"],
+  [data-v2-act="coverage"] {
+    height: 100svh !important;
+    min-height: 100svh !important;
+  }
+
   [data-v2-act="packages"],
   [data-v2-act="pioneer"],
   [data-v2-act="closing"] {
-    height: 100svh !important;
-    min-height: 100svh !important;
+    height: auto !important;
+    min-height: 0 !important;
   }
 
   [data-v2-act="funding"] {
@@ -636,7 +640,6 @@ body {
   }
 }
 
-
 /* =========================================================
    ATLAS V2 MOTION POLISH
    Single motion vocabulary applied across every act section.
@@ -677,7 +680,8 @@ body {
 
 /* Soft pulse for every amber accent dot across the page */
 @keyframes atlas-v2-soft-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -713,7 +717,9 @@ body {
     transparent 220deg,
     transparent 360deg
   );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: atlas-v2-conic-rotate 18s linear infinite;
@@ -723,7 +729,8 @@ body {
 
 /* Gentle ambient glow that breathes behind every dark band */
 @keyframes atlas-v2-ambient-glow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.55;
     transform: translate(-50%, -50%) scale(1);
   }
@@ -739,8 +746,12 @@ body {
 
 /* Subtle drift on light section heading wrappers */
 @keyframes atlas-v2-heading-drift {
-  from { transform: translateY(0); }
-  to { transform: translateY(-2px); }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-2px);
+  }
 }
 
 /* Premium card hover — translate + shadow + border */
