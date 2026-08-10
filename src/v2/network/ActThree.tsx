@@ -19,7 +19,7 @@ export function ActThree() {
       data-atlas-tone="light"
       style={{
         position: "relative",
-        height: isMobile ? "290svh" : "220svh",
+        height: isMobile ? "330svh" : "220svh",
         background: colors.cream,
       }}
     >
