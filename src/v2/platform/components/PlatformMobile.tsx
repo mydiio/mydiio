@@ -54,10 +54,13 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
             transform: none !important;
           }
 
-          .atlas-os-diagram-stage,
-          .atlas-os-diagram-stage .atlas-os-motion {
+          .atlas-os-diagram-stage {
             opacity: 1 !important;
             transform: none !important;
+          }
+
+          .atlas-os-diagram-stage .atlas-os-motion {
+            opacity: 1 !important;
           }
 
           .atlas-os-conclusion {
