@@ -9,13 +9,7 @@ type StackProps = {
   style?: CSSProperties;
 };
 
-export function Stack({
-  children,
-  gap = 5,
-  align,
-  justify,
-  style,
-}: StackProps) {
+export function Stack({ children, gap = 5, align, justify, style }: StackProps) {
   return (
     <div
       style={{

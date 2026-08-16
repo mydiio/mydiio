@@ -15,11 +15,7 @@ type LottiePlayerProps = {
   className?: string;
 };
 
-export function LottiePlayer({
-  animationData,
-  loop = true,
-  className,
-}: LottiePlayerProps) {
+export function LottiePlayer({ animationData, loop = true, className }: LottiePlayerProps) {
   const reduced = useReducedMotion();
   const ref = useRef<LottieRefCurrentProps>(null);
 

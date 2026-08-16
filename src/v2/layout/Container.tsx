@@ -7,11 +7,7 @@ type ContainerProps = {
   style?: CSSProperties;
 };
 
-export function Container({
-  children,
-  width = "page",
-  style,
-}: ContainerProps) {
+export function Container({ children, width = "page", style }: ContainerProps) {
   return (
     <div
       style={{

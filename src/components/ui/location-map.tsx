@@ -1,13 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "motion/react";
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "motion/react";
 
 interface LocationMapProps {
   location?: string;
@@ -310,12 +304,7 @@ export function LocationMap({
         >
           <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
             <defs>
-              <pattern
-                id="location-map-grid"
-                width="20"
-                height="20"
-                patternUnits="userSpaceOnUse"
-              >
+              <pattern id="location-map-grid" width="20" height="20" patternUnits="userSpaceOnUse">
                 <path
                   d="M 20 0 L 0 0 0 20"
                   fill="none"
@@ -439,8 +428,7 @@ export function LocationMap({
                   style={{
                     margin: 0,
                     fontSize: 11,
-                    fontFamily:
-                      '"SF Mono", ui-monospace, "JetBrains Mono", Menlo, monospace',
+                    fontFamily: '"SF Mono", ui-monospace, "JetBrains Mono", Menlo, monospace',
                     color: "rgba(26, 26, 24, 0.55)",
                   }}
                 >
