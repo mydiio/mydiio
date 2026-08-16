@@ -6,14 +6,8 @@ type PioneerSceneProps = {
   progress: number;
 };
 
-export function PioneerScene({
-  progress,
-}: PioneerSceneProps) {
+export function PioneerScene({ progress }: PioneerSceneProps) {
   const isMobile = useMediaQuery("(max-width: 560px)");
 
-  return isMobile ? (
-    <PioneerMobile progress={progress} />
-  ) : (
-    <PioneerDesktop progress={progress} />
-  );
+  return isMobile ? <PioneerMobile progress={progress} /> : <PioneerDesktop progress={progress} />;
 }

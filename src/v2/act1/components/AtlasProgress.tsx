@@ -1,19 +1,11 @@
-import {
-  colors,
-  letterSpacing,
-  spacing,
-  typeScale,
-} from "@/design";
+import { colors, letterSpacing, spacing, typeScale } from "@/design";
 
 type AtlasProgressProps = {
   activeIndex: number;
   total: number;
 };
 
-export function AtlasProgress({
-  activeIndex,
-  total,
-}: AtlasProgressProps) {
+export function AtlasProgress({ activeIndex, total }: AtlasProgressProps) {
   return (
     <div
       aria-hidden="true"

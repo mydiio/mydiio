@@ -1,19 +1,10 @@
-import { useMediaQuery } from "@/v2/hooks";
-import { CoverageDesktop } from "./CoverageDesktop";
-import { CoverageMobile } from "./CoverageMobile";
+import { createElement } from "react";
+import { MydiioCorridorMap } from "./MydiioCorridorMap";
 
 type CoverageSceneProps = {
   progress: number;
 };
 
-export function CoverageScene({
-  progress,
-}: CoverageSceneProps) {
-  const isMobile = useMediaQuery("(max-width: 560px)");
-
-  return isMobile ? (
-    <CoverageMobile progress={progress} />
-  ) : (
-    <CoverageDesktop progress={progress} />
-  );
+export function CoverageScene({ progress }: CoverageSceneProps) {
+  return createElement(MydiioCorridorMap, { progress });
 }

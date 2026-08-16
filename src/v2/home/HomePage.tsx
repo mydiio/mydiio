@@ -17,18 +17,18 @@ import { HomeWhatsapp } from "./components/HomeWhatsapp";
 export function HomePage() {
   return (
     <main data-v2-page data-home-page>
-        <AtlasNav />
-        <HomeHero />
-        <HomeProof />
-        <HomeDifference />
-        <HomeHow />
-        <HomePortal />
-        <HomePlans />
-        <HomePioneer />
-        <HomeFaq />
-        <HomeClosing />
-        <AtlasFooter />
-        <HomeWhatsapp />
+      <AtlasNav />
+      <HomeHero />
+      <HomeProof />
+      <HomeDifference />
+      <HomeHow />
+      <HomePortal />
+      <HomePlans />
+      <HomePioneer />
+      <HomeFaq />
+      <HomeClosing />
+      <AtlasFooter />
+      <HomeWhatsapp />
     </main>
   );
 }

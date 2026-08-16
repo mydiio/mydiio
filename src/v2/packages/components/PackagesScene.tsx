@@ -6,9 +6,7 @@ type PackagesSceneProps = {
   progress: number;
 };
 
-export function PackagesScene({
-  progress,
-}: PackagesSceneProps) {
+export function PackagesScene({ progress }: PackagesSceneProps) {
   const isMobile = useMediaQuery("(max-width: 560px)");
 
   return isMobile ? (

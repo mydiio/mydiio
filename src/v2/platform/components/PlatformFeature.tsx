@@ -21,37 +21,23 @@ export function PlatformFeature({
   threshold,
   nextThreshold = 1.1,
 }: PlatformFeatureProps) {
-  const revealProgress = clamp(
-    (progress - threshold) / 0.1,
-  );
+  const revealProgress = clamp((progress - threshold) / 0.1);
 
-  const isCurrent =
-    progress >= threshold &&
-    progress < nextThreshold;
+  const isCurrent = progress >= threshold && progress < nextThreshold;
 
   const isPast = progress >= nextThreshold;
 
-  const opacity = isCurrent
-    ? 1
-    : isPast
-      ? 0.68
-      : 0.18;
+  const opacity = isCurrent ? 1 : isPast ? 0.68 : 0.18;
 
   return (
     <div
       style={{
         position: "relative",
         paddingTop: "17px",
-        borderTop: `1px solid ${
-          isCurrent
-            ? "rgba(245,166,35,0.72)"
-            : "rgba(253,250,243,0.14)"
-        }`,
+        borderTop: `1px solid ${isCurrent ? "rgba(245,166,35,0.72)" : "rgba(253,250,243,0.14)"}`,
         fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
         opacity,
-        transform: isCurrent
-          ? "translateY(-3px)"
-          : `translateY(${(1 - revealProgress) * 5}px)`,
+        transform: isCurrent ? "translateY(-3px)" : `translateY(${(1 - revealProgress) * 5}px)`,
         transition:
           "opacity 0.42s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease",
       }}
@@ -59,9 +45,7 @@ export function PlatformFeature({
       <div
         style={{
           marginBottom: "12px",
-          color: isCurrent
-            ? colors.amber
-            : "rgba(253,250,243,0.58)",
+          color: isCurrent ? colors.amber : "rgba(253,250,243,0.58)",
           fontSize: "12px",
           fontWeight: 700,
           letterSpacing: "0.12em",

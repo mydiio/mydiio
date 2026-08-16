@@ -58,7 +58,7 @@ export function useSceneProgress(sectionRef: RefObject<HTMLElement | null>) {
     /*
      * Discovery holds briefly, then overlaps Journey.
      */
-    discovery: clamp(progress / 0.30),
+    discovery: clamp(progress / 0.3),
 
     /*
      * Travelling signal begins before Discovery fully exits.

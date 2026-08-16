@@ -1,10 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type RefObject,
-} from "react";
+import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
 import { useReducedMotion } from "@/motion/useReducedMotion";
 
 type SectionProgressOptions = {
@@ -21,19 +15,14 @@ function clamp(value: number) {
   return Math.min(1, Math.max(0, value));
 }
 
-export function useSectionProgress<
-  T extends HTMLElement = HTMLElement,
->(
+export function useSectionProgress<T extends HTMLElement = HTMLElement>(
   options: SectionProgressOptions = {},
 ): SectionProgressResult<T> {
   const ref = useRef<T>(null);
   const reducedMotion = useReducedMotion();
-  const [progress, setProgress] = useState(
-    reducedMotion ? 1 : 0,
-  );
+  const [progress, setProgress] = useState(reducedMotion ? 1 : 0);
 
-  const disabled =
-    options.disabled === true || reducedMotion;
+  const disabled = options.disabled === true || reducedMotion;
 
   const update = useCallback(() => {
     const section = ref.current;
@@ -44,17 +33,14 @@ export function useSectionProgress<
     }
 
     const rect = section.getBoundingClientRect();
-    const scrollDistance =
-      section.offsetHeight - window.innerHeight;
+    const scrollDistance = section.offsetHeight - window.innerHeight;
 
     if (scrollDistance <= 0) {
       setProgress(rect.top <= 0 ? 1 : 0);
       return;
     }
 
-    setProgress(
-      clamp(-rect.top / scrollDistance),
-    );
+    setProgress(clamp(-rect.top / scrollDistance));
   }, [disabled]);
 
   useEffect(() => {
@@ -78,33 +64,20 @@ export function useSectionProgress<
 
     requestUpdate();
 
-    window.addEventListener(
-      "scroll",
-      requestUpdate,
-      {
-        passive: true,
-      },
-    );
+    window.addEventListener("scroll", requestUpdate, {
+      passive: true,
+    });
 
-    window.addEventListener(
-      "resize",
-      requestUpdate,
-    );
+    window.addEventListener("resize", requestUpdate);
 
     return () => {
       if (frame) {
         window.cancelAnimationFrame(frame);
       }
 
-      window.removeEventListener(
-        "scroll",
-        requestUpdate,
-      );
+      window.removeEventListener("scroll", requestUpdate);
 
-      window.removeEventListener(
-        "resize",
-        requestUpdate,
-      );
+      window.removeEventListener("resize", requestUpdate);
     };
   }, [disabled, update]);
 

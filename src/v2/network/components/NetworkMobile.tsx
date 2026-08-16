@@ -37,12 +37,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
   const stageOut = handoff;
   const finalIn = handoff;
 
-  const backgroundRed = Math.round(253 + (26 - 253) * handoff);
-  const backgroundGreen = Math.round(250 + (26 - 250) * handoff);
-  const backgroundBlue = Math.round(243 + (24 - 243) * handoff);
-
-  const sceneBackground =
-    "rgb(" + backgroundRed + ", " + backgroundGreen + ", " + backgroundBlue + ")";
+  const sceneBackground = colors.cream;
 
   const colomboCount = formatCount(320000 * metricsIn);
   const nationalCount =
@@ -318,7 +313,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
         <div>
           <div
             style={{
-              color: handoff > 0.5 ? colors.amber : colors.amberDeep,
+              color: colors.amberDeep,
               fontSize: "9px",
               fontWeight: 700,
               letterSpacing: "0.17em",
@@ -332,7 +327,7 @@ export function NetworkMobile({ progress }: NetworkMobileProps) {
             style={{
               margin: "14px auto 0",
               maxWidth: "11ch",
-              color: handoff > 0.5 ? colors.cream : colors.ink,
+              color: colors.ink,
               fontSize: "clamp(40px, 12vw, 58px)",
               fontWeight: 600,
               lineHeight: 0.91,

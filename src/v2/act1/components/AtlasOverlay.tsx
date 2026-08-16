@@ -4,9 +4,7 @@ type AtlasOverlayProps = {
   active: boolean;
 };
 
-export function AtlasOverlay({
-  active,
-}: AtlasOverlayProps) {
+export function AtlasOverlay({ active }: AtlasOverlayProps) {
   return (
     <>
       <div
@@ -57,8 +55,7 @@ export function AtlasOverlay({
           position: "absolute",
           inset: 0,
           zIndex: 4,
-          boxShadow:
-            "inset 0 0 160px rgba(0,0,0,0.16), inset 0 -90px 120px rgba(0,0,0,0.12)",
+          boxShadow: "inset 0 0 160px rgba(0,0,0,0.16), inset 0 -90px 120px rgba(0,0,0,0.12)",
           pointerEvents: "none",
         }}
       />

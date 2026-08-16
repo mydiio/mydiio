@@ -9,13 +9,7 @@ type CoverageStopProps = {
   complete: boolean;
 };
 
-export function CoverageStop({
-  number,
-  title,
-  detail,
-  time,
-  active,
-}: CoverageStopProps) {
+export function CoverageStop({ number, title, detail, time, active }: CoverageStopProps) {
   return (
     <div
       style={{
@@ -24,8 +18,7 @@ export function CoverageStop({
         borderRadius: "16px",
         background: "rgba(255,255,255,0.97)",
         border: "1px solid rgba(26,26,24,0.07)",
-        boxShadow:
-          "0 24px 52px -30px rgba(26,26,24,0.32), 0 7px 18px -12px rgba(26,26,24,0.14)",
+        boxShadow: "0 24px 52px -30px rgba(26,26,24,0.32), 0 7px 18px -12px rgba(26,26,24,0.14)",
         fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
       }}
     >
@@ -92,8 +85,7 @@ export function CoverageStop({
             height: "7px",
             borderRadius: "50%",
             background: colors.amber,
-            boxShadow:
-              "0 0 0 5px rgba(245,166,35,0.11)",
+            boxShadow: "0 0 0 5px rgba(245,166,35,0.11)",
           }}
         />
 

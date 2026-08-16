@@ -125,6 +125,8 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
             style={{
               position: "relative",
               zIndex: 12,
+              width: "100%",
+              textAlign: "center",
               opacity: copyIn * (1 - focusShift * 0.62) * (1 - copyOut),
               transform: `translateY(${
                 (1 - copyIn) * 18 - focusShift * 12 - copyOut * 12
@@ -134,7 +136,7 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
           >
             <div
               style={{
-                display: "flex",
+                display: "inline-flex",
                 alignItems: "center",
                 gap: "10px",
                 marginBottom: "18px",

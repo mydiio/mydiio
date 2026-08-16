@@ -9,17 +9,11 @@ type JourneyStepProps = {
   state: JourneyStepState;
 };
 
-export function JourneyStep({
-  number,
-  title,
-  body,
-  state,
-}: JourneyStepProps) {
+export function JourneyStep({ number, title, body, state }: JourneyStepProps) {
   const isCurrent = state === "current";
   const isPast = state === "past";
 
-  const opacity =
-    state === "current" ? 1 : state === "past" ? 0.76 : 0.2;
+  const opacity = state === "current" ? 1 : state === "past" ? 0.76 : 0.2;
 
   return (
     <div
@@ -30,8 +24,7 @@ export function JourneyStep({
         fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
         opacity,
         transform: isCurrent ? "translateY(-4px)" : "translateY(0)",
-        transition:
-          "opacity 0.45s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1)",
+        transition: "opacity 0.45s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1)",
       }}
     >
       <div
@@ -55,14 +48,8 @@ export function JourneyStep({
           height: isCurrent ? "72px" : "68px",
           margin: "0 auto 18px",
           borderRadius: "50%",
-          border: `1px solid ${
-            isCurrent || isPast
-              ? colors.amber
-              : "rgba(26,26,24,0.12)"
-          }`,
-          background: isCurrent
-            ? "rgba(245,166,35,0.11)"
-            : colors.cream,
+          border: `1px solid ${isCurrent || isPast ? colors.amber : "rgba(26,26,24,0.12)"}`,
+          background: isCurrent ? "rgba(245,166,35,0.11)" : colors.cream,
           transition:
             "width 0.45s ease, height 0.45s ease, border-color 0.4s ease, background 0.4s ease",
         }}
@@ -72,13 +59,8 @@ export function JourneyStep({
             width: isCurrent ? "17px" : "14px",
             height: isCurrent ? "17px" : "14px",
             borderRadius: "50%",
-            background:
-              isCurrent || isPast
-                ? colors.amber
-                : "rgba(26,26,24,0.14)",
-            boxShadow: isCurrent
-              ? "0 0 0 8px rgba(245,166,35,0.12)"
-              : "none",
+            background: isCurrent || isPast ? colors.amber : "rgba(26,26,24,0.14)",
+            boxShadow: isCurrent ? "0 0 0 8px rgba(245,166,35,0.12)" : "none",
             transition:
               "width 0.4s ease, height 0.4s ease, background 0.4s ease, box-shadow 0.4s ease",
           }}
@@ -105,9 +87,7 @@ export function JourneyStep({
           width: isCurrent ? "36px" : "28px",
           height: "1px",
           margin: "14px auto",
-          background: isCurrent
-            ? colors.amber
-            : "rgba(26,26,24,0.14)",
+          background: isCurrent ? colors.amber : "rgba(26,26,24,0.14)",
           transition: "width 0.4s ease, background 0.4s ease",
         }}
       />

@@ -14,7 +14,6 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
   const proofProgress = clamp((progress - 0.22) / 0.2);
   const bodyProgress = clamp((progress - 0.38) / 0.16);
   const actionsProgress = clamp((progress - 0.55) / 0.18);
-  const footerProgress = clamp((progress - 0.76) / 0.16);
   const glowProgress = clamp((progress - 0.08) / 0.78);
 
   return (
@@ -30,10 +29,9 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
     >
       <style>{`
         .atlas-closing-actions a,
-        .atlas-closing-footer a {
+        .atlas-closing-actions a {
           transition:
             transform 0.25s cubic-bezier(0.22,1,0.36,1),
-            opacity 0.25s ease,
             background 0.25s ease;
         }
 
@@ -41,12 +39,7 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
           transform: translateY(-2px);
         }
 
-        .atlas-closing-footer a:hover {
-          opacity: 0.68;
-        }
-
-        .atlas-closing-actions a:focus-visible,
-        .atlas-closing-footer a:focus-visible {
+        .atlas-closing-actions a:focus-visible {
           outline: 2px solid #F5A623;
           outline-offset: 4px;
         }
@@ -76,10 +69,6 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
             text-align: left !important;
           }
 
-          .atlas-closing-footer {
-            grid-template-columns: 1fr !important;
-            gap: 24px !important;
-          }
         }
       `}</style>
 
@@ -288,79 +277,6 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
             </div>
           </div>
         </div>
-
-        <footer
-          className="atlas-closing-footer"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1fr) auto minmax(0, 1fr)",
-            gap: "34px",
-            alignItems: "end",
-            paddingTop: "24px",
-            borderTop: "1px solid var(--atlas-border-light)",
-            opacity: footerProgress,
-            transform: `translateY(${(1 - footerProgress) * 10}px)`,
-          }}
-        >
-          <div
-            aria-label="mydiio"
-            style={{
-              display: "inline-flex",
-              color: colors.ink,
-              fontSize: "24px",
-              fontWeight: 750,
-              letterSpacing: "-0.055em",
-            }}
-          >
-            <span>myd</span>
-            <span style={{ color: colors.amber }}>ii</span>
-            <span>o</span>
-          </div>
-
-          <nav
-            aria-label="Footer"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              gap: "22px",
-            }}
-          >
-            {[
-              ["Advertise", "/advertise"],
-              ["Drive", "/drive"],
-              ["Investors", "/investors"],
-              ["About", "/about"],
-              ["Contact", "/contact"],
-            ].map(([label, href]) => (
-              <a
-                key={href}
-                href={href}
-                style={{
-                  color: "rgba(26,26,24,0.58)",
-                  textDecoration: "none",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                }}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-
-          <div
-            aria-label="© 2026 mydiio"
-            style={{
-              justifySelf: "end",
-              color: "rgba(26,26,24,0.42)",
-              fontSize: "12px",
-              textAlign: "right",
-            }}
-          >
-            © 2026 myd
-            <span style={{ color: colors.amberDeep }}>ii</span>o
-          </div>
-        </footer>
       </div>
     </div>
   );

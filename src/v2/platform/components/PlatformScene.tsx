@@ -6,9 +6,7 @@ type PlatformSceneProps = {
   progress: number;
 };
 
-export function PlatformScene({
-  progress,
-}: PlatformSceneProps) {
+export function PlatformScene({ progress }: PlatformSceneProps) {
   const isMobile = useMediaQuery("(max-width: 560px)");
 
   return isMobile ? (

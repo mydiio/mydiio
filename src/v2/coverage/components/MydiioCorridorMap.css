@@ -1,0 +1,338 @@
+[data-mydiio-corridor-map] {
+  background: #fbf8f2;
+  color: #171716;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  overflow: hidden;
+  padding: clamp(88px, 11vw, 152px) 24px;
+}
+
+.mydiio-corridor-intro {
+  margin: 0 auto 42px;
+  max-width: 1080px;
+  text-align: center;
+}
+
+.mydiio-corridor-intro p,
+.mydiio-location-label {
+  color: #f5a623;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.mydiio-corridor-intro h2 {
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 600;
+  letter-spacing: -0.07em;
+  line-height: 0.92;
+  margin: 15px auto;
+  max-width: 9ch;
+}
+
+.mydiio-corridor-intro > span {
+  color: rgba(23, 23, 22, 0.62);
+  display: block;
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.45;
+  margin: 0 auto;
+  max-width: 46ch;
+}
+
+.mydiio-location-grid {
+  align-items: start;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 auto;
+  max-width: 1020px;
+}
+
+.mydiio-location-card {
+  appearance: none;
+  background: #121211;
+  border: 1px solid rgba(248, 245, 238, 0.16);
+  border-radius: 22px;
+  color: #f8f5ee;
+  cursor: pointer;
+  height: 168px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  text-align: left;
+  transform-origin: center;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    height 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 130ms ease;
+  width: 100%;
+}
+
+.mydiio-location-card:hover,
+.mydiio-location-card:focus-visible {
+  border-color: rgba(245, 166, 35, 0.75);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.28);
+  outline: none;
+}
+
+.mydiio-location-card.is-expanded {
+  height: 320px;
+}
+
+.mydiio-map-layer {
+  inset: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  transition: opacity 300ms ease;
+}
+
+.is-expanded .mydiio-map-layer {
+  opacity: 1;
+}
+
+.mydiio-map-tiles {
+  height: 768px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  width: 768px;
+}
+
+.mydiio-map-tiles img {
+  height: 256px;
+  max-width: none;
+  position: absolute;
+  width: 256px;
+}
+
+.mydiio-map-vignette {
+  background:
+    linear-gradient(180deg, rgba(17, 17, 16, 0.2), rgba(17, 17, 16, 0.88)),
+    linear-gradient(90deg, rgba(17, 17, 16, 0.28), transparent 50%, rgba(17, 17, 16, 0.18));
+  inset: 0;
+  position: absolute;
+}
+
+.mydiio-map-marker {
+  left: 50%;
+  position: absolute;
+  top: 47%;
+  transform: translate(-50%, -50%);
+}
+
+.mydiio-map-pin {
+  filter: drop-shadow(0 0 12px rgba(245, 166, 35, 0.52));
+  height: 35px;
+  width: 35px;
+}
+
+.mydiio-map-pin path {
+  fill: #f5a623;
+}
+
+.mydiio-map-pin circle {
+  fill: #171716;
+}
+
+.mydiio-location-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.mydiio-location-content > svg {
+  filter: drop-shadow(0 0 7px rgba(245, 166, 35, 0.45));
+  height: 21px;
+  stroke: #f5a623;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  width: 21px;
+}
+
+.mydiio-location-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.mydiio-location-copy strong {
+  font-size: clamp(19px, 2.2vw, 25px);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.mydiio-location-coordinate {
+  color: rgba(248, 245, 238, 0);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    color 220ms ease,
+    max-height 260ms ease;
+}
+
+.is-expanded .mydiio-location-coordinate {
+  color: rgba(248, 245, 238, 0.68);
+  max-height: 20px;
+}
+
+.mydiio-location-line {
+  background: linear-gradient(90deg, #f5a623, transparent);
+  height: 1px;
+  margin-top: 3px;
+  transform: scaleX(0.24);
+  transform-origin: left;
+  transition: transform 260ms ease;
+  width: 100%;
+}
+
+.mydiio-location-card:hover .mydiio-location-line,
+.is-expanded .mydiio-location-line {
+  transform: scaleX(1);
+}
+
+.mydiio-map-attribution {
+  color: rgba(23, 23, 22, 0.42);
+  font-size: 11px;
+  margin: 24px auto 0;
+  max-width: 1020px;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  [data-mydiio-corridor-map] {
+    padding: 76px 18px;
+  }
+
+  .mydiio-corridor-intro {
+    margin-bottom: 30px;
+    text-align: left;
+  }
+
+  .mydiio-corridor-intro h2 {
+    margin-left: 0;
+  }
+
+  .mydiio-corridor-intro > span {
+    margin-left: 0;
+  }
+
+  .mydiio-location-grid {
+    gap: 16px;
+    grid-template-columns: 1fr;
+    max-width: 440px;
+  }
+
+  .mydiio-location-card {
+    height: 150px;
+  }
+
+  .mydiio-location-card.is-expanded {
+    height: 286px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mydiio-location-card,
+  .mydiio-map-layer,
+  .mydiio-location-coordinate,
+  .mydiio-location-line {
+    transition: none;
+  }
+}
+
+.mydiio-expansion-plan {
+  border-top: 1px solid rgba(23, 23, 22, 0.14);
+  margin: clamp(58px, 8vw, 96px) auto 0;
+  max-width: 1020px;
+  padding-top: 22px;
+}
+
+.mydiio-expansion-plan-heading {
+  align-items: baseline;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.mydiio-expansion-plan-heading p {
+  color: #f5a623;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.mydiio-expansion-plan-heading span {
+  color: rgba(23, 23, 22, 0.56);
+  font-size: 14px;
+}
+
+.mydiio-expansion-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.mydiio-expansion-card {
+  background: #fffdfa;
+  border: 1px solid rgba(23, 23, 22, 0.14);
+  border-radius: 18px;
+  min-height: 154px;
+  padding: 20px;
+}
+
+.mydiio-expansion-card > span {
+  color: #f5a623;
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.mydiio-expansion-card strong {
+  display: block;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  margin-top: 22px;
+}
+
+.mydiio-expansion-card p {
+  color: rgba(23, 23, 22, 0.56);
+  font-size: 13px;
+  line-height: 1.35;
+  margin: 9px 0 0;
+}
+
+@media (max-width: 760px) {
+  .mydiio-expansion-plan-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .mydiio-expansion-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mydiio-expansion-card {
+    min-height: 138px;
+    padding: 17px;
+  }
+}
