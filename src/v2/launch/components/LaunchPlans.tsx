@@ -6,15 +6,13 @@ export function LaunchPlans() {
     <section className="launch-plans" data-atlas-tone="light">
       <div className="launch-shell">
         <Reveal as="header" className="launch-plans-intro">
-          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">
-            Pick a plan
-          </div>
+          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">Pick a plan</div>
           <h2 className="atlas-section-heading atlas-section-heading-large">
             Four plans. One goal each.
           </h2>
           <p className="atlas-section-copy atlas-section-copy-dark">
-            Pick the plan that fits your goal. Every plan starts with seven days
-            free and a refundable LKR 5,000 deposit.
+            Pick the plan that fits your goal. Every plan starts with seven days free and a
+            refundable LKR 5,000 deposit.
           </p>
         </Reveal>
 

@@ -1,4 +1,9 @@
-import { productPurchases, productEyebrow, productHeading, productBody } from "../advertiserContent";
+import {
+  productPurchases,
+  productEyebrow,
+  productHeading,
+  productBody,
+} from "../advertiserContent";
 import { Reveal } from "@/motion";
 
 export function ProductPurchase() {

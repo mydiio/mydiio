@@ -15,16 +15,12 @@ export function AdvertiserJourneyTablet() {
     // Dwell on each clean state (live 0.45, gps 0.67, report 0.9),
     // dissolve between, loop back. Never below 0.45 so the screen
     // is always powered on (no black frame).
-    const controls = animate(
-      progress,
-      [0.45, 0.45, 0.67, 0.67, 0.9, 0.9, 0.45],
-      {
-        duration: 13,
-        times: [0, 0.14, 0.31, 0.45, 0.62, 0.8, 1],
-        ease: "easeInOut",
-        repeat: Infinity,
-      }
-    );
+    const controls = animate(progress, [0.45, 0.45, 0.67, 0.67, 0.9, 0.9, 0.45], {
+      duration: 13,
+      times: [0, 0.14, 0.31, 0.45, 0.62, 0.8, 1],
+      ease: "easeInOut",
+      repeat: Infinity,
+    });
 
     return () => controls.stop();
   }, [progress, reduceMotion]);
