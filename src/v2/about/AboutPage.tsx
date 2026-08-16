@@ -5,11 +5,7 @@ import "@/v2/about/about.css";
 
 import { AboutHero } from "./components/AboutHero";
 import { AboutPillars } from "./components/AboutPillars";
-import { AboutTimeline } from "./components/AboutTimeline";
-import { AboutStats } from "./components/AboutStats";
 import { AboutSides } from "./components/AboutSides";
-import { AboutNetwork } from "./components/network/AboutNetwork";
-import { AboutSafety } from "./components/AboutSafety";
 import { AboutFuture } from "./components/AboutFuture";
 import { AboutClosing } from "./components/AboutClosing";
 
@@ -19,11 +15,7 @@ export function AboutPage() {
       <AtlasNav />
       <AboutHero />
       <AboutPillars />
-      <AboutTimeline />
-      <AboutStats />
       <AboutSides />
-      <AboutNetwork />
-      <AboutSafety />
       <AboutFuture />
       <AboutClosing />
       <AtlasFooter />

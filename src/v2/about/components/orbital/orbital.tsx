@@ -24,8 +24,7 @@ export type Planet = {
   glow?: number;
 };
 
-export interface OrbitalHeroSectionProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface OrbitalHeroSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Bodies to run. Defaults to Mercury through Saturn with J2000 elements. */
   planets?: Planet[];
   /** Seconds of wall clock per Earth year. */
@@ -127,14 +126,95 @@ export interface OrbitalHeroSectionProps
 /* -------------------------------------------------------------------------- */
 
 export const SOLAR_SYSTEM: Planet[] = [
-  { name: "Mercury", a: 0.38710, e: 0.20563, i: 7.005, node: 48.331, peri: 29.125, M0: 174.796, color: "#fff0d0", size: 2.2 },
-  { name: "Venus",   a: 0.72333, e: 0.00677, i: 3.395, node: 76.680, peri: 54.853, M0: 50.115,  color: "#ffc65a", size: 3.4 },
-  { name: "Earth",   a: 1.00000, e: 0.01671, i: 0.000, node: 348.739, peri: 114.208, M0: 357.517, color: "#5fd8ff", size: 3.8, glow: 1.1 },
-  { name: "Mars",    a: 1.52371, e: 0.09339, i: 1.850, node: 49.558, peri: 286.483, M0: 19.373, color: "#ff4a32", size: 2.9 },
-  { name: "Jupiter", a: 5.20290, e: 0.04839, i: 1.303, node: 100.464, peri: 273.867, M0: 20.020, color: "#ffa62e", size: 5.4 },
-  { name: "Saturn",  a: 9.53700, e: 0.05386, i: 2.485, node: 113.665, peri: 339.392, M0: 317.020, color: "#ffd884", size: 4.8 },
-  { name: "Uranus",  a: 19.1913, e: 0.04726, i: 0.773, node: 74.006, peri: 98.999, M0: 142.238, color: "#7fe6ff", size: 4.2 },
-  { name: "Neptune", a: 30.0690, e: 0.00859, i: 1.770, node: 131.784, peri: 276.336, M0: 256.228, color: "#3f7dff", size: 4.4 },
+  {
+    name: "Mercury",
+    a: 0.3871,
+    e: 0.20563,
+    i: 7.005,
+    node: 48.331,
+    peri: 29.125,
+    M0: 174.796,
+    color: "#fff0d0",
+    size: 2.2,
+  },
+  {
+    name: "Venus",
+    a: 0.72333,
+    e: 0.00677,
+    i: 3.395,
+    node: 76.68,
+    peri: 54.853,
+    M0: 50.115,
+    color: "#ffc65a",
+    size: 3.4,
+  },
+  {
+    name: "Earth",
+    a: 1.0,
+    e: 0.01671,
+    i: 0.0,
+    node: 348.739,
+    peri: 114.208,
+    M0: 357.517,
+    color: "#5fd8ff",
+    size: 3.8,
+    glow: 1.1,
+  },
+  {
+    name: "Mars",
+    a: 1.52371,
+    e: 0.09339,
+    i: 1.85,
+    node: 49.558,
+    peri: 286.483,
+    M0: 19.373,
+    color: "#ff4a32",
+    size: 2.9,
+  },
+  {
+    name: "Jupiter",
+    a: 5.2029,
+    e: 0.04839,
+    i: 1.303,
+    node: 100.464,
+    peri: 273.867,
+    M0: 20.02,
+    color: "#ffa62e",
+    size: 5.4,
+  },
+  {
+    name: "Saturn",
+    a: 9.537,
+    e: 0.05386,
+    i: 2.485,
+    node: 113.665,
+    peri: 339.392,
+    M0: 317.02,
+    color: "#ffd884",
+    size: 4.8,
+  },
+  {
+    name: "Uranus",
+    a: 19.1913,
+    e: 0.04726,
+    i: 0.773,
+    node: 74.006,
+    peri: 98.999,
+    M0: 142.238,
+    color: "#7fe6ff",
+    size: 4.2,
+  },
+  {
+    name: "Neptune",
+    a: 30.069,
+    e: 0.00859,
+    i: 1.77,
+    node: 131.784,
+    peri: 276.336,
+    M0: 256.228,
+    color: "#3f7dff",
+    size: 4.4,
+  },
 ];
 
 /** Just the four rocky ones, for a tighter frame. */
@@ -146,8 +226,14 @@ export const INNER_PLANETS: Planet[] = SOLAR_SYSTEM.slice(0, 4);
  * every load and on the server as on the client.
  */
 const PLANE_FAN: Array<[number, number]> = [
-  [58, 35], [27, 145], [71, 250], [40, 80],
-  [84, 190], [33, 310], [62, 120], [15, 20],
+  [58, 35],
+  [27, 145],
+  [71, 250],
+  [40, 80],
+  [84, 190],
+  [33, 310],
+  [62, 120],
+  [15, 20],
 ];
 
 /** Eccentricity each orbit is pulled toward at eccentricity = 1. */
@@ -241,14 +327,58 @@ export function OrbitalHeroSection({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const props = useRef({
-    planets, yearSeconds, trailYears, compress, maxTurns, planeSpread, eccentricity, alignToCourse, driftSpeed, apex,
-    viewRadius, tilt, spin, roll, lead, focus, scrim, scrimStrength, starCount, glow, showOrbits, showSunTrack,
-    interactive, paused, sunColor,
+    planets,
+    yearSeconds,
+    trailYears,
+    compress,
+    maxTurns,
+    planeSpread,
+    eccentricity,
+    alignToCourse,
+    driftSpeed,
+    apex,
+    viewRadius,
+    tilt,
+    spin,
+    roll,
+    lead,
+    focus,
+    scrim,
+    scrimStrength,
+    starCount,
+    glow,
+    showOrbits,
+    showSunTrack,
+    interactive,
+    paused,
+    sunColor,
   });
   props.current = {
-    planets, yearSeconds, trailYears, compress, maxTurns, planeSpread, eccentricity, alignToCourse, driftSpeed, apex,
-    viewRadius, tilt, spin, roll, lead, focus, scrim, scrimStrength, starCount, glow, showOrbits, showSunTrack,
-    interactive, paused, sunColor,
+    planets,
+    yearSeconds,
+    trailYears,
+    compress,
+    maxTurns,
+    planeSpread,
+    eccentricity,
+    alignToCourse,
+    driftSpeed,
+    apex,
+    viewRadius,
+    tilt,
+    spin,
+    roll,
+    lead,
+    focus,
+    scrim,
+    scrimStrength,
+    starCount,
+    glow,
+    showOrbits,
+    showSunTrack,
+    interactive,
+    paused,
+    sunColor,
   };
 
   useEffect(() => {
@@ -287,16 +417,25 @@ export function OrbitalHeroSection({
     function setCamera(yawDeg: number, pitchDeg: number, rollDeg: number) {
       const A = yawDeg * RAD;
       const B = pitchDeg * RAD;
-      const ca = Math.cos(A), sa = Math.sin(A);
-      const cb = Math.cos(B), sb = Math.sin(B);
-      const rx = ca, ry = sa, rz = 0;
-      const ux = -sa * cb, uy = ca * cb, uz = sb;
-      FWD.x = sa * sb; FWD.y = -ca * sb; FWD.z = cb;
+      const ca = Math.cos(A),
+        sa = Math.sin(A);
+      const cb = Math.cos(B),
+        sb = Math.sin(B);
+      const rx = ca,
+        ry = sa,
+        rz = 0;
+      const ux = -sa * cb,
+        uy = ca * cb,
+        uz = sb;
+      FWD.x = sa * sb;
+      FWD.y = -ca * sb;
+      FWD.z = cb;
       // Roll turns the picture about the line of sight. It changes nothing in
       // space — it only decides which way the helix runs across the screen,
       // which is why it can be set apart from the viewing angle.
       const C = rollDeg * RAD;
-      const cr = Math.cos(C), sr = Math.sin(C);
+      const cr = Math.cos(C),
+        sr = Math.sin(C);
       RIGHT.x = rx * cr + ux * sr;
       RIGHT.y = ry * cr + uy * sr;
       RIGHT.z = rz * cr + uz * sr;
@@ -345,14 +484,24 @@ export function OrbitalHeroSection({
       aDraw: number; // semi-major axis after the radial squeeze
       period: number; // years, from Kepler's third law on the drawn spacing
       n: number; // mean motion, radians per year
-      cw: number; sw: number; ci: number; si: number; cn: number; sn: number;
+      cw: number;
+      sw: number;
+      ci: number;
+      si: number;
+      cn: number;
+      sn: number;
       M0: number;
       /** Turns the orbit plane onto the one square to the Sun's course. */
       swing: number[] | null;
     };
 
     function elementsOf(
-      p: Planet, index: number, gamma: number, spread: number, ecc: number, align: number
+      p: Planet,
+      index: number,
+      gamma: number,
+      spread: number,
+      ecc: number,
+      align: number,
     ): Elements {
       const aDraw = Math.pow(p.a, gamma);
       // Kepler's third law: P² ∝ a³, so P = a^1.5 years and n = 2π/P.
@@ -361,8 +510,10 @@ export function OrbitalHeroSection({
       const inc = (p.i + spread * fan[0]) * RAD;
       const node = (p.node + spread * fan[1]) * RAD;
       const target = ECC_FAN[index % ECC_FAN.length];
-      const ci = Math.cos(inc), si = Math.sin(inc);
-      const cn = Math.cos(node), sn = Math.sin(node);
+      const ci = Math.cos(inc),
+        si = Math.sin(inc);
+      const cn = Math.cos(node),
+        sn = Math.sin(node);
       return {
         p,
         rgb: parseRGB(p.color),
@@ -370,8 +521,12 @@ export function OrbitalHeroSection({
         aDraw,
         period,
         n: TAU / period,
-        cw: Math.cos(p.peri * RAD), sw: Math.sin(p.peri * RAD),
-        ci, si, cn, sn,
+        cw: Math.cos(p.peri * RAD),
+        sw: Math.sin(p.peri * RAD),
+        ci,
+        si,
+        cn,
+        sn,
         M0: p.M0 * RAD,
         swing: align > 0 ? swingToCourse(si * sn, -si * cn, ci, align) : null,
       };
@@ -383,9 +538,7 @@ export function OrbitalHeroSection({
      * normal ends up along the course, which makes every wake a true helix
      * about it, and all the helices share one axis.
      */
-    function swingToCourse(
-      nx: number, ny: number, nz: number, align: number
-    ): number[] | null {
+    function swingToCourse(nx: number, ny: number, nz: number, align: number): number[] | null {
       // Aim at whichever end of the course the plane already leans toward, so
       // an orbit is never turned inside out.
       const s = nx * DIR.x + ny * DIR.y + nz * DIR.z >= 0 ? 1 : -1;
@@ -394,21 +547,31 @@ export function OrbitalHeroSection({
       let tz = nz + align * (s * DIR.z - nz);
       const tl = Math.hypot(tx, ty, tz);
       if (tl < 1e-9) return null;
-      tx /= tl; ty /= tl; tz /= tl;
+      tx /= tl;
+      ty /= tl;
+      tz /= tl;
       // Rodrigues: rotate n onto the blended normal, about their cross product.
       let ax = ny * tz - nz * ty;
       let ay = nz * tx - nx * tz;
       let az = nx * ty - ny * tx;
       const al = Math.hypot(ax, ay, az);
       if (al < 1e-9) return null;
-      ax /= al; ay /= al; az /= al;
+      ax /= al;
+      ay /= al;
+      az /= al;
       const c = Math.max(-1, Math.min(1, nx * tx + ny * ty + nz * tz));
       const sA = al > 1 ? 1 : al;
       const k = 1 - c;
       return [
-        c + ax * ax * k, ax * ay * k - az * sA, ax * az * k + ay * sA,
-        ay * ax * k + az * sA, c + ay * ay * k, ay * az * k - ax * sA,
-        az * ax * k - ay * sA, az * ay * k + ax * sA, c + az * az * k,
+        c + ax * ax * k,
+        ax * ay * k - az * sA,
+        ax * az * k + ay * sA,
+        ay * ax * k + az * sA,
+        c + ay * ay * k,
+        ay * az * k - ax * sA,
+        az * ax * k - ay * sA,
+        az * ay * k + ax * sA,
+        c + az * az * k,
       ];
     }
 
@@ -435,7 +598,9 @@ export function OrbitalHeroSection({
         const rx = S[0] * x + S[1] * y + S[2] * z;
         const ry = S[3] * x + S[4] * y + S[5] * z;
         const rz = S[6] * x + S[7] * y + S[8] * z;
-        x = rx; y = ry; z = rz;
+        x = rx;
+        y = ry;
+        z = rz;
       }
       // Squeeze along the radius. Angles are untouched, so the tilt of every
       // orbit plane and the offset of the Sun from the ellipse centre survive.
@@ -443,10 +608,14 @@ export function OrbitalHeroSection({
         const r = Math.sqrt(x * x + y * y + z * z);
         if (r > 1e-9) {
           const s = Math.pow(r, gamma - 1);
-          x *= s; y *= s; z *= s;
+          x *= s;
+          y *= s;
+          z *= s;
         }
       }
-      R3.x = x; R3.y = y; R3.z = z;
+      R3.x = x;
+      R3.y = y;
+      R3.z = z;
     }
 
     let elems: Elements[] = [];
@@ -454,12 +623,24 @@ export function OrbitalHeroSection({
     function syncElements() {
       const C = props.current;
       const key =
-        C.compress + "/" + C.planeSpread + "/" + C.eccentricity + "/" +
-        C.alignToCourse + "/" + C.apex[0] + "," + C.apex[1] + "/" +
+        C.compress +
+        "/" +
+        C.planeSpread +
+        "/" +
+        C.eccentricity +
+        "/" +
+        C.alignToCourse +
+        "/" +
+        C.apex[0] +
+        "," +
+        C.apex[1] +
+        "/" +
         C.planets.map((p) => p.name + p.a + p.e + p.color).join("|");
       if (key === elemsKey) return;
       elemsKey = key;
-      elems = C.planets.map((p, idx) => elementsOf(p, idx, C.compress, C.planeSpread, C.eccentricity, C.alignToCourse));
+      elems = C.planets.map((p, idx) =>
+        elementsOf(p, idx, C.compress, C.planeSpread, C.eccentricity, C.alignToCourse),
+      );
     }
 
     /* --- background stars ------------------------------------------------- */
@@ -474,24 +655,38 @@ export function OrbitalHeroSection({
     let D_NEAR = 60;
     let D_FAR = 1400;
     const EMPTY = new Float64Array(0);
-    let sx = EMPTY, sy = EMPTY, sz = EMPTY, sMag = EMPTY, sPhase = EMPTY;
+    let sx = EMPTY,
+      sy = EMPTY,
+      sz = EMPTY,
+      sMag = EMPTY,
+      sPhase = EMPTY;
     let sTint = new Uint8Array(0);
     let starN = 0;
     let rand = mulberry32(0xc0ffee);
 
     /** Place one star at a random spot in the frustum, at optional fixed depth. */
     function seedStar(k: number, depth?: number, edge?: 0 | 1 | 2 | 3) {
-      const d =
-        depth ?? D_NEAR * Math.pow(D_FAR / D_NEAR, Math.pow(rand(), 0.55));
+      const d = depth ?? D_NEAR * Math.pow(D_FAR / D_NEAR, Math.pow(rand(), 0.55));
       // screen offset in px, then back out to world units at that depth
-      const halfW = (width * 0.5) * 1.15;
-      const halfH = (height * 0.5) * 1.15;
+      const halfW = width * 0.5 * 1.15;
+      const halfH = height * 0.5 * 1.15;
       let ox: number, oy: number;
-      if (edge === 0) { ox = -halfW; oy = (rand() * 2 - 1) * halfH; }
-      else if (edge === 1) { ox = halfW; oy = (rand() * 2 - 1) * halfH; }
-      else if (edge === 2) { ox = (rand() * 2 - 1) * halfW; oy = -halfH; }
-      else if (edge === 3) { ox = (rand() * 2 - 1) * halfW; oy = halfH; }
-      else { ox = (rand() * 2 - 1) * halfW; oy = (rand() * 2 - 1) * halfH; }
+      if (edge === 0) {
+        ox = -halfW;
+        oy = (rand() * 2 - 1) * halfH;
+      } else if (edge === 1) {
+        ox = halfW;
+        oy = (rand() * 2 - 1) * halfH;
+      } else if (edge === 2) {
+        ox = (rand() * 2 - 1) * halfW;
+        oy = -halfH;
+      } else if (edge === 3) {
+        ox = (rand() * 2 - 1) * halfW;
+        oy = halfH;
+      } else {
+        ox = (rand() * 2 - 1) * halfW;
+        oy = (rand() * 2 - 1) * halfH;
+      }
       const scale = d / (camDist * pxPerAU);
       const vx = ox * scale;
       const vy = -oy * scale;
@@ -500,7 +695,9 @@ export function OrbitalHeroSection({
       const wx = vx * RIGHT.x + vy * UP.x + vz * FWD.x + DIR.x * dist;
       const wy = vx * RIGHT.y + vy * UP.y + vz * FWD.y + DIR.y * dist;
       const wz = vx * RIGHT.z + vy * UP.z + vz * FWD.z + DIR.z * dist;
-      sx[k] = wx; sy[k] = wy; sz[k] = wz;
+      sx[k] = wx;
+      sy[k] = wy;
+      sz[k] = wz;
       sMag[k] = Math.pow(rand(), 2.4);
       sPhase[k] = rand() * TAU;
       const t = rand();
@@ -513,7 +710,7 @@ export function OrbitalHeroSection({
     function buildStars() {
       starN = Math.max(
         60,
-        Math.round(props.current.starCount * Math.min(2, (width * height) / (1440 * 900)))
+        Math.round(props.current.starCount * Math.min(2, (width * height) / (1440 * 900))),
       );
       sx = new Float64Array(starN);
       sy = new Float64Array(starN);
@@ -574,14 +771,20 @@ export function OrbitalHeroSection({
     }
 
     /* --- pointer ---------------------------------------------------------- */
-    let pointerX = 0, pointerY = 0, camX = 0, camY = 0;
+    let pointerX = 0,
+      pointerY = 0,
+      camX = 0,
+      camY = 0;
     function onPointer(ev: PointerEvent) {
       if (!props.current.interactive) return;
       const rect = host!.getBoundingClientRect();
       pointerX = ((ev.clientX - rect.left) / rect.width - 0.5) * 2;
       pointerY = ((ev.clientY - rect.top) / rect.height - 0.5) * 2;
     }
-    function onLeave() { pointerX = 0; pointerY = 0; }
+    function onLeave() {
+      pointerX = 0;
+      pointerY = 0;
+    }
 
     /* --- the star at the centre ------------------------------------------ */
     function drawSun(k: number, t: number) {
@@ -677,11 +880,7 @@ export function OrbitalHeroSection({
         }
         if (P.x < left || P.x > right || P.y < top || P.y > bottom) {
           // gone off an edge: bring it back in on the opposite side
-          seedStar(
-            s,
-            undefined,
-            P.x < left ? 1 : P.x > right ? 0 : P.y < top ? 3 : 2
-          );
+          seedStar(s, undefined, P.x < left ? 1 : P.x > right ? 0 : P.y < top ? 3 : 2);
           continue;
         }
         if (P.depth < D_NEAR * 0.75) continue;
@@ -711,7 +910,8 @@ export function OrbitalHeroSection({
         // straight line, so it can run much further back without any clutter.
         const back = C.driftSpeed * C.trailYears * 1.1;
         project(0, 0, 0);
-        const hx = P.x, hy = P.y;
+        const hx = P.x,
+          hy = P.y;
         project(-DIR.x * back, -DIR.y * back, -DIR.z * back);
         if (P.ok) {
           const grad = ctx!.createLinearGradient(hx, hy, P.x, P.y);
@@ -748,9 +948,14 @@ export function OrbitalHeroSection({
             const M = E - el.e * Math.sin(E);
             helio(el, M, C.compress);
             project(R3.x, R3.y, R3.z);
-            if (!P.ok) { started = false; continue; }
-            if (!started) { ctx!.moveTo(P.x, P.y); started = true; }
-            else ctx!.lineTo(P.x, P.y);
+            if (!P.ok) {
+              started = false;
+              continue;
+            }
+            if (!started) {
+              ctx!.moveTo(P.x, P.y);
+              started = true;
+            } else ctx!.lineTo(P.x, P.y);
           }
           // a soft wide pass under a thin bright one, so the line glows
           ctx!.strokeStyle = `rgba(${r},${g},${b},${0.045 * k})`;
@@ -777,10 +982,7 @@ export function OrbitalHeroSection({
         // Enough samples to keep the tight coils smooth. A stretched orbit
         // needs more: sampling runs on even steps of time, and a planet covers
         // far more ground per step near perihelion.
-        const N = Math.max(
-          48,
-          Math.min(360, Math.ceil(turns * 46 * (1 + 2.2 * el.e)) + 48)
-        );
+        const N = Math.max(48, Math.min(360, Math.ceil(turns * 46 * (1 + 2.2 * el.e)) + 48));
 
         const xs = new Float64Array(N + 1);
         const ys = new Float64Array(N + 1);
@@ -794,7 +996,9 @@ export function OrbitalHeroSection({
           // is a helix, which is the track a planet actually cuts in space.
           const back = C.driftSpeed * age;
           project(R3.x - DIR.x * back, R3.y - DIR.y * back, R3.z - DIR.z * back);
-          xs[q] = P.x; ys[q] = P.y; okArr[q] = P.ok ? 1 : 0;
+          xs[q] = P.x;
+          ys[q] = P.y;
+          okArr[q] = P.ok ? 1 : 0;
           if (q === N && P.ok) {
             shots.push({ el, x: P.x, y: P.y, depth: P.depth, s: P.s });
           }
@@ -806,9 +1010,14 @@ export function OrbitalHeroSection({
           ctx!.beginPath();
           let started = false;
           for (let q = from; q <= to; q++) {
-            if (!okArr[q]) { started = false; continue; }
-            if (!started) { ctx!.moveTo(xs[q], ys[q]); started = true; }
-            else ctx!.lineTo(xs[q], ys[q]);
+            if (!okArr[q]) {
+              started = false;
+              continue;
+            }
+            if (!started) {
+              ctx!.moveTo(xs[q], ys[q]);
+              started = true;
+            } else ctx!.lineTo(xs[q], ys[q]);
           }
           ctx!.stroke();
         };
@@ -868,10 +1077,13 @@ export function OrbitalHeroSection({
       if (C.scrim !== "none") {
         const s = Math.max(0, Math.min(1, C.scrimStrength));
         const g =
-          C.scrim === "left" ? ctx!.createLinearGradient(0, 0, width, 0)
-          : C.scrim === "right" ? ctx!.createLinearGradient(width, 0, 0, 0)
-          : C.scrim === "top" ? ctx!.createLinearGradient(0, 0, 0, height)
-          : ctx!.createLinearGradient(0, height, 0, 0);
+          C.scrim === "left"
+            ? ctx!.createLinearGradient(0, 0, width, 0)
+            : C.scrim === "right"
+              ? ctx!.createLinearGradient(width, 0, 0, 0)
+              : C.scrim === "top"
+                ? ctx!.createLinearGradient(0, 0, 0, height)
+                : ctx!.createLinearGradient(0, height, 0, 0);
         // Heavy at the edge, then off quickly — a straight ramp would grey the
         // whole frame and flatten the picture. Sampled at twelve stops rather
         // than three: with only a few, the slope changes at each one and the
@@ -889,7 +1101,10 @@ export function OrbitalHeroSection({
     function tick(now: number) {
       if (!running) return;
       raf = requestAnimationFrame(tick);
-      if (!visible) { lastFrame = now; return; }
+      if (!visible) {
+        lastFrame = now;
+        return;
+      }
       const dt = lastFrame ? Math.min(0.05, (now - lastFrame) / 1000) : 0;
       lastFrame = now;
       if (!props.current.paused && !reduced) {
@@ -909,12 +1124,17 @@ export function OrbitalHeroSection({
     ro.observe(host);
 
     const io = new IntersectionObserver(
-      (entries) => { visible = entries[0]?.isIntersecting ?? true; },
-      { threshold: 0 }
+      (entries) => {
+        visible = entries[0]?.isIntersecting ?? true;
+      },
+      { threshold: 0 },
     );
     io.observe(host);
 
-    const onVisibility = () => { visible = !document.hidden; lastFrame = 0; };
+    const onVisibility = () => {
+      visible = !document.hidden;
+      lastFrame = 0;
+    };
     document.addEventListener("visibilitychange", onVisibility);
     host.addEventListener("pointermove", onPointer);
     host.addEventListener("pointerleave", onLeave);

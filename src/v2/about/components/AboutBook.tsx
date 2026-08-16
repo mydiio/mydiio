@@ -1,22 +1,21 @@
 import { Reveal } from "@/motion";
-import {
-  aboutBookEyebrow,
-  aboutBookHeading,
-  aboutBookBody,
-  aboutBookCta,
-} from "../aboutContent";
+import { aboutBookEyebrow, aboutBookHeading, aboutBookBody, aboutBookCta } from "../aboutContent";
 
 export function AboutBook() {
   return (
     <section className="about-book" data-atlas-tone="light">
       <div className="about-shell about-book-shell">
         <Reveal as="div" className="about-book-card">
-          <span className="atlas-section-eyebrow atlas-section-eyebrow-dark">{aboutBookEyebrow}</span>
+          <span className="atlas-section-eyebrow atlas-section-eyebrow-dark">
+            {aboutBookEyebrow}
+          </span>
           <h2 className="about-book-title">{aboutBookHeading}</h2>
           <p className="about-book-body">{aboutBookBody}</p>
           <a className="atlas-button-amber about-book-cta" href="/contact">
             {aboutBookCta}
-            <span className="about-book-cta-arrow" aria-hidden="true">→</span>
+            <span className="about-book-cta-arrow" aria-hidden="true">
+              →
+            </span>
           </a>
         </Reveal>
 

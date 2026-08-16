@@ -17,11 +17,7 @@ export function AboutPillars() {
         </Reveal>
 
         <Reveal as="div" className="about-pillars-board">
-          <div
-            className="about-pillars-rail"
-            role="tablist"
-            aria-label="Pillars"
-          >
+          <div className="about-pillars-rail" role="tablist" aria-label="Pillars">
             {aboutPillars.map((pillar) => {
               const active = pillar.id === activeId;
               return (

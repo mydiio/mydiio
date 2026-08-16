@@ -1,0 +1,352 @@
+/* src/v2/privacy/privacy.css
+ * Privacy page styles. Mirrors the Atlas V2 design system used on
+ * home / advertiser / driver / about / contact.
+ *
+ * Motion vocabulary: cubic-bezier(0.22, 1, 0.36, 1) easing on every
+ * transition. Subtle entrance animation only. Reduced-motion safe.
+ */
+
+[data-privacy-page] {
+  background: #fdfaf3;
+  color: #1a1a18;
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+[data-privacy-page] *,
+[data-privacy-page] *::before,
+[data-privacy-page] *::after {
+  box-sizing: border-box;
+}
+
+.privacy-shell {
+  width: min(960px, 100%);
+  margin-inline: auto;
+  padding-inline: clamp(24px, 5vw, 80px);
+}
+
+[data-privacy-page] h1,
+[data-privacy-page] h2,
+[data-privacy-page] h3 {
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  text-wrap: balance;
+  letter-spacing: -0.045em;
+}
+
+[data-privacy-page] p {
+  text-wrap: pretty;
+}
+
+/* ============================================================
+ * HERO
+ * ============================================================ */
+
+.privacy-hero {
+  position: relative;
+  padding: clamp(132px, 14vh, 176px) 0 clamp(72px, 8vw, 110px);
+  background:
+    radial-gradient(900px 600px at 12% 10%, rgba(245, 166, 35, 0.08), transparent 70%),
+    radial-gradient(800px 540px at 90% 90%, rgba(232, 146, 10, 0.05), transparent 65%), #fdfaf3;
+}
+
+.privacy-hero-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 760px;
+}
+
+.privacy-hero-title {
+  margin: 18px 0 0;
+  color: #1a1a18;
+  font-size: clamp(40px, 5.4vw, 76px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  max-width: 18ch;
+}
+
+.privacy-hero-body {
+  margin: 0;
+  color: rgba(26, 26, 24, 0.62);
+  font-size: clamp(16px, 1.18vw, 19px);
+  line-height: 1.55;
+  max-width: 52ch;
+}
+
+.privacy-hero-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  color: rgba(26, 26, 24, 0.46);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+ * IN-PAGE NAVIGATION (On this page)
+ * ============================================================ */
+
+.privacy-nav {
+  position: sticky;
+  top: 88px;
+  z-index: 5;
+  padding: 16px 0;
+  background: rgba(253, 250, 243, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(26, 26, 24, 0.06);
+  border-bottom: 1px solid rgba(26, 26, 24, 0.06);
+  margin-bottom: 24px;
+}
+
+.privacy-nav .privacy-shell {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.privacy-nav-label {
+  color: rgba(26, 26, 24, 0.46);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.privacy-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+
+.privacy-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(26, 26, 24, 0.55);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.privacy-nav-link:hover {
+  color: #1a1a18;
+}
+
+.privacy-nav-number {
+  color: #e8920a;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .privacy-nav {
+    position: static;
+    padding: 12px 0;
+  }
+  .privacy-nav .privacy-shell {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .privacy-nav-list {
+    gap: 4px 12px;
+  }
+  .privacy-nav-link {
+    font-size: 12px;
+  }
+}
+
+/* ============================================================
+ * POLICY BODY (14 numbered sections)
+ * ============================================================ */
+
+.privacy-body {
+  padding: clamp(56px, 7vw, 96px) 0 clamp(80px, 9vw, 120px);
+}
+
+.privacy-body-shell {
+  max-width: 760px;
+}
+
+.privacy-body-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.privacy-body-section-wrap {
+  position: relative;
+}
+.privacy-body-section-wrap + .privacy-body-section-wrap {
+  border-top: 1px solid rgba(26, 26, 24, 0.08);
+}
+.privacy-body-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  column-gap: 28px;
+  row-gap: 14px;
+  align-items: baseline;
+  padding: 36px 0;
+  border-top: 1px solid rgba(26, 26, 24, 0.08);
+  scroll-margin-top: 160px;
+}
+
+.privacy-body-section-head {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.privacy-body-section-number {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.privacy-body-section-title {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.privacy-body-section-body {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.privacy-body-section-wrap:first-child {
+  padding-top: 0;
+}
+.privacy-body-section-wrap:first-child .privacy-body-section {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.privacy-body-section-number {
+  color: #e8920a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+
+.privacy-body-section-title {
+  margin: 0;
+  color: #1a1a18;
+  font-size: clamp(20px, 1.7vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.privacy-body-section-body {
+  margin: 4px 0 0;
+  color: rgba(26, 26, 24, 0.72);
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  max-width: 64ch;
+}
+
+.privacy-body-section:last-child {
+  border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+}
+
+@media (max-width: 720px) {
+  .privacy-body-section {
+    grid-template-columns: 48px 1fr;
+    gap: 18px;
+    padding: 24px 0;
+    scroll-margin-top: 24px;
+  }
+  .privacy-body-section-title {
+    font-size: 18px;
+  }
+  .privacy-body-section-body {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+}
+
+/* ============================================================
+ * CLOSING
+ * ============================================================ */
+
+.privacy-closing {
+  padding: clamp(96px, 11vw, 160px) 0;
+  background: #ffffff;
+  border-top: 1px solid rgba(26, 26, 24, 0.06);
+}
+
+.privacy-closing-shell {
+  max-width: 720px;
+}
+
+.privacy-closing-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: left;
+}
+
+.privacy-closing-title {
+  margin: 0;
+  color: #1a1a18;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  max-width: 22ch;
+}
+
+.privacy-closing-body {
+  margin: 0;
+  color: rgba(26, 26, 24, 0.62);
+  font-size: clamp(15px, 1.18vw, 17px);
+  line-height: 1.55;
+  max-width: 52ch;
+}
+
+.privacy-closing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* ============================================================
+ * Reduced motion
+ * ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-privacy-page] *,
+  [data-privacy-page] *::before,
+  [data-privacy-page] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
