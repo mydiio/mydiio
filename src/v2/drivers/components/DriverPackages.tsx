@@ -1,4 +1,10 @@
-import { tiersEyebrow, tiersHeading, tiersBody, tiersAnchor, earningsTiers } from "../driverContent";
+import {
+  tiersEyebrow,
+  tiersHeading,
+  tiersBody,
+  tiersAnchor,
+  earningsTiers,
+} from "../driverContent";
 import { Reveal } from "@/motion";
 
 export function DriverPackages() {
@@ -21,9 +27,7 @@ export function DriverPackages() {
             return (
               <article
                 className={
-                  featured
-                    ? "driver-tier-card driver-tier-card-featured"
-                    : "driver-tier-card"
+                  featured ? "driver-tier-card driver-tier-card-featured" : "driver-tier-card"
                 }
                 key={tier.id}
               >
@@ -53,16 +57,8 @@ export function DriverPackages() {
                 <p className="driver-tier-audience">{tier.audience}</p>
 
                 <a
-                  href={
-                    tier.id === "fleet"
-                      ? "/contact"
-                      : `/drivers/apply?tier=${tier.id}`
-                  }
-                  className={
-                    featured
-                      ? "driver-tier-cta driver-tier-cta-amber"
-                      : "driver-tier-cta"
-                  }
+                  href={tier.id === "fleet" ? "/contact" : `/drivers/apply?tier=${tier.id}`}
+                  className={featured ? "driver-tier-cta driver-tier-cta-amber" : "driver-tier-cta"}
                 >
                   {tier.cta}
                 </a>

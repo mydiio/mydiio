@@ -21,8 +21,7 @@ export const Route = createFileRoute("/drive")({
       },
       {
         property: "og:description",
-        content:
-          "Free screen install. LKR 6,000 to 8,000 a month. Paid on the 5th.",
+        content: "Free screen install. LKR 6,000 to 8,000 a month. Paid on the 5th.",
       },
       {
         property: "og:url",
