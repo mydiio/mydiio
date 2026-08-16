@@ -75,7 +75,8 @@ export const driverHeroAccent = "Get paid every month.";
 export const driverHeroBody =
   "We put a small screen in your tuk-tuk. You keep driving your normal routes. We pay you a fixed amount every month, on the 5th, by bank transfer.";
 
-export const driverHeroAnchorNote = "Free screen. Free fit. No deposit. You sign a simple agreement first.";
+export const driverHeroAnchorNote =
+  "Free screen. Free fit. No deposit. You sign a simple agreement first.";
 
 /* ============================================================
  * 02 EARNINGS
@@ -121,22 +122,26 @@ export const installSteps: readonly InstallStep[] = [
   {
     number: "01",
     title: "Sign the agreement",
-    detail: "You read and sign a one-page agreement in your language. It records the pay, the bonus, the date and the install consent.",
+    detail:
+      "You read and sign a one-page agreement in your language. It records the pay, the bonus, the date and the install consent.",
   },
   {
     number: "02",
     title: "We check your routes",
-    detail: "We confirm your regular routes pass through the live area, so the screen is seen by real passengers.",
+    detail:
+      "We confirm your regular routes pass through the live area, so the screen is seen by real passengers.",
   },
   {
     number: "03",
     title: "We fit the screen",
-    detail: "A trained fitter puts the screen in your tuk-tuk and wires it to your existing electrics. About one hour. No cost to you.",
+    detail:
+      "A trained fitter puts the screen in your tuk-tuk and wires it to your existing electrics. About one hour. No cost to you.",
   },
   {
     number: "04",
     title: "You get paid on the 5th",
-    detail: "Your first pay lands in your bank on the 5th of the next month. Every month after, the same date, the same way.",
+    detail:
+      "Your first pay lands in your bank on the 5th of the next month. Every month after, the same date, the same way.",
   },
 ];
 
@@ -171,7 +176,8 @@ export const corridorStops: readonly CorridorStop[] = [
 ];
 
 export const expansionLabel = "Where we go next";
-export const expansionBody = "New places are added one driver at a time. We do not promise towns we are not yet in.";
+export const expansionBody =
+  "New places are added one driver at a time. We do not promise towns we are not yet in.";
 
 /* ============================================================
  * 05 TIERS
@@ -317,8 +323,7 @@ export const driverFaqs: readonly DriverFaq[] = [
   },
   {
     question: "What languages is the app in?",
-    answer:
-      "English, Sinhala and Tamil. You pick the one you read best.",
+    answer: "English, Sinhala and Tamil. You pick the one you read best.",
   },
   {
     question: "Will I be punished if the screen breaks?",

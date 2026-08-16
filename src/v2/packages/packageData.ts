@@ -46,8 +46,7 @@ export const packageTiers: PackageTier[] = [
     number: "02",
     name: "Voyager",
     eyebrow: "Build frequency",
-    description:
-      "Increase repetition across more journeys while keeping every play measurable.",
+    description: "Increase repetition across more journeys while keeping every play measurable.",
     scale: "Growing coverage",
     price: "From LKR 38,000 / month",
     specs: [
@@ -100,8 +99,7 @@ export const packageTiers: PackageTier[] = [
     number: "04",
     name: "Horizon",
     eyebrow: "Built around you",
-    description:
-      "A tailored campaign for larger brands, agencies and multi-location requirements.",
+    description: "A tailored campaign for larger brands, agencies and multi-location requirements.",
     scale: "Custom deployment",
     price: "From LKR 65,000 / month",
     specs: [

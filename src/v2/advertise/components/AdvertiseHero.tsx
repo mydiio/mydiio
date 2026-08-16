@@ -15,7 +15,9 @@ export function AdvertiseHero() {
     <section className="advertiser-hero" data-atlas-tone="light">
       <div className="advertiser-shell advertiser-hero-grid">
         <Reveal as="div" className="advertiser-hero-copy">
-          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">{advertiserEyebrow}</div>
+          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">
+            {advertiserEyebrow}
+          </div>
 
           <h1 className="advertiser-hero-title">
             {advertiserHeroTitleLines.map((line, i) => (

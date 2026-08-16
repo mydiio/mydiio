@@ -29,12 +29,7 @@ const toneStyles: Record<SectionTone, CSSProperties> = {
   },
 };
 
-export function Section({
-  children,
-  tone = "cream",
-  fullHeight = false,
-  style,
-}: SectionProps) {
+export function Section({ children, tone = "cream", fullHeight = false, style }: SectionProps) {
   return (
     <section
       style={{

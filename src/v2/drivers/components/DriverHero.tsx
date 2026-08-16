@@ -63,7 +63,9 @@ export function DriverHero() {
             </div>
           </div>
 
-          <p className="driver-stage-caption">Signed agreement. Bank transfer. Same date, every month.</p>
+          <p className="driver-stage-caption">
+            Signed agreement. Bank transfer. Same date, every month.
+          </p>
         </Reveal>
       </div>
     </section>

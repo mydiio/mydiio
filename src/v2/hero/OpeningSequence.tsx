@@ -288,8 +288,8 @@ export function OpeningSequence() {
             color: "rgba(255,255,255,0.82)",
           }}
         >
-          Sri Lanka&apos;s connected passenger network begins with the journeys
-          Colombo already makes.
+          Sri Lanka&apos;s connected passenger network begins with the journeys Colombo already
+          makes.
         </p>
 
         <div
@@ -308,7 +308,6 @@ export function OpeningSequence() {
           }}
         >
           Scroll to follow the journey
-
           <span
             className="atlas-opening-scroll-line"
             style={{

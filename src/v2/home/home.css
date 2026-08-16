@@ -16,7 +16,11 @@
 [data-home-page] {
   background: #fdfaf3;
   color: #1a1a18;
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -37,7 +41,11 @@
 [data-home-page] h1,
 [data-home-page] h2,
 [data-home-page] h3 {
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
   text-wrap: balance;
   letter-spacing: -0.045em;
 }
@@ -58,9 +66,8 @@
   padding: clamp(132px, 14vh, 176px) 0 clamp(96px, 10vh, 140px);
   overflow: hidden;
   background:
-    radial-gradient(1100px 700px at 14% 0%, rgba(245, 166, 35, 0.10), transparent 70%),
-    radial-gradient(900px 600px at 100% 30%, rgba(232, 146, 10, 0.07), transparent 65%),
-    #fdfaf3;
+    radial-gradient(1100px 700px at 14% 0%, rgba(245, 166, 35, 0.1), transparent 70%),
+    radial-gradient(900px 600px at 100% 30%, rgba(232, 146, 10, 0.07), transparent 65%), #fdfaf3;
 }
 
 .home-hero::before {
@@ -168,7 +175,9 @@
     rgba(232, 146, 10, 0) 220deg,
     rgba(232, 146, 10, 0) 360deg
   );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: home-hero-rotate 14s linear infinite;
@@ -191,11 +200,7 @@
 .home-hero-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 60%,
-    rgba(8, 8, 7, 0.18) 100%
-  );
+  background: linear-gradient(180deg, transparent 60%, rgba(8, 8, 7, 0.18) 100%);
   pointer-events: none;
 }
 
@@ -760,7 +765,8 @@
 }
 
 @keyframes home-pioneer-glow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.6;
   }
   50% {
@@ -863,7 +869,11 @@
 
 .home-faq-question strong {
   color: #161614;
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
   font-size: clamp(20px, 1.8vw, 28px);
   font-weight: 600;
   letter-spacing: -0.04em;
@@ -909,7 +919,11 @@
   margin: 0;
   padding: 0 56px 28px 84px;
   color: #5b5347;
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
   font-size: 16px;
   line-height: 1.6;
 }

@@ -6,11 +6,7 @@ type ReportRowProps = {
   visible: boolean;
 };
 
-export function ReportRow({
-  label,
-  value,
-  visible,
-}: ReportRowProps) {
+export function ReportRow({ label, value, visible }: ReportRowProps) {
   return (
     <div
       style={{
@@ -21,11 +17,8 @@ export function ReportRow({
         padding: "15px 0",
         borderBottom: "1px solid rgba(26,26,24,0.065)",
         opacity: visible ? 1 : 0.16,
-        transform: visible
-          ? "translateY(0)"
-          : "translateY(3px)",
-        transition:
-          "opacity 0.42s ease, transform 0.52s cubic-bezier(0.22,1,0.36,1)",
+        transform: visible ? "translateY(0)" : "translateY(3px)",
+        transition: "opacity 0.42s ease, transform 0.52s cubic-bezier(0.22,1,0.36,1)",
       }}
     >
       <span

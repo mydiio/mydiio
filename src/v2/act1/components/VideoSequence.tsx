@@ -4,11 +4,10 @@ import { moments } from "../lib/moments";
 import { AtlasPlayer } from "./AtlasPlayer";
 
 export function VideoSequence() {
-  const { sectionRef, progress: sequenceProgress } =
-    useSmoothSectionProgress({
-      damping: 12,
-      snapToEnd: true,
-    });
+  const { sectionRef, progress: sequenceProgress } = useSmoothSectionProgress({
+    damping: 12,
+    snapToEnd: true,
+  });
 
   return (
     <main
@@ -21,10 +20,7 @@ export function VideoSequence() {
         background: colors.ink,
       }}
     >
-      <AtlasPlayer
-        moments={moments}
-        sequenceProgress={sequenceProgress}
-      />
+      <AtlasPlayer moments={moments} sequenceProgress={sequenceProgress} />
     </main>
   );
 }

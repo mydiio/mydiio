@@ -10,42 +10,44 @@ import { AnnouncementBar } from "./AnnouncementBar";
  * use this shell so the brand system stays identical site-wide.
  */
 export function SiteShell({
- children,
- accent = "amber",
+  children,
+  accent = "amber",
 }: {
- children: React.ReactNode;
- accent?: Accent;
+  children: React.ReactNode;
+  accent?: Accent;
 }) {
- const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
- useEffect(() => {
- const root = ref.current;
- if (!root) return;
- // Scroll-triggered reveal-up system (delay classes handle stagger)
- const upObserver = new IntersectionObserver(
- (entries) => {
- entries.forEach((entry) => {
- if (entry.isIntersecting) {
- entry.target.classList.add("visible");
- upObserver.unobserve(entry.target);
- }
- });
- },
- { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
- );
- const t = window.setTimeout(() => {
- root.querySelectorAll<HTMLElement>(".reveal-up:not(.visible)").forEach((el) => upObserver.observe(el));
- }, 10);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    // Scroll-triggered reveal-up system (delay classes handle stagger)
+    const upObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            upObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+    );
+    const t = window.setTimeout(() => {
+      root
+        .querySelectorAll<HTMLElement>(".reveal-up:not(.visible)")
+        .forEach((el) => upObserver.observe(el));
+    }, 10);
 
- return () => {
- upObserver.disconnect();
- window.clearTimeout(t);
- };
- }, []);
+    return () => {
+      upObserver.disconnect();
+      window.clearTimeout(t);
+    };
+  }, []);
 
- return (
- <div ref={ref} className="w-full" style={{ background: C.cream }}>
- <style>{`
+  return (
+    <div ref={ref} className="w-full" style={{ background: C.cream }}>
+      <style>{`
  :root {
  --site-nav-height: 72px;
  --site-btn-height: 48px;
@@ -133,12 +135,12 @@ export function SiteShell({
  }
  }
  `}</style>
- <AnnouncementBar />
- <SiteNav accent={accent} />
- {children}
- <SiteFooter />
- </div>
- );
+      <AnnouncementBar />
+      <SiteNav accent={accent} />
+      {children}
+      <SiteFooter />
+    </div>
+  );
 }
 
 export default SiteShell;

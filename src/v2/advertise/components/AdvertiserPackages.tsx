@@ -26,8 +26,7 @@ export function AdvertiserPackages() {
           {packageTiers.map((tier) => {
             const featured = tier.id === "pioneer";
             const copy = advertiserPackageCopy[tier.id as keyof typeof advertiserPackageCopy];
-            const audience =
-              packageAudience[tier.id as keyof typeof packageAudience];
+            const audience = packageAudience[tier.id as keyof typeof packageAudience];
 
             return (
               <article

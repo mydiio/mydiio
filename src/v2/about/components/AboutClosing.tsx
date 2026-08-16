@@ -17,7 +17,9 @@ export function AboutClosing() {
           <div className="about-closing-actions">
             <a className="atlas-button-amber" href="/contact">
               {aboutClosingCta}
-              <span className="about-closing-arrow" aria-hidden="true">→</span>
+              <span className="about-closing-arrow" aria-hidden="true">
+                →
+              </span>
             </a>
             <a
               className="atlas-button-secondary about-closing-whatsapp"

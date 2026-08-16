@@ -11,11 +11,7 @@ export function HomePortal() {
       <div className="home-shell home-portal-grid">
         <Reveal as="div" className="home-portal-preview">
           <div className="home-portal-preview-inner" ref={dashboardParallax}>
-            <img
-              src={DASHBOARD_IMG}
-              alt="The mydiio advertiser portal dashboard"
-              loading="lazy"
-            />
+            <img src={DASHBOARD_IMG} alt="The mydiio advertiser portal dashboard" loading="lazy" />
             <div className="home-portal-preview-overlay" aria-hidden="true" />
           </div>
         </Reveal>
@@ -25,7 +21,9 @@ export function HomePortal() {
             <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">{portalEyebrow}</div>
           </Reveal>
 
-          <Reveal as="h2" className="atlas-section-heading">{portalHeading}</Reveal>
+          <Reveal as="h2" className="atlas-section-heading">
+            {portalHeading}
+          </Reveal>
 
           <Reveal>
             <p className="atlas-section-copy">{portalBody}</p>

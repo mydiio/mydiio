@@ -60,7 +60,12 @@ export function ContactForm() {
           <span className="atlas-section-eyebrow atlas-section-eyebrow-dark">Contact form</span>
           <h2 className="atlas-section-heading">{contactFormHeading}</h2>
           <p className="atlas-section-copy atlas-section-copy-dark">{contactFormBody}</p>
-          <a className="contact-form-admin-link" href={ADMIN_URL} target="_blank" rel="noopener noreferrer">
+          <a
+            className="contact-form-admin-link"
+            href={ADMIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span className="contact-form-admin-link-label">Sign in to the admin panel →</span>
             <span className="contact-form-admin-link-hint">
               For existing advertisers and drivers. Your campaigns, reports and portal live there.
@@ -109,13 +114,11 @@ export function ContactForm() {
             </label>
 
             <div className="contact-form-actions">
-              <button
-                type="submit"
-                className="contact-form-submit"
-                disabled={status === "sending"}
-              >
+              <button type="submit" className="contact-form-submit" disabled={status === "sending"}>
                 {status === "sending" ? contactFormSending : contactFormSend}
-                <span className="contact-form-submit-arrow" aria-hidden="true">→</span>
+                <span className="contact-form-submit-arrow" aria-hidden="true">
+                  →
+                </span>
               </button>
             </div>
 

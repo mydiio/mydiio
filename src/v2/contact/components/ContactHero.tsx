@@ -14,7 +14,9 @@ export function ContactHero() {
           <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">{contactEyebrow}</div>
         </Reveal>
 
-        <Reveal as="h1" className="contact-hero-title">{contactHeading}</Reveal>
+        <Reveal as="h1" className="contact-hero-title">
+          {contactHeading}
+        </Reveal>
 
         <Reveal>
           <p className="contact-hero-body">{contactBody}</p>

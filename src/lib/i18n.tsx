@@ -1,4 +1,12 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { t as tPublic, type Language as PublicLang } from "@/lib/public-site-translations";
 
 export type Lang = "en" | "si" | "ta";
@@ -45,8 +53,16 @@ export const dict: Dict = {
   nav_lang_label: en("Language"),
 
   cta_launch: tr({ en: "Launch Campaign", si: "දැන්වීම අරඹන්න", ta: "விளம்பரம் தொடங்கு" }),
-  cta_launch_pilot: tr({ en: "Launch a campaign →", si: "ප්‍රචාරණයක් ආරම්භ කරන්න →", ta: "பிரச்சாரத்தைத் தொடங்குங்கள் →" }),
-  cta_talk_founder: tr({ en: "Become a driver →", si: "රියදුරෙකු වන්න →", ta: "ஓட்டுநராக மாறுங்கள் →" }),
+  cta_launch_pilot: tr({
+    en: "Launch a campaign →",
+    si: "ප්‍රචාරණයක් ආරම්භ කරන්න →",
+    ta: "பிரச்சாரத்தைத் தொடங்குங்கள் →",
+  }),
+  cta_talk_founder: tr({
+    en: "Become a driver →",
+    si: "රියදුරෙකු වන්න →",
+    ta: "ஓட்டுநராக மாறுங்கள் →",
+  }),
 
   // ============================================================
   // ANNOUNCEMENT BAR
@@ -58,13 +74,15 @@ export const dict: Dict = {
   // HOME · HERO
   // ============================================================
   hero_kicker: { en: "mydiio", si: "mydiio", ta: "mydiio" },
-  hero_title: en(
-    "Every Journey, Connected.",
-  ),
+  hero_title: en("Every Journey, Connected."),
   hero_sub: en(
     "mydiio is Sri Lanka's first connected passenger information network. Built into the tuk-tuks people ride every day, it brings weather, local news, safety tools, and useful information to every passenger, and gives small businesses a way to reach them.",
   ),
-  hero_live_badge: tr({ en: "Founding fleet · launching now", si: "ආරම්භක රථ පිරිස · දැන් දියත් වෙමින්", ta: "நிறுவனர் வாகனத் தொகுதி · இப்போது துவங்குகிறது" }),
+  hero_live_badge: tr({
+    en: "Founding fleet · launching now",
+    si: "ආරම්භක රථ පිරිස · දැන් දියත් වෙමින්",
+    ta: "நிறுவனர் வாகனத் தொகுதி · இப்போது துவங்குகிறது",
+  }),
 
   // ============================================================
   // HOME · STATS STRIP
@@ -78,7 +96,11 @@ export const dict: Dict = {
 
   // Legacy metric keys still consumed by some components
   metric_vehicles: tr({ en: "Pilot vehicles", si: "පයිලට් වාහන", ta: "பைலட் வாகனங்கள்" }),
-  metric_attention: tr({ en: "Campaign launch", si: "ව්‍යාපාර දියත් කිරීම", ta: "பிரச்சார தொடக்கம்" }),
+  metric_attention: tr({
+    en: "Campaign launch",
+    si: "ව්‍යාපාර දියත් කිරීම",
+    ta: "பிரச்சார தொடக்கம்",
+  }),
   metric_launch: tr({ en: "Pioneer spots", si: "පුරෝගාමී ස්ථාන", ta: "முன்னோடி இடங்கள்" }),
   metric_min: tr({ en: "min", si: "මිනි", ta: "நிமி" }),
   metric_hr: tr({ en: "hrs", si: "පැය", ta: "மணி" }),
@@ -89,8 +111,16 @@ export const dict: Dict = {
   mq_gps: tr({ en: "GPS VERIFIED", si: "GPS සනාථයි", ta: "GPS உறுதிசெய்யப்பட்டது" }),
   mq_real: tr({ en: "REAL IMPRESSIONS", si: "සැබෑ දර්ශන", ta: "உண்மையான காட்சிகள்" }),
   mq_every: en("EVERY JOURNEY, CONNECTED"),
-  mq_320k: tr({ en: "320,000 TUKS IN COLOMBO", si: "කොළඹ ත්‍රී රෝද රථ 320,000", ta: "கொழும்பில் 320,000 மூன்று சக்கர வாகனங்கள்" }),
-  mq_trans: tr({ en: "RADICAL TRANSPARENCY", si: "පූර්ණ විනිවිදභාවය", ta: "முழுமையான வெளிப்படைத்தன்மை" }),
+  mq_320k: tr({
+    en: "320,000 TUKS IN COLOMBO",
+    si: "කොළඹ ත්‍රී රෝද රථ 320,000",
+    ta: "கொழும்பில் 320,000 மூன்று சக்கர வாகனங்கள்",
+  }),
+  mq_trans: tr({
+    en: "RADICAL TRANSPARENCY",
+    si: "පූර්ණ විනිවිදභාවය",
+    ta: "முழுமையான வெளிப்படைத்தன்மை",
+  }),
   mq_dignity: tr({ en: "DRIVER DIGNITY", si: "රියදුරුගේ ගෞරවය", ta: "ஓட்டுநர் மரியாதை" }),
   mq_paid: tr({ en: "PAID ON THE 5TH", si: "5 වන දින ගෙවීම", ta: "5ஆம் தேதி கட்டணம்" }),
 
@@ -98,26 +128,46 @@ export const dict: Dict = {
   // HOME · WHY IT WORKS
   // ============================================================
   why_kicker: { en: "mydiio", si: "mydiio", ta: "mydiio" },
-  why_title: tr({ en: "The engine that funds the network", si: "ගමන් කාලය දැන්වීම් කාලයක් බවට පත් කරන්න", ta: "பயண நேரத்தை விளம்பர நேரமாக மாற்றுங்கள்" }),
-  why_c1_t: tr({ en: "Advertising people actually see.", si: "මිනිසුන් සැබවින්ම දකින දැන්වීම්.", ta: "மக்கள் உண்மையில் பார்க்கும் விளம்பரம்." }),
+  why_title: tr({
+    en: "The engine that funds the network",
+    si: "ගමන් කාලය දැන්වීම් කාලයක් බවට පත් කරන්න",
+    ta: "பயண நேரத்தை விளம்பர நேரமாக மாற்றுங்கள்",
+  }),
+  why_c1_t: tr({
+    en: "Advertising people actually see.",
+    si: "මිනිසුන් සැබවින්ම දකින දැන්වීම්.",
+    ta: "மக்கள் உண்மையில் பார்க்கும் விளம்பரம்.",
+  }),
   why_c1_b: tr({
     en: "Captive audiences. No skip buttons, no scroll-past ads.",
     si: "තත්පර කිහිපයකින් මඟ හරින සමාජ මාධ්‍ය දැන්වීම් මෙන් නොව, mydiio ඔබේ පණිවිඩය දෛනික ගමන්වලදී අවධානයෙන් සිටින මගීන් ඉදිරියෙන්ම තබනවා. ස්ක්‍රෝල් බොත්තමක් නෑ. මඟ හැරීමක් නෑ.",
     ta: "வினாடிகளில் தவிர்க்கப்படும் சமூக ஊடக விளம்பரங்களைப் போலல்லாமல், mydiio உங்கள் செய்தியை தினசரி பயணங்களில் கவனத்துடன் இருக்கும் பயணிகளுக்கு நேரடியாக முன்வைக்கிறது. ஸ்க்ரோல் பொத்தான் இல்லை. தவிர்க்க முடியாது.",
   }),
-  why_c2_t: tr({ en: "Verified campaign reporting.", si: "සනාථ කළ ප්‍රචාරණ වාර්තාකරණය.", ta: "உறுதிசெய்யப்பட்ட பிரச்சார அறிக்கையிடல்." }),
+  why_c2_t: tr({
+    en: "Verified campaign reporting.",
+    si: "සනාථ කළ ප්‍රචාරණ වාර්තාකරණය.",
+    ta: "உறுதிசெய்யப்பட்ட பிரச்சார அறிக்கையிடல்.",
+  }),
   why_c2_b: tr({
     en: "Every ad play is logged with exact location and time data.",
     si: "සෑම දැන්වීම් ධාවනයක්ම ස්ථානය සහ වේලා දත්ත සමඟ ස්වයංක්‍රීයව වාර්තා වේ. දැන්වීම්කරුවන්ට ඔවුන්ගේ ප්‍රචාරණය පෙන්වූ ස්ථානය, කී වතාවක් ධාවනය වූවාද, සහ නගරයේ කුමන ප්‍රදේශවලට ළඟා වූවාද යන්න පෙන්වන නිතිපතා වාර්තා ලැබේ.",
     ta: "ஒவ்வொரு விளம்பர ஓட்டமும் இடம் மற்றும் நேர தரவுடன் தானாகவே பதிவு செய்யப்படுகிறது. விளம்பரதாரர்களுக்கு அவர்களின் பிரச்சாரம் எங்கு காட்டப்பட்டது, எத்தனை முறை ஓடியது, நகரத்தின் எந்தப் பகுதிகளை சென்றடைந்தது என்பதைக் காட்டும் வழக்கமான அறிக்கைகள் கிடைக்கும்.",
   }),
-  why_c3_t: tr({ en: "Transparent Performance.", si: "විනිවිද පෙනෙන කාර්යසාධනය.", ta: "வெளிப்படையான செயல்திறன்." }),
+  why_c3_t: tr({
+    en: "Transparent Performance.",
+    si: "විනිවිද පෙනෙන කාර්යසාධනය.",
+    ta: "வெளிப்படையான செயல்திறன்.",
+  }),
   why_c3_b: tr({
     en: "Clear reports showing exactly where your budget went.",
     si: "ඔබේ දැන්වීම් අයවැය වියදම් වන්නේ කොහෙද කියලා හරියටම දැනගන්න. අපගේ වාර්තාකරණය mydiio ජාලය පුරා ප්‍රචාරණ බෙදාහැරීම පිළිබඳ පැහැදිලි දෘශ්‍යතාවක් සපයනවා.",
     ta: "உங்கள் விளம்பர பட்ஜெட் எங்கு செலவிடப்படுகிறது என்பதை சரியாக அறியுங்கள். எங்கள் அறிக்கையிடல் mydiio வலையமைப்பு முழுவதும் பிரச்சார விநியோகத்தின் தெளிவான காட்சிப்படுத்தலை வழங்குகிறது.",
   }),
-  why_c4_t: tr({ en: "Quick campaign launch.", si: "ඉක්මන් ප්‍රචාරණ දියත් කිරීම.", ta: "விரைவான பிரச்சார துவக்கம்." }),
+  why_c4_t: tr({
+    en: "Quick campaign launch.",
+    si: "ඉක්මන් ප්‍රචාරණ දියත් කිරීම.",
+    ta: "விரைவான பிரச்சார துவக்கம்.",
+  }),
   why_c4_b: tr({
     en: "From creative approval to live on the fleet in 3 days.",
     si: "අනුමැතියේ සිට දියත් කිරීම දක්වා, බොහෝ mydiio ප්‍රචාරණ පැය 72ක් ඇතුළත සජීවී වේ, ව්‍යාපාරවලට ගනුදෙනුකරුවන් ඉදිරියට වේගවත්ව යාමට උදව් වේ.",
@@ -127,21 +177,41 @@ export const dict: Dict = {
   // ============================================================
   // HOME · HOW IT WORKS
   // ============================================================
-  how_kicker: tr({ en: "HOW IT WORKS", si: "එය ක්‍රියා කරන ආකාරය", ta: "இது எப்படி வேலை செய்கிறது" }),
-  how_title: tr({ en: "Simple. Fast. Verified.", si: "සරලයි. වේගවත්. සනාථයි.", ta: "எளிது. வேகமானது. உறுதிசெய்யப்பட்டது." }),
-  how_s1_t: tr({ en: "Submit your ad.", si: "ඔබේ දැන්වීම එවන්න.", ta: "உங்கள் விளம்பரத்தை சமர்ப்பியுங்கள்." }),
+  how_kicker: tr({
+    en: "HOW IT WORKS",
+    si: "එය ක්‍රියා කරන ආකාරය",
+    ta: "இது எப்படி வேலை செய்கிறது",
+  }),
+  how_title: tr({
+    en: "Simple. Fast. Verified.",
+    si: "සරලයි. වේගවත්. සනාථයි.",
+    ta: "எளிது. வேகமானது. உறுதிசெய்யப்பட்டது.",
+  }),
+  how_s1_t: tr({
+    en: "Submit your ad.",
+    si: "ඔබේ දැන්වීම එවන්න.",
+    ta: "உங்கள் விளம்பரத்தை சமர்ப்பியுங்கள்.",
+  }),
   how_s1_b: tr({
     en: "Send us your 15 or 30-second video or image. Don't have creative ready? Our team can help you get started.",
     si: "තත්පර 15ක් හෝ 30ක් ඔබේ වීඩියෝව හෝ රූපය අපට එවන්න. නිර්මාණයක් සූදානම් නැද්ද? අපගේ කණ්ඩායමට ඔබට ආරම්භ කිරීමට උදව් කළ හැක.",
     ta: "15 அல்லது 30 வினாடி உங்கள் வீடியோ அல்லது படத்தை எங்களுக்கு அனுப்புங்கள். உருவாக்கம் தயாராக இல்லையா? எங்கள் குழு உங்களை தொடங்க உதவும்.",
   }),
-  how_s2_t: tr({ en: "Go live in as little as 72 hours.", si: "පැය 72ක් තරම් ඉක්මනින් සජීවී වන්න.", ta: "72 மணி நேரத்திற்குள் நேரலைக்கு வாருங்கள்." }),
+  how_s2_t: tr({
+    en: "Go live in as little as 72 hours.",
+    si: "පැය 72ක් තරම් ඉක්මනින් සජීවී වන්න.",
+    ta: "72 மணி நேரத்திற்குள் நேரலைக்கு வாருங்கள்.",
+  }),
   how_s2_b: tr({
     en: "Once approved, your campaign can be live across the mydiio network in as little as 72 hours.",
     si: "අනුමත වූ පසු, ඔබේ ප්‍රචාරණය පැය 72ක් තරම් ඉක්මනින් mydiio ජාලය පුරා සජීවී විය හැක.",
     ta: "ஒப்புதல் அளிக்கப்பட்டதும், உங்கள் பிரச்சாரம் 72 மணி நேரத்திற்குள் mydiio வலையமைப்பு முழுவதும் நேரலைக்கு வரலாம்.",
   }),
-  how_s3_t: tr({ en: "You get the proof.", si: "ඔබට සාක්ෂිය ලැබෙනවා.", ta: "உங்களுக்கு ஆதாரம் கிடைக்கும்." }),
+  how_s3_t: tr({
+    en: "You get the proof.",
+    si: "ඔබට සාක්ෂිය ලැබෙනවා.",
+    ta: "உங்களுக்கு ஆதாரம் கிடைக்கும்.",
+  }),
   how_s3_b: tr({
     en: "Every ad play is logged and verified. Receive regular reports showing campaign activity, locations reached and delivery performance.",
     si: "සෑම දැන්වීම් ධාවනයක්ම වාර්තා කර සනාථ කෙරේ. ප්‍රචාරණ ක්‍රියාකාරකම්, ළඟා වූ ස්ථාන, සහ බෙදාහැරීමේ කාර්යසාධනය පෙන්වන නිතිපතා වාර්තා ලබාගන්න.",
@@ -162,10 +232,12 @@ export const dict: Dict = {
     si: "සෑම mydiio තිරයක්ම මගී ඇස් මට්ටමින් සවි කර ඇත, ගමන පුරාම ඔබේ පණිවිඩය ලබා දෙයි.\n\nත්‍රී රෝද රථ සෑම දිනකම මිලියන ගණනක් ජනතාව ශ්‍රී ලංකාව පුරා ගමන් කරවනවා, නමුත් ඒවා තුළ ඩිජිටල් දැන්වීම් තවමත් සැබවින්ම භාවිතා කර නෑ.\n\nmydiio ත්‍රී රෝද රථ තුළ සවි කරන, දැන්වීම් මගින් පවත්වාගෙන යන, මිනිසුන් වෙනුවෙන් නිර්මාණය කළ, ව්‍යාපාරවලට ගනුදෙනුකරුවන් වෙත ළඟා වීමට උදව් කරන අතරම රියදුරන්ට නව ආදායම් අවස්ථා නිර්මාණය කරන, ශ්‍රී ලංකාවේ පළමු සම්බන්ධිත මගී තොරතුරු ජාලය mydiio ගොඩනගමින් සිටිනවා.\n\nනගරය සමඟ ගමන් කරන දැන්වීම්.",
     ta: "ஒவ்வொரு mydiio திரையும் பயணி கண் மட்டத்தில் பொருத்தப்பட்டுள்ளது, பயணம் முழுவதும் உங்கள் செய்தியை வழங்குகிறது.\n\nமூன்று சக்கர வாகனங்கள் ஒவ்வொரு நாளும் இலங்கை முழுவதும் மில்லியன் கணக்கான மக்களை நகர்த்துகின்றன, ஆனாலும் அவற்றுக்குள் டிஜிட்டல் விளம்பரம் இன்னும் கிட்டத்தட்ட பயன்படுத்தப்படவில்லை.\n\nமூன்று சக்கர வாகனங்களுக்குள் பொருத்தப்பட்ட, விளம்பரங்களால் இயங்கும், மக்களுக்காக உருவாக்கப்பட்ட, வணிகங்கள் வாடிக்கையாளர்களை சென்றடைய உதவும் அதே வேளையில் ஓட்டுநர்களுக்கு புதிய வருமான வாய்ப்புகளை உருவாக்கும், இலங்கையின் முதல் இணைக்கப்பட்ட பயணிகள் தகவல் வலையமைப்பை mydiio கட்டியெழுப்புகிறது.\n\nநகரத்துடன் நகரும் விளம்பரம்.",
   }),
-  tuk_cta: tr({ en: "See it in a pilot →", si: "පයිලට් එකකින් බලන්න →", ta: "பைலட்டில் பாருங்கள் →" }),
+  tuk_cta: tr({
+    en: "See it in a pilot →",
+    si: "පයිලට් එකකින් බලන්න →",
+    ta: "பைலட்டில் பாருங்கள் →",
+  }),
   tuk_live_campaign: tr({ en: "LIVE CAMPAIGN", si: "සජීවී ප්‍රචාරණය", ta: "நேரலை பிரச்சாரம்" }),
-
-
 
   // ============================================================
   // HOME · INFRASTRUCTURE
@@ -179,7 +251,11 @@ export const dict: Dict = {
   // HOME · COVERAGE
   // ============================================================
   cov_kicker: tr({ en: "COVERAGE", si: "ප්‍රවේශය", ta: "அடையாளம்" }),
-  cov_title: tr({ en: "Your campaign, across Colombo.", si: "ඔබේ ප්‍රචාරණය, කොළඹ පුරා.", ta: "உங்கள் பிரச்சாரம், கொழும்பு முழுவதும்." }),
+  cov_title: tr({
+    en: "Your campaign, across Colombo.",
+    si: "ඔබේ ප්‍රචාරණය, කොළඹ පුරා.",
+    ta: "உங்கள் பிரச்சாரம், கொழும்பு முழுவதும்.",
+  }),
   cov_body: tr({
     en: "Reach passengers in the neighbourhoods where your customers already are. Explore where the fleet operates every day.",
     si: "ඔබේ ගනුදෙනුකරුවන් දැනටමත් සිටින ප්‍රදේශවල මගීන් වෙත ළඟා වන්න. රථ පිරිස සෑම දිනකම ක්‍රියාත්මක වන ස්ථාන ගවේෂණය කරන්න.",
@@ -187,13 +263,36 @@ export const dict: Dict = {
   }),
   cov_areas_label: tr({ en: "COVERAGE AREAS", si: "ප්‍රවේශ ප්‍රදේශ", ta: "அடையாள பகுதிகள்" }),
   cov_areas_value: tr({ en: "10 areas", si: "ප්‍රදේශ 10", ta: "10 பகுதிகள்" }),
-  cov_launching_label: tr({ en: "LAUNCHING Q3 2026", si: "3 වන කාර්තුව 2026 දියත් වේ", ta: "Q3 2026 துவக்கம்" }),
-  cov_colombo_wide: tr({ en: "Colombo-wide reach", si: "කොළඹ පුරා ප්‍රවේශය", ta: "கொழும்பு முழுவதும் அடையாளம்" }),
-  cov_tuks_value: tr({ en: "50+ tuks", si: "ත්‍රී රෝද රථ 50කට වඩා", ta: "50+ மூன்று சக்கர வாகனங்கள்" }),
-  cov_fleet_expands: tr({ en: "Fleet expands at launch", si: "දියත් කිරීමේදී රථ පිරිස පුළුල් වේ", ta: "துவக்கத்தில் வாகனத் தொகுதி விரிவடையும்" }),
-  cov_map_heading: tr({ en: "10 coverage areas across Greater Colombo", si: "මහ කොළඹ පුරා ප්‍රවේශ ප්‍රදේශ 10ක්", ta: "பெரும் கொழும்பு முழுவதும் 10 அடையாள பகுதிகள்" }),
-  cov_map_explore: tr({ en: "Explore the map to see where the fleet operates, how dense the coverage is, and what kind of audiences your ad will reach.", si: "රථ පිරිස ක්‍රියාත්මක වන ස්ථාන, ප්‍රවේශයේ ඝනත්වය සහ ඔබේ දැන්වීම ළඟා වන ප්‍රේක්ෂක වර්ග බැලීමට සිතියම ගවේෂණය කරන්න.", ta: "தொகுதி இயங்கும் இடங்கள், அடையாள அடர்த்தி, மற்றும் உங்கள் விளம்பரம் சென்றடையும் பார்வையாளர்களின் வகை ஆகியவற்றைக் காண வரைபடத்தை ஆராயுங்கள்." }),
-
+  cov_launching_label: tr({
+    en: "LAUNCHING Q3 2026",
+    si: "3 වන කාර්තුව 2026 දියත් වේ",
+    ta: "Q3 2026 துவக்கம்",
+  }),
+  cov_colombo_wide: tr({
+    en: "Colombo-wide reach",
+    si: "කොළඹ පුරා ප්‍රවේශය",
+    ta: "கொழும்பு முழுவதும் அடையாளம்",
+  }),
+  cov_tuks_value: tr({
+    en: "50+ tuks",
+    si: "ත්‍රී රෝද රථ 50කට වඩා",
+    ta: "50+ மூன்று சக்கர வாகனங்கள்",
+  }),
+  cov_fleet_expands: tr({
+    en: "Fleet expands at launch",
+    si: "දියත් කිරීමේදී රථ පිරිස පුළුල් වේ",
+    ta: "துவக்கத்தில் வாகனத் தொகுதி விரிவடையும்",
+  }),
+  cov_map_heading: tr({
+    en: "10 coverage areas across Greater Colombo",
+    si: "මහ කොළඹ පුරා ප්‍රවේශ ප්‍රදේශ 10ක්",
+    ta: "பெரும் கொழும்பு முழுவதும் 10 அடையாள பகுதிகள்",
+  }),
+  cov_map_explore: tr({
+    en: "Explore the map to see where the fleet operates, how dense the coverage is, and what kind of audiences your ad will reach.",
+    si: "රථ පිරිස ක්‍රියාත්මක වන ස්ථාන, ප්‍රවේශයේ ඝනත්වය සහ ඔබේ දැන්වීම ළඟා වන ප්‍රේක්ෂක වර්ග බැලීමට සිතියම ගවේෂණය කරන්න.",
+    ta: "தொகுதி இயங்கும் இடங்கள், அடையாள அடர்த்தி, மற்றும் உங்கள் விளம்பரம் சென்றடையும் பார்வையாளர்களின் வகை ஆகியவற்றைக் காண வரைபடத்தை ஆராயுங்கள்.",
+  }),
 
   // ============================================================
   // HOME · TWO AUDIENCES
@@ -236,14 +335,19 @@ export const dict: Dict = {
     "Drivers are partners, not vendors. Paid on the 5th of every month, unconditionally. Never penalised for a technical fault outside their control. Never monitored in a way that feels punitive. The compliance framework starts from dignity, not surveillance. That is not a slogan. It is written into how the platform is built.",
   ),
 
-
   // ============================================================
   // HOME · WHAT MYDIIO IS NOT
   // ============================================================
   not_title: en("What mydiio is not"),
-  not_l1: en("mydiio is not primarily an advertising business. Advertising is the engine, not the identity."),
-  not_l2: en("mydiio is not a technology company selling software. It is infrastructure with a commercial layer built on top of it."),
-  not_l3: en("mydiio is not a surveillance platform. Passenger information is used for that journey only and is never stored beyond it."),
+  not_l1: en(
+    "mydiio is not primarily an advertising business. Advertising is the engine, not the identity.",
+  ),
+  not_l2: en(
+    "mydiio is not a technology company selling software. It is infrastructure with a commercial layer built on top of it.",
+  ),
+  not_l3: en(
+    "mydiio is not a surveillance platform. Passenger information is used for that journey only and is never stored beyond it.",
+  ),
   not_l4: en("mydiio does not depend on any single partner, platform, or vehicle type."),
 
   // ============================================================
@@ -294,13 +398,29 @@ export const dict: Dict = {
     ta: "முதலில் கொழும்பு. அடுத்து ஒவ்வொரு நகரமும்.",
   }),
   scale_c1_t: tr({ en: "More screens.", si: "වැඩි තිර.", ta: "மேலும் திரைகள்." }),
-  scale_c1_b: tr({ en: "As the network grows, your campaigns can reach more passengers across more areas.", si: "ජාලය වර්ධනය වන විට, ඔබේ ප්‍රචාරණවලට වැඩි ප්‍රදේශ පුරා වැඩි මගීන් වෙත ළඟා විය හැක.", ta: "வலையமைப்பு வளரும்போது, உங்கள் பிரச்சாரங்கள் அதிக பகுதிகளில் அதிக பயணிகளை சென்றடையலாம்." }),
+  scale_c1_b: tr({
+    en: "As the network grows, your campaigns can reach more passengers across more areas.",
+    si: "ජාලය වර්ධනය වන විට, ඔබේ ප්‍රචාරණවලට වැඩි ප්‍රදේශ පුරා වැඩි මගීන් වෙත ළඟා විය හැක.",
+    ta: "வலையமைப்பு வளரும்போது, உங்கள் பிரச்சாரங்கள் அதிக பகுதிகளில் அதிக பயணிகளை சென்றடையலாம்.",
+  }),
   scale_c2_t: tr({ en: "More locations.", si: "වැඩි ස්ථාන.", ta: "மேலும் இடங்கள்." }),
-  scale_c2_b: tr({ en: "Expand into new areas and connect with audiences wherever they travel.", si: "නව ප්‍රදේශවලට පුළුල් වී, ප්‍රේක්ෂකයන් ගමන් කරන ඕනෑම තැනක ඔවුන් සමඟ සම්බන්ධ වන්න.", ta: "புதிய பகுதிகளுக்கு விரிவடைந்து, பார்வையாளர்கள் பயணிக்கும் இடமெல்லாம் அவர்களுடன் இணையுங்கள்." }),
+  scale_c2_b: tr({
+    en: "Expand into new areas and connect with audiences wherever they travel.",
+    si: "නව ප්‍රදේශවලට පුළුල් වී, ප්‍රේක්ෂකයන් ගමන් කරන ඕනෑම තැනක ඔවුන් සමඟ සම්බන්ධ වන්න.",
+    ta: "புதிய பகுதிகளுக்கு விரிவடைந்து, பார்வையாளர்கள் பயணிக்கும் இடமெல்லாம் அவர்களுடன் இணையுங்கள்.",
+  }),
   scale_c3_t: tr({ en: "More insights.", si: "වැඩි තීක්ෂණතා.", ta: "மேலும் நுண்ணறிவுகள்." }),
-  scale_c3_b: tr({ en: "Smarter campaigns backed by real data.", si: "සැබෑ දත්ත මගින් සහාය දක්වන බුද්ධිමත් ප්‍රචාරණ.", ta: "உண்மையான தரவால் ஆதரிக்கப்படும் புத்திசாலித்தனமான பிரச்சாரங்கள்." }),
+  scale_c3_b: tr({
+    en: "Smarter campaigns backed by real data.",
+    si: "සැබෑ දත්ත මගින් සහාය දක්වන බුද්ධිමත් ප්‍රචාරණ.",
+    ta: "உண்மையான தரவால் ஆதரிக்கப்படும் புத்திசாலித்தனமான பிரச்சாரங்கள்.",
+  }),
   scale_c4_t: tr({ en: "More growth.", si: "වැඩි වර්ධනය.", ta: "மேலும் வளர்ச்சி." }),
-  scale_c4_b: tr({ en: "More value for businesses, drivers and passengers.", si: "ව්‍යාපාර, රියදුරන් සහ මගීන් සඳහා වැඩි වටිනාකමක්.", ta: "வணிகங்கள், ஓட்டுநர்கள் மற்றும் பயணிகளுக்கு அதிக மதிப்பு." }),
+  scale_c4_b: tr({
+    en: "More value for businesses, drivers and passengers.",
+    si: "ව්‍යාපාර, රියදුරන් සහ මගීන් සඳහා වැඩි වටිනාකමක්.",
+    ta: "வணிகங்கள், ஓட்டுநர்கள் மற்றும் பயணிகளுக்கு அதிக மதிப்பு.",
+  }),
 
   // ============================================================
   // HOME · FOUNDING OFFER
@@ -524,9 +644,7 @@ export const dict: Dict = {
   // PAGE META (title + description per page)
   // Titles override document.title on lang switch via <MetaSync/>.
   // ============================================================
-  meta_home_title: en(
-    "mydiio, Sri Lanka's first connected passenger information network",
-  ),
+  meta_home_title: en("mydiio, Sri Lanka's first connected passenger information network"),
   meta_home_desc: en(
     "Reach passengers inside Colombo's tuk-tuks with GPS-verified digital advertising. Verified impressions, weekly reports, campaigns live in 72 hours. Starting from LKR 25,000.",
   ),
@@ -544,9 +662,7 @@ export const dict: Dict = {
   meta_investors_desc: en(
     "mydiio: recurring revenue, asset-light, regional potential. Learn how we're building Sri Lanka's first connected passenger information network.",
   ),
-  meta_about_title: en(
-    "About mydiio | Built in Sri Lanka, for Sri Lanka",
-  ),
+  meta_about_title: en("About mydiio | Built in Sri Lanka, for Sri Lanka"),
   meta_about_desc: en(
     "mydiio is Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.",
   ),
@@ -691,10 +807,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     [lang],
   );
 
-  const value = useMemo(
-    () => ({ lang, setLang, t, tt, setPageMeta }),
-    [lang, setLang, t, tt],
-  );
+  const value = useMemo(() => ({ lang, setLang, t, tt, setPageMeta }), [lang, setLang, t, tt]);
 
   return (
     <I18nContext.Provider value={value}>

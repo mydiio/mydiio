@@ -11,7 +11,11 @@
 [data-advertiser-page] {
   background: #fdfaf3;
   color: #1a1a18;
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -32,7 +36,11 @@
 [data-advertiser-page] h1,
 [data-advertiser-page] h2,
 [data-advertiser-page] h3 {
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
   text-wrap: balance;
   letter-spacing: -0.045em;
 }
@@ -52,9 +60,8 @@
   align-items: center;
   padding: clamp(132px, 14vh, 176px) 0 clamp(92px, 10vh, 136px);
   background:
-    radial-gradient(1100px 700px at 14% 0%, rgba(245, 166, 35, 0.10), transparent 70%),
-    radial-gradient(900px 600px at 100% 30%, rgba(232, 146, 10, 0.07), transparent 65%),
-    #fdfaf3;
+    radial-gradient(1100px 700px at 14% 0%, rgba(245, 166, 35, 0.1), transparent 70%),
+    radial-gradient(900px 600px at 100% 30%, rgba(232, 146, 10, 0.07), transparent 65%), #fdfaf3;
   overflow: hidden;
 }
 
@@ -162,7 +169,6 @@
   font-family: "DM Serif Display", Georgia, serif;
 }
 
-
 .advertiser-product-stage {
   position: relative;
   width: 100%;
@@ -207,7 +213,9 @@
     rgba(232, 146, 10, 0) 220deg,
     rgba(232, 146, 10, 0) 360deg
   );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: advertiser-stage-rotate 14s linear infinite;
@@ -293,7 +301,8 @@
   .advertiser-hero-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 48px;
-  }}
+  }
+}
 
 /* ============================================================
  * 02 PRODUCT (light)
@@ -931,7 +940,9 @@
     transparent 65%,
     rgba(232, 146, 10, 0.18)
   );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   padding: 1px;
@@ -1138,7 +1149,6 @@
 .advertiser-package-cta:hover {
   transform: translateY(-2px);
 }
-
 
 .advertiser-package-cta-amber {
   background: #f5a623;
@@ -1715,11 +1725,7 @@
 }
 
 .advertiser-report-preview tbody tr:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(245, 166, 35, 0.06) 0%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, rgba(245, 166, 35, 0.06) 0%, transparent 100%);
 }
 
 .advertiser-report-verified {
@@ -2273,7 +2279,11 @@
 
 .advertiser-faq-question strong {
   color: #161614;
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
   font-size: clamp(22px, 2vw, 32px);
   font-weight: 650;
   letter-spacing: -0.045em;
@@ -2319,7 +2329,11 @@
   margin: 0;
   padding: 0 56px 28px 84px;
   color: #5b5347;
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
   font-size: 16px;
   line-height: 1.6;
 }
@@ -2387,12 +2401,7 @@
 }
 
 .advertiser-closing-title-line > span {
-  background-image: linear-gradient(
-    90deg,
-    #e8920a 0%,
-    #f5a623 50%,
-    #e8920a 100%
-  );
+  background-image: linear-gradient(90deg, #e8920a 0%, #f5a623 50%, #e8920a 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -2438,3 +2447,515 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================================
+ * ADVERTISER PORTAL — PHONE-LED PRODUCT PREVIEW
+ * ============================================================ */
+
+.advertiser-client-portal {
+  position: relative;
+  padding: clamp(116px, 13vw, 184px) 0;
+  overflow: hidden;
+  background: #fdfaf3;
+}
+
+.advertiser-client-portal-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(280px, 0.74fr);
+  gap: clamp(36px, 7vw, 120px);
+  align-items: end;
+}
+
+.advertiser-client-portal-intro .atlas-section-heading {
+  max-width: 8.8ch;
+  margin: 18px 0 0;
+}
+
+.advertiser-client-portal-intro .atlas-section-copy {
+  max-width: 32ch;
+  margin: 0 0 8px;
+}
+
+.advertiser-portal-product {
+  position: relative;
+  max-width: 1160px;
+  margin: clamp(64px, 8vw, 112px) auto 0;
+}
+
+.advertiser-portal-stage {
+  position: relative;
+  display: grid;
+  min-height: clamp(650px, 52vw, 760px);
+  place-items: center;
+  padding: 48px 32px;
+  overflow: hidden;
+  border: 1px solid rgba(26, 26, 24, 0.11);
+  border-radius: clamp(30px, 4vw, 48px);
+  background:
+    radial-gradient(circle at 50% 40%, rgba(245, 166, 35, 0.16), transparent 32%),
+    radial-gradient(circle at 18% 100%, rgba(245, 166, 35, 0.09), transparent 34%), #151513;
+  box-shadow:
+    0 44px 86px -54px rgba(26, 26, 24, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  isolation: isolate;
+}
+
+.advertiser-portal-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.26;
+  background-image:
+    linear-gradient(rgba(253, 250, 243, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(253, 250, 243, 0.05) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: radial-gradient(circle at center, black, transparent 76%);
+  -webkit-mask-image: radial-gradient(circle at center, black, transparent 76%);
+}
+
+.advertiser-portal-phone {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 430px);
+  padding: 8px;
+  border: 1px solid rgba(253, 250, 243, 0.19);
+  border-radius: 47px;
+  background: linear-gradient(140deg, rgba(253, 250, 243, 0.18), transparent 22%), #080807;
+  box-shadow:
+    0 42px 80px -28px rgba(0, 0, 0, 0.82),
+    0 0 0 8px rgba(253, 250, 243, 0.035);
+}
+
+.advertiser-portal-phone::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 18px;
+  left: 50%;
+  width: 104px;
+  height: 25px;
+  border-radius: 999px;
+  background: #030303;
+  box-shadow: inset 0 -1px 2px rgba(253, 250, 243, 0.06);
+  transform: translateX(-50%);
+}
+
+.advertiser-portal-phone-side-button {
+  position: absolute;
+  right: -3px;
+  width: 3px;
+  border-radius: 0 4px 4px 0;
+  background: rgba(253, 250, 243, 0.32);
+}
+
+.advertiser-portal-phone-side-button-one {
+  top: 138px;
+  height: 54px;
+}
+
+.advertiser-portal-phone-side-button-two {
+  top: 208px;
+  height: 34px;
+}
+
+.advertiser-portal-phone-screen {
+  overflow: hidden;
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(245, 166, 35, 0.085), transparent 34%), #10100f;
+}
+
+.advertiser-portal-phone-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 18px 22px 0;
+  border-bottom: 1px solid rgba(253, 250, 243, 0.09);
+  color: #fdfaf3;
+}
+
+.advertiser-portal-phone-header > strong {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.065em;
+}
+
+.advertiser-portal-phone-header > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(253, 250, 243, 0.62);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.advertiser-portal-phone-header i {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #f5a623;
+  box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.1);
+}
+
+.advertiser-portal-phone-body {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 15px;
+}
+
+.advertiser-portal-primary-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 86px;
+  gap: 14px;
+  align-items: center;
+  padding: 17px;
+  border: 1px solid rgba(253, 250, 243, 0.11);
+  border-radius: 21px;
+  background:
+    linear-gradient(135deg, rgba(245, 166, 35, 0.15), transparent 72%), rgba(253, 250, 243, 0.045);
+}
+
+.advertiser-portal-primary-copy > span,
+.advertiser-portal-quick-actions > div > span {
+  display: block;
+  color: #f5a623;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.advertiser-portal-primary-copy > strong {
+  display: block;
+  margin-top: 7px;
+  color: #fdfaf3;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.advertiser-portal-primary-copy p {
+  margin: 7px 0 0;
+  color: rgba(253, 250, 243, 0.55);
+  font-size: 11px;
+  line-height: 1.38;
+}
+
+.advertiser-portal-progress {
+  display: grid;
+  width: 82px;
+  aspect-ratio: 1;
+  place-content: center;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, #161614 58%, transparent 59%),
+    conic-gradient(#f5a623 0deg 288deg, rgba(253, 250, 243, 0.12) 288deg 360deg);
+  color: #fdfaf3;
+  text-align: center;
+}
+
+.advertiser-portal-progress strong {
+  font-size: 26px;
+  font-weight: 650;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.advertiser-portal-progress span {
+  margin-top: 5px;
+  color: rgba(253, 250, 243, 0.5);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.advertiser-portal-flow {
+  display: grid;
+  gap: 7px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.advertiser-portal-flow li {
+  display: grid;
+  grid-template-columns: 29px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  min-height: 55px;
+  padding: 10px 12px;
+  border: 1px solid rgba(253, 250, 243, 0.09);
+  border-radius: 15px;
+  background: rgba(253, 250, 243, 0.03);
+}
+
+.advertiser-portal-flow li > span {
+  color: #f5a623;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.advertiser-portal-flow strong {
+  display: block;
+  color: rgba(253, 250, 243, 0.94);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.advertiser-portal-flow p {
+  margin: 2px 0 0;
+  overflow: hidden;
+  color: rgba(253, 250, 243, 0.48);
+  font-size: 10px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.advertiser-portal-flow i,
+.advertiser-portal-quick-actions i {
+  color: #f5a623;
+  font-size: 15px;
+  font-style: normal;
+}
+
+.advertiser-portal-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.advertiser-portal-quick-actions > div {
+  position: relative;
+  min-width: 0;
+  min-height: 76px;
+  padding: 12px 28px 11px 12px;
+  border: 1px solid rgba(253, 250, 243, 0.09);
+  border-radius: 15px;
+  background: rgba(253, 250, 243, 0.03);
+}
+
+.advertiser-portal-quick-actions > div > strong {
+  display: -webkit-box;
+  margin-top: 7px;
+  overflow: hidden;
+  color: rgba(253, 250, 243, 0.88);
+  font-size: 11px;
+  font-weight: 550;
+  letter-spacing: -0.025em;
+  line-height: 1.28;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.advertiser-portal-quick-actions > div > i {
+  position: absolute;
+  right: 11px;
+  bottom: 10px;
+}
+
+.advertiser-portal-phone-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 2px 1px;
+  color: rgba(253, 250, 243, 0.42);
+  font-size: 8px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.advertiser-portal-phone-footer strong {
+  color: rgba(253, 250, 243, 0.68);
+  font-weight: 650;
+  text-align: right;
+}
+
+.advertiser-portal-toast {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 220px;
+  padding: 13px;
+  border: 1px solid rgba(253, 250, 243, 0.16);
+  border-radius: 17px;
+  background: rgba(28, 28, 26, 0.92);
+  box-shadow: 0 20px 38px -22px rgba(0, 0, 0, 0.9);
+  color: #fdfaf3;
+  backdrop-filter: blur(14px);
+  animation: advertiser-portal-toast-float 5.5s ease-in-out infinite;
+}
+
+.advertiser-portal-toast-approval {
+  top: 18%;
+  left: calc(50% - 380px);
+}
+
+.advertiser-portal-toast-report {
+  right: calc(50% - 390px);
+  bottom: 17%;
+  animation-delay: -2.75s;
+}
+
+.advertiser-portal-toast-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(245, 166, 35, 0.16);
+  color: #f5a623;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.advertiser-portal-toast strong,
+.advertiser-portal-toast small {
+  display: block;
+}
+
+.advertiser-portal-toast strong {
+  color: #fdfaf3;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.advertiser-portal-toast small {
+  margin-top: 2px;
+  color: rgba(253, 250, 243, 0.52);
+  font-size: 10px;
+}
+
+@keyframes advertiser-portal-toast-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@media (max-width: 760px) {
+  .advertiser-client-portal {
+    padding: 84px 0;
+  }
+
+  .advertiser-client-portal-intro {
+    display: block;
+  }
+
+  .advertiser-client-portal-intro .atlas-section-copy {
+    margin: 22px 0 0;
+  }
+
+  .advertiser-portal-product {
+    margin-top: 48px;
+  }
+
+  .advertiser-portal-stage {
+    min-height: 690px;
+    padding: 74px 13px 50px;
+    border-radius: 28px;
+  }
+
+  .advertiser-portal-phone {
+    width: min(100%, 375px);
+    padding: 6px;
+    border-radius: 39px;
+  }
+
+  .advertiser-portal-phone::before {
+    top: 15px;
+    width: 92px;
+    height: 22px;
+  }
+
+  .advertiser-portal-phone-screen {
+    border-radius: 33px;
+  }
+
+  .advertiser-portal-phone-header {
+    min-height: 64px;
+    padding: 15px 18px 0;
+  }
+
+  .advertiser-portal-phone-body {
+    gap: 9px;
+    padding: 11px;
+  }
+
+  .advertiser-portal-primary-card {
+    grid-template-columns: minmax(0, 1fr) 72px;
+    padding: 14px;
+  }
+
+  .advertiser-portal-primary-copy > strong {
+    font-size: 17px;
+  }
+
+  .advertiser-portal-primary-copy p {
+    font-size: 10px;
+  }
+
+  .advertiser-portal-progress {
+    width: 68px;
+  }
+
+  .advertiser-portal-quick-actions > div {
+    min-height: 70px;
+  }
+
+  .advertiser-portal-phone-footer {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .advertiser-portal-phone-footer strong {
+    text-align: left;
+  }
+
+  .advertiser-portal-toast {
+    width: 190px;
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .advertiser-portal-toast-approval {
+    top: 31px;
+    left: 4px;
+  }
+
+  .advertiser-portal-toast-report {
+    right: 2px;
+    bottom: 18px;
+  }
+
+  .advertiser-portal-toast-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 9px;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .advertiser-portal-toast {
+    animation: none;
+  }
+}
+/* END ADVERTISER PORTAL — PHONE-LED PRODUCT PREVIEW */

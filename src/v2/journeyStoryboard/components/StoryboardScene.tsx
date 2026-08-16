@@ -133,7 +133,7 @@ export function StoryboardScene() {
       data-v2-act="journey-storyboard"
       data-atlas-dark
       data-atlas-tone="dark"
-      className="relative z-10 h-[320vh] w-full bg-[#080807]"
+      className="relative z-10 h-[220vh] w-full bg-[#080807]"
     >
       <div className="sticky top-0 h-screen min-h-[700px] w-full overflow-hidden bg-[#080807]">
         <div

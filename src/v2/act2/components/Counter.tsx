@@ -6,11 +6,7 @@ type CounterProps = {
   duration?: number;
 };
 
-export function Counter({
-  target,
-  suffix = "",
-  duration = 2600,
-}: CounterProps) {
+export function Counter({ target, suffix = "", duration = 2600 }: CounterProps) {
   const ref = useRef<HTMLSpanElement | null>(null);
   const [value, setValue] = useState(0);
 

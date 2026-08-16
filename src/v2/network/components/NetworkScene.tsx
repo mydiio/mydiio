@@ -6,14 +6,8 @@ type NetworkSceneProps = {
   progress: number;
 };
 
-export function NetworkScene({
-  progress,
-}: NetworkSceneProps) {
+export function NetworkScene({ progress }: NetworkSceneProps) {
   const isMobile = useMediaQuery("(max-width: 560px)");
 
-  return isMobile ? (
-    <NetworkMobile progress={progress} />
-  ) : (
-    <NetworkDesktop progress={progress} />
-  );
+  return isMobile ? <NetworkMobile progress={progress} /> : <NetworkDesktop progress={progress} />;
 }

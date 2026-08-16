@@ -75,7 +75,6 @@
   opacity: 0.74;
 }
 
-
 /* Product lighting breathes with the device */
 [data-journey-tablet-stage]::before {
   animation: journey-product-glow-breathe 8s ease-in-out infinite;
@@ -93,4 +92,3 @@
     filter: blur(16px) brightness(1.06);
   }
 }
-

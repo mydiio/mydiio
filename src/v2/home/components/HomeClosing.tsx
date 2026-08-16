@@ -1,5 +1,11 @@
 import { Reveal } from "@/motion";
-import { closingHeading, closingBody, closingContact, WHATSAPP_URL, APPLY_URL } from "../homeContent";
+import {
+  closingHeading,
+  closingBody,
+  closingContact,
+  WHATSAPP_URL,
+  APPLY_URL,
+} from "../homeContent";
 
 export function HomeClosing() {
   return (

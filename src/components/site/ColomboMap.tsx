@@ -11,7 +11,9 @@ export function ColomboMap() {
     loadColomboMap()?.then((module) => {
       if (mounted) setClientColomboMap(() => module.ColomboMap);
     });
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   if (!ClientColomboMap) {

@@ -40,9 +40,11 @@ export function ActTwo() {
       data-atlas-tone="light"
       style={{
         position: "relative",
+        height: "130svh",
         background: colors.cream,
         color: colors.ink,
         fontFamily: '"Space Grotesk", system-ui, -apple-system, sans-serif',
+        overflow: "hidden",
       }}
     >
       <style>{`

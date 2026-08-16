@@ -23,14 +23,7 @@ type RevealProps = {
 };
 
 export const Reveal = forwardRef<HTMLElement, RevealProps>(function Reveal(
-  {
-    children,
-    y = 24,
-    stagger = STAGGER,
-    start = "top 85%",
-    as: Tag = "div",
-    className,
-  },
+  { children, y = 24, stagger = STAGGER, start = "top 85%", as: Tag = "div", className },
   forwardedRef,
 ) {
   const reduced = useReducedMotion();
@@ -42,9 +35,13 @@ export const Reveal = forwardRef<HTMLElement, RevealProps>(function Reveal(
       const root = scope.current;
       if (reduced || !root) return;
 
+      // Register ScrollTrigger here so reveals never depend on another
+      // component's effect having run first. Safe to call repeatedly, and
+      // client-only because useGSAP effects never run during SSR.
+      gsap.registerPlugin(ScrollTrigger);
+
       // Stagger direct children when there are several, otherwise the root.
-      const targets: Element[] =
-        root.children.length > 1 ? Array.from(root.children) : [root];
+      const targets: Element[] = root.children.length > 1 ? Array.from(root.children) : [root];
 
       gsap.set(targets, { opacity: 0, y, willChange: "transform, opacity" });
       gsap.to(targets, {

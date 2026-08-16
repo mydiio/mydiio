@@ -39,15 +39,7 @@ type SideProps = {
   variant: "passengers" | "drivers" | "businesses";
 };
 
-function Side({
-  eyebrow,
-  title,
-  body,
-  proof,
-  cta,
-  href,
-  variant,
-}: SideProps) {
+function Side({ eyebrow, title, body, proof, cta, href, variant }: SideProps) {
   return (
     <Reveal as="article" className={`about-side about-side-${variant}`}>
       <span className="atlas-section-eyebrow atlas-section-eyebrow-dark">{eyebrow}</span>
@@ -73,16 +65,14 @@ export function AboutSides() {
     <section className="about-sides" data-atlas-tone="light">
       <div className="about-shell">
         <Reveal as="header" className="about-section-intro">
-          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">
-            The three sides
-          </div>
+          <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">The three sides</div>
           <h2 className="atlas-section-heading atlas-section-heading-large">
             One network. Three people.
           </h2>
           <p className="atlas-section-copy atlas-section-copy-dark">
-            The infrastructure only matters if it creates value for every participant.
-            A connected vehicle is paid for by advertisers, run for drivers and
-            experienced by passengers. Each side has to win.
+            The infrastructure only matters if it creates value for every participant. A connected
+            vehicle is paid for by advertisers, run for drivers and experienced by passengers. Each
+            side has to win.
           </p>
         </Reveal>
 

@@ -10,8 +10,7 @@ export const contactBody =
 
 export const contactFormHeading = "Send a message";
 
-export const contactFormBody =
-  "Name, email, message. Three fields. No marketing follow-up.";
+export const contactFormBody = "Name, email, message. Three fields. No marketing follow-up.";
 
 export const contactFormNameLabel = "Name";
 export const contactFormEmailLabel = "Email";

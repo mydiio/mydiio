@@ -1,4 +1,10 @@
-import { payoutEyebrow, payoutHeading, payoutBody, payoutFeatures, payoutRows } from "../driverContent";
+import {
+  payoutEyebrow,
+  payoutHeading,
+  payoutBody,
+  payoutFeatures,
+  payoutRows,
+} from "../driverContent";
 import { Reveal } from "@/motion";
 
 export function PayoutReport() {

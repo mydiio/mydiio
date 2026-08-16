@@ -5,7 +5,7 @@ import { colors } from "@/design";
 const navLinks = [
   { label: "Advertise", to: "/advertise" },
   { label: "Drive", to: "/drive" },
-  
+
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
 ] as const;
@@ -165,7 +165,7 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
 
           <div className="atlas-nav-actions">
             <a
-              href="https://app.mydiio.com/login"
+              href="https://admin.mydiio.com/login"
               className="atlas-nav-signin"
               style={{ color: foreground }}
             >
@@ -242,7 +242,7 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
             Launch campaign
           </Link>
 
-          <a href="https://app.mydiio.com/login" className="atlas-nav-mobile-signin">
+          <a href="https://admin.mydiio.com/login" className="atlas-nav-mobile-signin">
             Sign in
           </a>
         </div>

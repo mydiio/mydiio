@@ -25,11 +25,7 @@ export function HomePlans() {
             return (
               <article
                 key={tier.id}
-                className={
-                  featured
-                    ? "home-plan-card home-plan-card-featured"
-                    : "home-plan-card"
-                }
+                className={featured ? "home-plan-card home-plan-card-featured" : "home-plan-card"}
               >
                 <div className="home-plan-topline">
                   <span>{tier.number}</span>
@@ -58,11 +54,7 @@ export function HomePlans() {
 
                 <a
                   href={`${APPLY_URL}?tier=${tier.id}`}
-                  className={
-                    featured
-                      ? "home-plan-cta home-plan-cta-amber"
-                      : "home-plan-cta"
-                  }
+                  className={featured ? "home-plan-cta home-plan-cta-amber" : "home-plan-cta"}
                 >
                   Choose {tier.name}
                 </a>

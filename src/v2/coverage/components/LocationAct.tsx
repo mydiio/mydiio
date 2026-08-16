@@ -83,8 +83,8 @@ export function LocationAct() {
               maxWidth: "44ch",
             }}
           >
-            Every connected tuk-tuk carries the same network. Hover the map
-            to feel it tilt; click to expand and see the streets come alive.
+            Every connected tuk-tuk carries the same network. Hover the map to feel it tilt; click
+            to expand and see the streets come alive.
           </p>
         </div>
 

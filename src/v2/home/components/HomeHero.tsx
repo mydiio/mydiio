@@ -1,12 +1,6 @@
 import { Reveal, useParallax } from "@/motion";
 import HERO_PHOTO from "@/assets/hero-tuktuk.png";
-import {
-  homeEyebrow,
-  homeHeroTitle,
-  homeHeroBody,
-  WHATSAPP_URL,
-  APPLY_URL,
-} from "../homeContent";
+import { homeEyebrow, homeHeroTitle, homeHeroBody, WHATSAPP_URL, APPLY_URL } from "../homeContent";
 
 export function HomeHero() {
   const heroImageParallax = useParallax(0.08);

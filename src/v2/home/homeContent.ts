@@ -22,13 +22,17 @@ export const homeHeroBody =
   "Reach passengers on real Colombo routes. Build your ad in your own portal, watch every GPS-verified play, and get a report every Monday. Campaigns from LKR 25,000 a month with seven days free.";
 
 export const homeProofItems = [
-  { head: "GPS-verified plays", sub: "Every impression logged with its location and time. No black box." },
+  {
+    head: "GPS-verified plays",
+    sub: "Every impression logged with its location and time. No black box.",
+  },
   { head: "Your own portal", sub: "Log in to build ads, track plays and pull reports yourself." },
   { head: "A report every Monday", sub: "See exactly which vehicles ran your ad, and where." },
   { head: "Refundable deposit", sub: "LKR 5,000 secures your spot. Fully refundable." },
 ] as const;
 
-export const differenceHeading = "Most local advertising asks you to trust a number. We show you the map.";
+export const differenceHeading =
+  "Most local advertising asks you to trust a number. We show you the map.";
 
 export const differenceBody =
   "When your ad plays on a mydiio screen, we record where and when. You do not get an estimate. You get a GPS-verified log of every play, in your portal and in your Monday report. That is the whole point of the network, and it is what no printed poster or roadside board can give you.";

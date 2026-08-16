@@ -9,8 +9,8 @@ export function LaunchClosing() {
           Prefer to talk first?
         </Reveal>
         <Reveal as="p" className="launch-closing-body">
-          Message us on WhatsApp. We will walk you through the network, the corridor and
-          the right plan.
+          Message us on WhatsApp. We will walk you through the network, the corridor and the right
+          plan.
         </Reveal>
         <Reveal as="div" className="launch-closing-actions">
           <a

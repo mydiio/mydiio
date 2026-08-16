@@ -579,50 +579,6 @@ body {
   gap: clamp(40px, 5vw, 64px);
 }
 
-.atlas-footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1;
-  color: #1a1a18;
-  text-decoration: none;
-}
-
-.atlas-footer-logo svg {
-  width: 24px;
-  height: 24px;
-  color: #f5a623;
-}
-
-.atlas-footer-nav {
-  display: flex;
-  gap: clamp(24px, 3vw, 40px);
-  flex-wrap: wrap;
-}
-
-.atlas-footer-nav a {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.4;
-  color: #1a1a18;
-  text-decoration: none;
-  transition: opacity 200ms var(--atlas-ease, ease-out);
-}
-
-.atlas-footer-nav a:hover {
-  opacity: 0.6;
-}
-
-.atlas-footer-copyright {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.4;
-  color: rgba(26, 26, 24, 0.48);
-}
-
 @media (max-width: 720px) {
   .atlas-footer {
     padding-top: clamp(64px, 8vw, 80px);
@@ -632,13 +588,7 @@ body {
   .atlas-footer-inner {
     gap: clamp(32px, 4vw, 48px);
   }
-
-  .atlas-footer-nav {
-    gap: 16px;
-    flex-direction: column;
-  }
 }
-
 /* =========================================================
    ATLAS V2 MOTION POLISH
    Single motion vocabulary applied across every act section.
@@ -813,5 +763,199 @@ body {
   [data-v2-page] > section[data-v2-act] {
     margin-top: 0 !important;
     transform: none !important;
+  }
+}
+
+/* Act Five mobile corridor flow repair */
+@media (max-width: 760px) {
+  [data-v2-act="coverage"] {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  [data-v2-act="coverage"] > * {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  [data-v2-act="coverage"] [data-mydiio-corridor-map] {
+    min-height: auto !important;
+    padding-bottom: 88px;
+  }
+}
+
+/* ============================================================
+ * ATLAS FOOTER — V2 multi-column (overrides the inline-styled
+ * block above so the new footer renders the same in every page).
+ * ============================================================ */
+
+.atlas-footer .atlas-footer-inner {
+  width: min(1400px, 100%);
+  margin-inline: auto;
+}
+
+.atlas-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: clamp(32px, 4vw, 56px);
+  align-items: start;
+}
+
+.atlas-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.atlas-footer-heading {
+  margin: 0;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e8920a;
+}
+
+.atlas-footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.atlas-footer-link {
+  display: inline-flex;
+  color: rgba(26, 26, 24, 0.62);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.atlas-footer-link:hover {
+  color: #1a1a18;
+}
+
+.atlas-footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 320px;
+}
+
+.atlas-footer-logo {
+  display: inline-flex;
+  color: #1a1a18;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.atlas-footer-tagline {
+  margin: 0;
+  color: rgba(26, 26, 24, 0.66);
+  font-size: 13px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+.atlas-footer-meta {
+  margin: 4px 0 0;
+  color: rgba(26, 26, 24, 0.42);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.55;
+}
+
+.atlas-footer-rule {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(26, 26, 24, 0.08);
+}
+
+.atlas-footer-rule-tagline {
+  color: rgba(26, 26, 24, 0.38);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.atlas-footer-rule-languages {
+  color: rgba(26, 26, 24, 0.38);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.atlas-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(26, 26, 24, 0.06);
+  color: rgba(26, 26, 24, 0.42);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.atlas-footer-bottom-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.atlas-footer-bottom-link a {
+  color: rgba(26, 26, 24, 0.42);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.atlas-footer-bottom-link a:hover {
+  color: #1a1a18;
+}
+
+@media (max-width: 960px) {
+  .atlas-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 36px;
+  }
+
+  .atlas-footer-brand {
+    grid-column: 1 / -1;
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .atlas-footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .atlas-footer-rule {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .atlas-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

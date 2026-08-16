@@ -124,9 +124,7 @@ export function MotionProvider({ children }: { children: ReactNode }) {
     [reducedMotion],
   );
 
-  return (
-    <MotionContext.Provider value={value}>{children}</MotionContext.Provider>
-  );
+  return <MotionContext.Provider value={value}>{children}</MotionContext.Provider>;
 }
 
 export function useMotion(): MotionContextValue {

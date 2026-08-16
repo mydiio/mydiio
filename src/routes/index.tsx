@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AtlasNav } from "@/v2/layout";
+import { AtlasNav, AtlasFooter } from "@/v2/layout";
 import { ActOne } from "@/v2/act1";
 import { ActTwo, FundingStatement } from "@/v2/act2";
 import { JourneyStoryboard } from "@/v2/journeyStoryboard";
@@ -10,6 +10,7 @@ import { ActSix } from "@/v2/packages";
 import { ActSeven } from "@/v2/pioneer";
 import { ActEight } from "@/v2/closing";
 import "@/v2/foundation/homepage.css";
+import { ScrollExploreCue } from "@/components/ui/scroll-explore-cue";
 
 const DASHBOARD_IMG = "/assets/advertiser-pharmacy-dashboard.png";
 
@@ -110,6 +111,7 @@ function HomePage() {
     <main data-v2-page>
       <AtlasNav />
 
+      <ScrollExploreCue />
       <ActOne />
       <ActTwo />
 
@@ -122,6 +124,7 @@ function HomePage() {
       <ActSix />
       <ActSeven />
       <ActEight />
+      <AtlasFooter />
     </main>
   );
 }

@@ -31,10 +31,8 @@ export const colorAlpha = {
 export const surfaces = {
   light: colors.cream,
   dark: colors.night,
-  panelLight:
-    "rgba(255, 255, 255, 0.72)",
-  panelDark:
-    "rgba(255, 255, 255, 0.055)",
+  panelLight: "rgba(255, 255, 255, 0.72)",
+  panelDark: "rgba(255, 255, 255, 0.055)",
 } as const;
 
 export const radius = {

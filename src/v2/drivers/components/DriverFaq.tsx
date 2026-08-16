@@ -13,11 +13,7 @@ export function DriverFaq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section
-      className="driver-faq"
-      aria-labelledby="driver-faq-title"
-      data-atlas-tone="light"
-    >
+    <section className="driver-faq" aria-labelledby="driver-faq-title" data-atlas-tone="light">
       <div className="driver-shell driver-faq-grid">
         <Reveal as="header" className="driver-faq-intro">
           <div className="atlas-section-eyebrow atlas-section-eyebrow-dark">{faqEyebrow}</div>
@@ -42,9 +38,7 @@ export function DriverFaq() {
 
             return (
               <div
-                className={["driver-faq-item", isOpen ? "is-open" : ""]
-                  .filter(Boolean)
-                  .join(" ")}
+                className={["driver-faq-item", isOpen ? "is-open" : ""].filter(Boolean).join(" ")}
                 key={item.question}
               >
                 <button
@@ -55,9 +49,7 @@ export function DriverFaq() {
                   aria-controls={answerId}
                   onClick={() => setOpenIndex((current) => (current === index ? null : index))}
                 >
-                  <span className="driver-faq-number">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+                  <span className="driver-faq-number">{String(index + 1).padStart(2, "0")}</span>
 
                   <strong>{item.question}</strong>
 

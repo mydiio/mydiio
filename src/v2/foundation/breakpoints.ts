@@ -13,6 +13,5 @@ export const homepageMedia = {
     `(max-width: ${homepageBreakpoints.tabletMax}px)`,
   desktop: `(min-width: ${homepageBreakpoints.desktopMin}px)`,
   wide: `(min-width: ${homepageBreakpoints.wideMin}px)`,
-  reducedMotion:
-    "(prefers-reduced-motion: reduce)",
+  reducedMotion: "(prefers-reduced-motion: reduce)",
 } as const;

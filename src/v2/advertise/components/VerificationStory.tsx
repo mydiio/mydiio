@@ -12,9 +12,13 @@ export function VerificationStory() {
     <section id="verification" className="advertiser-verification" data-atlas-tone="dark">
       <div className="advertiser-shell">
         <Reveal as="header" className="advertiser-verification-intro">
-          <div className="atlas-section-eyebrow atlas-section-eyebrow-light">{verificationEyebrow}</div>
+          <div className="atlas-section-eyebrow atlas-section-eyebrow-light">
+            {verificationEyebrow}
+          </div>
 
-          <h2 className="atlas-section-heading atlas-section-heading-large">{verificationHeading}</h2>
+          <h2 className="atlas-section-heading atlas-section-heading-large">
+            {verificationHeading}
+          </h2>
 
           <p className="atlas-section-copy atlas-section-copy-light">{verificationBody}</p>
         </Reveal>
