@@ -48,6 +48,7 @@ function RidePage() {
   const [rating, setRating] = useState(0);
   const [rated, setRated] = useState(false);
   const [sharing, setSharing] = useState(false);
+  const [ending, setEnding] = useState(false);
   const tokenRef = useRef<string | null>(null);
   const mapElRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<any>(null);
@@ -113,7 +114,11 @@ function RidePage() {
     function endRide() {
       const token = tokenRef.current;
       if (!token) return;
-      const payload = JSON.stringify({ vehicle_id: vehicleId, token });
+      const payload = JSON.stringify({
+        vehicle_id: vehicleId,
+        token,
+        end_reason: "passenger",
+      });
       fetch(`${EDGE}/end-ride`, {
         method: "POST",
         headers: EDGE_AUTH_HEADERS,
@@ -191,18 +196,28 @@ function RidePage() {
   }
 
   async function endRideNow() {
+    if (ending) return;
     const token = tokenRef.current;
-    tokenRef.current = null;
-    setPhase("ended");
     if (!token) return;
+    setEnding(true);
+    setErrorMsg("");
     try {
-      await fetch(`${EDGE}/end-ride`, {
+      const res = await fetch(`${EDGE}/end-ride`, {
         method: "POST",
         headers: EDGE_AUTH_HEADERS,
-        body: JSON.stringify({ vehicle_id: vehicleId, token }),
+        body: JSON.stringify({
+          vehicle_id: vehicleId,
+          token,
+          end_reason: "passenger",
+        }),
       });
+      if (!res.ok) throw new Error("Could not end ride");
+      tokenRef.current = null;
+      setPhase("ended");
     } catch {
-      /* tablet enders are the backstop */
+      setErrorMsg("Your ride is still active. Please try ending it again.");
+    } finally {
+      setEnding(false);
     }
   }
 
@@ -400,9 +415,10 @@ function RidePage() {
           <a href="tel:119" style={styles.emergencyBtn}>
             Emergency — call 119
           </a>
-          <button style={styles.endBtn} onClick={endRideNow}>
-            End ride
+          <button style={styles.endBtn} onClick={endRideNow} disabled={ending}>
+            {ending ? "Ending ride…" : "End ride"}
           </button>
+          {errorMsg && <p style={styles.endError}>{errorMsg}</p>}
         </>
       )}
 
@@ -574,6 +590,15 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 700,
     fontFamily: "inherit",
     cursor: "pointer",
+  },
+  endError: {
+    width: "100%",
+    maxWidth: 420,
+    color: "#B33A3A",
+    fontSize: 14,
+    lineHeight: 1.5,
+    margin: 0,
+    textAlign: "center",
   },
   driverRow: { display: "flex", alignItems: "center", gap: 14, width: "100%" },
   driverPhoto: {
