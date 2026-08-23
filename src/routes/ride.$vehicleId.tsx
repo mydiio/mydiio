@@ -14,6 +14,12 @@ export const Route = createFileRoute("/ride/$vehicleId")({
 });
 
 const EDGE = "https://rmqexobhpasitrexvaig.supabase.co/functions/v1";
+const EAGLE_EYE_ANON_KEY = import.meta.env.VITE_EAGLE_EYE_SUPABASE_ANON_KEY;
+const EDGE_AUTH_HEADERS = {
+  "Content-Type": "application/json",
+  apikey: EAGLE_EYE_ANON_KEY,
+  Authorization: `Bearer ${EAGLE_EYE_ANON_KEY}`,
+};
 
 type Phase = "pick" | "arming" | "armed" | "error" | "ended";
 type ShareLinks = { track_url: string; whatsapp_url: string; sms_url: string } | null;
@@ -108,16 +114,12 @@ function RidePage() {
       const token = tokenRef.current;
       if (!token) return;
       const payload = JSON.stringify({ vehicle_id: vehicleId, token });
-      try {
-        navigator.sendBeacon(`${EDGE}/end-ride`, new Blob([payload], { type: "application/json" }));
-      } catch {
-        fetch(`${EDGE}/end-ride`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: payload,
-          keepalive: true,
-        }).catch(() => {});
-      }
+      fetch(`${EDGE}/end-ride`, {
+        method: "POST",
+        headers: EDGE_AUTH_HEADERS,
+        body: payload,
+        keepalive: true,
+      }).catch(() => {});
     }
     window.addEventListener("pagehide", endRide);
     return () => window.removeEventListener("pagehide", endRide);
@@ -163,7 +165,7 @@ function RidePage() {
     try {
       const res = await fetch(`${EDGE}/arm-ride`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: EDGE_AUTH_HEADERS,
         body: JSON.stringify({ vehicle_id: vehicleId, dest_lat: p.lat, dest_lng: p.lng }),
       });
       const data = await res.json().catch(() => ({}));
@@ -196,7 +198,7 @@ function RidePage() {
     try {
       await fetch(`${EDGE}/end-ride`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: EDGE_AUTH_HEADERS,
         body: JSON.stringify({ vehicle_id: vehicleId, token }),
       });
     } catch {
