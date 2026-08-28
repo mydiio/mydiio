@@ -39,7 +39,11 @@ function cleanPath(urlPath) {
   const discovered = new Set(candidates);
   const discoveryPage = await browser.newPage();
 
-  await discoveryPage.goto(baseUrl, { waitUntil: "networkidle" });
+  console.log("[site] discovering routes");
+  await discoveryPage.goto(baseUrl, {
+    waitUntil: "domcontentloaded",
+    timeout: 20000,
+  });
 
   const links = await discoveryPage
     .locator("a[href]")
@@ -69,9 +73,16 @@ function cleanPath(urlPath) {
       const page = await browser.newPage({ viewport });
 
       try {
-        await page.goto(baseUrl + route, { waitUntil: "networkidle" });
+        console.log(`[site] ${viewport.name} ${route}`);
+        await page.goto(baseUrl + route, {
+          waitUntil: "domcontentloaded",
+          timeout: 20000,
+        });
         await page.evaluate(async () => {
-          await document.fonts.ready;
+          await Promise.race([
+            document.fonts.ready,
+            new Promise((resolve) => setTimeout(resolve, 3000)),
+          ]);
           await new Promise((resolve) =>
             requestAnimationFrame(() => requestAnimationFrame(resolve)),
           );
