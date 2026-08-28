@@ -744,7 +744,9 @@ function detectInitialLang(): Lang {
     const nav = (window.navigator.language || "en").toLowerCase();
     if (nav.startsWith("si")) return "si";
     if (nav.startsWith("ta")) return "ta";
-  } catch {}
+  } catch {
+    // Browser URL or storage access can fail; English is the safe fallback.
+  }
   return "en";
 }
 
@@ -779,7 +781,9 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       const url = new URL(window.location.href);
       url.searchParams.set("lang", l);
       window.history.replaceState({}, "", url.toString());
-    } catch {}
+    } catch {
+      // Language still changes in memory when browser persistence is unavailable.
+    }
     settleTimer.current = window.setTimeout(() => setSettling(false), 120);
   }, []);
 

@@ -10,8 +10,11 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "qa:act-four": "node scripts/visual/check-act-four.cjs",
-    "qa:homepage": "node scripts/visual/homepage-review.cjs"
+    "qa:homepage": "node scripts/visual/homepage-review.cjs",
+    "qa:motion": "node scripts/visual/qa-motion-parity.cjs",
+    "qa:scroll": "node scripts/visual/qa-scroll-states.cjs",
+    "qa:site": "node scripts/visual/qa-site-wide.cjs",
+    "qa:visual": "node scripts/visual/visual-qa.cjs"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",

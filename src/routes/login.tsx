@@ -84,7 +84,6 @@ function LoginPage() {
       await eagleEyeSupabase.auth.signOut();
       setChecking(false);
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -48,4 +48,12 @@ diagnostics/
 # Local review artifacts and stray files
 *.zip
 .venv-compositor/
-package-lock.json
+
+# Local development / QA artifacts
+lint-*.md
+repo-cleanup-audit.md
+
+# Local AI/editor state
+.aider.chat.history.md
+.aider.input.history
+.aider.tags.cache.*

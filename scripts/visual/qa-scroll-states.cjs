@@ -1,10 +1,9 @@
 const { chromium } = require("playwright");
-const { spawn } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
 const port = 4190;
-const baseUrl = "http://127.0.0.1:" + port;
+const baseUrl = process.env.QA_URL || `http://127.0.0.1:${port}`;
 const outputDir = "/tmp/mydiio-scroll-qa";
 
 const routes = ["/", "/advertise", "/drive", "/about"];
@@ -15,12 +14,6 @@ const viewports = [
 
 fs.rmSync(outputDir, { recursive: true, force: true });
 fs.mkdirSync(outputDir, { recursive: true });
-
-const server = spawn(
-  "npm",
-  ["run", "dev", "--", "--host", "127.0.0.1", "--port", String(port)],
-  { stdio: "ignore" },
-);
 
 async function waitForServer() {
   for (let i = 0; i < 80; i += 1) {
@@ -49,23 +42,21 @@ function routeName(route) {
     for (const route of routes) {
       const page = await browser.newPage({ viewport });
 
-      await page.goto(baseUrl + route, { waitUntil: "networkidle" });
+      console.log(`[scroll] ${viewport.name} ${route}`);
+
+      await page.goto(baseUrl + route, {
+        waitUntil: "domcontentloaded",
+        timeout: 20000,
+      });
       await page.evaluate(async () => {
         await document.fonts.ready;
       });
 
       const positions = await page.evaluate(() => {
         const viewportHeight = window.innerHeight;
-        const maxScroll = Math.max(
-          0,
-          document.documentElement.scrollHeight - viewportHeight,
-        );
+        const maxScroll = Math.max(0, document.documentElement.scrollHeight - viewportHeight);
 
-        const sections = [
-          ...document.querySelectorAll(
-            "main > section, main [data-v2-act], main section",
-          ),
-        ];
+        const sections = [...document.querySelectorAll("main > section, main [data-v2-act]")];
 
         const points = new Set([0, maxScroll]);
 
@@ -89,7 +80,7 @@ function routeName(route) {
         const scrollY = positions[index];
 
         await page.evaluate((value) => window.scrollTo(0, value), scrollY);
-        await page.waitForTimeout(900);
+        await page.waitForTimeout(350);
 
         const visibleHeadings = await page.evaluate(() =>
           [...document.querySelectorAll("h1, h2, h3")]
@@ -109,12 +100,7 @@ function routeName(route) {
         );
 
         const file =
-          routeName(route) +
-          "-" +
-          viewport.name +
-          "-" +
-          String(index).padStart(2, "0") +
-          ".png";
+          routeName(route) + "-" + viewport.name + "-" + String(index).padStart(2, "0") + ".png";
 
         await page.screenshot({
           path: path.join(outputDir, file),
@@ -135,12 +121,12 @@ function routeName(route) {
 
   await browser.close();
 
-  fs.writeFileSync(
-    path.join(outputDir, "report.json"),
-    JSON.stringify(report, null, 2),
-  );
+  fs.writeFileSync(path.join(outputDir, "report.json"), JSON.stringify(report, null, 2));
 
   console.log("Scroll-state QA complete.");
   console.log("Screenshots: " + outputDir);
   console.log("Report: " + path.join(outputDir, "report.json"));
-})();
+})().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

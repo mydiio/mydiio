@@ -597,12 +597,12 @@ export const translations = {
       bestForLabel: { en: "BEST FOR", si: "වඩාත් සුදුසු", ta: "மிகவும் பொருத்தமானது" },
       cardCta: { en: "Get started →", si: "ආරම්භ කරන්න →", ta: "தொடங்குங்கள் →" },
       spark: {
-        feature1: { en: "500 screen minutes", si: "තිර මිනිත්තු 500", ta: "500 திரை நிமிடங்கள்" },
+        feature1: { en: "200 screen minutes", si: "තිර මිනිත්තු 200", ta: "200 திரை நிமிடங்கள்" },
         feature2: { en: "Up to 5 vehicles", si: "රථ 5ක් දක්වා", ta: "5 வாகனங்கள் வரை" },
         feature3: {
-          en: "Valid for 7 days",
-          si: "දින 7ක් වලංගුයි",
-          ta: "7 நாட்களுக்கு செல்லுபடியாகும்",
+          en: "Valid for 3 days",
+          si: "දින 3ක් වලංගුයි",
+          ta: "3 நாட்களுக்கு செல்லுபடியாகும்",
         },
         bestFor: {
           en: "A weekend event or a quick test",
@@ -612,15 +612,15 @@ export const translations = {
       },
       blast: {
         feature1: {
-          en: "2,000 screen minutes",
-          si: "තිර මිනිත්තු 2,000",
-          ta: "2,000 திரை நிமிடங்கள்",
+          en: "600 screen minutes",
+          si: "තිර මිනිත්තු 600",
+          ta: "600 திரை நிமிடங்கள்",
         },
-        feature2: { en: "Up to 10 vehicles", si: "රථ 10ක් දක්වා", ta: "10 வாகனங்கள் வரை" },
+        feature2: { en: "Up to 15 vehicles", si: "රථ 15ක් දක්වා", ta: "15 வாகனங்கள் வரை" },
         feature3: {
-          en: "Valid for 14 days",
-          si: "දින 14ක් වලංගුයි",
-          ta: "14 நாட்களுக்கு செல்லுபடியாகும்",
+          en: "Valid for 7 days",
+          si: "දින 7ක් වලංගුයි",
+          ta: "7 நாட்களுக்கு செல்லுபடியாகும்",
         },
         bestFor: {
           en: "A week-long campaign or product launch",
@@ -630,18 +630,18 @@ export const translations = {
       },
       surge: {
         feature1: {
-          en: "5,000 screen minutes",
-          si: "තිර මිනිත්තු 5,000",
-          ta: "5,000 திரை நிமிடங்கள்",
+          en: "800 screen minutes",
+          si: "තිර මිනිත්තු 800",
+          ta: "800 திரை நிமிடங்கள்",
         },
-        feature2: { en: "Full fleet", si: "සම්පූර්ණ රථ පිරිස", ta: "முழு வாகனத் தொகுதி" },
+        feature2: { en: "Up to 20 vehicles", si: "රථ 20ක් දක්වා", ta: "20 வாகனங்கள் வரை" },
         feature3: {
-          en: "Valid for 30 days",
-          si: "දින 30ක් වලංගුයි",
-          ta: "30 நாட்களுக்கு செல்லுபடியாகும்",
+          en: "Valid for 10 days",
+          si: "දින 10ක් වලංගුයි",
+          ta: "10 நாட்களுக்கு செல்லுபடியாகும்",
         },
         bestFor: {
-          en: "A major event, full citywide reach",
+          en: "A major event across the live area",
           si: "ප්‍රධාන උත්සවයක්, නගරය පුරාම ප්‍රවේශය",
           ta: "ஒரு முக்கிய நிகழ்வு, நகரம் முழுவதும் அடையாளம்",
         },
@@ -770,13 +770,17 @@ export const translations = {
       },
       blast: {
         vehicles: {
-          en: "Up to 10 tuk-tuks",
-          si: "ත්‍රී රෝද රථ 10ක් දක්වා",
-          ta: "10 மூன்று சக்கர வாகனங்கள் வரை",
+          en: "Up to 15 tuk-tuks",
+          si: "ත්‍රී රෝද රථ 15ක් දක්වා",
+          ta: "15 மூன்று சக்கர வாகனங்கள் வரை",
         },
       },
       surge: {
-        vehicles: { en: "Full fleet", si: "සම්පූර්ණ රථ පිරිස", ta: "முழு வாகனத் தொகுதி" },
+        vehicles: {
+          en: "Up to 20 tuk-tuks",
+          si: "ත්‍රී රෝද රථ 20ක් දක්වා",
+          ta: "20 மூன்று சக்கர வாகனங்கள் வரை",
+        },
       },
       footnote: {
         en: "Vehicle count is based on your plan. Your weekly GPS report shows which neighbourhoods your campaign reached across the fleet.",

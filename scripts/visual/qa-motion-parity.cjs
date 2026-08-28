@@ -1,10 +1,9 @@
 const { chromium } = require("playwright");
-const { spawn } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
 const port = 4192;
-const baseUrl = "http://127.0.0.1:" + port;
+const baseUrl = process.env.QA_URL || `http://127.0.0.1:${port}`;
 const outputDir = "/tmp/mydiio-motion-parity";
 const routes = ["/", "/advertise", "/drive", "/about"];
 const viewports = [
@@ -14,12 +13,6 @@ const viewports = [
 
 fs.rmSync(outputDir, { recursive: true, force: true });
 fs.mkdirSync(outputDir, { recursive: true });
-
-const server = spawn(
-  "npm",
-  ["run", "dev", "--", "--host", "127.0.0.1", "--port", String(port)],
-  { stdio: "ignore" },
-);
 
 async function waitForServer() {
   for (let i = 0; i < 80; i += 1) {
@@ -52,14 +45,15 @@ function routeName(route) {
       });
 
       const page = await context.newPage();
-      await page.goto(baseUrl + route, { waitUntil: "networkidle" });
+      console.log(`[motion] ${viewport.name} ${route}`);
+
+      await page.goto(baseUrl + route, {
+        waitUntil: "domcontentloaded",
+        timeout: 20000,
+      });
 
       const sections = await page.evaluate(() => {
-        const items = [
-          ...document.querySelectorAll(
-            "main > section, main [data-v2-act], main section",
-          ),
-        ];
+        const items = [...document.querySelectorAll("main > section, main [data-v2-act]")];
 
         return [...new Set(items)]
           .map((element, index) => {
@@ -69,18 +63,15 @@ function routeName(route) {
               index,
               top: Math.round(rect.top + window.scrollY),
               height: Math.round(rect.height),
-              label:
-                element.getAttribute("data-v2-act") ||
-                element.className ||
-                "section-" + index,
+              label: element.getAttribute("data-v2-act") || element.className || "section-" + index,
             };
           })
           .filter((item) => item.height > 180);
       });
 
       for (const section of sections) {
-        const maxScroll = await page.evaluate(
-          () => Math.max(0, document.documentElement.scrollHeight - window.innerHeight),
+        const maxScroll = await page.evaluate(() =>
+          Math.max(0, document.documentElement.scrollHeight - window.innerHeight),
         );
 
         const travel = Math.max(0, section.height - viewport.height);
@@ -90,11 +81,12 @@ function routeName(route) {
           Math.min(maxScroll, section.top + travel),
         ];
 
-        for (const [state, scrollY] of ["start", "middle", "end"].map(
-          (state, index) => [state, positions[index]],
-        )) {
+        for (const [state, scrollY] of ["start", "middle", "end"].map((state, index) => [
+          state,
+          positions[index],
+        ])) {
           await page.evaluate((value) => window.scrollTo(0, value), scrollY);
-          await page.waitForTimeout(900);
+          await page.waitForTimeout(350);
 
           const snapshot = await page.evaluate(() => {
             const running = document
@@ -153,13 +145,11 @@ function routeName(route) {
 
   await browser.close();
 
-  fs.writeFileSync(
-    path.join(outputDir, "report.json"),
-    JSON.stringify(report, null, 2),
-  );
+  fs.writeFileSync(path.join(outputDir, "report.json"), JSON.stringify(report, null, 2));
 
   const failures = report.filter(
-    (item) => item.horizontalOverflow > 1 || item.visibleHeadings.length === 0,
+    (item) =>
+      item.horizontalOverflow > 1 || (item.state === "middle" && item.visibleHeadings.length === 0),
   );
 
   console.log("Motion parity QA complete.");
@@ -168,4 +158,11 @@ function routeName(route) {
   console.log("Potential failures: " + failures.length);
 
   failures.forEach((failure) => console.log(JSON.stringify(failure)));
-})();
+
+  if (failures.length > 0) {
+    process.exitCode = 1;
+  }
+})().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

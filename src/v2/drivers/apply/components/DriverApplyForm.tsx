@@ -228,10 +228,14 @@ export function DriverApplyForm() {
         setStep(d.step);
         setHadDraft(true);
       }
-    } catch {}
+    } catch {
+      // Ignore malformed or unavailable saved draft data.
+    }
     try {
       localStorage.removeItem(DRAFT_KEY);
-    } catch {}
+    } catch {
+      // Storage may be unavailable in restricted browser contexts.
+    }
   }, []);
 
   // Save draft
@@ -254,7 +258,9 @@ export function DriverApplyForm() {
     };
     try {
       sessionStorage.setItem(DRAFT_KEY, JSON.stringify(d));
-    } catch {}
+    } catch {
+      // Draft persistence is optional when session storage is unavailable.
+    }
   }, [
     step,
     fullName,
@@ -365,7 +371,9 @@ export function DriverApplyForm() {
       }
       try {
         sessionStorage.removeItem(DRAFT_KEY);
-      } catch {}
+      } catch {
+        // Successful submission must not fail because storage cleanup failed.
+      }
       setSuccess("received");
     } catch {
       setError(applyError);
@@ -376,7 +384,9 @@ export function DriverApplyForm() {
   function startFresh() {
     try {
       sessionStorage.removeItem(DRAFT_KEY);
-    } catch {}
+    } catch {
+      // Starting fresh still works when session storage is unavailable.
+    }
     window.location.reload();
   }
 
