@@ -22,7 +22,7 @@ const EDGE_AUTH_HEADERS = {
 
 type Phase = "pick" | "arming" | "armed" | "error" | "ended";
 type ShareLinks = { track_url: string; whatsapp_url: string; sms_url: string } | null;
-type PlaceResult = { place_id: string; label: string; lat: number; lng: number };
+type PlaceResult = { place_id: string; label: string };
 type RoutePreview = {
   distance_metres: number;
   duration_seconds: number;
@@ -105,9 +105,6 @@ function RidePage() {
         body: JSON.stringify({
           scan_handle: vehicleId,
           destination_place_id: selected.place_id,
-          dest_label: selected.label,
-          dest_lat: selected.lat,
-          dest_lng: selected.lng,
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -256,6 +253,9 @@ function RidePage() {
                     {r.label}
                   </button>
                 ))}
+                <div style={styles.googleMapsAttribution} translate="no">
+                  Google Maps
+                </div>
               </div>
             )}
           </div>
@@ -506,6 +506,18 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#E9E4DA",
     cursor: "pointer",
     fontFamily: "inherit",
+  },
+  googleMapsAttribution: {
+    padding: "8px 12px",
+    background: "#171915",
+    color: "#FFFFFF",
+    fontFamily: "Roboto, sans-serif",
+    fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: 12,
+    letterSpacing: "normal",
+    whiteSpace: "nowrap",
+    textAlign: "right",
   },
   routePreview: { width: "calc(100% - 36px)", margin: "6px 18px 0", padding: 18, borderRadius: 16, border: "1px solid #3A3A35", background: "#0B0C0B", display: "flex", gap: 16, textAlign: "left" },
   routeLine: { width: 16, display: "flex", flexDirection: "column", alignItems: "center", padding: "4px 0" },
