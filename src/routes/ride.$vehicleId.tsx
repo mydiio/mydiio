@@ -194,6 +194,12 @@ function RidePage() {
   const [ending, setEnding] = useState(false);
   const tokenRef = useRef<string | null>(null);
 
+  useEffect(() => {
+    if (!routePreview && phase !== "armed") return;
+    const frame = window.requestAnimationFrame(() => window.scrollTo(0, 0));
+    return () => window.cancelAnimationFrame(frame);
+  }, [phase, routePreview]);
+
   async function runSearch() {
     const q = query.trim();
     if (q.length < 3 || searching) return;
