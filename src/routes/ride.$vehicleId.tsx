@@ -110,26 +110,6 @@ function RidePage() {
     };
   }, [phase]);
 
-  useEffect(() => {
-    function endRide() {
-      const token = tokenRef.current;
-      if (!token) return;
-      const payload = JSON.stringify({
-        vehicle_id: vehicleId,
-        token,
-        end_reason: "passenger",
-      });
-      fetch(`${EDGE}/end-ride`, {
-        method: "POST",
-        headers: EDGE_AUTH_HEADERS,
-        body: payload,
-        keepalive: true,
-      }).catch(() => {});
-    }
-    window.addEventListener("pagehide", endRide);
-    return () => window.removeEventListener("pagehide", endRide);
-  }, [vehicleId]);
-
   function placePin(lat: number, lng: number) {
     setPin({ lat, lng });
     const L = window.L;
@@ -243,22 +223,38 @@ function RidePage() {
 
   async function handleShare() {
     if (sharing) return;
+    const token = tokenRef.current;
+    if (!token) {
+      setErrorMsg("Your ride is not connected yet. Please try again.");
+      return;
+    }
     setSharing(true);
+    setErrorMsg("");
     try {
       const res = await fetch(`${EDGE}/create-trip-share`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ vehicle_uuid: vehicleId }),
+        body: JSON.stringify({
+          vehicle_uuid: vehicleId,
+          session_token: token,
+        }),
       });
       const data = await res.json().catch(() => ({}));
-      if (res.ok)
+      if (res.ok) {
         setShare({
           track_url: data.track_url,
           whatsapp_url: data.whatsapp_url,
           sms_url: data.sms_url,
         });
+      } else {
+        setErrorMsg(
+          res.status === 403
+            ? "This ride is no longer active. Start tracking again to share it."
+            : "We could not create the tracking link. Please try again.",
+        );
+      }
     } catch {
-      /* silent */
+      setErrorMsg("No connection. Check your signal and try sharing again.");
     }
     setSharing(false);
   }
