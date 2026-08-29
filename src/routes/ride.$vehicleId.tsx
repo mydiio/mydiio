@@ -151,7 +151,7 @@ function RidePage() {
       const res = await fetch(`${EDGE}/arm-ride`, {
         method: "POST",
         headers: EDGE_AUTH_HEADERS,
-        body: JSON.stringify({ vehicle_id: vehicleId, dest_lat: p.lat, dest_lng: p.lng }),
+        body: JSON.stringify({ scan_handle: vehicleId, dest_lat: p.lat, dest_lng: p.lng }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
@@ -186,7 +186,6 @@ function RidePage() {
         method: "POST",
         headers: EDGE_AUTH_HEADERS,
         body: JSON.stringify({
-          vehicle_id: vehicleId,
           token,
           end_reason: "passenger",
         }),
@@ -202,16 +201,16 @@ function RidePage() {
   }
 
   async function submitRating(stars: number) {
-    if (rated || !driver) return;
+    const token = tokenRef.current;
+    if (rated || !driver || !token) return;
     setRating(stars);
     setRated(true);
     try {
       await fetch(`${EDGE}/submit-driver-feedback`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: EDGE_AUTH_HEADERS,
         body: JSON.stringify({
-          driver_id: driver.id,
-          vehicle_id: vehicleId,
+          session_token: token,
           category: "rating",
           rating: stars,
         }),
@@ -233,9 +232,8 @@ function RidePage() {
     try {
       const res = await fetch(`${EDGE}/create-trip-share`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: EDGE_AUTH_HEADERS,
         body: JSON.stringify({
-          vehicle_uuid: vehicleId,
           session_token: token,
         }),
       });

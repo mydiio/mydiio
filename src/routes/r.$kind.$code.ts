@@ -42,16 +42,16 @@ async function resolveTripShare(
   const payload = await response
     .json()
     .catch(() => null) as {
-      vehicle_uuid?: unknown;
+      passenger_scan_handle?: unknown;
     } | null;
 
-  const vehicleUuid =
-    typeof payload?.vehicle_uuid === "string"
-      ? payload.vehicle_uuid
+  const scanHandle =
+    typeof payload?.passenger_scan_handle === "string"
+      ? payload.passenger_scan_handle
       : "";
 
-  return UUID.test(vehicleUuid)
-    ? vehicleUuid
+  return UUID.test(scanHandle)
+    ? scanHandle
     : null;
 }
 
@@ -86,15 +86,15 @@ export const Route = createFileRoute(
         switch (kind) {
           case "trip_share": {
             try {
-              const vehicleUuid =
+              const scanHandle =
                 await resolveTripShare(rawCode);
 
-              if (!vehicleUuid) {
+              if (!scanHandle) {
                 return redirect(FALLBACK);
               }
 
               return redirect(
-                `${SITE_BASE}/ride/${vehicleUuid}`,
+                `${SITE_BASE}/ride/${scanHandle}`,
               );
             } catch {
               return redirect(FALLBACK);
