@@ -1,7 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { LaunchPage } from "@/v2/launch";
+import { isPublicWaitlistMode } from "@/config/publicSiteMode";
 
 export const Route = createFileRoute("/advertise_/apply")({
+  beforeLoad: () => {
+    if (isPublicWaitlistMode) throw redirect({ to: "/" });
+  },
   component: LaunchPage,
   head: () => ({
     meta: [

@@ -1,9 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { DriverPage } from "@/v2/drivers";
+import { isPublicWaitlistMode } from "@/config/publicSiteMode";
 import "@/v2/foundation/homepage.css";
 import "@/v2/drivers/drivers.css";
 
 export const Route = createFileRoute("/drive")({
+  beforeLoad: () => {
+    if (isPublicWaitlistMode) throw redirect({ to: "/" });
+  },
   component: DriverPage,
   head: () => ({
     meta: [

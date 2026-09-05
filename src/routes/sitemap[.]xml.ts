@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { isPublicWaitlistMode } from "@/config/publicSiteMode";
 
 const BASE_URL = "https://mydiio.com";
 
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const entries: SitemapEntry[] = [
+        const fullSiteEntries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/advertise", changefreq: "weekly", priority: "0.9" },
           { path: "/drive", changefreq: "weekly", priority: "0.9" },
@@ -25,6 +26,13 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/privacy", changefreq: "yearly", priority: "0.3" },
           { path: "/terms", changefreq: "yearly", priority: "0.3" },
         ];
+        const entries: SitemapEntry[] = isPublicWaitlistMode
+          ? [
+              { path: "/", changefreq: "weekly", priority: "1.0" },
+              { path: "/privacy", changefreq: "yearly", priority: "0.3" },
+              { path: "/terms", changefreq: "yearly", priority: "0.3" },
+            ]
+          : fullSiteEntries;
 
         const urls = entries.map((e) =>
           [

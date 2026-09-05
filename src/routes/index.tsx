@@ -11,100 +11,125 @@ import { ActSeven } from "@/v2/pioneer";
 import { ActEight } from "@/v2/closing";
 import "@/v2/foundation/homepage.css";
 import { ScrollExploreCue } from "@/components/ui/scroll-explore-cue";
+import { isPublicWaitlistMode } from "@/config/publicSiteMode";
+import { WaitlistPage } from "@/v2/waitlist";
 
 const DASHBOARD_IMG = "/assets/advertiser-pharmacy-dashboard.png";
 
 export const Route = createFileRoute("/")({
-  component: HomePage,
-  head: () => ({
-    meta: [
-      { title: "Advertise on Colombo's tuk-tuks | GPS-verified plays | mydiio" },
-      {
-        name: "description",
-        content:
-          "Put your brand on screens inside Colombo tuk-tuks. Completed plays with fresh GPS and movement evidence, a report every Monday, and your own advertiser portal. Campaigns from LKR 25,000 with 7 days free.",
-      },
-      { property: "og:title", content: "Advertise on Colombo's tuk-tuks | mydiio" },
-      {
-        property: "og:description",
-        content:
-          "Completed plays with GPS and movement evidence. Weekly reports. Your own advertiser portal. From LKR 25,000 a month with 7 days free.",
-      },
-      { property: "og:image", content: DASHBOARD_IMG },
-      { property: "og:url", content: "https://mydiio.com/" },
-    ],
-    links: [{ rel: "canonical", href: "https://mydiio.com/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "mydiio Connected Passenger Information Network",
-          provider: { "@type": "Organization", name: "mydiio", url: "https://mydiio.com" },
-          description:
-            "Digital advertising on screens inside Colombo tuk-tuks. Advertisers build and submit ads in their own portal, and receive completed-play reporting with GPS and movement evidence.",
-          areaServed: { "@type": "City", name: "Colombo" },
-          offers: {
-            "@type": "Offer",
-            priceCurrency: "LKR",
-            price: "25000",
-            description: "Roamer, entry tier, up to 5 tuk-tuks, 500 minutes, 3-month minimum",
-          },
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: [
+  component: PublicHomePage,
+  head: () =>
+    isPublicWaitlistMode
+      ? {
+          meta: [
+            { title: "Join the mydiio advertiser waiting list | Colombo" },
             {
-              "@type": "Question",
-              name: "How do I know my ad actually played?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Every Monday you receive a report showing completed plays, fresh GPS evidence, plays verified while moving, rejected attempts, and remaining campaign minutes.",
-              },
+              name: "description",
+              content:
+                "Join the mydiio advertiser waiting list for early campaign access, pilot availability and launch updates in Colombo.",
+            },
+            { property: "og:title", content: "Something new is moving through Colombo | mydiio" },
+            {
+              property: "og:description",
+              content: "Join the advertiser waiting list for early access to the mydiio network.",
+            },
+            { property: "og:url", content: "https://mydiio.com/" },
+          ],
+          links: [{ rel: "canonical", href: "https://mydiio.com/" }],
+        }
+      : {
+          meta: [
+            { title: "Advertise on Colombo's tuk-tuks | GPS-verified plays | mydiio" },
+            {
+              name: "description",
+              content:
+                "Put your brand on screens inside Colombo tuk-tuks. Completed plays with fresh GPS and movement evidence, a report every Monday, and your own advertiser portal. Campaigns from LKR 25,000 with 7 days free.",
+            },
+            { property: "og:title", content: "Advertise on Colombo's tuk-tuks | mydiio" },
+            {
+              property: "og:description",
+              content:
+                "Completed plays with GPS and movement evidence. Weekly reports. Your own advertiser portal. From LKR 25,000 a month with 7 days free.",
+            },
+            { property: "og:image", content: DASHBOARD_IMG },
+            { property: "og:url", content: "https://mydiio.com/" },
+          ],
+          links: [{ rel: "canonical", href: "https://mydiio.com/" }],
+          scripts: [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Service",
+                name: "mydiio Connected Passenger Information Network",
+                provider: { "@type": "Organization", name: "mydiio", url: "https://mydiio.com" },
+                description:
+                  "Digital advertising on screens inside Colombo tuk-tuks. Advertisers build and submit ads in their own portal, and receive completed-play reporting with GPS and movement evidence.",
+                areaServed: { "@type": "City", name: "Colombo" },
+                offers: {
+                  "@type": "Offer",
+                  priceCurrency: "LKR",
+                  price: "25000",
+                  description: "Roamer, entry tier, up to 5 tuk-tuks, 500 minutes, 3-month minimum",
+                },
+              }),
             },
             {
-              "@type": "Question",
-              name: "Can I build my own ad?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. Inside your portal you upload your logo and photos, preview your ad, and submit it. Every ad is reviewed before it runs, and goes live within 72 hours. We can also make your first creative for free from your existing branding.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "What happens when my minutes run low?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "You can buy more minutes in your portal at any time to keep your ad running, with no need to wait for your next billing cycle.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "What is Pioneer corridor exclusivity?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Pioneer advertisers get twelve months of exclusivity on a defined corridor for their category, agreed at sign-up, so no other business in your category runs on that route during your first twelve months. Your per-minute rate is fixed for the life of your subscription.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "What does the LKR 5,000 deposit cover?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "The LKR 5,000 deposit secures your spot. It is fully refundable, credited against your first invoice when you proceed, or returned in full if you decide not to.",
-              },
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "How do I know my ad actually played?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Every Monday you receive a report showing completed plays, fresh GPS evidence, plays verified while moving, rejected attempts, and remaining campaign minutes.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Can I build my own ad?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Yes. Inside your portal you upload your logo and photos, preview your ad, and submit it. Every ad is reviewed before it runs, and goes live within 72 hours. We can also make your first creative for free from your existing branding.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "What happens when my minutes run low?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "You can buy more minutes in your portal at any time to keep your ad running, with no need to wait for your next billing cycle.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "What is Pioneer corridor exclusivity?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Pioneer advertisers get twelve months of exclusivity on a defined corridor for their category, agreed at sign-up, so no other business in your category runs on that route during your first twelve months. Your per-minute rate is fixed for the life of your subscription.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "What does the LKR 5,000 deposit cover?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "The LKR 5,000 deposit secures your spot. It is fully refundable, credited against your first invoice when you proceed, or returned in full if you decide not to.",
+                    },
+                  },
+                ],
+              }),
             },
           ],
-        }),
-      },
-    ],
-  }),
+        },
 });
+
+function PublicHomePage() {
+  return isPublicWaitlistMode ? <WaitlistPage /> : <HomePage />;
+}
 
 function HomePage() {
   return (

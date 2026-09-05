@@ -1,7 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { ContactPage } from "@/v2/contact";
+import { isPublicWaitlistMode } from "@/config/publicSiteMode";
 
 export const Route = createFileRoute("/contact")({
+  beforeLoad: () => {
+    if (isPublicWaitlistMode) throw redirect({ to: "/" });
+  },
   component: ContactPage,
   head: () => ({
     meta: [
