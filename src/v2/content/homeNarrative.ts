@@ -78,10 +78,10 @@ export const homeNarrative = {
   },
 
   platform: {
-    eyebrow: "Five connected products",
+    eyebrow: "Four connected surfaces",
     headline: "One platform keeps the whole network moving.",
     introduction:
-      "Passengers, drivers, businesses and operations each use a different part of one connected system.",
+      "Passengers, businesses and operations each use the right part of one connected system. Drivers simply drive as usual and receive operational support from the mydiio team.",
     products: [
       {
         title: "Passenger screen",
@@ -90,10 +90,6 @@ export const homeNarrative = {
       {
         title: "Advertiser portal",
         body: "Campaign creation, scheduling and verified reporting.",
-      },
-      {
-        title: "Driver portal",
-        body: "Earnings, schedules, payments and account management.",
       },
       {
         title: "Eagle Eye",

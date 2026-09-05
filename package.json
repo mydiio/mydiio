@@ -14,7 +14,8 @@
     "qa:motion": "node scripts/visual/qa-motion-parity.cjs",
     "qa:scroll": "node scripts/visual/qa-scroll-states.cjs",
     "qa:site": "node scripts/visual/qa-site-wide.cjs",
-    "qa:visual": "node scripts/visual/visual-qa.cjs"
+    "qa:visual": "node scripts/visual/visual-qa.cjs",
+    "check:attention-insights": "node scripts/check-attention-insights-contracts.mjs"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",

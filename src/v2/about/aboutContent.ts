@@ -140,7 +140,7 @@ export const aboutDriversCta = "Read about joining the driver network";
 export const aboutBusinessesHeading = "Businesses get measurable local reach.";
 
 export const aboutBusinessesBody =
-  "Your campaign plays inside active tuk-tuks on real routes. The report shows which vehicles, where, when.";
+  "Your campaign plays inside active tuk-tuks on real routes. The report separates completed delivery, fresh GPS evidence and plays verified while moving.";
 
 export const aboutBusinessesProof1Value = "GPS";
 export const aboutBusinessesProof1Label = "Every play recorded";
@@ -154,13 +154,13 @@ export const aboutBusinessesProof3Label = "Build and submit in your portal";
 export const aboutBusinessesCta = "Read about advertising with mydiio";
 
 /* ============================================================
- * 07 OPERATING SYSTEM (book Ch 06) — five portals, one backend
+ * 07 OPERATING SYSTEM (book Ch 06) — four surfaces, one backend
  * ============================================================ */
 
-export const aboutPlatformHeading = "Five portals, one source of truth.";
+export const aboutPlatformHeading = "Four connected surfaces, one source of truth.";
 
 export const aboutPlatformBody =
-  "Eagle Eye runs the network. The advertiser portal runs campaigns. The driver portal runs earnings. The tablet player runs the passenger experience. The public website introduces the network. They share one backend and one operational truth.";
+  "Eagle Eye runs the network. The advertiser portal runs campaigns. The tablet player runs the passenger experience. The public website introduces the network. Drivers simply drive as usual while the mydiio team manages operations and payment records.";
 
 export type Portal = {
   name: string;
@@ -175,10 +175,6 @@ export const aboutPortals: readonly Portal[] = [
   {
     name: "Advertiser portal",
     role: "Build campaigns, upload creative, watch every play, pull the report.",
-  },
-  {
-    name: "Driver portal",
-    role: "Earnings, agreement, routes, vehicle, support in one place.",
   },
   {
     name: "Tablet player",

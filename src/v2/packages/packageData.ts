@@ -39,6 +39,10 @@ export const packageTiers: PackageTier[] = [
         label: "Commitment",
         value: "3-month minimum",
       },
+      {
+        label: "Attention Insights",
+        value: `${attentionMonthlyPricing.roamer} · optional pilot`,
+      },
     ],
   },
   {
@@ -61,6 +65,10 @@ export const packageTiers: PackageTier[] = [
       {
         label: "Commitment",
         value: "3-month minimum",
+      },
+      {
+        label: "Attention Insights",
+        value: `${attentionMonthlyPricing.voyager} · optional pilot`,
       },
     ],
   },
@@ -90,6 +98,10 @@ export const packageTiers: PackageTier[] = [
         label: "Rate",
         value: "Fixed for subscription life",
       },
+      {
+        label: "Attention Insights",
+        value: `${attentionMonthlyPricing.pioneer} · optional pilot`,
+      },
     ],
     emphasis: "10 spots ever",
     featured: true,
@@ -115,6 +127,11 @@ export const packageTiers: PackageTier[] = [
         label: "Terms",
         value: "Built around your campaign",
       },
+      {
+        label: "Attention Insights",
+        value: `${attentionMonthlyPricing.horizon} · optional pilot`,
+      },
     ],
   },
 ];
+import { attentionMonthlyPricing } from "./attentionPricing";

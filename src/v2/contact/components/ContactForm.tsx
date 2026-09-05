@@ -68,7 +68,8 @@ export function ContactForm() {
           >
             <span className="contact-form-admin-link-label">Sign in to the admin panel →</span>
             <span className="contact-form-admin-link-hint">
-              For existing advertisers and drivers. Your campaigns, reports and portal live there.
+              For existing advertisers. Campaigns, reports and account tools live there. Drivers
+              contact the mydiio team directly.
             </span>
           </a>
         </Reveal>

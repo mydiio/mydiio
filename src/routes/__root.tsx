@@ -83,7 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Sri Lanka's first connected passenger information network. Screens inside tuks reach passengers with GPS-verified plays. From LKR 25,000/month with 7 days free.",
+          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month with 7 days free.",
       },
       { name: "author", content: "mydiio" },
       { property: "og:site_name", content: "mydiio" },
@@ -95,7 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Sri Lanka's first connected passenger information network. Screens inside tuks reach passengers with GPS-verified plays. From LKR 25,000/month with 7 days free.",
+          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month with 7 days free.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -107,7 +107,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "twitter:description",
         content:
-          "Sri Lanka's first connected passenger information network. Screens inside tuks reach passengers with GPS-verified plays. From LKR 25,000/month with 7 days free.",
+          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month with 7 days free.",
       },
       {
         property: "og:image",
@@ -148,7 +148,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           url: "https://mydiio.com",
           logo: "https://mydiio.com/logo.png",
           description:
-            "Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people. GPS-verified impressions across Colombo.",
+            "Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising and built for people. Completed-play reporting includes GPS and movement evidence.",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Colombo",

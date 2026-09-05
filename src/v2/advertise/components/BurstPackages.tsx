@@ -4,6 +4,7 @@ import {
   burstHeading,
   burstBody,
   burstNote,
+  attentionBurstPricing,
 } from "../advertiserContent";
 import { Reveal } from "@/motion";
 
@@ -53,6 +54,14 @@ export function BurstPackages() {
                   <dd>{item.bestFor}</dd>
                 </div>
               </dl>
+
+              <div className="advertiser-burst-attention">
+                <span>Attention Insights · optional pilot</span>
+                <strong>
+                  {attentionBurstPricing[item.id as keyof typeof attentionBurstPricing]}
+                </strong>
+                <a href="#attention-insights">See the privacy boundary</a>
+              </div>
 
               <a
                 href={`/advertise/apply?tier=${item.id}`}

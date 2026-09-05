@@ -979,9 +979,9 @@ export const translations = {
         ta: "உங்கள் விளம்பரம் பயணிக்கும் இடம்.",
       },
       body: {
-        en: "mydiio tuk-tuks operate across Greater Colombo every day. Your campaign travels with the fleet, and your weekly GPS report shows exactly where your ad was seen.",
-        si: "mydiio ත්‍රී රෝද රථ සෑම දිනකම මහ කොළඹ පුරා ක්‍රියාත්මක වේ. ඔබේ ප්‍රචාරණය රථ පිරිස සමඟ ගමන් කරයි, ඔබේ සතිපතා GPS වාර්තාව ඔබේ දැන්වීම දුටු ස්ථාන හරියටම පෙන්වයි.",
-        ta: "mydiio மூன்று சக்கர வாகனங்கள் ஒவ்வொரு நாளும் பெருங் கொழும்பு முழுவதும் இயங்குகின்றன. உங்கள் பிரச்சாரம் தொகுதியுடன் பயணிக்கிறது, உங்கள் வாராந்திர GPS அறிக்கை உங்கள் விளம்பரம் காணப்பட்ட இடத்தை சரியாகக் காட்டுகிறது.",
+        en: "mydiio tuk-tuks operate across Greater Colombo every day. Your campaign travels with the fleet, and your weekly report shows where completed plays were recorded with fresh GPS.",
+        si: "mydiio ත්‍රී රෝද රථ සෑම දිනකම මහ කොළඹ පුරා ක්‍රියාත්මක වේ. ඔබේ ප්‍රචාරණය රථ පිරිස සමඟ ගමන් කරයි, ඔබේ සතිපතා වාර්තාව නැවුම් GPS සමඟ සටහන් වූ සම්පූර්ණ ධාවන පෙන්වයි.",
+        ta: "mydiio மூன்று சக்கர வாகனங்கள் ஒவ்வொரு நாளும் பெருங் கொழும்பு முழுவதும் இயங்குகின்றன. உங்கள் பிரச்சாரம் வாகனங்களுடன் பயணிக்கிறது; புதிய GPS உடன் பதிவான முழுமையான விளம்பர இயக்கங்களை வாராந்திர அறிக்கை காட்டுகிறது.",
       },
     },
     faq: {
@@ -1005,9 +1005,9 @@ export const translations = {
           ta: "என் விளம்பரம் உண்மையில் ஓடியது என்பதை நான் எப்படி அறிவது?",
         },
         answer: {
-          en: "Every Monday you receive a GPS-verified report showing each vehicle that ran your ad, the GPS location at the time of each play, and the total play count. There is no guessing, every impression is logged.",
-          si: "සෑම සඳුදාවකම ඔබට GPS මගින් සනාථ කළ වාර්තාවක් ලැබෙනවා, එහි ඔබේ දැන්වීම ධාවනය කළ රථය, සෑම ධාවනයකදීම GPS ස්ථානය, සහ මුළු ධාවන ගණන පෙන්වයි. අනුමාන කිරීමක් නෑ, සෑම දර්ශනයක්ම වාර්තා කර ඇත.",
-          ta: "ஒவ்வொரு திங்கட்கிழமையும் உங்கள் விளம்பரத்தை ஓட்டிய ஒவ்வொரு வாகனத்தையும், ஒவ்வொரு ஓட்டத்தின் நேரத்திலான GPS இடத்தையும், மொத்த ஓட்ட எண்ணிக்கையையும் காட்டும் GPS உறுதிசெய்யப்பட்ட அறிக்கை உங்களுக்குக் கிடைக்கும். யூகிப்பு இல்லை, ஒவ்வொரு காட்சியும் பதிவு செய்யப்படுகிறது.",
+          en: "Every Monday you receive a delivery report showing accepted completed plays, fresh GPS evidence, movement reported separately, rejected attempts, and remaining campaign minutes.",
+          si: "සෑම සඳුදාවකම පිළිගත් සම්පූර්ණ ධාවන, නැවුම් GPS සාක්ෂි, වෙන්ව පෙන්වන චලනය, ප්‍රතික්ෂේප වූ උත්සාහ සහ ඉතිරි ප්‍රචාරණ මිනිත්තු ඇතුළත් බෙදාහැරීමේ වාර්තාවක් ඔබට ලැබේ.",
+          ta: "ஒவ்வொரு திங்கட்கிழமையும் ஏற்றுக்கொள்ளப்பட்ட முழுமையான இயக்கங்கள், புதிய GPS ஆதாரம், தனியாகக் காட்டப்படும் இயக்கம், நிராகரிக்கப்பட்ட முயற்சிகள் மற்றும் மீதமுள்ள பிரச்சார நிமிடங்கள் அடங்கிய விநியோக அறிக்கை கிடைக்கும்.",
         },
       },
       q3: {
@@ -1364,7 +1364,7 @@ export const translations = {
         ta: "உங்கள் போர்டல். அனைத்தும் தெரியும்.",
       },
       previewBadge: { en: "PREVIEW", si: "පෙරදසුන", ta: "முன்னோட்டம்" },
-      portalLabel: { en: "DRIVER PORTAL", si: "රියදුරු පෝට්ලය", ta: "ஓட்டுநர் போர்டல்" },
+      portalLabel: { en: "PAYMENT RECORD", si: "ගෙවීම් වාර්තාව", ta: "கட்டணப் பதிவு" },
       thisMonthLabel: {
         en: "This month · Base + Route Bonus",
         si: "මේ මාසය · මූලික + මාර්ග දීමනාව",
@@ -1382,9 +1382,9 @@ export const translations = {
         ta: "சேர்ந்து 30 நாட்கள் தங்கும் ஒவ்வொரு ஓட்டுநருக்கும் LKR 1,500 சம்பாதியுங்கள்.",
       },
       accessNote: {
-        en: "You receive full portal access when installation is confirmed.",
-        si: "සවි කිරීම තහවුරු වූ විට ඔබට සම්පූර්ණ පෝට්ල ප්‍රවේශය ලැබේ.",
-        ta: "நிறுவல் உறுதிசெய்யப்படும்போது உங்களுக்கு முழு போர்டல் அணுகல் கிடைக்கும்.",
+        en: "mydiio maintains this record after installation is confirmed; no advertising login or shift action is required.",
+        si: "ස්ථාපනය තහවුරු කළ පසු mydiio මෙම වාර්තාව පවත්වාගෙන යයි; දැන්වීම් සඳහා පිවිසීමක් හෝ වැඩ මුර ක්‍රියාවක් අවශ්‍ය නොවේ.",
+        ta: "நிறுவல் உறுதிசெய்யப்பட்ட பிறகு இந்தப் பதிவை mydiio பராமரிக்கும்; விளம்பர உள்நுழைவு அல்லது ஷிப்ட் நடவடிக்கை தேவையில்லை.",
       },
     },
     faq: {
@@ -1516,9 +1516,9 @@ export const translations = {
       },
       eyebrow: { en: "About ", si: "අප ගැන ", ta: "எங்களைப் பற்றி " },
       body: {
-        en: "mydiio puts digital advertising screens inside tuk-tuks across Colombo. Every ride is an audience. Every driver earns more. Every impression is verified.",
-        si: "mydiio කොළඹ පුරා ත්‍රී රෝද රථ තුළ ඩිජිටල් දැන්වීම් තිර තබනවා. සෑම ගමනක්ම ප්‍රේක්ෂකයෙකි. සෑම රියදුරෙක්ම වැඩිපුර උපයනවා. සෑම දර්ශනයක්ම සනාථ කර ඇත.",
-        ta: "mydiio கொழும்பு முழுவதும் மூன்று சக்கர வாகனங்களுக்குள் டிஜிட்டல் விளம்பர திரைகளை வைக்கிறது. ஒவ்வொரு பயணமும் ஒரு பார்வையாளர். ஒவ்வொரு ஓட்டுநரும் அதிகம் சம்பாதிக்கிறார். ஒவ்வொரு காட்சியும் உறுதிசெய்யப்பட்டது.",
+        en: "mydiio puts digital advertising screens inside tuk-tuks across Colombo. Campaigns are delivered automatically, drivers earn more, and accepted completed plays carry location evidence.",
+        si: "mydiio කොළඹ පුරා ත්‍රී රෝද රථ තුළ ඩිජිටල් දැන්වීම් තිර තබයි. ප්‍රචාරණ ස්වයංක්‍රීයව බෙදාහැරේ, රියදුරන් වැඩිපුර උපයයි, සහ පිළිගත් සම්පූර්ණ ධාවන සඳහා ස්ථාන සාක්ෂි ඇත.",
+        ta: "mydiio கொழும்பு முழுவதும் முச்சக்கர வண்டிகளில் டிஜிட்டல் விளம்பரத் திரைகளை நிறுவுகிறது. பிரச்சாரங்கள் தானாக வழங்கப்படுகின்றன, ஓட்டுநர்கள் அதிகம் சம்பாதிக்கிறார்கள், ஏற்றுக்கொள்ளப்பட்ட முழுமையான இயக்கங்களுக்கு இருப்பிட ஆதாரம் உள்ளது.",
       },
       ctaAdvertise: {
         en: "Launch a campaign →",
@@ -1536,8 +1536,12 @@ export const translations = {
       stat2Label: { en: "founded", si: "ආරම්භ කළ වර්ෂය", ta: "நிறுவப்பட்டது" },
       stat3Value: { en: "Drivers", si: "රියදුරන්", ta: "ஓட்டுநர்கள்" },
       stat3Label: { en: "our partners", si: "අපගේ හවුල්කරුවන්", ta: "எங்கள் கூட்டாளிகள்" },
-      stat4Value: { en: "Verified", si: "සනාථයි", ta: "உறுதிசெய்யப்பட்டது" },
-      stat4Label: { en: "every impression", si: "සෑම දර්ශනයක්ම", ta: "ஒவ்வொரு காட்சியும்" },
+      stat4Value: { en: "Recorded", si: "සටහන් කර ඇත", ta: "பதிவுசெய்யப்பட்டது" },
+      stat4Label: {
+        en: "accepted completed plays",
+        si: "පිළිගත් සම්පූර්ණ ධාවන",
+        ta: "ஏற்றுக்கொள்ளப்பட்ட முழுமையான இயக்கங்கள்",
+      },
     },
     mission: {
       title: { en: "Our mission", si: "අපගේ මෙහෙවර", ta: "எங்கள் நோக்கம்" },

@@ -22,13 +22,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Put your brand on screens inside Colombo tuk-tuks. Every play GPS-verified, a report every Monday, your own portal to build ads and track plays. Campaigns from LKR 25,000 with 7 days free.",
+          "Put your brand on screens inside Colombo tuk-tuks. Completed plays with fresh GPS and movement evidence, a report every Monday, and your own advertiser portal. Campaigns from LKR 25,000 with 7 days free.",
       },
       { property: "og:title", content: "Advertise on Colombo's tuk-tuks | mydiio" },
       {
         property: "og:description",
         content:
-          "GPS-verified plays. Weekly reports. Your own advertiser portal. From LKR 25,000 a month with 7 days free.",
+          "Completed plays with GPS and movement evidence. Weekly reports. Your own advertiser portal. From LKR 25,000 a month with 7 days free.",
       },
       { property: "og:image", content: DASHBOARD_IMG },
       { property: "og:url", content: "https://mydiio.com/" },
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/")({
           name: "mydiio Connected Passenger Information Network",
           provider: { "@type": "Organization", name: "mydiio", url: "https://mydiio.com" },
           description:
-            "GPS-verified digital advertising on screens inside Colombo tuk-tuks. Advertisers build and submit ads in their own portal, campaigns go live within 72 hours after review, and every play is reported with GPS verification.",
+            "Digital advertising on screens inside Colombo tuk-tuks. Advertisers build and submit ads in their own portal, and receive completed-play reporting with GPS and movement evidence.",
           areaServed: { "@type": "City", name: "Colombo" },
           offers: {
             "@type": "Offer",
@@ -64,7 +64,7 @@ export const Route = createFileRoute("/")({
               name: "How do I know my ad actually played?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Every Monday you receive a GPS-verified report showing each vehicle that ran your ad, the GPS location at the time of each play, and the total play count. Every impression is logged.",
+                text: "Every Monday you receive a report showing completed plays, fresh GPS evidence, plays verified while moving, rejected attempts, and remaining campaign minutes.",
               },
             },
             {

@@ -24,7 +24,7 @@ export const contactFormError =
 
 export const contactAdminLinkLabel = "Sign in to the admin panel";
 export const contactAdminLinkHint =
-  "For existing advertisers and drivers. Your campaigns, reports and portal live there.";
+  "For existing advertisers. Campaigns, reports and account tools live there. Drivers contact the mydiio team directly.";
 
 export const contactAddressHeading = "Where we are";
 

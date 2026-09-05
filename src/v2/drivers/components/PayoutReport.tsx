@@ -27,8 +27,8 @@ export function PayoutReport() {
 
         <Reveal as="div" className="driver-payout-preview" stagger={0}>
           <div className="driver-payout-topline">
-            <span>Driver app</span>
-            <strong>Live record</strong>
+            <span>Payment record</span>
+            <strong>Managed by mydiio</strong>
           </div>
 
           <div className="driver-payout-surface">

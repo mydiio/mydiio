@@ -52,7 +52,7 @@ export function ContactFacts() {
               admin.mydiio.com →
             </a>
             <span className="contact-fact-status-note">
-              Existing advertisers and drivers sign in there.
+              Existing advertisers sign in there. Drivers contact the mydiio team directly.
             </span>
           </article>
         </Reveal>

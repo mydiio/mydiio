@@ -4,6 +4,8 @@
 // Language guide (Appendix C): lowercase mydiio, no jargon, short sentences.
 // Reading target: a 15-year-old can follow every line on the page.
 
+export { attentionMonthlyPricing, attentionBurstPricing } from "@/v2/packages/attentionPricing";
+
 export const advertiserEyebrow = "For advertisers";
 
 export const advertiserHeroTitleLines = ["Your campaign.", "In motion."] as const;
@@ -66,13 +68,15 @@ export const verificationSteps = [
   },
   {
     number: "02",
-    title: "Tuk-tuks drive",
-    detail: "The screen shows your campaign while passengers are in the vehicle.",
+    title: "The screen runs automatically",
+    detail:
+      "Paired, in-service screens receive the campaign without a driver login, logout or shift button.",
   },
   {
     number: "03",
-    title: "Each play is recorded",
-    detail: "GPS records the tuk-tuk, the place and the time of the completed play.",
+    title: "Completed delivery is recorded",
+    detail:
+      "The system records completed playback with fresh GPS evidence and reports moving plays separately.",
   },
   {
     number: "04",
@@ -83,18 +87,38 @@ export const verificationSteps = [
 
 export const verificationEvidence = {
   topline: "Proof panel",
-  toplineValue: "GPS verified",
-  status: "Play recorded",
+  toplineValue: "Delivery recorded",
+  status: "Completed play",
   rows: [
     ["Campaign", "Active"],
     ["Vehicle", "Recorded"],
-    ["Location", "GPS recorded"],
-    ["Play time", "Recorded"],
+    ["GPS evidence", "Fresh fix recorded"],
+    ["Movement", "Reported separately"],
     ["Report", "Every Monday"],
   ] as const,
-  footerLeft: "Proof, not estimates.",
+  footerLeft: "Completed delivery, not claimed views.",
   footerRight: "Monday report",
 };
+
+export const verificationTrustLine =
+  "Driver login and logout do not control playback or campaign measurement.";
+
+/* ============================================================
+ * 03A ATTENTION INSIGHTS — OPTIONAL PILOT
+ * ============================================================ */
+
+export const attentionInsights = {
+  eyebrow: "Optional pilot add-on",
+  heading: "Attention Insights.",
+  body: "Understand whether passengers were present and appeared to look toward the screen using privacy-safe, on-device estimation. Receive aggregate attention trends alongside completed-play, GPS, movement and campaign delivery evidence.",
+  privacy:
+    "No facial recognition. No identity, demographic, emotion or biometric profile. No raw camera images are stored or transmitted.",
+  boundary:
+    "Attention is an optimization signal. It does not change your contracted delivery balance and is never presented as a guaranteed view or unique person.",
+  availability:
+    "Pilot availability is subject to vehicle compatibility, privacy review, camera placement validation and calibration.",
+  cta: "Register interest",
+} as const;
 
 /* ============================================================
  * 04 COVERAGE
@@ -253,14 +277,14 @@ export const reportEyebrow = "Your Monday report";
 export const reportHeading = "Everything in one report.";
 
 export const reportBody =
-  "Every Monday you get a single record of where your campaign ran, in which tuk-tuks, at what times and how many minutes you have left.";
+  "Every Monday you get a clear record of completed delivery, fresh GPS evidence, plays verified while moving, rejected attempts and the minutes you have left.";
 
 export const reportFeatures = [
   "Route map",
   "Tuk-tuks used",
-  "Recorded places",
-  "Recorded times",
-  "Past plays",
+  "Completed plays",
+  "Moving-play evidence",
+  "Rejected attempts",
   "Minutes left",
 ] as const;
 
@@ -403,7 +427,12 @@ export const advertiserFaqs = [
   {
     question: "What do I receive every Monday?",
     answer:
-      "Your Monday report shows the tuk-tuks used, the recorded places, the play times, the completed delivery and the minutes left. The report stays in your portal.",
+      "Your Monday report shows the tuk-tuks used, completed delivery, fresh GPS evidence, plays verified while moving, rejected attempts and the minutes left. The report stays in your portal.",
+  },
+  {
+    question: "Does Attention Insights identify passengers?",
+    answer:
+      "No. The optional pilot uses on-device estimation and only reports aggregate attention trends. It does not use facial recognition, identify people, infer demographics or emotions, store raw images, or change your contracted delivery balance.",
   },
 ] as const;
 

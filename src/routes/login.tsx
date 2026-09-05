@@ -6,7 +6,7 @@ export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
       { title: "Sign in, mydiio" },
-      { name: "description", content: "Sign in to your mydiio account." },
+      { name: "description", content: "Sign in to your mydiio advertiser account." },
       { property: "og:url", content: "https://mydiio.com/login" },
       { name: "robots", content: "noindex" },
     ],
@@ -18,7 +18,6 @@ export const Route = createFileRoute("/login")({
 
 const PORTAL = "https://admin.mydiio.com";
 
-type Tab = "advertiser" | "driver";
 type AdvView = "signin" | "signup";
 
 function mapAuthError(msg: string | undefined): string {
@@ -54,7 +53,6 @@ function redirectToCallback(accessToken: string, refreshToken: string) {
 }
 
 function LoginPage() {
-  const [tab, setTab] = useState<Tab>("advertiser");
   const [checking, setChecking] = useState(true);
 
   useEffect(() => {
@@ -75,12 +73,6 @@ function LoginPage() {
         if (adv.status === "active") return redirectToPortal("/advertiser-portal");
         if (adv.status === "pending") return redirectToPortal("/pending");
       }
-      const { data: drv } = await eagleEyeSupabase
-        .from("drivers")
-        .select("id")
-        .eq("user_id", uid)
-        .maybeSingle();
-      if (drv) return redirectToPortal("/driver-portal");
       await eagleEyeSupabase.auth.signOut();
       setChecking(false);
     })();
@@ -119,37 +111,7 @@ function LoginPage() {
         {checking ? (
           <div style={{ textAlign: "center", padding: 32, color: "#666" }}>Loading…</div>
         ) : (
-          <>
-            <div style={{ display: "flex", borderBottom: "1px solid #eee", marginBottom: 24 }}>
-              {(["advertiser", "driver"] as Tab[]).map((t) => {
-                const active = tab === t;
-                return (
-                  <button
-                    key={t}
-                    type="button"
-                    onClick={() => setTab(t)}
-                    style={{
-                      flex: 1,
-                      background: "transparent",
-                      border: "none",
-                      padding: "12px 0",
-                      fontFamily: "inherit",
-                      fontSize: 15,
-                      fontWeight: active ? 500 : 400,
-                      color: active ? "#1A1A18" : "#888",
-                      borderBottom: active ? "2px solid #F5A623" : "2px solid transparent",
-                      cursor: "pointer",
-                      marginBottom: -1,
-                    }}
-                  >
-                    {t === "advertiser" ? "Advertiser" : "Driver"}
-                  </button>
-                );
-              })}
-            </div>
-
-            {tab === "advertiser" ? <AdvertiserPane /> : <DriverPane />}
-          </>
+          <AdvertiserPane />
         )}
       </div>
 
@@ -698,86 +660,6 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
     <div style={{ marginBottom: 14 }}>
       <label className="login-label">{label}</label>
       {children}
-    </div>
-  );
-}
-
-function DriverPane() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  async function onSubmit(e: FormEvent) {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
-    const { data, error: signInErr } = await eagleEyeSupabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    if (signInErr) {
-      setError(mapAuthError(signInErr.message));
-      setLoading(false);
-      return;
-    }
-    const session = data.session;
-    if (!session) {
-      setError("Something went wrong. Please try again.");
-      setLoading(false);
-      return;
-    }
-    redirectToCallback(session.access_token, session.refresh_token);
-  }
-
-  return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <div style={{ marginBottom: 16 }}>
-          <label className="login-label" htmlFor="drv-email">
-            Email
-          </label>
-          <input
-            id="drv-email"
-            type="email"
-            autoComplete="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={loading}
-            className="login-field"
-          />
-        </div>
-        <div style={{ marginBottom: 20 }}>
-          <label className="login-label" htmlFor="drv-pw">
-            Password
-          </label>
-          <input
-            id="drv-pw"
-            type="password"
-            autoComplete="current-password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            disabled={loading}
-            className="login-field"
-          />
-        </div>
-        <button className="login-btn" type="submit" disabled={loading}>
-          {loading && <span className="login-spinner" />}
-          Sign in
-        </button>
-        {error && <div className="login-error">{error}</div>}
-      </form>
-      <p
-        style={{ marginTop: 18, fontSize: 13, color: "#777", lineHeight: 1.5, textAlign: "center" }}
-      >
-        Driver accounts are set up by the mydiio team. If you haven't received your login details,
-        contact us at{" "}
-        <a href="mailto:mydiiomedia@gmail.com" style={{ color: "#555" }}>
-          mydiiomedia@gmail.com
-        </a>
-      </p>
     </div>
   );
 }

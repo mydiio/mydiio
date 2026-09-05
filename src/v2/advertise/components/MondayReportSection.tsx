@@ -60,11 +60,11 @@ export function MondayReportSection() {
             <div className="advertiser-report-summary">
               <div>
                 <span>Plays</span>
-                <strong>Tuk-tuk, place, time</strong>
+                <strong>Completed delivery</strong>
               </div>
               <div>
-                <span>Verification</span>
-                <strong>GPS recorded</strong>
+                <span>Movement</span>
+                <strong>Reported separately</strong>
               </div>
               <div>
                 <span>Delivery</span>
@@ -92,7 +92,7 @@ export function MondayReportSection() {
                       <td>{row.location}</td>
                       <td>{row.time}</td>
                       <td>
-                        <span className="advertiser-report-verified">Verified</span>
+                        <span className="advertiser-report-verified">Completed</span>
                       </td>
                     </tr>
                   ))}

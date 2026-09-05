@@ -4,6 +4,7 @@ import {
   verificationBody,
   verificationSteps,
   verificationEvidence,
+  verificationTrustLine,
 } from "../advertiserContent";
 import { Reveal } from "@/motion";
 
@@ -60,6 +61,8 @@ export function VerificationStory() {
               <span>{verificationEvidence.footerLeft}</span>
               <span>{verificationEvidence.footerRight}</span>
             </div>
+
+            <p className="advertiser-evidence-trust">{verificationTrustLine}</p>
           </Reveal>
         </div>
       </div>

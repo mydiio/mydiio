@@ -1,8 +1,8 @@
 // src/v2/terms/termsContent.ts
 // Terms and conditions copy distilled from the legacy /terms route.
 
-export const termsEffective = "August 2026";
-export const termsVersion = "1.0";
+export const termsEffective = "September 2026";
+export const termsVersion = "1.1";
 
 export const termsHeroEyebrow = "Terms and Conditions";
 export const termsHeroHeading = "The rules of using mydiio.";
@@ -38,12 +38,12 @@ export const termsSections: TermsSection[] = [
         kind: "list",
         items: [
           "“mydiio”, Start Smart Technologies Private Limited, trading as mydiio, the company that operates the platform.",
-          "“Platform”, all five portals: the Eagle Eye admin dashboard, the Advertiser Portal, the Driver Portal, the Tablet Player, and the public website at mydiio.com.",
+          "“Platform”, the four connected surfaces used to operate mydiio: the Eagle Eye admin dashboard, the Advertiser Portal, the Tablet Player, and the public website at mydiio.com. Driver operations and payment records are managed by the mydiio team without a driver advertising login or shift control.",
           "“Advertiser”, any business or individual who registers to display advertising on the mydiio network.",
           "“Driver partner”, any tuk-tuk driver who joins the mydiio programme and hosts a tablet screen in their vehicle.",
           "“Creative”, any video or image file uploaded by an advertiser for display on mydiio screens.",
           "“Campaign”, an active or scheduled advertising run with defined start and end dates, assigned vehicles, and one or more creatives.",
-          "“Impression”, a single verified play of a creative on a mydiio screen, logged with a GPS location, timestamp, and play duration.",
+          "“Impression”, an accepted completed play of a creative on a mydiio screen with the delivery evidence required by the campaign agreement. It is a delivery record, not a claim that a unique passenger viewed the creative.",
           "“Pioneer tier”, the founding advertiser package offering twelve-month neighbourhood category exclusivity within a corridor defined at the point of signing, a fixed per-minute rate for the life of the subscription, and limited to ten advertisers in total.",
           "“Deposit”, the refundable security deposit paid by advertisers or driver partners at the commencement of their relationship with mydiio.",
           "“Agreement”, any written contract signed separately between mydiio and an advertiser or driver partner, which supplements and incorporates these terms.",
@@ -78,7 +78,7 @@ export const termsSections: TermsSection[] = [
     blocks: [
       {
         kind: "body",
-        body: "mydiio provides Sri Lanka’s first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people. Advertisers pay to display video or image advertisements on Android tablet screens installed in partner tuk-tuks operating in Colombo. Advertisers receive GPS-verified impression data. Driver partners receive monthly payments in exchange for hosting and maintaining the tablet screen in their vehicle.",
+        body: "mydiio provides Sri Lanka’s first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people. Advertisers pay to display video or image advertisements on Android tablet screens installed in partner tuk-tuks operating in Colombo. Advertisers receive completed-play records with GPS evidence and separate movement verification. Driver partners receive monthly payments in exchange for hosting and maintaining the tablet screen in their vehicle.",
       },
       { kind: "heading", body: "Current platform status" },
       {
@@ -88,7 +88,7 @@ export const termsSections: TermsSection[] = [
       { kind: "heading", body: "No guarantee of specific reach" },
       {
         kind: "body",
-        body: "We provide verified impression data for every ad play that occurs. We do not guarantee a minimum number of passengers who will view any given advertisement. Impression counts reflect verified ad plays, not estimated viewer counts.",
+        body: "We record attempted and completed play events. Contracted delivery is counted only when the agreed completion, screen-state and fresh-GPS evidence requirements are met. Plays verified while moving are reported separately. We do not guarantee a minimum number of passengers who will view any advertisement. Delivery records are not unique-viewer counts.",
       },
     ],
   },
@@ -122,6 +122,11 @@ export const termsSections: TermsSection[] = [
       {
         kind: "body",
         body: "Burst packages do not carry category exclusivity. They are rotated into the playlist to fill unused screen time and are not guaranteed fixed scheduling.",
+      },
+      { kind: "heading", body: "Attention Insights pilot" },
+      {
+        kind: "body",
+        body: "Attention Insights is an optional pilot add-on and is not activated by registering interest. If offered, availability and final terms require a separate written pilot confirmation, compatible vehicle hardware, privacy review, approved passenger notice, camera placement validation and calibration. Outputs are aggregate estimates for campaign optimization. They are not facial recognition, identity, demographic or emotion profiles, guaranteed views, unique-person counts, or the billing currency for your contracted delivery.",
       },
       { kind: "heading", body: "Pioneer category exclusivity" },
       {

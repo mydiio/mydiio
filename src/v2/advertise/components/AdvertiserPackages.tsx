@@ -7,6 +7,7 @@ import {
   packagesFooter,
   advertiserPackageCopy,
   packageAudience,
+  attentionMonthlyPricing,
 } from "../advertiserContent";
 import { BurstPackages } from "./BurstPackages";
 import { Reveal } from "@/motion";
@@ -56,6 +57,14 @@ export function AdvertiserPackages() {
                     </div>
                   ))}
                 </dl>
+
+                <div className="advertiser-package-attention">
+                  <span>Attention Insights · optional pilot</span>
+                  <strong>
+                    {attentionMonthlyPricing[tier.id as keyof typeof attentionMonthlyPricing]}
+                  </strong>
+                  <a href="#attention-insights">See the privacy boundary</a>
+                </div>
 
                 <p className="advertiser-package-audience">{audience}</p>
 

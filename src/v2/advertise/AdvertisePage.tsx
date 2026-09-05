@@ -2,6 +2,7 @@ import { AtlasNav } from "@/v2/layout";
 import { AdvertiseHero } from "./components/AdvertiseHero";
 import { ProductPurchase } from "./components/ProductPurchase";
 import { VerificationStory } from "./components/VerificationStory";
+import { AttentionInsightsSection } from "./components/AttentionInsightsSection";
 import { CoverageSection } from "./components/CoverageSection";
 import { AdvertiserPackages } from "./components/AdvertiserPackages";
 import { MondayReportSection } from "./components/MondayReportSection";
@@ -18,6 +19,7 @@ export function AdvertisePage() {
       <AdvertiseHero />
       <ProductPurchase />
       <VerificationStory />
+      <AttentionInsightsSection />
       <CoverageSection />
       <AdvertiserPackages />
       <MondayReportSection />

@@ -248,10 +248,10 @@ export const earningsTiers: readonly DriverTier[] = [
 
 export const payoutEyebrow = "Every pay, one record";
 
-export const payoutHeading = "The app shows every pay.";
+export const payoutHeading = "Every pay has a clear record.";
 
 export const payoutBody =
-  "The driver app shows each monthly pay, the days you drove and the day the money cleared. The app works in English, Sinhala and Tamil. It is there to remove doubt, not add work.";
+  "The mydiio team keeps a clear monthly payment record and confirms what was paid and when. There is no advertising login, logout or shift button for the driver to manage.";
 
 export const payoutFeatures: readonly string[] = [
   "Amount each month",
