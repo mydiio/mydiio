@@ -251,8 +251,9 @@ export function ClosingScene({ progress }: ClosingSceneProps) {
                 transform: `translateY(${(1 - bodyProgress) * 16}px)`,
               }}
             >
-              Launch GPS-verified campaigns across Colombo today, or join the driver network helping
-              build Sri Lanka&apos;s first connected passenger network.
+              Launch GPS-verified campaigns across Colombo for our planned November 2026 launch, or
+              join the driver network helping build Sri Lanka&apos;s first connected passenger
+              network.
             </p>
 
             <div

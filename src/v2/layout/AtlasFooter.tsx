@@ -1,5 +1,6 @@
 import { useReducedMotion } from "@/motion";
 import { colors } from "@/design";
+import { layoutCopy, type LayoutLocale } from "./layoutCopy";
 
 type FooterLink = { label: string; href: string };
 
@@ -16,12 +17,12 @@ const COMPANY_LINKS: FooterLink[] = [
 ];
 
 const CONTACT_LINKS = [
-  { label: "hello@mydiio.com", href: "mailto:hello@mydiio.com" },
+  { label: "Contact form", href: "/contact" },
   { label: "WhatsApp", href: "https://wa.me/94707471002" },
 ] as const;
 
 const TAGLINE = "Every journey, connected.";
-const LANGUAGES = "English · Sinhala · Tamil";
+const LANGUAGES = "Driver pages: English · Sinhala · Tamil";
 
 function FooterColumn({ heading, links }: { heading: string; links: readonly FooterLink[] }) {
   return (
@@ -40,7 +41,7 @@ function FooterColumn({ heading, links }: { heading: string; links: readonly Foo
   );
 }
 
-function FooterBrand() {
+function FooterBrand({ locale }: { locale: LayoutLocale }) {
   return (
     <div className="atlas-footer-brand">
       <div className="atlas-footer-logo" aria-label="mydiio">
@@ -49,33 +50,40 @@ function FooterBrand() {
         <span>o</span>
       </div>
       <p className="atlas-footer-tagline">
-        Sri Lanka&rsquo;s first connected passenger information network, installed inside tuk-tuks,
-        funded by advertising, built for people.
+        {layoutCopy(
+          "Sri Lanka’s first connected passenger information network, installed inside tuk-tuks, funded by advertising, built for people.",
+          locale,
+        )}
       </p>
       <p className="atlas-footer-meta">
         Start Smart Technologies Private Limited
         <br />
-        Colombo, Sri Lanka
+        Registration PV00370438
+        <br />
+        23, 5th Lane, Ratmalana, Colombo, Sri Lanka
       </p>
     </div>
   );
 }
 
-export function AtlasFooter() {
+export function AtlasFooter({ locale = "en" }: { locale?: LayoutLocale }) {
+  const t = (label: string) => layoutCopy(label, locale);
+  const localLinks = (links: readonly FooterLink[]) =>
+    links.map((link) => ({ ...link, label: t(link.label) }));
   const reduced = useReducedMotion();
 
   return (
     <footer data-atlas-footer className="atlas-footer">
       <div className="atlas-footer-inner">
         <div className="atlas-footer-grid">
-          <FooterBrand />
-          <FooterColumn heading="Explore" links={PRODUCT_LINKS} />
-          <FooterColumn heading="Company" links={COMPANY_LINKS} />
-          <FooterColumn heading="Reach us" links={CONTACT_LINKS} />
+          <FooterBrand locale={locale} />
+          <FooterColumn heading={t("Explore")} links={localLinks(PRODUCT_LINKS)} />
+          <FooterColumn heading={t("Company")} links={localLinks(COMPANY_LINKS)} />
+          <FooterColumn heading={t("Reach us")} links={localLinks(CONTACT_LINKS)} />
         </div>
 
         <div className="atlas-footer-rule">
-          <span className="atlas-footer-rule-tagline">{TAGLINE}</span>
+          <span className="atlas-footer-rule-tagline">{t(TAGLINE)}</span>
           <span className="atlas-footer-rule-languages">{LANGUAGES}</span>
         </div>
 

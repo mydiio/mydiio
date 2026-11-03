@@ -15,9 +15,11 @@ export { launchBusinessTypes, launchGoals, launchReferrals } from "./launchTypes
 // already used on /advertise, so admin-side tier names stay in sync with the public site.
 
 export const launchPlanOptions = packageTiers.map((tier) => ({
-  id: tier.id as LaunchTier,
+  id: tier.id,
   name: tier.name,
   pitch: tier.description,
+  price: tier.price,
+  features: tier.specs,
 }));
 
 // Budget → tier mapping. Drives the auto-select inside the form and the tier_interest
@@ -31,29 +33,34 @@ export type LaunchBudgetOption = {
 
 export const launchBudgets: readonly LaunchBudgetOption[] = [
   {
-    id: "Under LKR 20k",
-    tier: "Roamer",
-    pitch: "We'll find the right entry point for your budget.",
+    id: "Under LKR 25k",
+    tier: "Not sure, help me choose",
+    pitch: "Monthly plans start at LKR 25,000. Ask about future Burst availability.",
   },
   {
-    id: "LKR 20 to 35k",
+    id: "LKR 25 to 84k",
     tier: "Roamer",
-    pitch: "Up to 5 tuk-tuks in your area. 500 minutes a month.",
+    pitch: "LKR 25,000/month. 500 total minutes across up to 5 accepted vehicles.",
   },
   {
-    id: "LKR 35 to 65k",
+    id: "LKR 85 to 149k",
+    tier: "Pioneer",
+    pitch: "LKR 85,000/month. 2,000 total minutes within agreed live coverage.",
+  },
+  {
+    id: "LKR 150 to 249k",
     tier: "Voyager",
-    pitch: "Up to 15 tuk-tuks across the live corridor. 1,800 minutes a month.",
+    pitch: "Coming soon: LKR 150,000/month. 5,000 total minutes across up to 15 vehicles.",
   },
   {
-    id: "LKR 65k+",
+    id: "LKR 250k+",
     tier: "Horizon",
-    pitch: "15 to 100+ tuk-tuks, custom terms, built around your campaign.",
+    pitch: "Coming soon: LKR 250,000/month. 10,000 total minutes across up to 25 vehicles.",
   },
   {
     id: "Not sure yet",
-    tier: "Roamer",
-    pitch: "Tell us what you want to do. We will recommend the right plan.",
+    tier: "Not sure, help me choose",
+    pitch: "We will recommend a plan based on confirmed coverage and your budget.",
   },
 ];
 
@@ -66,15 +73,15 @@ export const launchEyebrow = "Launch campaign";
 export const launchHeading = "Put your brand on the road.";
 
 export const launchBody =
-  "Three fields. We reply from hello@mydiio.com or on WhatsApp within 24 hours. No payment today.";
+  "Send your application. We reply using the contact details you provide usually within 24 hours, or up to 48 hours in exceptional circumstances. No payment today.";
 
 export const launchFormHeading = "Tell us about your business";
 
 export const launchFormBody =
-  "Name, business, email, WhatsApp. That's all we need to start the conversation.";
+  "Tell us about your business, campaign goal, package, budget and creative readiness. Provide email or WhatsApp, or both, so we can contact you.";
 
 export const launchContactNote =
-  "We will reply from hello@mydiio.com or on WhatsApp within 24 hours.";
+  "We will reply using the contact details you provide usually within 24 hours, or up to 48 hours in exceptional circumstances.";
 
 export const launchNameLabel = "Your name";
 export const launchBusinessNameLabel = "Business name";
@@ -91,9 +98,9 @@ export const launchReferralOtherLabel = "Pick one, or leave blank";
 export const launchSend = "Send my application";
 export const launchSending = "Sending…";
 export const launchSuccess =
-  "Thank you. We have your application. The team will reply within 24 hours.";
+  "Thank you. We have your application. The team will reply usually within 24 hours, or up to 48 hours in exceptional circumstances.";
 export const launchError =
-  "Something went wrong. Please try again, or email hello@mydiio.com directly.";
+  "Something went wrong. Please try again shortly, or use WhatsApp on our contact page.";
 export const launchDuplicate =
   "We already have an application from this email. The team will be in touch.";
 

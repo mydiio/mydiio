@@ -32,7 +32,7 @@ export function AdvertiseHero() {
 
           <div className="advertiser-hero-actions">
             <Link to="/advertise/apply" className="atlas-button-amber">
-              Launch campaign
+              Reserve for November 2026
             </Link>
 
             <a href="#difference" className="atlas-button-secondary">

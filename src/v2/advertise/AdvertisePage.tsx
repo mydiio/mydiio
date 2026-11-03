@@ -1,3 +1,5 @@
+import "../commercial/commercial.css";
+import { CampaignGuide } from "../commercial/CampaignGuide";
 import { AtlasNav } from "@/v2/layout";
 import { AdvertiseHero } from "./components/AdvertiseHero";
 import { ProductPurchase } from "./components/ProductPurchase";
@@ -19,10 +21,11 @@ export function AdvertisePage() {
       <AdvertiseHero />
       <ProductPurchase />
       <VerificationStory />
-      <AttentionInsightsSection />
       <CoverageSection />
       <AdvertiserPackages />
       <MondayReportSection />
+      <AttentionInsightsSection />
+      <CampaignGuide />
       <ClientPortalSection />
       <UseCases />
       <AdvertiserFaq />

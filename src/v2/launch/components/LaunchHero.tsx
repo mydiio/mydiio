@@ -18,10 +18,11 @@ export function LaunchHero() {
           </span>
           <span className="launch-hero-pill">
             <span className="launch-hero-pill-dot" aria-hidden="true" />
-            Replies within 24 hours
+            Usually 24 hours · up to 48 in exceptional cases
           </span>
           <span className="launch-hero-pill">
-            <span className="launch-hero-pill-dot" aria-hidden="true" />7 days free on every plan
+            <span className="launch-hero-pill-dot" aria-hidden="true" />
+            Paid plans. Clear delivery terms.
           </span>
         </Reveal>
       </div>

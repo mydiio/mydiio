@@ -305,8 +305,8 @@ export const dict: Dict = {
   }),
   ad_body: tr({
     en: "Advertising is what makes the rest possible. When a business advertises on mydiio, it reaches real passengers on real journeys, verified by GPS, with no estimated numbers and no black box reporting. But the advertiser is joining something bigger than a media buy. Every rupee spent here helps pay a driver on the 5th of the month, without exception, and helps keep a screen running that a passenger relies on for more than an ad.",
-    si: "[SI] From restaurants to banks to apps, businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 25,000 a month, with your first 7 days completely free.",
-    ta: "[TA] From restaurants to banks to apps, businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 25,000 a month, with your first 7 days completely free.",
+    si: "[SI] From restaurants to banks to apps, businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 25,000 a month.",
+    ta: "[TA] From restaurants to banks to apps, businesses use mydiio to stay visible where buying decisions actually happen. Starting from LKR 25,000 a month.",
   }),
   ad_cta: tr({ en: "Get pricing →", si: "මිල ලබා ගන්න →", ta: "விலையை பெறுங்கள் →" }),
 
@@ -440,7 +440,7 @@ export const dict: Dict = {
   ),
   fo_b1: en("Priority placements across the fleet"),
   fo_b2: en("Rate locked in for the life of your contract"),
-  fo_b3: en("First 7 days completely free"),
+  fo_b3: en("Paid campaigns with clear delivery terms"),
   fo_b4: en("Free ad creative production to get you started"),
   fo_cta: tr({
     en: "Claim a pilot slot →",
@@ -650,7 +650,7 @@ export const dict: Dict = {
   ),
   meta_advertise_title: en("Advertise inside Colombo tuk-tuks | mydiio"),
   meta_advertise_desc: en(
-    "Launch a GPS-verified ad campaign inside Colombo tuk-tuks. From LKR 25,000/month with 7 days free. Real reporting, real reach.",
+    "Launch a GPS-verified ad campaign inside Colombo tuk-tuks. From LKR 25,000/month. Real reporting, real reach.",
   ),
   meta_drive_title: en("Drive with mydiio | Earn more from every ride"),
   meta_drive_desc: en(

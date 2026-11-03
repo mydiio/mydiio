@@ -7,11 +7,11 @@ export function PrivacyClosing() {
         <Reveal as="div" className="privacy-closing-inner">
           <h2 className="privacy-closing-title">Questions about how we handle your data?</h2>
           <p className="privacy-closing-body">
-            Write to us. We respond in plain language, usually within a few business days.
+            Use our contact form. We respond in plain language, usually within a few business days.
           </p>
           <div className="privacy-closing-actions">
-            <a className="atlas-button-amber" href="mailto:mydiiomedia@gmail.com">
-              Email the team
+            <a className="atlas-button-amber" href="/contact">
+              Open contact form
               <span aria-hidden="true">→</span>
             </a>
             <a className="atlas-button-secondary" href="/contact">

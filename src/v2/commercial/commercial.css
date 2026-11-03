@@ -1,0 +1,454 @@
+/* Shared additions use the established Atlas palette, gutters and type scale. */
+.commercial-section {
+  padding: var(--atlas-section-space, 96px) 0;
+  background: var(--atlas-cream, #fdfaf3);
+  color: var(--atlas-ink, #1a1a18);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+.commercial-section *,
+.commercial-section *::before,
+.commercial-section *::after {
+  box-sizing: border-box;
+}
+.commercial-shell {
+  width: min(1400px, 100%);
+  padding-inline: clamp(24px, 5vw, 80px);
+  margin-inline: auto;
+}
+.commercial-section h2 {
+  font-size: var(--atlas-display-lg, clamp(40px, 5vw, 72px));
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  margin: 18px 0 28px;
+  text-wrap: balance;
+  max-width: 22ch;
+}
+.commercial-section h3 {
+  font-size: clamp(23px, 2.3vw, 32px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  margin: 0 0 20px;
+}
+.commercial-section h4 {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px;
+}
+.commercial-section p,
+.commercial-section li {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #62625b;
+}
+.commercial-section p {
+  margin: 16px 0;
+}
+.commercial-section strong {
+  font-weight: 600;
+  color: inherit;
+}
+.commercial-section > .commercial-shell > p {
+  max-width: eighty;
+  max-width: 80ch;
+}
+.commercial-section h3:not(:first-child) {
+  margin-top: 40px;
+}
+.commercial-eyebrow {
+  display: block;
+  font-family: "Space Mono", ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 10px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #a4670a;
+}
+.commercial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.commercial-grid article {
+  padding: clamp(24px, 3vw, 42px);
+  border: 1px solid #1a1a181a;
+  border-radius: 20px;
+  background: #fff8;
+}
+.commercial-grid article h3 {
+  margin-top: 0 !important;
+}
+.commercial-grid article p:last-child {
+  margin-bottom: 0;
+}
+.commercial-section details {
+  border-top: 1px solid #1a1a1820;
+  padding: 24px 0;
+}
+.commercial-section details p {
+  max-width: 85ch;
+}
+.commercial-section summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+}
+.commercial-section summary::-webkit-details-marker {
+  display: none;
+}
+.commercial-section summary:after {
+  content: "+";
+  font-size: 25px;
+  color: #a4670a;
+  flex-shrink: 0;
+}
+.commercial-section details[open] > summary:after {
+  content: "−";
+}
+.commercial-section a:not([class]) {
+  color: var(--atlas-ink);
+  text-underline-offset: 4px;
+}
+.commercial-section :is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #a4670a;
+  outline-offset: 4px;
+}
+.commercial-section .atlas-button-amber,
+.commercial-section .atlas-button-primary,
+.commercial-actions .atlas-button-amber {
+  min-height: 54px;
+  gap: 16px;
+  padding: 16px 26px;
+  line-height: 1.4;
+}
+.commercial-hero {
+  position: relative;
+  min-height: 90svh;
+  background: #1a1a18;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 130px 6vw 80px;
+}
+.commercial-hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.27;
+}
+.commercial-hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 870px;
+}
+.commercial-hero h1 {
+  font-size: clamp(44px, 7.5vw, 102px);
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  margin: 25px 0;
+}
+.commercial-hero p {
+  font-size: clamp(16px, 2vw, 21px);
+  line-height: 1.55;
+  max-width: 690px;
+}
+.commercial-hero .commercial-eyebrow {
+  color: #f5a623;
+}
+.commercial-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  margin: 28px 0;
+}
+.commercial-secondary {
+  color: white;
+  border-bottom: 1px solid #f5a623;
+  padding: 14px 0;
+}
+.commercial-hero .commercial-small {
+  font-size: 14px;
+}
+.commercial-actions a {
+  white-space: normal;
+  text-align: center;
+  max-width: 100%;
+}
+
+.commercial-hero {
+  padding-inline: clamp(24px, 5vw, 80px);
+}
+.commercial-hero-copy {
+  width: min(1240px, 100%);
+  margin-inline: auto;
+  max-width: 1240px;
+}
+.commercial-hero h1 {
+  font-weight: 500;
+}
+.commercial-hero .atlas-button-primary {
+  background: var(--atlas-amber);
+  border-color: var(--atlas-amber);
+  color: var(--atlas-ink);
+}
+.commercial-actions {
+  margin: 30px 0;
+  gap: 20px;
+}
+.commercial-actions a {
+  white-space: normal;
+}
+.commercial-section form {
+  min-width: 0;
+}
+.intake-form {
+  background: #fff9;
+  border: 1px solid #1a1a181c;
+  border-radius: 24px;
+  padding: clamp(24px, 3.5vw, 44px);
+}
+.commercial-section input,
+.commercial-section select,
+.commercial-section textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 52px;
+  margin-top: 10px;
+  padding: 14px 16px;
+  border: 1px solid #1a1a182b;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--atlas-ink);
+  font:
+    400 16px/1.5 "Space Grotesk",
+    system-ui,
+    sans-serif;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.commercial-section textarea {
+  resize: vertical;
+}
+.commercial-section input:focus,
+.commercial-section select:focus,
+.commercial-section textarea:focus {
+  border-color: #aa6c0b;
+  box-shadow: 0 0 0 3px #f5a62318;
+}
+.commercial-section label {
+  display: block;
+  margin: 0 0 22px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--atlas-ink);
+}
+.commercial-section form .commercial-grid {
+  gap: 0 20px;
+}
+.commercial-section fieldset {
+  border: 0;
+  margin: 0 0 32px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid #1a1a181a;
+  min-width: 0;
+}
+.commercial-section legend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  margin-bottom: 28px;
+  padding: 0;
+}
+.commercial-section legend > span {
+  font:
+    11px "Space Mono",
+    monospace;
+  color: #a4670a;
+}
+.commercial-section label.intake-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.commercial-section input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-height: 18px;
+  flex-shrink: 0;
+  margin: 4px 0 0;
+  accent-color: var(--atlas-ink);
+}
+.commercial-section .intake-note {
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0 0 22px;
+}
+.commercial-section .intake-submit {
+  width: 100%;
+  border-radius: 999px;
+  font:
+    600 14px/1.5 "Space Grotesk",
+    system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+.commercial-section button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.commercial-warning,
+.commercial-error,
+.intake-success {
+  padding: 18px 20px;
+  border-radius: 12px;
+  border: 1px solid #a4670a33;
+  background: #fff5e3;
+  color: #704a10 !important;
+  font-size: 14px !important;
+}
+.commercial-error {
+  border-color: #9c242444;
+  background: #fff1ed;
+  color: #8b2922 !important;
+}
+.intake-success {
+  background: #edf4ed;
+  color: #315b3a !important;
+  border-color: #315b3a33;
+}
+.lead-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+.contact-intake-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr);
+  gap: clamp(32px, 6vw, 88px);
+  align-items: start;
+}
+.contact-intake-layout h2 {
+  font-size: clamp(36px, 4vw, 58px);
+}
+.contact-intake-layout aside > p {
+  max-width: 35ch;
+}
+.contact-intake-layout .intake-form > button {
+  width: 100%;
+  min-height: 54px;
+  border-radius: 999px;
+  background: var(--atlas-amber);
+  color: var(--atlas-ink);
+  font:
+    600 14px "Space Grotesk",
+    sans-serif;
+  border: 0;
+  cursor: pointer;
+}
+.advertiser-package-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+.commercial-company {
+  margin: 30px 0;
+}
+.commercial-company address {
+  font-style: normal;
+  line-height: 1.7;
+}
+@media (max-width: 900px) {
+  .contact-intake-layout {
+    grid-template-columns: 1fr;
+  }
+  .contact-intake-layout aside > p {
+    max-width: 65ch;
+  }
+}
+@media (max-width: 700px) {
+  .commercial-grid,
+  .advertiser-package-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .commercial-hero {
+    padding: 120px 24px 64px;
+    min-height: 85svh;
+  }
+  .commercial-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .commercial-section {
+    padding-block: 64px;
+  }
+  .commercial-section h2 {
+    font-size: 40px;
+  }
+  .commercial-section summary {
+    font-size: 19px;
+  }
+  .commercial-section label {
+    margin-bottom: 22px;
+  }
+  .commercial-hero h1 {
+    font-size: clamp(48px, 12vw, 78px);
+  }
+  .intake-form {
+    padding: 24px 20px;
+  }
+  .commercial-section .atlas-button-amber,
+  .commercial-section .atlas-button-primary {
+    width: 100%;
+  }
+  .commercial-actions a {
+    text-align: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .commercial-hero video {
+    display: none;
+  }
+  .commercial-hero {
+    background: #1a1a18 url("/assets/city-awakens.webp") center/cover;
+  }
+  .commercial-hero-copy {
+    background: #1a1a18e8;
+    padding: 24px;
+    border-radius: 20px;
+  }
+}
+
+[data-contact-page] .contact-intake-layout {
+  width: min(1180px, 100%);
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.3fr);
+  gap: clamp(28px, 4vw, 56px);
+}
+@media (max-width: 900px) {
+  [data-contact-page] .contact-intake-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.commercial-section > .commercial-shell > ol {list-style:decimal;padding-left:24px;margin:30px 0}
+.commercial-section > .commercial-shell > ol li + li {margin-top:12px}

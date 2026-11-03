@@ -9,7 +9,7 @@ export const Route = createFileRoute("/drivers/apply")({
       {
         name: "description",
         content:
-          "Join the mydiio driver network. Free screen install, monthly route bonus, payment on the 5th.",
+          "Apply with contact, vehicle and Colombo route details. Manufacture year required; documents follow screening. LKR 5,000 joining fee after inspection and acceptance.",
       },
       { property: "og:title", content: "Driver Partner Application, mydiio" },
       { property: "og:description", content: "Join the mydiio driver network." },

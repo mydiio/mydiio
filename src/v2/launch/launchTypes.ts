@@ -2,7 +2,12 @@
 // Shared types for the V2 launch campaign page.
 
 export type LaunchBudget =
-  "Under LKR 20k" | "LKR 20 to 35k" | "LKR 35 to 65k" | "LKR 65k+" | "Not sure yet";
+  | "Under LKR 25k"
+  | "LKR 25 to 84k"
+  | "LKR 85 to 149k"
+  | "LKR 150 to 249k"
+  | "LKR 250k+"
+  | "Not sure yet";
 
 export type LaunchTier = "Pioneer" | "Roamer" | "Voyager" | "Horizon" | "Not sure, help me choose";
 

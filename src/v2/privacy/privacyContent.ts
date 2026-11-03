@@ -10,8 +10,8 @@ export type PrivacySection = {
   body: string;
 };
 
-export const privacyEffective = "September 2026";
-export const privacyLastReviewed = "September 2026";
+export const privacyEffective = "10 October 2026";
+export const privacyLastReviewed = "10 October 2026";
 
 export const privacyHeroEyebrow = "Privacy policy";
 export const privacyHeroHeading = "Your information, treated carefully.";
@@ -35,13 +35,13 @@ export const privacySections: PrivacySection[] = [
     id: "information-we-collect",
     number: "03",
     title: "Information we collect",
-    body: "From advertisers: business name, contact name, email, WhatsApp number, business type, budget range, campaign goal and creative assets when you create an account. From drivers: full name, NIC number, date of birth, WhatsApp number, vehicle registration, licence details, bank account details and the address of the home depot. From website visitors: only what the browser sends by default (IP, user agent, referrer). From tablets in the field: GPS coordinates during operating hours, attempted and completed advertisement plays, play duration, vehicle and device identifiers, and uptime health signals.",
+    body: "From advertiser enquiries: business and contact name, email or WhatsApp (or both), business type, budget, package interest, campaign goal, creative readiness and referral information. From initial driver enquiries: contact details, preferred language, vehicle registration, make/model, manufacture year, ownership, condition and maintenance history, routes, days and hours. After initial screening, we request eligibility documents; identity and bank details are collected later during onboarding. From contact and partnership enquiries: contact details, message, organisation, fleet size/types and operating areas as supplied. From website enquiries: source and landing page paths, supplied marketing campaign tags, selected package and successful submission record. Our hosting systems also process IP and browser information for security and rate limiting. From tablets in the field: GPS coordinates during operating hours, attempted and completed advertisement plays, play duration, vehicle and device identifiers, and uptime health signals.",
   },
   {
     id: "how-we-use-your-information",
     number: "04",
     title: "How we use your information",
-    body: "For advertisers: to create and serve campaigns, to bill accurately, to report completed delivery with GPS and movement evidence, and to support you when you write to us. For drivers: to pay you on the 5th of every month, to maintain payment and operational records, to verify that vehicles carrying our screens are operating, and to support you when you reach out. For the platform generally: to operate the network, to detect and prevent fraud or technical faults, and to meet our legal and tax obligations.",
+    body: "For advertisers: to create and serve campaigns, to bill accurately, to report completed delivery with GPS and movement evidence, and to support you when you write to us. For drivers: to pay you within seven days after month-end, to maintain payment and operational records, to verify that vehicles carrying our screens are operating, and to support you when you reach out. For the platform generally: to operate the network, to detect and prevent fraud or technical faults, and to meet our legal and tax obligations.",
   },
   {
     id: "gps-and-location-data",
@@ -77,19 +77,19 @@ export const privacySections: PrivacySection[] = [
     id: "security",
     number: "10",
     title: "Security",
-    body: "We use encryption in transit and at rest, role-based access controls, and monitored infrastructure. No system is perfectly secure. If you believe your account has been compromised, contact us immediately at mydiiomedia@gmail.com.",
+    body: "We use encryption in transit and at rest, role-based access controls, and monitored infrastructure. No system is perfectly secure. If you believe your account has been compromised, contact us immediately using the contact form at /contact.",
   },
   {
     id: "your-rights",
     number: "11",
     title: "Your rights",
-    body: "You have the right to access the personal data we hold about you, to correct inaccurate data, to request deletion of data that is no longer required for the purpose it was collected, to withdraw consent where processing is based on consent, and to ask questions or raise concerns about how your data is used. To exercise any of these rights, contact us at mydiiomedia@gmail.com. We will respond to all valid requests within 30 days.",
+    body: "You have the right to access the personal data we hold about you, to correct inaccurate data, to request deletion of data that is no longer required for the purpose it was collected, to withdraw consent where processing is based on consent, and to ask questions or raise concerns about how your data is used. To exercise any of these rights, use our contact form at /contact and describe your privacy enquiry or personal-data request. We will respond to all valid requests within 30 days.",
   },
   {
     id: "cookies-and-tracking",
     number: "12",
     title: "Cookies and tracking",
-    body: "Our public website (mydiio.com) uses only the cookies necessary for the site to function. We do not currently use advertising trackers or third-party analytics cookies. If this changes, we will update this policy and notify registered users. Our portal applications use session cookies to keep you logged in; clearing them will sign you out.",
+    body: "Our website uses no third-party analytics, advertising pixels or session recordings. We retain marketing campaign labels and landing-page paths in session storage to attach them to an enquiry; this is cleared when the browsing session ends. Driver language preference is stored locally until cleared. Submitted enquiry attribution is stored with the enquiry in our own backend, with access limited to authorised staff. Form data is not sent to a translation service. Security controls include submission rate limiting and spam checks. Our portal applications use session cookies to keep you logged in; clearing them will sign you out.",
   },
   {
     id: "children",
@@ -107,6 +107,6 @@ export const privacySections: PrivacySection[] = [
     id: "contact-us",
     number: "15",
     title: "Contact us",
-    body: "For privacy questions, to exercise your rights, or to report a concern: Email: mydiiomedia@gmail.com. Phone / WhatsApp: 070 747 1002. Website: mydiio.com. Start Smart Technologies Private Limited, trading as mydiio, Colombo, Sri Lanka.",
+    body: "For all privacy enquiries, requests to exercise your data rights, or concerns about your personal data, please use our contact form at /contact. Mention privacy in your message so we can direct your enquiry to the right person. Start Smart Technologies Private Limited, trading as mydiio, Colombo, Sri Lanka.",
   },
 ];

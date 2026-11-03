@@ -31,17 +31,8 @@ const [
   read("src/lib/public-site-translations.ts"),
 ]);
 
-for (const priceLine of [
-  'roamer: "+ LKR 3,500 / month"',
-  'voyager: "+ LKR 5,500 / month"',
-  'pioneer: "+ LKR 5,000 / month"',
-  'horizon: "From + LKR 10,000 / month"',
-  '"burst-spark": "+ LKR 2,000 / campaign"',
-  '"burst-blast": "+ LKR 4,000 / campaign"',
-  '"burst-surge": "+ LKR 5,000 / campaign"',
-]) {
-  assert.ok(pricing.includes(priceLine), `Missing approved price: ${priceLine}`);
-}
+assert.equal((pricing.match(/Pricing confirmed after pilot assessment/g) || []).length, 7);
+assert.doesNotMatch(pricing, /LKR/);
 
 assert.match(content, /No facial recognition/);
 assert.match(content, /No raw camera images are stored or transmitted/);

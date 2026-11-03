@@ -139,9 +139,9 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               transform: `translateY(${(1 - headingProgress) * 24}px)`,
             }}
           >
-            Ten founding partners.
+            Ten active Pioneer places.
             <br />
-            Never more.
+            Available as places open.
           </h2>
 
           <p
@@ -156,8 +156,8 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               transform: `translateY(${(1 - bodyProgress) * 16}px)`,
             }}
           >
-            The first ten businesses receive permanent founding recognition and launch benefits that
-            will not be offered again as the network grows.
+            Up to ten advertisers can hold active Pioneer places. Vacated places may be offered
+            again. Your monthly price is protected for twelve months from activation.
           </p>
 
           <div
@@ -172,9 +172,9 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
             }}
           >
             {[
-              ["Rate", "Fixed for the life of your active subscription."],
-              ["Category", "12 months of exclusivity on your agreed corridor."],
-              ["Coverage", "Priority placement across the full operating fleet."],
+              ["Rate", "Monthly package price protected for 12 months."],
+              ["Category", "No category exclusivity included."],
+              ["Coverage", "Agreed live coverage; expansion priced separately."],
               ["Status", "Permanent recognition as one of ten founding partners."],
             ].map(([label, value]) => (
               <div
@@ -264,7 +264,7 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
                 fontWeight: 650,
               }}
             >
-              spots ever
+              active places
             </span>
           </div>
 
@@ -331,7 +331,7 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               opacity: positionsProgress,
             }}
           >
-            Ten positions only. When all ten are taken, Pioneer closes permanently.
+            Limited to ten active Pioneer advertisers. Availability is confirmed before booking.
           </div>
 
           <div
@@ -346,7 +346,7 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               transform: `translateY(${(1 - ctaProgress) * 12}px)`,
             }}
           >
-            <a href="/advertise/apply" className="atlas-button-amber">
+            <a href="/advertise/apply?tier=pioneer" className="atlas-button-amber">
               Apply for Pioneer
             </a>
 

@@ -380,7 +380,7 @@ export const translations = {
           ta: "மாதம் தொடங்கும் விலை",
         },
         campaignLive: { en: "campaign live", si: "ප්‍රචාරණය සජීවීයි", ta: "பிரச்சாரம் நேரலையில்" },
-        freeTrial: { en: "free trial", si: "නොමිලේ අත්හදා බැලීම", ta: "இலவச சோதனை" },
+        freeTrial: { en: "Paid campaign", si: "ගෙවීම් සහිත ප්‍රචාරණය", ta: "கட்டணப் பிரச்சாரம்" },
       },
       imgAlt: {
         en: "Sri Lankan boutique owner seeing results from mydiio tuk-tuk ad campaign",
@@ -388,9 +388,9 @@ export const translations = {
         ta: "mydiio மூன்று சக்கர வாகன விளம்பரப் பிரச்சாரத்தின் முடிவுகளைப் பார்க்கும் இலங்கை பொட்டிக் உரிமையாளர்",
       },
       body: {
-        en: "mydiio puts your ad on a screen inside every tuk-tuk ride. Passengers sit facing it for 10 to 20 minutes, with nothing else to look at. Your first 7 days are completely free.",
-        si: "mydiio ඔබේ දැන්වීම සෑම ත්‍රී රෝද රථ ගමනකදීම තිරයක තබයි. මගීන් වෙන කිසිවක් බැලීමට නැතුව මිනිත්තු 10ත් 20ත් අතර කාලයක් එය ඉදිරිපිට ඉඳගෙන ඉන්නවා. ඔබේ පළමු දින 7 සම්පූර්ණයෙන්ම නොමිලේ.",
-        ta: "mydiio ஒவ்வொரு மூன்று சக்கர வாகனப் பயணத்திலும் உங்கள் விளம்பரத்தை ஒரு திரையில் வைக்கிறது. பயணிகள் வேறு எதையும் பார்க்காமல் 10 முதல் 20 நிமிடங்கள் அதற்கு முன்னால் அமர்ந்திருக்கிறார்கள். உங்கள் முதல் 7 நாட்கள் முற்றிலும் இலவசம்.",
+        en: "mydiio puts your ad on a screen inside every tuk-tuk ride. Passengers sit facing it for 10 to 20 minutes, with nothing else to look at. Paid campaigns start after confirmation.",
+        si: "mydiio ඔබේ දැන්වීම සෑම ත්‍රී රෝද රථ ගමනකදීම තිරයක තබයි. මගීන් වෙන කිසිවක් බැලීමට නැතුව මිනිත්තු 10ත් 20ත් අතර කාලයක් එය ඉදිරිපිට ඉඳගෙන ඉන්නවා. ගෙවීම් සහිත ප්‍රචාරණ තහවුරු කිරීමෙන් පසු ආරම්භ වේ.",
+        ta: "mydiio ஒவ்வொரு மூன்று சக்கர வாகனப் பயணத்திலும் உங்கள் விளம்பரத்தை ஒரு திரையில் வைக்கிறது. பயணிகள் வேறு எதையும் பார்க்காமல் 10 முதல் 20 நிமிடங்கள் அதற்கு முன்னால் அமர்ந்திருக்கிறார்கள். கட்டணப் பிரச்சாரங்கள் உறுதிப்படுத்திய பின் தொடங்கும்.",
       },
       cta: {
         en: "Apply for a campaign spot →",
@@ -405,16 +405,16 @@ export const translations = {
         ta: "உங்கள் தொகுப்பைத் தேர்ந்தெடுங்கள்",
       },
       freeTrial: {
-        en: "7-day free trial on every package. 3-month minimum term after the trial.",
-        si: "සෑම පැකේජයකටම දින 7ක නොමිලේ අත්හදා බැලීමක්. අත්හදා බැලීමෙන් පසු අවම මාස 3ක කාලයක්.",
-        ta: "ஒவ்வொரு தொகுப்பிலும் 7 நாள் இலவச சோதனை. சோதனைக்குப் பின் குறைந்தபட்சம் 3 மாத காலம்.",
+        en: "Monthly subscriptions have a 3-month minimum. No free trial.",
+        si: "මාසික දායකත්ව සඳහා අවම කාලය මාස 3කි. නොමිලේ අත්හදා බැලීමක් නැත.",
+        ta: "மாதாந்திர சந்தாக்களுக்கு குறைந்தபட்சம் 3 மாதங்கள். இலவச சோதனை இல்லை.",
       },
       pioneer: {
         title: { en: "Pioneer", si: "පුරෝගාමී", ta: "பயனியர்" },
         summary: {
-          en: "Only ten spots, ever. Full fleet access, a fixed rate for life, and twelve months of exclusivity in your corridor.",
-          si: "එකතුවක් ලෙස ස්ථාන දහයක් පමණයි, කවදාවත්. සම්පූර්ණ රථ පිරිසට ප්‍රවේශය, ජීවිත කාලයටම ස්ථාවර මිලක්, සහ ඔබේ කලාපයේ මාස දොළහක සුවිශේෂී අයිතියක්.",
-          ta: "மொத்தமாக பத்து இடங்கள் மட்டுமே, என்றென்றும். முழு வாகனத் தொகுதிக்கும் அணுகல், வாழ்நாள் முழுவதும் நிலையான விலை, உங்கள் பகுதியில் பன்னிரண்டு மாத பிரத்யேக உரிமை.",
+          en: "Pioneer: LKR 85,000/month for 2,000 total minutes in agreed live coverage. Three-month minimum; twelve-month price protection; ten active places. No category exclusivity or automatic fleet expansion.",
+          si: "Pioneer: එකඟ වූ සජීවී ආවරණය තුළ මුළු මිනිත්තු 2,000ක් සඳහා මසකට LKR 85,000. අවම මාස තුනකි; මාස දොළහක මිල ආරක්ෂාවක්; සක්‍රීය ස්ථාන දහයකි. කාණ්ඩයේ සුවිශේෂී අයිතියක් හෝ ස්වයංක්‍රීය රථ ව්‍යාප්තියක් නැත.",
+          ta: "Pioneer: ஒப்புக்கொண்ட செயல்படும் பகுதிகளில் மொத்தம் 2,000 நிமிடங்களுக்கு மாதம் LKR 85,000. குறைந்தபட்சம் மூன்று மாதங்கள்; பன்னிரண்டு மாத விலைப் பாதுகாப்பு; பத்து செயலில் உள்ள இடங்கள். பிரிவு பிரத்யேக உரிமையோ தானியங்கி வாகன விரிவாக்கமோ இல்லை.",
         },
         badge: {
           en: "Founding, 10 spots only",
@@ -423,19 +423,19 @@ export const translations = {
         },
         feature: {
           freeTrial: {
-            en: "7-day free trial",
-            si: "දින 7ක නොමිලේ අත්හදා බැලීම",
-            ta: "7 நாள் இலவச சோதனை",
+            en: "Paid campaign",
+            si: "ගෙවීම් සහිත ප්‍රචාරණය",
+            ta: "கட்டணப் பிரச்சாரம்",
           },
           exclusivity: {
-            en: "Twelve-month corridor exclusivity, no competitor in your category on your defined route while you are a Pioneer subscriber",
-            si: "මාස දොළහක කලාපීය සුවිශේෂී අයිතිය, ඔබ පුරෝගාමී දායකයෙකුව සිටින කාලය තුළ ඔබේ නිශ්චිත මාර්ගයේ ඔබේ කාණ්ඩයේ තරඟකරුවෙකු නෑ",
-            ta: "பன்னிரண்டு மாத பகுதி பிரத்யேக உரிமை, நீங்கள் பயனியர் சந்தாதாரராக இருக்கும் காலத்தில் உங்கள் குறிப்பிட்ட வழியில் உங்கள் பிரிவில் போட்டியாளர் இல்லை",
+            en: "Pioneer: LKR 85,000/month for 2,000 total minutes in agreed live coverage. Three-month minimum; twelve-month price protection; ten active places. No category exclusivity or automatic fleet expansion.",
+            si: "Pioneer: එකඟ වූ සජීවී ආවරණය තුළ මුළු මිනිත්තු 2,000ක් සඳහා මසකට LKR 85,000. අවම මාස තුනකි; මාස දොළහක මිල ආරක්ෂාවක්; සක්‍රීය ස්ථාන දහයකි. කාණ්ඩයේ සුවිශේෂී අයිතියක් හෝ ස්වයංක්‍රීය රථ ව්‍යාප්තියක් නැත.",
+            ta: "Pioneer: ஒப்புக்கொண்ட செயல்படும் பகுதிகளில் மொத்தம் 2,000 நிமிடங்களுக்கு மாதம் LKR 85,000. குறைந்தபட்சம் மூன்று மாதங்கள்; பன்னிரண்டு மாத விலைப் பாதுகாப்பு; பத்து செயலில் உள்ள இடங்கள். பிரிவு பிரத்யேக உரிமையோ தானியங்கி வாகன விரிவாக்கமோ இல்லை.",
           },
           rateLocked: {
-            en: "Rate locked for life, your subscription rate never increases",
-            si: "ජීවිත කාලයටම මිල ස්ථාවරයි, ඔබේ දායක මිල කවදාවත් වැඩි වෙන්නේ නෑ",
-            ta: "வாழ்நாள் முழுவதும் விலை நிலையானது, உங்கள் சந்தா விலை ஒருபோதும் அதிகரிக்காது",
+            en: "Pioneer: LKR 85,000/month for 2,000 total minutes in agreed live coverage. Three-month minimum; twelve-month price protection; ten active places. No category exclusivity or automatic fleet expansion.",
+            si: "Pioneer: එකඟ වූ සජීවී ආවරණය තුළ මුළු මිනිත්තු 2,000ක් සඳහා මසකට LKR 85,000. අවම මාස තුනකි; මාස දොළහක මිල ආරක්ෂාවක්; සක්‍රීය ස්ථාන දහයකි. කාණ්ඩයේ සුවිශේෂී අයිතියක් හෝ ස්වයංක්‍රීය රථ ව්‍යාප්තියක් නැත.",
+            ta: "Pioneer: ஒப்புக்கொண்ட செயல்படும் பகுதிகளில் மொத்தம் 2,000 நிமிடங்களுக்கு மாதம் LKR 85,000. குறைந்தபட்சம் மூன்று மாதங்கள்; பன்னிரண்டு மாத விலைப் பாதுகாப்பு; பத்து செயலில் உள்ள இடங்கள். பிரிவு பிரத்யேக உரிமையோ தானியங்கி வாகன விரிவாக்கமோ இல்லை.",
           },
           priorityPlacement: {
             en: "Priority placement across the full fleet",
@@ -522,15 +522,15 @@ export const translations = {
       horizon: {
         title: { en: "Horizon", si: "හොරයිසන්", ta: "ஹொரைசன்" },
         summary: {
-          en: "Fifteen to a hundred or more tuk-tuks. Built for large brands, terms discussed directly with us.",
-          si: "ත්‍රී රෝද රථ පහළොවේ සිට සියයකට හෝ වැඩි ගණනක් දක්වා. විශාල වෙළඳ නාම සඳහා නිර්මාණය කර ඇත, කොන්දේසි අප සමඟ සෘජුව සාකච්ඡා කරයි.",
-          ta: "பதினைந்து முதல் நூறு அல்லது அதற்கு மேற்பட்ட மூன்று சக்கர வாகனங்கள் வரை. பெரிய பிராண்டுகளுக்காக வடிவமைக்கப்பட்டது, விதிமுறைகள் எங்களுடன் நேரடியாக விவாதிக்கப்படும்.",
+          en: "Horizon (coming soon): LKR 250,000/month, 10,000 total minutes across up to 25 accepted vehicles, three-month minimum.",
+          si: "Horizon (ඉදිරියේදී): මසකට LKR 250,000; පිළිගත් රථ 25ක් දක්වා මුළු මිනිත්තු 10,000ක්; අවම මාස තුනකි.",
+          ta: "Horizon (விரைவில்): மாதம் LKR 250,000; ஏற்றுக்கொள்ளப்பட்ட 25 வாகனங்கள் வரை மொத்தம் 10,000 நிமிடங்கள்; குறைந்தபட்சம் மூன்று மாதங்கள்.",
         },
         feature: {
           vehicles: {
-            en: "15 to 100+ tuk-tuks, your choice",
-            si: "ත්‍රී රෝද රථ 15ත් 100කට වඩා වැඩි ගණනකුත් අතර, ඔබේ තේරීම",
-            ta: "15 முதல் 100+ மூன்று சக்கர வாகனங்கள், உங்கள் தேர்வு",
+            en: "Horizon (coming soon): LKR 250,000/month, 10,000 total minutes across up to 25 accepted vehicles, three-month minimum.",
+            si: "Horizon (ඉදිරියේදී): මසකට LKR 250,000; පිළිගත් රථ 25ක් දක්වා මුළු මිනිත්තු 10,000ක්; අවම මාස තුනකි.",
+            ta: "Horizon (விரைவில்): மாதம் LKR 250,000; ஏற்றுக்கொள்ளப்பட்ட 25 வாகனங்கள் வரை மொத்தம் 10,000 நிமிடங்கள்; குறைந்தபட்சம் மூன்று மாதங்கள்.",
           },
           enterpriseSupport: {
             en: "Enterprise-level support",
@@ -555,9 +555,9 @@ export const translations = {
         },
       },
       pioneerExclusivityNote: {
-        en: "Pioneer exclusivity lasts twelve months in a corridor fixed when you sign. Your rate stays fixed for as long as you renew.",
-        si: "පුරෝගාමී සුවිශේෂී අයිතිය ඔබ අත්සන් කරන විට ස්ථාවර කරන ලද කලාපයක මාස දොළහක් පවතී. ඔබ අලුත් කරන තාක් ඔබේ මිල ස්ථාවරව පවතී.",
-        ta: "பயனியர் பிரத்யேக உரிமை நீங்கள் கையொப்பமிடும்போது நிர்ணயிக்கப்படும் பகுதியில் பன்னிரண்டு மாதங்கள் நீடிக்கும். நீங்கள் புதுப்பிக்கும் வரை உங்கள் விலை நிலையாக இருக்கும்.",
+        en: "Pioneer: LKR 85,000/month for 2,000 total minutes in agreed live coverage. Three-month minimum; twelve-month price protection; ten active places. No category exclusivity or automatic fleet expansion.",
+        si: "Pioneer: එකඟ වූ සජීවී ආවරණය තුළ මුළු මිනිත්තු 2,000ක් සඳහා මසකට LKR 85,000. අවම මාස තුනකි; මාස දොළහක මිල ආරක්ෂාවක්; සක්‍රීය ස්ථාන දහයකි. කාණ්ඩයේ සුවිශේෂී අයිතියක් හෝ ස්වයංක්‍රීය රථ ව්‍යාප්තියක් නැත.",
+        ta: "Pioneer: ஒப்புக்கொண்ட செயல்படும் பகுதிகளில் மொத்தம் 2,000 நிமிடங்களுக்கு மாதம் LKR 85,000. குறைந்தபட்சம் மூன்று மாதங்கள்; பன்னிரண்டு மாத விலைப் பாதுகாப்பு; பத்து செயலில் உள்ள இடங்கள். பிரிவு பிரத்யேக உரிமையோ தானியங்கி வாகன விரிவாக்கமோ இல்லை.",
       },
       eyebrow: { en: "Pricing", si: "මිල ගණන්", ta: "விலை" },
       sectionHeading: {
@@ -566,9 +566,9 @@ export const translations = {
         ta: "எளிய திட்டங்கள். மறைமுக செலவுகள் இல்லை.",
       },
       subheading: {
-        en: "All plans include your first 7 days completely free. GPS-verified weekly reports included.",
-        si: "සියලුම සැලසුම්වල ඔබේ පළමු දින 7 සම්පූර්ණයෙන්ම නොමිලේ ඇතුළත්. GPS මගින් සනාථ කළ සතිපතා වාර්තා ඇතුළත්.",
-        ta: "அனைத்து திட்டங்களிலும் உங்கள் முதல் 7 நாட்கள் முற்றிலும் இலவசம் அடங்கும். GPS உறுதிசெய்யப்பட்ட வாராந்திர அறிக்கைகள் அடங்கும்.",
+        en: "GPS-verified weekly reports included. Campaigns are paid in advance.",
+        si: "GPS මගින් සනාථ කළ සතිපතා වාර්තා ඇතුළත්. ප්‍රචාරණ සඳහා කලින් ගෙවිය යුතුය.",
+        ta: "GPS உறுதிசெய்யப்பட்ட வாராந்திர அறிக்கைகள் அடங்கும். பிரச்சாரங்களுக்கு முன்கூட்டியே பணம் செலுத்த வேண்டும்.",
       },
     },
     burst: {
@@ -578,9 +578,9 @@ export const translations = {
         ta: "ஒரு விரைவான பிரச்சாரம் தேவையா?",
       },
       description: {
-        en: "Burst packages fill gaps in the schedule for a short campaign. No exclusivity, just fast reach.",
-        si: "බර්ස්ට් පැකේජ කෙටි ප්‍රචාරණයක් සඳහා කාලසටහනේ පරතරයන් පුරවයි. සුවිශේෂී අයිතියක් නෑ, වේගවත් ප්‍රවේශයක් පමණයි.",
-        ta: "பர்ஸ்ட் தொகுப்புகள் ஒரு குறுகிய பிரச்சாரத்திற்கு அட்டவணையில் உள்ள இடைவெளிகளை நிரப்புகின்றன. பிரத்யேக உரிமை இல்லை, விரைவான அடையாளம் மட்டுமே.",
+        en: "Pioneer: LKR 85,000/month for 2,000 total minutes in agreed live coverage. Three-month minimum; twelve-month price protection; ten active places. No category exclusivity or automatic fleet expansion.",
+        si: "Pioneer: එකඟ වූ සජීවී ආවරණය තුළ මුළු මිනිත්තු 2,000ක් සඳහා මසකට LKR 85,000. අවම මාස තුනකි; මාස දොළහක මිල ආරක්ෂාවක්; සක්‍රීය ස්ථාන දහයකි. කාණ්ඩයේ සුවිශේෂී අයිතියක් හෝ ස්වයංක්‍රීය රථ ව්‍යාප්තියක් නැත.",
+        ta: "Pioneer: ஒப்புக்கொண்ட செயல்படும் பகுதிகளில் மொத்தம் 2,000 நிமிடங்களுக்கு மாதம் LKR 85,000. குறைந்தபட்சம் மூன்று மாதங்கள்; பன்னிரண்டு மாத விலைப் பாதுகாப்பு; பத்து செயலில் உள்ள இடங்கள். பிரிவு பிரத்யேக உரிமையோ தானியங்கி வாகன விரிவாக்கமோ இல்லை.",
       },
       eyebrow: { en: "Burst packages", si: "බර්ස්ට් පැකේජ", ta: "பர்ஸ்ட் தொகுப்புகள்" },
       heading: {
@@ -755,9 +755,9 @@ export const translations = {
       },
       horizon: {
         vehicles: {
-          en: "15 to 100+ tuk-tuks",
-          si: "ත්‍රී රෝද රථ 15ත් 100කට වඩා වැඩි ගණනකුත් අතර",
-          ta: "15 முதல் 100+ மூன்று சக்கர வாகனங்கள்",
+          en: "Horizon (coming soon): LKR 250,000/month, 10,000 total minutes across up to 25 accepted vehicles, three-month minimum.",
+          si: "Horizon (ඉදිරියේදී): මසකට LKR 250,000; පිළිගත් රථ 25ක් දක්වා මුළු මිනිත්තු 10,000ක්; අවම මාස තුනකි.",
+          ta: "Horizon (விரைவில்): மாதம் LKR 250,000; ஏற்றுக்கொள்ளப்பட்ட 25 வாகனங்கள் வரை மொத்தம் 10,000 நிமிடங்கள்; குறைந்தபட்சம் மூன்று மாதங்கள்.",
         },
       },
       burstPackagesLabel: { en: "BURST PACKAGES", si: "බර්ස්ට් පැකේජ", ta: "பர்ஸ்ட் தொகுப்புகள்" },
@@ -897,9 +897,9 @@ export const translations = {
         ta: "நிறுவனர் விளம்பரதாரர்கள் 10 பேர் மட்டுமே. என்றென்றும்.",
       },
       body: {
-        en: "Pioneer spots are a founding partnership. Your subscription rate is locked in for life. Your corridor exclusivity lasts twelve months from sign-up and covers the defined route we agree with you, not every street in Colombo. When Pioneer is full, it is full. There will only ever be 10.",
-        si: "පුරෝගාමී ස්ථාන ආරම්භක හවුල්කාරිත්වයකි. ඔබේ දායක මිල ජීවිත කාලයටම ස්ථාවර වේ. ඔබේ කලාපීය සුවිශේෂී අයිතිය ලියාපදිංචි වීමේ සිට මාස දොළහක් පවතී, කොළඹේ සෑම වීදියක්ම නොව අප ඔබ සමඟ එකඟ වන නිශ්චිත මාර්ගය ආවරණය කරයි. පුරෝගාමී පිරී ගිය විට, එය පිරී ගියෙන් අවසානයි. කවදාවත් 10ක් පමණයි.",
-        ta: "பயனியர் இடங்கள் ஒரு நிறுவனர் கூட்டாண்மை. உங்கள் சந்தா விலை வாழ்நாள் முழுவதும் நிலைநிறுத்தப்படுகிறது. உங்கள் பகுதி பிரத்யேக உரிமை பதிவு செய்த நாளிலிருந்து பன்னிரண்டு மாதங்கள் நீடிக்கும், கொழும்பின் ஒவ்வொரு தெருவையும் அல்ல, நாங்கள் உங்களுடன் ஒப்புக்கொள்ளும் குறிப்பிட்ட வழியை உள்ளடக்கும். பயனியர் நிரம்பியதும், அது நிரம்பியதுதான். என்றென்றும் 10 மட்டுமே இருக்கும்.",
+        en: "Pioneer: LKR 85,000/month for 2,000 total minutes in agreed live coverage. Three-month minimum; twelve-month price protection; ten active places. No category exclusivity or automatic fleet expansion.",
+        si: "Pioneer: එකඟ වූ සජීවී ආවරණය තුළ මුළු මිනිත්තු 2,000ක් සඳහා මසකට LKR 85,000. අවම මාස තුනකි; මාස දොළහක මිල ආරක්ෂාවක්; සක්‍රීය ස්ථාන දහයකි. කාණ්ඩයේ සුවිශේෂී අයිතියක් හෝ ස්වයංක්‍රීය රථ ව්‍යාප්තියක් නැත.",
+        ta: "Pioneer: ஒப்புக்கொண்ட செயல்படும் பகுதிகளில் மொத்தம் 2,000 நிமிடங்களுக்கு மாதம் LKR 85,000. குறைந்தபட்சம் மூன்று மாதங்கள்; பன்னிரண்டு மாத விலைப் பாதுகாப்பு; பத்து செயலில் உள்ள இடங்கள். பிரிவு பிரத்யேக உரிமையோ தானியங்கி வாகன விரிவாக்கமோ இல்லை.",
       },
       spotsClaimed: {
         en: "{claimed} of 10 Pioneer spots claimed",
@@ -913,21 +913,21 @@ export const translations = {
       },
       item1: {
         heading: {
-          en: "Corridor exclusivity",
-          si: "කලාපීය සුවිශේෂී අයිතිය",
-          ta: "பகுதி பிரத்யேக உரிமை",
+          en: "Pioneer: LKR 85,000/month for 2,000 total minutes in agreed live coverage. Three-month minimum; twelve-month price protection; ten active places. No category exclusivity or automatic fleet expansion.",
+          si: "Pioneer: එකඟ වූ සජීවී ආවරණය තුළ මුළු මිනිත්තු 2,000ක් සඳහා මසකට LKR 85,000. අවම මාස තුනකි; මාස දොළහක මිල ආරක්ෂාවක්; සක්‍රීය ස්ථාන දහයකි. කාණ්ඩයේ සුවිශේෂී අයිතියක් හෝ ස්වයංක්‍රීය රථ ව්‍යාප්තියක් නැත.",
+          ta: "Pioneer: ஒப்புக்கொண்ட செயல்படும் பகுதிகளில் மொத்தம் 2,000 நிமிடங்களுக்கு மாதம் LKR 85,000. குறைந்தபட்சம் மூன்று மாதங்கள்; பன்னிரண்டு மாத விலைப் பாதுகாப்பு; பத்து செயலில் உள்ள இடங்கள். பிரிவு பிரத்யேக உரிமையோ தானியங்கி வாகன விரிவாக்கமோ இல்லை.",
         },
         body: {
-          en: "For the first twelve months of your subscription, you are the only business in your category advertising on your defined corridor. The route is agreed at sign-up and locked for the exclusivity period.",
-          si: "ඔබේ දායකත්වයේ පළමු මාස දොළහ තුළ, ඔබේ නිශ්චිත කලාපයේ දැන්වීම් කරන ඔබේ කාණ්ඩයේ එකම ව්‍යාපාරය ඔබයි. මාර්ගය ලියාපදිංචි වීමේදී එකඟ වී සුවිශේෂී කාල සීමාව සඳහා ස්ථාවර කෙරේ.",
-          ta: "உங்கள் சந்தாவின் முதல் பன்னிரண்டு மாதங்களில், உங்கள் குறிப்பிட்ட பகுதியில் விளம்பரம் செய்யும் உங்கள் பிரிவின் ஒரே வணிகம் நீங்கள்தான். பதிவு செய்யும்போது வழி ஒப்புக்கொள்ளப்பட்டு பிரத்யேக உரிமைக் காலத்திற்கு நிலைநிறுத்தப்படும்.",
+          en: "Pioneer: LKR 85,000/month for 2,000 total minutes in agreed live coverage. Three-month minimum; twelve-month price protection; ten active places. No category exclusivity or automatic fleet expansion.",
+          si: "Pioneer: එකඟ වූ සජීවී ආවරණය තුළ මුළු මිනිත්තු 2,000ක් සඳහා මසකට LKR 85,000. අවම මාස තුනකි; මාස දොළහක මිල ආරක්ෂාවක්; සක්‍රීය ස්ථාන දහයකි. කාණ්ඩයේ සුවිශේෂී අයිතියක් හෝ ස්වයංක්‍රීය රථ ව්‍යාප්තියක් නැත.",
+          ta: "Pioneer: ஒப்புக்கொண்ட செயல்படும் பகுதிகளில் மொத்தம் 2,000 நிமிடங்களுக்கு மாதம் LKR 85,000. குறைந்தபட்சம் மூன்று மாதங்கள்; பன்னிரண்டு மாத விலைப் பாதுகாப்பு; பத்து செயலில் உள்ள இடங்கள். பிரிவு பிரத்யேக உரிமையோ தானியங்கி வாகன விரிவாக்கமோ இல்லை.",
         },
       },
       item2: {
         heading: {
-          en: "Rate locked for life",
-          si: "ජීවිත කාලයටම ස්ථාවර මිල",
-          ta: "வாழ்நாள் முழுவதும் நிலையான விலை",
+          en: "Pioneer: LKR 85,000/month for 2,000 total minutes in agreed live coverage. Three-month minimum; twelve-month price protection; ten active places. No category exclusivity or automatic fleet expansion.",
+          si: "Pioneer: එකඟ වූ සජීවී ආවරණය තුළ මුළු මිනිත්තු 2,000ක් සඳහා මසකට LKR 85,000. අවම මාස තුනකි; මාස දොළහක මිල ආරක්ෂාවක්; සක්‍රීය ස්ථාන දහයකි. කාණ්ඩයේ සුවිශේෂී අයිතියක් හෝ ස්වයංක්‍රීය රථ ව්‍යාප්තියක් නැත.",
+          ta: "Pioneer: ஒப்புக்கொண்ட செயல்படும் பகுதிகளில் மொத்தம் 2,000 நிமிடங்களுக்கு மாதம் LKR 85,000. குறைந்தபட்சம் மூன்று மாதங்கள்; பன்னிரண்டு மாத விலைப் பாதுகாப்பு; பத்து செயலில் உள்ள இடங்கள். பிரிவு பிரத்யேக உரிமையோ தானியங்கி வாகன விரிவாக்கமோ இல்லை.",
         },
         body: {
           en: "Your monthly rate never increases, regardless of how the network grows, how many advertisers join, or how many vehicles are added. The rate you start with is yours permanently.",
@@ -1012,14 +1012,14 @@ export const translations = {
       },
       q3: {
         question: {
-          en: "What is Pioneer corridor exclusivity?",
-          si: "පුරෝගාමී කලාපීය සුවිශේෂී අයිතිය යනු කුමක්ද?",
-          ta: "பயனியர் பகுதி பிரத்யேக உரிமை என்றால் என்ன?",
+          en: "What does Pioneer include?",
+          si: "Pioneer පැකේජයට ඇතුළත් වන්නේ මොනවාද?",
+          ta: "Pioneer தொகுப்பில் என்ன அடங்கும்?",
         },
         answer: {
-          en: "Pioneer advertisers get twelve months of exclusivity on a defined corridor for their category. The corridor is agreed at sign-up, so no other business in your category can run ads on that route during your first twelve months. Your per-minute subscription rate is fixed for the life of your subscription.",
-          si: "පුරෝගාමී දැන්වීම්කරුවන්ට ඔවුන්ගේ කාණ්ඩය සඳහා නිශ්චිත කලාපයක මාස දොළහක සුවිශේෂී අයිතියක් ලැබෙනවා. කලාපය ලියාපදිංචි වීමේදී එකඟ වේ, එමගින් ඔබේ පළමු මාස දොළහ තුළ ඔබේ කාණ්ඩයේ වෙනත් කිසිදු ව්‍යාපාරයකට එම මාර්ගයේ දැන්වීම් ධාවනය කළ නොහැක. ඔබේ මිනිත්තු මිල ඔබේ දායකත්වයේ ජීවිත කාලයටම ස්ථාවරයි.",
-          ta: "பயனியர் விளம்பரதாரர்களுக்கு அவர்களின் பிரிவிற்கான குறிப்பிட்ட பகுதியில் பன்னிரண்டு மாத பிரத்யேக உரிமை கிடைக்கும். பதிவு செய்யும்போது பகுதி ஒப்புக்கொள்ளப்படும், எனவே உங்கள் முதல் பன்னிரண்டு மாதங்களில் அந்த வழியில் உங்கள் பிரிவின் வேறு எந்த வணிகமும் விளம்பரங்களை ஓட முடியாது. உங்கள் நிமிட விலை உங்கள் சந்தாவின் வாழ்நாள் முழுவதும் நிலையானது.",
+          en: "Pioneer: LKR 85,000/month for 2,000 total minutes in agreed live coverage. Three-month minimum; twelve-month price protection; ten active places. No category exclusivity or automatic fleet expansion.",
+          si: "Pioneer: එකඟ වූ සජීවී ආවරණය තුළ මුළු මිනිත්තු 2,000ක් සඳහා මසකට LKR 85,000. අවම මාස තුනකි; මාස දොළහක මිල ආරක්ෂාවක්; සක්‍රීය ස්ථාන දහයකි. කාණ්ඩයේ සුවිශේෂී අයිතියක් හෝ ස්වයංක්‍රීය රථ ව්‍යාප්තියක් නැත.",
+          ta: "Pioneer: ஒப்புக்கொண்ட செயல்படும் பகுதிகளில் மொத்தம் 2,000 நிமிடங்களுக்கு மாதம் LKR 85,000. குறைந்தபட்சம் மூன்று மாதங்கள்; பன்னிரண்டு மாத விலைப் பாதுகாப்பு; பத்து செயலில் உள்ள இடங்கள். பிரிவு பிரத்யேக உரிமையோ தானியங்கி வாகன விரிவாக்கமோ இல்லை.",
         },
       },
       q4: {
@@ -1032,14 +1032,14 @@ export const translations = {
       },
       q5: {
         question: {
-          en: "What does the LKR 5,000 Pioneer deposit cover?",
-          si: "රුපියල් 5,000 පුරෝගාමී තැන්පතුව ආවරණය කරන්නේ කුමක්ද?",
-          ta: "LKR 5,000 பயனியர் வைப்புத்தொகை எதை உள்ளடக்கியது?",
+          en: "What does the LKR 10,000 Pioneer deposit cover?",
+          si: "රුපියල් 10,000 පුරෝගාමී තැන්පතුව ආවරණය කරන්නේ කුමක්ද?",
+          ta: "LKR 10,000 பயனியர் வைப்புத்தொகை எதை உள்ளடக்கியது?",
         },
         answer: {
-          en: "The LKR 5,000 deposit secures your spot on the waiting list. It is fully refundable, credited against your first invoice when you proceed, or returned in full if you decide not to. No risk. No commitment.",
-          si: "රුපියල් 5,000 තැන්පතුව ඔබේ බලාපොරොත්තු ලේඛන ස්ථානය සුරක්ෂිත කරයි. එය සම්පූර්ණයෙන්ම ආපසු ගෙවිය හැකි, ඔබ ඉදිරියට යන විට ඔබේ පළමු ඉන්වොයිසියට එරෙහිව බැර කරනු ලබයි, නැතහොත් ඔබ තීරණය නොකළහොත් සම්පූර්ණයෙන්ම ආපසු ලැබේ. අවදානමක් නෑ. කැපවීමක් නෑ.",
-          ta: "LKR 5,000 வைப்புத்தொகை உங்கள் காத்திருப்பு பட்டியல் இடத்தை உறுதி செய்கிறது. இது முழுவதும் திரும்பப் பெறக்கூடியது, நீங்கள் தொடரும்போது உங்கள் முதல் விலைப்பட்டியலுக்கு எதிராக வரவு வைக்கப்படும், அல்லது நீங்கள் தொடரவில்லை என்றால் முழுவதும் திரும்பப் பெறப்படும். ஆபத்து இல்லை. உறுதிப்பாடு இல்லை.",
+          en: "The LKR 10,000 deposit secures your spot on the waiting list. It is fully refundable, credited against your first invoice when you proceed, or returned in full if you decide not to. No risk. No commitment.",
+          si: "රුපියල් 10,000 තැන්පතුව ඔබේ බලාපොරොත්තු ලේඛන ස්ථානය සුරක්ෂිත කරයි. එය සම්පූර්ණයෙන්ම ආපසු ගෙවිය හැකි, ඔබ ඉදිරියට යන විට ඔබේ පළමු ඉන්වොයිසියට එරෙහිව බැර කරනු ලබයි, නැතහොත් ඔබ තීරණය නොකළහොත් සම්පූර්ණයෙන්ම ආපසු ලැබේ. අවදානමක් නෑ. කැපවීමක් නෑ.",
+          ta: "LKR 10,000 வைப்புத்தொகை உங்கள் காத்திருப்பு பட்டியல் இடத்தை உறுதி செய்கிறது. இது முழுவதும் திரும்பப் பெறக்கூடியது, நீங்கள் தொடரும்போது உங்கள் முதல் விலைப்பட்டியலுக்கு எதிராக வரவு வைக்கப்படும், அல்லது நீங்கள் தொடரவில்லை என்றால் முழுவதும் திரும்பப் பெறப்படும். ஆபத்து இல்லை. உறுதிப்பாடு இல்லை.",
         },
       },
     },
@@ -1055,9 +1055,9 @@ export const translations = {
         ta: "பிராண்ட் பிரச்சாரங்களை ஓட தயாராக கொழும்பில் சூரிய அஸ்தமனத்தில் mydiio மூன்று சக்கர வாகனங்களின் வரிசை",
       },
       body: {
-        en: "mydiio puts your brand on a screen that passengers face for up to 20 minutes per ride. GPS-verified. Reported every Monday. First 7 days free.",
-        si: "mydiio ඔබේ වෙළඳ නාමය මගීන් සෑම ගමනකදීම මිනිත්තු 20ක් දක්වා මුහුණ දෙන තිරයක තබයි. GPS මගින් සනාථයි. සෑම සඳුදාවකම වාර්තා කෙරේ. පළමු දින 7 නොමිලේ.",
-        ta: "mydiio உங்கள் பிராண்டை பயணிகள் ஒவ்வொரு பயணத்திலும் 20 நிமிடங்கள் வரை பார்க்கும் திரையில் வைக்கிறது. GPS உறுதிசெய்யப்பட்டது. ஒவ்வொரு திங்கட்கிழமையும் அறிக்கை. முதல் 7 நாட்கள் இலவசம்.",
+        en: "mydiio puts your brand on a screen that passengers face for up to 20 minutes per ride. GPS-verified. Reported every Monday.",
+        si: "mydiio ඔබේ වෙළඳ නාමය මගීන් සෑම ගමනකදීම මිනිත්තු 20ක් දක්වා මුහුණ දෙන තිරයක තබයි. GPS මගින් සනාථයි. සෑම සඳුදාවකම වාර්තා කෙරේ.",
+        ta: "mydiio உங்கள் பிராண்டை பயணிகள் ஒவ்வொரு பயணத்திலும் 20 நிமிடங்கள் வரை பார்க்கும் திரையில் வைக்கிறது. GPS உறுதிசெய்யப்பட்டது. ஒவ்வொரு திங்கட்கிழமையும் அறிக்கை.",
       },
       primaryCta: {
         en: "Apply for a campaign spot →",
@@ -1912,9 +1912,9 @@ export const translations = {
           ta: "உங்கள் முதல் பிரச்சாரத்தை நடத்துங்கள்.",
         },
         body: {
-          en: "From LKR 25,000 a month. First 7 days free. GPS-verified proof every Monday. No agency needed.",
-          si: "මසකට රුපියල් 25,000 සිට. පළමු දින 7 නොමිලේ. සෑම සඳුදාවකම GPS සනාථ කළ සාක්ෂිය. නියෝජිතායතනයක් අවශ්‍ය නෑ.",
-          ta: "மாதம் LKR 25,000 முதல். முதல் 7 நாட்கள் இலவசம். ஒவ்வொரு திங்கட்கிழமையும் GPS உறுதிசெய்யப்பட்ட ஆதாரம். ஏஜென்சி தேவையில்லை.",
+          en: "From LKR 25,000 a month. GPS-verified proof every Monday. No agency needed.",
+          si: "මසකට රුපියල් 25,000 සිට. සෑම සඳුදාවකම GPS සනාථ කළ සාක්ෂිය. නියෝජිතායතනයක් අවශ්‍ය නෑ.",
+          ta: "மாதம் LKR 25,000 முதல். ஒவ்வொரு திங்கட்கிழமையும் GPS உறுதிசெய்யப்பட்ட ஆதாரம். ஏஜென்சி தேவையில்லை.",
         },
         button: {
           en: "Apply for a spot →",
@@ -1979,9 +1979,9 @@ export const translations = {
         ta: "ஒரு பிரச்சாரத்தைத் தொடங்குங்கள்.",
       },
       body: {
-        en: "From LKR 25,000 a month. First 7 days free. GPS-verified proof every Monday. No agency needed.",
-        si: "මසකට රුපියල් 25,000 සිට. පළමු දින 7 නොමිලේ. සෑම සඳුදාවකම GPS සනාථ කළ සාක්ෂිය. නියෝජිතායතනයක් අවශ්‍ය නෑ.",
-        ta: "மாதம் LKR 25,000 முதல். முதல் 7 நாட்கள் இலவசம். ஒவ்வொரு திங்கட்கிழமையும் GPS உறுதிசெய்யப்பட்ட ஆதாரம். ஏஜென்சி தேவையில்லை.",
+        en: "From LKR 25,000 a month. GPS-verified proof every Monday. No agency needed.",
+        si: "මසකට රුපියල් 25,000 සිට. සෑම සඳුදාවකම GPS සනාථ කළ සාක්ෂිය. නියෝජිතායතනයක් අවශ්‍ය නෑ.",
+        ta: "மாதம் LKR 25,000 முதல். ஒவ்வொரு திங்கட்கிழமையும் GPS உறுதிசெய்யப்பட்ட ஆதாரம். ஏஜென்சி தேவையில்லை.",
       },
       meta: {
         en: "Takes 2 minutes · No payment now",

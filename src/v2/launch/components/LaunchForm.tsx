@@ -1,4 +1,7 @@
-import { useState, type FormEvent } from "react";
+import { contactValid, useLeadGuard, leadMeta } from "@/lib/lead-intake";
+import { packageTiers } from "@/v2/packages/packageData";
+import { burstRates, money } from "@/v2/packages/commercialPricing";
+import { useEffect, useState, type FormEvent } from "react";
 import { Reveal } from "@/motion";
 import {
   launchBusinessTypes,
@@ -28,14 +31,34 @@ import {
 
 const SUBMIT_ENDPOINT = "https://rmqexobhpasitrexvaig.supabase.co/functions/v1/submit-application";
 
+const interestOptions = [
+  ...packageTiers.map((tier) => ({
+    id: tier.id,
+    name: tier.name,
+    label: `${tier.name} — ${tier.price} · ${tier.scale}`,
+  })),
+  ...burstRates.map((rate) => ({
+    id: rate.id,
+    name: rate.name,
+    label: `${rate.name} — ${money(rate.price)} total · Coming soon`,
+  })),
+];
+
 type Status = "idle" | "sending" | "sent" | "duplicate" | "error";
 
 export function LaunchForm() {
+  const guard = useLeadGuard();
   const [businessName, setBusinessName] = useState("");
   const [contactName, setContactName] = useState("");
   const [email, setEmail] = useState("");
   const [whatsappNumber, setWhatsappNumber] = useState("");
   const [businessType, setBusinessType] = useState("");
+  const [selectedTier, setSelectedTier] = useState("");
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("tier");
+    const option = interestOptions.find((item) => item.id === requested);
+    if (option) setSelectedTier(option.name);
+  }, []);
   const [budget, setBudget] = useState("");
   const [goal, setGoal] = useState("");
   const [hasCreative, setHasCreative] = useState<boolean | null>(null);
@@ -50,11 +73,18 @@ export function LaunchForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (status === "sending") return;
+    if (status === "sending" || status === "sent") return;
+    if (!contactValid(email, whatsappNumber)) {
+      setError("Provide a valid email or WhatsApp number. You may provide both.");
+      setStatus("error");
+      return;
+    }
+    if (!event.currentTarget.reportValidity()) return;
     setStatus("sending");
     setError(null);
 
     const payload = {
+      ...leadMeta(event.currentTarget, guard.started.current),
       application_type: "advertiser",
       business_name: businessName,
       contact_name: contactName,
@@ -62,7 +92,7 @@ export function LaunchForm() {
       phone: whatsappNumber,
       business_type: businessType,
       budget_range: budget,
-      tier_interest: tierForBudget(budget),
+      tier_interest: selectedTier || tierForBudget(budget),
       campaign_goal: goal,
       has_creative: hasCreative,
       referral_source: referral,
@@ -99,7 +129,17 @@ export function LaunchForm() {
         </Reveal>
 
         <Reveal as="div" className="launch-form-wrap">
-          <form className="launch-form" onSubmit={handleSubmit} noValidate>
+          <form
+            inert={!guard.ready}
+            data-intake-ready={guard.ready}
+            className="launch-form"
+            onSubmit={handleSubmit}
+          >
+            {guard.fields}
+            <p>
+              Provide email or WhatsApp, or both. We use your details to handle this enquiry.{" "}
+              <a href="/privacy">Privacy policy</a>
+            </p>
             <div className="launch-form-grid">
               <label className="launch-form-field">
                 <span className="launch-form-label">{launchNameLabel}</span>
@@ -155,7 +195,6 @@ export function LaunchForm() {
                 <input
                   type="email"
                   name="email"
-                  required
                   autoComplete="email"
                   maxLength={255}
                   placeholder="you@business.com"
@@ -170,9 +209,8 @@ export function LaunchForm() {
                 <input
                   type="tel"
                   name="phone"
-                  required
                   autoComplete="tel"
-                  maxLength={40}
+                  maxLength={30}
                   placeholder="+94 77 000 0000"
                   disabled={status === "sending"}
                   value={whatsappNumber}
@@ -204,8 +242,27 @@ export function LaunchForm() {
                 </div>
               </fieldset>
 
+              <label className="launch-form-field launch-form-field-wide">
+                <span className="launch-form-label">Package interest</span>
+                <select
+                  value={selectedTier}
+                  onChange={(event) => setSelectedTier(event.target.value)}
+                  disabled={status === "sending"}
+                >
+                  <option value="">Help me choose</option>
+                  {interestOptions.map((item) => (
+                    <option key={item.id} value={item.name}>
+                      {item.label}
+                    </option>
+                  ))}
+                </select>
+                <span>
+                  Coming-soon packages are expressions of interest, not confirmed bookings, and
+                  require no deposit. No payment is taken by this form.
+                </span>
+              </label>
               <fieldset className="launch-form-field launch-form-field-wide">
-                <legend className="launch-form-label">Monthly budget</legend>
+                <legend className="launch-form-label">Monthly budget (optional for Burst)</legend>
                 <div className="launch-form-chip-group">
                   {launchBudgets.map((b) => (
                     <label
@@ -285,7 +342,11 @@ export function LaunchForm() {
             </div>
 
             <div className="launch-form-actions">
-              <button type="submit" className="launch-form-submit" disabled={status === "sending"}>
+              <button
+                type="submit"
+                className="launch-form-submit"
+                disabled={!guard.ready || status === "sending" || status === "sent"}
+              >
                 {status === "sending" ? launchSending : launchSend}
                 <span className="launch-form-submit-arrow" aria-hidden="true">
                   →

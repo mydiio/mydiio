@@ -15,13 +15,13 @@ export const Route = createFileRoute("/advertise_/apply")({
       {
         name: "description",
         content:
-          "Apply to put your brand on the screens inside mydiio's tuk-tuks. Four fields. No payment today. The team replies within 24 hours.",
+          "Reserve for mydiio’s planned November 2026 launch across Colombo. No payment through this form. Replies usually within 24 hours, up to 48 in exceptional cases.",
       },
       { property: "og:title", content: "Launch a campaign with mydiio" },
       {
         property: "og:description",
         content:
-          "Apply to advertise on screens inside mydiio's tuk-tuks. Four fields. Replies within 24 hours.",
+          "Tell us about your campaign. Replies usually within 24 hours, up to 48 in exceptional cases.",
       },
       { property: "og:url", content: "https://mydiio.com/advertise/apply" },
     ],

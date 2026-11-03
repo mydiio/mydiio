@@ -1,3 +1,4 @@
+import { LeadAttribution } from "@/lib/lead-intake";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -9,10 +10,10 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
+import "@/styles/brand-fonts.css";
 import { I18nProvider } from "@/lib/i18n";
 import { MotionProvider } from "@/motion";
 import "@/styles/motion.css";
-import { InitialLoadScreen } from "@/components/ui/weave-spinner";
 
 function NotFoundComponent() {
   return (
@@ -83,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month with 7 days free.",
+          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month.",
       },
       { name: "author", content: "mydiio" },
       { property: "og:site_name", content: "mydiio" },
@@ -95,7 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month with 7 days free.",
+          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -107,7 +108,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "twitter:description",
         content:
-          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month with 7 days free.",
+          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month.",
       },
       {
         property: "og:image",
@@ -122,17 +123,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "preload",
-        as: "style",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap",
-      },
       { rel: "alternate", hrefLang: "en", href: "https://mydiio.com/?lang=en" },
       { rel: "alternate", hrefLang: "si", href: "https://mydiio.com/?lang=si" },
       { rel: "alternate", hrefLang: "ta", href: "https://mydiio.com/?lang=ta" },
@@ -156,7 +146,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           },
           contactPoint: {
             "@type": "ContactPoint",
-            email: "mydiiomedia@gmail.com",
+            url: "https://mydiio.com/contact",
             contactType: "customer service",
           },
           sameAs: [],
@@ -193,7 +183,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
         <MotionProvider>
-          <InitialLoadScreen />
+          <LeadAttribution />
           <Outlet />
         </MotionProvider>
       </I18nProvider>

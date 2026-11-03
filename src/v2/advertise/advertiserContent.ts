@@ -1,3 +1,6 @@
+import { coveragePromise, responsePromise } from "../commercial/policy";
+import { packageTiers, monthlyFeatures } from "@/v2/packages/packageData";
+import { burstRates, money } from "@/v2/packages/commercialPricing";
 // src/v2/advertise/advertiserContent.ts
 // Copy distilled from The mydiio Book (Foundational Edition, August 2026),
 // Chapter 09 — The Business Experience — and Chapter 11 — Trust Is Built.
@@ -13,12 +16,12 @@ export const advertiserHeroTitleLines = ["Your campaign.", "In motion."] as cons
 export const advertiserHeroAccent = "In motion.";
 
 export const advertiserHeroBody =
-  "Put your video or image on screens inside tuk-tuks driving through Colombo South. Pick a monthly plan or run a short, one-off campaign.";
+  "Reserve passenger-screen advertising in Colombo for our planned November 2026 launch. Choose Roamer or Pioneer; future packages are available for expressions of interest.";
 
-export const advertiserPriceAnchor = "Plans from LKR 25,000 a month, with seven days free.";
+export const advertiserPriceAnchor = "Plans from LKR 25,000 a month.";
 
 export const advertiserDepositNote =
-  "Your spot is held with a refundable LKR 5,000 deposit. Pay it back on launch.";
+  "Reserve with a refundable LKR 10,000 deposit, credited against your first invoice.";
 
 /* ============================================================
  * 02 PRODUCT
@@ -40,7 +43,7 @@ export const productPurchases = [
   {
     number: "02",
     title: "Pick the way you want to pay.",
-    body: "Use a monthly plan or buy a one-off Burst campaign. You see the minutes and the number of tuk-tuks before you buy.",
+    body: "Reserve Roamer or Pioneer for launch. Future monthly and Burst packages accept expressions of interest only, with no deposit.",
   },
   {
     number: "03",
@@ -126,20 +129,16 @@ export const attentionInsights = {
 
 export const coverageEyebrow = "Where your campaign runs";
 
-export const coverageHeading = "One live area. Three towns.";
+export const coverageHeading = "Colombo. Your campaign’s coverage, agreed.";
 
 export const coverageBody =
-  "Your campaign runs today in Dehiwala, Mount Lavinia and Ratmalana. We only add a new place after active tuk-tuks are earning there.";
+  "Accepting campaign enquiries across Colombo for our planned November 2026 launch. Vehicle allocation, available coverage and start date are confirmed before booking.";
 
-export const corridorStops = [
-  { number: "01", name: "Dehiwala" },
-  { number: "02", name: "Mount Lavinia" },
-  { number: "03", name: "Ratmalana" },
-] as const;
+export const corridorStops = [{ number: "01", name: "Colombo" }] as const;
 
 export const expansionLabel = "Where we go next";
 export const expansionBody =
-  "New places are added one driver at a time. We do not promise towns we are not yet in.";
+  "Future routes and transport types open after successful trials and operating agreements. Your current package does not automatically include them.";
 
 /* ============================================================
  * 05 PACKAGES
@@ -147,70 +146,36 @@ export const expansionBody =
 
 export const packagesEyebrow = "Monthly plans";
 
-export const packagesHeading = "Four plans. One goal each.";
+export const packagesHeading = "Two launch packages. Clear commitments.";
 
 export const packagesBody =
-  "Pick the plan that fits your goal. Every plan starts with seven days free.";
+  "Compare the total minutes, coverage and commitment. Roamer and Pioneer are launch packages; Voyager and Horizon are coming soon.";
 
 export const packagesAnchor = "Plans from LKR 25,000 a month";
 
 export const packageAudience = {
   roamer: "Local businesses on their first campaign",
   voyager: "Brands that want regular visibility",
-  pioneer: "Brands that want the whole network",
-  horizon: "Agencies and bigger brands with custom needs",
+  pioneer: "Founding advertisers who want price protection",
+  horizon: "Brands planning broader campaign coverage",
 } as const;
 
-export const advertiserPackageCopy = {
-  roamer: {
-    eyebrow: "Start small",
-    price: "From LKR 25,000 / month",
-    features: [
-      { label: "Screen minutes", value: "500 a month" },
-      { label: "Tuk-tuks", value: "Up to 5" },
-      { label: "Minimum term", value: "3 months" },
-      { label: "First seven days", value: "Free" },
-      { label: "Refundable deposit", value: "LKR 5,000" },
-    ],
-  },
-  voyager: {
-    eyebrow: "Build visibility",
-    price: "From LKR 38,000 / month",
-    features: [
-      { label: "Screen minutes", value: "1,800 a month" },
-      { label: "Tuk-tuks", value: "Up to 15" },
-      { label: "Minimum term", value: "3 months" },
-      { label: "First seven days", value: "Free" },
-      { label: "Refundable deposit", value: "LKR 5,000" },
-    ],
-  },
-  pioneer: {
-    eyebrow: "Join the full network",
-    price: "From LKR 25,000 / month",
-    features: [
-      { label: "Screen minutes", value: "2,000 a month" },
-      { label: "Tuk-tuks", value: "All active tuk-tuks" },
-      { label: "Category lock", value: "12 months, only you" },
-      { label: "Price promise", value: "Fixed for the term" },
-      { label: "First seven days", value: "Free" },
-      { label: "Refundable deposit", value: "LKR 5,000" },
-    ],
-  },
-  horizon: {
-    eyebrow: "Built around you",
-    price: "From LKR 65,000 / month",
-    features: [
-      { label: "Screen minutes", value: "Set for your campaign" },
-      { label: "Tuk-tuks", value: "15 to 100+" },
-      { label: "Campaign length", value: "Set for your needs" },
-      { label: "First seven days", value: "Free" },
-      { label: "Refundable deposit", value: "LKR 5,000" },
-    ],
-  },
-} as const;
+export const advertiserPackageCopy = Object.fromEntries(
+  packageTiers.map((tier) => [
+    tier.id,
+    {
+      eyebrow: tier.eyebrow,
+      price: tier.price,
+      features: monthlyFeatures(tier.id),
+    },
+  ]),
+) as Record<
+  string,
+  { eyebrow: string; price: string; features: { label: string; value: string }[] }
+>;
 
 export const packagesFooter =
-  "The number of available tuk-tuks depends on the active fleet in your area. Need a short campaign? See Burst.";
+  "All minutes are shared across the agreed vehicles. Prices exclude applicable taxes. Future packages are expressions of interest only; no deposit is needed.";
 
 /* ============================================================
  * 06 BURST
@@ -218,61 +183,33 @@ export const packagesFooter =
 
 export const burstEyebrow = "One-off campaigns";
 
-export const burstHeading = "Need a campaign for a few days?";
+export const burstHeading = "Coming later: short campaigns.";
 
 export const burstBody =
-  "Buy a block of screen minutes once. No monthly plan. No contract. Use the minutes before they run out.";
+  "Planned one-off packages. Register interest now; availability and coverage must be confirmed before booking. One campaign, with written delivery terms and no monthly subscription.";
 
-export const burstPackages = [
-  {
-    id: "burst-spark",
-    number: "01",
-    name: "Spark",
-    price: "LKR 12,000",
-    badge: "",
-    features: [
-      { label: "Screen minutes", value: "200" },
-      { label: "Tuk-tuks", value: "Up to 5" },
-      { label: "Use within", value: "3 days" },
-    ],
-    bestFor: "A weekend event or a quick test",
-  },
-  {
-    id: "burst-blast",
-    number: "02",
-    name: "Blast",
-    price: "LKR 33,000",
-    badge: "Most popular",
-    features: [
-      { label: "Screen minutes", value: "600" },
-      { label: "Tuk-tuks", value: "Up to 15" },
-      { label: "Use within", value: "7 days" },
-    ],
-    bestFor: "A week-long campaign or product launch",
-  },
-  {
-    id: "burst-surge",
-    number: "03",
-    name: "Surge",
-    price: "LKR 40,000",
-    badge: "",
-    features: [
-      { label: "Screen minutes", value: "800" },
-      { label: "Tuk-tuks", value: "Up to 20" },
-      { label: "Use within", value: "10 days" },
-    ],
-    bestFor: "A big event across the live area",
-  },
-] as const;
+export const burstPackages = burstRates.map((rate, index) => ({
+  ...rate,
+  number: String(index + 1).padStart(2, "0"),
+  price: money(rate.price),
+  badge: "Coming soon",
+  features: [
+    { label: "Screen minutes", value: `${rate.minutes} total across vehicles` },
+    { label: "Tuk-tuks", value: `Up to ${rate.vehicles}` },
+    { label: "Campaign window", value: `${rate.days} days from activation` },
+    { label: "Payment", value: "100% before activation" },
+    { label: "Commitment", value: "One campaign; no monthly subscription" },
+  ],
+}));
 
 export const burstNote =
-  "Your campaign runs until its minutes are used or its time is up, whichever comes first. Monthly plans play first in the rotation.";
+  "Planned packages only. The campaign window begins at activation. For an undelivered portion, the advertiser chooses an agreed extension, credit or proportional refund. Refunds are processed within seven business days after reconciliation and selection of a refund.";
 
 /* ============================================================
  * 07 MONDAY REPORT
  * ============================================================ */
 
-export const reportEyebrow = "Your Monday report";
+export const reportEyebrow = "Illustrative report — sample data";
 
 export const reportHeading = "Everything in one report.";
 
@@ -291,33 +228,37 @@ export const reportFeatures = [
 export const reportRows = [
   {
     vehicle: "Tuk-tuk recorded",
-    location: "Dehiwala",
+    location: "Sample location A",
     time: "Play time recorded",
     duration: "Play length recorded",
   },
   {
     vehicle: "Tuk-tuk recorded",
-    location: "Mount Lavinia",
+    location: "Sample location B",
     time: "Play time recorded",
     duration: "Play length recorded",
   },
   {
     vehicle: "Tuk-tuk recorded",
-    location: "Ratmalana",
+    location: "Sample location C",
     time: "Play time recorded",
     duration: "Play length recorded",
   },
 ] as const;
 
-export const reportLocations = ["Dehiwala", "Mount Lavinia", "Ratmalana"] as const;
+export const reportLocations = [
+  "Sample location A",
+  "Sample location B",
+  "Sample location C",
+] as const;
 
-export const reportNextDate = "Monday, 1 June 2026";
+export const reportNextDate = "Sample reporting period";
 
 /* ============================================================
  * 08 CLIENT PORTAL
  * ============================================================ */
 
-export const portalEyebrow = "Your advertiser portal";
+export const portalEyebrow = "Your advertiser portal · illustrative preview";
 
 export const portalHeading = "One portal. Full control.";
 
@@ -341,46 +282,46 @@ export const portalTools = [
  * 09 STORIES
  * ============================================================ */
 
-export const storiesEyebrow = "Real businesses";
+export const storiesEyebrow = "Example campaign ideas";
 
-export const storiesHeading = "Three campaigns. One network.";
+export const storiesHeading = "Ideas for your first campaign.";
 
 export const advertiserStories = [
   {
     number: "01",
-    audience: "Mahesh, restaurant chain",
-    title: "Regular visibility across the area.",
-    body: "Mahesh runs a chain in Colombo South. He uses Voyager to keep his offer on screens every day. He sees the result in his Monday report.",
+    audience: "Restaurants and cafés",
+    title: "Put your menu in the journey.",
+    body: "Example idea: use a Roamer campaign to introduce a menu or offer, with a QR code linking to your own page. Coverage is agreed before booking; customer visits are not guaranteed.",
     facts: [
-      { label: "Plan", value: "Voyager" },
-      { label: "Monthly pay", value: "LKR 38,000" },
-      { label: "Where", value: "Across the live area" },
+      { label: "Plan", value: "Roamer" },
+      { label: "Monthly fee", value: "LKR 25,000" },
+      { label: "Status", value: "Illustrative; not a customer result" },
     ],
-    cta: { label: "See Voyager", href: "#monthly-packages" },
+    cta: { label: "See Roamer", href: "#monthly-packages" },
   },
   {
     number: "02",
-    audience: "Dilini, corner pharmacy",
-    title: "Be seen near your shop.",
-    body: "Dilini's pharmacy is in Dehiwala. She uses Roamer to reach the people passing her door. She picked the plan in one phone call.",
+    audience: "Retail and local services",
+    title: "Help passengers discover your business.",
+    body: "Example idea: show a clear product image and offer code on Roamer. Use your own offer redemptions alongside our completed-play report to evaluate response.",
     facts: [
       { label: "Plan", value: "Roamer" },
-      { label: "Monthly pay", value: "LKR 25,000" },
-      { label: "Where", value: "Near her shop" },
+      { label: "Monthly fee", value: "LKR 25,000" },
+      { label: "Status", value: "Illustrative; not a customer result" },
     ],
     cta: { label: "See Roamer", href: "#monthly-packages" },
   },
   {
     number: "03",
-    audience: "Rizan, music festival",
-    title: "One weekend, no contract.",
-    body: "Rizan ran Spark for the opening weekend. Three days, five tuk-tuks. The campaign ended when the festival ended.",
+    audience: "Fintech and consumer brands",
+    title: "Explain one useful benefit.",
+    body: "Example idea: use Pioneer’s larger minute allocation for a simple product introduction and a QR link to your authorised landing page. No personal financial information is collected on the shared screen.",
     facts: [
-      { label: "Plan", value: "Spark" },
-      { label: "One-off pay", value: "LKR 12,000" },
-      { label: "Length", value: "3 days" },
+      { label: "Plan", value: "Pioneer" },
+      { label: "Monthly fee", value: "LKR 85,000" },
+      { label: "Status", value: "Illustrative; not a customer result" },
     ],
-    cta: { label: "See Burst", href: "#burst-packages" },
+    cta: { label: "See Pioneer", href: "#monthly-packages" },
   },
 ] as const;
 
@@ -407,17 +348,17 @@ export const advertiserFaqs = [
   {
     question: "Can I start without a monthly plan?",
     answer:
-      "Yes. Burst packages are one-off campaigns that run for 3, 7 or 10 days. You do not need to join a monthly plan.",
+      "Planned Burst packages run for 7, 14 or 30 days from activation. You can register interest without joining a monthly plan; availability must be confirmed.",
   },
   {
     question: "What kind of ad can I run?",
     answer:
-      "A video or an image. Small businesses can also use the simple ad builder in the portal to make an ad and send it to our team for review.",
+      "Supply an approved landscape 1920 × 1080 video or image. See the creative guide below. Design and substantial edits are charged separately by prior agreement.",
   },
   {
     question: "Where does my campaign run?",
     answer:
-      "Today, in Dehiwala, Mount Lavinia and Ratmalana. We add new places only after active tuk-tuks are earning there.",
+      "We accept enquiries across Colombo for November 2026. Actual coverage and vehicle allocation are agreed before booking.",
   },
   {
     question: "How quickly can my campaign launch?",
@@ -447,6 +388,7 @@ export const closingHeadingLines = ["Launch with proof.", "Not estimates."] as c
 export const closingAccent = "Not estimates.";
 
 export const closingBody =
-  "Pick a plan and tell us what you want to achieve. We help you launch. Your spot is held with a refundable LKR 5,000 deposit.";
+  "Reserve for our planned November 2026 launch. We confirm your campaign order, coverage and start date before booking. The LKR 10,000 reservation is refundable before activation and credited to your first invoice.";
 
-export const closingNote = "Free first seven days. Refundable deposit. Plain English agreement.";
+export const closingNote =
+  "Refundable LKR 10,000 reservation. No free trial. Plain English agreement.";

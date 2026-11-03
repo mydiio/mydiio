@@ -2,7 +2,7 @@ import { Reveal } from "@/motion";
 import { aboutFutureHeading, aboutFutureBody, aboutFuture } from "../aboutContent";
 
 const cadenceLabel: Record<"live" | "soon" | "next", string> = {
-  live: "Live today",
+  live: "Planned launch",
   soon: "Next",
   next: "Ahead",
 };

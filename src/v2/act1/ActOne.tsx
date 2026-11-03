@@ -1,5 +1,1 @@
-import { VideoSequence } from "./components/VideoSequence";
-
-export function ActOne() {
-  return <VideoSequence />;
-}
+export { LaunchHero as ActOne } from "../commercial/LaunchHero";

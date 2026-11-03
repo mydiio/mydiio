@@ -1,8 +1,16 @@
+import {
+  activationPolicy,
+  refundPolicy,
+  renewalPolicy,
+  shortfallPolicy,
+  pioneerPolicy,
+  joiningPolicy,
+} from "../commercial/policy";
 // src/v2/terms/termsContent.ts
 // Terms and conditions copy distilled from the legacy /terms route.
 
-export const termsEffective = "September 2026";
-export const termsVersion = "1.1";
+export const termsEffective = "10 October 2026";
+export const termsVersion = "2.0";
 
 export const termsHeroEyebrow = "Terms and Conditions";
 export const termsHeroHeading = "The rules of using mydiio.";
@@ -44,8 +52,8 @@ export const termsSections: TermsSection[] = [
           "“Creative”, any video or image file uploaded by an advertiser for display on mydiio screens.",
           "“Campaign”, an active or scheduled advertising run with defined start and end dates, assigned vehicles, and one or more creatives.",
           "“Impression”, an accepted completed play of a creative on a mydiio screen with the delivery evidence required by the campaign agreement. It is a delivery record, not a claim that a unique passenger viewed the creative.",
-          "“Pioneer tier”, the founding advertiser package offering twelve-month neighbourhood category exclusivity within a corridor defined at the point of signing, a fixed per-minute rate for the life of the subscription, and limited to ten advertisers in total.",
-          "“Deposit”, the refundable security deposit paid by advertisers or driver partners at the commencement of their relationship with mydiio.",
+          "“Pioneer tier”, a limited launch package with agreed live coverage, a three-month minimum and twelve-month price protection, limited to ten active advertisers.",
+          "“Reservation deposit”, the LKR 10,000 advertiser reservation credited to the first invoice. Driver joining fees are separate and governed by Section 5.",
           "“Agreement”, any written contract signed separately between mydiio and an advertiser or driver partner, which supplements and incorporates these terms.",
         ],
       },
@@ -83,7 +91,7 @@ export const termsSections: TermsSection[] = [
       { kind: "heading", body: "Current platform status" },
       {
         kind: "body",
-        body: "mydiio is currently operating in a pilot phase with up to 10 vehicles. Year 1 targets 50 vehicles across Colombo. The platform is operational but actively developing. Features may be added, changed, or temporarily unavailable as the platform grows.",
+        body: "Reservations are open for our planned November 2026 launch in Colombo. Actual coverage, vehicle allocation and dates are confirmed before booking. Future vehicle types and planned packages are not current availability commitments.",
       },
       { kind: "heading", body: "No guarantee of specific reach" },
       {
@@ -110,13 +118,13 @@ export const termsSections: TermsSection[] = [
       {
         kind: "list",
         items: [
-          "Roamer, LKR 25,000 per month, minimum 3-month commitment, up to 5 vehicles",
-          "Voyager, LKR 38,000 per month, minimum 3-month commitment, up to 15 vehicles",
-          "Pioneer, LKR 25,000 to LKR 35,000 per month, minimum 3-month commitment, full fleet, twelve-month neighbourhood corridor category exclusivity, fixed per-minute rate for the subscription lifetime, limited to 10 spots ever",
-          "Horizon, LKR 65,000 and above, minimum 3-month commitment, custom terms, 15 to 100+ vehicles",
-          "Burst Spark, LKR 12,000 for 200 impression minutes, up to 5 vehicles, 3-day validity",
-          "Burst Blast, LKR 33,000 for 600 impression minutes, up to 15 vehicles, 7-day validity",
-          "Burst Surge, LKR 40,000 for 800 impression minutes, up to 20 vehicles, 10-day validity",
+          "Roamer: LKR 25,000/month; 500 total screen minutes/month; up to 5 accepted vehicles; 3-month minimum",
+          "Pioneer: LKR 85,000/month; 2,000 total screen minutes/month; agreed live coverage; 3-month minimum; 12-month price protection; maximum 10 active advertisers",
+          "Voyager (planned): LKR 150,000/month; 5,000 total screen minutes/month; up to 15 accepted vehicles; 3-month minimum",
+          "Horizon (planned): LKR 250,000/month; 10,000 total screen minutes/month; up to 25 accepted vehicles; 3-month minimum",
+          "Spark (planned): LKR 12,000 total; 200 total screen minutes; up to 5 vehicles; 7 days from activation",
+          "Blast (planned): LKR 33,000 total; 600 total screen minutes; up to 10 vehicles; 14 days from activation",
+          "Surge (planned): LKR 40,000 total; 800 total screen minutes; up to 25 vehicles; 30 days from activation",
         ],
       },
       {
@@ -128,30 +136,32 @@ export const termsSections: TermsSection[] = [
         kind: "body",
         body: "Attention Insights is an optional pilot add-on and is not activated by registering interest. If offered, availability and final terms require a separate written pilot confirmation, compatible vehicle hardware, privacy review, approved passenger notice, camera placement validation and calibration. Outputs are aggregate estimates for campaign optimization. They are not facial recognition, identity, demographic or emotion profiles, guaranteed views, unique-person counts, or the billing currency for your contracted delivery.",
       },
-      { kind: "heading", body: "Pioneer category exclusivity" },
+      { kind: "heading", body: "Pioneer coverage and price protection" },
       {
         kind: "body",
-        body: "Pioneer advertisers receive twelve-month neighbourhood category exclusivity within a corridor defined at the point of signing. The per-minute rate is fixed for the life of the subscription, but the exclusivity period itself is twelve months from the contract start date, not indefinite, and it is corridor-based, not city-wide. After the twelve-month exclusivity period, mydiio may accept new advertisers from the same category within the same corridor. If your contract lapses for more than 30 days without renewal, the category becomes open for new applications in that corridor.",
+        body: pioneerPolicy,
       },
       { kind: "heading", body: "Creative submission and review" },
       {
         kind: "body",
-        body: "All creatives must be submitted through the Advertiser Portal. No creative will go live until reviewed and approved by our content team, typically within one business day. By submitting a creative, you confirm that you own or have the legal right to use all content within it, and that the creative complies with the content standards in Section 6.",
+        body: "Advertisers supply compliant creative and approve the final version before scheduling. Submit files at least three working days before the agreed start. Design and substantial edits are charged separately after agreement on scope and price. Review is required; no fixed 72-hour activation guarantee applies. Static-image display duration is agreed in the campaign order.",
       },
       { kind: "heading", body: "Advertiser deposit" },
       {
         kind: "body",
-        body: "A refundable deposit of LKR 5,000 is required to confirm your spot on the waitlist or to confirm a subscription tier booking. The deposit is credited against your first invoice. If mydiio is unable to fulfil your booking, the deposit is returned in full. If you cancel after confirming your booking but before your campaign starts, we reserve the right to retain the deposit to cover administrative costs.",
+        body: refundPolicy,
       },
       { kind: "heading", body: "Campaign changes and cancellations" },
       {
         kind: "body",
-        body: "You may pause or modify your campaign by contacting us at mydiiomedia@gmail.com. Pause requests take up to 24 hours to take effect. Minimum commitment periods still apply during a pause unless otherwise agreed in writing. Campaigns cannot be cancelled mid-contract without forfeiting the remaining contract value unless mydiio fails to deliver the service.",
+        body: renewalPolicy,
       },
-      { kind: "heading", body: "Free trial" },
+      { kind: "heading", body: "Activation and payment" },
       {
         kind: "body",
-        body: "Where a free trial is offered, it is available to subscription tier advertisers for the first 7 days of their first campaign.",
+        body:
+          activationPolicy +
+          " No free trial is offered. All prices exclude applicable taxes. Burst packages are planned and, when available, require full payment before activation. Registering interest in a planned package requires no deposit.",
       },
     ],
   },
@@ -163,17 +173,19 @@ export const termsSections: TermsSection[] = [
       { kind: "heading", body: "Written agreement" },
       {
         kind: "body",
-        body: "No screen will be installed in your vehicle until you have signed a written driver partner agreement with mydiio. That agreement governs the specific terms of your partnership including your group designation, deposit amount, bonus structure, and compliance obligations. These terms apply alongside and supplement that agreement.",
+        body: "A written driver agreement is required before installation. Applicants provide contact, vehicle and route details initially. Identity and bank details are collected only after initial acceptance; eligibility documents are requested after screening. Vehicles should normally be no more than 15 years old by manufacture year. Older vehicles require individual review and must explicitly pass safety, condition and installation criteria. All vehicles require inspection.",
       },
       { kind: "heading", body: "Equipment" },
       {
         kind: "body",
-        body: "mydiio supplies the Android tablet and associated mounting hardware. The equipment remains the property of mydiio at all times. You must not remove, modify, cover, damage, or tamper with the equipment. Any damage caused by deliberate misuse may result in deductions from your deposit or the cost of replacement being charged to you.",
+        body:
+          joiningPolicy +
+          " Do not tamper with the equipment. Deliberate damage and equipment return obligations are governed by the written agreement; no driver deposit-forfeiture schedule applies.",
       },
       { kind: "heading", body: "Uptime obligations" },
       {
         kind: "body",
-        body: "You are expected to keep the screen powered on and active during your normal operating hours. The route bonus of LKR 2,000 per month requires an average of 8 or more active screen hours per day across the calendar month. You will never be penalised for technical faults that are outside your control. If the screen or device malfunctions, contact us immediately and we will arrange repair or replacement.",
+        body: "Keep equipment ready during normal passenger service. Bonus accrues proportionately from the first eligible service hour, up to LKR 2,000 at 260 eligible hours in a month; reasonable passenger-service waiting time counts. There is no speed or distance reward and no minimum service-hour requirement for the base. Technical faults outside your control do not reduce your protected base. Report equipment faults promptly.",
       },
       { kind: "heading", body: "Monitoring" },
       {
@@ -188,18 +200,10 @@ export const termsSections: TermsSection[] = [
       { kind: "heading", body: "Payment" },
       {
         kind: "body",
-        body: "Base pay of LKR 6,000 per month is unconditional and paid by bank transfer on the 5th of each calendar month without exception. Route bonus and referral bonus payments are made at the same time once eligibility is confirmed. If the 5th falls on a bank holiday, payment will be made on the preceding banking day.",
+        body: "Base pay is LKR 4,000 per month, with a proportionate performance bonus of up to LKR 2,000 based on verified eligible service hours. Payment is made within seven days after month-end with a breakdown. The base is protected for downtime caused by mydiio.",
       },
-      { kind: "heading", body: "Driver deposit and exit terms" },
-      {
-        kind: "list",
-        items: [
-          "Exit before 6 months of continuous participation, deposit forfeited in full",
-          "Exit between 6 and 12 months, 50% of deposit returned within 30 days of exit date",
-          "Exit after 12 months of continuous participation, full deposit returned within 30 days",
-          "Permanent removal under Stage 4 of the compliance system, deposit forfeited",
-        ],
-      },
+      { kind: "heading", body: "Driver joining fee" },
+      { kind: "body", body: joiningPolicy },
       { kind: "heading", body: "Referral programme" },
       {
         kind: "body",
@@ -214,7 +218,7 @@ export const termsSections: TermsSection[] = [
     blocks: [
       {
         kind: "body",
-        body: "All creatives submitted to mydiio must comply with the following standards. Content that violates these standards will be rejected or removed and may result in account suspension without refund.",
+        body: "All creatives submitted to mydiio must comply with the following standards. Content that violates these standards will be rejected or removed and may result in account suspension. Content rejection or suspension does not override the pre-activation refund rules or agreed delivery remedies.",
       },
       { kind: "heading", body: "Prohibited content:" },
       {
@@ -266,17 +270,17 @@ export const termsSections: TermsSection[] = [
       { kind: "heading", body: "Payment terms for advertisers" },
       {
         kind: "body",
-        body: "Invoices are issued in Sri Lankan Rupees (LKR). Payment is due within 14 days of the invoice date unless otherwise agreed in writing. Late payments may result in the suspension of your campaign until the outstanding balance is settled.",
+        body: renewalPolicy,
       },
       { kind: "heading", body: "Refund policy" },
       {
         kind: "body",
-        body: "The LKR 5,000 advertiser deposit is fully refundable if mydiio cannot fulfil your booking. Monthly campaign fees are non-refundable once a campaign has gone live, except in cases where mydiio fails to deliver the agreed service. In such cases, a credit or partial refund proportional to the shortfall will be applied.",
+        body: refundPolicy + " " + shortfallPolicy,
       },
       { kind: "heading", body: "Price changes" },
       {
         kind: "body",
-        body: "Pioneer tier advertisers hold a fixed per-minute rate for the life of their active subscription as long as they renew without a gap exceeding 30 days. Any price change for other tiers will be communicated at least 30 days before it takes effect for existing customers.",
+        body: pioneerPolicy,
       },
     ],
   },
@@ -295,7 +299,7 @@ export const termsSections: TermsSection[] = [
           "mydiio is not liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the platform",
           "mydiio’s total liability to any advertiser is limited to the fees paid by that advertiser in the three months preceding the claim",
           "mydiio is not liable for the content of advertisements, which is the sole mechanism of the advertiser who submitted them",
-          "mydiio is not liable for losses arising from connectivity failures, hardware malfunctions, or circumstances outside our reasonable control",
+          "Connectivity or hardware failures do not remove the agreed remedy for undelivered campaign minutes",
         ],
       },
       {
@@ -327,7 +331,9 @@ export const termsSections: TermsSection[] = [
       { kind: "heading", body: "Termination by you" },
       {
         kind: "body",
-        body: "Advertisers may request termination of their account. Termination does not waive any outstanding contractual obligations, including minimum commitment period fees. Driver partners may exit the programme subject to the deposit forfeiture terms in Section 5.",
+        body:
+          renewalPolicy +
+          " Driver partners may exit under their written agreement; the joining-fee rule in Section 5 applies.",
       },
       { kind: "heading", body: "Termination by mydiio" },
       {
@@ -358,7 +364,7 @@ export const termsSections: TermsSection[] = [
     blocks: [
       {
         kind: "body",
-        body: "If you have a dispute with mydiio, please contact us first at mydiiomedia@gmail.com. We will try to resolve any dispute informally within 14 days of receiving your written complaint.",
+        body: "If you have a dispute with mydiio, please contact us first using the contact form at /contact. We will try to resolve any dispute informally within 14 days of receiving your written complaint.",
       },
       {
         kind: "body",
@@ -377,7 +383,7 @@ export const termsSections: TermsSection[] = [
     blocks: [
       {
         kind: "body",
-        body: "We may update these terms as the platform grows and as legal or regulatory requirements change. When we make meaningful changes, we will notify registered users by email at least 14 days before the updated terms take effect.",
+        body: "We may update these terms as the platform grows and as legal or regulatory requirements change. When we make meaningful changes, we will notify registered users by email at least 14 days before the updated terms take effect. Updates do not override an existing campaign order, the stated refund rights, or Pioneer price protection and its separate 30-day price-change notice.",
       },
       {
         kind: "body",
@@ -408,7 +414,7 @@ export const termsSections: TermsSection[] = [
       {
         kind: "list",
         items: [
-          "Email: mydiiomedia@gmail.com",
+          "Contact form: https://mydiio.com/contact",
           "Phone / WhatsApp: 070 747 1002",
           "Website: mydiio.com",
           "Start Smart Technologies Private Limited, trading as mydiio, Colombo, Sri Lanka",

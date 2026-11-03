@@ -71,7 +71,7 @@ export function BurstPackages() {
                     : "advertiser-burst-cta"
                 }
               >
-                Choose {item.name}
+                Express interest in {item.name}
               </a>
             </article>
           );

@@ -23,6 +23,19 @@ export function ActFour() {
         background: colors.ink,
       }}
     >
+      <p
+        style={{
+          position: "absolute",
+          top: 12,
+          left: 24,
+          right: 24,
+          zIndex: 5,
+          color: "#fff",
+          fontSize: 13,
+        }}
+      >
+        Illustrative platform preview · sample data, not customer results.
+      </p>
       <PlatformScene progress={progress} />
     </section>
   );

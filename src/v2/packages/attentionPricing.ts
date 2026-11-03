@@ -1,12 +1,12 @@
 export const attentionMonthlyPricing = {
-  roamer: "+ LKR 3,500 / month",
-  voyager: "+ LKR 5,500 / month",
-  pioneer: "+ LKR 5,000 / month",
-  horizon: "From + LKR 10,000 / month",
+  roamer: "Pricing confirmed after pilot assessment",
+  voyager: "Pricing confirmed after pilot assessment",
+  pioneer: "Pricing confirmed after pilot assessment",
+  horizon: "Pricing confirmed after pilot assessment",
 } as const;
 
 export const attentionBurstPricing = {
-  "burst-spark": "+ LKR 2,000 / campaign",
-  "burst-blast": "+ LKR 4,000 / campaign",
-  "burst-surge": "+ LKR 5,000 / campaign",
+  "burst-spark": "Pricing confirmed after pilot assessment",
+  "burst-blast": "Pricing confirmed after pilot assessment",
+  "burst-surge": "Pricing confirmed after pilot assessment",
 } as const;

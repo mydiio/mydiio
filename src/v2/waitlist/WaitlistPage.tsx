@@ -217,7 +217,7 @@ export function WaitlistPage() {
         <nav aria-label="Legal links">
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
-          <a href="mailto:mydiiomedia@gmail.com">Contact</a>
+          <a href="/contact">Contact</a>
         </nav>
       </footer>
     </main>

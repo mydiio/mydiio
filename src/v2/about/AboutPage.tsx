@@ -1,3 +1,5 @@
+import { ContactFacts } from "../contact/components/ContactFacts";
+import "../contact/contact.css";
 import { AtlasNav } from "@/v2/layout";
 import { AtlasFooter } from "@/v2/layout";
 import "@/v2/foundation/homepage.css";
@@ -12,11 +14,12 @@ import { AboutClosing } from "./components/AboutClosing";
 export function AboutPage() {
   return (
     <main data-v2-page data-about-page>
-      <AtlasNav />
+      <AtlasNav initialTone="dark" />
       <AboutHero />
       <AboutPillars />
       <AboutSides />
       <AboutFuture />
+      <ContactFacts />
       <AboutClosing />
       <AtlasFooter />
     </main>

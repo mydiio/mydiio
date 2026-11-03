@@ -11,7 +11,6 @@ const [mode, page, home, sitemap, ...marketingRoutes] = await Promise.all([
   read("src/routes/about.tsx"),
   read("src/routes/advertise.tsx"),
   read("src/routes/advertise_.apply.tsx"),
-  read("src/routes/contact.tsx"),
   read("src/routes/drive.tsx"),
   read("src/routes/investors.tsx"),
 ]);
@@ -52,6 +51,7 @@ for (const operationalRoute of [
   "src/routes/drivers.apply.tsx",
   "src/routes/r.$kind.$code.ts",
   "src/routes/ride.$vehicleId.tsx",
+  "src/routes/contact.tsx",
   "src/routes/privacy.tsx",
   "src/routes/terms.tsx",
 ]) {

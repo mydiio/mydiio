@@ -2,7 +2,6 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 import { DriverPage } from "@/v2/drivers";
 import { isPublicWaitlistMode } from "@/config/publicSiteMode";
 import "@/v2/foundation/homepage.css";
-import "@/v2/drivers/drivers.css";
 
 export const Route = createFileRoute("/drive")({
   beforeLoad: () => {
@@ -12,12 +11,12 @@ export const Route = createFileRoute("/drive")({
   head: () => ({
     meta: [
       {
-        title: "Earn from your tuk-tuk. Paid on the 5th. | mydiio",
+        title: "Drive with mydiio | Colombo driver enquiries",
       },
       {
         name: "description",
         content:
-          "Join the mydiio driver network. We install a screen in your vehicle, you drive as normal. Monthly payouts on the 5th. Based in Colombo, Sri Lanka.",
+          "Join the mydiio driver network. We install a screen in your vehicle, you drive as normal. LKR 4,000 base plus up to LKR 2,000 bonus, paid within seven days after month-end. Based in Colombo, Sri Lanka.",
       },
       {
         property: "og:title",
@@ -25,7 +24,8 @@ export const Route = createFileRoute("/drive")({
       },
       {
         property: "og:description",
-        content: "Free screen install. LKR 6,000 to 8,000 a month. Paid on the 5th.",
+        content:
+          "Equipment and installation provided. One-time LKR 5,000 joining fee after acceptance; refundable before successful installation.",
       },
       {
         property: "og:url",
