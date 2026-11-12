@@ -78,4 +78,3 @@ export function ClosingScene({ progress: _progress }: ClosingSceneProps) {
     </div>
   );
 }
-

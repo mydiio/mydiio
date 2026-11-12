@@ -298,6 +298,3 @@ function UtilityTitle({
     </motion.article>
   );
 }
-
-
-

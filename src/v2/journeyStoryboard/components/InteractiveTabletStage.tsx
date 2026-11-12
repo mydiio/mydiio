@@ -203,8 +203,3 @@ export function InteractiveTabletStage({ progress }: InteractiveTabletStageProps
     </div>
   );
 }
-
-
-
-
-

@@ -27,7 +27,7 @@ function driverAccentPhrase(language: DriverLanguage, english: string, sinhala: 
 }
 
 export function DriverExperience({ application = false }: { application?: boolean }) {
-  
+
   const [lang, setLang] = useState<DriverLanguage>("en"),
     [preferred, setPreferred] = useState<DriverLanguage>("en");
   const [year, setYear] = useState(""),

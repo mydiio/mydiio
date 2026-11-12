@@ -107,10 +107,10 @@ export function LaunchHero() {
         </p>
         <div className="commercial-actions">
           <a className="atlas-button-primary" href="/mydiio-campaign-studio-v4-4.html">
-            Preview your advert 
+            Preview your advert
           </a>
           <a className="commercial-secondary" href="/advertise#monthly-packages">
-            Explore packages 
+            Explore packages
           </a>
         </div>
       </div>

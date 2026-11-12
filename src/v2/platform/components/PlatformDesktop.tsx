@@ -379,12 +379,3 @@ export function PlatformDesktop({ progress }: PlatformSceneProps) {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-

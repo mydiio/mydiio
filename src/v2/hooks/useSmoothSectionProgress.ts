@@ -123,4 +123,3 @@ export function useSmoothSectionProgress({
     progress,
   };
 }
-

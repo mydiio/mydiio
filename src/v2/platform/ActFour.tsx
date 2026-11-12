@@ -28,11 +28,3 @@ export function ActFour() {
     </section>
   );
 }
-
-
-
-
-
-
-
-
