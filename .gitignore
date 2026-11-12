@@ -57,3 +57,28 @@ repo-cleanup-audit.md
 .aider.chat.history.md
 .aider.input.history
 .aider.tags.cache.*
+
+# mydiio local housekeeping artifacts (not production source)
+# Private local environment settings. Template files may be committed with placeholders only.
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+.dev.vars*
+!.dev.vars.example
+
+# Local backups from site edits and release work
+/backups/
+/atlas-backups/
+/.backups/
+/.patch-backups/
+/.performance-backups/
+/*-backup-*/
+/.*-backup-*/
+*.backup-*
+*.before-*
+
+# Generated local audit and scratch output
+/mydiio-repo-audit-*.txt
+/mydiio-atlas-snapshot-QA.txt
+/mydiio-production-snapshot-review.txt
