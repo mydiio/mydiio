@@ -5,7 +5,7 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { JourneyTablet } from "../tablet/JourneyTablet";
 
 type InteractiveTabletStageProps = {
@@ -16,26 +16,26 @@ const stages = [
   {
     id: "live-journey",
     label: "Live journey",
-    eyebrow: "01 · Playback",
-    title: "See the journey as it happens.",
+    eyebrow: "01 / Passenger experience",
+    title: "A better journey gets noticed.",
     description:
-      "The active vehicle, route and passenger content are visible in one clear operational view.",
+      "News, weather and useful local information make the screen part of the journey, creating a natural place for your business to appear.",
   },
   {
     id: "gps-verified",
     label: "GPS verified",
-    eyebrow: "02 · Verification",
-    title: "Every play becomes proof.",
+    eyebrow: "02 / Delivery transparency",
+    title: "Know where your advert was played.",
     description:
-      "Location, time and vehicle data verify where the campaign was actually delivered.",
+      "Playback records linked to location, time and vehicle data help you see where your campaign was delivered.",
   },
   {
     id: "monday-report",
     label: "Monday report",
-    eyebrow: "03 · Reporting",
-    title: "The result arrives ready to use.",
+    eyebrow: "03 / Campaign accountability",
+    title: "See what your campaign delivered.",
     description:
-      "Verified campaign activity is organised into a clear weekly report for the advertiser.",
+      "Your Monday report brings recorded plays and delivery evidence together, so you can review campaign activity with confidence.",
   },
 ] as const;
 
@@ -55,11 +55,17 @@ function stageFromProgress(progress: number): StageId {
 
 export function InteractiveTabletStage({ progress }: InteractiveTabletStageProps) {
   const [scrollStage, setScrollStage] = useState<StageId>("live-journey");
+  const lastScrollStage = useRef<StageId>("live-journey");
 
   const [manualStage, setManualStage] = useState<StageId | null>(null);
 
+  // atlas-perf-v2: avoid render per scroll tick; only update at chapter transitions.
   useMotionValueEvent(progress, "change", (latest) => {
-    setScrollStage(stageFromProgress(latest));
+    const nextStage = stageFromProgress(latest);
+    if (nextStage !== lastScrollStage.current) {
+      lastScrollStage.current = nextStage;
+      setScrollStage(nextStage);
+    }
   });
 
   const explorerOpacity = useTransform(progress, [0.12, 0.24, 1], [0, 1, 1]);
@@ -77,45 +83,23 @@ export function InteractiveTabletStage({ progress }: InteractiveTabletStageProps
       className="absolute inset-0"
     >
       <style>{`
-        [data-interactive-tablet-stage]
-          .journey-storyboard-tablet {
+        [data-interactive-tablet-stage] .journey-storyboard-tablet {
           left: 50% !important;
-          top: 41.8% !important;
-          width: min(1010px, 68vw) !important;
-        }
-
-        [data-active-screen]
-          [data-screen-state] {
-          opacity: 0 !important;
-          transform: scale(0.998) !important;
-          transition:
-            opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
-            transform 620ms cubic-bezier(0.22, 1, 0.36, 1) !important;
-        }
-
-        [data-active-screen="live-journey"]
-          [data-screen-state="live-journey"],
-        [data-active-screen="gps-verified"]
-          [data-screen-state="gps-verified"],
-        [data-active-screen="monday-report"]
-          [data-screen-state="monday-report"] {
-          opacity: 1 !important;
-          transform: scale(1) !important;
+          top: 42% !important;
+          width: min(1120px, 76vw, 110svh) !important;
         }
 
         @media (max-width: 1100px) {
-          [data-interactive-tablet-stage]
-            .journey-storyboard-tablet {
-            top: 45% !important;
-            width: min(870px, 82vw) !important;
+          [data-interactive-tablet-stage] .journey-storyboard-tablet {
+            top: 41% !important;
+            width: min(930px, 86vw, 105svh) !important;
           }
         }
 
         @media (max-width: 760px) {
-          [data-interactive-tablet-stage]
-            .journey-storyboard-tablet {
-            top: 41.5% !important;
-            width: 93vw !important;
+          [data-interactive-tablet-stage] .journey-storyboard-tablet {
+            top: 39% !important;
+            width: min(94vw, 100svh) !important;
           }
         }
       `}</style>
@@ -128,13 +112,13 @@ export function InteractiveTabletStage({ progress }: InteractiveTabletStageProps
           opacity: explorerOpacity,
           y: explorerY,
         }}
-        className="absolute bottom-[5.5%] left-1/2 z-30 w-[min(760px,92vw)] -translate-x-1/2"
+        className="absolute bottom-[5%] left-1/2 z-30 w-[min(760px,92vw)] -translate-x-1/2"
       >
         <div className="flex flex-col items-center">
           <div
             role="tablist"
             aria-label="Explore the mydiio tablet"
-            className="flex items-center gap-1 rounded-full border border-white/[0.1] bg-black/50 p-1.5 shadow-[0_18px_55px_rgba(0,0,0,0.34)] backdrop-blur-xl"
+            className="flex items-center gap-1 rounded-full border border-white/[0.08] bg-[#10100F]/95 p-1 shadow-[0_18px_55px_rgba(0,0,0,0.34)] backdrop-blur-xl"
           >
             {stages.map((stage) => {
               const active = stage.id === activeStage;
@@ -146,7 +130,7 @@ export function InteractiveTabletStage({ progress }: InteractiveTabletStageProps
                   role="tab"
                   aria-selected={active}
                   onClick={() => setManualStage(stage.id)}
-                  className="relative rounded-full px-4 py-2.5 text-[11px] font-medium tracking-[0.035em] text-white/55 transition-colors duration-300 hover:text-white/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]/55 md:px-5 md:text-xs"
+                  className="relative rounded-full px-4 py-2 text-[11px] font-medium tracking-[0.035em] text-white/55 transition-colors duration-300 hover:text-white/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]/55 md:px-5 md:text-xs"
                 >
                   {active ? (
                     <motion.span
@@ -168,7 +152,7 @@ export function InteractiveTabletStage({ progress }: InteractiveTabletStageProps
             })}
           </div>
 
-          <div className="mt-3.5 min-h-[64px] w-full text-center">
+          <div className="mt-3 min-h-[58px] w-full text-center">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={activeStageData.id}
@@ -193,11 +177,11 @@ export function InteractiveTabletStage({ progress }: InteractiveTabletStageProps
                   {activeStageData.eyebrow}
                 </p>
 
-                <p className="mt-1.5 text-sm font-medium tracking-[-0.015em] text-[#FDFAF3] md:text-base">
+                <p className="mt-1.5 text-base font-semibold tracking-[-0.02em] text-[#FDFAF3] md:text-lg">
                   {activeStageData.title}
                 </p>
 
-                <p className="mx-auto mt-1 max-w-[620px] text-xs leading-relaxed text-white/56 md:text-[13px]">
+                <p className="mx-auto mt-1 max-w-[620px] text-[13px] leading-relaxed text-white/70 md:text-sm">
                   {activeStageData.description}
                 </p>
               </motion.div>

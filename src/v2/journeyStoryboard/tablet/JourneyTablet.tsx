@@ -1,12 +1,14 @@
+import type { ReactNode } from "react";
 import { journeyAssets } from "@/assets/journey";
 import { journeyScreenAssets } from "@/assets/journey-screen-ui";
 import { motion, useTransform, useMotionValue, type MotionValue } from "framer-motion";
 
 type JourneyTabletProps = {
   progress?: MotionValue<number>;
+  screenContent?: ReactNode;
 };
 
-export function JourneyTablet({ progress: suppliedProgress }: JourneyTabletProps) {
+export function JourneyTablet({ progress: suppliedProgress, screenContent }: JourneyTabletProps) {
   const fallbackProgress = useMotionValue(1);
   const progress = suppliedProgress ?? fallbackProgress;
   /*
@@ -97,9 +99,18 @@ export function JourneyTablet({ progress: suppliedProgress }: JourneyTabletProps
           className="absolute inset-0 z-0 bg-[#0b0c0c]"
         />
 
+        {screenContent && <div style={{ position: "absolute", inset: 0, zIndex: 4 }}>{screenContent}</div>}
+
+        {!screenContent && <>
+
         <motion.img
           data-screen-state="live-journey"
+          data-atlas-perf-v2-stage-image
+          loading="lazy"
+          decoding="async"
           src={journeyScreenAssets.liveJourney}
+          srcSet={journeyScreenAssets.liveJourneySrcSet}
+          sizes="(max-width: 760px) 62.5vw, (max-width: 1100px) 55vw, (max-width: 1490px) 46vw, 679px"
           alt=""
           aria-hidden="true"
           draggable={false}
@@ -119,7 +130,12 @@ export function JourneyTablet({ progress: suppliedProgress }: JourneyTabletProps
 
         <motion.img
           data-screen-state="gps-verified"
+          data-atlas-perf-v2-stage-image
+          loading="lazy"
+          decoding="async"
           src={journeyScreenAssets.gpsVerified}
+          srcSet={journeyScreenAssets.gpsVerifiedSrcSet}
+          sizes="(max-width: 760px) 62.5vw, (max-width: 1100px) 55vw, (max-width: 1490px) 46vw, 679px"
           alt=""
           aria-hidden="true"
           draggable={false}
@@ -139,7 +155,12 @@ export function JourneyTablet({ progress: suppliedProgress }: JourneyTabletProps
 
         <motion.img
           data-screen-state="monday-report"
+          data-atlas-perf-v2-stage-image
+          loading="lazy"
+          decoding="async"
           src={journeyScreenAssets.mondayReport}
+          srcSet={journeyScreenAssets.mondayReportSrcSet}
+          sizes="(max-width: 760px) 62.5vw, (max-width: 1100px) 55vw, (max-width: 1490px) 46vw, 679px"
           alt=""
           aria-hidden="true"
           draggable={false}
@@ -156,6 +177,8 @@ export function JourneyTablet({ progress: suppliedProgress }: JourneyTabletProps
             transformOrigin: "50% 50%",
           }}
         />
+
+        </>}
 
         {/* Permanent restrained glass coating */}
         <div
@@ -197,7 +220,10 @@ export function JourneyTablet({ progress: suppliedProgress }: JourneyTabletProps
 
       <motion.img
         data-tablet-hardware
+        data-atlas-perf-v3-responsive-images
         src={journeyAssets.tablet.hardware}
+        srcSet={journeyAssets.tablet.hardwareSrcSet}
+        sizes="(max-width: 760px) 93vw, (max-width: 1100px) 82vw, (max-width: 1490px) 68vw, 1010px"
         alt=""
         aria-hidden="true"
         draggable={false}

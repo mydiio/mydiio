@@ -42,7 +42,7 @@ export function ContactFacts() {
           </article>
 
           <article className="contact-fact contact-fact-admin">
-            <span className="contact-fact-label">Admin panel</span>
+            <span className="contact-fact-label">Advertiser portal</span>
             <a
               className="contact-fact-link"
               href="https://admin.mydiio.com"

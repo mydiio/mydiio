@@ -25,7 +25,7 @@ const portalViews = [
     metric: "Live",
     metricLabel: "control",
     rows: [
-      ["01", "Active campaign", "Colombo South corridor"],
+      ["01", "Active campaign", "Agreed Colombo coverage"],
       ["02", "Available minutes", "Ready for upcoming plays"],
       ["03", "Top up", "Add more minutes instantly"],
     ],

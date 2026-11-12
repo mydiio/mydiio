@@ -1,0 +1,100 @@
+/* Self-hosted brand fonts. SIL Open Font License copies accompany the assets. */
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/brand/space-grotesk-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/brand/space-grotesk-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/brand/space-grotesk-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/brand/space-grotesk-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/brand/space-mono-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/brand/space-mono-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/brand/dm-serif-display-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Serif Display";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/brand/dm-serif-display-latin-400-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Noto Sans Sinhala";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/driver-languages/noto-sans-sinhala-sinhala-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Noto Sans Sinhala";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/driver-languages/noto-sans-sinhala-sinhala-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Noto Sans Sinhala";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/driver-languages/noto-sans-sinhala-sinhala-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Noto Sans Tamil";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/driver-languages/noto-sans-tamil-tamil-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Noto Sans Tamil";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/driver-languages/noto-sans-tamil-tamil-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Noto Sans Tamil";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/driver-languages/noto-sans-tamil-tamil-600-normal.woff2") format("woff2");
+}

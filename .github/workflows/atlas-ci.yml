@@ -1,0 +1,60 @@
+name: Atlas website CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never give this validation workflow write access to the repository.
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build full Atlas site
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      VITE_PREVIEW_FULL_SITE: 'true'
+      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check pull request whitespace
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: git diff --check "$(git merge-base HEAD origin/main)" HEAD
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.4.2'
+
+      - name: Check required build configuration
+        shell: bash
+        run: |
+          if [[ -z "$VITE_SUPABASE_URL" || -z "$VITE_SUPABASE_PUBLISHABLE_KEY" ]]; then
+            echo 'Missing Actions repository secrets: VITE_SUPABASE_URL and/or VITE_SUPABASE_PUBLISHABLE_KEY.' >&2
+            echo 'Set these in Settings > Secrets and variables > Actions. Never commit .env.local.' >&2
+            exit 1
+          fi
+
+      - name: Install exact locked dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build full public website
+        run: bun run build
+
+      - name: Verify Campaign Studio is in build output
+        shell: bash
+        run: test -s dist/client/mydiio-campaign-studio-v4-4.html

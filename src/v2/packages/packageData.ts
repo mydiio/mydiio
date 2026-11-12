@@ -1,10 +1,8 @@
-export type PackageSpec = {
-  label: string;
-  value: string;
-};
-
+import { attentionMonthlyPricing } from "./attentionPricing";
+import { monthlyRates, monthlyFeatures, money } from "./commercialPricing";
+export type PackageSpec = { label: string; value: string };
 export type PackageTier = {
-  id: string;
+  id: keyof typeof monthlyRates;
   number: string;
   name: string;
   eyebrow: string;
@@ -15,123 +13,53 @@ export type PackageTier = {
   emphasis?: string;
   featured?: boolean;
 };
-
-export const packageTiers: PackageTier[] = [
+const identities = [
   {
     id: "roamer",
-    number: "01",
     name: "Roamer",
     eyebrow: "Start focused",
-    description:
-      "A simple entry point for brands testing verified in-vehicle advertising in Colombo.",
-    scale: "Focused campaign",
-    price: "From LKR 25,000 / month",
-    specs: [
-      {
-        label: "Campaign minutes",
-        value: "500 included",
-      },
-      {
-        label: "Fleet",
-        value: "Up to 5 tuk-tuks",
-      },
-      {
-        label: "Commitment",
-        value: "3-month minimum",
-      },
-      {
-        label: "Attention Insights",
-        value: `${attentionMonthlyPricing.roamer} · optional pilot`,
-      },
-    ],
+    description: "A focused campaign across up to five accepted vehicles.",
+    scale: "Launch package",
   },
   {
     id: "voyager",
-    number: "02",
     name: "Voyager",
-    eyebrow: "Build frequency",
-    description: "Increase repetition across more journeys while keeping every play measurable.",
-    scale: "Growing coverage",
-    price: "From LKR 38,000 / month",
-    specs: [
-      {
-        label: "Campaign minutes",
-        value: "1,800 included",
-      },
-      {
-        label: "Fleet",
-        value: "Up to 15 tuk-tuks",
-      },
-      {
-        label: "Commitment",
-        value: "3-month minimum",
-      },
-      {
-        label: "Attention Insights",
-        value: `${attentionMonthlyPricing.voyager} · optional pilot`,
-      },
-    ],
+    eyebrow: "Build visibility",
+    description:
+      "More monthly minutes across up to fifteen vehicles. Register interest for future availability.",
+    scale: "Coming soon",
   },
   {
     id: "pioneer",
-    number: "03",
     name: "Pioneer",
-    eyebrow: "Own the early network",
+    eyebrow: "Join the launch",
     description:
-      "Priority access for brands that want stronger visibility as the mydiio network expands.",
-    scale: "Full-network presence",
-    price: "From LKR 25,000 / month",
-    specs: [
-      {
-        label: "Campaign minutes",
-        value: "2,000 included",
-      },
-      {
-        label: "Fleet",
-        value: "Full operating fleet",
-      },
-      {
-        label: "Exclusivity",
-        value: "12 months by category",
-      },
-      {
-        label: "Rate",
-        value: "Fixed for subscription life",
-      },
-      {
-        label: "Attention Insights",
-        value: `${attentionMonthlyPricing.pioneer} · optional pilot`,
-      },
-    ],
-    emphasis: "10 spots ever",
-    featured: true,
+      "2,000 monthly minutes within agreed live coverage, with twelve-month price protection.",
+    scale: "Limited launch package",
   },
   {
     id: "horizon",
-    number: "04",
     name: "Horizon",
-    eyebrow: "Built around you",
-    description: "A tailored campaign for larger brands, agencies and multi-location requirements.",
-    scale: "Custom deployment",
-    price: "From LKR 65,000 / month",
-    specs: [
-      {
-        label: "Campaign minutes",
-        value: "Custom allocation",
-      },
-      {
-        label: "Fleet",
-        value: "15 to 100+ tuk-tuks",
-      },
-      {
-        label: "Terms",
-        value: "Built around your campaign",
-      },
-      {
-        label: "Attention Insights",
-        value: `${attentionMonthlyPricing.horizon} · optional pilot`,
-      },
-    ],
+    eyebrow: "Broader coverage",
+    description:
+      "10,000 monthly minutes across up to twenty-five vehicles. Register interest for future availability.",
+    scale: "Coming soon",
   },
-];
-import { attentionMonthlyPricing } from "./attentionPricing";
+] as const;
+export const packageTiers: PackageTier[] = identities.map((tier, index) => ({
+  ...tier,
+  number: String(index + 1).padStart(2, "0"),
+  price: `${money(monthlyRates[tier.id].price)} / month`,
+  specs: [
+    {
+      label: "Screen minutes",
+      value: `${monthlyRates[tier.id].minutes.toLocaleString("en-US")} / month total`,
+    },
+    { label: "Coverage", value: monthlyRates[tier.id].vehicles },
+    { label: "Commitment", value: "3-month minimum" },
+    { label: "Availability", value: tier.scale },
+    { label: "Attention Insights", value: `${attentionMonthlyPricing[tier.id]} · optional pilot` },
+  ],
+  ...(tier.id === "pioneer" ? { emphasis: "10 active places", featured: true } : {}),
+}));
+export { monthlyFeatures };

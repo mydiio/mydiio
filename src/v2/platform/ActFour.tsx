@@ -7,9 +7,10 @@ export function ActFour() {
   const { sectionRef, progress } = useSmoothSectionProgress({
     holdBefore: 0,
     holdAfter: 1,
-    damping: 22,
-    entryProgress: true,
-    entryDistance: 2.3,
+    damping: 12,
+    entryProgress: false,
+    entryLead: 0.6,
+    snapToEnd: true,
   });
 
   return (
@@ -19,11 +20,11 @@ export function ActFour() {
       data-atlas-tone="dark"
       style={{
         position: "relative",
-        height: isMobile ? "230svh" : "230svh",
+        height: isMobile ? "auto" : "340svh",
         background: colors.ink,
       }}
     >
-      <PlatformScene progress={progress} />
+      <PlatformScene progress={isMobile ? 0.72 : progress} />
     </section>
   );
 }

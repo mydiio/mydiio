@@ -90,14 +90,14 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
         style={{
           position: "relative",
           zIndex: 2,
-          width: "min(1360px, calc(100% - 96px))",
+          width: "min(1360px, calc(100% - 112px))",
           height: "100%",
           marginInline: "auto",
-          padding: "clamp(34px, 4.8vh, 56px) 0",
+          padding: "clamp(48px, 6vh, 76px) 0",
           boxSizing: "border-box",
           display: "grid",
-          gridTemplateColumns: "minmax(0, 0.9fr) minmax(360px, 0.52fr)",
-          gap: "clamp(48px, 7vw, 108px)",
+          gridTemplateColumns: "minmax(0, 1fr) minmax(360px, 0.68fr)",
+          gap: "clamp(48px, 5.5vw, 88px)",
           alignItems: "center",
         }}
       >
@@ -130,34 +130,34 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
             className="atlas-commercial-heading"
             style={{
               margin: 0,
-              maxWidth: "10ch",
-              fontSize: "clamp(52px, 6.2vw, 96px)",
+              maxWidth: "12ch",
+              fontSize: "clamp(48px, 5.1vw, 78px)",
               fontWeight: 600,
-              lineHeight: 0.9,
-              letterSpacing: "-0.07em",
+              lineHeight: 0.98,
+              letterSpacing: "-0.055em",
               opacity: headingProgress,
               transform: `translateY(${(1 - headingProgress) * 24}px)`,
             }}
           >
-            Ten founding partners.
+            Ten active Pioneer places.
             <br />
-            Never more.
+            Available as places open.
           </h2>
 
           <p
             className="atlas-section-copy atlas-section-copy-light"
             style={{
               margin: "clamp(24px, 3vh, 34px) 0 0",
-              maxWidth: "48ch",
-              color: "rgba(253,250,243,0.65)",
+              maxWidth: "52ch",
+              color: "rgba(253,250,243,0.72)",
               fontSize: "clamp(16px, 1.25vw, 20px)",
               lineHeight: 1.55,
               opacity: bodyProgress,
               transform: `translateY(${(1 - bodyProgress) * 16}px)`,
             }}
           >
-            The first ten businesses receive permanent founding recognition and launch benefits that
-            will not be offered again as the network grows.
+            Up to ten advertisers can hold active Pioneer places. Vacated places may be offered
+            again. Your monthly price is protected for twelve months from activation.
           </p>
 
           <div
@@ -172,9 +172,9 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
             }}
           >
             {[
-              ["Rate", "Fixed for the life of your active subscription."],
-              ["Category", "12 months of exclusivity on your agreed corridor."],
-              ["Coverage", "Priority placement across the full operating fleet."],
+              ["Rate", "Monthly package price protected for 12 months."],
+              ["Category", "No category exclusivity included."],
+              ["Coverage", "Agreed live coverage; expansion priced separately."],
               ["Status", "Permanent recognition as one of ten founding partners."],
             ].map(([label, value]) => (
               <div
@@ -219,7 +219,7 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
             flexDirection: "column",
             justifyContent: "center",
             minWidth: 0,
-            paddingLeft: "clamp(28px, 4vw, 58px)",
+            paddingLeft: "clamp(28px, 3.5vw, 48px)",
             borderLeft: "1px solid rgba(253,250,243,0.1)",
           }}
         >
@@ -247,7 +247,7 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
             <span
               style={{
                 color: colors.cream,
-                fontSize: "clamp(72px, 8vw, 128px)",
+                fontSize: "clamp(72px, 7vw, 112px)",
                 fontWeight: 600,
                 lineHeight: 0.88,
                 letterSpacing: "-0.075em",
@@ -264,7 +264,7 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
                 fontWeight: 650,
               }}
             >
-              spots ever
+              active places
             </span>
           </div>
 
@@ -274,7 +274,7 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               display: "flex",
               justifyContent: "space-between",
               gap: "10px",
-              marginTop: "34px",
+              marginTop: "28px",
             }}
           >
             {Array.from({ length: 10 }).map((_, index) => {
@@ -286,18 +286,18 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
                   style={{
                     position: "relative",
                     flex: "1 1 0",
-                    maxWidth: "42px",
+                    maxWidth: "38px",
                     aspectRatio: "1 / 1",
                     borderRadius: "50%",
                     border: active
                       ? `1px solid ${colors.amber}`
                       : "1px solid rgba(253,250,243,0.16)",
                     background: active ? "rgba(245,166,35,0.15)" : "rgba(253,250,243,0.025)",
-                    boxShadow: active ? "0 0 0 6px rgba(245,166,35,0.045)" : "none",
+                    boxShadow: active ? "0 0 0 3px rgba(245,166,35,0.045)" : "none",
                     opacity: 0.24 + positionsProgress * 0.76,
-                    transform: active ? "scale(1)" : "scale(0.88)",
+                    transform: active ? "scale(1)" : "scale(0.96)",
                     transition:
-                      "background 0.3s ease, border 0.3s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1)",
+                      "background 0.45s ease, border 0.45s ease, transform 0.45s ease",
                   }}
                 >
                   <span
@@ -331,7 +331,7 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               opacity: positionsProgress,
             }}
           >
-            Ten positions only. When all ten are taken, Pioneer closes permanently.
+            Limited to ten active Pioneer advertisers. Availability is confirmed before booking.
           </div>
 
           <div
@@ -346,7 +346,7 @@ export function PioneerDesktop({ progress }: PioneerSceneProps) {
               transform: `translateY(${(1 - ctaProgress) * 12}px)`,
             }}
           >
-            <a href="/advertise/apply" className="atlas-button-amber">
+            <a href="/advertise/apply?tier=pioneer" className="atlas-button-amber">
               Apply for Pioneer
             </a>
 

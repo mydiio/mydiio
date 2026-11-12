@@ -1,3 +1,4 @@
+import { preserveProductionSeo } from "@/seo/productionSeoParity";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { AdvertisePage } from "@/v2/advertise";
 import { isPublicWaitlistMode } from "@/config/publicSiteMode";
@@ -9,7 +10,7 @@ export const Route = createFileRoute("/advertise")({
     if (isPublicWaitlistMode) throw redirect({ to: "/" });
   },
   component: AdvertisePage,
-  head: () => ({
+  head: preserveProductionSeo("/advertise", () => ({
     meta: [
       {
         title: "GPS-verified tuk-tuk advertising in Colombo | mydiio",
@@ -39,5 +40,5 @@ export const Route = createFileRoute("/advertise")({
         href: "https://mydiio.com/advertise",
       },
     ],
-  }),
+  })),
 });

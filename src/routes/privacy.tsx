@@ -1,9 +1,10 @@
+import { preserveProductionSeo } from "@/seo/productionSeoParity";
 import { createFileRoute } from "@tanstack/react-router";
 import { PrivacyPage } from "@/v2/privacy";
 
 export const Route = createFileRoute("/privacy")({
   component: PrivacyPage,
-  head: () => ({
+  head: preserveProductionSeo("/privacy", () => ({
     meta: [
       { title: "Privacy policy, mydiio" },
       {
@@ -19,5 +20,5 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:url", content: "https://mydiio.com/privacy" },
     ],
     links: [{ rel: "canonical", href: "https://mydiio.com/privacy" }],
-  }),
+  })),
 });

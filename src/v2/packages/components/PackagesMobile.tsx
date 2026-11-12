@@ -395,7 +395,7 @@ export function PackagesMobile({ progress }: PackagesMobileProps) {
                 background: colors.amber,
               }}
             />
-            Every package includes GPS-verified reporting.
+            Packages include campaign reporting with GPS evidence for eligible plays; delivery classifications and coverage conditions apply.
           </div>
         </div>
       </div>

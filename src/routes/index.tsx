@@ -1,11 +1,12 @@
+import { preserveProductionSeo } from "@/seo/productionSeoParity";
+import { LaunchHero } from "@/v2/commercial/LaunchHero";
+import { Expansion } from "@/v2/commercial/Expansion";
+import "@/v2/commercial/commercial.css";
 import { createFileRoute } from "@tanstack/react-router";
 import { AtlasNav, AtlasFooter } from "@/v2/layout";
-import { ActOne } from "@/v2/act1";
-import { ActTwo, FundingStatement } from "@/v2/act2";
+import { FundingStatement } from "@/v2/act2";
 import { JourneyStoryboard } from "@/v2/journeyStoryboard";
-import { ActThree } from "@/v2/network";
 import { ActFour } from "@/v2/platform";
-import { ActFive } from "@/v2/coverage";
 import { ActSix } from "@/v2/packages";
 import { ActSeven } from "@/v2/pioneer";
 import { ActEight } from "@/v2/closing";
@@ -18,7 +19,7 @@ const DASHBOARD_IMG = "/assets/advertiser-pharmacy-dashboard.png";
 
 export const Route = createFileRoute("/")({
   component: PublicHomePage,
-  head: () =>
+  head: preserveProductionSeo("/", () =>
     isPublicWaitlistMode
       ? {
           meta: [
@@ -39,17 +40,17 @@ export const Route = createFileRoute("/")({
         }
       : {
           meta: [
-            { title: "Advertise on Colombo's tuk-tuks | GPS-verified plays | mydiio" },
+            { title: "Tuk-Tuk Advertising in Colombo | GPS-Verified Ads | mydiio" },
             {
               name: "description",
               content:
-                "Put your brand on screens inside Colombo tuk-tuks. Completed plays with fresh GPS and movement evidence, a report every Monday, and your own advertiser portal. Campaigns from LKR 25,000 with 7 days free.",
+                "Put your brand on screens inside Colombo tuk-tuks. Completed plays with fresh GPS and movement evidence, a report every Monday, and your own advertiser portal. Campaigns from LKR 25,000.",
             },
-            { property: "og:title", content: "Advertise on Colombo's tuk-tuks | mydiio" },
+            { property: "og:title", content: "Your next customer is going somewhere. Go with them. | mydiio" },
             {
               property: "og:description",
               content:
-                "Completed plays with GPS and movement evidence. Weekly reports. Your own advertiser portal. From LKR 25,000 a month with 7 days free.",
+                "Completed plays with GPS and movement evidence. Weekly reports. Your own advertiser portal. From LKR 25,000 a month.",
             },
             { property: "og:image", content: DASHBOARD_IMG },
             { property: "og:url", content: "https://mydiio.com/" },
@@ -93,7 +94,7 @@ export const Route = createFileRoute("/")({
                     name: "Can I build my own ad?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Yes. Inside your portal you upload your logo and photos, preview your ad, and submit it. Every ad is reviewed before it runs, and goes live within 72 hours. We can also make your first creative for free from your existing branding.",
+                      text: "Yes. Inside your portal you upload your logo and photos, preview your ad, and submit it. Every ad is reviewed before scheduling. Design and substantial edits are charged separately by prior agreement. Start dates are individually confirmed for the planned November 2026 launch.",
                     },
                   },
                   {
@@ -106,25 +107,25 @@ export const Route = createFileRoute("/")({
                   },
                   {
                     "@type": "Question",
-                    name: "What is Pioneer corridor exclusivity?",
+                    name: "What does Pioneer include?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "Pioneer advertisers get twelve months of exclusivity on a defined corridor for their category, agreed at sign-up, so no other business in your category runs on that route during your first twelve months. Your per-minute rate is fixed for the life of your subscription.",
+                      text: "Pioneer provides 2,000 total screen minutes per month for LKR 85,000, a three-month minimum and twelve-month price protection within agreed live coverage. Category exclusivity and automatic fleet expansion are not included.",
                     },
                   },
                   {
                     "@type": "Question",
-                    name: "What does the LKR 5,000 deposit cover?",
+                    name: "What does the LKR 10,000 deposit cover?",
                     acceptedAnswer: {
                       "@type": "Answer",
-                      text: "The LKR 5,000 deposit secures your spot. It is fully refundable, credited against your first invoice when you proceed, or returned in full if you decide not to.",
+                      text: "The LKR 10,000 reservation is credited against the first invoice and refundable before activation. Cancellation uses the time the request reaches our contact form or WhatsApp. See our terms for the agreed activation conditions and refunds.",
                     },
                   },
                 ],
               }),
             },
           ],
-        },
+        }, !isPublicWaitlistMode),
 });
 
 function PublicHomePage() {
@@ -134,18 +135,17 @@ function PublicHomePage() {
 function HomePage() {
   return (
     <main data-v2-page>
-      <AtlasNav />
+      <AtlasNav initialTone="dark" />
 
       <ScrollExploreCue />
-      <ActOne />
-      <ActTwo />
+      <LaunchHero />
 
       <JourneyStoryboard />
       <FundingStatement />
 
-      <ActThree />
+      <Expansion />
       <ActFour />
-      <ActFive />
+
       <ActSix />
       <ActSeven />
       <ActEight />

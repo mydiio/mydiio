@@ -32,11 +32,11 @@ export function AdvertiseHero() {
 
           <div className="advertiser-hero-actions">
             <Link to="/advertise/apply" className="atlas-button-amber">
-              Launch campaign
+              Reserve for November 2026
             </Link>
 
-            <a href="#difference" className="atlas-button-secondary">
-              Why mydiio
+            <a href="/mydiio-campaign-studio-v4-4.html" className="atlas-button-secondary">
+              Preview your advert
             </a>
           </div>
 
@@ -48,13 +48,13 @@ export function AdvertiseHero() {
           <div className="advertiser-stage-card">
             <div className="advertiser-stage-card-inner">
               <div className="advertiser-stage-eyebrow">
-                Monday report
-                <span>GPS verified</span>
+                Passenger screen preview
+                <span>Advert &#183; Verify &#183; Report</span>
               </div>
 
               <AdvertiserJourneyTablet />
 
-              <p className="advertiser-stage-caption">Your campaign report. Sent every Monday.</p>
+              <p className="advertiser-stage-caption">Your advert on screen. Verified delivery. Clear reporting.</p>
             </div>
           </div>
         </Reveal>

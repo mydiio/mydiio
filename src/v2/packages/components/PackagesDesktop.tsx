@@ -476,7 +476,7 @@ export function PackagesDesktop({ progress }: PackagesSceneProps) {
             }}
           >
             <a href="/advertise" className="atlas-button-primary">
-              Build your campaign
+              Explore advertising packages
             </a>
 
             <div
@@ -486,7 +486,7 @@ export function PackagesDesktop({ progress }: PackagesSceneProps) {
                 fontSize: "13px",
               }}
             >
-              Every package includes GPS-verified reporting.
+              Packages include campaign reporting with GPS evidence for eligible plays; delivery classifications and coverage conditions apply.
             </div>
           </div>
         </div>

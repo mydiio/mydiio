@@ -1,3 +1,4 @@
+import { preserveProductionSeo } from "@/seo/productionSeoParity";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { ContactPage } from "@/v2/contact";
 import { isPublicWaitlistMode } from "@/config/publicSiteMode";
@@ -7,7 +8,7 @@ export const Route = createFileRoute("/contact")({
     if (isPublicWaitlistMode) throw redirect({ to: "/" });
   },
   component: ContactPage,
-  head: () => ({
+  head: preserveProductionSeo("/contact", () => ({
     meta: [
       {
         title: "Contact mydiio | Colombo, Sri Lanka",
@@ -26,5 +27,5 @@ export const Route = createFileRoute("/contact")({
       { property: "og:url", content: "https://mydiio.com/contact" },
     ],
     links: [{ rel: "canonical", href: "https://mydiio.com/contact" }],
-  }),
+  })),
 });

@@ -52,8 +52,8 @@ export const aboutPillars: readonly Pillar[] = [
     id: "dignity",
     number: "02",
     title: "Driver dignity",
-    body: "Drivers are partners, not vendors. A written agreement before hardware goes in. Paid on the 5th of every month without exception. Never penalised for faults outside their control. Communication in the driver's preferred language.",
-    proof: "Signed agreement · paid on the 5th",
+    body: "Drivers are partners, not vendors. A written agreement before hardware goes in. Paid within seven days after month-end. Never penalised for faults outside their control. Communication in the driver's preferred language.",
+    proof: "Signed agreement · paid within seven days after month-end",
   },
   {
     id: "reliability",
@@ -95,7 +95,7 @@ export const aboutHowSteps: readonly AboutHowStep[] = [
   {
     n: "04",
     title: "GPS records every play.",
-    body: "Vehicle, place and time. No estimate, no rounding up. The driver gets paid on the 5th. The advertiser gets a weekly report.",
+    body: "Vehicle, place and time. No estimate, no rounding up. The driver gets paid within seven days after month-end. The advertiser gets a weekly report.",
   },
 ];
 
@@ -124,9 +124,9 @@ export const aboutPassengersCta = "See the full passenger promise";
 export const aboutDriversHeading = "Drivers are partners, not vendors.";
 
 export const aboutDriversBody =
-  "Monthly pay on the 5th. Written agreement first. Never penalised for faults outside their control.";
+  "LKR 4,000 base plus up to LKR 2,000 bonus, paid within seven days after month-end. Written agreement first. Never penalised for faults outside their control.";
 
-export const aboutDriversProof1Value = "5th";
+export const aboutDriversProof1Value = "Within 7 days";
 export const aboutDriversProof1Label = "Pay day, every month";
 
 export const aboutDriversProof2Value = "Written";
@@ -204,7 +204,7 @@ export type FutureItem = {
 export const aboutFuture: readonly FutureItem[] = [
   {
     title: "Weather, news, public information",
-    body: "Today the screen carries advertising plus weather, news and public service notices. Content is reviewed, session-only and never used to build passenger profiles.",
+    body: "The planned launch experience combines advertising with weather, news and public service notices. Content is reviewed, session-only and never used to build passenger profiles.",
     cadence: "live",
   },
   {
@@ -219,7 +219,7 @@ export const aboutFuture: readonly FutureItem[] = [
   },
   {
     title: "Other vehicles, other markets",
-    body: "Buses, tour vans, ride-platform vehicles and water transport in other markets. The platform is vehicle-agnostic. Each environment adapts the hardware, content and incentive model without rebuilding the foundation.",
+    body: "Future phases may include taxis, tour vans, shuttles, buses and coaches. Rail and water transport are longer-term possibilities, subject to partners, safety assessment and trials. These are not currently offered or included in launch packages.",
     cadence: "next",
   },
 ];

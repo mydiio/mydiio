@@ -122,9 +122,9 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
               letterSpacing: "-0.068em",
             }}
           >
-            Ten founding partners.
+            Ten active Pioneer places.
             <br />
-            Never more.
+            Available as places open.
           </h2>
 
           <p
@@ -138,8 +138,8 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
               letterSpacing: "-0.018em",
             }}
           >
-            The first ten businesses receive permanent founding recognition and launch benefits that
-            will not be offered again as the network grows.
+            Up to ten advertisers can hold active Pioneer places. Vacated places may be offered
+            again. Your monthly price is protected for twelve months from activation.
           </p>
         </header>
 
@@ -185,9 +185,9 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
             }}
           >
             {[
-              ["Rate", "Fixed for subscription life"],
-              ["Category", "12-month corridor exclusivity"],
-              ["Coverage", "Priority across the full fleet"],
+              ["Rate", "12-month price protection"],
+              ["Category", "No category exclusivity included"],
+              ["Coverage", "Agreed live coverage"],
               ["Status", "One of ten founding partners"],
             ].map(([label, value]) => (
               <div
@@ -254,7 +254,7 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
                 lineHeight: 1,
               }}
             >
-              spots ever
+              active places
             </div>
           </div>
 
@@ -315,7 +315,7 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
               lineHeight: 1.45,
             }}
           >
-            Ten positions only. When all ten are taken, Pioneer closes permanently.
+            Limited to ten active Pioneer advertisers. Availability is confirmed before booking.
           </div>
         </div>
 
@@ -328,7 +328,7 @@ export function PioneerMobile({ progress }: PioneerMobileProps) {
           }}
         >
           <a
-            href="/advertise/apply"
+            href="/advertise/apply?tier=pioneer"
             className="atlas-button-amber"
             style={{
               display: "flex",

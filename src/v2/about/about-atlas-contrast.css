@@ -1,0 +1,69 @@
+/* mydiio Atlas / About contrast layer v1.
+   One homepage-brand amber emphasis per editorial section.
+   Preserves typography sizes, layout, images, interactive logic and shared navigation. */
+[data-about-page] {
+  --about-heading-accent: var(--atlas-amber, #f5a623);
+  --about-copy-strong: rgba(26, 26, 24, .78);
+  --about-copy-on-dark: rgba(253, 250, 243, .82);
+}
+
+/* Only deliberately marked phrases receive Atlas amber. */
+[data-about-page] .about-brand-accent {
+  color: var(--about-heading-accent);
+  -webkit-text-fill-color: currentColor;
+  font: inherit;
+}
+
+/* Headline contrast: use ink for the anchor line, amber for the payoff. */
+[data-about-page] :is(
+  .about-hero-atlas-static .about-hero-title,
+  .about-principles-heading,
+  .about-perspectives-intro h2,
+  .about-roadmap-intro h2,
+  .about-company-v5-intro h2
+) {
+  color: var(--atlas-ink, #1a1a18);
+}
+[data-about-page] .about-hero-atlas-static .about-hero-title .about-brand-accent,
+[data-about-page] .about-principles-heading .about-brand-accent,
+[data-about-page] .about-perspectives-intro h2 .about-brand-accent,
+[data-about-page] .about-roadmap-intro h2 .about-brand-accent,
+[data-about-page] .about-company-v5-intro h2 .about-brand-accent {
+  color: var(--about-heading-accent);
+  -webkit-text-fill-color: var(--about-heading-accent);
+}
+
+/* Better supporting-text contrast on light/warm surfaces. */
+[data-about-page] .about-hero-atlas-static .about-hero-description,
+[data-about-page] .about-principles-lede,
+[data-about-page] .about-perspectives-intro > p,
+[data-about-page] .about-roadmap-intro > p,
+[data-about-page] .about-company-v5-intro > p {
+  color: var(--about-copy-strong);
+}
+[data-about-page] .about-perspective-content > p,
+[data-about-page] .about-roadmap-milestone > p {
+  color: rgba(26, 26, 24, .76);
+}
+
+/* On dark sections, preserve light-ink body copy with amber editorial accents. */
+[data-about-page] .about-roadmap-feature-copy h3 .about-brand-accent,
+[data-about-page] .about-closing-title .about-brand-accent {
+  color: var(--about-heading-accent);
+  -webkit-text-fill-color: var(--about-heading-accent);
+}
+[data-about-page] .about-closing-body {
+  color: var(--about-copy-on-dark);
+}
+
+/* Metadata remains legible, and the amber decorative rule reinforces the system. */
+[data-about-page] .about-perspectives-intro .atlas-section-eyebrow,
+[data-about-page] .about-principles-topline .atlas-section-eyebrow,
+[data-about-page] .about-roadmap-meta span:first-child,
+[data-about-page] .about-company-v5-eyebrow span:first-child {
+  color: #a26308;
+}
+[data-about-page] .about-roadmap-intro h2 .about-brand-accent,
+[data-about-page] .about-company-v5-intro h2 .about-brand-accent {
+  text-decoration: none;
+}
