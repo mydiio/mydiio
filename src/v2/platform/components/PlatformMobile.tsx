@@ -1,5 +1,5 @@
 import { colors } from "@/design";
-import { OperatingSystemDiagram } from "./OperatingSystemDiagram";
+import { MobileOperatingDiagram } from "./MobileOperatingDiagram";
 
 type PlatformMobileProps = {
   progress: number;
@@ -25,7 +25,7 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
   const safeProgress = clamp(progress);
 
   const copyIn = easeOutCubic(range(safeProgress, 0, 0.14));
-  const focusShift = easeInOutCubic(range(safeProgress, 0.5, 0.7));
+  const focusShift = easeInOutCubic(range(safeProgress, 0.23, 0.43));
   const handoff = easeInOutCubic(range(safeProgress, 0.78, 0.9));
   const copyOut = handoff;
 
@@ -68,6 +68,8 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
           .atlas-os-intro {
             opacity: 1 !important;
             transform: none !important;
+            max-height: none !important;
+            overflow: visible !important;
           }
 
           .atlas-os-diagram-stage {
@@ -80,168 +82,38 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
             transform: none !important;
           }
 
-          .atlas-os-diagram-stage .atlas-os-motion {
-            opacity: 1 !important;
-          }
-
-          .atlas-os-diagram-stage .atlas-os-relationship {
-            width: min(126px, 30vw) !important;
-            transform: translate(-50%, -50%) !important;
-          }
-
-          .atlas-os-relationship[data-relationship="passengers"] {
-            left: 50% !important;
-            top: 10% !important;
-          }
-
-          .atlas-os-relationship[data-relationship="businesses"] {
-            left: 18% !important;
-            top: 48% !important;
-          }
-
-          .atlas-os-relationship[data-relationship="drivers"] {
-            left: 82% !important;
-            top: 48% !important;
-          }
-
-          .atlas-os-relationship[data-relationship="operations"] {
-            left: 50% !important;
-            top: 89% !important;
-          }
-
-          .atlas-os-diagram-stage .atlas-os-centre {
-            width: clamp(138px, 38vw, 164px) !important;
-          }
-
           .atlas-os-conclusion {
             display: none !important;
           }
         }
 
-        /* atlas-os-mobile-grid-layout */
-        @media (max-width: 560px) {
-          .atlas-os-diagram-stage {
-            min-width: 0;
-          }
-
-          .atlas-os-diagram-stage .atlas-os-diagram {
-            display: grid !important;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            grid-template-rows: auto auto auto;
-            grid-template-areas:
-              "hub hub"
-              "passengers drivers"
-              "businesses operations";
-            align-content: center;
-            align-items: stretch;
-            gap: 14px;
-            width: 100% !important;
-            height: 100% !important;
-            padding: 4px 0;
-            box-sizing: border-box;
-            transform: none !important;
-          }
-
-          .atlas-os-diagram-stage
-            .atlas-os-diagram > [aria-hidden="true"] {
-            display: none !important;
-          }
-
-          .atlas-os-diagram-stage .atlas-os-centre {
-            position: relative !important;
-            grid-area: hub;
-            left: auto !important;
-            top: auto !important;
-            justify-self: center;
-            align-self: center;
-            width: clamp(138px, 39vw, 166px) !important;
-            margin-bottom: 10px;
-            opacity: 1 !important;
-            transform: none !important;
-          }
-
-          .atlas-os-diagram-stage .atlas-os-relationship {
-            position: relative !important;
-            left: auto !important;
-            top: auto !important;
-            width: auto !important;
-            min-width: 0;
-            padding: 15px 13px 14px;
-            box-sizing: border-box;
-            border: 1px solid rgba(253, 250, 243, 0.09);
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.025);
-            text-align: left !important;
-            opacity: 1 !important;
-            transform: none !important;
-          }
-
-          .atlas-os-diagram-stage
-            .atlas-os-relationship[data-relationship="passengers"] {
-            grid-area: passengers;
-          }
-
-          .atlas-os-diagram-stage
-            .atlas-os-relationship[data-relationship="drivers"] {
-            grid-area: drivers;
-          }
-
-          .atlas-os-diagram-stage
-            .atlas-os-relationship[data-relationship="businesses"] {
-            grid-area: businesses;
-          }
-
-          .atlas-os-diagram-stage
-            .atlas-os-relationship[data-relationship="operations"] {
-            grid-area: operations;
-          }
-
-          .atlas-os-diagram-stage
-            .atlas-os-relationship > div:nth-child(1) {
-            font-size: 8px !important;
-            line-height: 1.2;
-          }
-
-          .atlas-os-diagram-stage
-            .atlas-os-relationship > div:nth-child(2) {
-            margin-top: 7px !important;
-            font-size: clamp(14px, 4vw, 17px) !important;
-            line-height: 1.08 !important;
-          }
-
-          .atlas-os-diagram-stage .atlas-os-detail {
-            margin-top: 6px !important;
-            font-size: 9px !important;
-            line-height: 1.38 !important;
-          }
+        /* Mobile-only connected diagram. Desktop remains unchanged. */
+        .atlas-os-mobile-diagram {
+          width: 100%;
+          height: 100%;
+          min-height: 0;
         }
-
-        @media (max-width: 350px) {
-          .atlas-os-diagram-stage .atlas-os-diagram {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto;
-            grid-template-areas:
-              "hub"
-              "passengers"
-              "drivers"
-              "businesses"
-              "operations";
-            gap: 10px;
-          }
-
+        @media (max-width: 360px) {
+          .atlas-os-mobile-inner { padding-top: 18px !important; }
+          .atlas-os-mobile-diagram .atlas-os-mobile-card { padding: 10px 9px !important; }
+          .atlas-os-mobile-diagram .atlas-os-mobile-detail { font-size: 10px !important; }
+        }
+        @media (max-height: 700px) {
+          .atlas-os-mobile-inner { padding-top: 12px !important; padding-bottom: 10px !important; }
+          .atlas-os-mobile-inner > header h2 { font-size: clamp(29px, 9vw, 39px) !important; }
+          .atlas-os-mobile-inner > header p { margin-top: 8px !important; }
+          .atlas-os-diagram-stage { margin-top: 2px !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
           .atlas-os-diagram-stage {
-            height: 720px !important;
-            min-height: 720px !important;
-            flex-basis: 720px !important;
+            flex: 0 0 auto !important;
+            height: 490px !important;
+            min-height: 490px !important;
+            margin-top: 24px !important;
           }
-
-          .atlas-os-diagram-stage .atlas-os-centre {
-            width: 132px !important;
-            margin-bottom: 4px;
-          }
-
-          .atlas-os-diagram-stage .atlas-os-relationship {
-            padding: 12px 13px;
+          .atlas-os-mobile-diagram .atlas-os-mobile-animated {
+            opacity: 1 !important;
+            transform: none !important;
           }
         }
       `}</style>
@@ -265,12 +137,12 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
           style={{
             position: "relative",
             zIndex: 12,
-            flex: "0 0 auto",
+            flex: "0 1 auto",
             textAlign: "center",
-            opacity: copyIn * (1 - focusShift * 0.62) * (1 - copyOut),
-            transform: `translateY(${
-              (1 - copyIn) * 14 - focusShift * 10 - copyOut * 9
-            }px) scale(${1 - focusShift * 0.02})`,
+            opacity: copyIn * (1 - focusShift) * (1 - copyOut),
+            maxHeight: `${Math.round((1 - focusShift) * 340)}px`,
+            overflow: "hidden",
+            transform: `translateY(${(1 - copyIn) * 14 - focusShift * 18}px)`,
             transformOrigin: "center top",
           }}
         >
@@ -328,7 +200,7 @@ export function PlatformMobile({ progress }: PlatformMobileProps) {
             })`,
           }}
         >
-          <OperatingSystemDiagram progress={safeProgress} compact />
+          <MobileOperatingDiagram progress={safeProgress} />
         </div>
 
         <div

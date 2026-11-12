@@ -1,0 +1,97 @@
+/*
+ * mydiio Atlas / Site-wide eyebrow and highlight colour contract
+ * Source of truth: --atlas-amber = #F5A623 in foundation/homepage.css.
+ * Scope: editorial eyebrows, small highlight labels and explicit headline
+ * emphasis, not navigation links, form input values, body copy or buttons.
+ * Do not replace every old gold in the application: some are borders,
+ * surfaces and independent UI states.
+ */
+:root {
+  --atlas-eyebrow-color: var(--atlas-amber, #F5A623);
+}
+
+/* Page-level editorial labels. Includes the existing Atlas home and new pages. */
+[data-v2-page] :is(
+  .atlas-eyebrow,
+  .atlas-section-eyebrow,
+  .atlas-section-eyebrow-light,
+  .atlas-section-eyebrow-dark,
+  .commercial-eyebrow,
+  .atlas-editorial-band__eyebrow,
+  .atlas-closing-v3-eyebrow,
+  .atlas-campaign-eyebrow,
+  .atlas-pe-eyebrow,
+  .advertiser-stage-eyebrow,
+  .advertiser-package-eyebrow,
+  .advertiser-conversion-eyebrow,
+  .advertiser-enquiry-kicker,
+  .driver-stage-eyebrow,
+  .driver-tier-eyebrow,
+  .driver-atlas-summary-kicker,
+  .driver-apply-earnings-eyebrow,
+  .about-hero-kicker,
+  .about-principles-kicker,
+  .about-perspectives-overline,
+  .about-perspective-eyebrow,
+  .about-company-v5-eyebrow,
+  .about-book-cover-eyebrow,
+  .cb-eyebrow,
+  .waitlist-card-eyebrow,
+  .contact-fact-label,
+  .contact-form-label,
+  .launch-form-label,
+  .driver-v56-documents-label,
+  .about-principles-detail-label,
+  .atlas-real-showcase-tag,
+  .atlas-real-showcase-meta,
+  .about-side .atlas-section-eyebrow
+) {
+  color: var(--atlas-eyebrow-color) !important;
+}
+
+/* Catch new role-named editorial headings without changing ordinary labels. */
+[data-v2-page] :is(
+  [class$="-eyebrow"], [class*="-eyebrow "],
+  [class$="-kicker"], [class*="-kicker "],
+  [class$="-overline"], [class*="-overline "]
+) {
+  color: var(--atlas-eyebrow-color) !important;
+}
+
+/* Older selectors colour their own child spans gold or grey. */
+[data-v2-page] :is(
+  .about-company-v5-eyebrow,
+  .about-hero-kicker,
+  .advertiser-conversion-eyebrow,
+  .advertiser-stage-eyebrow,
+  .driver-stage-eyebrow
+) > span {
+  color: var(--atlas-eyebrow-color) !important;
+}
+
+/* Discrete highlighted phrases-not all bold or italic text. */
+[data-v2-page] .about-brand-accent {
+  color: var(--atlas-eyebrow-color) !important;
+  -webkit-text-fill-color: var(--atlas-eyebrow-color) !important;
+}
+
+/* Shared footer headings and standalone waitlist. Do not affect nav links. */
+footer[data-atlas-footer] .atlas-footer-heading,
+.waitlist-page :is(.waitlist-card-eyebrow, .waitlist-status) {
+  color: var(--atlas-eyebrow-color) !important;
+}
+
+/* The Atlas homepage is composed of acts. */
+[data-v2-act] :is(
+  .atlas-eyebrow,
+  .atlas-section-eyebrow,
+  .atlas-section-eyebrow-light,
+  .atlas-section-eyebrow-dark,
+  .atlas-campaign-eyebrow,
+  .atlas-closing-v3-eyebrow,
+  .atlas-pe-eyebrow,
+  .commercial-eyebrow
+),
+[data-v2-act] :is([class$="-eyebrow"], [class$="-kicker"], [class$="-overline"]) {
+  color: var(--atlas-eyebrow-color) !important;
+}

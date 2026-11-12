@@ -1,0 +1,394 @@
+/*
+ * mydiio Atlas / Driver final editorial polish — 2026-11
+ * Canonical design tokens come from homepage.css; use the same 1,200px composition grid.
+ * Scope: /drive and /drivers/apply. No navigation overrides, data changes or form logic changes.
+ */
+main[data-driver-page] {
+  --driver-cream: var(--atlas-cream, #fdfaf3);
+  --driver-ink: var(--atlas-ink, #1a1a18);
+  --driver-amber: var(--atlas-amber, #f5a623);
+  --driver-amber-deep: var(--atlas-amber-deep, #e8920a);
+  --driver-gutter: var(--atlas-gutter, clamp(20px, 4vw, 64px));
+  --driver-max: var(--atlas-composition-width, 1200px);
+  --driver-space: clamp(72px, 7.5vw, 112px);
+  --driver-border: var(--atlas-border-light, rgba(26, 26, 24, .08));
+  --driver-copy: var(--atlas-copy-dark, rgba(26, 26, 24, .66));
+  --driver-panel-radius: var(--atlas-panel-radius, 28px);
+  background: var(--driver-cream);
+  color: var(--driver-ink);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+/* Unify content edges with the Atlas homepage, irrespective of old commercial padding rules. */
+main[data-driver-page] .commercial-shell {
+  box-sizing: border-box;
+  width: min(var(--driver-max), calc(100% - 2 * var(--driver-gutter))) !important;
+  max-width: var(--driver-max) !important;
+  padding-inline: 0 !important;
+  margin-inline: auto;
+}
+main[data-driver-page] :is(.commercial-eyebrow, .atlas-editorial-band__eyebrow, .driver-atlas-summary-kicker) {
+  font-family: 'Space Mono', ui-monospace, monospace;
+  font-size: var(--atlas-eyebrow, 10px);
+  font-weight: 700;
+  letter-spacing: .15em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+main[data-driver-page] :is(.driver-intro h1, .driver-section-heading h2, .driver-v57-section-header h2, .atlas-editorial-band__copy h2, .driver-closing h2) {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -.06em;
+  text-wrap: balance;
+}
+main[data-driver-page] :is(.driver-lead, .driver-section-heading > p, .driver-v57-section-header > p, .atlas-editorial-band__copy > p, .driver-closing > .commercial-shell > p) {
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+main[data-driver-page] :is(a, button, summary, input, select, textarea):focus-visible {
+  outline: 3px solid var(--driver-amber);
+  outline-offset: 3px;
+}
+
+/* 01 / Hero — same editorial grid and functional spacing as Advertise. */
+main.driver-experience--landing > section.driver-intro {
+  padding-block: clamp(130px, 11vw, 166px) clamp(70px, 8vw, 108px) !important;
+  background: var(--driver-cream) !important;
+}
+main.driver-experience--landing .driver-intro-top {
+  margin-bottom: clamp(26px, 3vw, 44px) !important;
+  gap: 20px;
+}
+main.driver-experience--landing .driver-intro-grid {
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 78px) !important;
+}
+main.driver-experience--landing .driver-intro-copy {
+  min-width: 0;
+  padding-block: 0 !important;
+}
+main.driver-experience--landing .driver-intro:not(.driver-intro-apply) h1 {
+  font-size: clamp(54px, 6.6vw, 100px) !important;
+  line-height: .98 !important;
+  max-width: 12ch;
+  margin: 0 0 24px !important;
+}
+main.driver-experience--landing .driver-lead {
+  font-size: var(--atlas-body-lead, clamp(17px, 1.35vw, 22px));
+  max-width: 50ch;
+  color: var(--driver-copy) !important;
+}
+main.driver-experience--landing .driver-hero-benefit {
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+main.driver-experience--landing .driver-hero-pay {
+  margin-top: 22px;
+  margin-bottom: 0;
+  padding-block: 4px !important;
+}
+main.driver-experience--landing .driver-hero-pay strong {
+  font-size: clamp(19px, 1.6vw, 24px);
+  line-height: 1.3;
+}
+main.driver-experience--landing .commercial-actions {
+  margin-top: 28px !important;
+  gap: 12px 20px;
+}
+main.driver-experience--landing :is(.atlas-button-amber, .driver-v56-cta-link) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: var(--atlas-button-height, 54px);
+  border-radius: var(--atlas-radius-pill, 999px);
+  padding-inline: 24px;
+}
+main.driver-experience--landing .driver-response {
+  margin-top: 20px !important;
+  max-width: 51ch;
+}
+main.driver-experience--landing .driver-atlas-summary {
+  border-radius: var(--driver-panel-radius);
+  border: 1px solid var(--driver-border);
+  box-shadow: var(--atlas-shadow-light, 0 30px 72px -46px rgba(26,26,24,.28));
+}
+main.driver-experience--landing .driver-atlas-summary-photo {
+  height: clamp(200px, 20vw, 292px);
+}
+main.driver-experience--landing .driver-atlas-summary-photo img {
+  object-position: center 43%;
+}
+main.driver-experience--landing .driver-atlas-summary-content {
+  padding: clamp(22px, 2.6vw, 36px);
+}
+main.driver-experience--landing .driver-atlas-summary-main { margin-top: 17px; }
+main.driver-experience--landing .driver-atlas-summary-divider { margin-block: 17px; }
+main.driver-experience--landing .driver-atlas-summary-total {
+  border-radius: 16px;
+  margin-top: 17px;
+}
+
+/* 02 / Earnings — shorter, clearer, matching Atlas card geometry. */
+main.driver-experience--landing > section.driver-earnings-v53 {
+  min-height: 0;
+  padding-block: clamp(62px, 6.5vw, 96px) !important;
+  background: #fff !important;
+  border-top: 1px solid var(--driver-border);
+}
+main.driver-experience--landing .driver-earnings-heading {
+  max-width: 850px;
+  margin-bottom: 24px !important;
+}
+main.driver-experience--landing .driver-earnings-heading h2 {
+  font-size: clamp(40px, 4.4vw, 66px);
+  line-height: 1.04;
+  margin: 10px 0 14px;
+}
+main.driver-experience--landing .driver-earnings-heading > p {
+  color: var(--driver-copy);
+  font-size: clamp(15px, 1.16vw, 18px);
+  max-width: 54ch;
+}
+main.driver-experience--landing .driver-earnings-cards { gap: 16px; }
+main.driver-experience--landing .driver-earning-tile {
+  border-radius: 20px;
+  min-height: 188px;
+  padding: clamp(20px, 2.5vw, 32px);
+}
+main.driver-experience--landing .driver-earning-tile-bonus { background: #f4ecdf; }
+main.driver-experience--landing .driver-earning-label { font-size: 14px; }
+main.driver-experience--landing .driver-earning-tile p { font-size: 13px; }
+main.driver-experience--landing .driver-earnings-total {
+  border-radius: 20px;
+  min-height: 98px;
+  padding: clamp(20px, 2.5vw, 30px);
+  margin-top: 16px;
+}
+main.driver-experience--landing .driver-earnings-perks {
+  padding-block: 22px;
+}
+main.driver-experience--landing .driver-earnings-perks p { font-size: 13px; }
+main.driver-experience--landing .driver-earnings-fee { padding-top: 20px; }
+
+/* 03 / Marine Drive film — full-bleed moving image within the Atlas panel. */
+main.driver-experience--landing > section.atlas-editorial-band {
+  padding-block: var(--driver-space);
+  background: var(--driver-ink);
+  color: var(--driver-cream);
+}
+main.driver-experience--landing .atlas-editorial-band__grid {
+  grid-template-columns: minmax(0, .93fr) minmax(0, 1.07fr);
+  gap: clamp(34px, 5.5vw, 82px);
+  align-items: center;
+}
+main.driver-experience--landing .atlas-editorial-band__copy h2 {
+  color: var(--driver-cream);
+  font-size: clamp(42px, 5.3vw, 76px);
+  line-height: 1;
+  max-width: 14ch;
+  margin: 16px 0 22px;
+}
+main.driver-experience--landing .atlas-editorial-band__copy > p {
+  color: rgba(253, 250, 243, .76);
+  font-size: var(--atlas-body-lead, clamp(17px, 1.35vw, 22px));
+  line-height: 1.55;
+  max-width: 46ch;
+  opacity: 1;
+}
+main.driver-experience--landing .atlas-editorial-band__photo {
+  aspect-ratio: 1.48;
+  border-radius: var(--driver-panel-radius);
+  background: #262521;
+  box-shadow: 0 22px 66px rgba(0, 0, 0, .20);
+  overflow: hidden;
+}
+main.driver-experience--landing .atlas-editorial-band__photo .atlas-driver-marine-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* 04 / Eligibility — warm interruption with aligned requirement cards. */
+main.driver-experience--landing > section.driver-qualify-v58 {
+  background: #f5f0e7 !important;
+  padding-block: var(--driver-space) !important;
+}
+main.driver-experience--landing .driver-qualify-v58 .driver-v57-section-header {
+  margin-bottom: 28px;
+}
+main.driver-experience--landing .driver-qualify-v58 .driver-v57-section-header h2 {
+  font-size: clamp(42px, 5.3vw, 76px);
+  line-height: 1.02;
+  margin: 12px 0 14px;
+}
+main.driver-experience--landing .driver-qualify-v58 .driver-v57-section-header > p {
+  color: var(--driver-copy);
+  font-size: clamp(15px, 1.2vw, 18px);
+}
+main.driver-experience--landing .driver-qualify-v58 .driver-v57-qualification {
+  gap: clamp(24px, 4vw, 54px);
+}
+main.driver-experience--landing .driver-qualify-v58 .driver-v57-requirements { gap: 16px; }
+main.driver-experience--landing .driver-qualify-v58 .driver-v57-requirement {
+  border-radius: 20px;
+  border: 1px solid var(--driver-border);
+  box-shadow: 0 10px 26px -22px rgba(26, 26, 24, .18);
+  padding: clamp(22px, 2.5vw, 32px);
+}
+main.driver-experience--landing .driver-qualify-v58 .driver-v57-requirement p { line-height: 1.55; }
+
+/* 05 / Process — hierarchy and accessible documents without changing disclosure behavior. */
+main.driver-experience--landing > section.driver-onboarding-v58 {
+  padding-block: var(--driver-space) !important;
+  background: var(--driver-ink) !important;
+}
+main.driver-experience--landing .driver-onboarding-v58 .driver-v57-section-header { margin-bottom: 34px; }
+main.driver-experience--landing .driver-onboarding-v58 .driver-v57-section-header h2 {
+  font-size: clamp(42px, 5.3vw, 76px);
+  line-height: 1.02;
+  margin: 12px 0 14px;
+}
+main.driver-experience--landing .driver-onboarding-v58 .driver-v57-section-header > p {
+  font-size: clamp(15px, 1.18vw, 18px);
+  max-width: 55ch;
+}
+main.driver-experience--landing .driver-v57-journey { margin-bottom: 28px !important; }
+main.driver-experience--landing .driver-v57-milestone h3 { font-size: clamp(20px, 1.75vw, 26px); }
+main.driver-experience--landing .driver-v59-documents { border-radius: 18px !important; }
+main.driver-experience--landing .driver-v57-cta {
+  border-radius: 18px;
+  padding: clamp(18px, 2.2vw, 28px);
+}
+main.driver-experience--landing .driver-v57-cta-link {
+  white-space: normal;
+  text-align: center;
+}
+
+/* 06 / Closing invitation — not another full-height empty screen. */
+main.driver-experience--landing > section.driver-closing,
+main.driver-experience--application > section.driver-closing {
+  background: var(--driver-cream) !important;
+  border-top: 1px solid var(--driver-border);
+  padding-block: clamp(66px, 7vw, 100px) !important;
+}
+main[data-driver-page] .driver-closing .commercial-shell { max-width: 900px !important; }
+main[data-driver-page] .driver-closing h2 {
+  font-size: clamp(42px, 5.3vw, 76px);
+  line-height: 1.02;
+  max-width: 16ch;
+  margin: 12px auto 18px;
+}
+main[data-driver-page] .driver-closing p {
+  color: var(--driver-copy);
+  font-size: clamp(16px, 1.25vw, 19px);
+}
+main[data-driver-page] .driver-closing .commercial-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+main[data-driver-page] .driver-closing :is(.atlas-button-amber, .atlas-button-secondary) {
+  min-height: var(--atlas-button-height, 54px);
+  border-radius: var(--atlas-radius-pill, 999px);
+  padding-inline: 24px;
+}
+
+/* The multilingual application shares the same content grid, tokens and form spacing. */
+main.driver-experience--application .driver-intro-apply {
+  padding-block: clamp(128px, 11vw, 160px) clamp(55px, 6vw, 88px);
+  background: var(--driver-cream);
+}
+main.driver-experience--application .driver-intro-apply h1 {
+  font-size: clamp(48px, 6vw, 86px);
+  line-height: 1.01;
+  max-width: 17ch;
+}
+main.driver-experience--application .driver-form-section {
+  padding-block: var(--driver-space);
+  background: #fff !important;
+}
+main.driver-experience--application .driver-form-layout { gap: clamp(28px, 5vw, 74px); }
+main.driver-experience--application .driver-form-layout aside h2 {
+  font-size: clamp(36px, 4.2vw, 60px);
+  line-height: 1.06;
+}
+main.driver-experience--application .intake-form {
+  border: 1px solid var(--driver-border);
+  border-radius: var(--driver-panel-radius);
+  background: var(--driver-cream);
+  padding: clamp(22px, 3.5vw, 44px);
+  box-shadow: var(--atlas-shadow-light, 0 30px 72px -46px rgba(26,26,24,.28));
+}
+main.driver-experience--application .intake-form :is(input:not([type=checkbox]), select, textarea) {
+  font: inherit;
+  border-radius: 12px;
+  min-height: 48px;
+}
+
+/* Mobile: one comfortable column, no fixed heights or clipped payouts. */
+@media (max-width: 900px) {
+  main.driver-experience--landing .driver-intro-grid,
+  main.driver-experience--landing .atlas-editorial-band__grid {
+    grid-template-columns: 1fr !important;
+  }
+  main.driver-experience--landing .driver-intro-copy { max-width: 740px; }
+  main.driver-experience--landing .driver-atlas-summary { width: 100%; max-width: 650px; }
+  main.driver-experience--landing .driver-qualify-v58 .driver-v57-qualification {
+    grid-template-columns: 1fr;
+  }
+  main.driver-experience--landing .driver-qualify-v58 .driver-v58-vehicle-art { min-height: 250px; }
+}
+@media (max-width: 640px) {
+  main[data-driver-page] { --driver-gutter: 20px; --driver-space: clamp(56px, 16vw, 88px); }
+  main.driver-experience--landing > section.driver-intro {
+    padding-top: 108px !important;
+    padding-bottom: 64px !important;
+  }
+  main.driver-experience--landing .driver-intro-top { flex-direction: column; align-items: start; gap: 18px; margin-bottom: 30px !important; }
+  main.driver-experience--landing .driver-intro:not(.driver-intro-apply) h1 { font-size: clamp(44px, 10.5vw, 68px) !important; line-height: 1 !important; }
+  main.driver-experience--landing .driver-intro-grid { gap: 32px !important; }
+  main.driver-experience--landing .driver-language-switch { max-width: 100%; }
+  main.driver-experience--landing .driver-atlas-summary-photo { height: 225px; }
+  main.driver-experience--landing .driver-atlas-summary-content { padding: 24px; }
+  main.driver-experience--landing .driver-earnings-cards { grid-template-columns: 1fr; gap: 12px; }
+  main.driver-experience--landing .driver-earning-tile { min-height: 160px; }
+  main.driver-experience--landing .driver-earning-amount { white-space: normal; overflow-wrap: anywhere; }
+  main.driver-experience--landing .driver-earnings-total { flex-direction: column; align-items: flex-start; gap: 12px; }
+  main.driver-experience--landing .driver-earnings-total strong { white-space: normal; }
+  main.driver-experience--landing .driver-earnings-perks { grid-template-columns: 1fr; gap: 14px; }
+  main.driver-experience--landing .atlas-editorial-band__photo { aspect-ratio: 1.22; }
+  main.driver-experience--landing .atlas-editorial-band__copy h2,
+  main.driver-experience--landing .driver-qualify-v58 .driver-v57-section-header h2,
+  main.driver-experience--landing .driver-onboarding-v58 .driver-v57-section-header h2,
+  main[data-driver-page] .driver-closing h2 { font-size: clamp(38px, 8vw, 58px); }
+  main.driver-experience--landing .driver-qualify-v58 .driver-v57-requirements { grid-template-columns: 1fr; }
+  main.driver-experience--landing .driver-v57-journey { grid-template-columns: 1fr; row-gap: 22px !important; }
+  main.driver-experience--landing .driver-v57-journey::before { display: none; }
+  main.driver-experience--landing .driver-v57-cta { display: flex; flex-direction: column; align-items: stretch; gap: 18px; }
+  main.driver-experience--landing .driver-v57-cta-link { width: 100%; }
+  main.driver-experience--application .driver-intro-apply { padding-block: 108px 58px; }
+  main.driver-experience--application .driver-form-layout { grid-template-columns: 1fr; }
+  main.driver-experience--application .intake-form { padding: 22px; border-radius: 22px; }
+}
+@media (max-width: 400px) {
+  main.driver-experience--landing .driver-language-switch button { padding-inline: 7px; font-size: 12px; }
+  main.driver-experience--landing .driver-atlas-summary-total { flex-direction: column; align-items: flex-start; }
+  main.driver-experience--landing .atlas-editorial-band__photo { aspect-ratio: 1; }
+}
+/* Sinhala and Tamil: preserve script shaping and comfortable line-height. */
+main[data-driver-page]:lang(si) :is(.driver-intro h1, .driver-section-heading h2, .driver-v57-section-header h2, .atlas-editorial-band__copy h2, .driver-closing h2),
+main[data-driver-page]:lang(ta) :is(.driver-intro h1, .driver-section-heading h2, .driver-v57-section-header h2, .atlas-editorial-band__copy h2, .driver-closing h2) {
+  font-family: 'Noto Sans Sinhala', 'Noto Sans Tamil', 'Space Grotesk', sans-serif;
+  line-height: 1.3;
+  letter-spacing: normal;
+  overflow-wrap: anywhere;
+}
+@media (prefers-reduced-motion: reduce) {
+  main.driver-experience--landing :is(.driver-earning-tile, .driver-earnings-total) { animation: none !important; }
+}

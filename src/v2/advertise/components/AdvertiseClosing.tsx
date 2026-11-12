@@ -1,37 +1,16 @@
-import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/motion";
-import {
-  closingEyebrow,
-  closingHeadingLines,
-  closingAccent,
-  closingBody,
-  closingNote,
-} from "../advertiserContent";
 
 export function AdvertiseClosing() {
   return (
-    <section className="advertiser-closing" data-atlas-tone="dark">
+    <section className="advertiser-closing atlas-sales-closing" data-atlas-tone="dark">
       <Reveal as="div" className="advertiser-shell advertiser-closing-inner">
-        <div className="atlas-section-eyebrow atlas-section-eyebrow-light">{closingEyebrow}</div>
-
-        <h2 className="atlas-section-heading">
-          {closingHeadingLines.map((line, i) => (
-            <span key={line} className="advertiser-closing-title-line">
-              {i === 1 ? <span>{closingAccent}</span> : line}
-              {i < closingHeadingLines.length - 1 ? <br /> : null}
-            </span>
-          ))}
-        </h2>
-
-        <p>{closingBody}</p>
-
+        <span className="commercial-eyebrow">Your next campaign</span>
+        <h2 className="atlas-section-heading">Ready to put your business <span>in motion?</span></h2>
+        <p>Tell us what you want to achieve. We'll confirm the options available for launch.</p>
         <div className="advertiser-closing-actions">
-          <Link to="/advertise/apply" className="atlas-button-amber">
-            Launch campaign
-          </Link>
+          <a href="#difference" className="atlas-button-amber">Start your campaign enquiry <span aria-hidden="true">&#8594;</span></a>
         </div>
-
-        <p className="advertiser-closing-note">{closingNote}</p>
+        <p className="advertiser-closing-note">No commitment to enquire. Campaign activation is subject to confirmed coverage and availability.</p>
       </Reveal>
     </section>
   );

@@ -6,11 +6,12 @@ export const contactEyebrow = "Contact";
 export const contactHeading = "Write to the team.";
 
 export const contactBody =
-  "Tell us what you need. The message lands in our admin panel and we reply from hello@mydiio.com, usually within a few hours during Colombo business days.";
+  "Send advertising, driver, partnership or privacy enquiries using this form. We usually respond within 24 hours. In exceptional circumstances, please allow up to 48 hours.";
 
 export const contactFormHeading = "Send a message";
 
-export const contactFormBody = "Name, email, message. Three fields. No marketing follow-up.";
+export const contactFormBody =
+  "Tell us what you need. Your details are used to handle your enquiry, not to subscribe you to marketing.";
 
 export const contactFormNameLabel = "Name";
 export const contactFormEmailLabel = "Email";
@@ -18,9 +19,9 @@ export const contactFormMessageLabel = "Message";
 export const contactFormSend = "Send message";
 export const contactFormSending = "Sending…";
 export const contactFormSuccess =
-  "Thank you. The message is in the admin panel. We will reply within a few hours.";
+  "Thank you. Your enquiry has been received. We usually respond within 24 hours; exceptionally, up to 48 hours.";
 export const contactFormError =
-  "Something went wrong. Please try again, or email hello@mydiio.com directly.";
+  "Something went wrong. Please try again shortly, or use WhatsApp on our contact page.";
 
 export const contactAdminLinkLabel = "Sign in to the admin panel";
 export const contactAdminLinkHint =
@@ -31,7 +32,8 @@ export const contactAddressHeading = "Where we are";
 export const contactAddressLines = [
   "mydiio",
   "Start Smart Technologies Private Limited",
-  "Colombo, Sri Lanka",
+  "Registration: PV00370438",
+  "23, 5th Lane, Ratmalana, Colombo, Sri Lanka",
 ] as const;
 
 export const contactHoursLabel = "Hours";
@@ -41,22 +43,22 @@ export const contactHoursLines = [
   "Sri Lanka time (UTC+05:30)",
 ] as const;
 
-export const contactStatusLabel = "Status";
+export const contactStatusLabel = "Response time";
 
-export const contactStatusOn = "The team is online";
+export const contactStatusOn = "Usually within 24 hours";
 
-export const contactStatusOff = "Outside hours — your message will be answered next morning";
+export const contactStatusOff = "In exceptional circumstances, allow up to 48 hours.";
 
 export const contactCalloutLabel = "Every journey, connected.";
 
 export const contactFaq = [
   {
     q: "I want to advertise on tuk-tuk screens. Where do I start?",
-    a: "Visit /advertise to see the four monthly plans and three Burst plans. Pick one, fill in the application, and our team contacts you on WhatsApp within 24 hours.",
+    a: "Visit /advertise to reserve Roamer or Pioneer for our planned November 2026 launch. Planned packages accept expressions of interest without a deposit.",
   },
   {
     q: "I am a driver in Colombo. Can I join?",
-    a: "Yes, if you drive inside the live corridor (Dehiwala, Mount Lavinia, Ratmalana) and your routes run during active hours. Apply at /drive. The first ten drivers receive a Group A founding spot.",
+    a: "Apply at /drive with your contact, vehicle and Colombo operating-route details. All vehicles require inspection; older vehicles over 15 years require exceptional review.",
   },
   {
     q: "Do you offer internships or hiring?",

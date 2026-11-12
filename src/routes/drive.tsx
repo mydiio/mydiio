@@ -1,3 +1,4 @@
+import { preserveProductionSeo } from "@/seo/productionSeoParity";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { DriverPage } from "@/v2/drivers";
 import { isPublicWaitlistMode } from "@/config/publicSiteMode";
@@ -9,7 +10,7 @@ export const Route = createFileRoute("/drive")({
     if (isPublicWaitlistMode) throw redirect({ to: "/" });
   },
   component: DriverPage,
-  head: () => ({
+  head: preserveProductionSeo("/drive", () => ({
     meta: [
       {
         title: "Earn from your tuk-tuk. Paid on the 5th. | mydiio",
@@ -38,5 +39,5 @@ export const Route = createFileRoute("/drive")({
         href: "https://mydiio.com/drive",
       },
     ],
-  }),
+  })),
 });

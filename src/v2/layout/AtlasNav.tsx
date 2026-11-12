@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { colors } from "@/design";
+import { layoutCopy, type LayoutLocale } from "./layoutCopy";
 
 const navLinks = [
   { label: "Advertise", to: "/advertise" },
@@ -12,13 +13,23 @@ const navLinks = [
 
 type AtlasNavProps = {
   homeTo?: "/" | "/v2";
-  campaignTo?: "/advertise" | "/advertise/apply";
+  campaignTo?: "/advertise" | "/advertise/apply" | "/drivers/apply";
+  campaignLabel?: string;
+  initialTone?: "light" | "dark";
+  locale?: LayoutLocale;
 };
 
-export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNavProps) {
+export function AtlasNav({
+  homeTo = "/",
+  campaignTo = "/advertise",
+  campaignLabel,
+  initialTone = "light",
+  locale = "en",
+}: AtlasNavProps) {
+  const t = (label: string) => layoutCopy(label, locale);
   const [scrolled, setScrolled] = useState(false);
   const [compact, setCompact] = useState(false);
-  const [darkSurface, setDarkSurface] = useState(true);
+  const [darkSurface, setDarkSurface] = useState(initialTone === "dark");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -158,7 +169,7 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
                 className="atlas-nav-link"
                 style={{ color: foreground }}
               >
-                {link.label}
+                {t(link.label)}
               </Link>
             ))}
           </nav>
@@ -169,17 +180,17 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
               className="atlas-nav-signin"
               style={{ color: foreground }}
             >
-              Sign in
+              {t("Sign in")}
             </a>
 
             <Link to={campaignTo} className="atlas-nav-cta">
-              Launch campaign
+              {campaignLabel || t("Explore advertising")}
             </Link>
 
             <button
               type="button"
               className="atlas-nav-menu"
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label={t(open ? "Close menu" : "Open menu")}
               aria-expanded={open}
               onClick={() => setOpen((value) => !value)}
               style={{ color: foreground }}
@@ -196,7 +207,11 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
         </div>
       </header>
 
-      <div className={open ? "atlas-nav-mobile open" : "atlas-nav-mobile"} aria-hidden={!open}>
+      <div
+        className={open ? "atlas-nav-mobile open" : "atlas-nav-mobile"}
+        aria-hidden={!open}
+        inert={!open}
+      >
         <div className="atlas-nav-mobile-top">
           <Link
             to={homeTo}
@@ -211,7 +226,7 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
 
           <button
             type="button"
-            aria-label="Close menu"
+            aria-label={t("Close menu")}
             className="atlas-nav-mobile-close"
             onClick={() => setOpen(false)}
           >
@@ -231,7 +246,7 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
                 transitionDelay: open ? `${80 + index * 45}ms` : "0ms",
               }}
             >
-              <span>{link.label}</span>
+              <span>{t(link.label)}</span>
               <span aria-hidden="true">↗</span>
             </Link>
           ))}
@@ -239,11 +254,11 @@ export function AtlasNav({ homeTo = "/v2", campaignTo = "/advertise" }: AtlasNav
 
         <div className="atlas-nav-mobile-actions">
           <Link to={campaignTo} onClick={() => setOpen(false)} className="atlas-nav-mobile-cta">
-            Launch campaign
+            {campaignLabel || t("Explore advertising")}
           </Link>
 
           <a href="https://admin.mydiio.com/login" className="atlas-nav-mobile-signin">
-            Sign in
+            {t("Sign in")}
           </a>
         </div>
       </div>

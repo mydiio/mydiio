@@ -1,0 +1,85 @@
+/* mydiio Atlas - Advertise alignment, scoped to the public advertiser page.
+   Inherits canonical tokens from src/v2/foundation/homepage.css.
+   Keep existing layouts, dark sections and campaign interactions intact. */
+[data-advertiser-page] {
+  --advertiser-brand-cream: var(--atlas-cream, #fdfaf3);
+  --advertiser-brand-ink: var(--atlas-ink, #1a1a18);
+  --advertiser-brand-amber: var(--atlas-amber, #f5a623);
+  font-family: var(--font-body, "Space Grotesk", system-ui, sans-serif);
+}
+[data-advertiser-page] :is(button, input, select, textarea) {
+  font-family: inherit;
+}
+[data-advertiser-page] :is(.advertiser-hero-title, .advertiser-packages .atlas-section-heading, .advertiser-faq .atlas-section-heading, .advertiser-closing .atlas-section-heading) {
+  font-family: var(--font-body, "Space Grotesk", system-ui, sans-serif);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+[data-advertiser-page] :is(.atlas-section-eyebrow, .commercial-eyebrow, .advertiser-conversion-eyebrow, .advertiser-stage-eyebrow) {
+  font-family: var(--font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: var(--atlas-eyebrow-size, 11px);
+  font-weight: 700;
+  letter-spacing: var(--atlas-eyebrow-tracking, 0.17em);
+  text-transform: uppercase;
+}
+[data-advertiser-page] :is(.advertiser-package-card, .advertiser-burst-card, .atlas-real-showcase-card) {
+  border-radius: var(--atlas-commercial-card-radius, 26px);
+}
+[data-advertiser-page] :is(.advertiser-faq-question, .advertiser-package-card button, .advertiser-burst-card button) {
+  font-family: var(--font-body, "Space Grotesk", system-ui, sans-serif);
+}
+[data-advertiser-page] :is(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--advertiser-brand-amber);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  [data-advertiser-page] :is(.advertiser-package-card, .advertiser-burst-card, .atlas-real-showcase-card) {
+    border-radius: var(--atlas-panel-radius-mobile, 22px);
+  }
+}
+
+/* Atlas editorial rhythm — Drive + Advertise, scoped to live pages */
+.driver-experience .commercial-shell,
+main[data-advertiser-page] .commercial-shell,
+main[data-advertiser-page] .advertiser-shell {
+  width: min(100% - 2 * clamp(24px, 5vw, 80px), 1400px);
+  max-width: 1400px;
+  margin-inline: auto;
+}
+.driver-experience > .atlas-nav,
+.driver-experience .atlas-nav { background: #fdfaf3; border-bottom: 1px solid rgba(26,26,24,.12); }
+.driver-experience .driver-intro { background: #fdfaf3; }
+.driver-experience .driver-earnings { background: #fff; padding-block: clamp(76px, 9vw, 132px); }
+.driver-experience .driver-eligibility { background: #fdfaf3; padding-block: clamp(76px, 9vw, 132px); }
+.driver-experience .driver-process { background: #1a1a18; padding-block: clamp(76px, 9vw, 132px); }
+.driver-experience .driver-closing { background: #fdfaf3; padding-block: clamp(76px, 9vw, 132px); }
+.driver-experience .driver-atlas-summary-photo img { width:100%; height:100%; object-fit:cover; }
+.atlas-editorial-band { padding: clamp(72px, 8vw, 120px) 0; background: #1a1a18; color:#fdfaf3; }
+.atlas-editorial-band--light { background:#fdfaf3; color:#1a1a18; }
+.atlas-editorial-band__grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.08fr); gap:clamp(32px,5vw,80px); align-items:center; }
+.atlas-editorial-band__copy { max-width:560px; }
+.atlas-editorial-band__eyebrow { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#f5a623; }
+.atlas-editorial-band__copy h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(36px,4.7vw,70px); line-height:1.03; letter-spacing:-.06em; margin:20px 0; font-weight:600; }
+.atlas-editorial-band__copy p { max-width:47ch; font-size:clamp(16px,1.4vw,20px); line-height:1.65; opacity:.78; }
+.atlas-editorial-band__photo { margin:0; border-radius:28px; overflow:hidden; aspect-ratio: 1.45; background:#e8e0d1; }
+.atlas-editorial-band__photo img { display:block; width:100%; height:100%; object-fit:cover; }
+.atlas-editorial-band__photo figcaption { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+main[data-advertiser-page] .advertiser-hero { background:#fdfaf3; }
+main[data-advertiser-page] .atlas-editorial-band--light { background:#fff; }
+@media(max-width:760px){
+  .driver-experience .commercial-shell, main[data-advertiser-page] .commercial-shell, main[data-advertiser-page] .advertiser-shell { width:calc(100% - 40px); }
+  .atlas-editorial-band__grid { grid-template-columns:1fr; }
+  .atlas-editorial-band__photo { aspect-ratio: 1.2; }
+  .atlas-editorial-band { padding-block:72px; }
+}
+
+/* Atlas editorial polish: keep advertising image and campaign cards legible */
+main[data-advertiser-page] .atlas-editorial-band { padding-block: clamp(80px, 9vw, 136px); }
+main[data-advertiser-page] .atlas-editorial-band__photo { box-shadow: 0 30px 72px -46px rgba(26,26,24,.28); }
+main[data-advertiser-page] .atlas-editorial-band__copy h2 { max-width: 13ch; }
+main[data-advertiser-page] .atlas-editorial-band__copy p { max-width: 46ch; }
+@media (max-width: 760px) {
+ main[data-advertiser-page] .atlas-editorial-band { padding-block: 72px; }
+ main[data-advertiser-page] .atlas-editorial-band__copy h2 { max-width: none; }
+}

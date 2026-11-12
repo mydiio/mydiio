@@ -12,7 +12,15 @@ export function AboutClosing() {
       <div className="about-shell">
         <Reveal as="div" className="about-closing-inner">
           <span className="atlas-section-eyebrow atlas-section-eyebrow-light">One step</span>
-          <h2 className="about-closing-title">{aboutClosingHeading}</h2>
+          <h2 className="about-closing-title">
+            {aboutClosingHeading.includes("one journey.") ? (
+              <>
+                {aboutClosingHeading.split("one journey.")[0]}
+                <span className="about-brand-accent">one journey.</span>
+                {aboutClosingHeading.split("one journey.")[1]}
+              </>
+            ) : aboutClosingHeading}
+          </h2>
           <p className="about-closing-body">{aboutClosingBody}</p>
           <div className="about-closing-actions">
             <a className="atlas-button-amber" href="/contact">

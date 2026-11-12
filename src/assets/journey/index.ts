@@ -28,7 +28,9 @@ import signalIcon from "./icons/signal.png";
 import verificationIcon from "./icons/verification.png";
 
 import osBackground from "./tablet/os-background.png";
-import tabletHardware from "./tablet/tablet-hardware.png";
+import tabletHardware from "./tablet/tablet-hardware.webp";
+import tabletHardware768 from "./tablet/tablet-hardware-768.webp";
+import tabletHardware1280 from "./tablet/tablet-hardware-1280.webp";
 
 import contentCard from "./ui/content-card.png";
 import journeyRecord from "./ui/journey-record.png";
@@ -53,6 +55,7 @@ export const journeyAssets = {
 
   tablet: {
     hardware: tabletHardware,
+    hardwareSrcSet: `${tabletHardware768} 768w, ${tabletHardware1280} 1280w, ${tabletHardware} 1920w`,
     osBackground,
   },
 

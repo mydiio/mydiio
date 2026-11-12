@@ -1,0 +1,99 @@
+/* ATLAS FOOTER — brand positioning and spacing (Option 01)
+   This is the shared footer only; does not affect page or nav styles. */
+[data-atlas-footer].atlas-footer {
+  background: var(--atlas-cream, #fdfaf3);
+  color: var(--atlas-ink, #1a1a18);
+  padding: clamp(64px, 7vw, 92px) var(--atlas-gutter, clamp(20px, 4vw, 64px)) clamp(28px, 3.5vw, 48px);
+  border-top: 1px solid var(--atlas-border-light, rgba(26,26,24,.08));
+}
+[data-atlas-footer] .atlas-footer-inner {
+  width: min(var(--atlas-page-width, 1400px), 100%);
+  gap: clamp(26px, 3.1vw, 42px);
+}
+[data-atlas-footer] .atlas-footer-grid {
+  grid-template-columns: minmax(280px, 1.65fr) repeat(3, minmax(120px, .78fr));
+  align-items: start;
+  column-gap: clamp(30px, 4vw, 70px);
+  row-gap: 36px;
+}
+[data-atlas-footer] .atlas-footer-brand {
+  max-width: 390px;
+  gap: 0;
+}
+[data-atlas-footer] .atlas-footer-logo {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 750;
+  font-size: clamp(28px, 2.3vw, 34px);
+  letter-spacing: -.065em;
+  margin-bottom: 19px;
+}
+[data-atlas-footer] .atlas-footer-positioning {
+  color: var(--atlas-ink, #1a1a18);
+  font: 600 clamp(15px, 1.2vw, 18px)/1.45 "Space Grotesk", system-ui, sans-serif;
+  letter-spacing: -.025em;
+  margin: 0;
+  max-width: 33ch;
+  text-wrap: balance;
+}
+[data-atlas-footer] .atlas-footer-brand-signoff {
+  font: 600 14px/1.4 "Space Grotesk", system-ui, sans-serif;
+  color: var(--atlas-amber-deep, #e8920a);
+  margin: 7px 0 0;
+}
+[data-atlas-footer] .atlas-footer-meta {
+  margin: 22px 0 0;
+  color: rgba(26,26,24,.57);
+  font: 500 11px/1.65 "Space Grotesk", system-ui, sans-serif;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+[data-atlas-footer] .atlas-footer-col {
+  gap: 18px;
+}
+[data-atlas-footer] .atlas-footer-heading {
+  color: var(--atlas-amber-deep, #e8920a);
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+}
+[data-atlas-footer] .atlas-footer-list { gap: 13px; }
+[data-atlas-footer] .atlas-footer-link {
+  font: 500 14px/1.5 "Space Grotesk", system-ui, sans-serif;
+  color: rgba(26,26,24,.7);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+[data-atlas-footer] .atlas-footer-link:hover { color: var(--atlas-ink, #1a1a18); }
+[data-atlas-footer] .atlas-footer-rule {
+  padding-top: clamp(20px, 2vw, 28px);
+  border-color: rgba(26,26,24,.09);
+}
+[data-atlas-footer] .atlas-footer-rule-tagline,
+[data-atlas-footer] .atlas-footer-rule-languages {
+  color: rgba(26,26,24,.55);
+  font: 600 10px/1.5 "Space Mono", ui-monospace, monospace;
+  letter-spacing: .08em;
+}
+[data-atlas-footer] .atlas-footer-bottom {
+  padding-top: clamp(14px, 1.6vw, 22px);
+  border-color: rgba(26,26,24,.07);
+  color: rgba(26,26,24,.52);
+  font: 500 12px/1.5 "Space Grotesk", system-ui, sans-serif;
+  letter-spacing: 0;
+}
+[data-atlas-footer] a:focus-visible {
+  outline: 3px solid var(--atlas-amber, #f5a623);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+@media(max-width: 960px) {
+  [data-atlas-footer] .atlas-footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 32px; }
+  [data-atlas-footer] .atlas-footer-brand { grid-column: 1 / -1; max-width: 520px; }
+}
+@media(max-width: 600px) {
+  [data-atlas-footer].atlas-footer { padding-top: 56px; padding-bottom: 30px; }
+  [data-atlas-footer] .atlas-footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 22px; row-gap: 30px; }
+  [data-atlas-footer] .atlas-footer-brand { grid-column: 1 / -1; }
+  [data-atlas-footer] .atlas-footer-col:last-child { grid-column: 1 / -1; }
+  [data-atlas-footer] .atlas-footer-rule, [data-atlas-footer] .atlas-footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+}

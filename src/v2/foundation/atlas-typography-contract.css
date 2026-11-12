@@ -1,0 +1,54 @@
+/* Atlas typography contract v1 — values sourced from foundation/homepage.css.
+   Scoped to content regions: navigation, footer, interactive widgets and cards
+   retain their deliberate component-specific hierarchy. */
+[data-v2-page] {
+  --atlas-type-h1: var(--atlas-display-xl);
+  --atlas-type-h2: var(--atlas-display-lg);
+  --atlas-type-h3: var(--atlas-display-md);
+  --atlas-type-lead: var(--atlas-body-lead);
+  --atlas-type-body: 16px;
+  --atlas-type-caption: 13px;
+  --atlas-type-micro: 11px;
+  --atlas-type-eyebrow: var(--atlas-eyebrow);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+[data-v2-page] :is(.about-hero-title, .advertise-hero h1, .driver-intro h1, .cb-copy h1, .privacy-hero h1, .terms-hero h1) {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: var(--atlas-type-h1);
+  font-weight: 600;
+  line-height: .94;
+  letter-spacing: -.06em;
+  text-wrap: balance;
+}
+[data-v2-page] :is(.about-section-intro h2, .about-company-v5-intro h2, .atlas-editorial-band__copy h2, .advertiser-faq h2, .driver-v57-section h2, .driver-v57-process h2) {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: var(--atlas-type-h2);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+[data-v2-page] :is(.about-hero-description, .atlas-editorial-band__copy > p, .cb-lead) {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: var(--atlas-type-lead);
+  line-height: 1.55;
+  letter-spacing: -.01em;
+}
+[data-v2-page] :is(.atlas-editorial-band__eyebrow, .about-hero-kicker, .about-company-v5-eyebrow) {
+  font-family: "Space Mono", monospace;
+  font-size: var(--atlas-type-eyebrow);
+  font-weight: 650;
+  letter-spacing: .16em;
+  line-height: 1.4;
+}
+[data-v2-page] :is(.cb-card, .about-company-v5, .atlas-editorial-band__copy) p {
+  text-wrap: pretty;
+}
+@media (max-width: 800px) {
+  [data-v2-page] :is(.about-hero-title, .advertise-hero h1, .driver-intro h1, .cb-copy h1, .privacy-hero h1, .terms-hero h1) {
+    font-size: clamp(44px, 10vw, 72px);
+  }
+  [data-v2-page] :is(.about-section-intro h2, .about-company-v5-intro h2, .atlas-editorial-band__copy h2, .advertiser-faq h2, .driver-v57-section h2, .driver-v57-process h2) {
+    font-size: clamp(36px, 7.5vw, 58px);
+  }
+}

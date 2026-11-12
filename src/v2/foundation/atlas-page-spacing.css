@@ -1,0 +1,32 @@
+/* Atlas page spacing contract — sourced from homepage.css. */
+[data-v2-page] {
+  --atlas-layout-gutter: var(--atlas-gutter, clamp(20px, 4vw, 64px));
+  --atlas-layout-section: var(--atlas-section-space, clamp(72px, 9vw, 144px));
+  --atlas-layout-wide: var(--atlas-page-width, 1400px);
+  --atlas-layout-standard: var(--atlas-composition-width, 1200px);
+}
+/* Shared page content rails: do not alter the global nav or footer. */
+[data-about-page] .about-shell,
+[data-advertiser-page] .advertiser-shell,
+[data-privacy-page] .privacy-shell,
+[data-terms-page] .terms-shell,
+.contact-v2 .cb-shell {
+  width: min(var(--atlas-layout-standard), calc(100% - 2 * var(--atlas-layout-gutter)));
+  max-width: none;
+  margin-inline: auto;
+}
+/* Main sections only; nested cards and embedded widgets keep their own spacing. */
+[data-about-page] :is(.about-pillars-v2, .about-company-v5, .about-roadmap-v4),
+[data-advertiser-page] :is(.atlas-sales-ideas, .atlas-sales-faq, .atlas-sales-closing, .advertiser-packages-refined),
+.driver-experience :is(.driver-earnings, .driver-eligibility, .driver-process, .driver-form-section, .driver-closing),
+.contact-v2 .cb-faq {
+  padding-block: var(--atlas-layout-section);
+}
+/* Editorial bands: consistent top and bottom breathing room. */
+[data-v2-page] .atlas-editorial-band {
+  padding-block: var(--atlas-layout-section);
+}
+/* Legal documents: retain their narrower reading columns and list indentation. */
+@media (max-width: 800px) {
+  [data-v2-page] { --atlas-layout-gutter: 20px; --atlas-layout-section: clamp(56px, 16vw, 88px); }
+}

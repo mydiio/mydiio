@@ -1,0 +1,413 @@
+/* mydiio Atlas — About page final polish v2
+   Applies only inside [data-about-page]. Shared navigation/footer, content,
+   photography, interactive principle state and links are deliberately untouched.
+   Homepage's foundation tokens remain authoritative.
+*/
+[data-about-page] {
+  --about-surface-warm: #f1eade;
+  --about-surface-soft: #f5efe5;
+  --about-stroke: rgba(26, 26, 24, .085);
+  --about-copy: rgba(26, 26, 24, .67);
+}
+
+/* One shared composition width, one shared gutter — no doubled padding. */
+[data-about-page] .about-shell,
+[data-about-page] .about-roadmap-v4 .about-shell,
+[data-about-page] .about-company-v5-intro,
+[data-about-page] .about-company-v5 .contact-shell {
+  width: min(var(--atlas-composition-width, 1200px), calc(100% - 2 * var(--atlas-gutter, clamp(20px, 4vw, 64px))));
+  max-width: var(--atlas-composition-width, 1200px);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+/* Alternating Atlas surfaces: editorial story without competing visual systems. */
+[data-about-page] .about-hero.about-hero-atlas-static {
+  background: var(--atlas-cream, #fdfaf3);
+}
+[data-about-page] .about-pillars-v2 {
+  background: var(--about-surface-soft);
+}
+[data-about-page] .about-perspectives {
+  background: #fff;
+}
+[data-about-page] .about-roadmap-v4 {
+  background: var(--atlas-cream, #fdfaf3);
+}
+[data-about-page] .about-company-v5 {
+  background: var(--about-surface-warm);
+}
+[data-about-page] .about-closing {
+  background: var(--atlas-ink, #1a1a18);
+  color: var(--atlas-cream, #fdfaf3);
+}
+[data-about-page] :is(.about-pillars-v2, .about-perspectives, .about-roadmap-v4, .about-company-v5) {
+  padding-block: var(--atlas-section-space, clamp(72px, 9vw, 144px));
+  border-top: 1px solid var(--about-stroke);
+}
+
+/* Static two-column hero: no video, no animation, balanced with home/Advertise. */
+[data-about-page] .about-hero-atlas-static .about-hero-overlay {
+  padding: clamp(112px, 10vw, 154px) var(--atlas-gutter, clamp(20px, 4vw, 64px)) clamp(72px, 8vw, 112px);
+}
+[data-about-page] .about-hero-atlas-static .about-hero-shell {
+  width: min(var(--atlas-composition-width, 1200px), 100%);
+  max-width: var(--atlas-composition-width, 1200px);
+}
+[data-about-page] .about-hero-atlas-static .about-hero-atlas-grid {
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  margin-top: clamp(28px, 4.3vw, 56px);
+}
+[data-about-page] .about-hero-atlas-static .about-hero-title {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: var(--atlas-display-xl, clamp(56px, 7vw, 112px));
+  font-weight: 600;
+  line-height: .99;
+  letter-spacing: -.062em;
+  margin: 0;
+  text-wrap: balance;
+}
+[data-about-page] .about-hero-atlas-static .about-hero-description {
+  font-size: var(--atlas-body-lead, clamp(17px, 1.35vw, 22px));
+  line-height: 1.56;
+  max-width: 47ch;
+  margin-top: 24px;
+  color: var(--about-copy);
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+[data-about-page] .about-hero-atlas-static .about-hero-bottom {
+  margin-top: clamp(26px, 3vw, 42px);
+  padding-top: 18px;
+  border-top: 1px solid var(--about-stroke);
+}
+[data-about-page] .about-hero-atlas-media {
+  aspect-ratio: 5 / 4;
+  border-radius: var(--atlas-panel-radius, 28px);
+  background: #e9e1d3;
+  box-shadow: var(--atlas-shadow-light, 0 25px 60px -38px rgba(26,26,24,.32));
+}
+[data-about-page] .about-hero-atlas-media img {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Consistent section headings, leads and mono labels (same roles as homepage). */
+[data-about-page] :is(
+  .about-principles-heading,
+  .about-perspectives-intro h2,
+  .about-roadmap-intro h2,
+  .about-company-v5-intro h2
+) {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: var(--atlas-display-lg, clamp(42px, 5.3vw, 82px));
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -.062em;
+  text-wrap: balance;
+  margin-top: 0;
+}
+[data-about-page] :is(
+  .about-principles-lede,
+  .about-perspectives-intro > p,
+  .about-roadmap-intro > p,
+  .about-company-v5-intro > p
+) {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: var(--atlas-body-lead, clamp(17px, 1.35vw, 22px));
+  line-height: 1.58;
+  color: var(--about-copy);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+[data-about-page] :is(
+  .about-hero-kicker,
+  .about-principles-kicker,
+  .about-perspectives-overline,
+  .about-roadmap-meta,
+  .about-company-v5-eyebrow,
+  .about-perspective-eyebrow,
+  .about-principles-detail-label,
+  .about-principles-proof > span,
+  .about-hero-atlas-media-caption
+) {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: var(--atlas-eyebrow, 10px);
+  font-weight: 600;
+  letter-spacing: .12em;
+  line-height: 1.5;
+}
+[data-about-page] :is(.about-principles-intro, .about-perspectives-intro, .about-roadmap-intro) {
+  margin-bottom: clamp(32px, 4vw, 52px);
+}
+
+/* Principles: aligned selections and a calm image/text story panel. */
+[data-about-page] .about-principles-choices {
+  gap: clamp(12px, 1.4vw, 18px);
+  margin-bottom: 18px;
+}
+[data-about-page] .about-principles-choice {
+  min-height: 205px;
+  padding: clamp(20px, 2vw, 28px);
+  border-radius: 20px;
+  border-color: var(--about-stroke);
+}
+[data-about-page] .about-principles-choice.is-active {
+  border-color: var(--atlas-ink, #1a1a18);
+}
+[data-about-page] .about-principles-choice-title {
+  font-size: clamp(19px, 1.8vw, 25px);
+  font-weight: 600;
+  line-height: 1.16;
+}
+[data-about-page] .about-principles-detail {
+  min-height: 355px;
+  border-radius: var(--atlas-panel-radius, 28px);
+  background: #ece3d7;
+}
+[data-about-page] .about-principles-detail-copy {
+  padding: clamp(28px, 3.7vw, 52px);
+}
+[data-about-page] .about-principles-detail h3 {
+  font-size: clamp(30px, 3.2vw, 46px);
+  font-weight: 600;
+  line-height: 1.09;
+  margin-block: 18px 14px;
+}
+[data-about-page] .about-principles-detail p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* Perspective cards: uniform image dimensions and comfortably readable content. */
+[data-about-page] .about-perspectives-grid {
+  gap: clamp(14px, 1.6vw, 22px);
+  align-items: stretch;
+}
+[data-about-page] .about-perspective-card {
+  border-radius: 22px;
+  border-color: var(--about-stroke);
+  box-shadow: var(--atlas-shadow-light, 0 25px 60px -38px rgba(26,26,24,.22));
+}
+[data-about-page] .about-perspective-image-wrap {
+  aspect-ratio: 16 / 10;
+}
+[data-about-page] .about-perspective-content {
+  padding: clamp(22px, 2.2vw, 30px);
+}
+[data-about-page] .about-perspective-content h3 {
+  font-size: clamp(24px, 2.2vw, 31px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -.045em;
+}
+[data-about-page] .about-perspective-content > p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+[data-about-page] .about-perspective-proof {
+  border-radius: 12px;
+  background: #fcf1de;
+}
+[data-about-page] .about-perspective-link {
+  min-height: 46px;
+  border-radius: var(--atlas-radius-pill, 999px);
+}
+
+/* Roadmap: shorter feature panel and consistent milestone card geometry. */
+[data-about-page] .about-roadmap-v4 .about-roadmap-feature {
+  min-height: 410px;
+  border-radius: var(--atlas-panel-radius, 28px);
+  overflow: hidden;
+}
+[data-about-page] .about-roadmap-v4 .about-roadmap-art {
+  min-height: 410px;
+}
+[data-about-page] .about-roadmap-v4 .about-roadmap-feature-copy {
+  padding: clamp(28px, 3.7vw, 52px);
+}
+[data-about-page] .about-roadmap-v4 .about-roadmap-feature-copy h3 {
+  font-size: clamp(35px, 3.4vw, 52px);
+  font-weight: 600;
+}
+[data-about-page] .about-roadmap-v4 .about-roadmap-milestones {
+  gap: clamp(12px, 1.4vw, 18px);
+  margin-top: 18px;
+}
+[data-about-page] .about-roadmap-v4 .about-roadmap-milestone {
+  min-height: 246px;
+  padding: clamp(22px, 2vw, 28px);
+  border-radius: 20px;
+  border-color: var(--about-stroke);
+}
+[data-about-page] .about-roadmap-v4 .about-roadmap-milestone h3 {
+  padding-top: 20px;
+  font-weight: 600;
+}
+
+/* Company facts: no giant empty cards, links remain individually accessible. */
+[data-about-page] .about-company-v5-intro {
+  margin-bottom: clamp(30px, 3.5vw, 48px);
+}
+[data-about-page] .about-company-v5 .contact-facts-grid {
+  gap: clamp(12px, 1.4vw, 18px);
+}
+[data-about-page] .about-company-v5 .contact-fact,
+[data-about-page] .about-company-v5 .contact-fact + .contact-fact,
+[data-about-page] .about-company-v5 .contact-fact:last-child {
+  min-height: 236px;
+  padding: clamp(20px, 2vw, 28px);
+  border-radius: 20px;
+  border-color: var(--about-stroke);
+}
+[data-about-page] .about-company-v5 .contact-fact-admin {
+  background: var(--atlas-ink, #1a1a18);
+  border-color: var(--atlas-ink, #1a1a18);
+}
+[data-about-page] .about-company-v5 .contact-fact::before {
+  margin-bottom: 18px;
+}
+
+/* Closing ink section: decisive CTA without an oversized empty viewport. */
+[data-about-page] .about-closing {
+  padding-block: clamp(80px, 9vw, 136px);
+}
+[data-about-page] .about-closing-inner {
+  max-width: 790px;
+  gap: 18px;
+}
+[data-about-page] .about-closing-title {
+  font-size: var(--atlas-display-lg, clamp(42px, 5.3vw, 82px));
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -.062em;
+  margin-top: 10px;
+}
+[data-about-page] .about-closing-body {
+  font-size: var(--atlas-body-lead, clamp(17px, 1.35vw, 22px));
+  line-height: 1.6;
+}
+[data-about-page] .about-closing-actions {
+  margin-top: 14px;
+  gap: 12px;
+}
+[data-about-page] :is(.about-hero-discover, .about-perspective-link, .about-closing-actions a):focus-visible,
+[data-about-page] .about-principles-choice:focus-visible {
+  outline: 3px solid var(--atlas-amber, #f5a623);
+  outline-offset: 4px;
+}
+
+/* Tablet: maintain readable cards and prevent the 3-up grid from squeezing. */
+@media (max-width: 1000px) {
+  [data-about-page] .about-perspectives-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  [data-about-page] .about-perspective-card:last-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  }
+  [data-about-page] .about-perspective-card:last-child .about-perspective-image-wrap {
+    aspect-ratio: auto;
+    min-height: 260px;
+  }
+  [data-about-page] .about-roadmap-v4 .about-roadmap-milestone {
+    min-height: 230px;
+  }
+}
+@media (max-width: 800px) {
+  [data-about-page] .about-hero-atlas-static .about-hero-overlay {
+    padding-top: 110px;
+    padding-bottom: var(--atlas-section-space, 70px);
+  }
+  [data-about-page] .about-hero-atlas-static .about-hero-atlas-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  [data-about-page] .about-hero-atlas-static .about-hero-title {
+    font-size: clamp(44px, 10vw, 70px);
+  }
+  [data-about-page] .about-hero-atlas-media {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--atlas-panel-radius-mobile, 22px);
+  }
+  [data-about-page] .about-principles-detail {
+    grid-template-columns: 1fr;
+  }
+  [data-about-page] .about-roadmap-v4 .about-roadmap-feature,
+  [data-about-page] .about-roadmap-v4 .about-roadmap-art {
+    min-height: auto;
+  }
+  [data-about-page] .about-roadmap-v4 .about-roadmap-art {
+    min-height: 300px;
+  }
+  [data-about-page] .about-roadmap-v4 .about-roadmap-feature-copy {
+    min-height: 0;
+  }
+  [data-about-page] .about-roadmap-v4 .about-roadmap-feature-copy h3 {
+    margin: 28px 0 18px;
+  }
+  [data-about-page] .about-company-v5 .contact-fact,
+  [data-about-page] .about-company-v5 .contact-fact + .contact-fact,
+  [data-about-page] .about-company-v5 .contact-fact:last-child {
+    min-height: 0;
+  }
+}
+@media (max-width: 700px) {
+  [data-about-page] .about-perspectives-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  [data-about-page] .about-perspective-card:last-child {
+    grid-column: auto;
+    display: flex;
+  }
+  [data-about-page] .about-perspective-card:last-child .about-perspective-image-wrap {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+  [data-about-page] .about-perspective-content h3,
+  [data-about-page] .about-perspective-content > p {
+    min-height: 0;
+  }
+  [data-about-page] .about-perspectives-footer {
+    gap: 8px;
+    font-size: 12px;
+  }
+  [data-about-page] .about-principles-choice {
+    min-height: 0;
+  }
+}
+@media (max-width: 480px) {
+  [data-about-page] .about-hero-atlas-static .about-hero-kicker,
+  [data-about-page] :is(.about-principles-topline, .about-perspectives-topline,
+    .about-roadmap-meta, .about-company-v5-eyebrow) {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  [data-about-page] .about-hero-atlas-static .about-hero-bottom {
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  [data-about-page] .about-principles-detail-copy {
+    padding: 24px;
+  }
+  [data-about-page] .about-roadmap-v4 .about-roadmap-milestone {
+    min-height: 0;
+  }
+  [data-about-page] .about-closing-actions a {
+    justify-content: center;
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-about-page] .about-perspective-card,
+  [data-about-page] .about-perspective-image-wrap img,
+  [data-about-page] .about-roadmap-v4 .about-roadmap-milestone,
+  [data-about-page] .about-company-v5 .contact-fact {
+    transition: none !important;
+  }
+}

@@ -1,3 +1,5 @@
+import { preserveProductionRootScripts } from "@/seo/productionSeoParity";
+import { LeadAttribution } from "@/lib/lead-intake";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -9,10 +11,11 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
+import "@/styles/brand-fonts.css";
 import { I18nProvider } from "@/lib/i18n";
 import { MotionProvider } from "@/motion";
 import "@/styles/motion.css";
-import { InitialLoadScreen } from "@/components/ui/weave-spinner";
+import "@/v2/foundation/atlas-brand-amber-sitewide.css";
 
 function NotFoundComponent() {
   return (
@@ -72,71 +75,39 @@ function ErrorComponent({ error, reset }: { error: unknown; reset: () => void })
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  head: preserveProductionRootScripts(() => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1.0" },
       {
-        title:
-          "mydiio, Sri Lanka's first connected passenger information network | Every Journey, Connected",
+        title: "mydiio | Connected Passenger Media in Colombo",
       },
       {
         name: "description",
         content:
-          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month with 7 days free.",
+          "Discover mydiio: cloud-managed passenger screens inside Colombo's tuk-tuks, connecting brands with people through local campaigns and transparent delivery reporting.",
       },
       { name: "author", content: "mydiio" },
       { property: "og:site_name", content: "mydiio" },
-      {
-        property: "og:title",
-        content:
-          "mydiio, Sri Lanka's first connected passenger information network | Every Journey, Connected",
-      },
-      {
-        property: "og:description",
-        content:
-          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month with 7 days free.",
-      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      // Shared fallback until each Atlas page has its own social image.
+      { property: "og:image", content: "https://mydiio.com/assets/social/mydiio-homepage-og.png" },
+      { property: "og:image:type", content: "image/png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       {
-        name: "twitter:title",
-        content:
-          "mydiio, Sri Lanka's first connected passenger information network | Every Journey, Connected",
+        property: "og:image:alt",
+        content: "mydiio advertising inside a Colombo tuk-tuk, featuring a real passenger screen.",
       },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://mydiio.com/assets/social/mydiio-homepage-og.png" },
       {
-        name: "twitter:description",
-        content:
-          "Sri Lanka's first connected passenger information network. Screens inside tuks deliver completed-play reporting with GPS and movement evidence. From LKR 25,000/month with 7 days free.",
-      },
-      {
-        property: "og:image",
-        content:
-          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9a28c7aa-be3d-4216-b0c6-2481ea12a19e",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9a28c7aa-be3d-4216-b0c6-2481ea12a19e",
+        name: "twitter:image:alt",
+        content: "mydiio advertising inside a Colombo tuk-tuk, featuring a real passenger screen.",
       },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "preload",
-        as: "style",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap",
-      },
-      { rel: "alternate", hrefLang: "en", href: "https://mydiio.com/?lang=en" },
-      { rel: "alternate", hrefLang: "si", href: "https://mydiio.com/?lang=si" },
-      { rel: "alternate", hrefLang: "ta", href: "https://mydiio.com/?lang=ta" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://mydiio.com/" },
     ],
     scripts: [
       {
@@ -146,9 +117,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "Organization",
           name: "mydiio",
           url: "https://mydiio.com",
-          logo: "https://mydiio.com/logo.png",
+          logo: "https://mydiio.com/favicon-512x512.png",
           description:
-            "Sri Lanka's first connected passenger information network, installed inside tuk-tuks, funded by advertising and built for people. Completed-play reporting includes GPS and movement evidence.",
+            "mydiio is a connected passenger media network, starting with cloud-managed screens inside Colombo's tuk-tuks. The network supports local advertising with playback and GPS-based delivery evidence.",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Colombo",
@@ -156,14 +127,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           },
           contactPoint: {
             "@type": "ContactPoint",
-            email: "mydiiomedia@gmail.com",
+            url: "https://mydiio.com/contact",
             contactType: "customer service",
           },
           sameAs: [],
         }),
       },
     ],
-  }),
+  })),
 
   shellComponent: RootShell,
   component: RootComponent,
@@ -175,6 +146,8 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-lang="en">
       <head>
+        <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="/fonts/brand/space-grotesk-latin-500-normal.woff2" />
+        <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="/fonts/brand/space-grotesk-latin-600-normal.woff2" />
         <HeadContent />
       </head>
       <body>
@@ -193,7 +166,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
         <MotionProvider>
-          <InitialLoadScreen />
+          <LeadAttribution />
           <Outlet />
         </MotionProvider>
       </I18nProvider>

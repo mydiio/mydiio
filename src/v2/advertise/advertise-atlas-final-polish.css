@@ -1,0 +1,313 @@
+/*
+ * mydiio Atlas — Advertise final editorial polish
+ * Scope: public /advertise page only. Homepage design tokens are authoritative.
+ * No nav overrides; AtlasNav controls its own reactive foreground and background.
+ */
+main[data-advertiser-page] {
+  --advertise-gutter: var(--atlas-gutter, clamp(20px, 4vw, 64px));
+  --advertise-content: var(--atlas-composition-width, 1200px);
+  --advertise-space: clamp(68px, 7.5vw, 112px);
+  --advertise-card-radius: var(--atlas-panel-radius, 28px);
+  --advertise-border: var(--atlas-border-light, rgba(26, 26, 24, .08));
+  --advertise-copy: var(--atlas-copy-dark, rgba(26, 26, 24, .64));
+  background: var(--atlas-cream, #fdfaf3);
+  color: var(--atlas-ink, #1a1a18);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+/* One grid across hero, campaign builder, editorial sections and footer CTAs. */
+main[data-advertiser-page] :is(.advertiser-shell, .commercial-shell, .advertiser-conversion-shell) {
+  box-sizing: border-box;
+  width: min(var(--advertise-content), calc(100% - 2 * var(--advertise-gutter))) !important;
+  max-width: var(--advertise-content) !important;
+  padding-inline: 0 !important;
+  margin-inline: auto;
+}
+main[data-advertiser-page] > section:not(.advertiser-hero) {
+  padding-block: var(--advertise-space);
+}
+main[data-advertiser-page] :is(.atlas-section-eyebrow, .commercial-eyebrow, .advertiser-conversion-eyebrow, .advertiser-stage-eyebrow, .atlas-editorial-band__eyebrow) {
+  font-family: 'Space Mono', ui-monospace, monospace;
+  font-size: var(--atlas-eyebrow, 10px);
+  font-weight: 700;
+  letter-spacing: .15em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+main[data-advertiser-page] :is(.advertiser-hero-title, .advertiser-conversion-intro h2, .advertiser-packages-intro h2, .atlas-campaign-journey-heading h2, .atlas-sales-ideas-head h2, .advertiser-faq-intro h2, .advertiser-closing h2) {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -.06em;
+  text-wrap: balance;
+}
+main[data-advertiser-page] :is(.advertiser-hero-body, .advertiser-conversion-intro > p, .advertiser-packages-intro .atlas-section-copy, .atlas-editorial-band__copy > p, .advertiser-faq-intro .atlas-section-copy) {
+  color: var(--advertise-copy);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+/* Hero: editorial, spacious enough for the live tablet, not a full empty screen. */
+main[data-advertiser-page] > section.advertiser-hero {
+  min-height: 0;
+  padding-block: clamp(132px, 11vw, 166px) clamp(70px, 8vw, 108px);
+  background-color: var(--atlas-cream, #fdfaf3);
+}
+main[data-advertiser-page] .advertiser-hero-grid {
+  grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
+  gap: clamp(32px, 5vw, 78px);
+  align-items: center;
+}
+main[data-advertiser-page] .advertiser-hero-title {
+  font-size: var(--atlas-display-xl, clamp(56px, 7vw, 112px));
+  line-height: .95;
+  max-width: 12ch;
+  margin-top: 18px;
+}
+main[data-advertiser-page] .advertiser-hero-body {
+  font-size: var(--atlas-body-lead, clamp(17px, 1.35vw, 22px));
+  margin-top: 20px;
+  max-width: 47ch;
+}
+main[data-advertiser-page] .advertiser-hero-actions { margin-top: 26px; gap: 12px; }
+main[data-advertiser-page] .advertiser-price-anchor { margin-top: 18px; }
+main[data-advertiser-page] .advertiser-product-stage { min-width: 0; }
+main[data-advertiser-page] .advertiser-stage-card { border-radius: var(--advertise-card-radius); }
+
+/* Conversion builder: clear two-step choice, within one deliberate section. */
+main[data-advertiser-page] > section.advertiser-conversion {
+  min-height: 0;
+  background: #fff;
+  border-block: 1px solid var(--advertise-border);
+}
+main[data-advertiser-page] .advertiser-conversion-intro { max-width: 940px; margin-bottom: 24px; }
+main[data-advertiser-page] .advertiser-conversion-intro h2 {
+  font-size: clamp(42px, 5.1vw, 76px);
+  line-height: 1;
+  max-width: 19ch;
+  margin: 12px 0 14px;
+}
+main[data-advertiser-page] .advertiser-conversion-intro > p { font-size: var(--atlas-body-lead, clamp(17px,1.35vw,22px)); }
+main[data-advertiser-page] .advertiser-conversion-grid { margin-top: 26px; gap: clamp(18px, 2.5vw, 32px); }
+main[data-advertiser-page] :is(.advertiser-conversion-goals, .advertiser-conversion-plan) {
+  border-radius: var(--advertise-card-radius);
+  padding: clamp(22px, 2.5vw, 34px);
+}
+main[data-advertiser-page] .advertiser-conversion-options { gap: 11px; }
+main[data-advertiser-page] .advertiser-conversion-option {
+  border-radius: 12px;
+  min-height: 50px;
+  font-size: 15px;
+}
+main[data-advertiser-page] .advertiser-conversion-option.is-selected {
+  background: #fff5e4;
+  border-color: var(--atlas-amber-deep, #e8920a);
+}
+main[data-advertiser-page] .advertiser-conversion-plan-tabs { border-radius: 12px; }
+main[data-advertiser-page] .advertiser-conversion-plan-tabs button { border-radius: 9px; min-height: 44px; }
+main[data-advertiser-page] .advertiser-conversion-price strong { font-size: clamp(28px, 3vw, 42px); }
+main[data-advertiser-page] .advertiser-conversion-stats > div { border-radius: 12px; }
+main[data-advertiser-page] .advertiser-conversion-cta { border-radius: var(--atlas-radius-pill, 999px); min-height: 52px; }
+main[data-advertiser-page] .advertiser-conversion-foot { margin-top: 22px; }
+main[data-advertiser-page] .advertiser-enquiry-dialog { border-radius: var(--advertise-card-radius); }
+main[data-advertiser-page] .advertiser-enquiry-dialog input { border-radius: 12px; min-height: 48px; }
+
+/* Product demonstration: dark focal panel with balanced white space around it. */
+main[data-advertiser-page] > section.advertiser-client-portal {
+  background: var(--atlas-cream, #fdfaf3) !important;
+}
+
+/* Distinct visual beat: city-facing campaign creative on white. */
+main[data-advertiser-page] > section.atlas-editorial-band--light {
+  background: #fff;
+  border-block: 1px solid var(--advertise-border);
+}
+main[data-advertiser-page] .atlas-editorial-band__grid {
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(36px, 5vw, 80px);
+}
+main[data-advertiser-page] .atlas-editorial-band__copy h2 {
+  margin: 14px 0 20px;
+  font-size: clamp(40px, 4.9vw, 72px);
+  line-height: 1.03;
+  max-width: 14ch;
+}
+main[data-advertiser-page] .atlas-editorial-band__copy > p { max-width: 46ch; }
+main[data-advertiser-page] .atlas-editorial-band__photo {
+  border-radius: var(--advertise-card-radius);
+  aspect-ratio: 1.52;
+  box-shadow: var(--atlas-shadow-light, 0 30px 72px -46px rgba(26,26,24,.25));
+}
+
+/* Commercial comparison: package information aligned to the same rhythm. */
+main[data-advertiser-page] > section.advertiser-packages-refined {
+  background: var(--atlas-cream, #fdfaf3);
+}
+main[data-advertiser-page] .advertiser-packages-intro { max-width: 850px; }
+main[data-advertiser-page] .advertiser-packages-intro .atlas-section-heading {
+  font-size: clamp(42px, 5.3vw, 82px);
+  line-height: 1;
+  margin-top: 12px;
+}
+main[data-advertiser-page] .advertiser-packages-intro .atlas-section-copy {
+  font-size: var(--atlas-body-lead, clamp(17px, 1.35vw, 22px));
+  max-width: 58ch;
+  margin-top: 16px;
+}
+main[data-advertiser-page] .advertiser-package-view-tabs {
+  margin-top: 26px;
+  border-radius: 16px;
+  max-width: 650px;
+}
+main[data-advertiser-page] .advertiser-package-view-tabs button {
+  min-height: 47px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+main[data-advertiser-page] .advertiser-package-grid { gap: clamp(16px, 2vw, 26px); }
+main[data-advertiser-page] .advertiser-packages-refined .advertiser-package-card {
+  padding: clamp(24px, 2.6vw, 34px);
+  gap: 11px;
+  border-radius: var(--advertise-card-radius);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+main[data-advertiser-page] .advertiser-package-card:not(.advertiser-package-card-featured) { background: #fff; }
+main[data-advertiser-page] .advertiser-package-card-featured {
+  background: var(--atlas-ink, #1a1a18);
+  color: var(--atlas-cream, #fdfaf3);
+}
+main[data-advertiser-page] .advertiser-package-name { font-size: clamp(28px, 2.8vw, 38px); }
+main[data-advertiser-page] .advertiser-package-price { font-size: clamp(25px, 2.3vw, 34px); }
+main[data-advertiser-page] .advertiser-package-features > div { gap: 16px; }
+main[data-advertiser-page] .advertiser-package-features dt { flex: 0 1 44%; }
+main[data-advertiser-page] .advertiser-package-features dd {
+  flex: 1 1 56%;
+  min-width: 0;
+  text-align: right;
+  overflow-wrap: break-word;
+}
+main[data-advertiser-page] .advertiser-package-cta {
+  min-height: 52px;
+  margin-top: auto;
+  border-radius: var(--atlas-radius-pill, 999px);
+}
+main[data-advertiser-page] .advertiser-package-compact-foot { margin-top: 24px; }
+main[data-advertiser-page] .advertiser-package-disclosure summary { min-height: 52px; }
+main[data-advertiser-page] .advertiser-burst-card { border-radius: var(--advertise-card-radius); }
+main[data-advertiser-page] .advertiser-burst-cta { border-radius: var(--atlas-radius-pill,999px); min-height: 50px; }
+
+/* Campaign journey stays easy to scan; long terms remain in their cards. */
+main[data-advertiser-page] > section.atlas-sales-guide {
+  background: #fff;
+  border-block: 1px solid var(--advertise-border);
+}
+main[data-advertiser-page] .atlas-campaign-journey-heading h2 {
+  font-size: clamp(42px, 5.3vw, 82px);
+  letter-spacing: -.06em;
+  line-height: 1;
+}
+main[data-advertiser-page] :is(.atlas-campaign-journey-step, .atlas-guide-info-card) {
+  border-radius: var(--atlas-radius-card, 20px);
+}
+main[data-advertiser-page] .atlas-guide-info-card { padding: clamp(20px, 2vw, 28px); }
+main[data-advertiser-page] .atlas-campaign-journey-cta {
+  border-radius: var(--atlas-radius-pill, 999px);
+  min-height: 50px;
+}
+
+/* Ideas: illustrative campaign cards with consistent geometry. */
+main[data-advertiser-page] > section.atlas-real-showcase { background: var(--atlas-cream,#fdfaf3); }
+main[data-advertiser-page] .atlas-real-showcase-grid { gap: clamp(16px, 2vw, 26px); }
+main[data-advertiser-page] .atlas-real-showcase-card {
+  border-radius: var(--atlas-radius-card, 20px);
+  background: #fff;
+  padding: clamp(14px, 1.6vw, 20px);
+}
+main[data-advertiser-page] .atlas-real-showcase-copy h3 { font-size: clamp(21px, 2vw, 29px); }
+
+/* FAQ: intentional quiet white section preceding the strong dark close. */
+main[data-advertiser-page] > section.advertiser-faq { background: #fff; }
+main[data-advertiser-page] .advertiser-faq-grid {
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  gap: clamp(30px, 5vw, 88px);
+}
+main[data-advertiser-page] .advertiser-faq-intro .atlas-section-heading {
+  font-size: clamp(42px, 5.3vw, 82px);
+  line-height: .99;
+  max-width: 10ch;
+}
+main[data-advertiser-page] .advertiser-faq-question {
+  padding-block: 18px;
+  min-height: 62px;
+  gap: 14px;
+}
+main[data-advertiser-page] .advertiser-faq-question strong {
+  font-size: clamp(18px, 1.65vw, 25px);
+  line-height: 1.23;
+}
+main[data-advertiser-page] .advertiser-faq-answer[hidden] { display: none; }
+main[data-advertiser-page] .advertiser-faq-answer p { font-size: 15px; line-height: 1.65; }
+
+/* Final conversion: short, striking and unmistakably Atlas. */
+main[data-advertiser-page] > section.advertiser-closing {
+  background: var(--atlas-ink, #1a1a18);
+  color: var(--atlas-cream, #fdfaf3);
+  padding-block: clamp(76px, 8.5vw, 128px);
+}
+main[data-advertiser-page] .advertiser-closing-inner { gap: 16px; }
+main[data-advertiser-page] .advertiser-closing .atlas-section-heading {
+  font-size: clamp(48px, 6vw, 92px);
+  line-height: .98;
+  max-width: 13ch;
+  margin-top: 4px;
+}
+main[data-advertiser-page] .advertiser-closing-actions { margin-top: 10px; }
+main[data-advertiser-page] .advertiser-closing .atlas-button-amber {
+  min-height: 54px;
+  border-radius: var(--atlas-radius-pill, 999px);
+}
+
+/* Consistent accessible interaction, including tab groups and enquiry dialog. */
+main[data-advertiser-page] :is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--atlas-amber, #f5a623);
+  outline-offset: 3px;
+}
+@media (max-width: 960px) {
+  main[data-advertiser-page] .advertiser-hero-grid { grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr); gap: 28px; }
+  main[data-advertiser-page] .advertiser-hero-title { font-size: clamp(48px, 5.2vw, 68px); }
+  main[data-advertiser-page] .advertiser-faq-grid { grid-template-columns: .9fr 1.1fr; }
+}
+@media (max-width: 780px) {
+  main[data-advertiser-page] { --advertise-gutter: 20px; --advertise-space: clamp(56px, 11vw, 80px); }
+  main[data-advertiser-page] > section.advertiser-hero { padding-top: 112px; padding-bottom: 64px; }
+  main[data-advertiser-page] .advertiser-hero-grid,
+  main[data-advertiser-page] .atlas-editorial-band__grid,
+  main[data-advertiser-page] .advertiser-conversion-grid,
+  main[data-advertiser-page] .advertiser-faq-grid { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  main[data-advertiser-page] .advertiser-hero-title { font-size: clamp(48px, 10.2vw, 72px); }
+  main[data-advertiser-page] .advertiser-conversion-intro h2,
+  main[data-advertiser-page] .advertiser-packages-intro .atlas-section-heading,
+  main[data-advertiser-page] .atlas-campaign-journey-heading h2,
+  main[data-advertiser-page] .advertiser-faq-intro .atlas-section-heading { font-size: clamp(36px, 8vw, 60px); }
+  main[data-advertiser-page] .advertiser-faq-intro { position: static; }
+  main[data-advertiser-page] .advertiser-packages-refined .advertiser-package-grid { grid-template-columns: 1fr; }
+  main[data-advertiser-page] .advertiser-package-disclosure-body { grid-template-columns: 1fr; }
+  main[data-advertiser-page] .advertiser-package-view-tabs { max-width: 100%; }
+  main[data-advertiser-page] .advertiser-package-view-tabs button { padding-inline: 7px; font-size: 12px; }
+  main[data-advertiser-page] .advertiser-closing .atlas-section-heading { font-size: clamp(44px, 9vw, 68px); }
+  main[data-advertiser-page] .atlas-editorial-band__photo { aspect-ratio: 1.3; }
+}
+@media (max-width: 420px) {
+  main[data-advertiser-page] .advertiser-hero-actions > a { width: 100%; justify-content: center; }
+  main[data-advertiser-page] .advertiser-conversion-eyebrow { flex-wrap: wrap; }
+  main[data-advertiser-page] .advertiser-conversion-eyebrow > span { text-align: left; }
+  main[data-advertiser-page] .advertiser-package-view-tabs { flex-wrap: wrap; }
+  main[data-advertiser-page] .advertiser-package-view-tabs button { flex: 1 1 110px; }
+  main[data-advertiser-page] .advertiser-package-features > div { gap: 10px; }
+  main[data-advertiser-page] .advertiser-package-features dt,
+  main[data-advertiser-page] .advertiser-package-features dd { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  main[data-advertiser-page] :is(.advertiser-package-card, .advertiser-burst-card, .atlas-real-showcase-card) { transition: none !important; }
+}

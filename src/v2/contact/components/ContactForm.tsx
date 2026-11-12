@@ -1,140 +1,155 @@
-import { useState, type FormEvent } from "react";
-import { Reveal } from "@/motion";
-import {
-  contactFormHeading,
-  contactFormBody,
-  contactFormNameLabel,
-  contactFormEmailLabel,
-  contactFormMessageLabel,
-  contactFormSend,
-  contactFormSending,
-  contactFormSuccess,
-  contactFormError,
-  ADMIN_URL,
-} from "../contactContent";
-
-const ENQUIRY_ENDPOINT = "https://rmqexobhpasitrexvaig.supabase.co/functions/v1/submit-enquiry";
-
-type Status = "idle" | "sending" | "sent" | "error";
-
+import { useEffect, useState, type FormEvent } from "react";
+import { leadMeta, useLeadGuard, contactValid } from "@/lib/lead-intake";
+import { responsePromise } from "../../commercial/policy";
+import "../../commercial/commercial.css";
+const ENDPOINT = "https://rmqexobhpasitrexvaig.supabase.co/functions/v1/submit-enquiry";
 export function ContactForm() {
-  const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState<string | null>(null);
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (status === "sending") return;
+  const [topic, setTopic] = useState("general"),
+    [status, setStatus] = useState("idle"),
+    [error, setError] = useState("");
+  const guard = useLeadGuard();
+  useEffect(() => {
+    const t = new URLSearchParams(location.search).get("topic");
+    if (t && ["partnership", "privacy", "attention-insights"].includes(t)) setTopic(t);
+  }, []);
+  async function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === "sending" || status === "sent") return;
+    const form = e.currentTarget;
+    const d = new FormData(form);
+    const name = String(d.get("name") || "").trim(),
+      email = String(d.get("email") || "").trim(),
+      phone = String(d.get("phone") || "").trim();
+    if (!contactValid(email, phone)) {
+      setError("Provide a valid email or WhatsApp number.");
+      return;
+    }
+    if (!form.reportValidity()) return;
     setStatus("sending");
-    setError(null);
-
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    const payload = {
-      name: String(data.get("name") ?? "").trim(),
-      email: String(data.get("email") ?? "").trim(),
-      message: String(data.get("message") ?? "").trim(),
-      source: "contact-page",
-    };
-
+    setError("");
+    const detail =
+      topic === "partnership"
+        ? ["organisation", "vehicle_types", "fleet_size", "operating_areas"]
+            .map((k) => `${k.replaceAll("_", " ")}: ${d.get(k)}`)
+            .join("\n")
+        : "";
     try {
-      const res = await fetch(ENQUIRY_ENDPOINT, {
+      const res = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          ...leadMeta(form, guard.started.current),
+          source: "website",
+          sender_type: "prospect",
+          sender_name: name,
+          sender_contact: email || phone,
+          subject:
+            topic === "partnership"
+              ? "Transport operator partnership enquiry"
+              : topic === "privacy"
+                ? "Privacy enquiry"
+                : topic === "attention-insights"
+                  ? "Attention Insights assessment"
+                  : "Website enquiry",
+          message: [String(d.get("message") || ""), detail, phone ? `WhatsApp: ${phone}` : ""]
+            .filter(Boolean)
+            .join("\n\n"),
+        }),
       });
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
+      if (!res.ok) throw Error();
       setStatus("sent");
       form.reset();
-    } catch (err) {
+    } catch {
       setStatus("error");
-      setError(contactFormError);
+      setError("We could not send your enquiry. Please try again or contact us on WhatsApp.");
     }
   }
-
   return (
-    <section className="contact-form-section" data-atlas-tone="light">
-      <div className="contact-shell contact-form-shell">
-        <Reveal as="div" className="contact-form-copy">
-          <span className="atlas-section-eyebrow atlas-section-eyebrow-dark">Contact form</span>
-          <h2 className="atlas-section-heading">{contactFormHeading}</h2>
-          <p className="atlas-section-copy atlas-section-copy-dark">{contactFormBody}</p>
-          <a
-            className="contact-form-admin-link"
-            href={ADMIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="contact-form-admin-link-label">Sign in to the admin panel →</span>
-            <span className="contact-form-admin-link-hint">
-              For existing advertisers. Campaigns, reports and account tools live there. Drivers
-              contact the mydiio team directly.
-            </span>
-          </a>
-        </Reveal>
-
-        <Reveal as="div" className="contact-form-wrap">
-          <form className="contact-form" onSubmit={handleSubmit} noValidate>
-            <label className="contact-form-field">
-              <span className="contact-form-label">{contactFormNameLabel}</span>
-              <input
-                type="text"
-                name="name"
-                required
-                autoComplete="name"
-                maxLength={120}
-                placeholder="Your full name"
-                disabled={status === "sending"}
-              />
+    <section className="commercial-section" data-atlas-tone="light">
+      <div className="commercial-shell contact-intake-layout">
+        <aside>
+          <span className="commercial-eyebrow">Contact / mydiio</span>
+          <h2>Send an enquiry.</h2>
+          <p>{responsePromise}</p>
+          <p>
+            Existing advertiser? <a href="https://admin.mydiio.com">Open the advertiser portal</a>.
+          </p>
+        </aside>
+        <form
+          inert={!guard.ready}
+          data-intake-ready={guard.ready}
+          className="intake-form"
+          onSubmit={submit}
+        >
+          {guard.fields}
+          <label>
+            Enquiry type
+            <select value={topic} onChange={(e) => setTopic(e.target.value)}>
+              <option value="general">General enquiry</option>
+              <option value="partnership">Explore a partnership</option>
+              <option value="privacy">Privacy enquiry</option>
+              <option value="attention-insights">Attention Insights assessment</option>
+            </select>
+          </label>
+          <div className="commercial-grid">
+            <label>
+              Name
+              <input name="name" required maxLength={120} autoComplete="name" />
             </label>
-
-            <label className="contact-form-field">
-              <span className="contact-form-label">{contactFormEmailLabel}</span>
-              <input
-                type="email"
-                name="email"
-                required
-                autoComplete="email"
-                maxLength={255}
-                placeholder="you@company.com"
-                disabled={status === "sending"}
-              />
+            <label>
+              Email
+              <input type="email" name="email" maxLength={255} autoComplete="email" />
             </label>
-
-            <label className="contact-form-field contact-form-field-message">
-              <span className="contact-form-label">{contactFormMessageLabel}</span>
-              <textarea
-                name="message"
-                required
-                rows={5}
-                maxLength={4000}
-                placeholder="What would you like to talk about?"
-                disabled={status === "sending"}
-              />
+            <label>
+              WhatsApp
+              <input type="tel" name="phone" maxLength={30} autoComplete="tel" />
             </label>
-
-            <div className="contact-form-actions">
-              <button type="submit" className="contact-form-submit" disabled={status === "sending"}>
-                {status === "sending" ? contactFormSending : contactFormSend}
-                <span className="contact-form-submit-arrow" aria-hidden="true">
-                  →
-                </span>
-              </button>
+          </div>
+          <p>Provide email or WhatsApp, or both.</p>
+          {topic === "partnership" && (
+            <div className="commercial-grid">
+              <label>
+                Organisation
+                <input name="organisation" required maxLength={160} />
+              </label>
+              <label>
+                Vehicle types
+                <input name="vehicle_types" required maxLength={160} />
+              </label>
+              <label>
+                Fleet size
+                <input type="number" name="fleet_size" min={1} max={100000} required />
+              </label>
+              <label>
+                Operating areas
+                <input name="operating_areas" required maxLength={500} />
+              </label>
             </div>
-
-            {status === "sent" && (
-              <p className="contact-form-status contact-form-status-success" role="status">
-                {contactFormSuccess}
-              </p>
-            )}
-            {status === "error" && error && (
-              <p className="contact-form-status contact-form-status-error" role="alert">
-                {error}
-              </p>
-            )}
-          </form>
-        </Reveal>
+          )}
+          <label>
+            {topic === "partnership" ? "Partnership interest" : "Message"}
+            <textarea name="message" required maxLength={4000} rows={5} />
+          </label>
+          <p>
+            We use your details to respond and measure which enquiries reach us. No advertising
+            trackers or automatic marketing subscription. <a href="/privacy">Privacy policy</a>.
+          </p>
+          <button disabled={!guard.ready || status === "sending" || status === "sent"}>
+            {status === "sending"
+              ? "Sending…"
+              : status === "sent"
+                ? "Enquiry received"
+                : "Send enquiry"}
+          </button>
+          {status === "sent" && (
+            <p role="status">Thank you. Your enquiry has been received. {responsePromise}</p>
+          )}
+          {error && (
+            <p role="alert" className="commercial-error">
+              {error}
+            </p>
+          )}
+        </form>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { preserveProductionSeo } from "@/seo/productionSeoParity";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { AboutPage } from "@/v2/about";
 import { isPublicWaitlistMode } from "@/config/publicSiteMode";
@@ -7,7 +8,7 @@ export const Route = createFileRoute("/about")({
     if (isPublicWaitlistMode) throw redirect({ to: "/" });
   },
   component: AboutPage,
-  head: () => ({
+  head: preserveProductionSeo("/about", () => ({
     meta: [
       {
         title: "What mydiio stands for | mydiio",
@@ -26,5 +27,5 @@ export const Route = createFileRoute("/about")({
       { property: "og:url", content: "https://mydiio.com/about" },
     ],
     links: [{ rel: "canonical", href: "https://mydiio.com/about" }],
-  }),
+  })),
 });

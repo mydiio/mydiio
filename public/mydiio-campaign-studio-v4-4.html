@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#FDFAF3" name="theme-color"/><title>mydiio | Campaign Studio — Final Creative</title><style>
+:root{--cream:#fdfaf3;--ink:#1a1a18;--amber:#f5a623;--line:#e5ded1;--muted:#746e62}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:wait;opacity:.7}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--amber);outline-offset:3px}[hidden]{display:none!important}header{display:flex;align-items:center;justify-content:space-between;padding:19px clamp(20px,5vw,78px);border-bottom:1px solid var(--line)}.logo{font-weight:900;font-size:29px;letter-spacing:-2px}.logo span{color:var(--amber)}.eyebrow,.step{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#ac7415}.header-meta{font-size:11px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;color:#8b8274}.shell{max-width:1440px;margin:auto;padding:42px 24px 90px}.hero{text-align:center;max-width:850px;margin:0 auto 35px}h1{font-size:clamp(43px,6vw,85px);line-height:1.02;letter-spacing:-.075em;margin:13px 0 18px;font-weight:790}.hero p{font-size:clamp(15px,1.6vw,18px);line-height:1.6;color:#6c665c;margin:0 auto;max-width:600px}.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(320px,.95fr);gap:25px;align-items:start}.viewer{border-radius:19px;background:#151512;overflow:hidden;box-shadow:0 25px 65px #211a101a;position:sticky;top:20px}.video-area{position:relative;aspect-ratio:16/9;overflow:hidden;background:#090908}#scene{display:block;width:100%;height:100%}.stage-label{position:absolute;top:17px;left:19px;color:#fff;font-size:10px;letter-spacing:.15em;font-weight:800;text-shadow:0 1px 7px #000}.stage-label:before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--amber);margin-right:9px}.viewer-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:13px;padding:16px 19px;color:#eee8dc;font-size:12px}.viewer-footer button{border:1px solid #56534b;border-radius:8px;background:#302e29;color:#fff;padding:10px 12px;font-weight:700;font-size:11px}.viewer-footer button.active{border-color:var(--amber);color:var(--amber)}.tiny{font-size:11px;color:#aaa395;line-height:1.5}.controls{display:flex;gap:7px;flex-wrap:wrap}.panel{border:1px solid var(--line);border-radius:19px;background:#fffefa;padding:clamp(21px,2.6vw,33px);box-shadow:0 8px 24px #19140c08}.panel h2{font-size:clamp(25px,2.3vw,32px);letter-spacing:-.055em;line-height:1.15;margin:11px 0}.panel p{font-size:13px;line-height:1.6;color:#766f63;margin:0 0 22px}label{display:block;font-size:12px;font-weight:750;margin:18px 0 8px}input,textarea{display:block;width:100%;border:1px solid #dcd5c9;background:white;border-radius:10px;padding:14px;color:var(--ink);font-size:14px}textarea{min-height:91px;resize:vertical}.count{font-size:11px;color:#928a7e;text-align:right;margin-top:6px}.cta{display:block;width:100%;border:0;border-radius:10px;background:var(--amber);color:#1a1a18;font-size:14px;font-weight:850;padding:17px 15px;margin-top:25px;transition:transform .18s,background .18s}.cta:hover:not(:disabled){background:#ffb63c;transform:translateY(-2px)}.subtle{font-size:11px!important;color:#8a8175!important;margin-top:12px!important}.error{color:#ad3e27;font-size:12px;margin-top:9px;display:none}.post-reveal{margin-top:27px;padding-top:25px;border-top:1px solid var(--line)}.post-reveal.entered{animation:rise .45s ease both}@keyframes rise{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:17px}.choice{border:1px solid #ddd5c8;border-radius:10px;padding:15px 12px;background:#fff;text-align:left;min-height:102px}.choice.selected{border:2px solid var(--amber);background:#fff8e9;padding:14px 11px}.choice strong{display:block;font-size:13px;line-height:1.3}.choice small{display:block;font-size:11px;line-height:1.5;color:#786f63;margin-top:7px}.text-btn{background:transparent;border:0;padding:9px 0;font-size:12px;font-weight:750;text-decoration:underline;text-underline-offset:4px;color:#5c5143}.actions{display:flex;gap:17px;align-items:center;flex-wrap:wrap}.handoff{margin-top:20px;border:1px solid #e0cfaa;background:#fff9ec;border-radius:13px;padding:19px}.handoff h3{margin:0 0 7px;font-size:19px}.handoff p{font-size:12px;margin:0 0 12px}.handoff textarea{min-height:132px;font-size:12px}.handoff-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}.handoff-actions button{border-radius:8px;padding:11px 13px;border:1px solid #d5c6a8;background:white;font-size:12px;font-weight:750}.handoff-actions .primary{background:var(--amber);border-color:var(--amber)}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#24221d;color:#fff;padding:13px 18px;border-radius:10px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:5;max-width:calc(100vw - 36px)}.toast.visible{opacity:1;transform:translate(-50%,0)}.below{max-width:980px;margin:50px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.below>div{border-top:1px solid #d9d0c1;padding-top:18px}.below b{display:block;font-size:14px;margin-bottom:7px}.below span{font-size:12px;line-height:1.55;color:#777064}@media(max-width:960px){.layout{grid-template-columns:1fr}.viewer{position:relative;top:auto}.shell{padding:31px 17px 70px}.hero{margin-bottom:26px}.panel{max-width:740px;width:100%;margin:auto}.below{grid-template-columns:1fr;gap:12px}}@media(max-width:520px){header{padding:16px}.header-meta{font-size:9px}.hero h1{font-size:44px}.viewer-footer{padding:12px}.controls{width:100%}.controls button{flex:1}.panel{padding:21px}.choices{grid-template-columns:1fr}.choice{min-height:75px}.shell{padding:24px 12px 60px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+.tracking-panel{padding:13px 19px 16px;border-top:1px solid #36342f;color:#eae5da;background:#1d1c19}.tracking-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px}.tracking-head span{color:#a9a194;font-size:11px}.tracking-actions{display:flex;flex-wrap:wrap;gap:8px;margin:11px 0}.tracking-actions button{border:1px solid #5c574d;border-radius:8px;background:#302e29;color:#e9e3d9;padding:9px 12px;font-size:11px;font-weight:700}.tracking-actions button.track-active{border-color:#f5a623;background:#4b3717;color:#ffd07d}.scrub-label{display:flex;justify-content:space-between;gap:10px;color:#e9e3d9;margin:8px 0 6px;font-size:11px}.scrub-label span{color:#a9a194;font-weight:400}.tracking-panel input[type=range]{width:100%;padding:0;border:0;accent-color:#f5a623;background:transparent}
+/* Campaign Studio v4.1: customer-facing polish */
+.back-link{font-size:12px;font-weight:750;color:#766b59;text-decoration:none;border-bottom:1px solid #d7c9b4;padding-bottom:3px}.back-link:hover{color:#a56a09}
+.contact-fields{margin-top:24px;padding-top:24px;border-top:1px solid var(--line)}
+.contact-fields .step{margin-bottom:10px}.contact-fields p{margin:0 0 14px!important}.optional{font-weight:500;color:#958a78}
+.viewer-footer{gap:16px}.video-area{background:#12110f}.hero{max-width:770px}.hero h1{font-size:clamp(42px,5.5vw,74px)}
+.panel{scroll-margin-top:30px}.handoff{scroll-margin-top:24px}
+@media(max-width:650px){header{gap:10px;flex-wrap:wrap}.header-meta{display:none}.back-link{margin-left:auto}.hero h1{font-size:clamp(40px,10vw,52px)}.viewer-footer{align-items:flex-start}.controls{width:100%}.viewer-footer .tiny{max-width:290px}}
+/* Live enquiry states */
+.lead-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.submit-status{font-size:12px;line-height:1.6;margin-top:12px;color:#4b5940}
+.submit-status[hidden]{display:none!important}
+.handoff.success{background:#f4f8ed;border-color:#b9d4a4}
+.handoff.error-state{background:#fff5ef;border-color:#e8b9a5}
+
+/* v4.4 three selectable industry templates */
+.template-picker{border:0;padding:0;margin:0 0 23px;min-width:0}.template-picker legend{font-size:13px;font-weight:800;margin-bottom:12px}.template-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.template-option{display:flex;flex-direction:column;border:2px solid #e2d9c9;border-radius:12px;overflow:hidden;background:#fff;cursor:pointer;min-width:0;transition:border-color .15s,box-shadow .15s}.template-option.selected,.template-option:has(input:checked){border-color:#d88b11;box-shadow:0 0 0 2px #f5a62333}.template-option input{position:absolute;opacity:0;width:1px;height:1px}.template-option:focus-within{outline:2px solid #b8750c;outline-offset:2px}.template-option img{width:100%;height:84px;object-fit:cover;display:block}.template-option span{padding:9px 8px 10px}.template-option strong{display:block;font-size:11px;line-height:1.3}.template-option small{display:block;font-size:10px;color:#756d60;line-height:1.3;margin-top:3px}.template-note{font-size:11px!important;line-height:1.5!important;color:#756d60!important;margin:8px 0 0!important}@media(max-width:520px){.template-grid{gap:6px}.template-option img{height:66px}.template-option span{padding:7px 5px}.template-option strong{font-size:10px}.template-option small{font-size:9px}}
+/* MYDIIO_STUDIO_POLISH_V1 */
+
+body {
+  background:
+    radial-gradient(ellipse at 50% 12%, rgba(245,166,35,.075), transparent 48%),
+    #fdfaf3;
+}
+
+.shell {
+  max-width: 1500px;
+  padding-top: clamp(32px,4vw,56px);
+}
+
+.hero {
+  max-width: 920px;
+  margin-bottom: clamp(28px,3.4vw,48px);
+}
+
+.hero h1 {
+  font-size: clamp(43px,5.5vw,76px);
+  letter-spacing: -.072em;
+}
+
+.layout {
+  gap: clamp(18px,2.2vw,32px);
+  grid-template-columns: minmax(0,1.55fr) minmax(350px,.95fr);
+}
+
+.viewer {
+  border: 1px solid #39352d;
+  border-radius: 22px;
+  box-shadow: 0 28px 75px rgba(32,25,15,.17);
+}
+
+.video-area {
+  background: #171714;
+}
+
+.panel {
+  border-radius: 22px;
+  border-color: #e7decd;
+  box-shadow: 0 16px 45px rgba(40,31,16,.065);
+}
+
+.panel h2 {
+  font-size: clamp(26px,2.4vw,34px);
+}
+
+.template-grid {
+  gap: 11px;
+}
+
+.template-option {
+  border-radius: 13px;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    border-color .2s ease;
+}
+
+.template-option:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 22px rgba(35,28,17,.1);
+}
+
+.template-option.selected,
+.template-option:has(input:checked) {
+  border-color: #e69a19;
+  box-shadow: 0 0 0 3px rgba(245,166,35,.16);
+}
+
+.template-option img {
+  height: 94px;
+}
+
+input:not([type="radio"]):not([type="range"]),
+textarea {
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+input:not([type="radio"]):not([type="range"]):focus,
+textarea:focus {
+  border-color: #d99218;
+  box-shadow: 0 0 0 4px rgba(245,166,35,.1);
+}
+
+.cta {
+  border-radius: 12px;
+  box-shadow: 0 7px 20px rgba(245,166,35,.17);
+}
+
+.viewer-footer {
+  padding: 19px 22px;
+}
+
+.studio-preview-state {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(245,166,35,.13), transparent 42%),
+    linear-gradient(145deg,#24231f,#11110f);
+  color: #fdfaf3;
+  text-align: center;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+
+.studio-preview-state.is-ready {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.studio-preview-state-inner {
+  width: 100%;
+  max-width: 410px;
+}
+
+.studio-preview-icon {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 23px;
+  border: 1px solid rgba(245,166,35,.3);
+  background: rgba(245,166,35,.08);
+  border-radius: 20px;
+}
+
+.studio-preview-spinner {
+  display: block;
+  width: 27px;
+  height: 27px;
+  border: 3px solid rgba(245,166,35,.22);
+  border-top-color: #f5a623;
+  border-radius: 50%;
+  animation: studioSpin .9s linear infinite;
+}
+
+.studio-preview-state.is-error .studio-preview-spinner {
+  animation: none;
+  border-color: #f5a623;
+}
+
+.studio-preview-kicker {
+  color: #f5a623;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .17em;
+  margin-bottom: 12px;
+}
+
+.studio-preview-state h3 {
+  font-size: clamp(24px,3vw,36px);
+  letter-spacing: -.055em;
+  line-height: 1.12;
+  margin: 0 0 13px;
+}
+
+.studio-preview-state p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #bcb5a9;
+  margin: 0;
+}
+
+.studio-preview-progress {
+  height: 3px;
+  max-width: 190px;
+  margin: 27px auto 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: rgba(255,255,255,.12);
+}
+
+.studio-preview-progress span {
+  display: block;
+  width: 42%;
+  height: 100%;
+  border-radius: inherit;
+  background: #f5a623;
+  animation: studioProgress 1.8s ease-in-out infinite alternate;
+}
+
+.studio-preview-retry {
+  margin-top: 22px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: #f5a623;
+  color: #191917;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.studio-preview-state.is-error .studio-preview-progress {
+  display: none;
+}
+
+@keyframes studioSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes studioProgress {
+  from { transform: translateX(-80%); }
+  to { transform: translateX(210%); }
+}
+
+@media(max-width:960px) {
+  .layout { grid-template-columns: 1fr; }
+  .viewer { position: relative; top: auto; }
+}
+
+@media(max-width:520px) {
+  .studio-preview-state { padding: 18px; }
+  .studio-preview-icon { width: 54px; height: 54px; margin-bottom: 14px; }
+  .studio-preview-state h3 { font-size: 24px; }
+  .studio-preview-state p { font-size: 12px; }
+  .template-option img { height: 72px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .studio-preview-spinner,
+  .studio-preview-progress span { animation: none; }
+}
+
+/* MYDIIO_STUDIO_FINISH_V4_5: presentation and accessibility */
+:root{--amber:#f5a623;--cream:#fdfaf3;--ink:#1a1a18}
+body{font-family:'Space Grotesk',Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif}
+.logo{letter-spacing:-.075em}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:9px}
+.hero .eyebrow:before{content:'';width:7px;height:7px;background:var(--amber);border-radius:50%}
+.hero h1{font-weight:800;text-wrap:balance}
+.hero p{text-wrap:pretty}
+.panel{background:#fffefa}
+.panel .step{display:inline-block;padding:7px 10px;background:#fff4dc;border:1px solid #f4dfb9;border-radius:999px;font-size:10px}
+.template-option{position:relative}
+.template-option.selected:after{content:'✓';position:absolute;right:8px;top:8px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--amber);color:var(--ink);font-size:12px;font-weight:900;box-shadow:0 1px 6px #0004}
+.template-option img{aspect-ratio:16/10;object-fit:cover}
+.choice{transition:background .2s,border-color .2s,transform .2s}
+.choice:hover{transform:translateY(-2px);border-color:#d49b37}
+.cta:focus-visible,.choice:focus-visible,.template-option:focus-within{outline:3px solid #b97608;outline-offset:3px}
+.viewer-footer #videoStatus{font-weight:750}
+.studio-preview-state{z-index:3}
+.below{margin-top:clamp(40px,5vw,74px)}
+.below>div{padding-top:20px}
+.below b{font-size:15px;letter-spacing:-.02em}
+.below span{display:block;max-width:300px}
+@media(max-width:520px){.hero h1{letter-spacing:-.065em}.panel .step{font-size:9px}.template-option.selected:after{right:4px;top:4px;width:18px;height:18px}.studio-preview-state h3{font-size:22px}}
+/* MYDIIO_STUDIO_AD_DESIGN_V4_6: clearer customer-facing hierarchy */
+.template-option img{height:104px}
+.template-option strong{font-size:12px}
+.template-option small{font-size:10px}
+.template-note{margin-top:12px!important}
+.panel label[for="business"],.panel label[for="message"]{font-size:12px;letter-spacing:.005em}
+#count{font-variant-numeric:tabular-nums}
+.viewer-footer #videoStatus{letter-spacing:.01em}
+@media(max-width:520px){.template-option img{height:76px}.template-option strong{font-size:10px}}
+
+/* MYDIIO_V49_POST_REVEAL: conversion polish, tracking untouched */
+.reveal-complete{border:1px solid #e8d5ae;background:linear-gradient(145deg,#fff9eb,#fffdfa 72%);border-radius:17px;padding:21px;margin-bottom:24px;box-shadow:0 12px 30px #b8822610}
+.reveal-kicker{display:flex;align-items:center;gap:8px;color:#9c6710;font-size:10px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.reveal-kicker:before{content:'✓';display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#f5a623;color:#1a1a18;font-size:13px}
+.reveal-complete h3{font-size:clamp(22px,2.2vw,29px);line-height:1.12;letter-spacing:-.045em;margin:14px 0 8px}
+.reveal-complete>p{font-size:12px;margin:0 0 17px;color:#6b6256}
+.campaign-ticket{background:#fff;border:1px solid #e9dfcd;border-radius:12px;padding:16px;display:grid;gap:11px}
+.ticket-row{display:flex;gap:14px;align-items:baseline;justify-content:space-between;border-bottom:1px solid #f0e9de;padding-bottom:10px}
+.ticket-row:last-child{border-bottom:0;padding-bottom:0}.ticket-row span{color:#8a8071;font-size:11px;flex:0 0 83px}.ticket-row strong{font-size:12px;text-align:right;overflow-wrap:anywhere;line-height:1.45}
+.reveal-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:15px}
+.reveal-actions button{border:1px solid #ded0b7;background:#fff;border-radius:10px;padding:12px 8px;font-size:12px;font-weight:800;color:#423729}
+.reveal-actions button:hover{border-color:#d9951b;background:#fff8e9}
+.post-reveal>.step{margin-bottom:7px}.post-reveal>h2{margin-top:12px}.post-reveal .choices{margin-top:15px}
+.conversion-note{margin:14px 0 0!important;font-size:11px!important;color:#827665!important}
+@media(max-width:520px){.reveal-complete{padding:16px}.ticket-row span{flex-basis:70px}.reveal-actions{grid-template-columns:1fr 1fr}.reveal-actions button{font-size:11px}}
+
+/* MYDIIO_V50_TWO_STAGE: visual layout only; tracking and renderer unchanged */
+.reveal-summary[hidden],.conversion-wrap[hidden],.contact-fields[hidden],#proposal[hidden]{display:none!important}
+.reveal-summary{min-width:0;align-self:start}
+.reveal-summary .reveal-complete{margin:0;height:100%;padding:clamp(20px,2.2vw,30px)}
+.reveal-summary .reveal-complete h3{font-size:clamp(25px,2.7vw,37px)}
+body.v50-revealed .layout{grid-template-columns:minmax(0,1.65fr) minmax(330px,.85fr);align-items:stretch}
+body.v50-revealed .layout>.panel{display:none}
+body.v50-revealed .layout>.viewer{position:relative;top:auto;align-self:start}
+body.v50-revealed .reveal-summary{display:block}
+.conversion-wrap{max-width:1020px;margin:clamp(28px,4vw,56px) auto 0;scroll-margin-top:28px}
+.conversion-wrap .post-reveal{margin:0;padding:clamp(26px,4vw,48px);border:1px solid var(--line);border-radius:22px;background:#fffefa;box-shadow:0 15px 48px #19140c0b}
+.conversion-wrap .post-reveal>h2{font-size:clamp(28px,3.3vw,43px);letter-spacing:-.055em;max-width:650px}
+.conversion-wrap .post-reveal>p{max-width:650px;line-height:1.6}
+.conversion-wrap .choices{max-width:750px;gap:14px}
+.conversion-wrap .choice{min-height:110px;padding:20px}
+.conversion-wrap .conversion-open{max-width:370px;margin-top:24px}
+.conversion-wrap .contact-fields{max-width:650px;margin-top:30px}
+.conversion-wrap #proposal{max-width:650px}
+.conversion-wrap .handoff{max-width:650px}
+.reveal-summary .reveal-actions{display:grid;grid-template-columns:1fr 1fr}
+.reveal-summary .ticket-row strong{overflow-wrap:anywhere;text-align:right}
+@media(max-width:960px){body.v50-revealed .layout{grid-template-columns:1fr}.reveal-summary{max-width:none}.conversion-wrap{margin-top:22px}}
+@media(max-width:520px){.conversion-wrap .post-reveal{padding:22px 18px}.reveal-summary .reveal-actions{grid-template-columns:1fr 1fr}.conversion-wrap .choices{grid-template-columns:1fr}.conversion-wrap .choice{min-height:82px}}
+
+/* MYDIIO_V51_REVEAL_CONVERSION: layout and interaction only. */
+.v51-bridge{margin:clamp(28px,4vw,54px) auto 0;max-width:1020px;text-align:center;padding:0 18px}
+.v51-bridge[hidden]{display:none!important}
+.v51-bridge .eyebrow{display:block;margin-bottom:12px}
+.v51-bridge h2{font-size:clamp(29px,3.8vw,49px);letter-spacing:-.065em;line-height:1.12;margin:0 auto 12px;max-width:790px;text-wrap:balance}
+.v51-bridge p{font-size:clamp(13px,1.3vw,16px);color:#756d61;line-height:1.6;margin:0 auto;max-width:600px}
+.v51-bridge .v51-rule{display:block;width:48px;height:3px;background:var(--amber);border-radius:8px;margin:22px auto 0}
+body.v50-revealed .conversion-wrap{margin-top:clamp(22px,3vw,40px)}
+.conversion-wrap .contact-fields.v51-enter{animation:rise .38s ease both}
+.v51-bridge.v51-enter,.reveal-summary.v51-enter{animation:rise .55s ease both}
+@media(prefers-reduced-motion:reduce){.v51-bridge.v51-enter,.reveal-summary.v51-enter,.conversion-wrap .contact-fields.v51-enter{animation:none}}
+
+/* MYDIIO_FINAL_CREATIVE_V5_2 — isolated editor preview; tracking and lead flow unchanged */
+.creative-preview{margin:23px 0 5px;border:1px solid #e3d8c5;border-radius:15px;overflow:hidden;background:#181915;box-shadow:0 13px 30px #1c160c12}
+.creative-preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#26251f;color:#fdfaf3;padding:12px 15px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.creative-preview-head span:last-child{color:#f5a623;font-size:10px;letter-spacing:.05em}
+.creative-preview canvas{width:100%;height:auto;aspect-ratio:960/570;display:block;background:#1b201d}
+.creative-preview-foot{padding:11px 14px;color:#d1c8b8;background:#26251f;font-size:11px;line-height:1.5}
+.creative-tips{display:flex;align-items:flex-start;gap:8px;color:#776e60;font-size:11px;line-height:1.55;margin:10px 0 0}
+.creative-tips:before{content:'●';font-size:8px;color:#d48b12;margin-top:3px}
+@media(max-width:520px){.creative-preview{margin-top:18px}.creative-preview-head{font-size:9px;padding:10px 12px}.creative-preview-foot{font-size:10px}}
+</style></head><body>
+<header><div aria-label="mydiio" class="logo">myd<span>ii</span>o</div><div class="header-meta">Campaign Studio <span style="color:#ba8d39">/</span> Interactive preview</div><a aria-label="Back to mydiio homepage" class="back-link" href="/">← Back to mydiio</a></header>
+<main class="shell"><div class="hero"><div class="eyebrow">The journey starts here</div><h1>Your business.<br/>Their journey. <span style="color:#cc8a1a">One screen.</span></h1><p>Make a sample advert, see it inside a real tuk-tuk, and explore the next step for your business.</p></div>
+<div class="layout"><section aria-label="Tuk-tuk video with personalised sample advertisement" class="viewer"><div class="video-area"><video id="sourceVideo" crossorigin="anonymous" loop muted playsinline preload="auto" style="display:none" aria-hidden="true">
+  <source src="/assets/video/act1/compressed/m008-tuktuk-higgsfield-v3.mp4" type="video/mp4">
+</video><canvas aria-label="A view from inside a tuk-tuk, with a sample advertisement on the mounted screen after reveal" height="540" id="scene" role="img" width="960"></canvas><div class="studio-preview-state" id="studioPreviewState">
+  <div class="studio-preview-state-inner">
+    <div class="studio-preview-icon" aria-hidden="true">
+      <span class="studio-preview-spinner"></span>
+    </div>
+    <div class="studio-preview-kicker">MYDIIO / PASSENGER EXPERIENCE</div>
+    <h3 id="studioPreviewTitle" role="status" aria-live="polite">Preparing your passenger view...</h3>
+    <p id="studioPreviewDescription">Getting the tuk-tuk experience ready for your advert.</p>
+    <button id="studioPreviewRetry" class="studio-preview-retry" type="button" hidden>Retry video</button>
+    <div class="studio-preview-progress" aria-hidden="true"><span></span></div>
+  </div>
+</div><div class="stage-label" id="stage">PASSENGER VIEW · INTERACTIVE SAMPLE</div></div><div class="viewer-footer"><div><div id="videoStatus">Preparing passenger-view preview…</div><div class="tiny" id="previewCaption">Create your advert to see it appear on the passenger screen.</div></div><div class="controls"><button id="playBtn" type="button" hidden style="display:none">Pause</button><button id="zoomBtn" type="button">Zoom to tablet</button><button hidden="" id="originalBtn" type="button">Show original</button></div></div><div aria-label="Tracking comparison controls" class="tracking-panel" hidden=""><div class="tracking-head"><strong>Motion comparison</strong><span id="trackInfo">Frame 0 · raw vs stabilised</span></div><div class="tracking-actions"><button aria-pressed="true" class="track-active" id="stabilizedMode" type="button">Stabilised tracking</button><button aria-pressed="false" id="rawMode" type="button">Original tracking</button><button aria-pressed="false" id="outlineMode" type="button">Show screen outline</button></div><label class="scrub-label" for="frameScrub">Inspect frame <output id="scrubValue">0</output> / 120 <span>Drag to pause and inspect</span></label><input id="frameScrub" max="120" min="0" step="1" type="range" value="0"/></div></section>
+<aside class="reveal-summary" id="revealSummary" hidden><div class="reveal-complete" id="revealComplete" aria-live="polite">
+<div class="reveal-kicker">Your sample campaign is ready</div>
+<h3>Your brand. In the passenger seat.</h3>
+<p>You've seen how your message could look on a mydiio screen. Here's the campaign you just created.</p>
+<div class="campaign-ticket" aria-label="Your personalised campaign summary">
+<div class="ticket-row"><span>Business</span><strong id="summaryBusiness"></strong></div>
+<div class="ticket-row"><span>Industry</span><strong id="summaryIndustry"></strong></div>
+<div class="ticket-row"><span>Message</span><strong id="summaryMessage"></strong></div>
+</div>
+<div class="reveal-actions"><button type="button" id="replayFromSummary">↻ Replay my advert</button><button type="button" id="refineFromSummary">✎ Refine my advert</button></div>
+</div>
+</aside>
+<section class="panel" id="editor"><div class="step">01 / Make it yours</div><h2>Put your brand in the picture.</h2><p>Choose an editorial campaign style, add your brand and message, and see it in the passenger-view experience.</p><fieldset class="template-picker"><legend>Choose your advert style</legend><div class="template-grid" aria-label="Industry template"><label class="template-option selected"><input type="radio" name="template" value="food" checked><img src="/assets/campaign-studio/food-demo-v4-3.webp" alt="Food advert example"><span><strong>Food &amp; Beverage</strong><small>Restaurants &amp; cafés</small></span></label><label class="template-option"><input type="radio" name="template" value="retail"><img src="/assets/campaign-studio/retail-demo-v4-4.webp" alt="Retail lifestyle advert example"><span><strong>Retail &amp; Shopping</strong><small>Products &amp; stores</small></span></label><label class="template-option"><input type="radio" name="template" value="services"><img src="/assets/campaign-studio/mydiio-studio-travel-photo-v4-8.webp" alt="Travel and services advert example"><span><strong>Services &amp; Experiences</strong><small>Travel, wellness &amp; more</small></span></label></div><p class="template-note">Agency-style sample creative. Photography and demo QR are illustrative; your brand and message are personalised live.</p></fieldset><label for="business">Your business name</label><input autocomplete="organization" id="business" maxlength="38" value="Kofi Kade"/><label for="message">What would you like to say?</label><textarea id="message" maxlength="85">Your next favourite stop.</textarea><div class="count" id="count" aria-live="polite">25 / 85</div><div class="creative-preview" aria-label="Live personalised advert preview"><div class="creative-preview-head"><span>Live creative preview</span><span>Updates as you type</span></div><canvas id="creativePreview" width="960" height="570" role="img" aria-label="Live preview of your selected advertisement artwork"></canvas><div class="creative-preview-foot">This is your advert artwork. See it placed inside the real tuk-tuk when you launch the reveal.</div></div><div class="creative-tips">Keep your message short and direct for easy reading on a passenger screen. The QR code is for demonstration only.</div><div class="error" id="formError" role="alert"></div><button class="cta" id="launch" type="button" aria-controls="choicesPanel">Bring my advert to life &#8594;</button><div class="actions"><button class="text-btn" hidden="" id="edit" type="button">Edit my message</button><button class="text-btn" hidden="" id="reset" type="button">Start again</button></div><p class="subtle">Illustrative preview only. The QR links to mydiio, not your business. No advert is deployed or booked.</p>
+</section></div>
+<section class="v51-bridge" id="v51Bridge" hidden aria-label="Next steps"><span class="eyebrow">FROM PREVIEW TO POSSIBILITY</span><h2>You've seen your business on the move.<br>Now let's make it happen.</h2><p>Your sample is just the beginning. Tell us what you're planning, and we'll help you explore a real campaign.</p><span class="v51-rule" aria-hidden="true"></span></section>
+<div class="conversion-wrap" id="conversionWrap" hidden><div class="post-reveal" hidden="" id="choicesPanel">
+<div class="step">02 / Make it happen</div><h2>Ready to take it beyond the preview?</h2><p>Choose what you're considering and request a tailored proposal. Our team will confirm coverage and availability with you.</p><div class="choices"><button aria-pressed="true" class="choice selected" data-plan="short" type="button"><strong>Short campaign</strong><small>For an offer, launch or timely promotion.</small></button><button aria-pressed="false" class="choice" data-plan="ongoing" type="button"><strong>Ongoing presence</strong><small>For regular visibility across journeys.</small></button></div><p class="conversion-note">No commitment or payment required to enquire.</p><button class="cta conversion-open" id="openProposal" type="button" aria-controls="contactFields" aria-expanded="false">Get my campaign proposal →</button><div class="contact-fields" id="contactFields" hidden><div class="step">03 / Your details</div><p>Share your contact details to request a campaign proposal. We’ll use them only to respond to your enquiry.</p><label for="contactName">Your name</label><input autocomplete="name" id="contactName" maxlength="90" required placeholder="Your full name"/><label for="contactEmail">Work email</label><input autocomplete="email" id="contactEmail" maxlength="180" required placeholder="you@business.com" type="email"/><label for="contactPhone">Phone number <span class="optional">(optional)</span></label><input autocomplete="tel" id="contactPhone" maxlength="30" placeholder="+94 …" type="tel"/><div class="error" id="contactError" role="alert"></div>
+<label class="lead-honeypot" aria-hidden="true">Leave blank<input id="website_url" name="website_url" tabindex="-1" autocomplete="off" /></label>
+<p class="subtle">We use your details to respond to your enquiry. No automatic marketing subscription. <a href="/privacy">Privacy policy</a>.</p>
+</div><button class="cta" id="proposal" type="button" hidden>Request my campaign proposal →</button><div class="submit-status" id="submitStatus" role="status" aria-live="polite" hidden></div><p class="subtle">No payment or reservation is made. Campaign coverage is confirmed separately.</p></div>
+<div class="handoff" hidden="" id="handoff" role="status" aria-live="polite"><h3 id="handoffTitle">Your proposal request has been received.</h3><p id="handoffDescription">Thank you. The mydiio team can now review your campaign enquiry and follow up using the contact details you provided.</p><textarea aria-label="Your submitted campaign enquiry" id="draft" readonly=""></textarea><div class="handoff-actions"><button class="primary" id="copyDraft" type="button">Copy my enquiry details</button><button id="openWebsite" type="button">Go to mydiio.com ↗</button><button id="closeHandoff" type="button">Close</button></div></div>
+</div><div class="below"><div><b>Made for the journey</b><span>Your brand appears inside a passenger-facing screen, not just on another webpage.</span></div><div><b>Built around relevance</b><span>Campaigns can be planned around the coverage available to your business.</span></div><div><b>Designed for transparency</b><span>mydiio's platform is built around GPS-verified playback and advertiser reporting.</span></div></div></main><div aria-live="polite" class="toast" id="toast" role="status"></div>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const video=$('sourceVideo'), canvas=$('scene'), ctx=canvas.getContext('2d'), business=$('business'),message=$('message'),count=$('count'),status=$('videoStatus');
+const playBtn=$('playBtn'),zoomBtn=$('zoomBtn'),originalBtn=$('originalBtn'),proposal=$('proposal'),error=$('formError');
+const W=1920,H=1080, SCALE=.5;
+const tracking={"0":[[768.6,452.8],[1118.3,442.4],[1112.4,646.2],[776.1,653]],"17":[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],"20":[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],"21":[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],"23":[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],"24":[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],"25":[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[769.9,653]],"29":[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[769.9,653]],"30":[[760.3,450.7],[1117.8,438.7],[1113.9,650.1],[769.9,653]],"32":[[760.3,450.7],[1126.8,440.6],[1116.8,653.1],[771.7,658.2]],"33":[[762.5,450.6],[1126.8,440.6],[1116.8,653.1],[771.7,658.2]],"39":[[765.8,450],[1129.9,441],[1116.8,653.1],[775.1,659.6]],"51":[[761.6,451.7],[1129.9,441],[1116.8,653.1],[775.1,659.6]],"52":[[761.6,451.7],[1129.9,441],[1122.5,656.2],[770.6,658.1]],"58":[[761.6,451.7],[1129.9,441],[1122.5,656.2],[772.5,662]],"70":[[761.7,448.8],[1134.1,436.5],[1127.8,656.9],[772.5,662]],"80":[[760.7,447],[1140,436.4],[1133.3,656.1],[772.5,662]],"84":[[761.7,446.3],[1142.6,433.3],[1133.3,656.1],[772.5,662]],"89":[[762.3,443.8],[1142.6,433.3],[1133.3,656.1],[772.5,662]],"96":[[758,442.7],[1142.6,433.3],[1136.5,659.4],[770.6,663.2]],"98":[[755.9,442.6],[1142.6,433.3],[1136.5,659.4],[770.6,663.2]],"99":[[755.9,442.6],[1138.9,430.5],[1136.1,656.9],[766,662.9]],"100":[[757.2,439.5],[1138.9,430.5],[1137.9,657.5],[766,662.9]],"107":[[757.2,439.5],[1144.2,430.1],[1141.1,656.9],[766,662.9]],"114":[[757.2,439.5],[1144.2,430.1],[1141.1,656.9],[771.4,662.6]],"115":[[757.2,439.5],[1149,430.5],[1141.1,656.9],[771.4,662.6]],"119":[[757.2,439.5],[1151.2,427.4],[1146.8,656.4],[771.4,662.6]]};
+const trackedFrames=Object.keys(tracking).map(Number).sort((a,b)=>a-b);
+const stabilizedFrames=[[[768.6,452.8],[1118.3,442.4],[1112.4,646.2],[776.1,653]],[[768.112,452.676],[1118.271,442.182],[1112.4,646.2],[776.1,653]],[[767.624,452.553],[1118.241,441.965],[1112.4,646.2],[776.1,653]],[[767.135,452.429],[1118.212,441.747],[1112.4,646.2],[776.1,653]],[[766.647,452.306],[1118.182,441.529],[1112.4,646.2],[776.1,653]],[[766.159,452.182],[1118.153,441.312],[1112.4,646.2],[776.1,653]],[[765.671,452.059],[1118.124,441.094],[1112.4,646.2],[776.1,653]],[[765.182,451.935],[1118.094,440.876],[1112.4,646.2],[776.1,653]],[[764.694,451.812],[1118.065,440.659],[1112.4,646.2],[776.1,653]],[[764.206,451.688],[1118.035,440.441],[1112.4,646.2],[776.1,653]],[[763.718,451.565],[1118.006,440.224],[1112.4,646.2],[776.1,653]],[[763.229,451.441],[1117.976,440.006],[1112.4,646.2],[776.1,653]],[[762.741,451.318],[1117.947,439.788],[1112.4,646.2],[776.1,653]],[[762.253,451.194],[1117.918,439.571],[1112.4,646.2],[776.1,653]],[[761.765,451.071],[1117.888,439.353],[1112.4,646.2],[776.1,653]],[[761.276,450.947],[1117.859,439.135],[1112.4,646.2],[776.1,653]],[[760.788,450.824],[1117.829,438.918],[1112.4,646.2],[776.1,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[776.1,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[769.9,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[769.9,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[769.9,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[769.9,653]],[[760.3,450.7],[1117.8,438.7],[1112.4,646.2],[769.9,653]],[[760.3,450.7],[1117.8,438.7],[1113.9,650.1],[769.9,653]],[[760.3,450.7],[1122.3,439.65],[1115.35,651.6],[770.8,655.6]],[[760.3,450.7],[1126.8,440.6],[1116.8,653.1],[771.7,658.2]],[[762.5,450.6],[1126.8,440.6],[1116.8,653.1],[771.7,658.2]],[[762.65,450.55],[1127.217,440.233],[1118.017,653.067],[772.15,657.9]],[[762.8,450.5],[1127.633,439.867],[1119.233,653.033],[772.6,657.6]],[[762.95,450.45],[1128.05,439.5],[1120.45,653],[773.05,657.3]],[[763.1,450.4],[1128.467,439.133],[1121.667,652.967],[773.5,657]],[[763.25,450.35],[1128.883,438.767],[1122.883,652.933],[773.95,656.7]],[[763.4,450.3],[1129.3,438.4],[1124.1,652.9],[774.4,656.4]],[[763,450.192],[1129.458,438.417],[1124.175,653.183],[774.117,656.767]],[[762.6,450.083],[1129.617,438.433],[1124.25,653.467],[773.833,657.133]],[[762.2,449.975],[1129.775,438.45],[1124.325,653.75],[773.55,657.5]],[[761.8,449.867],[1129.933,438.467],[1124.4,654.033],[773.267,657.867]],[[761.4,449.758],[1130.092,438.483],[1124.475,654.317],[772.983,658.233]],[[761,449.65],[1130.25,438.5],[1124.55,654.6],[772.7,658.6]],[[760.6,449.542],[1130.408,438.517],[1124.625,654.883],[772.417,658.967]],[[760.2,449.433],[1130.567,438.533],[1124.7,655.167],[772.133,659.333]],[[759.8,449.325],[1130.725,438.55],[1124.775,655.45],[771.85,659.7]],[[759.4,449.217],[1130.883,438.567],[1124.85,655.733],[771.567,660.067]],[[759,449.108],[1131.042,438.583],[1124.925,656.017],[771.283,660.433]],[[758.6,449],[1131.2,438.6],[1125,656.3],[771,660.8]],[[760.7,449.2],[1129.9,441],[1122.5,656.2],[770.6,660.3]],[[760.667,449.017],[1129.9,441],[1122.5,656.2],[770.917,660.583]],[[760.633,448.833],[1129.9,441],[1122.5,656.2],[771.233,660.867]],[[760.6,448.65],[1129.9,441],[1122.5,656.2],[771.55,661.15]],[[760.567,448.467],[1129.9,441],[1122.5,656.2],[771.867,661.433]],[[760.533,448.283],[1129.9,441],[1122.5,656.2],[772.183,661.717]],[[760.5,448.1],[1129.9,441],[1122.5,656.2],[772.5,662]],[[760.242,448.05],[1130.25,440.625],[1122.942,656.258],[772.5,662]],[[759.983,448],[1130.6,440.25],[1123.383,656.317],[772.5,662]],[[759.725,447.95],[1130.95,439.875],[1123.825,656.375],[772.5,662]],[[759.467,447.9],[1131.3,439.5],[1124.267,656.433],[772.5,662]],[[759.208,447.85],[1131.65,439.125],[1124.708,656.492],[772.5,662]],[[758.95,447.8],[1132,438.75],[1125.15,656.55],[772.5,662]],[[758.692,447.75],[1132.35,438.375],[1125.592,656.608],[772.5,662]],[[758.433,447.7],[1132.7,438],[1126.033,656.667],[772.5,662]],[[758.175,447.65],[1133.05,437.625],[1126.475,656.725],[772.5,662]],[[757.917,447.6],[1133.4,437.25],[1126.917,656.783],[772.5,662]],[[757.658,447.55],[1133.75,436.875],[1127.358,656.842],[772.5,662]],[[757.4,447.5],[1134.1,436.5],[1127.8,656.9],[772.5,662]],[[757.73,447.45],[1134.69,436.49],[1128.35,656.82],[772.5,662]],[[758.06,447.4],[1135.28,436.48],[1128.9,656.74],[772.5,662]],[[758.39,447.35],[1135.87,436.47],[1129.45,656.66],[772.5,662]],[[758.72,447.3],[1136.46,436.46],[1130,656.58],[772.5,662]],[[759.05,447.25],[1137.05,436.45],[1130.55,656.5],[772.5,662]],[[759.38,447.2],[1137.64,436.44],[1131.1,656.42],[772.5,662]],[[759.71,447.15],[1138.23,436.43],[1131.65,656.34],[772.5,662]],[[760.04,447.1],[1138.82,436.42],[1132.2,656.26],[772.5,662]],[[760.37,447.05],[1139.41,436.41],[1132.75,656.18],[772.5,662]],[[760.7,447],[1140,436.4],[1133.3,656.1],[772.5,662]],[[760.95,446.825],[1140.65,435.625],[1133.3,656.1],[772.5,662]],[[761.2,446.65],[1141.3,434.85],[1133.3,656.1],[772.5,662]],[[761.45,446.475],[1141.95,434.075],[1133.3,656.1],[772.5,662]],[[761.7,446.3],[1142.6,433.3],[1133.3,656.1],[772.5,662]],[[761.82,445.8],[1142.6,433.3],[1133.3,656.1],[772.5,662]],[[761.94,445.3],[1142.6,433.3],[1133.3,656.1],[772.5,662]],[[762.06,444.8],[1142.6,433.3],[1133.3,656.1],[772.5,662]],[[762.18,444.3],[1142.6,433.3],[1133.3,656.1],[772.5,662]],[[762.3,443.8],[1142.6,433.3],[1133.3,656.1],[772.5,662]],[[761.686,443.643],[1142.6,433.3],[1133.757,656.571],[772.229,662.171]],[[761.071,443.486],[1142.6,433.3],[1134.214,657.043],[771.957,662.343]],[[760.457,443.329],[1142.6,433.3],[1134.671,657.514],[771.686,662.514]],[[759.843,443.171],[1142.6,433.3],[1135.129,657.986],[771.414,662.686]],[[759.229,443.014],[1142.6,433.3],[1135.586,658.457],[771.143,662.857]],[[758.614,442.857],[1142.6,433.3],[1136.043,658.929],[770.871,663.029]],[[758,442.7],[1142.6,433.3],[1136.5,659.4],[770.6,663.2]],[[756.95,442.65],[1142.6,433.3],[1136.5,659.4],[770.6,663.2]],[[755.9,442.6],[1142.6,433.3],[1136.5,659.4],[770.6,663.2]],[[755.9,442.6],[1138.9,430.5],[1136.1,656.9],[766,662.9]],[[757.2,439.5],[1138.9,430.5],[1137.9,657.5],[766,662.9]],[[757.2,439.5],[1139.657,430.443],[1138.357,657.414],[766,662.9]],[[757.2,439.5],[1140.414,430.386],[1138.814,657.329],[766,662.9]],[[757.2,439.5],[1141.171,430.329],[1139.271,657.243],[766,662.9]],[[757.2,439.5],[1141.929,430.271],[1139.729,657.157],[766,662.9]],[[757.2,439.5],[1142.686,430.214],[1140.186,657.071],[766,662.9]],[[757.2,439.5],[1143.443,430.157],[1140.643,656.986],[766,662.9]],[[757.2,439.5],[1144.2,430.1],[1141.1,656.9],[766,662.9]],[[757.2,439.5],[1144.2,430.1],[1141.1,656.9],[766.771,662.857]],[[757.2,439.5],[1144.2,430.1],[1141.1,656.9],[767.543,662.814]],[[757.2,439.5],[1144.2,430.1],[1141.1,656.9],[768.314,662.771]],[[757.2,439.5],[1144.2,430.1],[1141.1,656.9],[769.086,662.729]],[[757.2,439.5],[1144.2,430.1],[1141.1,656.9],[769.857,662.686]],[[757.2,439.5],[1144.2,430.1],[1141.1,656.9],[770.629,662.643]],[[757.2,439.5],[1144.2,430.1],[1141.1,656.9],[771.4,662.6]],[[757.2,439.5],[1149,430.5],[1141.1,656.9],[771.4,662.6]],[[757.2,439.5],[1149.55,429.725],[1142.525,656.775],[771.4,662.6]],[[757.2,439.5],[1150.1,428.95],[1143.95,656.65],[771.4,662.6]],[[757.2,439.5],[1150.65,428.175],[1145.375,656.525],[771.4,662.6]],[[757.2,439.5],[1151.2,427.4],[1146.8,656.4],[771.4,662.6]],[[757.2,439.5],[1151.2,427.4],[1146.8,656.4],[771.4,662.6]]];
+let trackingMode="stabilized";
+function trackedCorners(time){const f=Math.max(0,Math.min(120,time*24));let i=0;while(i<trackedFrames.length-1&&trackedFrames[i+1]<f)i++;const lo=trackedFrames[i],hi=trackedFrames[Math.min(i+1,trackedFrames.length-1)];const t=hi===lo?0:Math.max(0,Math.min(1,(f-lo)/(hi-lo)));return tracking[lo].map((p,j)=>p.map((v,k)=>v+(tracking[hi][j][k]-v)*t));}
+/* MYDIIO_TRACKING_SMOOTH_V1: symmetric 5-frame filter, no runtime lag. */
+const smoothedTrackingFrames=stabilizedFrames.map((frame,i)=>frame.map((corner,j)=>corner.map((value,k)=>{
+  const weights=[1,4,6,4,1];
+  let total=0,weightSum=0;
+  for(let offset=-2;offset<=2;offset++){
+    const index=Math.max(0,Math.min(stabilizedFrames.length-1,i+offset));
+    const weight=weights[offset+2];
+    total+=stabilizedFrames[index][j][k]*weight;
+    weightSum+=weight;
+  }
+  const filtered=total/weightSum;
+  return value*.25+filtered*.75;
+})));
+function stabilizedCorners(time){
+  const f=Math.max(0,Math.min(smoothedTrackingFrames.length-1,time*24));
+  const lo=Math.floor(f),hi=Math.min(smoothedTrackingFrames.length-1,lo+1),t=f-lo;
+  return smoothedTrackingFrames[lo].map((p,j)=>p.map((v,k)=>v+(smoothedTrackingFrames[hi][j][k]-v)*t));
+}
+function activeCorners(time){return trackingMode==='raw'?trackedCorners(time):stabilizedCorners(time)}
+let corners=activeCorners(0);
+const params={brightness:.8,opacity:.98,reflection:.04,shade:.23,softness:.18,footage:0,inset:2};
+let zoom=false,showOriginal=false,plan='short',lastFrame=-1,playing=true,manualPause=false;
+const advert=document.createElement('canvas');advert.width=960;advert.height=570;const a=advert.getContext('2d');
+function roundedRect(c,x,y,w,h,r){c.beginPath();c.roundRect(x,y,w,h,r)}
+const adQR=new Image();adQR.onload=()=>drawAd();adQR.src='/assets/campaign-studio/demo-qr-v4-3.png';
+const templateConfig={
+ food:{photo:'/assets/campaign-studio/food-demo-v4-3.webp',bg:'#073f2d',accent:'#ffbb24',chip:'#b4ef65',tag:'FRESH. LOCAL. DELICIOUS.',cta:'EXPLORE MORE',defaultMessage:'Your next favourite stop.'},
+ retail:{photo:'/assets/campaign-studio/retail-demo-v4-4.webp',bg:'#241451',accent:'#ff6c95',chip:'#ffcf5a',tag:'NEW FINDS. GREAT VALUE.',cta:'DISCOVER MORE',defaultMessage:'Find something you love.'},
+ services:{photo:'/assets/campaign-studio/mydiio-studio-travel-photo-v4-8.webp',bg:'#073e63',accent:'#43d6c3',chip:'#ffdf77',tag:'GO FURTHER. FEEL MORE.',cta:'LEARN MORE',defaultMessage:'Your next adventure starts here.'}
+};
+const adPhotos={};Object.entries(templateConfig).forEach(([key,c])=>{const img=new Image();img.onload=()=>drawAd();img.src=c.photo;adPhotos[key]=img});
+let selectedTemplate='food';
+/* MYDIIO_STUDIO_ART_DIRECTION_V4_7 — three independently art-directed campaigns.
+   Existing tracking, canvas projection, video, reveal and enquiry are untouched. */
+function adPhotoCover(img,x,y,w,h,focusX=.5,focusY=.5){
+ if(!(img&&img.complete&&img.naturalWidth))return false;
+ const scale=Math.max(w/img.naturalWidth,h/img.naturalHeight),sw=w/scale,sh=h/scale;
+ const sx=Math.max(0,Math.min(img.naturalWidth-sw,(img.naturalWidth-sw)*focusX));
+ const sy=Math.max(0,Math.min(img.naturalHeight-sh,(img.naturalHeight-sh)*focusY));
+ a.drawImage(img,sx,sy,sw,sh,x,y,w,h);return true;
+}
+function adText(text,x,y,maxWidth,size=54,min=22,weight=800,color='#fff'){
+ // Fit the brand on one line without letting canvas silently distort its proportions.
+ const content=String(text).trim()||'Your business';
+ a.save();a.fillStyle=color;a.textBaseline='alphabetic';
+ let fontSize=size;
+ for(;fontSize>min;fontSize-=2){a.font=`${weight} ${fontSize}px Inter,Arial,sans-serif`;if(a.measureText(content).width<=maxWidth)break;}
+ a.font=`${weight} ${Math.max(min,fontSize)}px Inter,Arial,sans-serif`;
+ if(a.measureText(content).width>maxWidth){
+  let fitted=content;
+  while(fitted.length>1&&a.measureText(fitted+'…').width>maxWidth)fitted=fitted.slice(0,-1);
+  a.fillText(fitted+'…',x,y);
+ }else a.fillText(content,x,y);
+ a.restore();
+}
+function adWrapped(text,x,y,width,size=39,maxLines=3,lineHeight=1.16,color='#fff'){
+ // Word-wrap and adapt font size within a fixed safe area above the CTA.
+ const words=String(text).trim().split(/\s+/).filter(Boolean);
+ if(!words.length)return;
+ const wrap=(fontSize)=>{
+  a.font=`700 ${fontSize}px Inter,Arial,sans-serif`;
+  const lines=[];let line='';
+  for(const word of words){
+   const candidate=line?line+' '+word:word;
+   if(line&&a.measureText(candidate).width>width){lines.push(line);line=word;}else line=candidate;
+  }
+  if(line)lines.push(line);
+  return lines;
+ };
+ a.save();a.textBaseline='alphabetic';a.fillStyle=color;
+ let lines=[],fontSize=size;
+ for(;fontSize>=22;fontSize-=2){
+  lines=wrap(fontSize);
+  a.font=`700 ${fontSize}px Inter,Arial,sans-serif`;
+  if(lines.length<=maxLines&&lines.every(line=>a.measureText(line).width<=width))break;
+ }
+ fontSize=Math.max(22,fontSize);a.font=`700 ${fontSize}px Inter,Arial,sans-serif`;
+ if(lines.length>maxLines){
+  lines=lines.slice(0,maxLines);
+  let last=lines[maxLines-1];
+  while(last.length>1&&a.measureText(last+'…').width>width)last=last.slice(0,-1);
+  lines[maxLines-1]=last+'…';
+ }
+ lines.forEach((line,i)=>{
+  if(a.measureText(line).width>width){
+   let clipped=line;while(clipped.length>1&&a.measureText(clipped+'…').width>width)clipped=clipped.slice(0,-1);
+   line=clipped+'…';
+  }
+  a.fillText(line,x,y+i*fontSize*lineHeight);
+ });
+ a.restore();
+}
+function adQRBadge(x,y,dark=false){
+ // Compact demo badge: the QR code links to mydiio, not the customer's website.
+ a.save();a.fillStyle='rgba(12,16,17,.87)';a.beginPath();a.roundRect(x,y,116,116,9);a.fill();
+ if(adQR.complete&&adQR.naturalWidth){a.fillStyle='#fff';a.fillRect(x+10,y+10,96,96);a.drawImage(adQR,x+15,y+15,86,86);}
+ a.restore();
+}
+function adPill(text,x,y,w,fill='#f5a623',color='#161615'){
+ a.save();a.fillStyle=fill;a.beginPath();a.roundRect(x,y,w,57,28);a.fill();
+ a.fillStyle=color;a.font='800 18px Inter,Arial,sans-serif';a.textBaseline='middle';
+ a.fillText(text,x+20,y+29,w-38);a.restore();
+}
+function adFood(img,brand,copy){
+ a.fillStyle='#161a13';a.fillRect(0,0,960,570);
+ adPhotoCover(img,0,0,960,570,.6,.5);
+ const g=a.createLinearGradient(0,0,960,0);
+ g.addColorStop(0,'rgba(8,13,10,.97)');g.addColorStop(.34,'rgba(8,13,10,.90)');g.addColorStop(.62,'rgba(8,13,10,.25)');g.addColorStop(1,'rgba(8,13,10,.02)');a.fillStyle=g;a.fillRect(0,0,960,570);
+ a.fillStyle='#f5a623';a.beginPath();a.moveTo(0,0);a.lineTo(8,0);a.lineTo(8,570);a.lineTo(0,570);a.fill();
+ a.fillStyle='#f5a623';a.font='800 17px Inter,Arial,sans-serif';a.fillText('LOCAL FLAVOURS  /  GOOD MOMENTS',43,65);
+ adText(brand,42,145,600,64,26,850,'#fff');
+ a.fillStyle='#f5a623';a.fillRect(43,172,55,4);
+ adWrapped(copy,43,250,525,47,3,1.16,'#fff');
+ adPill('DISCOVER THE MENU  ↗',42,460,287);
+ adQRBadge(814,432);
+}
+function adRetail(img,brand,copy){
+ a.fillStyle='#111b23';a.fillRect(0,0,960,570);adPhotoCover(img,0,0,960,570,.5,.29);
+ const g=a.createLinearGradient(0,0,960,0);g.addColorStop(0,'rgba(9,17,23,.94)');g.addColorStop(.37,'rgba(9,17,23,.67)');g.addColorStop(.7,'rgba(9,17,23,.08)');g.addColorStop(1,'rgba(9,17,23,.02)');a.fillStyle=g;a.fillRect(0,0,960,570);
+ a.fillStyle='#fff';a.font='800 17px Inter,Arial,sans-serif';a.fillText('THE NEW EDIT  /  STYLE IN MOTION',44,65);
+ adText(brand.toUpperCase(),43,150,675,70,27,850,'#fff');
+ a.fillStyle='#fff';a.fillRect(44,176,60,3);
+ adWrapped(copy,43,256,555,47,3,1.14,'#fff');
+ adPill('EXPLORE THE COLLECTION  ↗',43,462,359,'#fff','#161615');
+ adQRBadge(814,432);
+}
+function adServices(img,brand,copy){
+ a.fillStyle='#123e50';a.fillRect(0,0,960,570);adPhotoCover(img,0,0,960,570,.5,.52);
+ const g=a.createLinearGradient(0,0,960,0);g.addColorStop(0,'rgba(3,35,48,.95)');g.addColorStop(.36,'rgba(3,35,48,.78)');g.addColorStop(.74,'rgba(3,35,48,.09)');g.addColorStop(1,'rgba(3,35,48,.02)');a.fillStyle=g;a.fillRect(0,0,960,570);
+ a.fillStyle='#f9d8a0';a.font='800 17px Inter,Arial,sans-serif';a.fillText('DISCOVER  /  EXPLORE  /  EXPERIENCE',43,65);
+ adText(brand,43,148,680,64,27,850,'#fff');
+ a.fillStyle='#f5a623';a.fillRect(43,174,60,4);
+ adWrapped(copy,43,254,560,45,3,1.16,'#fff');
+ adPill('EXPLORE EXPERIENCES  ↗',43,462,318);
+ adQRBadge(814,432);
+}
+function drawAd(){
+ needsDraw=true;
+ const photo=adPhotos[selectedTemplate],c=templateConfig[selectedTemplate];
+ const brand=business.value.trim()||'Your business';
+ const copy=message.value.trim()||c.defaultMessage;
+ a.save();a.setTransform(1,0,0,1,0,0);a.clearRect(0,0,advert.width,advert.height);
+ if(selectedTemplate==='retail')adRetail(photo,brand,copy);
+ else if(selectedTemplate==='services')adServices(photo,brand,copy);
+ else adFood(photo,brand,copy);
+ a.restore();
+ // Copy the same rendered artwork used by the projected tablet into the editor preview.
+ const preview=$('creativePreview');
+ if(preview){const pc=preview.getContext('2d');pc.clearRect(0,0,preview.width,preview.height);pc.drawImage(advert,0,0);}
+}
+document.querySelectorAll('input[name="template"]').forEach(input=>input.addEventListener('change',()=>{
+ if(!input.checked)return;selectedTemplate=input.value;
+ document.querySelectorAll('.template-option').forEach(el=>el.classList.toggle('selected',el.querySelector('input').checked));
+ drawAd();updateCampaignSummary();if(revealStarted)stage.textContent='PREVIEW UPDATED';
+}));
+function wrapAdText(c,text,size,x,y,maxWidth,lineHeight,maxLines){
+ c.font=`bold ${size}px Arial`;const words=text.split(/\s+/),lines=[];let line='';
+ for(const word of words){const candidate=line?line+' '+word:word;if(c.measureText(candidate).width>maxWidth&&line){lines.push(line);line=word;}else line=candidate;}
+ if(line)lines.push(line);
+ lines.slice(0,maxLines).forEach((s,i)=>fitText(c,s,size,x,y+i*lineHeight,maxWidth,true));
+}
+function fitText(c,text,size,x,y,maxWidth,bold){let s=size;c.font=`${bold?'bold ':''}${s}px Arial, sans-serif`;while(c.measureText(text).width>maxWidth&&s>20){s-=2;c.font=`${bold?'bold ':''}${s}px Arial, sans-serif`;}c.fillText(text,x,y)}
+function lerp(a,b,t){return a+(b-a)*t}
+function quad(u,v){const [tl,tr,br,bl]=corners;return [((1-u)*(1-v)*tl[0]+u*(1-v)*tr[0]+u*v*br[0]+(1-u)*v*bl[0]),((1-u)*(1-v)*tl[1]+u*(1-v)*tr[1]+u*v*br[1]+(1-u)*v*bl[1])]}
+function triangle(s0,s1,s2,d0,d1,d2){const den=s0[0]*(s1[1]-s2[1])+s1[0]*(s2[1]-s0[1])+s2[0]*(s0[1]-s1[1]);if(Math.abs(den)<.00001)return;const A=(d0[0]*(s1[1]-s2[1])+d1[0]*(s2[1]-s0[1])+d2[0]*(s0[1]-s1[1]))/den;const C=(d0[0]*(s2[0]-s1[0])+d1[0]*(s0[0]-s2[0])+d2[0]*(s1[0]-s0[0]))/den;const E=(d0[0]*(s1[0]*s2[1]-s2[0]*s1[1])+d1[0]*(s2[0]*s0[1]-s0[0]*s2[1])+d2[0]*(s0[0]*s1[1]-s1[0]*s0[1]))/den;const B=(d0[1]*(s1[1]-s2[1])+d1[1]*(s2[1]-s0[1])+d2[1]*(s0[1]-s1[1]))/den;const D=(d0[1]*(s2[0]-s1[0])+d1[1]*(s0[0]-s2[0])+d2[1]*(s1[0]-s0[0]))/den;const F=(d0[1]*(s1[0]*s2[1]-s2[0]*s1[1])+d1[1]*(s2[0]*s0[1]-s0[0]*s2[1])+d2[1]*(s0[0]*s1[1]-s1[0]*s0[1]))/den;ctx.save();ctx.beginPath();const cx=(d0[0]+d1[0]+d2[0])/3,cy=(d0[1]+d1[1]+d2[1])/3;const expand=p=>{const dx=p[0]-cx,dy=p[1]-cy,len=Math.hypot(dx,dy)||1;return [p[0]+dx/len*1.25,p[1]+dy/len*1.25]};const e0=expand(d0),e1=expand(d1),e2=expand(d2);ctx.moveTo(...e0);ctx.lineTo(...e1);ctx.lineTo(...e2);ctx.closePath();ctx.clip();ctx.transform(A,B,C,D,E,F);ctx.drawImage(advert,0,0);ctx.restore()}
+function drawOverlay(){const N=4,aw=advert.width,ah=advert.height;ctx.save();ctx.globalAlpha=params.opacity;ctx.filter=`brightness(${params.brightness}) blur(${params.softness}px)`;for(let y=0;y<N;y++)for(let x=0;x<N;x++){let u=x/N,v=y/N,U=(x+1)/N,V=(y+1)/N;const p00=quad(u,v),p10=quad(U,v),p11=quad(U,V),p01=quad(u,V);const s00=[u*aw,v*ah],s10=[U*aw,v*ah],s11=[U*aw,V*ah],s01=[u*aw,V*ah];triangle(s00,s10,s11,p00,p10,p11);triangle(s00,s11,s01,p00,p11,p01)}ctx.restore();
+// Very subtle real footage contribution: no geometric grid or simulated hard glare.
+if(params.footage>0&&video.readyState>=2){ctx.save();ctx.beginPath();corners.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();ctx.clip();ctx.globalAlpha=params.footage;ctx.globalCompositeOperation='screen';ctx.drawImage(video,0,0,W,H);ctx.restore()}}
+let revealStarted=false, revealed=false, zoomProgress=0, zoomTarget=0, lastTs=0, revealTimers=[];
+let showOutline=false;const frameScrub=$('frameScrub'),scrubValue=$('scrubValue'),trackInfo=$('trackInfo');
+function updateTrackingInfo(t){const f=Math.min(120,Math.max(0,Math.round(t*24)));const a=trackedCorners(t),b=stabilizedCorners(t);const delta=Math.max(...a.map((p,i)=>Math.hypot(p[0]-b[i][0],p[1]-b[i][1])));trackInfo.textContent=`Frame ${f} · max correction ${delta.toFixed(1)}px`;if(document.activeElement!==frameScrub){frameScrub.value=String(f);scrubValue.textContent=String(f)}}
+function setTrackingMode(mode){trackingMode=mode;for(const [id,active] of [['rawMode',mode==='raw'],['stabilizedMode',mode==='stabilized']]){const b=$(id);b.classList.toggle('track-active',active);b.setAttribute('aria-pressed',String(active))}needsDraw=true}
+$('rawMode').addEventListener('click',()=>setTrackingMode('raw'));
+$('stabilizedMode').addEventListener('click',()=>setTrackingMode('stabilized'));
+$('outlineMode').addEventListener('click',()=>{showOutline=!showOutline;$('outlineMode').classList.toggle('track-active',showOutline);$('outlineMode').setAttribute('aria-pressed',String(showOutline));needsDraw=true});
+frameScrub.addEventListener('input',()=>{const f=Number(frameScrub.value);scrubValue.textContent=String(f);video.pause();video.currentTime=Math.min((video.duration||5.04)-.005,f/24);needsDraw=true});
+
+function ease(t){return t*t*(3-2*t)}
+let lastDraw=0, needsDraw=true, lastVideoTime=-1;
+function render(time){
+ const dt=lastTs?Math.min(64,time-lastTs):16;lastTs=time;
+ const previousZoom=zoomProgress;
+ const step=Math.min(1,dt/850);
+ zoomProgress+=(zoomTarget-zoomProgress)*step*3.2;
+ if(Math.abs(zoomTarget-zoomProgress)<.001)zoomProgress=zoomTarget;
+ const videoTime=video.readyState>=2?video.currentTime:-1;
+ const changedFrame=Math.abs(videoTime-lastVideoTime)>1/48;
+ const zoomChanging=Math.abs(previousZoom-zoomProgress)>.0001;
+ // Avoid needless redraws and cap work at 30fps; video source is 24fps.
+ if(time-lastDraw>=32&&(needsDraw||changedFrame||zoomChanging)){
+   lastDraw=time;needsDraw=false;lastVideoTime=videoTime;
+   corners=activeCorners(Math.max(0,videoTime));
+   // Diagnostic measurements are retained but not displayed in v4.
+
+   const z=ease(zoomProgress),scale=1+1.95*z,centerX=948,centerY=550;
+   ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);
+   // One pass: apply zoom to the scene BEFORE drawing the video and overlay.
+   ctx.setTransform(SCALE*scale,0,0,SCALE*scale,SCALE*(W/2-centerX*scale),SCALE*(H/2-centerY*scale));
+   if(video.readyState>=2){ctx.drawImage(video,0,0,W,H);if(!showOriginal&&revealStarted)drawOverlay();if(showOutline){ctx.save();ctx.beginPath();corners.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.strokeStyle='#f5a623';ctx.lineWidth=3;ctx.stroke();ctx.restore()}}
+   else{ctx.fillStyle='#151511';ctx.fillRect(0,0,W,H);ctx.fillStyle='#fdfaf3';ctx.font='32px Arial';ctx.fillText('Loading tuk-tuk footage…',80,110)}
+   ctx.setTransform(1,0,0,1,0,0);
+ }
+ requestAnimationFrame(render);
+}
+function updateCount(){count.textContent=`${message.value.length} / 85`;drawAd()}
+const launch=$('launch'), reset=$('reset'), edit=$('edit'), stage=$('stage'), choicesPanel=$('choicesPanel'), previewCaption=$('previewCaption'), toast=$('toast');
+const revealSummary=$('revealSummary'),conversionWrap=$('conversionWrap'),contactFields=$('contactFields'),openProposal=$('openProposal');
+function showV50Reveal(){document.body.classList.add('v50-revealed');revealSummary.hidden=false;conversionWrap.hidden=false;choicesPanel.hidden=false;$('v51Bridge').hidden=false;revealSummary.classList.add('v51-enter');$('v51Bridge').classList.add('v51-enter');updateCampaignSummary();}
+function hideV50Reveal(){document.body.classList.remove('v50-revealed');revealSummary.hidden=true;conversionWrap.hidden=true;choicesPanel.hidden=true;$('v51Bridge').hidden=true;revealSummary.classList.remove('v51-enter');$('v51Bridge').classList.remove('v51-enter');}
+openProposal.addEventListener('click',()=>{contactFields.hidden=false;contactFields.classList.add('v51-enter');$('proposal').hidden=false;openProposal.hidden=true;openProposal.setAttribute('aria-expanded','true');contactFields.scrollIntoView({behavior:'smooth',block:'start'});$('contactName').focus({preventScroll:true});});
+
+function announce(s){toast.textContent=s;toast.classList.add('visible');clearTimeout(announce.t);announce.t=setTimeout(()=>toast.classList.remove('visible'),3800)}
+function updateCampaignSummary(){
+ const labels={food:'Food & Beverage',retail:'Retail & Shopping',services:'Services & Experiences'};
+ $('summaryBusiness').textContent=business.value.trim()||'Your business';
+ $('summaryIndustry').textContent=labels[selectedTemplate]||'Campaign';
+ $('summaryMessage').textContent=message.value.trim()||templateConfig[selectedTemplate].defaultMessage;
+}
+$('replayFromSummary').addEventListener('click',()=>beginReveal());
+$('refineFromSummary').addEventListener('click',()=>{
+ hideV50Reveal();launch.disabled=false;launch.textContent='Bring my advert to life →';
+ business.focus();$('editor').scrollIntoView({behavior:'smooth',block:'start'});
+ announce('Update your details, then replay your personalised advert.');
+});
+async function beginReveal(){
+   if (launch.disabled) return;
+   launch.disabled = true;
+   const previousLabel = launch.textContent;
+   launch.textContent = 'Preparing your preview…';
+   // MYDIIO_REVEAL_FIX_V3
+  const requestedName = business.value.trim();
+  const requestedMessage = message.value.trim();
+
+  if (!requestedName || !requestedMessage) {
+    error.style.display = 'block';
+    error.textContent = 'Enter your business name and message first.';
+    launch.disabled=false;launch.textContent=previousLabel;
+    return;
+  }
+
+  if (video.readyState < 2) {
+    studioSetPreviewState('loading');
+    status.textContent = 'Preparing your personalised preview...';
+
+    try {
+      video.preload = 'auto';
+
+      // Attempt playback to encourage decoding of the first frame.
+      const playback = video.play();
+      if (playback && typeof playback.then === 'function') {
+        await playback;
+      }
+
+      if (video.readyState < 2) {
+        await new Promise((resolve, reject) => {
+          const timeout = setTimeout(() => {
+            cleanup();
+            reject(new Error('Video loading timed out.'));
+          }, 12000);
+
+          function cleanup() {
+            clearTimeout(timeout);
+            video.removeEventListener('loadeddata', onReady);
+            video.removeEventListener('error', onError);
+          }
+
+          function onReady() {
+            cleanup();
+            resolve();
+          }
+
+          function onError() {
+            cleanup();
+            reject(new Error('Video could not be loaded.'));
+          }
+
+          video.addEventListener('loadeddata', onReady);
+          video.addEventListener('error', onError);
+
+          if (video.readyState >= 2) onReady();
+        });
+      }
+
+      video.pause();
+    } catch (err) {
+      studioSetPreviewState('error');
+      status.textContent = 'Unable to prepare passenger-view preview';
+      announce('Could not load the tuk-tuk preview. Please retry.');
+      launch.disabled = false; launch.textContent = previousLabel;
+      return;
+    }
+  }
+
+  studioVideoReady = true;
+  studioVideoFailed = false;
+  studioSetPreviewState('ready');
+  needsDraw = true;const name=business.value.trim(),msg=message.value.trim();if(!name||!msg){error.style.display='block';error.textContent='Add your business name and a short message to create the preview.';launch.disabled=false;launch.textContent=previousLabel;return}
+ error.style.display='none';drawAd();updateCampaignSummary();revealStarted=true;revealed=false;zoomTarget=0;zoomProgress=0;zoomBtn.textContent='Zoom to tablet';zoomBtn.classList.remove('active');needsDraw=true;
+ stage.textContent='YOUR ADVERT IS APPEARING';previewCaption.textContent='A sample of how your message could appear during a journey.';
+ launch.disabled=true;launch.textContent='Creating your preview…';hideV50Reveal();
+ video.currentTime=0;video.play().catch(()=>{});
+ revealTimers.forEach(clearTimeout);revealTimers=[];revealTimers.push(setTimeout(()=>{zoomTarget=1;zoomBtn.textContent='Show full scene';zoomBtn.classList.add('active');video.pause();stage.textContent='YOUR BUSINESS, ON THE MOVE';previewCaption.textContent='Take a closer look at your personalised advert.';needsDraw=true;},1100));
+ revealTimers.push(setTimeout(()=>{revealed=true;showV50Reveal();choicesPanel.classList.add('entered');launch.disabled=false;launch.textContent='Replay the reveal';edit.hidden=false;reset.hidden=false;stage.textContent='YOUR PERSONALISED PREVIEW';previewCaption.textContent='Your sample advert is ready. Zoom out any time to see the passenger view.';document.querySelector('.layout').scrollIntoView({behavior:'smooth',block:'start'});},4200));
+}
+launch.addEventListener('click',beginReveal);
+reset.addEventListener('click',()=>{revealTimers.forEach(clearTimeout);revealTimers=[];launch.disabled=false;zoomTarget=0;zoomBtn.textContent='Zoom to tablet';zoomBtn.classList.remove('active');video.pause();needsDraw=true;revealStarted=false;revealed=false;hideV50Reveal();contactFields.hidden=true;contactFields.classList.remove('v51-enter');$('proposal').hidden=true;openProposal.hidden=false;openProposal.setAttribute('aria-expanded','false');$('handoff').hidden=true;reset.hidden=true;edit.hidden=true;stage.textContent='THE VIEW FROM A PASSENGER SEAT';previewCaption.textContent='Your advert will appear here after you create it.';launch.textContent='Bring my advert to life →';window.scrollTo({top:0,behavior:'smooth'});});
+edit.addEventListener('click',()=>{business.focus();document.getElementById('editor').scrollIntoView({behavior:'smooth',block:'center'});});
+business.addEventListener('input',()=>{drawAd();updateCampaignSummary();if(revealStarted)stage.textContent='PREVIEW UPDATED'});
+message.addEventListener('input',()=>{updateCount();updateCampaignSummary();if(revealStarted)stage.textContent='PREVIEW UPDATED'});
+playBtn.addEventListener('click',()=>{
+  if(zoomTarget>.5){
+    video.pause();
+    announce('Return to the full passenger view to resume playback.');
+    return;
+  }
+  manualPause=!video.paused;
+  if(manualPause) video.pause();
+  else video.play().catch(()=>announce('Press Play to resume the preview.'));
+});
+
+zoomBtn.addEventListener('click',()=>{
+  zoomTarget=zoomTarget>.5?0:1;
+  if(zoomTarget>.5){
+    video.pause();
+  }else if(!manualPause){
+    video.play().catch(()=>announce('Press Play to resume the preview.'));
+  }
+  zoomBtn.textContent=zoomTarget?'Show full scene':'Zoom to tablet';
+  zoomBtn.classList.toggle('active',!!zoomTarget);
+  needsDraw=true;
+});
+originalBtn.addEventListener('click',()=>{showOriginal=!showOriginal;originalBtn.textContent=showOriginal?'Show advert':'Show original';originalBtn.classList.toggle('active',showOriginal);needsDraw=true});
+document.querySelectorAll('[data-plan]').forEach(b=>b.addEventListener('click',()=>{plan=b.dataset.plan;document.querySelectorAll('[data-plan]').forEach(n=>{const on=n===b;n.classList.toggle('selected',on);n.setAttribute('aria-pressed',String(on))})}));
+const ENQUIRY_ENDPOINT='https://rmqexobhpasitrexvaig.supabase.co/functions/v1/submit-general-enquiry';
+const intakeStarted=Date.now();
+const attributionKey='mydiio.enquiry-source';
+function leadAttribution(){
+ const q=new URLSearchParams(window.location.search);
+ const tags=Object.fromEntries(['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].filter(k=>q.has(k)).map(k=>[k,(q.get(k)||'').slice(0,120)]));
+ let saved={};
+ try{
+  if(Object.keys(tags).length||!sessionStorage.getItem(attributionKey))sessionStorage.setItem(attributionKey,JSON.stringify({landing_page:window.location.pathname,...tags}));
+  saved=JSON.parse(sessionStorage.getItem(attributionKey)||'{}');
+ }catch{}
+ return {...saved,...tags,source_page:window.location.pathname};
+}
+// Capture landing attribution when the Studio opens, not only at submission time.
+leadAttribution();
+function validContact(email,phone){
+ const e=email.trim(),p=phone.trim();
+ return Boolean(e||p)&&(!e||/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))&&(!p||(/^[+\d\s().-]{7,30}$/.test(p)&&p.replace(/\D/g,'').length>=7));
+}
+let submitting=false,submitted=false;
+const submitStatus=$('submitStatus');
+function showSubmitStatus(text){submitStatus.textContent=text;submitStatus.hidden=!text;}
+proposal.addEventListener('click',async()=>{
+ if(submitting||submitted)return;
+ const name=business.value.trim(),msg=message.value.trim();
+ const fullName=$('contactName').value.trim(),email=$('contactEmail').value.trim(),phone=$('contactPhone').value.trim();
+ const ce=$('contactError');
+ if(!name||!msg){announce('Please enter your business name and message.');return}
+ if(!fullName||!email||!$('contactEmail').checkValidity()||!validContact(email,phone)){
+  ce.style.display='block';ce.textContent='Please enter your name, a valid email address and a valid phone number if provided.';
+  $('contactFields').scrollIntoView({behavior:'smooth',block:'center'});return;
+ }
+ ce.style.display='none';
+ const inquiry=`Hello mydiio, I created a Campaign Studio sample preview.\n\nBusiness: ${name}\nAdvert message: ${msg}\nAdvert template: ${selectedTemplate === 'food' ? 'Food & Beverage' : selectedTemplate === 'retail' ? 'Retail & Shopping' : 'Services & Experiences'}\nCampaign interest: ${plan==='short'?'Short campaign':'Ongoing presence'}\nContact name: ${fullName}\nEmail: ${email}\nPhone: ${phone||'Not provided'}\n\nPlease contact me to discuss a campaign proposal.`;
+ // General Enquiries expects name, email, phone and message. The backend
+ // stores only these four fields; identify the lead inside the message.
+ const attribution=leadAttribution();
+ const utm=Object.entries(attribution).filter(([key,value])=>
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].includes(key)&&value
+ ).map(([key,value])=>`${key}: ${value}`).join('\n');
+ const campaignMessage=`CAMPAIGN STUDIO PROPOSAL REQUEST\n\n${inquiry}\n\nOrigin: Campaign Studio\nSource page: ${attribution.source_page||window.location.pathname}${utm?'\n'+utm:''}`;
+ const payload={name:fullName.slice(0,200),email:email.slice(0,255),phone:phone.slice(0,50),message:campaignMessage.slice(0,4000)};
+ submitting=true;proposal.disabled=true;proposal.textContent='Sending your request…';showSubmitStatus('Submitting your campaign enquiry securely…');
+ try{
+  const controller=new AbortController();
+  const timeout=setTimeout(()=>controller.abort(),20000);
+  let res;
+  try{res=await fetch(ENQUIRY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:controller.signal});}
+  finally{clearTimeout(timeout)}
+  let response={};try{response=await res.json()}catch{}
+  if(!res.ok||response.success!==true){
+   if(res.status===429)throw new Error('Too many requests. Please wait 10 minutes and try again.');
+   if(res.status===400)throw new Error('Some enquiry details were not accepted. Please check your information and try again.');
+   throw new Error('We could not confirm your submission. Please try again.');
+  }
+  submitted=true;$('draft').value=campaignMessage;
+  $('handoff').classList.add('success');$('handoff').classList.remove('error-state');
+  $('handoffTitle').textContent='Your campaign enquiry has been received.';
+  $('handoffDescription').textContent='Thank you. Your proposal request was received in mydiio General Enquiries system. Our team can review your details and contact you. No booking or payment has been made.';
+  $('handoff').hidden=false;proposal.textContent='Enquiry received';showSubmitStatus('Your enquiry has been received.');
+  $('handoff').scrollIntoView({behavior:'smooth',block:'center'});
+ }catch(err){
+  const text=err&&err.name==='AbortError'?'The request timed out. It may have reached us; please check before resubmitting.':(err&&err.message)||'We could not send your enquiry. Please try again.';
+  ce.style.display='block';ce.textContent=text;showSubmitStatus('Submission not confirmed. Your details are still here for retry.');
+  proposal.disabled=false;proposal.textContent='Try sending my proposal request →';
+ }finally{submitting=false;}
+});
+$('copyDraft').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('draft').value);announce('Campaign enquiry details copied.')}catch{ $('draft').focus();$('draft').select();announce('Select and copy your campaign details manually.')}});
+$('openWebsite').addEventListener('click',()=>window.open('https://mydiio.com/','_blank','noopener,noreferrer'));
+$('closeHandoff').addEventListener('click',()=>{$('handoff').hidden=true});
+video.addEventListener('loadeddata',()=>{status.textContent='Preview ready · tracked screen';playBtn.textContent='Play';needsDraw=true;});
+video.addEventListener('play',()=>{playBtn.textContent='Pause';needsDraw=true});video.addEventListener('pause',()=>{playBtn.textContent='Play';needsDraw=true});video.addEventListener('seeked',()=>{needsDraw=true});
+video.addEventListener('error',()=>{status.textContent='Video unavailable · check the local asset path';announce('The tuk-tuk video could not load. Check your local Vite server.')});
+// Atlas homepage handoff: use the supplied name, not the prototype default.
+const incomingName = new URLSearchParams(window.location.search).get('business');
+if(incomingName && incomingName.trim()) business.value = incomingName.trim().slice(0,38);
+/* MYDIIO_STUDIO_POLISH_V1 */
+const studioPreviewState = document.getElementById('studioPreviewState');
+const studioPreviewTitle = document.getElementById('studioPreviewTitle');
+const studioPreviewDescription = document.getElementById('studioPreviewDescription');
+const studioPreviewRetry = document.getElementById('studioPreviewRetry');
+
+let studioVideoReady = video.readyState >= 2;
+let studioVideoFailed = false;
+
+function studioSetPreviewState(state) {
+  studioPreviewState.classList.toggle('is-ready', state === 'ready');
+  studioPreviewState.classList.toggle('is-error', state === 'error');
+
+  studioPreviewRetry.hidden = state !== 'error';
+
+  if (state === 'loading') {
+    studioPreviewTitle.textContent = 'Preparing your passenger view...';
+    studioPreviewDescription.textContent = 'Getting the tuk-tuk experience ready for your advert.';
+    status.textContent = 'Preparing passenger-view preview...';
+  }
+
+  if (state === 'error') {
+    studioPreviewTitle.textContent = 'Your preview could not load.';
+    studioPreviewDescription.textContent = 'The passenger-view footage is temporarily unavailable. Try loading it again.';
+    status.textContent = 'Passenger-view preview unavailable';
+  }
+
+  if (state === 'ready') {
+    status.textContent = 'Passenger-view preview ready';
+  }
+}
+
+function studioMarkReady() {
+  if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) return;
+  studioVideoReady = true;
+  studioVideoFailed = false;
+  studioSetPreviewState('ready');
+  needsDraw = true;
+}
+
+video.addEventListener('loadeddata', studioMarkReady);
+video.addEventListener('canplay', studioMarkReady);
+
+video.addEventListener('error', () => {
+  studioVideoReady = false;
+  studioVideoFailed = true;
+  studioSetPreviewState('error');
+});
+
+studioPreviewRetry.addEventListener('click', () => {
+  studioVideoFailed = false;
+  studioVideoReady = false;
+  studioSetPreviewState('loading');
+  video.load();
+});
+
+studioSetPreviewState(studioVideoReady ? 'ready' : 'loading');
+/* MYDIIO_STUDIO_REPAIR_V2 */
+video.addEventListener('canplaythrough', studioMarkReady);
+video.addEventListener('seeked', studioMarkReady);
+
+if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+  studioMarkReady();
+}
+
+setTimeout(() => {
+  if (!studioVideoReady && !studioVideoFailed) {
+    video.load();
+  }
+}, 1800);
+updateCount();updateCampaignSummary();requestAnimationFrame(render);video.load();
+})();
+</script></body></html>

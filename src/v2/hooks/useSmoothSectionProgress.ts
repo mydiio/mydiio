@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 
 type SmoothSectionProgressOptions = {
   holdBefore?: number;
@@ -7,6 +7,7 @@ type SmoothSectionProgressOptions = {
   snapToEnd?: boolean;
   entryProgress?: boolean;
   entryDistance?: number;
+  entryLead?: number;
 };
 
 function clamp(value: number, min = 0, max = 1) {
@@ -20,6 +21,7 @@ export function useSmoothSectionProgress({
   snapToEnd = true,
   entryProgress = false,
   entryDistance = 1,
+  entryLead = 0,
 }: SmoothSectionProgressOptions = {}) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const frameRef = useRef<number | null>(null);
@@ -46,10 +48,12 @@ export function useSmoothSectionProgress({
       const rect = section.getBoundingClientRect();
       const scrollDistance = section.offsetHeight - window.innerHeight;
 
+      const entranceOffset = window.innerHeight * entryLead;
+
       const rawProgress = entryProgress
         ? clamp((window.innerHeight - rect.top) / (window.innerHeight * entryDistance))
         : scrollDistance > 0
-          ? clamp(-rect.top / scrollDistance)
+          ? clamp((entranceOffset - rect.top) / (scrollDistance + entranceOffset))
           : clamp((window.innerHeight - rect.top) / window.innerHeight);
 
       targetRef.current = mapProgress(rawProgress);
@@ -112,10 +116,11 @@ export function useSmoothSectionProgress({
         window.cancelAnimationFrame(frameRef.current);
       }
     };
-  }, [damping, entryDistance, entryProgress, holdAfter, holdBefore, snapToEnd]);
+  }, [damping, entryDistance, entryLead, entryProgress, holdAfter, holdBefore, snapToEnd]);
 
   return {
     sectionRef,
     progress,
   };
 }
+

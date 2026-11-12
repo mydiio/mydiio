@@ -1,0 +1,21 @@
+/* Atlas Driver heading emphasis v1.
+   Homepage ink/white provides the headline base; one selected phrase per heading uses the exact Atlas amber.
+   Scoped to Driver pages only. Does not affect nav, controls, earnings numbers, media, or form logic. */
+main[data-driver-page] .driver-brand-accent {
+  color: var(--atlas-amber, #F5A623) !important;
+  -webkit-text-fill-color: var(--atlas-amber, #F5A623);
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+@media (prefers-contrast: more) {
+  main[data-driver-page] :is(.driver-intro, .driver-earnings, .driver-eligibility, .driver-form-section, .driver-closing) .driver-brand-accent {
+    text-decoration: underline;
+    text-decoration-color: #1A1A18;
+    text-underline-offset: .08em;
+    text-decoration-thickness: .045em;
+  }
+}

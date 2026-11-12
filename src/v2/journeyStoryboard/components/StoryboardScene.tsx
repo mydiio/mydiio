@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
+﻿import { motion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { useRef } from "react";
 import { InteractiveTabletStage } from "./InteractiveTabletStage";
 
@@ -133,9 +133,9 @@ export function StoryboardScene() {
       data-v2-act="journey-storyboard"
       data-atlas-dark
       data-atlas-tone="dark"
-      className="relative z-10 h-[220vh] w-full bg-[#080807]"
+      className="relative z-10 h-[340svh] w-full bg-[#080807]"
     >
-      <div className="sticky top-0 h-screen min-h-[700px] w-full overflow-hidden bg-[#080807]">
+      <div className="sticky top-0 h-screen  w-full overflow-hidden bg-[#080807]">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/[0.035]"
@@ -293,10 +293,11 @@ function UtilityTitle({
           </span>
         </div>
 
-        <h3 className="mx-auto max-w-[1100px] text-[clamp(46px,6.6vw,102px)] font-semibold leading-[0.92] tracking-[-0.058em] text-[#FDFAF3]">
-          {title}
-        </h3>
+        <h2 className="mx-auto max-w-[1100px] text-[clamp(46px,6.6vw,102px)] font-semibold leading-[0.92] tracking-[-0.058em] text-[#FDFAF3]">{title}</h2>
       </div>
     </motion.article>
   );
 }
+
+
+

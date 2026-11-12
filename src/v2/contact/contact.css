@@ -665,3 +665,117 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* MYDIIO CONTACT V4 BRAND ALIGNMENT START */
+/* Scoped to the contact page; no global styles or submission logic altered. */
+[data-contact-page] {
+  --contact-v4-ink: var(--atlas-ink, #1a1a18);
+  --contact-v4-amber: var(--atlas-amber, #f5a623);
+  --contact-v4-cream: var(--atlas-cream, #fdfaf3);
+  --contact-v4-muted: #514d46;
+  --contact-v4-border: #d9d2c8;
+  background: var(--contact-v4-cream);
+  color: var(--contact-v4-ink);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+[data-contact-page] :is(h1,h2,h3) {
+  color: var(--contact-v4-ink);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+[data-contact-page] .contact-hero-title {
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: .98;
+}
+[data-contact-page] :is(.contact-editorial-accent, .contact-hero-title em, .contact-hero-title i) {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.03em;
+  color: var(--contact-v4-amber);
+}
+[data-contact-page] :is(.contact-hero-body, .atlas-section-copy, .contact-form-copy p) {
+  color: var(--contact-v4-muted);
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.5;
+}
+[data-contact-page] :is(.contact-form-label, .contact-form-field label) {
+  color: var(--contact-v4-ink);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+[data-contact-page] :is(input, select, textarea) {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--contact-v4-ink);
+  border-color: var(--contact-v4-border);
+}
+[data-contact-page] :is(input, textarea)::placeholder {
+  color: #68635b;
+  opacity: 1;
+}
+[data-contact-page] :is(input, select, textarea, button, a):focus-visible {
+  outline: 2px solid var(--contact-v4-amber);
+  outline-offset: 3px;
+}
+[data-contact-page] :is(.contact-form-field input, .contact-form-field textarea):focus {
+  border-color: var(--contact-v4-amber);
+  box-shadow: 0 0 0 3px rgba(245,166,35,.16);
+}
+[data-contact-page] :is(.contact-form-status, .contact-form-admin-link-hint, .contact-fact-status-note) {
+  font-size: 14px;
+  line-height: 1.55;
+}
+[data-contact-page] .contact-form-admin-link-hint,
+[data-contact-page] .contact-fact-status-note { color: var(--contact-v4-muted); }
+[data-contact-page] :is(.contact-form-submit, .contact-faq-question, .contact-form-admin-link-label) {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+[data-contact-page] .contact-form-submit {
+  background: var(--contact-v4-ink);
+  color: var(--contact-v4-cream);
+  border-color: var(--contact-v4-ink);
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: none;
+}
+[data-contact-page] .contact-form-submit:hover:not(:disabled) {
+  background: #33322e;
+  box-shadow: none;
+}
+[data-contact-page] :is(.contact-form-label, .contact-fact-label, .contact-faq-number, .contact-faq-icon) {
+  color: var(--contact-v4-ink);
+}
+[data-contact-page] .contact-faq-question:hover strong,
+[data-contact-page] .contact-fact-link:hover,
+[data-contact-page] .contact-form-admin-link:hover .contact-form-admin-link-label {
+  color: #a96b0d;
+}
+[data-contact-page] .contact-faq-question:focus-visible { outline-color: var(--contact-v4-amber); }
+[data-contact-page] .contact-faq-question strong {
+  color: var(--contact-v4-ink);
+  font-size: clamp(18px, 1.5vw, 22px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+[data-contact-page] .contact-faq-answer p {
+  color: var(--contact-v4-muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+[data-contact-page] .contact-faq { padding-block: clamp(76px, 8vw, 112px); }
+[data-contact-page] .contact-faq-question { padding-block: 23px; }
+[data-contact-page] .contact-faq-list,
+[data-contact-page] .contact-faq-item { border-color: var(--contact-v4-border); }
+@media (max-width: 760px) {
+  [data-contact-page] .contact-faq { padding-block: 64px; }
+  [data-contact-page] .contact-faq-question { padding-block: 20px; }
+  [data-contact-page] .contact-hero-body { font-size: 18px; }
+}
+/* MYDIIO CONTACT V4 BRAND ALIGNMENT END */

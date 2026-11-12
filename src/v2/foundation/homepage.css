@@ -174,7 +174,6 @@ body {
     min-height: 100svh !important;
   }
 
-  [data-v2-act="platform"],
   [data-v2-act="packages"],
   [data-v2-act="pioneer"],
   [data-v2-act="closing"] {
@@ -957,5 +956,71 @@ body {
   .atlas-footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* mydiio-platform-mobile-natural-flow-v2
+   On phones the diagram and cards size the section; no sticky 340svh runway.
+   Desktop scroll narrative is deliberately untouched. */
+@media (max-width: 560px) {
+  [data-v2-act="platform"] {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  [data-v2-act="platform"] .atlas-os-mobile-root {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  [data-v2-act="platform"] .atlas-os-mobile-inner {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 92px 0 60px !important;
+  }
+
+  [data-v2-act="platform"] .atlas-os-intro {
+    flex: 0 0 auto !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  [data-v2-act="platform"] .atlas-os-diagram-stage {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: 26px !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  [data-v2-act="platform"] .atlas-os-mobile-diagram {
+    height: auto !important;
+    min-height: 0 !important;
+    grid-template-rows: minmax(154px, auto) minmax(132px, auto) minmax(154px, auto) !important;
+    align-content: start !important;
+  }
+
+  /* The mobile narrative now ends after the complete diagram. The full
+     conclusion transition remains available in the desktop experience. */
+  [data-v2-act="platform"] .atlas-os-conclusion {
+    display: none !important;
+  }
+
+  /* Keep the following act from sliding over the last row of cards. */
+  [data-v2-page] > section[data-v2-act="platform"] + section[data-v2-act] {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  [data-v2-act="platform"] .atlas-os-mobile-diagram {
+    grid-template-rows: minmax(166px, auto) minmax(128px, auto) minmax(166px, auto) !important;
   }
 }
